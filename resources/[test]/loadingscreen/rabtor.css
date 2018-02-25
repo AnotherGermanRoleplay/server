@@ -1,0 +1,49 @@
+   /* 
+   Loading screen by : https://www.youtube.com/channel/UCcvQNELYLPdoaWSvF9k7Kkg 
+   Current version 1.1.0
+   My language : french;
+   Contact : rabtorlobby@gmail.com;
+   Or in my release fivem or youtube
+   */ 
+
+body{ margin: 0px;padding: 0px;}
+
+
+.fix{position: absolute; left: 5%;right: 5%;bottom: 10%;z-index: 5;color: #fff;font-family: "Segoe UI";}
+
+/* Text rules config */ 
+.text {
+    display:none;  */ 
+    color:#FFF;
+    font-family: Lucida Sans Unicode;
+    background-color: rgba(52, 152, 219,0.3);
+}
+
+.fix p 
+{font-size: 22px;  /* Size text of the rules */ 
+margin-left: 3px;margin-top: 0px;}
+
+.fix h2, .fix h3 { font-family:  BankGothic;font-size:  40px;margin: 0px;color: #FFF;}
+
+.loadbar
+{
+    width: 100%;
+    background-color: rgba(140, 140, 140, .9);
+    height: 20px;
+    margin-left: 2px;
+    margin-right: 3px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    overflow: hidden;
+    position: relative;
+    display: block;
+}
+
+.scroll
+{
+    width: 10%;
+    background-color: #eee;
+    height: 20px;
+    position: absolute;
+    left: 0%;
+}

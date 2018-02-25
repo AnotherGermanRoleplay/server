@@ -1,0 +1,100 @@
+@font-face {
+    font-family: pcdown;
+    src: url(pdown.ttf);
+}
+
+@font-face {
+  font-family: bankgothic;
+  src: url('bankgothic.ttf');
+}
+
+body, html {
+	overflow-y: hidden;
+}
+/* main.css */
+button {
+	margin: 0 auto;
+	padding: 5px 12px;
+	cursor: pointer;
+	display: block;
+    font-family: 'bankgothic', sans-serif;
+	font-size: 18px;
+	width: 100%;
+	border: none;
+	color: whitesmoke;
+    background-color: rgba(0, 0, 25, 0.8);
+    text-align: left;
+}
+
+/* change look of buttons when hovering over them */
+button:hover {
+    background: white;
+	color: black;
+}
+
+button:active, button:focus {
+	border: none;
+}
+
+.wrapper-menu {
+	font-family: 'bankgothic', sans-serif;
+	height: 5vh;
+	color: white;
+	width: 400px;
+    background: rgb(45, 110, 185);
+	position: absolute;
+	top: 2vh;
+	left: 2%;
+	font-size: 4vh;
+	text-align: center;
+	padding-top: 2vh;
+	padding-bottom: 2vh;
+	text-shadow: 0 0 2px black;
+}
+
+.general,
+.esx,
+.jobs,
+.listChar,
+.vehicles,
+.doors,
+.windows,
+.characters,
+.char-menu,
+.mdie {
+	font-family: 'bankgothic', sans-serif;
+	height: 700px;
+	background: ;
+	color: white;
+	width: 400px;
+	position: absolute;
+	top: 11vh;
+	left: 2%;
+	padding-bottom: 20px;
+}
+
+.list,
+.change,
+.delete {
+	font-family: 'bankgothic', sans-serif;
+	margin: 10px 2px;
+	padding: 10px 24px;
+	background: ;
+	color: white;
+	width: 240px;
+	position: relative;
+	top: 26%;
+	left: 43.7%;
+
+}
+
+
+
+
+#close {
+	display: inline-block;
+	float: right;
+	padding: 5px;
+	padding-right: 10px;
+	color: rgb(255, 0, 0);
+}

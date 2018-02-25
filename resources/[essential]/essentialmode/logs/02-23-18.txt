@@ -1,0 +1,70 @@
+-- Begin of log for 02-23-18 --
+== EssentialMode started, version 4.6.3 ==
+User (steam:11000011201aa78) loaded
+Version mismatch was detected, updater version: 5.0.0(4.6.3)
+== EssentialMode started, version 4.6.3 ==
+User (steam:11000011201aa78) loaded
+Version mismatch was detected, updater version: 5.0.0(4.6.3)
+== EssentialMode started, version 4.6.3 ==
+User (steam:11000011201aa78) loaded
+User (steam:11000011201aa78) saved and unloaded
+Version mismatch was detected, updater version: 5.0.0(4.6.3)
+== EssentialMode started, version 4.6.3 ==
+User (steam:11000011201aa78) loaded
+Version mismatch was detected, updater version: 5.0.0(4.6.3)
+== EssentialMode started, version 4.6.3 ==
+User (steam:11000011201aa78) loaded
+User (steam:11000011201aa78) saved and unloaded
+Version mismatch was detected, updater version: 5.0.0(4.6.3)
+== EssentialMode started, version 4.6.3 ==
+User (steam:11000011201aa78) loaded
+Version mismatch was detected, updater version: 5.0.0(4.6.3)
+== EssentialMode started, version 4.6.3 ==
+User (steam:11000011201aa78) loaded
+Version mismatch was detected, updater version: 5.0.0(4.6.3)
+== EssentialMode started, version 4.6.3 ==
+User (steam:11000011201aa78) loaded
+Version mismatch was detected, updater version: 5.0.0(4.6.3)
+== EssentialMode started, version 4.6.3 ==
+User (steam:11000011201aa78) loaded
+Version mismatch was detected, updater version: 5.0.0(4.6.3)
+== EssentialMode started, version 4.6.3 ==
+User (steam:11000011201aa78) loaded
+Version mismatch was detected, updater version: 5.0.0(4.6.3)
+== EssentialMode started, version 4.6.3 ==
+User (steam:11000011201aa78) loaded
+Version mismatch was detected, updater version: 5.0.0(4.6.3)
+== EssentialMode started, version 4.6.3 ==
+User (steam:11000011201aa78) loaded
+Version mismatch was detected, updater version: 5.0.0(4.6.3)
+== EssentialMode started, version 4.6.3 ==
+User (steam:11000011201aa78) loaded
+Version mismatch was detected, updater version: 5.0.0(4.6.3)
+== EssentialMode started, version 4.6.3 ==
+User (steam:11000011201aa78) loaded
+Version mismatch was detected, updater version: 5.0.0(4.6.3)
+== EssentialMode started, version 4.6.3 ==
+User (steam:11000011201aa78) loaded
+User (Philipp) ran admin command revive, with parameters: revive
+Version mismatch was detected, updater version: 5.0.0(4.6.3)
+== EssentialMode started, version 4.6.3 ==
+User (steam:11000011201aa78) loaded
+Version mismatch was detected, updater version: 5.0.0(4.6.3)
+== EssentialMode started, version 4.6.3 ==
+User (steam:11000011201aa78) loaded
+Version mismatch was detected, updater version: 5.0.0(4.6.3)
+== EssentialMode started, version 4.6.3 ==
+User (steam:11000011201aa78) loaded
+Version mismatch was detected, updater version: 5.0.0(4.6.3)
+== EssentialMode started, version 4.6.3 ==
+User (steam:11000011201aa78) loaded
+User (Philipp) ran admin command revive, with parameters: revive
+Version mismatch was detected, updater version: 5.0.0(4.6.3)
+== EssentialMode started, version 4.6.3 ==
+User (steam:11000011201aa78) loaded
+Version mismatch was detected, updater version: 5.0.0(4.6.3)
+== EssentialMode started, version 4.6.3 ==
+User (steam:11000011201aa78) loaded
+Version mismatch was detected, updater version: 5.0.0(4.6.3)
+== EssentialMode started, version 4.6.3 ==
+User (steam:11000011201aa78) loaded

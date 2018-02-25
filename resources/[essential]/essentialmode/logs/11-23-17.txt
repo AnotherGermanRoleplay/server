@@ -1,0 +1,69 @@
+-- Begin of log for 11-23-17 --
+== EssentialMode started, version 4.6.3 ==
+User (steam:11000010a7e7279) loaded
+User (steam:11000011a70e102) loaded
+User (steam:11000011c8dd127) loaded
+User (steam:11000011c8dd127) saved and unloaded
+User (steam:11000011c8dd127) loaded
+User (steam:11000011c8dd127) saved and unloaded
+User (steam:11000011a70e102) saved and unloaded
+User (steam:11000010a7e7279) saved and unloaded
+User (steam:1100001177e9f8e) loaded
+User (steam:1100001177e9f8e) saved and unloaded
+User (steam:11000011bddb15e) loaded
+User (steam:11000011bddb15e) saved and unloaded
+User (steam:11000010a7e7279) loaded
+User (steam:11000011225d26e) loaded
+User (steam:11000011225d26e) saved and unloaded
+User (steam:11000010f803259) loaded
+User (steam:1100001177e9f8e) loaded
+User (steam:1100001032be4c6) loaded
+User (Humpelstielzchen) ran admin command setjob, with parameters: setjob 12 police0
+User (Humpelstielzchen) ran admin command setjob, with parameters: setjob 12 police 0
+User (steam:1100001032be4c6) saved and unloaded
+Version mismatch was detected, updater version: 5.0.0(4.6.3)
+== EssentialMode started, version 4.6.3 ==
+User (steam:11000010f71ed03) loaded
+User (steam:11000010a7e7279) loaded
+User (steam:11000010f71ed03) saved and unloaded
+User (steam:11000010f71ed03) loaded
+User (steam:11000010f71ed03) saved and unloaded
+User (steam:11000010f803259) loaded
+User (steam:1100001177e9f8e) loaded
+User (steam:11000010f71ed03) loaded
+User (steam:11000010f803259) saved and unloaded
+User (steam:11000010f71ed03) saved and unloaded
+User (steam:11000010f71ed03) loaded
+User (steam:1100001044e63c0) loaded
+User (steam:11000010f1f6c65) loaded
+User (steam:11000010643ac7f) loaded
+User (steam:110000101c794f9) loaded
+User (steam:11000010b5876d1) loaded
+User (steam:11000010f803259) loaded
+User (steam:11000010f803259) saved and unloaded
+User (steam:11000010f1f6c65) saved and unloaded
+User (steam:11000010f1f6c65) loaded
+User (steam:110000101c794f9) saved and unloaded
+User (steam:11000010f1f6c65) saved and unloaded
+User (steam:11000010643ac7f) saved and unloaded
+User (steam:11000010643ac7f) loaded
+User (steam:11000010643ac7f) saved and unloaded
+User (steam:11000010643ac7f) loaded
+User (steam:11000010ae12548) loaded
+User (steam:11000010ae12548) saved and unloaded
+User (steam:110000114cf834c) loaded
+User (steam:11000010f803259) loaded
+User (steam:11000010a7e7279) saved and unloaded
+User (steam:11000010f71ed03) saved and unloaded
+User (steam:1100001177e9f8e) saved and unloaded
+User (steam:11000010643ac7f) saved and unloaded
+User (steam:11000010643ac7f) loaded
+User (steam:11000010643ac7f) saved and unloaded
+User (steam:1100001044e63c0) saved and unloaded
+User (steam:11000010643ac7f) loaded
+User (steam:11000010b5876d1) saved and unloaded
+User (steam:110000114cf834c) saved and unloaded
+User (steam:11000010f803259) saved and unloaded
+User (steam:11000010643ac7f) saved and unloaded
+User (steam:11000010643ac7f) loaded
+User (steam:11000010643ac7f) saved and unloaded

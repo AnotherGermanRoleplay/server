@@ -1,0 +1,114 @@
+-- Begin of log for 11-09-17 --
+== EssentialMode started, version 4.6.3 ==
+User (steam:11000011769ea27) loaded
+User (steam:11000010654ad0b) loaded
+User (steam:110000114191bd8) loaded
+User (steam:110000114191bd8) saved and unloaded
+User (steam:11000011a7a34d4) loaded
+User (steam:11000011a7a34d4) saved and unloaded
+User (steam:110000114191bd8) loaded
+User (steam:110000114191bd8) saved and unloaded
+User (steam:11000010654ad0b) saved and unloaded
+User (steam:11000010725d2c1) loaded
+User (steam:11000011769ea27) saved and unloaded
+User (steam:110000103e5d65f) loaded
+User (steam:110000103e5d65f) saved and unloaded
+User (steam:11000011675193a) loaded
+User (steam:110000114191bd8) loaded
+User (steam:11000010654ad0b) loaded
+User (steam:110000114191bd8) saved and unloaded
+User (steam:11000011675193a) saved and unloaded
+User (steam:110000114191bd8) loaded
+User (steam:11000010654ad0b) saved and unloaded
+User (steam:11000010725d2c1) saved and unloaded
+User (steam:110000109f18db1) loaded
+User (steam:110000109f18db1) saved and unloaded
+User (steam:110000107ef4721) loaded
+User (steam:110000107ef4721) saved and unloaded
+User (steam:110000114191bd8) saved and unloaded
+User (steam:11000010654ad0b) loaded
+User (steam:110000114191bd8) loaded
+User (steam:110000107ca5f22) loaded
+User (steam:110000108e44e75) loaded
+User (steam:11000010ac11431) loaded
+User (steam:110000114191bd8) saved and unloaded
+User (steam:110000106e611ed) loaded
+User (steam:11000010654ad0b) saved and unloaded
+User (steam:110000108e44e75) saved and unloaded
+User (steam:1100001032be4c6) loaded
+User (steam:110000108b80183) loaded
+User (steam:1100001032be4c6) saved and unloaded
+User (steam:11000010ac11431) saved and unloaded
+User (steam:110000108b80183) saved and unloaded
+User (steam:110000107ca5f22) saved and unloaded
+User (steam:110000104372dc1) loaded
+User (Akame) tried to execute command without having permission: fix
+User (steam:110000104372dc1) saved and unloaded
+User (steam:110000110e334d6) loaded
+User (MaisKolbenTV) ran admin command car, with parameters: car mustanggt11
+User (MaisKolbenTV) ran admin command car, with parameters: car mustanggt11
+User (steam:1100001032be4c6) loaded
+User (MaisKolbenTV) ran admin command car, with parameters: car mustanggt11
+User (MaisKolbenTV) ran admin command car, with parameters: car rmodfordgt
+User (steam:110000107ca5f22) loaded
+User (Dennis (∂єѕαѕтєя)) ran admin command goto, with parameters: goto 29
+User (Dennis (∂єѕαѕтєя)) ran admin command goto, with parameters: goto 29
+User (Dennis (∂єѕαѕтєя)) ran admin command goto, with parameters: goto 29
+User (Dennis (∂єѕαѕтєя)) ran admin command goto, with parameters: goto 29
+User (Dennis (∂єѕαѕтєя)) ran admin command goto, with parameters: goto 29
+User (Dennis (∂єѕαѕтєя)) ran admin command goto, with parameters: goto 29
+User (Dennis (∂єѕαѕтєя)) ran admin command dv, with parameters: dv
+User (Dennis (∂єѕαѕтєя)) ran admin command car, with parameters: car buzzard
+User (Dennis (∂єѕαѕтєя)) ran admin command dv, with parameters: dv
+User (Dennis (∂єѕαѕтєя)) ran admin command revive, with parameters: revive
+User (MaisKolbenTV) ran admin command fix, with parameters: fix
+User (steam:110000110e334d6) saved and unloaded
+User (Dennis (∂єѕαѕтєя)) ran admin command car, with parameters: car rmodpolice
+User (Dennis (∂єѕαѕтєя)) ran admin command car, with parameters: car cyclone
+User (Dennis (∂єѕαѕтєя)) ran admin command car, with parameters: car coil
+User (Dennis (∂єѕαѕтєя)) ran admin command car, with parameters: car cyclone2
+User (Dennis (∂єѕαѕтєя)) ran admin command car, with parameters: car cyclone
+User (Dennis (∂єѕαѕтєя)) ran admin command car, with parameters: car voltic
+User (Dennis (∂єѕαѕтєя)) ran admin command dv, with parameters: dv
+User (Dennis (∂єѕαѕтєя)) ran admin command fix, with parameters: fix
+User (Dennis (∂єѕαѕтєя)) ran admin command fix, with parameters: fix
+User (steam:11000010b5876d1) loaded
+User (Dennis (∂єѕαѕтєя)) ran admin command dv, with parameters: dv
+User (Dennis (∂єѕαѕтєя)) ran admin command goto, with parameters: goto 38
+User (Dennis (∂єѕαѕтєя)) ran admin command revive, with parameters: revive
+User (Dennis (∂єѕαѕтєя)) ran admin command car, with parameters: car p911r
+User (steam:11000010d4acf5e) loaded
+User (Dennis (∂єѕαѕтєя)) ran admin command dv, with parameters: dv
+User (steam:11000010d4acf5e) saved and unloaded
+User (Dennis (∂єѕαѕтєя)) ran admin command fix, with parameters: fix
+User (Dennis (∂єѕαѕтєя)) ran admin command dv, with parameters: dv
+User (Dennis (∂єѕαѕтєя)) ran admin command goto, with parameters: goto 38
+User (Dennis (∂єѕαѕтєя)) ran admin command goto, with parameters: goto 38
+User (Dennis (∂єѕαѕтєя)) ran admin command dv, with parameters: dv
+User (Dennis (∂єѕαѕтєя)) ran admin command revive, with parameters: revive
+User (Dennis (∂єѕαѕтєя)) ran admin command revive, with parameters: revive
+User (Dennis (∂єѕαѕтєя)) ran admin command revive, with parameters: revive
+User (Dennis (∂єѕαѕтєя)) ran admin command revive, with parameters: revive
+User (Dennis (∂єѕαѕтєя)) ran admin command revive, with parameters: revive
+User (Dennis (∂єѕαѕтєя)) ran admin command car, with parameters: car p911r
+User (steam:11000010b5876d1) saved and unloaded
+User (Dennis (∂єѕαѕтєя)) ran admin command fix, with parameters: fix
+User (Dennis (∂єѕαѕтєя)) ran admin command fix, with parameters: fix
+User (Dennis (∂єѕαѕтєя)) ran admin command car, with parameters: car grotti
+User (Dennis (∂єѕαѕтєя)) ran admin command giveweapon, with parameters: giveweapon 36 weapon_rpg
+User (steam:1100001032be4c6) saved and unloaded
+User (steam:110000107ca5f22) saved and unloaded
+User (steam:110000106e611ed) saved and unloaded
+Version mismatch was detected, updater version: 5.0.0(4.6.3)
+== EssentialMode started, version 4.6.3 ==
+Version mismatch was detected, updater version: 5.0.0(4.6.3)
+== EssentialMode started, version 4.6.3 ==
+User (steam:110000106e611ed) loaded
+User (steam:1100001032be4c6) loaded
+User (Dennis (∂єѕαѕтєя)) ran admin command car, with parameters: car buzzard
+User (Dennis (∂єѕαѕтєя)) ran admin command dv, with parameters: dv
+User (Dennis (∂єѕαѕтєя)) ran admin command dv, with parameters: dv
+User (Dennis (∂єѕαѕтєя)) ran admin command revive, with parameters: revive
+User (ZΞЯ0™◢◤) tried to execute command without having permission: revive
+User (Dennis (∂єѕαѕтєя)) ran admin command revive, with parameters: revive
+User (steam:1100001032be4c6) saved and unloaded

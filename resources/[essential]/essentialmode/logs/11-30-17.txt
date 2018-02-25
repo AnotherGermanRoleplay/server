@@ -1,0 +1,85 @@
+-- Begin of log for 11-30-17 --
+== EssentialMode started, version 4.6.3 ==
+Version mismatch was detected, updater version: 5.0.0(4.6.3)
+== EssentialMode started, version 4.6.3 ==
+User (steam:11000010a7e7279) loaded
+User (steam:11000011d1df2e6) loaded
+User (steam:11000011d1df2e6) saved and unloaded
+User (steam:11000011d1df2e6) loaded
+User (steam:110000107c900e2) loaded
+User (steam:11000010e63b103) loaded
+User (Kannstdunichtwissen) tried to execute command without having permission: car
+User (steam:110000106abab10) loaded
+User (BirdMachine) ran admin command fix, with parameters: fix
+User (steam:110000114c9d4f0) loaded
+User (BirdMachine) ran admin command fix, with parameters: fix
+User (BirdMachine) ran admin command fix, with parameters: fix
+User (steam:11000010e63b103) saved and unloaded
+User (BirdMachine) ran admin command fix, with parameters: fix
+User (steam:110000107c900e2) saved and unloaded
+User (steam:110000107c900e2) loaded
+User (steam:11000011d1df2e6) saved and unloaded
+User (BirdMachine) ran admin command fix, with parameters: fix
+User (BirdMachine) ran admin command fix, with parameters: fix
+User (BirdMachine) ran admin command fix, with parameters: fix
+User (steam:110000106abab10) saved and unloaded
+User (steam:110000114c9d4f0) saved and unloaded
+User (steam:11000010a7e7279) saved and unloaded
+User (steam:11000010a7e7279) loaded
+User (steam:11000010a7e7279) saved and unloaded
+User (steam:11000010a7e7279) loaded
+User (steam:1100001122e1027) loaded
+User (steam:1100001122e1027) saved and unloaded
+User (steam:11000010a7e7279) saved and unloaded
+User (license:75311da58128edee42e1ceda54a4a32520038ace) loaded
+User (license:75311da58128edee42e1ceda54a4a32520038ace) saved and unloaded
+User (license:75311da58128edee42e1ceda54a4a32520038ace) loaded
+User (steam:110000115a63283) loaded
+User (steam:11000011bddb15e) loaded
+User (steam:11000011bddb15e) saved and unloaded
+User (steam:110000115a63283) saved and unloaded
+User (steam:110000107c900e2) saved and unloaded
+User (steam:110000107c900e2) loaded
+User (steam:11000010f803259) loaded
+User (license:75311da58128edee42e1ceda54a4a32520038ace) saved and unloaded
+User (license:75311da58128edee42e1ceda54a4a32520038ace) loaded
+User (steam:11000010f71ed03) loaded
+User (steam:11000010a7e7279) loaded
+User (steam:110000107c900e2) saved and unloaded
+User (steam:110000107c900e2) saved and unloaded
+User (steam:110000107c900e2) loaded
+Version mismatch was detected, updater version: 5.0.0(4.6.3)
+== EssentialMode started, version 4.6.3 ==
+User (license:75311da58128edee42e1ceda54a4a32520038ace) loaded
+User (license:75311da58128edee42e1ceda54a4a32520038ace) saved and unloaded
+User (steam:110000107c900e2) loaded
+User (steam:11000010f71ed03) loaded
+User (steam:11000010a7e7279) loaded
+User (steam:110000106abab10) loaded
+User (steam:110000106abab10) saved and unloaded
+User (steam:110000108803f3c) loaded
+User (steam:110000108803f3c) saved and unloaded
+User (steam:11000011d1df2e6) loaded
+User (steam:110000115a63283) loaded
+User (steam:110000115a63283) saved and unloaded
+User (steam:11000010a7e7279) saved and unloaded
+User (steam:11000010f71ed03) saved and unloaded
+User (steam:110000107c900e2) saved and unloaded
+User (steam:11000010f71ed03) loaded
+User (steam:110000107c900e2) loaded
+User (steam:11000010cb66ed2) loaded
+User (steam:11000010643ac7f) loaded
+User (steam:11000011d1df2e6) saved and unloaded
+User (steam:11000010cb66ed2) saved and unloaded
+User (steam:11000010f71ed03) saved and unloaded
+User (steam:110000107c900e2) saved and unloaded
+User (steam:110000107c900e2) loaded
+User (steam:11000010aa3c3a8) loaded
+User (license:75311da58128edee42e1ceda54a4a32520038ace) loaded
+User (steam:11000010643ac7f) saved and unloaded
+User (steam:11000010aa3c3a8) saved and unloaded
+User (license:75311da58128edee42e1ceda54a4a32520038ace) saved and unloaded
+User (steam:1100001026eca17) loaded
+User (steam:1100001026eca17) saved and unloaded
+User (steam:1100001026eca17) loaded
+User (steam:1100001026eca17) saved and unloaded

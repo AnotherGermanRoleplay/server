@@ -1,0 +1,239 @@
+-- Begin of log for 12-16-17 --
+== EssentialMode started, version 4.6.3 ==
+User (steam:11000010643ac7f) loaded
+User (steam:110000103365ef2) loaded
+User (steam:110000104e3bd10) loaded
+User (steam:1100001044e63c0) loaded
+User (steam:110000105494a72) loaded
+User (steam:110000107c900e2) loaded
+User (steam:110000113de93dc) loaded
+User (steam:110000113e76034) loaded
+User (steam:11000011d1df2e6) loaded
+User (steam:11000010e63b103) loaded
+User (steam:11000010e63b103) saved and unloaded
+User (steam:110000113e76034) saved and unloaded
+User (steam:110000113e76034) loaded
+User (steam:11000010e63b103) loaded
+User (steam:11000010725d2c1) loaded
+User (steam:110000111f451f6) loaded
+User (steam:110000111f451f6) saved and unloaded
+User (steam:110000111f451f6) loaded
+User (steam:110000111f451f6) saved and unloaded
+User (steam:11000010725d2c1) saved and unloaded
+User (steam:110000111f451f6) loaded
+User (steam:11000010725d2c1) loaded
+User (steam:110000104e3bd10) saved and unloaded
+User (steam:110000102b6ad32) loaded
+User (steam:110000104e3bd10) loaded
+User (steam:11000010ad1aa75) loaded
+User (steam:11000010d1996a5) loaded
+User (steam:11000010d1996a5) saved and unloaded
+User (steam:110000102b6ad32) saved and unloaded
+User (steam:110000111f451f6) saved and unloaded
+User (steam:11000010b7384fb) loaded
+User (steam:1100001104c7ba0) loaded
+User (steam:1100001104c7ba0) saved and unloaded
+User (steam:110000113e76034) saved and unloaded
+User (steam:1100001044e63c0) saved and unloaded
+User (steam:110000113e76034) loaded
+User (steam:1100001044e63c0) loaded
+User (steam:110000103365ef2) saved and unloaded
+User (steam:110000103365ef2) loaded
+User (steam:11000010f71ed03) loaded
+User (steam:110000104e3bd10) saved and unloaded
+User (steam:11000010b7384fb) saved and unloaded
+User (steam:110000104e3bd10) loaded
+User (steam:11000010978229f) loaded
+User (steam:11000010978229f) saved and unloaded
+User (steam:11000010bc38d95) loaded
+User (steam:110000114b73cae) loaded
+User (steam:11000011d1df2e6) saved and unloaded
+User (steam:110000114b73cae) saved and unloaded
+User (steam:110000113de93dc) saved and unloaded
+User (steam:11000010bc38d95) saved and unloaded
+User (steam:110000114b73cae) loaded
+User (steam:110000114b73cae) saved and unloaded
+User (steam:11000010725d2c1) saved and unloaded
+User (steam:11000011d1df2e6) loaded
+User (steam:11000011d1df2e6) saved and unloaded
+User (steam:11000010725d2c1) loaded
+User (steam:1100001141261c9) loaded
+User (steam:110000104e3bd10) saved and unloaded
+User (steam:110000104e3bd10) loaded
+User (steam:11000011d1df2e6) loaded
+User (steam:11000011c99051e) loaded
+User (steam:110000112f5b659) loaded
+User (steam:11000010f1f6c65) loaded
+User (steam:11000010f1f6c65) saved and unloaded
+User (steam:11000010f1f6c65) loaded
+User (steam:110000112f5b659) saved and unloaded
+User (steam:11000010646e817) loaded
+User (steam:110000112f5b659) loaded
+User (steam:110000111f451f6) loaded
+User (steam:11000010643ac7f) saved and unloaded
+User (steam:11000010643ac7f) loaded
+User (steam:110000105494a72) saved and unloaded
+User (steam:110000105494a72) loaded
+User (steam:11000010646e817) saved and unloaded
+User (steam:110000113de93dc) loaded
+User (steam:110000105494a72) saved and unloaded
+User (steam:110000112f5b659) saved and unloaded
+User (steam:11000011c99051e) saved and unloaded
+User (steam:11000010725d2c1) saved and unloaded
+User (steam:110000113e76034) saved and unloaded
+User (steam:11000011c99051e) loaded
+User (steam:110000112f5b659) loaded
+User (steam:11000011c99051e) saved and unloaded
+User (steam:11000011c99051e) loaded
+User (steam:110000111a5473f) loaded
+User (steam:110000112f5b659) saved and unloaded
+User (steam:1100001141261c9) saved and unloaded
+User (steam:110000118ca55f7) loaded
+User (steam:110000112f5b659) loaded
+User (steam:110000113e76034) loaded
+User (steam:110000112a1afa1) loaded
+User (steam:110000118ca55f7) saved and unloaded
+User (steam:110000102c10932) loaded
+User (steam:110000102c10932) saved and unloaded
+User (steam:11000010f1f6c65) saved and unloaded
+User (steam:1100001044e63c0) saved and unloaded
+User (steam:110000112a1afa1) saved and unloaded
+User (steam:1100001044e63c0) loaded
+User (steam:110000112a1afa1) loaded
+User (steam:110000112a1afa1) saved and unloaded
+User (steam:11000011046948c) loaded
+User (steam:11000010f1f6c65) loaded
+User (steam:11000010a922488) loaded
+User (steam:11000010a922488) saved and unloaded
+User (steam:11000010a922488) loaded
+User (steam:110000105e7599b) loaded
+User (steam:110000103365ef2) saved and unloaded
+User (steam:110000103365ef2) loaded
+User (steam:11000011505cdb3) loaded
+User (Arnelis) ran admin command idhelp, with parameters: idhelp
+User (steam:110000116259d10) loaded
+User (steam:110000108cfea5c) loaded
+User (steam:110000116259d10) saved and unloaded
+User (steam:110000116259d10) loaded
+User (steam:110000116259d10) saved and unloaded
+User (steam:110000113e76034) saved and unloaded
+User (steam:110000116259d10) loaded
+User (steam:110000113e76034) loaded
+User (steam:110000116259d10) saved and unloaded
+User (steam:110000116259d10) loaded
+User (steam:110000105e7599b) saved and unloaded
+User (license:75311da58128edee42e1ceda54a4a32520038ace) loaded
+User (steam:1100001069afba5) loaded
+User (steam:1100001014c06ed) loaded
+User (steam:11000010f0c6465) loaded
+User (steam:1100001129812f3) loaded
+User (steam:11000011a99f103) loaded
+User (steam:1100001166bd872) loaded
+User (steam:11000010cb66ed2) loaded
+User (steam:11000010792bdcb) loaded
+User (steam:110000109654c0e) loaded
+User (steam:110000109654c0e) saved and unloaded
+User (steam:1100001069afba5) saved and unloaded
+User (steam:11000011a99f103) saved and unloaded
+User (steam:110000116259d10) saved and unloaded
+User (steam:110000108cfea5c) saved and unloaded
+User (steam:1100001076cb725) loaded
+User (steam:11000011c99051e) saved and unloaded
+User (steam:1100001140b3299) loaded
+User (steam:11000010c673af7) loaded
+User (steam:1100001166bd872) saved and unloaded
+User (steam:11000010ad1aa75) saved and unloaded
+User (steam:1100001055eaf4d) loaded
+User (steam:11000011d1df2e6) saved and unloaded
+User (steam:11000011d1df2e6) loaded
+User (steam:1100001014c06ed) saved and unloaded
+User (steam:110000107c900e2) saved and unloaded
+User (steam:110000107c900e2) loaded
+User (steam:1100001014c06ed) loaded
+User (steam:11000011a039ff0) loaded
+User (steam:11000010a6fad16) loaded
+User (steam:11000010a6fad16) saved and unloaded
+User (steam:11000010f71ed03) saved and unloaded
+User (steam:110000103365ef2) saved and unloaded
+User (steam:11000010c673af7) saved and unloaded
+User (steam:110000116259d10) loaded
+User (steam:110000108cfea5c) loaded
+User (steam:110000105494a72) loaded
+User (steam:11000010c673af7) loaded
+User (steam:11000010a485166) loaded
+User (steam:1100001076cb725) saved and unloaded
+User (steam:11000010a485166) saved and unloaded
+User (steam:1100001055eaf4d) saved and unloaded
+User (steam:110000105494a72) saved and unloaded
+User (steam:11000010a922488) saved and unloaded
+User (steam:1100001140b3299) saved and unloaded
+User (steam:11000010f0c6465) saved and unloaded
+User (steam:110000111a5473f) saved and unloaded
+User (steam:11000010c673af7) saved and unloaded
+User (steam:11000011505cdb3) saved and unloaded
+User (steam:110000108cfea5c) saved and unloaded
+User (steam:1100001044e63c0) saved and unloaded
+User (steam:11000010cb66ed2) saved and unloaded
+User (steam:11000010f1f6c65) saved and unloaded
+User (steam:11000011046948c) saved and unloaded
+User (steam:110000113e76034) saved and unloaded
+User (steam:11000011a039ff0) saved and unloaded
+User (steam:110000116259d10) saved and unloaded
+User (steam:110000113de93dc) saved and unloaded
+User (steam:1100001129812f3) saved and unloaded
+User (steam:110000111f451f6) saved and unloaded
+User (license:75311da58128edee42e1ceda54a4a32520038ace) saved and unloaded
+User (steam:11000010e63b103) saved and unloaded
+User (steam:1100001014c06ed) saved and unloaded
+User (steam:1100001055eaf4d) loaded
+User (steam:110000113e76034) loaded
+User (steam:110000116259d10) loaded
+User (steam:110000108cfea5c) loaded
+User (steam:110000105494a72) loaded
+User (steam:11000010e63b103) loaded
+User (steam:110000111a5473f) loaded
+User (steam:110000113de93dc) loaded
+User (steam:11000011a039ff0) loaded
+User (steam:11000010f1f6c65) loaded
+User (steam:1100001044e63c0) loaded
+User (steam:11000010c673af7) loaded
+User (steam:11000011046948c) loaded
+User (steam:1100001129812f3) loaded
+User (steam:11000010a922488) loaded
+User (steam:1100001140b3299) loaded
+User (steam:110000111f451f6) loaded
+User (license:75311da58128edee42e1ceda54a4a32520038ace) loaded
+User (steam:11000010cb66ed2) loaded
+User (steam:11000010a485166) loaded
+User (steam:11000010a019461) loaded
+User (steam:11000011d1df2e6) saved and unloaded
+User (steam:11000010c673af7) saved and unloaded
+User (steam:110000104e3bd10) saved and unloaded
+User (steam:110000105494a72) saved and unloaded
+User (steam:11000010c673af7) loaded
+User (steam:11000010643ac7f) saved and unloaded
+User (steam:11000010c673af7) saved and unloaded
+User (steam:11000010643ac7f) loaded
+User (steam:11000011505cdb3) loaded
+User (steam:1100001129812f3) saved and unloaded
+User (steam:11000010792bdcb) saved and unloaded
+User (steam:11000010c673af7) loaded
+User (steam:11000010c673af7) saved and unloaded
+User (steam:1100001140b3299) saved and unloaded
+User (steam:110000111a5473f) saved and unloaded
+User (steam:11000011505cdb3) saved and unloaded
+User (steam:1100001055eaf4d) saved and unloaded
+User (steam:11000010f0c6465) loaded
+User (steam:11000010643ac7f) saved and unloaded
+User (steam:11000010ad1aa75) loaded
+User (steam:11000010643ac7f) loaded
+User (steam:11000010e63b103) saved and unloaded
+User (steam:11000010e63b103) loaded
+User (steam:11000011a039ff0) saved and unloaded
+User (steam:11000010f0c6465) saved and unloaded
+User (steam:11000010f0c6465) loaded
+User (steam:11000010f4add49) loaded
+User (steam:1100001097d26ce) loaded
+User (steam:11000010f4add49) saved and unloaded
+User (steam:11000010a485166) saved and unloaded
+User (steam:11000010a019461) saved and unloaded

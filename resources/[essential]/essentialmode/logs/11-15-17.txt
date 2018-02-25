@@ -1,0 +1,235 @@
+-- Begin of log for 11-15-17 --
+== EssentialMode started, version 4.6.3 ==
+User (steam:11000011769ea27) loaded
+User (steam:11000011769ea27) saved and unloaded
+User (steam:11000011bddb15e) loaded
+User (steam:110000115a63283) loaded
+User (steam:110000104c018df) loaded
+User (steam:110000104c018df) saved and unloaded
+User (steam:110000104c018df) loaded
+User (steam:11000011769ea27) loaded
+User (steam:11000011bddb15e) saved and unloaded
+User (steam:110000115a63283) saved and unloaded
+User (steam:110000115a63283) loaded
+User (steam:110000115a63283) saved and unloaded
+User (steam:110000104c018df) saved and unloaded
+User (steam:11000011769ea27) saved and unloaded
+User (steam:110000107ca5f22) loaded
+User (steam:110000107ca5f22) saved and unloaded
+User (steam:11000011769ea27) loaded
+User (steam:1100001125c8df2) loaded
+User (steam:110000114cf834c) loaded
+User (steam:110000107ca5f22) loaded
+User (steam:11000011bddb15e) loaded
+User (steam:110000114cf834c) saved and unloaded
+User (steam:110000104c018df) loaded
+User (steam:110000114cf834c) loaded
+User (steam:1100001125c8df2) saved and unloaded
+User (steam:110000107ca5f22) saved and unloaded
+User (steam:1100001125c8df2) loaded
+User (steam:1100001147412fb) loaded
+User (steam:110000107ca5f22) loaded
+User (steam:110000111d63f84) loaded
+User (steam:110000114cf834c) saved and unloaded
+User (steam:11000010b5876d1) loaded
+User (steam:110000114cf834c) loaded
+User (steam:11000010b5876d1) saved and unloaded
+User (steam:110000111d63f84) saved and unloaded
+User (steam:110000111d63f84) loaded
+User (steam:11000010b5876d1) loaded
+User (steam:110000107ca5f22) saved and unloaded
+User (steam:110000114cf834c) saved and unloaded
+User (steam:110000114cf834c) loaded
+User (steam:110000115a63283) loaded
+User (steam:11000011769ea27) saved and unloaded
+User (steam:11000011769ea27) loaded
+User (steam:11000011bddb15e) saved and unloaded
+User (steam:11000010b5876d1) saved and unloaded
+User (steam:110000111d63f84) saved and unloaded
+User (steam:110000111d63f84) loaded
+User (steam:110000113318b31) loaded
+User (steam:11000010b5876d1) loaded
+User (RealJuli) tried to execute command without having permission: dv
+User (steam:11000011769ea27) saved and unloaded
+User (steam:11000010b5876d1) saved and unloaded
+User (steam:1100001147412fb) saved and unloaded
+User (steam:11000011769ea27) loaded
+User (steam:11000011550418d) loaded
+User (steam:11000010b5876d1) loaded
+User (steam:11000011550418d) saved and unloaded
+User (steam:1100001147412fb) loaded
+User (steam:1100001125c8df2) saved and unloaded
+User (steam:1100001125c8df2) loaded
+User (steam:11000011769ea27) saved and unloaded
+User (steam:11000011769ea27) loaded
+User (steam:1100001117a6e8c) loaded
+User (steam:110000116c1ac15) loaded
+User (steam:11000010b5876d1) saved and unloaded
+User (steam:110000114cf834c) saved and unloaded
+User (steam:110000111d63f84) saved and unloaded
+User (steam:11000010b5876d1) loaded
+User (steam:110000114cf834c) loaded
+User (steam:110000111d63f84) loaded
+User (steam:110000104c018df) saved and unloaded
+User (steam:110000113318b31) saved and unloaded
+User (steam:110000114cf834c) saved and unloaded
+User (steam:110000111d63f84) saved and unloaded
+User (steam:110000111d63f84) loaded
+User (steam:110000114cf834c) loaded
+User (steam:110000114cf834c) saved and unloaded
+User (steam:110000111d63f84) saved and unloaded
+User (steam:110000114cf834c) loaded
+User (steam:110000111d63f84) loaded
+User (steam:1100001117a6e8c) saved and unloaded
+User (steam:11000011769ea27) saved and unloaded
+User (steam:110000109f18db1) loaded
+User (steam:110000115a63283) saved and unloaded
+User (steam:11000010917553b) loaded
+User (steam:11000010f803259) loaded
+User (steam:110000116c1ac15) saved and unloaded
+User (steam:11000011bddb15e) loaded
+User (steam:110000109f18db1) saved and unloaded
+User (steam:11000010917553b) saved and unloaded
+User (steam:1100001125c8df2) saved and unloaded
+User (steam:1100001125c8df2) loaded
+User (avxstudio) tried to execute command without having permission: giveitem
+User (steam:11000010a7e7279) loaded
+User (license:a2fe156c93bc970ae773badf59cb20aa6cfc5fbd) loaded
+User (steam:11000011263e175) loaded
+User (steam:1100001147412fb) saved and unloaded
+User (steam:11000010cf191cf) loaded
+User (steam:11000010f803259) saved and unloaded
+User (steam:1100001128609a4) loaded
+User (steam:11000010b5876d1) saved and unloaded
+User (steam:110000111d63f84) saved and unloaded
+User (steam:110000111d63f84) loaded
+User (license:a2fe156c93bc970ae773badf59cb20aa6cfc5fbd) saved and unloaded
+User (steam:1100001032be4c6) loaded
+User (steam:11000010b5876d1) loaded
+User (Tom) tried to execute command without having permission: dv
+User (Tom) tried to execute command without having permission: dv
+User (Humpelstielzchen) ran admin command dv, with parameters: dv
+User (Humpelstielzchen) ran admin command dv, with parameters: dv
+User (Humpelstielzchen) ran admin command dv, with parameters: dv
+User (Humpelstielzchen) ran admin command dv, with parameters: dv
+User (steam:110000111d63f84) saved and unloaded
+User (steam:110000111d63f84) loaded
+User (steam:11000011263e175) saved and unloaded
+User (steam:110000111d63f84) saved and unloaded
+User (steam:1100001128609a4) saved and unloaded
+User (steam:110000111d63f84) loaded
+User (steam:110000111d63f84) saved and unloaded
+User (steam:1100001125c8df2) saved and unloaded
+User (steam:11000011263e175) loaded
+User (steam:11000011263e175) saved and unloaded
+User (steam:1100001128609a4) loaded
+User (license:a2fe156c93bc970ae773badf59cb20aa6cfc5fbd) loaded
+User (steam:11000011263e175) loaded
+User (steam:11000011263e175) saved and unloaded
+User (steam:110000106abab10) loaded
+User (license:a2fe156c93bc970ae773badf59cb20aa6cfc5fbd) saved and unloaded
+User (license:a2fe156c93bc970ae773badf59cb20aa6cfc5fbd) loaded
+User (steam:11000011263e175) loaded
+User (steam:11000011263e175) saved and unloaded
+User (steam:110000111d63f84) loaded
+User (steam:11000011769ea27) loaded
+User (BirdMachine) ran admin command spectate, with parameters: spectate 50
+User (BirdMachine) ran admin command spectate, with parameters: spectate 74
+User (BirdMachine) ran admin command spectate, with parameters: spectate 61
+User (BirdMachine) ran admin command spectate, with parameters: spectate 78
+User (BirdMachine) ran admin command spectate, with parameters: spectate 81
+User (BirdMachine) ran admin command spectate, with parameters: spectate 80
+User (BirdMachine) ran admin command spectate, with parameters: spectate 56
+== EssentialMode started, version 4.6.3 ==
+Version mismatch was detected, updater version: 5.0.0(4.6.3)
+User (license:a2fe156c93bc970ae773badf59cb20aa6cfc5fbd) loaded
+User (steam:1100001032be4c6) loaded
+User (steam:110000106abab10) loaded
+User (steam:110000111d63f84) loaded
+User (steam:11000010b5876d1) loaded
+User (steam:11000011769ea27) loaded
+User (steam:110000114cf834c) loaded
+User (steam:110000111d63f84) saved and unloaded
+User (steam:1100001125c8df2) loaded
+User (steam:110000114cf834c) saved and unloaded
+User (license:a2fe156c93bc970ae773badf59cb20aa6cfc5fbd) saved and unloaded
+User (steam:110000114cf834c) loaded
+User (steam:110000111d63f84) loaded
+User (steam:1100001032be4c6) saved and unloaded
+User (steam:110000111d63f84) saved and unloaded
+User (steam:11000010b5876d1) saved and unloaded
+User (steam:110000114cf834c) saved and unloaded
+User (steam:11000011bddb15e) loaded
+User (steam:110000111d63f84) loaded
+User (steam:1100001032be4c6) loaded
+User (steam:110000109f18db1) loaded
+User (steam:11000011bddb15e) saved and unloaded
+User (Leopard_A2) ran admin command goto, with parameters: goto 13
+User (Leopard_A2) ran admin command back, with parameters: back
+User (steam:110000109f18db1) saved and unloaded
+User (steam:11000010f803259) loaded
+User (steam:110000116c1ac15) loaded
+User (steam:1100001177e9f8e) loaded
+User (steam:110000109f18db1) loaded
+User (Humpelstielzchen) ran admin command fix, with parameters: fix
+User (Leopard_A2) tried to execute command without having permission: giveweapon
+User (Leopard_A2) ran admin command bring, with parameters: bring 17
+User (steam:110000111d63f84) saved and unloaded
+User (Leopard_A2) ran admin command spectate, with parameters: spectate 17
+User (Leopard_A2) ran admin command spectate, with parameters: spectate
+User (steam:110000111d63f84) loaded
+User (Leopard_A2) tried to execute command without having permission: slay
+User (Leopard_A2) ran admin command revive, with parameters: revive 19
+User (.Reaper^) ran admin command revive, with parameters: revive
+User (Leopard_A2) tried to execute command without having permission: dv
+User (steam:110000111d63f84) saved and unloaded
+User (Leopard_A2) tried to execute command without having permission: pos
+User (Humpelstielzchen) ran admin command goto, with parameters: goto 19
+User (Humpelstielzchen) ran admin command pos, with parameters: pos
+User (Leopard_A2) ran admin command goto, with parameters: goto 17
+User (steam:110000111d63f84) loaded
+User (steam:110000111d63f84) saved and unloaded
+User (steam:1100001125c8df2) saved and unloaded
+User (Humpelstielzchen) ran admin command revive, with parameters: revive
+User (steam:110000104c018df) loaded
+User (steam:1100001032be4c6) saved and unloaded
+User (steam:11000011a6e405c) loaded
+User (steam:110000104c018df) saved and unloaded
+User (steam:110000106abab10) saved and unloaded
+User (steam:110000114cf834c) loaded
+User (steam:110000114cf834c) saved and unloaded
+User (steam:1100001177e9f8e) saved and unloaded
+User (steam:11000011769ea27) saved and unloaded
+User (steam:1100001177e9f8e) loaded
+User (.Reaper^) ran admin command spectate, with parameters: spectate 23
+User (steam:1100001177e9f8e) saved and unloaded
+User (Leopard_A2) ran admin command bring, with parameters: bring 17
+User (.Reaper^) ran admin command spectate, with parameters: spectate
+User (Leopard_A2) ran admin command bring, with parameters: bring 17
+User (.Reaper^) ran admin command revive, with parameters: revive
+User (Leopard_A2) ran admin command freeze, with parameters: freeze 17
+User (.Reaper^) ran admin command revive, with parameters: revive
+User (Leopard_A2) tried to execute command without having permission: giveweapon
+User (steam:11000010f803259) saved and unloaded
+User (Leopard_A2) ran admin command spectate, with parameters: spectate 23
+User (.Reaper^) ran admin command spectate, with parameters: spectate 23
+User (Leopard_A2) ran admin command spectate, with parameters: spectate
+User (.Reaper^) ran admin command spectate, with parameters: spectate
+User (.Reaper^) ran admin command spectate, with parameters: spectate 23
+User (.Reaper^) ran admin command spectate, with parameters: spectate
+User (.Reaper^) ran admin command spectate, with parameters: spectate 23
+User (.Reaper^) ran admin command spectate, with parameters: spectate
+User (Leopard_A2) tried to execute command without having permission: car
+User (steam:11000011497e411) loaded
+User (steam:11000010a3b2979) loaded
+User (steam:11000012d4b0d2a) loaded
+User (steam:11000012d4b0d2a) saved and unloaded
+User (steam:11000012d4b0d2a) loaded
+User (steam:11000012d4b0d2a) saved and unloaded
+User (steam:110000109f18db1) saved and unloaded
+User (steam:11000012d4b0d2a) loaded
+User (steam:11000012d4b0d2a) saved and unloaded
+User (steam:110000116c1ac15) saved and unloaded
+User (steam:11000011a6e405c) saved and unloaded
+User (steam:11000010a3b2979) saved and unloaded
+User (steam:11000011497e411) saved and unloaded

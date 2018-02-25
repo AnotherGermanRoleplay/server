@@ -1,0 +1,47 @@
+-- Begin of log for 11-22-17 --
+== EssentialMode started, version 4.6.3 ==
+User (steam:11000011bddb15e) loaded
+User (steam:11000011bddb15e) saved and unloaded
+User (steam:11000011bddb15e) loaded
+User (steam:11000011bddb15e) saved and unloaded
+User (steam:11000011bddb15e) loaded
+User (steam:11000011bddb15e) saved and unloaded
+User (steam:110000109f18db1) loaded
+User (steam:110000109f18db1) saved and unloaded
+User (steam:11000010b5876d1) loaded
+User (steam:11000011bddb15e) loaded
+User (steam:11000011bddb15e) saved and unloaded
+User (steam:11000010b5876d1) saved and unloaded
+Version mismatch was detected, updater version: 5.0.0(4.6.3)
+== EssentialMode started, version 4.6.3 ==
+User (steam:11000010f71ed03) loaded
+User (steam:1100001032be4c6) loaded
+User (Humpelstielzchen) ran admin command fix, with parameters: fix
+User (Humpelstielzchen) ran admin command fix, with parameters: fix
+User (Humpelstielzchen) ran admin command fix, with parameters: fix
+User (steam:1100001177e9f8e) loaded
+User (Humpelstielzchen) ran admin command fix, with parameters: fix
+User (Humpelstielzchen) ran admin command fix, with parameters: fix
+User (Humpelstielzchen) ran admin command fix, with parameters: fix
+User (Humpelstielzchen) ran admin command fix, with parameters: fix
+User (Humpelstielzchen) ran admin command fix, with parameters: fix
+User (Humpelstielzchen) ran admin command fix, with parameters: fix
+User (Humpelstielzchen) ran admin command fix, with parameters: fix
+User (Humpelstielzchen) ran admin command fix, with parameters: fix
+User (Humpelstielzchen) ran admin command dv, with parameters: dv
+User (Humpelstielzchen) ran admin command car, with parameters: car jv
+User (steam:11000010a7e7279) loaded
+User (steam:1100001032be4c6) saved and unloaded
+User (steam:11000010f71ed03) saved and unloaded
+User (steam:11000010f71ed03) loaded
+User (steam:11000010f71ed03) saved and unloaded
+User (steam:11000010f71ed03) loaded
+User (steam:110000116fe4fec) loaded
+User (steam:11000010ae12548) loaded
+User (steam:110000116fe4fec) saved and unloaded
+User (steam:11000010ae12548) saved and unloaded
+User (steam:1100001177e9f8e) saved and unloaded
+User (steam:11000010a7e7279) saved and unloaded
+User (steam:11000010f71ed03) saved and unloaded
+User (steam:1100001141112ef) loaded
+User (steam:1100001141112ef) saved and unloaded

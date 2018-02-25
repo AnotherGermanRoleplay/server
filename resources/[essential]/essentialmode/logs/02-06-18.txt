@@ -1,0 +1,119 @@
+-- Begin of log for 02-06-18 --
+== EssentialMode started, version 4.6.3 ==
+User (license:96e181565990c5f1a2bad3610129e8ab7fb4ebc1) loaded
+User (steam:11000010643ac7f) loaded
+User (steam:11000010e6b7a4a) loaded
+User (steam:110000109f18db1) loaded
+User ([GER]Sky7K) ran admin command revive, with parameters: revive
+User (Leopard_A2) ran admin command revive, with parameters: revive 2
+User ([GER]Sky7K) ran admin command revive, with parameters: revive
+User (Leopard_A2) ran admin command revive, with parameters: revive 4
+User (Leopard_A2) ran admin command revive, with parameters: revive 2
+User (Leopard_A2) ran admin command revive, with parameters: revive 3
+User (Leopard_A2) ran admin command revive, with parameters: revive 3
+User ([GER]Sky7K) ran admin command revive, with parameters: revive
+User (Leopard_A2) ran admin command revive, with parameters: revive
+User (Leopard_A2) ran admin command revive, with parameters: revive 2
+User (Leopard_A2) ran admin command revive, with parameters: revive
+User (steam:110000108383a9c) loaded
+User (Leopard_A2) ran admin command revive, with parameters: revive 3
+User (Leopard_A2) ran admin command revive, with parameters: revive 2
+User (Leopard_A2) ran admin command revive, with parameters: revive 3
+User (Leopard_A2) ran admin command revive, with parameters: revive 2
+User (steam:110000109e6144e) loaded
+User (Leopard_A2) ran admin command revive, with parameters: revive 2
+User (Leopard_A2) ran admin command revive, with parameters: revive 2
+User (Leopard_A2) ran admin command revive, with parameters: revive 1
+User ([GER]Sky7K) ran admin command revive, with parameters: revive
+User (Leopard_A2) ran admin command dv, with parameters: dv
+User ([GER]Sky7K) ran admin command dv, with parameters: dv
+User ([GER]Sky7K) ran admin command dv, with parameters: dv
+User ([GER]Sky7K) ran admin command revive, with parameters: revive
+User (Leopard_A2) ran admin command revive, with parameters: revive
+User ([GER]Sky7K) ran admin command revive, with parameters: revive
+User (Leopard_A2) ran admin command revive, with parameters: revive 2
+User ([GER]Sky7K) ran admin command revive, with parameters: revive 2
+User ([GER]Sky7K) ran admin command revive, with parameters: revive 3
+User (Leopard_A2) ran admin command revive, with parameters: revive
+User (steam:11000010f661c55) loaded
+User (Leopard_A2) ran admin command revive, with parameters: revive 2
+User (Leopard_A2) ran admin command revive, with parameters: revive 2
+User (Leopard_A2) ran admin command revive, with parameters: revive
+User ([GER]Sky7K) ran admin command revive, with parameters: revive
+User (Leopard_A2) ran admin command revive, with parameters: revive
+User (Leopard_A2) ran admin command revive, with parameters: revive 3
+User (Leopard_A2) ran admin command revive, with parameters: revive 2
+User (Leopard_A2) ran admin command revive, with parameters: revive 2
+User ([GER]Sky7K) ran admin command dv, with parameters: dv
+User (Leopard_A2) ran admin command revive, with parameters: revive 2
+User ([GER]Sky7K) ran admin command dv, with parameters: dv
+User (Leopard_A2) ran admin command revive, with parameters: revive 2
+User ([GER]Sky7K) ran admin command dv, with parameters: dv
+User (Leopard_A2) ran admin command revive, with parameters: revive 2
+User ([GER]Sky7K) ran admin command dv, with parameters: dv
+User ([GER]Sky7K) ran admin command dv, with parameters: dv
+User ([GER]Sky7K) ran admin command dv, with parameters: dv
+User (Leopard_A2) ran admin command revive, with parameters: revive 3
+User (Leopard_A2) ran admin command revive, with parameters: revive 2
+User ([GER]Sky7K) ran admin command dv, with parameters: dv
+User ([GER]Sky7K) ran admin command dv, with parameters: dv
+User (Leopard_A2) ran admin command revive, with parameters: revive 3
+User (Leopard_A2) ran admin command dv, with parameters: dv
+User (steam:11000010e6b7a4a) saved and unloaded
+User (license:96e181565990c5f1a2bad3610129e8ab7fb4ebc1) saved and unloaded
+User (Leopard_A2) ran admin command spectate, with parameters: spectate 5
+User (Leopard_A2) ran admin command spectate, with parameters: spectate 6
+User (Leopard_A2) ran admin command spectate, with parameters: spectate 7
+User (Leopard_A2) ran admin command spectate, with parameters: spectate
+User (Leopard_A2) ran admin command spectate, with parameters: spectate 5
+User (steam:11000010e6b7a4a) loaded
+User (Leopard_A2) ran admin command spectate, with parameters: spectate
+User (Leopard_A2) ran admin command fix, with parameters: fix
+User (Leopard_A2) ran admin command fix, with parameters: fix
+User (steam:11000010f661c55) saved and unloaded
+User (Leopard_A2) ran admin command fix, with parameters: fix
+User (Leopard_A2) ran admin command spectate, with parameters: spectate 5
+User (Leopard_A2) ran admin command spectate, with parameters: spectate
+User (Leopard_A2) ran admin command spectate, with parameters: spectate 5
+User (Leopard_A2) ran admin command spectate, with parameters: spectate 6
+User (Leopard_A2) ran admin command spectate, with parameters: spectate
+User (steam:110000109f18db1) saved and unloaded
+User (steam:110000109e6144e) saved and unloaded
+User (steam:110000109e6144e) loaded
+User (steam:110000109f18db1) loaded
+User (Leopard_A2) ran admin command revive, with parameters: revive 8
+User (Leopard_A2) ran admin command revive, with parameters: revive 8
+User (Leopard_A2) ran admin command spectate, with parameters: spectate 8
+User (Leopard_A2) ran admin command spectate, with parameters: spectate 5
+User (Leopard_A2) ran admin command spectate, with parameters: spectate
+User (Leopard_A2) ran admin command spectate, with parameters: spectate 5
+User (Leopard_A2) ran admin command spectate, with parameters: spectate
+User (Leopard_A2) ran admin command fix, with parameters: fix
+User (Leopard_A2) ran admin command fix, with parameters: fix
+User (Leopard_A2) ran admin command revive, with parameters: revive 5
+User (Leopard_A2) ran admin command revive, with parameters: revive 5
+User (Leopard_A2) ran admin command revive, with parameters: revive
+User (Leopard_A2) ran admin command revive, with parameters: revive 3
+User (Leopard_A2) ran admin command fix, with parameters: fix
+User (Leopard_A2) ran admin command fix, with parameters: fix
+User (Leopard_A2) ran admin command revive, with parameters: revive
+User (Leopard_A2) ran admin command fix, with parameters: fix
+User (Leopard_A2) ran admin command revive, with parameters: revive 5
+User (Leopard_A2) ran admin command revive, with parameters: revive 8
+User (Leopard_A2) ran admin command revive, with parameters: revive
+User (Leopard_A2) ran admin command fix, with parameters: fix
+User (steam:11000010e6b7a4a) saved and unloaded
+User (Leopard_A2) ran admin command revive, with parameters: revive
+User (Leopard_A2) ran admin command revive, with parameters: revive 3
+User (Leopard_A2) ran admin command revive, with parameters: revive 10
+User (Leopard_A2) ran admin command fix, with parameters: fix
+User (Leopard_A2) ran admin command dv, with parameters: dv
+User (Leopard_A2) ran admin command dv, with parameters: dv
+User (Leopard_A2) ran admin command dv, with parameters: dv
+User (Leopard_A2) ran admin command dv, with parameters: dv
+User (Leopard_A2) tried to execute command without having permission: car
+User (Leopard_A2) tried to execute command without having permission: car
+User (Leopard_A2) ran admin command dv, with parameters: dv
+User (Leopard_A2) ran admin command revive, with parameters: revive 3
+User (steam:11000010643ac7f) saved and unloaded
+User (steam:110000109f18db1) saved and unloaded

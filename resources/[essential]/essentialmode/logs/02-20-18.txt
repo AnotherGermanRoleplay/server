@@ -1,0 +1,16 @@
+-- Begin of log for 02-20-18 --
+== EssentialMode started, version 4.6.3 ==
+User (steam:11000011201aa78) loaded
+User (steam:11000011201aa78) saved and unloaded
+User (steam:11000011201aa78) loaded
+User (steam:11000011201aa78) saved and unloaded
+User (steam:11000011201aa78) loaded
+User (Philipp) tried to execute command without having permission: setjob
+User (steam:11000011201aa78) saved and unloaded
+User (steam:11000011201aa78) loaded
+User (Philipp) ran admin command car, with parameters: car rmodm4
+User (Philipp) ran admin command setjob, with parameters: setjob 4 police 6
+User (Philipp) ran admin command car, with parameters: car rmodm4
+User (Philipp) ran admin command car, with parameters: car rmodm4
+Version mismatch was detected, updater version: 5.0.0(4.6.3)
+== EssentialMode started, version 4.6.3 ==

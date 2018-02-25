@@ -1,0 +1,99 @@
+-- Begin of log for 12-31-17 --
+== EssentialMode started, version 4.6.3 ==
+User (steam:110000107c900e2) loaded
+User (steam:110000111f451f6) loaded
+User (steam:1100001044e63c0) loaded
+User (steam:11000011b418d87) loaded
+User (steam:110000106abab10) loaded
+User (Wolverine) tried to execute command without having permission: car
+User (steam:110000101bb0d89) loaded
+User (steam:110000114ad537c) loaded
+User (steam:110000106f89594) loaded
+User (steam:11000010e6b7a4a) loaded
+User (steam:110000112aa6b22) loaded
+User (steam:1100001044e63c0) saved and unloaded
+User (steam:1100001044e63c0) loaded
+User (steam:110000111893acf) loaded
+User (steam:110000106f89594) saved and unloaded
+User (steam:110000106abab10) saved and unloaded
+User (steam:110000114ad537c) saved and unloaded
+User (license:96e181565990c5f1a2bad3610129e8ab7fb4ebc1) loaded
+User (steam:110000106f89594) loaded
+User (steam:110000106abab10) loaded
+User (steam:110000114ad537c) loaded
+User (steam:110000105a330b8) loaded
+User (steam:110000111893acf) saved and unloaded
+User (steam:11000011201aa78) loaded
+User (steam:110000111893acf) loaded
+User (steam:110000107c900e2) saved and unloaded
+User (steam:11000011201aa78) saved and unloaded
+User (steam:11000011b418d87) saved and unloaded
+User (steam:110000109202f3a) loaded
+User (steam:110000114036d8a) loaded
+User (steam:1100001085d5448) loaded
+User (steam:11000010b742d9c) loaded
+User (steam:11000010b41bc55) loaded
+User (steam:110000111893acf) saved and unloaded
+User (license:96e181565990c5f1a2bad3610129e8ab7fb4ebc1) saved and unloaded
+User (steam:1100001044e63c0) saved and unloaded
+User (steam:110000101bb0d89) saved and unloaded
+User (steam:1100001085d5448) saved and unloaded
+User (steam:110000109202f3a) saved and unloaded
+User (steam:11000010b1f81ea) loaded
+User (steam:11000010b41bc55) saved and unloaded
+User (steam:110000106abab10) saved and unloaded
+User (steam:11000010b41bc55) loaded
+User (steam:11000010b41bc55) saved and unloaded
+User (steam:110000105a330b8) saved and unloaded
+User (steam:11000010b41bc55) loaded
+User (steam:11000011201aa78) loaded
+User (steam:110000114036d8a) saved and unloaded
+User (steam:11000010b41bc55) saved and unloaded
+User (steam:110000111f451f6) saved and unloaded
+User (steam:11000010b742d9c) saved and unloaded
+User (steam:110000101c00eed) loaded
+User (steam:110000111f451f6) loaded
+User (steam:11000010b1f81ea) saved and unloaded
+User (steam:110000111f451f6) saved and unloaded
+User (steam:11000010e6b7a4a) saved and unloaded
+User (Skyt0n 🍌) tried to execute command without having permission: car
+User (steam:110000101c00eed) saved and unloaded
+User (steam:110000112aa6b22) saved and unloaded
+User (steam:110000106f89594) saved and unloaded
+User (steam:110000106f89594) loaded
+User (steam:110000106f89594) saved and unloaded
+User (steam:110000114ad537c) saved and unloaded
+User (steam:11000011201aa78) saved and unloaded
+User (steam:11000010e6b7a4a) loaded
+User (steam:110000111f451f6) loaded
+User (steam:110000111f451f6) saved and unloaded
+User (steam:110000111f451f6) loaded
+User (steam:1100001044e63c0) loaded
+User (steam:110000111f451f6) saved and unloaded
+User (steam:11000010e6b7a4a) saved and unloaded
+User (steam:110000111f451f6) loaded
+User (steam:11000010e6b7a4a) loaded
+User (steam:110000111f451f6) saved and unloaded
+User (steam:11000010e6b7a4a) saved and unloaded
+User (steam:1100001044e63c0) saved and unloaded
+Version mismatch was detected, updater version: 5.0.0(4.6.3)
+== EssentialMode started, version 4.6.3 ==
+User (steam:1100001044e63c0) loaded
+User (steam:11000010e6b7a4a) loaded
+User (steam:1100001032be4c6) loaded
+User (steam:110000111f451f6) loaded
+User (Dennis (∂єѕαѕтєя)) ran admin command setjob, with parameters: setjob 4 ambulance 3
+User (Dennis (∂єѕαѕтєя)) ran admin command setjob, with parameters: setjob 2 ambulance1
+User (Dennis (∂єѕαѕтєя)) ran admin command setjob, with parameters: setjob 2 ambulance 1
+User (steam:1100001032be4c6) saved and unloaded
+User (steam:110000112f5b659) loaded
+User (steam:11000010e609889) loaded
+User (steam:110000111f451f6) saved and unloaded
+User (steam:1100001032be4c6) loaded
+User (Dennis (∂єѕαѕтєя)) ran admin command setjob, with parameters: setjob 6 ambulance 1
+User (steam:110000111f451f6) loaded
+User (steam:1100001044e63c0) saved and unloaded
+User (Dennis (∂єѕαѕтєя)) ran admin command setjob, with parameters: setjob 6 ambulance 2
+User (steam:110000112f5b659) saved and unloaded
+User (steam:11000010e609889) saved and unloaded
+User (steam:1100001032be4c6) saved and unloaded

@@ -1,0 +1,12 @@
+-- Begin of log for 01-08-18 --
+== EssentialMode started, version 4.6.3 ==
+User (steam:110000109f18db1) loaded
+User (steam:110000111f451f6) loaded
+User (DoZZi) tried to execute command without having permission: loadipl
+User (steam:1100001076e0676) loaded
+User (steam:110000104d65efc) loaded
+User (steam:110000109f18db1) saved and unloaded
+User (steam:110000109f18db1) loaded
+User (Leopard_A2) tried to execute command without having permission: car
+User (steam:110000109f18db1) saved and unloaded
+User (steam:110000111f451f6) saved and unloaded

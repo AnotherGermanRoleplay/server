@@ -1,0 +1,142 @@
+-- Begin of log for 12-05-17 --
+== EssentialMode started, version 4.6.3 ==
+User (steam:11000011d1df2e6) loaded
+User (steam:110000107c900e2) loaded
+User (steam:11000011d1df2e6) saved and unloaded
+User (steam:110000107c900e2) saved and unloaded
+User (steam:1100001032be4c6) loaded
+Version mismatch was detected, updater version: 5.0.0(4.6.3)
+== EssentialMode started, version 4.6.3 ==
+User (steam:1100001032be4c6) loaded
+User (Dennis (∂єѕαѕтєя)) ran admin command giveaccountmoney, with parameters: giveaccountmoney 1 bank 70000
+User (Dennis (∂єѕαѕтєя)) ran admin command fix, with parameters: fix
+User (Dennis (∂єѕαѕтєя)) ran admin command fix, with parameters: fix
+User (Dennis (∂єѕαѕтєя)) ran admin command fix, with parameters: fix
+User (Dennis (∂єѕαѕтєя)) ran admin command fix, with parameters: fix
+User (Dennis (∂єѕαѕтєя)) ran admin command fix, with parameters: fix
+User (Dennis (∂єѕαѕтєя)) ran admin command fix, with parameters: fix
+Version mismatch was detected, updater version: 5.0.0(4.6.3)
+== EssentialMode started, version 4.6.3 ==
+User (steam:1100001032be4c6) loaded
+Version mismatch was detected, updater version: 5.0.0(4.6.3)
+== EssentialMode started, version 4.6.3 ==
+User (steam:1100001032be4c6) loaded
+User (Dennis (∂єѕαѕтєя)) ran admin command car, with parameters: car r6
+User (Dennis (∂єѕαѕтєя)) ran admin command revive, with parameters: revive
+User (Dennis (∂єѕαѕтєя)) ran admin command car, with parameters: car r6
+User (Dennis (∂єѕαѕтєя)) ran admin command revive, with parameters: revive
+User (Dennis (∂єѕαѕтєя)) ran admin command car, with parameters: car r6
+User (Dennis (∂єѕαѕтєя)) ran admin command revive, with parameters: revive
+User (Dennis (∂єѕαѕтєя)) ran admin command car, with parameters: car r6
+User (Dennis (∂єѕαѕтєя)) ran admin command car, with parameters: car r6
+User (Dennis (∂єѕαѕтєя)) ran admin command fix, with parameters: fix
+User (Dennis (∂єѕαѕтєя)) ran admin command fix, with parameters: fix
+User (steam:1100001032be4c6) saved and unloaded
+User (steam:110000107c900e2) loaded
+User (steam:11000010ba41126) loaded
+User (steam:1100001031139e9) loaded
+User (steam:1100001031139e9) saved and unloaded
+User (steam:11000010ba41126) saved and unloaded
+User (steam:110000103365ef2) loaded
+User (steam:110000107c900e2) saved and unloaded
+User (steam:11000010643ac7f) loaded
+User (steam:11000010643ac7f) saved and unloaded
+User (steam:11000010643ac7f) loaded
+User (steam:11000010f803259) loaded
+User (steam:110000106abab10) loaded
+User (steam:110000104372dc1) loaded
+User (BirdMachine) ran admin command fix, with parameters: fix
+User (Akame) ran admin command fix, with parameters: fix
+User (steam:11000010f71ed03) loaded
+User (BirdMachine) ran admin command fix, with parameters: fix
+User (steam:110000107c900e2) loaded
+User (steam:110000119e5849b) loaded
+User (BirdMachine) ran admin command fix, with parameters: fix
+User (steam:11000010f71ed03) saved and unloaded
+User (steam:11000010f71ed03) loaded
+User (CG Quintax / Butterbirne) tried to execute command without having permission: slap
+User (steam:11000010f71ed03) saved and unloaded
+User (steam:1100001122e1027) loaded
+User (NXscorpion) tried to execute command without having permission: spawnobject
+User (steam:110000119e5849b) saved and unloaded
+User (steam:11000010f71ed03) loaded
+User (steam:1100001122e1027) saved and unloaded
+User (BirdMachine) ran admin command spectate, with parameters: spectate 5
+User (BirdMachine) ran admin command spectate, with parameters: spectate 0
+User (BirdMachine) ran admin command spectate, with parameters: spectate 16
+User (BirdMachine) ran admin command spectate, with parameters: spectate
+User (BirdMachine) ran admin command goto, with parameters: goto 16
+User (steam:11000010e63b103) loaded
+User (steam:1100001122e1027) loaded
+User (BirdMachine) ran admin command revive, with parameters: revive 16
+User (BirdMachine) ran admin command back, with parameters: back
+User (steam:110000106abab10) saved and unloaded
+User (steam:110000107c900e2) saved and unloaded
+User (steam:110000107c900e2) loaded
+User (steam:11000010f803259) saved and unloaded
+User (steam:1100001122e1027) saved and unloaded
+User (steam:1100001177e9f8e) loaded
+User (steam:110000103365ef2) saved and unloaded
+User (steam:110000103365ef2) loaded
+User (steam:110000107c900e2) saved and unloaded
+User (steam:11000010643ac7f) saved and unloaded
+User (steam:110000107c900e2) loaded
+User (steam:110000109f18db1) loaded
+User (steam:1100001141261c9) loaded
+User (Leopard_A2) ran admin command spectate, with parameters: spectate 24
+User (steam:11000010643ac7f) loaded
+User (Leopard_A2) ran admin command spectate, with parameters: spectate
+User (Leopard_A2) ran admin command spectate, with parameters: spectate 24
+User (Leopard_A2) ran admin command spectate, with parameters: spectate
+User (steam:110000109c4c233) loaded
+User (steam:1100001141261c9) saved and unloaded
+User (steam:110000103365ef2) saved and unloaded
+User (steam:110000103365ef2) loaded
+User (steam:11000010f803259) loaded
+User (steam:11000010f803259) saved and unloaded
+User (Leopard_A2) ran admin command spectate, with parameters: spectate 21
+User (Leopard_A2) ran admin command spectate, with parameters: spectate
+User (Leopard_A2) ran admin command spectate, with parameters: spectate 21
+User (Leopard_A2) ran admin command spectate, with parameters: spectate
+User (Akame) ran admin command revive, with parameters: revive
+User (steam:1100001177e9f8e) saved and unloaded
+User (Leopard_A2) ran admin command spectate, with parameters: spectate 21
+User (Leopard_A2) ran admin command spectate, with parameters: spectate
+User (Leopard_A2) ran admin command spectate, with parameters: spectate 21
+User (Leopard_A2) ran admin command spectate, with parameters: spectate
+User (steam:1100001177e9f8e) loaded
+User (Leopard_A2) ran admin command spectate, with parameters: spectate 34
+User (Leopard_A2) ran admin command spectate, with parameters: spectate
+User (Akame) ran admin command fix, with parameters: fix
+User (Akame) ran admin command fix, with parameters: fix
+User (Akame) ran admin command fix, with parameters: fix
+User (Akame) ran admin command revive, with parameters: revive 31
+User (Akame) ran admin command revive, with parameters: revive 31
+User (Akame) ran admin command revive, with parameters: revive 31
+User (Akame) ran admin command revive, with parameters: revive 31
+User (steam:110000109c4c233) saved and unloaded
+User (steam:1100001111de3c0) loaded
+User (steam:11000010d390821) loaded
+User (Akame) ran admin command dv, with parameters: dv
+User (Akame) ran admin command fix, with parameters: fix
+User (steam:110000109f18db1) saved and unloaded
+User (steam:1100001111de3c0) saved and unloaded
+User (steam:11000010d390821) saved and unloaded
+User (steam:110000104372dc1) saved and unloaded
+User (steam:11000010f71ed03) saved and unloaded
+User (steam:11000010f71ed03) loaded
+User (steam:1100001177e9f8e) saved and unloaded
+User (steam:11000010f71ed03) saved and unloaded
+User (steam:110000103365ef2) saved and unloaded
+User (steam:11000010643ac7f) saved and unloaded
+User (steam:1100001125c8df2) loaded
+User (steam:110000106abab10) loaded
+User (steam:11000010643ac7f) loaded
+User (steam:110000106abab10) saved and unloaded
+User (steam:1100001125c8df2) saved and unloaded
+User (steam:1100001125c8df2) loaded
+User (steam:11000010643ac7f) saved and unloaded
+User (steam:11000010643ac7f) loaded
+User (steam:11000010e63b103) saved and unloaded
+User (steam:11000010643ac7f) saved and unloaded
+User (steam:1100001125c8df2) saved and unloaded

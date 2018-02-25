@@ -1,0 +1,212 @@
+-- Begin of log for 11-29-17 --
+== EssentialMode started, version 4.6.3 ==
+User (steam:110000107c900e2) loaded
+User (steam:11000011bddb15e) loaded
+User (steam:11000010e63b103) loaded
+User (steam:11000011bddb15e) saved and unloaded
+User (steam:110000107c900e2) saved and unloaded
+User (steam:110000107c900e2) loaded
+User (steam:11000010e63b103) saved and unloaded
+User (steam:11000010e63b103) loaded
+User (steam:11000010e63b103) saved and unloaded
+User (steam:110000116be7870) loaded
+User (steam:110000116be7870) saved and unloaded
+User (steam:110000110bae9e2) loaded
+User (steam:110000110bae9e2) saved and unloaded
+User (steam:110000107c900e2) saved and unloaded
+User (steam:110000107c900e2) loaded
+User (steam:11000010f71ed03) loaded
+User (steam:11000010a7e7279) loaded
+User (steam:110000114c9d4f0) loaded
+User (steam:11000011bddb15e) loaded
+User (steam:11000011bddb15e) saved and unloaded
+User (steam:11000010e548bf7) loaded
+User (steam:110000116c1ac15) loaded
+User (steam:1100001177e9f8e) loaded
+User (.Reaper^) ran admin command revive, with parameters: revive
+User (steam:11000010e548bf7) saved and unloaded
+User (steam:11000010f71ed03) saved and unloaded
+User (steam:11000010f71ed03) loaded
+User (steam:11000010f71ed03) saved and unloaded
+User (steam:11000010f71ed03) loaded
+User (steam:110000107859639) loaded
+User (steam:11000011bddb15e) loaded
+User (steam:110000114c9d4f0) saved and unloaded
+User (steam:11000010b5876d1) loaded
+User (steam:11000010f71ed03) saved and unloaded
+User (steam:110000115a63283) loaded
+User (steam:1100001122e1027) loaded
+User (steam:110000109a00358) loaded
+User (steam:11000010a7e7279) saved and unloaded
+User (steam:110000107859639) saved and unloaded
+User (steam:110000114cf834c) loaded
+User (.Reaper^) ran admin command revive, with parameters: revive
+User (.Reaper^) ran admin command revive, with parameters: revive 29
+User (.Reaper^) ran admin command revive, with parameters: revive
+User (.Reaper^) ran admin command revive, with parameters: revive 29
+User (.Reaper^) ran admin command revive, with parameters: revive 27
+User (.Reaper^) ran admin command revive, with parameters: revive 19
+User (.Reaper^) ran admin command revive, with parameters: revive 29
+User (steam:11000011bddb15e) saved and unloaded
+User (.Reaper^) ran admin command revive, with parameters: revive
+User (.Reaper^) ran admin command revive, with parameters: revive
+User (.Reaper^) ran admin command revive, with parameters: revive 19
+User (.Reaper^) ran admin command revive, with parameters: revive 27
+User (.Reaper^) ran admin command revive, with parameters: revive 29
+User (.Reaper^) ran admin command revive, with parameters: revive 19
+User (avxstudio) tried to execute command without having permission: dv
+User (.Reaper^) ran admin command revive, with parameters: revive 19
+User (avxstudio) tried to execute command without having permission: revive
+User (steam:1100001122e1027) saved and unloaded
+User (steam:110000116be7870) loaded
+User (steam:1100001122e1027) loaded
+User (steam:110000110e3253c) loaded
+User (steam:11000010643ac7f) loaded
+User (.Reaper^) ran admin command spectate, with parameters: spectate 29
+User (.Reaper^) ran admin command spectate, with parameters: spectate
+User (steam:11000010db514a9) loaded
+User (steam:11000010b5876d1) saved and unloaded
+Version mismatch was detected, updater version: 5.0.0(4.6.3)
+== EssentialMode started, version 4.6.3 ==
+User (steam:11000010643ac7f) loaded
+User (steam:110000107c900e2) loaded
+User (steam:110000103365ef2) loaded
+User (steam:1100001122e1027) loaded
+User (license:01a2b046fb68b2c09a335949f43a4a8953648bc4) loaded
+User (steam:1100001122e1027) saved and unloaded
+User (steam:110000109a2ee3b) loaded
+User (steam:11000010f803259) loaded
+User (steam:11000010f803259) saved and unloaded
+User (steam:110000109a2ee3b) saved and unloaded
+User (steam:11000010f803259) loaded
+User (steam:11000011bddb15e) loaded
+User (steam:1100001177e9f8e) loaded
+User (steam:11000010f71ed03) loaded
+User (steam:110000115a63283) loaded
+User (steam:110000109f18db1) loaded
+User (license:01a2b046fb68b2c09a335949f43a4a8953648bc4) saved and unloaded
+User (steam:110000104372dc1) loaded
+User (Akame) ran admin command goto, with parameters: goto
+User (Akame) ran admin command goto, with parameters: goto 13
+User (license:01a2b046fb68b2c09a335949f43a4a8953648bc4) loaded
+User (steam:11000010a7e7279) loaded
+User (steam:11000011bddb15e) saved and unloaded
+User (steam:110000103365ef2) saved and unloaded
+User (steam:1100001176f3156) loaded
+User (steam:1100001122e1027) loaded
+User (Akame) ran admin command fix, with parameters: fix
+User (Akame) ran admin command dv, with parameters: dv
+User (steam:110000103365ef2) loaded
+User (steam:11000010f1f6c65) loaded
+User (steam:1100001122e1027) saved and unloaded
+User (Akame) ran admin command dv, with parameters: dv
+User (Akame) ran admin command dv, with parameters: dv
+User (Akame) ran admin command dv, with parameters: dv
+User (Akame) ran admin command fix, with parameters: fix
+User (Akame) ran admin command dv, with parameters: dv
+User (steam:1100001044e63c0) loaded
+User (license:01a2b046fb68b2c09a335949f43a4a8953648bc4) saved and unloaded
+User (Akame) ran admin command fix, with parameters: fix
+User (Akame) ran admin command fix, with parameters: fix
+User (steam:1100001122e1027) loaded
+User (Akame) ran admin command fix, with parameters: fix
+User (steam:11000011bddb15e) loaded
+User (steam:11000010643ac7f) saved and unloaded
+User (steam:11000011bddb15e) saved and unloaded
+User (steam:1100001176f3156) saved and unloaded
+User (steam:11000010f803259) saved and unloaded
+User (steam:11000011bddb15e) loaded
+User (steam:11000011bddb15e) saved and unloaded
+User (steam:11000011bddb15e) loaded
+User (steam:11000010643ac7f) loaded
+User (steam:110000109a2ee3b) loaded
+User (Akame) ran admin command fix, with parameters: fix
+User (steam:11000011d1df2e6) loaded
+User (steam:11000011d1df2e6) saved and unloaded
+User (steam:11000011d1df2e6) loaded
+User (steam:11000011d1df2e6) saved and unloaded
+User (steam:110000109a2ee3b) saved and unloaded
+User (steam:11000011d1df2e6) loaded
+User (Akame) ran admin command fix, with parameters: fix
+User (steam:110000109a2ee3b) loaded
+User (steam:11000010f71ed03) saved and unloaded
+User (steam:11000010f71ed03) loaded
+User (Akame) ran admin command revive, with parameters: revive 28
+User (Akame) ran admin command revive, with parameters: revive 28
+User (Akame) ran admin command revive, with parameters: revive
+User (Akame) ran admin command revive, with parameters: revive 28
+User (steam:11000010cb66ed2) loaded
+User (Akame) ran admin command revive, with parameters: revive 28
+User (steam:11000010643ac7f) saved and unloaded
+User (Akame) ran admin command revive, with parameters: revive 22
+User (Akame) ran admin command revive, with parameters: revive 22
+User (steam:11000010643ac7f) loaded
+User (steam:110000107c900e2) saved and unloaded
+User (steam:11000010f71ed03) saved and unloaded
+User (steam:110000107c900e2) loaded
+User (steam:11000010f71ed03) loaded
+User (steam:110000103365ef2) saved and unloaded
+User (steam:110000114f817d9) loaded
+User (steam:110000114f817d9) saved and unloaded
+User (steam:110000109ead677) loaded
+User (Akame) ran admin command dv, with parameters: dv
+User (Akame) ran admin command fix, with parameters: fix
+User (steam:110000104372dc1) saved and unloaded
+User (steam:110000109a00358) loaded
+User (steam:110000116cd19fb) loaded
+User (steam:110000104372dc1) loaded
+User (steam:110000116c1ac15) loaded
+User (steam:1100001044e63c0) saved and unloaded
+User (Akame) ran admin command fix, with parameters: fix
+User (steam:1100001122e1027) saved and unloaded
+User (Akame) ran admin command fix, with parameters: fix
+User (steam:11000010a7e7279) saved and unloaded
+User (steam:11000010f1f6c65) saved and unloaded
+User (steam:1100001122e1027) loaded
+User (steam:110000104372dc1) saved and unloaded
+User (steam:11000010f1f6c65) loaded
+User (steam:1100001170a0c29) loaded
+User (steam:1100001170a0c29) saved and unloaded
+User (steam:110000107894173) loaded
+User (steam:11000010b5876d1) loaded
+User (steam:110000116c1ac15) saved and unloaded
+User (TheSchakal1) tried to execute command without having permission: fix
+User (steam:110000116c1ac15) loaded
+User (steam:110000117722785) loaded
+User (steam:110000105c0b808) loaded
+User (steam:110000109ead677) saved and unloaded
+User (steam:110000117722785) saved and unloaded
+User (Leopard_A2) ran admin command spectate, with parameters: spectate
+User (Leopard_A2) ran admin command spectate, with parameters: spectate 29
+User (steam:110000115a63283) saved and unloaded
+User (Leopard_A2) ran admin command spectate, with parameters: spectate
+User (Leopard_A2) ran admin command spectate, with parameters: spectate 57
+User (Leopard_A2) ran admin command spectate, with parameters: spectate 44
+User (Leopard_A2) ran admin command spectate, with parameters: spectate 36
+User (Leopard_A2) ran admin command spectate, with parameters: spectate 36
+User (Leopard_A2) ran admin command spectate, with parameters: spectate 53
+User (steam:110000115a63283) loaded
+User (Leopard_A2) ran admin command spectate, with parameters: spectate
+User (steam:110000115a63283) saved and unloaded
+User (steam:11000010cb66ed2) saved and unloaded
+User (steam:110000115a63283) loaded
+User (.Reaper^) ran admin command revive, with parameters: revive 43
+User (steam:110000105c0b808) saved and unloaded
+User (steam:110000107894173) saved and unloaded
+User (steam:110000109a2ee3b) saved and unloaded
+User (steam:11000010f71ed03) saved and unloaded
+User (steam:110000106aa79ce) loaded
+User (Leopard_A2) ran admin command revive, with parameters: revive
+User (steam:110000116cd19fb) saved and unloaded
+User (steam:1100001177e9f8e) saved and unloaded
+User (steam:11000011d1df2e6) saved and unloaded
+User (.Reaper^) ran admin command revive, with parameters: revive 33
+User (donutdealer21) ran admin command char, with parameters: char
+User (steam:110000109a00358) saved and unloaded
+User (steam:1100001122e1027) saved and unloaded
+User (steam:110000109f18db1) saved and unloaded
+User (steam:110000116c1ac15) saved and unloaded
+User (steam:11000010b5876d1) saved and unloaded
+Version mismatch was detected, updater version: 5.0.0(4.6.3)
+== EssentialMode started, version 4.6.3 ==
+User (steam:110000107c900e2) loaded

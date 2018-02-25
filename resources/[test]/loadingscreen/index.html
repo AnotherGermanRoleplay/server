@@ -1,0 +1,146 @@
+<html>
+    <head>
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <link href="keks.css" rel="stylesheet" type="text/css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    </head>
+    <body>
+		<audio autoplay="" id="Loading" loop="">
+			<!-- If you want change the sound please, convert your sound in .ogg and put this in music folder  and change Loading.ogg to your sound .ogg-->
+			<source src="music/Loading.ogg" type="audio/ogg">
+		</audio>
+        <img style="display: block;" class="background visible" src="loadscreen.jpg" />
+        <img style="display: none;" class="background hidden" src="loadscreen1.jpg" />
+        <img style="display: none;" class="background hidden" src="loadscreen2.jpg" />
+        <div class="backdrop">
+            <div class="top">
+                <h1 title="Wolfsrudel Life Roleplay">Wolfsrudel Life Roleplay</h1>
+                <h2 title="Herzlich willkommen!">Herzlich willkommen!</h2>
+            </div>
+
+            <div class="letni">
+                <h2 title="Laden... ">Laden... </h2>
+                <h3></h3>
+                <div class="loadbar"><div class="thingy"></div></div>
+                <p class="paragraph first" style="display: block;">Herzlich Willkommen bei Wolfsrudel Life!</p>
+                <p class="paragraph " style="display: none;">Forum: follow</p>
+                <p class="paragraph" style="display: none;">Teamspeak: ts.wolfsrudel.life</p>
+                <p class="paragraph" style="display: none;">Discord: follow</p>
+                <p class="timer" style="float: right;">Ladezeit: 0 Sekunden</p>
+            </div>
+            <div class="bottom">
+                <div id="gradient">
+                </div>
+            </div>
+        </div>
+        <h1 style="background-color: rgba(255, 0, 0, .4); position: absolute; top: 0; left: 0;" id="console"></h1>
+
+<script type="text/javascript">
+// this will actually restart the loading bar a lot, making multiple loading bars is an exercise to the reader... for now.
+// for a set of possible events, see https://github.com/citizenfx/cfx-client/blob/up-master/components/loading-screens-five/src/LoadingScreens.cpp
+var count = 0;
+var thisCount = 0;
+
+
+const emoji = {
+    INIT_BEFORE_MAP_LOADED: [ '⭐' ],
+    INIT_AFTER_MAP_LOADED: [ '⭐', '⭐' ],
+    INIT_SESSION: [ '⭐', '⭐', '✅' ],
+};
+
+const backgrounds = {
+    1: ['loadscreen.jpg'],
+    2: ['loadscreen1.jpg'],
+    3: ['loadscreen2.jpg']
+}
+
+
+let music = $('audio');
+let volume = 0.05;
+music.prop('volume', volume);
+let isPause = true;
+
+const timeout = 4000;
+const timeout2 = 12000;
+
+let fuck;
+
+$(document).ready(function() {
+    let start = new Date;
+
+    setInterval(function() {
+        $('.timer').text("Ladezeit: " + Math.floor((new Date - start) / 1000) + " Sekunden");
+    }, 1000);
+
+    fuck = setTimeout(function nextParagraph() {
+        var visible = $('.paragraph:visible');
+        visible.fadeOut(function() {
+            if(visible.next().hasClass('paragraph')){
+                visible.next().fadeIn();
+            }else{
+                $('.paragraph.first').fadeIn();
+            }
+        });
+
+        fuck = setTimeout(nextParagraph, timeout);
+    }, timeout)
+
+    let fuck2 = setTimeout(function nextBackground() {
+        var backgrounds = $('.background.hidden');
+        var visible = $('.background.visible');
+        visible.fadeOut('slow', function() {
+            visible.removeClass('visible').addClass('hidden');
+        });
+        var random = Math.floor(Math.random()*backgrounds.length);
+        $('.background.hidden').eq(random).fadeIn('slow').removeClass('hidden').addClass('visible');
+
+        fuck2 = setTimeout(nextBackground, timeout2);
+    }, timeout2);
+
+});
+
+const handlers = {
+    startInitFunctionOrder(data)
+    {
+        count = data.count;
+
+        document.querySelector('.letni h3').innerHTML += emoji[data.type][data.order - 1] || '';
+    },
+
+    initFunctionInvoking(data)
+    {
+        document.querySelector('.thingy').style.left = '0%';
+        document.querySelector('.thingy').style.width = ((data.idx / count) * 100) + '%';
+    },
+
+    startDataFileEntries(data)
+    {
+        count = data.count;
+
+        document.querySelector('.letni h3').innerHTML += "";
+    },
+
+    performMapLoadFunction(data)
+    {
+        ++thisCount;
+
+        document.querySelector('.thingy').style.left = '0%';
+        document.querySelector('.thingy').style.width = ((thisCount / count) * 100) + '%';
+    },
+
+    onLogLine(data)
+    {
+        document.querySelector('.letni p').innerHTML = data.message + "..!";
+        clearTimeout(fuck);
+    }
+};
+
+window.addEventListener('message', function(e)
+{
+    (handlers[e.data.eventName] || function() {})(e.data);
+});
+</script>
+
+<script type="text/javascript" src="jquery.fancybox.pack.js"></script>
+    </body>
+</html>

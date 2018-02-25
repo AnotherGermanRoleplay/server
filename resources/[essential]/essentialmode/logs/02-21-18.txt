@@ -1,0 +1,166 @@
+-- Begin of log for 02-21-18 --
+== EssentialMode started, version 4.6.3 ==
+User (steam:11000011201aa78) loaded
+User (Philipp) ran admin command revive, with parameters: revive
+User (Philipp) ran admin command car, with parameters: car rmodm4
+Version mismatch was detected, updater version: 5.0.0(4.6.3)
+== EssentialMode started, version 4.6.3 ==
+User (steam:11000011201aa78) loaded
+User (Philipp) ran admin command setjob, with parameters: setjob 1 police 6
+User (steam:11000011201aa78) saved and unloaded
+Version mismatch was detected, updater version: 5.0.0(4.6.3)
+== EssentialMode started, version 4.6.3 ==
+Version mismatch was detected, updater version: 5.0.0(4.6.3)
+== EssentialMode started, version 4.6.3 ==
+User (steam:11000011201aa78) loaded
+User (Philipp) ran admin command setjob, with parameters: setjob 1 police 0
+User (Philipp) ran admin command setjob, with parameters: setjob 1 police 1
+User (steam:11000011201aa78) saved and unloaded
+Version mismatch was detected, updater version: 5.0.0(4.6.3)
+== EssentialMode started, version 4.6.3 ==
+User (steam:11000011201aa78) loaded
+User (steam:11000011201aa78) saved and unloaded
+Version mismatch was detected, updater version: 5.0.0(4.6.3)
+== EssentialMode started, version 4.6.3 ==
+User (steam:11000011201aa78) loaded
+User (steam:11000011201aa78) saved and unloaded
+Version mismatch was detected, updater version: 5.0.0(4.6.3)
+== EssentialMode started, version 4.6.3 ==
+User (steam:11000011201aa78) loaded
+User (steam:11000011201aa78) saved and unloaded
+User (steam:11000011201aa78) loaded
+Version mismatch was detected, updater version: 5.0.0(4.6.3)
+== EssentialMode started, version 4.6.3 ==
+User (steam:11000011201aa78) loaded
+Version mismatch was detected, updater version: 5.0.0(4.6.3)
+== EssentialMode started, version 4.6.3 ==
+User (steam:11000011201aa78) loaded
+Version mismatch was detected, updater version: 5.0.0(4.6.3)
+== EssentialMode started, version 4.6.3 ==
+User (steam:11000011201aa78) loaded
+User (Philipp) ran admin command revive, with parameters: revive
+User (Philipp) ran admin command setjob, with parameters: setjob 1 police 4
+User (Philipp) ran admin command car, with parameters: car rmodm4
+User (Philipp) ran admin command revive, with parameters: revive
+Version mismatch was detected, updater version: 5.0.0(4.6.3)
+== EssentialMode started, version 4.6.3 ==
+Version mismatch was detected, updater version: 5.0.0(4.6.3)
+== EssentialMode started, version 4.6.3 ==
+User (steam:11000011201aa78) loaded
+User (Philipp) ran admin command setjob, with parameters: setjob 1 ambulace 6
+User (Philipp) ran admin command setjob, with parameters: setjob 1 ambulace 5
+User (Philipp) ran admin command setjob, with parameters: setjob 1 ambulance 6
+User (Philipp) ran admin command car, with parameters: car lguard
+User (steam:11000011201aa78) saved and unloaded
+Version mismatch was detected, updater version: 5.0.0(4.6.3)
+== EssentialMode started, version 4.6.3 ==
+User (steam:11000011201aa78) loaded
+Version mismatch was detected, updater version: 5.0.0(4.6.3)
+== EssentialMode started, version 4.6.3 ==
+User (steam:11000011201aa78) loaded
+User (Philipp) ran admin command setjob, with parameters: setjob 1 police 5
+User (Philipp) ran admin command car, with parameters: car lspd
+User (Philipp) ran admin command car, with parameters: car lspd1
+User (Philipp) ran admin command car, with parameters: car lspd2
+User (Philipp) ran admin command car, with parameters: car lspd3
+User (Philipp) ran admin command car, with parameters: car lspd4
+User (Philipp) ran admin command car, with parameters: car lspd5
+User (Philipp) ran admin command car, with parameters: car lspd6
+User (Philipp) ran admin command car, with parameters: car lspd7
+User (Philipp) ran admin command car, with parameters: car lspd8
+User (Philipp) ran admin command car, with parameters: car lspd9
+User (Philipp) ran admin command car, with parameters: car lspd10
+User (Philipp) ran admin command car, with parameters: car lspd11
+User (Philipp) ran admin command car, with parameters: car lspd12
+User (Philipp) ran admin command car, with parameters: car lspd13
+User (Philipp) ran admin command dv, with parameters: dv
+User (Philipp) ran admin command dv, with parameters: dv
+User (Philipp) ran admin command dv, with parameters: dv
+User (Philipp) ran admin command dv, with parameters: dv
+User (Philipp) ran admin command dv, with parameters: dv
+User (Philipp) ran admin command dv, with parameters: dv
+User (Philipp) ran admin command dv, with parameters: dv
+User (Philipp) ran admin command dv, with parameters: dv
+User (Philipp) ran admin command dv, with parameters: dv
+User (Philipp) ran admin command dv, with parameters: dv
+User (steam:11000011201aa78) saved and unloaded
+Version mismatch was detected, updater version: 5.0.0(4.6.3)
+== EssentialMode started, version 4.6.3 ==
+User (steam:11000011201aa78) loaded
+User (Philipp) ran admin command charlist, with parameters: charlist
+User (Philipp) ran admin command char, with parameters: char
+User (steam:11000011201aa78) saved and unloaded
+Version mismatch was detected, updater version: 5.0.0(4.6.3)
+== EssentialMode started, version 4.6.3 ==
+User (steam:11000011201aa78) loaded
+Version mismatch was detected, updater version: 5.0.0(4.6.3)
+== EssentialMode started, version 4.6.3 ==
+User (steam:11000011201aa78) loaded
+User (Philipp) ran admin command dv, with parameters: dv
+User (Philipp) ran admin command dv, with parameters: dv
+User (Philipp) ran admin command dv, with parameters: dv
+User (Philipp) ran admin command dv, with parameters: dv
+User (Philipp) ran admin command dv, with parameters: dv
+User (Philipp) ran admin command dv, with parameters: dv
+User (Philipp) ran admin command revive, with parameters: revive
+User (steam:11000011201aa78) saved and unloaded
+Version mismatch was detected, updater version: 5.0.0(4.6.3)
+== EssentialMode started, version 4.6.3 ==
+User (steam:11000011201aa78) loaded
+User (Philipp) ran admin command revive, with parameters: revive
+User (Philipp) ran admin command revive, with parameters: revive
+User (Philipp) ran admin command revive, with parameters: revive
+User (Philipp) ran admin command car, with parameters: car lspd
+User (Philipp) ran admin command dv, with parameters: dv
+User (Philipp) ran admin command car, with parameters: car lspd1
+User (Philipp) ran admin command car, with parameters: car lspd2
+User (Philipp) ran admin command dv, with parameters: dv
+User (Philipp) ran admin command car, with parameters: car lspd3
+User (Philipp) ran admin command dv, with parameters: dv
+User (Philipp) ran admin command car, with parameters: car lspd4
+User (Philipp) ran admin command dv, with parameters: dv
+User (Philipp) ran admin command car, with parameters: car lspd5
+User (Philipp) ran admin command dv, with parameters: dv
+User (Philipp) ran admin command car, with parameters: car lspd6
+User (Philipp) ran admin command dv, with parameters: dv
+User (Philipp) ran admin command car, with parameters: car lspd7
+User (Philipp) ran admin command dv, with parameters: dv
+User (Philipp) ran admin command car, with parameters: car lspd8
+User (Philipp) ran admin command dv, with parameters: dv
+User (Philipp) ran admin command car, with parameters: car lspd9
+User (Philipp) ran admin command dv, with parameters: dv
+User (Philipp) ran admin command car, with parameters: car lspd10
+User (Philipp) ran admin command dv, with parameters: dv
+User (Philipp) ran admin command car, with parameters: car lspd11
+User (Philipp) ran admin command dv, with parameters: dv
+User (Philipp) ran admin command car, with parameters: car lspd12
+User (Philipp) ran admin command car, with parameters: car lspd12
+User (Philipp) ran admin command dv, with parameters: dv
+User (Philipp) ran admin command dv, with parameters: dv
+User (Philipp) ran admin command car, with parameters: car lspd4
+User (Philipp) ran admin command dv, with parameters: dv
+User (Philipp) ran admin command car, with parameters: car lspd
+User (Philipp) ran admin command dv, with parameters: dv
+User (Philipp) ran admin command car, with parameters: car lspd2
+User (Philipp) ran admin command dv, with parameters: dv
+User (Philipp) ran admin command car, with parameters: car lspd3
+User (Philipp) ran admin command dv, with parameters: dv
+User (Philipp) ran admin command car, with parameters: car lspd4
+User (Philipp) ran admin command dv, with parameters: dv
+User (Philipp) ran admin command car, with parameters: car lspd5
+User (Philipp) ran admin command dv, with parameters: dv
+User (Philipp) ran admin command car, with parameters: car lspd6
+User (Philipp) ran admin command dv, with parameters: dv
+User (Philipp) ran admin command car, with parameters: car lspd7
+User (Philipp) ran admin command dv, with parameters: dv
+User (Philipp) ran admin command car, with parameters: car lspd8
+User (Philipp) ran admin command dv, with parameters: dv
+User (Philipp) ran admin command car, with parameters: car lspd9
+User (Philipp) ran admin command dv, with parameters: dv
+User (Philipp) ran admin command car, with parameters: car lspd10
+User (Philipp) ran admin command dv, with parameters: dv
+User (Philipp) ran admin command car, with parameters: car lspd11
+User (Philipp) ran admin command dv, with parameters: dv
+User (Philipp) ran admin command car, with parameters: car lspd12
+User (Philipp) ran admin command dv, with parameters: dv
+User (steam:11000011201aa78) saved and unloaded
