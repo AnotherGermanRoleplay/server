@@ -980,7 +980,8 @@ end
 --===============================================
 --==  Get The Player's Character            ==
 --===============================================
-function getIdentity(source, callback)
+RegisterServerEvent('esx::getIdentity')
+AddEventHandler('esx::getIdentity', source, function(callback)
     local identifier = source
     if identifier ~= nil then
         MySQL.Async.fetchAll("SELECT * FROM `users` WHERE `identifier` = @identifier",
@@ -990,6 +991,7 @@ function getIdentity(source, callback)
             function(result)
                     local data = {
                         identifier	= result[1]['identifier'],
+                        characterId = result[1]['id'],
                         firstname	= result[1]['firstname'],
                         lastname	= result[1]['lastname'],
                         dateofbirth	= result[1]['dateofbirth'],

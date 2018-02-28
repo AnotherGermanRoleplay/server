@@ -16,7 +16,7 @@ function GenerateUniquePhoneNumber()
     phoneNumber = math.random(10000, 99999)
 
     local result = MySQL.Sync.fetchAll(
-      'SELECT COUNT(*) as count FROM users WHERE phone_number = @phoneNumber',
+      'SELECT COUNT(*) as count FROM characters WHERE phone_number = @phoneNumber',
       {
         ['@phoneNumber'] = phoneNumber
       }
@@ -60,6 +60,11 @@ end)
 AddEventHandler('esx:playerLoaded', function(source)
 
   local xPlayer = ESX.GetPlayerFromId(source)
+  local xIdentity = {}
+
+  TriggerEvent("esx::getIdentity", source, function(data)
+    xIdentity = data
+  end)
 
   for num,v in pairs(PhoneNumbers) do
     if tonumber(num) == num then -- If phonenumber is a player phone number
@@ -89,6 +94,15 @@ AddEventHandler('esx:playerLoaded', function(source)
             ['@phone_number'] = phoneNumber
           }
         )
+        
+        MySQL.Async.execute(
+          'UPDATE characters SET phone_number = @phone_number WHERE id = @identifier',
+          {
+            --TODO :: CharacterId!!! statt Identifier
+            ['@identifier'] = xIdentity.characterId,
+            ['@phone_number'] = phoneNumber
+          }
+        )
       end
 
       TriggerClientEvent('esx_phone:setPhoneNumberSource', -1, phoneNumber, source)
@@ -113,7 +127,7 @@ AddEventHandler('esx:playerLoaded', function(source)
       MySQL.Async.fetchAll(
         'SELECT * FROM user_contacts WHERE identifier = @identifier ORDER BY name ASC',
         {
-          ['@identifier'] = xPlayer.identifier
+          ['@identifier'] = xIdentity.characterId
         },
         function(result2)
 
@@ -171,6 +185,100 @@ AddEventHandler('esx_phone:reload', function(phoneNumber)
   local contacts = xPlayer.get('contacts')
 
   TriggerClientEvent('esx_phone:loaded', _source, phoneNumber, contacts)
+
+end)
+
+
+--- added by Philipp
+-- Diese Funktion soll die User-Tabelle aktualisieren um für jeden Charakter eine eigene Nummer zu gewährleisten.
+--- esx::refresh
+RegisterServerEvent('esx_phone:refresh')
+AddEventHandler('esx_phone:refresh', function(phoneNumber)
+
+  local _source  = source
+  local xPlayer  = ESX.GetPlayerFromId(_source)
+  local xIdentity = {}
+
+  TriggerEvent("esx::getIdentity", source, function(data)
+    xIdentity = data
+  end)
+
+  for num,v in pairs(PhoneNumbers) do
+    if tonumber(num) == num then -- If phonenumber is a player phone number
+      for src,_ in pairs(v.sources) do
+        TriggerClientEvent('esx_phone:setPhoneNumberSource', source, num, tonumber(src))
+      end
+    end
+  end
+
+  MySQL.Async.fetchAll(
+    'SELECT * FROM users WHERE identifier = @identifier',
+    {
+      ['@identifier'] = xPlayer.identifier
+    },
+    function(result)
+
+      local phoneNumber = result[1].phone_number
+
+      if phoneNumber == nil then
+
+        phoneNumber = GenerateUniquePhoneNumber()
+
+        MySQL.Async.execute(
+          'UPDATE users SET phone_number = @phone_number WHERE identifier = @identifier',
+          {
+            ['@identifier']   = xPlayer.identifier,
+            ['@phone_number'] = phoneNumber
+          }
+        )
+        
+        MySQL.Async.execute(
+          'UPDATE characters SET phone_number = @phone_number WHERE id = @identifier',
+          {
+            ['@identifier'] = xIdentity.characterId
+            ['@phone_number'] = phoneNumber
+          }
+        )
+      end
+
+      TriggerClientEvent('esx_phone:setPhoneNumberSource', -1, phoneNumber, source)
+
+      PhoneNumbers[phoneNumber] = {
+        type          = 'player',
+        hashDispatch  = false,
+        sharePos      = false,
+        hideNumber    = false,
+        hidePosIfAnon = false,
+        sources       = {[source] = true}
+      }
+
+      xPlayer.set('phoneNumber', phoneNumber)
+
+      if PhoneNumbers[xPlayer.job.name] ~= nil then
+        TriggerEvent('esx_phone:addSource', xPlayer.job.name, source)
+      end
+
+  MySQL.Async.fetchAll(
+    'SELECT * FROM user_contacts WHERE identifier = @identifier ORDER BY name ASC',
+    {
+      ['@identifier'] = xIdentity.characterId
+    },
+    function(result2)
+
+      for i=1, #result2, 1 do
+
+        table.insert(contacts, {
+          name   = result2[i].name,
+          number = result2[i].number,
+        })
+      end
+
+      xPlayer.set('contacts', contacts)
+
+      TriggerClientEvent('esx_phone:loaded', _source, phoneNumber, contacts)
+
+    end
+  )
 
 end)
 
@@ -264,9 +372,14 @@ AddEventHandler('esx_phone:addPlayerContact', function(phoneNumber, contactName)
   local xPlayer     = ESX.GetPlayerFromId(_source)
   local foundNumber = false
   local foundPlayer = nil
+  local xIdentity = {}
+
+  TriggerEvent("esx::getIdentity", source, function(data)
+    xIdentity = data
+  end)
 
   MySQL.Async.fetchAll(
-    'SELECT phone_number FROM users WHERE phone_number = @number',
+    'SELECT phone_number FROM characters WHERE phone_number = @number',
     {
       ['@number'] = phoneNumber
     },
@@ -305,7 +418,7 @@ AddEventHandler('esx_phone:addPlayerContact', function(phoneNumber, contactName)
             MySQL.Async.execute(
               'INSERT INTO user_contacts (identifier, name, number) VALUES (@identifier, @name, @number)',
               {
-                ['@identifier'] = xPlayer.identifier,
+                ['@identifier'] = xIdentity.characterId,
                 ['@name']       = contactName,
                 ['@number']     = phoneNumber
               },
