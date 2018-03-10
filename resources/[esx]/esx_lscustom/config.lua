@@ -12,7 +12,7 @@ Config.Zones = {
         Name  = "Los Santos Customs",
         Hint  = _U('press_custom')
     },
-     ls2 = {
+    ls2 = {
 		Pos   = { x = -1155.536, y = -2007.183, z = 12.744},
 		Size  = {x = 3.0, y = 3.0, z = 0.2},
 		Color = {r = 204, g = 204, b = 0},
@@ -20,7 +20,7 @@ Config.Zones = {
 		Name  = "Los Santos Customs",
 		Hint  = _U('press_custom')
     },
-     ls3 = {
+    ls3 = {
 		Pos   = { x = 731.8163, y = -1088.822, z = 21.733},
 		Size  = {x = 3.0, y = 3.0, z = 0.2},
 		Color = {r = 204, g = 204, b = 0},
@@ -28,7 +28,7 @@ Config.Zones = {
 		Name  = "Los Santos Customs",
 		Hint  = _U('press_custom')
     },
-     ls4 = {
+    ls4 = {
 		Pos   = { x = 1175.04, y = 2640.216, z = 37.32177},
 		Size  = {x = 3.0, y = 3.0, z = 0.2},
 		Color = {r = 204, g = 204, b = 0},
@@ -36,7 +36,7 @@ Config.Zones = {
 		Name  = "Los Santos Customs",
 		Hint  = _U('press_custom')
     },
-     ls5 = {
+    ls5 = {
 		Pos   = { x = 110.99, y = 6626.39, z = 30.89},
 		Size  = {x = 3.0, y = 3.0, z = 0.2},
 		Color = {r = 204, g = 204, b = 0},
@@ -496,159 +496,165 @@ Config.Menus = {
 		modXenon = _U('headlights'),
 		plateIndex = _U('licenseplates'),
 		wheels = _U('wheels'),
-		modPlateHolder   	= 'Plaque - Contour',
-		modVanityPlate   	= 'Plaque - Avant',
-		modTrimA    		= 'Intérieur',
-		modOrnaments    	= 'Ornements',
-		modDashboard    	= 'Tableau de bord',
-		modDial    			= 'Compteur de vitesse',
-		modDoorSpeaker    	= 'Sono portière',
-		modSeats    		= 'Sièges',
-		modSteeringWheel    = 'Volant',
-		modShifterLeavers   = 'Levier de vitesse',
-		modAPlate    		= 'Plage arrière',
-		modSpeakers    		= 'Sono',
-		modTrunk    		= 'Coffre',
-		modHydrolic    		= 'Hydrolique',
-		modEngineBlock    	= 'Bloc moteur',
-		modAirFilter    	= 'Filtre à air',
-		modStruts    		= 'Struts',
-		modArchCover    	= 'Cache-roues',
-		modAerials    		= 'Antennes',
-		modTrimB    		= 'Ailes',
-		modTank    			= 'Réservoir',
-		modWindows    		= 'Fenêtres',
+		bennys = "Benny's"
+	},
+
+	bennys = {
+		label = "Benny's Tuning",
+		parent = 'cosmetics',
+		modPlateHolder   	= 'Nummernschild hinten',
+		modVanityPlate   	= 'Nummernschild vorne',
+		modTrimA    		= 'Innenraum',
+		modOrnaments    	= 'Ornamente',
+		modDashboard    	= 'Armaturenbrett',
+		modDial    			= 'Tachometer',
+		modDoorSpeaker    	= 'Tür Lautsprecher',
+		modSeats    		= 'Sitze',
+		modSteeringWheel    = 'Lenkrad',
+		modShifterLeavers   = 'Schalthebel',
+		modAPlate    		= 'Rückbankschild',
+		modSpeakers    		= 'Lautsprecher',
+		modTrunk    		= 'Kofferraum',
+		modHydrolic    		= 'Hydraulik',
+		modEngineBlock    	= 'Motorblock',
+		modAirFilter    	= 'Ansaugsystem',
+		modStruts    		= 'Gestänge',
+		modArchCover    	= 'Radabdeckungen',
+		modAerials    		= 'Antenne',
+		modTrimB    		= 'Flügel',
+		modTank    			= 'Tank',
+		modWindows    		= 'Fensterrand',
 		modLivery    		= 'Stickers'
 	},
 
 	modPlateHolder = {
-		label = 'Plaque - Contour',
+		label = 'Nummernschild hinten',
 		parent = 'cosmetics',
 		modType = 25,
 		price = 3.49
 	},
 	modVanityPlate = {
-		label = 'Plaque - Avant',
+		label = 'Nummernschild vorne',
 		parent = 'cosmetics',
 		modType = 26,
 		price = 1.1
 	},
 	modTrimA = {
-		label = 'Intérieur',
+		label = 'Innenraum',
 		parent = 'cosmetics',
 		modType = 27,
 		price = 6.98
 	},
 	modOrnaments = {
-		label = 'Ornements',
+		label = 'Ornamente',
 		parent = 'cosmetics',
 		modType = 28,
 		price = 0.9
 	},
 	modDashboard = {
-		label = 'Tableau de bord',
+		label = 'Armaturenbrett',
 		parent = 'cosmetics',
 		modType = 29,
 		price = 4.65
 	},
 	modDial = {
-		label = 'Compteur de vitesse',
+		label = 'Tachometer',
 		parent = 'cosmetics',
 		modType = 30,
 		price = 4.19
 	},
 	modDoorSpeaker = {
-		label = 'Sono portière',
+		label = 'Sitze',
 		parent = 'cosmetics',
 		modType = 31,
 		price = 5.58
 	},
 	modSeats = {
-		label = 'Siège',
+		label = 'Lenkrad',
 		parent = 'cosmetics',
 		modType = 32,
 		price = 4.65
 	},
 	modSteeringWheel = {
-		label = 'Volant',
+		label = 'Schalthebel',
 		parent = 'cosmetics',
 		modType = 33,
 		price = 4.19
 	},
 	modShifterLeavers = {
-		label = 'Levier de vitesse',
+		label = 'Rückbankschild',
 		parent = 'cosmetics',
 		modType = 34,
 		price = 3.26
 	},
 	modAPlate = {
-		label = 'Plage arrière',
+		label = 'Rückbankschild',
 		parent = 'cosmetics',
 		modType = 35,
 		price = 4.19
 	},
 	modSpeakers = {
-		label = 'Sono',
+		label = 'Lautsprecher',
 		parent = 'cosmetics',
 		modType = 36,
 		price = 6.98
 	},
 	modTrunk = {
-		label = 'Coffre',
+		label = 'Kofferraum',
 		parent = 'cosmetics',
 		modType = 37,
 		price = 5.58
 	},
 	modHydrolic = {
-		label = 'Hydrolique',
+		label = 'Hydraulik',
 		parent = 'cosmetics',
 		modType = 38,
 		price = 5.12
 	},
 	modEngineBlock = {
-		label = 'Bloc moteur',
+		label = 'Motorblock',
 		parent = 'cosmetics',
 		modType = 39,
 		price = 5.12
 	},
 	modAirFilter = {
-		label = 'Filtre a air',
+		label = 'Ansaugsystem',
 		parent = 'cosmetics',
 		modType = 40,
 		price = 3.72
 	},
 	modStruts = {
-		label = 'Struts',
+		label = 'Gestänge',
 		parent = 'cosmetics',
 		modType = 41,
 		price = 6.51
 	},
 	modArchCover = {
-		label = 'Cache-roues',
+		label = 'Radabdeckungen',
 		parent = 'cosmetics',
 		modType = 42,
 		price = 4.19
 	},
 	modAerials = {
-		label = 'Antennes',
+		label = 'Antenne',
 		parent = 'cosmetics',
 		modType = 43,
 		price = 1.12
 	},
 	modTrimB = {
-		label = 'Ailes',
+		label = 'Flügel',
 		parent = 'cosmetics',
 		modType = 44,
 		price = 6.05
 	},
 	modTank = {
-		label = 'Réservoir',
+		label = 'Tank',
 		parent = 'cosmetics',
 		modType = 45,
 		price = 4.19
 	},
 	modWindows = {
-		label = 'Fenêtres',
+		label = 'Fensterrand',
 		parent = 'cosmetics',
 		modType = 46,
 		price = 4.19

@@ -12,7 +12,7 @@ if Config.MaxInService ~= -1 then
   TriggerEvent('esx_service:activateService', 'mecano', Config.MaxInService)
 end
 
-TriggerEvent('esx_phone:registerNumber', 'mecano', _U('mechanic_customer'), true, true)
+TriggerEvent('esx_phone:registerNumber', 'mecano', 'Mechaniker', true, true)
 TriggerEvent('esx_society:registerSociety', 'mecano', 'Mecano', 'society_mecano', 'society_mecano', 'society_mecano', {type = 'private'})
 
 -------------- Récupération bouteille de gaz -------------

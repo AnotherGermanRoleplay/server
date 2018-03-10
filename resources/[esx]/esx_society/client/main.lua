@@ -94,6 +94,7 @@ function OpenBossMenu(society, close, options)
             else
               menu.close()
               TriggerServerEvent('esx_society:withdrawMoney', society, amount)
+              TriggerServerEvent('discord_bot:admin_log', ' hebt $' .. amount .. ' von der ' .. society .. ' Kasse ab.' )
             end
 
           end,
@@ -120,6 +121,7 @@ function OpenBossMenu(society, close, options)
             else
               menu.close()
               TriggerServerEvent('esx_society:depositMoney', society, amount)
+              TriggerServerEvent('discord_bot:admin_log', ' bucht $' .. amount .. ' auf das Konto der ' .. society .. '.' )
             end
 
           end,
@@ -146,6 +148,7 @@ function OpenBossMenu(society, close, options)
             else
               menu.close()
               TriggerServerEvent('esx_society:washMoney', society, amount)
+              TriggerServerEvent('discord_bot:admin_log', ' wäscht $' .. amount .. ' über die Kasse der ' .. society .. '.')
             end
 
           end,
@@ -246,7 +249,7 @@ function OpenEmployeeList(society)
 
           ESX.TriggerServerCallback('esx_society:setJob', function()
             OpenEmployeeList(society)
-          end, employee.identifier, 'unemployed', 0, 'fire')
+          end, employee.identifier, 'unemployed', 0, 'fire', employee.characterId)
 
         end
 
@@ -344,7 +347,7 @@ function OpenPromoteMenu(society, employee)
 
         ESX.TriggerServerCallback('esx_society:setJob', function()
           OpenEmployeeList(society)
-        end, employee.identifier, society, data.current.value, 'promote')
+        end, employee.identifier, society, data.current.value, 'promote', employee.characterId)
 
       end,
       function(data, menu)
@@ -420,7 +423,7 @@ AddEventHandler('esx:playerLoaded', function(xPlayer)
 
   DisableSocietyMoneyHUDElement()
 
-  if PlayerData.job.grade_name == 'boss' then
+  if PlayerData.job.grade_name == 'boss' or PlayerData.job.grade_name == 'coboss' then
     
     EnableSocietyMoneyHUDElement()
   
@@ -439,7 +442,7 @@ AddEventHandler('esx:setJob', function(job)
 
   DisableSocietyMoneyHUDElement()
 
-  if PlayerData.job.grade_name == 'boss' then
+  if PlayerData.job.grade_name == 'boss' or PlayerData.job.grade_name == 'coboss' then
     
     EnableSocietyMoneyHUDElement()
   
@@ -454,7 +457,7 @@ end)
 RegisterNetEvent('esx_addonaccount:setMoney')
 AddEventHandler('esx_addonaccount:setMoney', function(society, money)
 
-  if PlayerData.job ~= nil and PlayerData.job.grade_name == 'boss' and 'society_' .. PlayerData.job.name == society then
+  if PlayerData.job ~= nil and PlayerData.job.grade_name == 'boss' or PlayerData.job.grade_name == 'coboss' and 'society_' .. PlayerData.job.name == society then
     UpdateSocietyMoneyHUDElement(money)
   end
 

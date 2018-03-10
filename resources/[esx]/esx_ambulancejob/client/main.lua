@@ -252,7 +252,7 @@ function OpenAmbulanceActionsMenu()
     {label = _U('cloakroom'), value = 'cloakroom'}
   }
 
-  if Config.EnablePlayerManagement and PlayerData.job.grade_name == 'boss' then
+  if Config.EnablePlayerManagement and PlayerData.job.grade_name == 'boss' or PlayerData.job.grade_name == 'coboss' then
     table.insert(elements, {label = _U('boss_actions'), value = 'boss_actions'})
   end
 
@@ -271,13 +271,32 @@ function OpenAmbulanceActionsMenu()
       end
 
       if data.current.value == 'boss_actions' then
-        TriggerEvent('esx_society:openBossMenu', 'ambulance', function(data, menu)
-          menu.close()
+        if PlayerData.job.grade_name == 'boss' then
+          TriggerEvent('esx_society:openBossMenu', 'ambulance', function(data, menu)
+            menu.close()
 
-          CurrentAction     = 'menu_boss_actions'
-          CurrentActionMsg  = _U('open_bossmenu')
-          CurrentActionData = {}
-        end)
+            CurrentAction     = 'menu_boss_actions'
+            CurrentActionMsg  = _U('open_bossmenu')
+            CurrentActionData = {}
+          end)
+        elseif PlayerData.job.grade_name == 'coboss' then
+          TriggerEvent('esx_society:openBossMenu', 'ambulance', { false, true, false, true, false }, function(data, menu)
+            menu.close()
+
+            CurrentAction     = 'menu_boss_actions'
+            CurrentActionMsg  = _U('open_bossmenu')
+            CurrentActionData = {}
+          end)
+        elseif PlayerData.job.grade_name == 'trainer' then
+          TriggerEvent('esx_society:openBossMenu', 'ambulance', { false, false, false, true, false }, function(data, menu)
+            menu.close()
+
+            CurrentAction     = 'menu_boss_actions'
+            CurrentActionMsg  = _U('open_bossmenu')
+            CurrentActionData = {}
+          end)
+        end
+        
       end
 
     end,

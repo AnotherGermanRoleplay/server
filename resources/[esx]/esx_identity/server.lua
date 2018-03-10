@@ -232,7 +232,7 @@ end
 --==    Set The Player's Identification        ==
 --===============================================
 function setIdentity(identifier, data, callback)
-    MySQL.Async.execute('UPDATE `users` SET `firstname` = @firstname, `lastname` = @lastname, `dateofbirth` = @dateofbirth, `sex` = @sex, `height` = @height, `job` = @job, `job_grade` = @job_grade, `second_job` = @second_job, `loadout` = @loadout WHERE identifier = @identifier',
+    MySQL.Async.execute('UPDATE `users` SET `firstname` = @firstname, `lastname` = @lastname, `dateofbirth` = @dateofbirth, `sex` = @sex, `height` = @height, `job` = @job, `job_grade` = @job_grade, `second_job` = @second_job, `loadout` = @loadout, `phone_number` = @phone_number WHERE identifier = @identifier',
       {
         ['@identifier']   = identifier,
         ['@firstname']    = data.firstname,
@@ -243,7 +243,8 @@ function setIdentity(identifier, data, callback)
         ['@job']     	= "unemployed",
         ['@job_grade']     	= "0",
         ['@second_job']     	= "unemployed",
-        ['@loadout']     	= "[]"
+        ['@loadout']     	= "[]",
+        ['@phone_number']      = ""
       },
       function(done)
         if callback then
@@ -265,6 +266,7 @@ function setIdentity(identifier, data, callback)
     xPlayer = ESX.GetPlayerFromIdentifier(identifier)
     xPlayer.setJob("unemployed", 0)
     xPlayer.setSecondJob("unemployed", 0)
+    TriggerEvent('esx_phone:refresh', steamid)
 end
 
 function updateLastChar(identifier, callback)

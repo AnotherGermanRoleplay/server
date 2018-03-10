@@ -1,0 +1,8 @@
+-- Begin of log for 03-10-18 --
+== EssentialMode started, version 5.0.0 ==
+User (steam:11000011201aa78) loaded
+User (steam:11000011201aa78) saved and unloaded
+Version mismatch was detected, updater version: 5.0.1(5.0.0)
+== EssentialMode started, version 5.0.0 ==
+User (steam:11000011201aa78) loaded
+User (steam:11000011201aa78) saved and unloaded

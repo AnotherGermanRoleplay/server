@@ -200,18 +200,21 @@ ESX.RegisterServerCallback('esx_society:getSocietyMoney', function(source, cb, s
 end)
 
 ESX.RegisterServerCallback('esx_society:getEmployees', function(source, cb, society)
-
+  local _society = nil 
+  _society = society
   if Config.EnableESXIdentity then
     MySQL.Async.fetchAll(
-      'SELECT * FROM users WHERE job = @job ORDER BY job_grade DESC',
+      'SELECT * FROM characters WHERE job = @job ORDER BY job_grade DESC',
       { ['@job'] = society },
       function (results)
         local employees = {}
 
+
         for i=1, #results, 1 do
           table.insert(employees, {
-            name                 = results[i].firstname .. ' ' .. results[i].lastname,
+            name        = results[i].firstname .. ' ' .. results[i].lastname,
             identifier  = results[i].identifier,
+            characterId = results[i].id,
             job = {
               name        = results[i].job,
               label       = Jobs[results[i].job].label,
@@ -272,34 +275,59 @@ ESX.RegisterServerCallback('esx_society:getJob', function(source, cb, society)
 end)
 
 
-ESX.RegisterServerCallback('esx_society:setJob', function(source, cb, identifier, job, grade, type)
+ESX.RegisterServerCallback('esx_society:setJob', function(source, cb, identifier, job, grade, type, characterId)
 
   local xPlayer = ESX.GetPlayerFromIdentifier(identifier)
 
-  if type == 'hire' then
-    TriggerClientEvent('esx:showNotification', xPlayer.source, _U('you_have_been_hired', job))
-  elseif type == 'promote' then
-    TriggerClientEvent('esx:showNotification', xPlayer.source, _U('you_have_been_promoted'))
-  elseif type == 'fire' then
-    TriggerClientEvent('esx:showNotification', xPlayer.source, _U('you_have_been_fired', xPlayer.getJob().label))
-  end
-
   if xPlayer ~= nil then
+
+    if type == 'hire' then
+      TriggerClientEvent('esx:showNotification', xPlayer.source, _U('you_have_been_hired', job))
+    elseif type == 'promote' then
+      TriggerClientEvent('esx:showNotification', xPlayer.source, _U('you_have_been_promoted'))
+    elseif type == 'fire' then
+      TriggerClientEvent('esx:showNotification', xPlayer.source, _U('you_have_been_fired', xPlayer.getJob().label))
+    end
+
     xPlayer.setJob(job, grade)
   end
 
-  MySQL.Async.execute(
-    'UPDATE users SET job = @job, job_grade = @job_grade WHERE identifier = @identifier',
-    {
-      ['@job']        = job,
-      ['@job_grade']  = grade,
-      ['@identifier'] = identifier
-    },
-    function(rowsChanged)
-      cb()
-    end
-  )
-
+  if Config.EnableESXIdentity then
+    MySQL.Async.execute(
+      'UPDATE characters SET job = @job, job_grade = @job_grade WHERE identifier = @identifier and id = @characterid',
+      {
+        ['@job']          = job,
+        ['@job_grade']    = grade,
+        ['@identifier']   = identifier,
+        ['@characterid']  = characterId
+      },
+      function(rowsChanged)
+        MySQL.Async.execute(
+          'UPDATE users SET job = @job, job_grade = @job_grade WHERE identifier = @identifier',
+          {
+            ['@job']        = job,
+            ['@job_grade']  = grade,
+            ['@identifier'] = identifier
+          },
+          function(rowsChanged)
+            cb()
+          end
+        )
+      end
+    )
+  else  
+    MySQL.Async.execute(
+      'UPDATE users SET job = @job, job_grade = @job_grade WHERE identifier = @identifier',
+      {
+        ['@job']        = job,
+        ['@job_grade']  = grade,
+        ['@identifier'] = identifier
+      },
+      function(rowsChanged)
+        cb()
+      end
+    )
+  end
 end)
 
 ESX.RegisterServerCallback('esx_society:setJobSalary', function(source, cb, job, grade, salary)

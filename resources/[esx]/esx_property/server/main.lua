@@ -204,10 +204,8 @@ AddEventHandler('esx_property:buyProperty', function(propertyName)
   local property = GetProperty(propertyName)
 
   if property.price <= xPlayer.get('money') then
-
     xPlayer.removeMoney(property.price)
     SetPropertyOwned(propertyName, property.price, false, xPlayer.identifier)
-
   else
     TriggerClientEvent('esx:showNotification', source, _U('not_enough'))
   end

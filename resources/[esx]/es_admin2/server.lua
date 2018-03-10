@@ -538,10 +538,24 @@ end, {help = "Crash a user, no idea why this still exists", params = {{name = "u
 
 -- Position
 TriggerEvent('es:addGroupCommand', 'pos', "owner", function(source, args, user)
-	TriggerClientEvent('chatMessage', source, "SYSTEM", {255, 0, 0}, "This command was removed")
+	TriggerClientEvent('es_admin:givePosition', source)
 end, function(source, args, user)
-	TriggerClientEvent('chatMessage', source, "SYSTEM", {255, 0, 0}, "This command was removed")
+	TriggerClientEvent('chatMessage', source, "SYSTEM", {255, 0, 0}, "Insufficienct permissions!")
 end, {help = "Save position to file"})
+
+RegisterServerEvent('es_admin:givePos')
+AddEventHandler('es_admin:givePos', function(str)
+	appendNewPos(str)
+end)
+
+-- Append a message
+function appendNewPos(msg)
+	local file = io.open('resources/[esx]/es_admin2/data/positions.txt', "a")
+	newFile = msg
+	file:write(newFile)
+	file:flush()
+	file:close()
+end
 
 function stringsplit(inputstr, sep)
 	if sep == nil then

@@ -4,6 +4,7 @@ local Vehicles    = {}
 sharedAccountName1 = 'society_police'
 sharedAccountName2 = 'society_mecano'
 sharedAccountName3 = 'society_taxi'
+sharedAccountName4 = 'society_ambulance'
 
 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
@@ -206,7 +207,6 @@ ESX.RegisterServerCallback('esx_vehicleshop:buyVehicle', function (source, cb, v
   end
 
   if xPlayer.get('money') >= vehicleData.price then
-    xPlayer.removeMoney(vehicleData.price)
     TriggerEvent('esx_addonaccount:getSharedAccount', sharedAccountName1, function(account)
       if account ~= nil then
         price = math.floor(vehicleData.price/4)
@@ -215,13 +215,20 @@ ESX.RegisterServerCallback('esx_vehicleshop:buyVehicle', function (source, cb, v
     end)
     TriggerEvent('esx_addonaccount:getSharedAccount', sharedAccountName2, function(account)
       if account ~= nil then
-        price = math.floor(vehicleData.price/8)
+        price = math.floor(vehicleData.price/16)
         account.addMoney(price)
       end
     end)
     TriggerEvent('esx_addonaccount:getSharedAccount', sharedAccountName3, function(account)
       if account ~= nil then
-        price = math.floor(vehicleData.price/8)
+        price = math.floor(vehicleData.price/16)
+        account.addMoney(price)
+      end
+    end)
+    xPlayer.removeMoney(vehicleData.price)
+    TriggerEvent('esx_addonaccount:getSharedAccount', sharedAccountName4, function(account)
+      if account ~= nil then
+        price = math.floor(vehicleData.price/4)
         account.addMoney(price)
       end
     end)
@@ -236,13 +243,20 @@ ESX.RegisterServerCallback('esx_vehicleshop:buyVehicle', function (source, cb, v
     end)
     TriggerEvent('esx_addonaccount:getSharedAccount', sharedAccountName2, function(account)
       if account ~= nil then
-        price = math.floor(vehicleData.price/8)
+        price = math.floor(vehicleData.price/16)
         account.addMoney(price)
       end
     end)
     TriggerEvent('esx_addonaccount:getSharedAccount', sharedAccountName3, function(account)
       if account ~= nil then
-        price = math.floor(vehicleData.price/8)
+        price = math.floor(vehicleData.price/16)
+        account.addMoney(price)
+      end
+    end)
+    xPlayer.removeMoney(vehicleData.price)
+    TriggerEvent('esx_addonaccount:getSharedAccount', sharedAccountName4, function(account)
+      if account ~= nil then
+        price = math.floor(vehicleData.price/4)
         account.addMoney(price)
       end
     end)

@@ -1,0 +1,17 @@
+-- Begin of log for 03-07-18 --
+== EssentialMode started, version 5.0.0 ==
+User (steam:11000011201aa78) loaded
+User (steam:11000011201aa78) saved and unloaded
+User (steam:11000011201aa78) loaded
+User (steam:11000011201aa78) saved and unloaded
+User (steam:11000011201aa78) loaded
+User (steam:11000011201aa78) saved and unloaded
+User (steam:11000011201aa78) loaded
+User (steam:11000011201aa78) saved and unloaded
+== EssentialMode started, version 5.0.0 ==
+User (steam:11000011201aa78) loaded
+User (steam:11000011201aa78) saved and unloaded
+User (steam:11000011201aa78) loaded
+User (steam:11000011201aa78) saved and unloaded
+== EssentialMode started, version 5.0.0 ==
+User (steam:11000011201aa78) loaded
