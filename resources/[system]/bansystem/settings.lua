@@ -3,7 +3,7 @@ settings = {
 	['showDebugOutput'] = true,
 	
 	--[[
-		~id~ = db entry id~
+		~id~ = db entry id
 		~name~ = banned player name
 		~ip~ = banned player ip
 		~steam~ = banned player steamid
@@ -15,5 +15,6 @@ settings = {
 		~adminSteam~ = steamid of admin
 		~adminLicense~ = license of admin
 	]]
-	['playerKickedReason'] = "You're banned until (~until~) by ~admin~ for: ~reason~"
+	['playerKickedReason'] = "You're banned until (~until~) by ~admin~ for: ~reason~",
+	['time'] = "o'clock"
 }

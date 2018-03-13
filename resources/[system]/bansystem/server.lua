@@ -1,21 +1,8 @@
-
-
 AddEventHandler('playerConnecting', function(playerID, setKickReason)
 	local sid, lid, ip = getSortedIdentifiers(source)
 	if (sid == nil or lid == nil or ip == nil) then print("Failed to ban") end
 	
 	local result = nil
-	
-	--[[
-	MySQL.ready(function ()
-		--Sync because we don't want the user to continue loading while the db query is still ongoing
-		result = MySQL.Sync.fetchAll
-		(
-			"SELECT `id`, `userName`, `ip`, `steamid`, `license`, FROM_UNIXTIME(`bannedUntil`), `reason`, FROM_UNIXTIME(`dateTime`), `admin`, `adminSteamId`, `adminLicense` FROM `banned_user` WHERE 1;",
-			{}
-		)
-	end)
-	]]
 	
 	MySQL.ready(function ()
 		--Sync because we don't want the user to continue loading while the db query is still ongoing
@@ -55,21 +42,31 @@ end)
 --TODO(Woogy) might have problems when user has a name that is a keyword in this function. i.e. when ~name~ == "~steam~"
 function convertReason(kickMsg, dbEntry)
 	local msg = kickMsg
-	print(dbEntry["bannedUntil"])
-	print(os.date("%c", dbEntry["bannedUntil"]))
+	--print(dbEntry["bannedUntil"])
+	--print(os.date("%c", dbEntry["bannedUntil"]))
+	
 	msg = msg.gsub(msg, "~id~", dbEntry["id"])
 	msg = msg.gsub(msg, "~name~", dbEntry["userName"])
 	msg = msg.gsub(msg, "~ip~", dbEntry["ip"])
 	msg = msg.gsub(msg, "~steam~", dbEntry["steamid"])
 	msg = msg.gsub(msg, "~license~", dbEntry["license"])
-	msg = msg.gsub(msg, "~until~", tostring(os.date("%c", dbEntry["bannedUntil"])))
+	msg = msg.gsub(msg, "~until~", prettyPrintTime(mySQLTimestampToTable(dbEntry["bannedUntil"])))
 	msg = msg.gsub(msg, "~reason~", dbEntry["reason"])
-	msg = msg.gsub(msg, "~time~", tostring(os.date("%d, %m, %Y - %H:%M:%S", dbEntry["dateTime"])))
+	msg = msg.gsub(msg, "~time~", prettyPrintTime(mySQLTimestampToTable(dbEntry["dateTime"])))
 	msg = msg.gsub(msg, "~admin~", dbEntry["admin"])
 	msg = msg.gsub(msg, "~adminSteam~", dbEntry["adminSteamId"])
 	msg = msg.gsub(msg, "~adminLicense~", dbEntry["adminLicense"])
 	
 	return msg
+end
+
+function mySQLTimestampToTable(timestamp)
+	--os.date require milliseconds, timestamp is in seconds so we divide by 1000
+	return os.date("*t", timestamp/1000)
+end
+
+function prettyPrintTime(t)
+	return tostring(t.day).."."..tostring(t.month).."."..tostring(t.year).." "..tostring(t.hour)..":"..tostring(t.min).." " ..settings['time']
 end
 
 --[[
