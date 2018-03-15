@@ -1004,6 +1004,7 @@ function updateIdentity(steamid, data, callback)
                 xPlayer.setJob(data.job, data.job_grade)
                 xPlayer.setSecondJob(data.second_job, 0)
                 TriggerEvent('esx_phone:refresh', steamid)
+                TriggerClientEvent('updateSkin', xPlayer.source)
                 if callback then
                     callback(true)
                 end
