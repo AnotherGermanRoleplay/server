@@ -19,7 +19,7 @@ Citizen.CreateThread(function()
     end
 end)
 
-function interaction_menu()
+function interactionMenu()
   ESX.UI.Menu.Open(
     'default', GetCurrentResourceName(), 'interaction',
     {
@@ -79,8 +79,8 @@ Citizen.CreateThread(function()
 
     Citizen.Wait(0)
 
-      if IsControlPressed(0, Keys['I']) and not ESX.UI.Menu.IsOpen('default', GetCurrentResourceName(), 'interaction') then
-          interaction_menu()
+      if IsControlPressed(0, Keys['T']) and not ESX.UI.Menu.IsOpen('default', GetCurrentResourceName(), 'interaction') then
+          interactionMenu()
       end
 
   end
