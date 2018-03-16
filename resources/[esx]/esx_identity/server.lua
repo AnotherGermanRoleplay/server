@@ -304,7 +304,7 @@ function getIdentity(identifier, callback)
   if identifier ~= nil then
     MySQL.Async.fetchAll("SELECT * FROM `users` WHERE `identifier` = @identifier",
       {
-        ['@identifier'] = "steam:11000011201aa78"
+        ['@identifier'] = identifier
       },
       function(result)
         local data = {

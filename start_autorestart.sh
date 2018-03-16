@@ -9,7 +9,7 @@ while true; do
 	else
     	echo "Server crashed or stopped"
     	echo "Server is restarting"
-    	screen -S server1 bash /home/home_nethserver/agrp/fivem/fxs_new/14122017/run.sh +exec /home/home_nethserver/agrp/fivem/cfx/server.cfg > logfile.log
+    	screen -S server1 bash /home/fxserver/run.sh +exec /home/fivem/server.cfg > logfile.log
     	echo "Server has been started"
 
 	fi
