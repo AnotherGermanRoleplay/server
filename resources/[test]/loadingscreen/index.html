@@ -23,7 +23,7 @@
                 <h3></h3>
                 <div class="loadbar"><div class="thingy"></div></div>
                 <p class="paragraph first" style="display: block;">Herzlich Willkommen auf Another German Roleplay!</p>
-                <p class="paragraph " style="display: none;">Forum: another-grp.de</p>
+                <p class="paragraph " style="display: none;">Forum: https://another-grp.de</p>
                 <p class="paragraph" style="display: none;">Teamspeak: 92.51.167.35:2155</p>
                 <p class="paragraph" style="display: none;">Discord: discord.gg/FKfU9WM</p>
                 <p class="timer" style="float: right;">Ladezeit: 0 Sekunden</p>
@@ -49,12 +49,15 @@ const emoji = {
 };
 
 const backgrounds = {
-    0: ['loadscreen.jpg'],
-    1: ['loadscreen0.jpg'],
-    2: ['loadscreen1.jpg'],
-    3: ['loadscreen2.jpg']
-    4: ['loadscreen3.jpg']
-    5: ['loadscreen4.jpg']
+    1: ['loadscreen.jpg'],
+    2: ['loadscreen0.jpg'],
+    3: ['loadscreen1.jpg'],
+    4: ['loadscreen2.jpg'],
+    5: ['loadscreen3.jpg'],
+    6: ['loadscreen4.jpg'],
+    7: ['loadscreen5.jpg'],
+    8: ['loadscreen6.jpg'],
+    9: ['loadscreen7.jpg']
 }
 
 
@@ -66,8 +69,6 @@ let isPause = false;
 const timeout = 4000;
 const timeout2 = 12000;
 
-let fuck;
-
 $(document).ready(function() {
     let start = new Date;
 
@@ -75,7 +76,7 @@ $(document).ready(function() {
         $('.timer').text("Ladezeit: " + Math.floor((new Date - start) / 1000) + " Sekunden");
     }, 1000);
 
-    fuck = setTimeout(function nextParagraph() {
+    let fuck = setTimeout(function nextParagraph() {
         var visible = $('.paragraph:visible');
         visible.fadeOut(function() {
             if(visible.next().hasClass('paragraph')){
