@@ -2,9 +2,9 @@
 
 -- Blacklisted vehicle models
 carblacklist = {
-	"kuruma2",
-	"rhino",
-	"savage"
+	-- "kuruma2",
+	-- "rhino",
+	-- "savage"
 }
 
 -- CODE --

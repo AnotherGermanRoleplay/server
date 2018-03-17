@@ -2,8 +2,8 @@
 
 -- Blacklisted weapons
 weaponblacklist = {
-	"WEAPON_MINIGUN",
-	"WEAPON_RAILGUN"
+	-- "WEAPON_MINIGUN",
+	-- "WEAPON_RAILGUN"
 }
 
 -- Don't allow any weapons at all (overrides the blacklist)
