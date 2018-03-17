@@ -35,9 +35,132 @@ AddEventHandler('playerConnecting', function(playerID, setKickReason)
 	end
 end)
 
-AddEventHandler('chatMessage', function(playerID, color, message)
-	
-end)
+TriggerEvent('es:addCommand', 'ban', function (source, args, user)
+	--[[
+		args:
+			1: wildcard name || player id
+			2: duration in minutes
+			3-n: reason
+	]]
+
+	if (#args < 1) then
+		TriggerClientEvent('chatMessage', k, "BAN ERROR", {255, 0, 0}, " "..settings['banerror_numArgs'])
+		return
+	end
+
+	local bannedDuration = nil
+	local bannTimeType = "u"
+	if (#args >= 2) then
+		bannedDuration = tonumber(args[2]) --45
+		if (bannedDuration == nil) then
+			bannedDuration = tonumber(string.sub(args[2], 2)) --d45
+			if(bannedDuration == nil) then
+				TriggerClientEvent('chatMessage', k, "BAN ERROR", {255, 0, 0}, " "..settings['banerror_timeNotNumber'])
+				return
+			end
+
+			bannTimeType = string.sub(args[2], 1, 1)
+			if(bannTimeType ~= "y" or bannTimeType ~= "d" or bannTimeType ~= "h" or bannTimeType ~= "m" or bannTimeType ~= "u") then
+				TriggerClientEvent('chatMessage', k, "BAN ERROR", {255, 0, 0}, " "..settings['banerror_wrongBannTimeType'])
+				return
+			end
+		end
+		bannTimeType = "d"
+	end
+
+	local reason = nil
+	if (#args >= 3) then
+		--remove first two arguments
+		local reasonTable = args
+		reasonTable.remove(1)
+		reasonTable.remove(1)
+
+		reason = table.concat(reasonTable, " ")
+
+	end
+
+	local players = GetPlayers()
+
+	local adminSteamID, adminLicense, _ = getSortedIdentifiers(source)
+	local adminName = GetPlayerName(source)
+
+	--check if args[1] is number or wildcard name
+	local playerName
+	local playerFound = false
+	local playerID = tonumber(args[1])
+	--args[1] is player id?
+	if (playerID==nil) then --no
+		for k,v in pairs(players) do
+			local name = GetPlayerName(v)
+			local i,j = name.find(args[1])
+			if (i ~= nil and j ~= nil) then
+				if (playerFound) then
+					TriggerClientEvent('chatMessage', k, "BAN ERROR", {255, 0, 0}, " "..settings['banerror_tooManyFound'])
+					return
+				end
+
+				playerName = name
+				playerFound = true
+				playerID = v;
+			end
+		end
+	end
+
+	local playerSteamID, playerLicense, playerIP = getSortedIdentifiers(playerID)
+
+	BanPlayer(playerName, playerIP, playerSteamID, playerLicense, bannedDuration, bannTimeType, reason, adminName, adminSteamID, adminLicense)
+end, 
+{
+	help = "Bannt einen Spieler vom Server. Beispiele: /ban Hans d60 Weil du eine Wurst bist (Bannt Hans für 60 Tage) - /ban Karl (Bannt Karl für immer ohne Grundangabe)", 
+	params = 
+	{
+		{
+			name = "Spieler", 
+			help = "Der Name/Die ID des Spielers der gebannt werden soll"
+		},
+		{
+			name = "Zeit (Optional)", 
+			help = "Dauer des Banns (Standard: Unendlich) (Beispiele: 12 oder u oder y2 oder d30 oder h4 oder m45 (12 Tage, Unendlich, 2 Jahre, 30 Tage, 4 Stunden, 45 Minuten)"
+		},
+		{
+			name = "Grund (Optional)", 
+			help = "Der Grund warum wird der Spieler gebannt wird"
+		},
+	}
+})
+
+function BanPlayer(playerName, playerIP, playerSteamID, playerLicense, bannedDuration, bannTimeType, reason, adminName, adminSteamID, adminLicense)
+	local duration = bannedDuration
+	local timeType = ({["u"]="YEAR",["y"]="YEAR",["d"]="DAY",["h"]="HOUR",["m"]="MINUTE"})[bannTimeType]
+
+	if(bannTimeType == "u") then
+		duration = 999
+	end
+
+	MySQL.ready(function ()
+		MySQL.Async.execute
+		(
+			"INSERT INTO `banned_user`(`userName`, `ip`, `steamid`, `license`, `bannedUntil`, `reason`, `dateTime`, `admin`, `adminSteamId`, `adminLicense`) VALUES (@name,@ip,@steam,@license,DATE_ADD(NOW(), INTERVAL @bannedDuration @bannedTimeType),@reason,NOW(),@adminName,@adminSteam,@adminLicense);",
+			{
+				["@name"] = playerName,
+				["@ip"] = playerIP,
+				["@steam"] = playerSteamID,
+				["@license"] = playerLicense,
+				["@bannedDuration"] = duration,
+				["@bannedTimeType"] = timeType,
+				["@reason"] = reason,
+				["@adminName"] = adminName,
+				["@adminSteam"] = adminSteam,
+				["@adminLicense"] = adminLicense
+			},
+
+			function (rowsChanged)
+				--How many rows are affected and changed
+			end
+		)
+		end
+	)
+end
 
 --TODO(Woogy) might have problems when user has a name that is a keyword in this function. i.e. when ~name~ == "~steam~"
 function convertReason(kickMsg, dbEntry)
