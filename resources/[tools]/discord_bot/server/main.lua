@@ -10,7 +10,8 @@ end)
 
 function sendToDiscord(name, message)
   if message == nil or message == '' then return FALSE end
-  PerformHttpRequest('https://discordapp.com/api/webhooks/415269779884998668/tc9zLQ2vNQliwefp5Wr_trb91-HbsINFSRtx-F53uCru03B0OSO0ZYsh_HZGffmY653k',
+  -- #ig-chat
+  PerformHttpRequest('https://discordapp.com/api/webhooks/424565336503877632/Tn7bdKLl1naPoK30FKgqHogAeqgEVVmIiyisImI3kEUaIBzcg0MWhW9tGaKa5--aCWGR',
   	function(err, text, headers) end,
   	'POST',
   	json.encode({username = name, content = message}),
@@ -20,7 +21,8 @@ end
 
 function sendToAdminDiscord(name, message)
   if message == nil or message == '' then return FALSE end
-  PerformHttpRequest('https://discordapp.com/api/webhooks/415269779884998668/tc9zLQ2vNQliwefp5Wr_trb91-HbsINFSRtx-F53uCru03B0OSO0ZYsh_HZGffmY653k',
+  -- #ig-commandinput
+  PerformHttpRequest('https://discordapp.com/api/webhooks/424562852930519041/qzgJHdvuhAJa34A_i34OjhLdGPxTtwzyn5LcP66me_F5AaBXmALQ35wZgqrg7V1yw61e',
     function(err, text, headers) end,
     'POST',
     json.encode({username = name, content = message}),
@@ -31,7 +33,8 @@ end
 
 function sendToLogDiscord(name, message)
   if message == nil or message == '' then return FALSE end
-  PerformHttpRequest('https://discordapp.com/api/webhooks/415269779884998668/tc9zLQ2vNQliwefp5Wr_trb91-HbsINFSRtx-F53uCru03B0OSO0ZYsh_HZGffmY653k',
+  -- #ig-log (weapon und money exchange)
+  PerformHttpRequest('https://discordapp.com/api/webhooks/424565704541470731/_Jj-UhoXF70bD2jUp92eIpNpgFOu73_iS_n2mX6ZMlBI4a1H_Y2PXwB-eClBb1zOoE2j',
     function(err, text, headers) end,
     'POST',
     json.encode({username = name, content = message}),
