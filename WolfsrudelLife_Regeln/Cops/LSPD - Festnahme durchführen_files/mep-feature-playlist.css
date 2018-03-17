@@ -1,0 +1,75 @@
+/*
+    Document        : mep-feature-playlist.css
+    Author          : Andrew Berezovsky <andrew.berezovsky@gmail.com>
+    Original Author : Junaid Qadir Baloch <shekhanzai.baloch@gmail.com>
+*/
+
+/* Start: Show/Hide Playlist*/
+.mejs__controls .mejs__show-playlist button {
+  background: transparent url(controls-playlist.png) no-repeat;
+  background-position: -16px -16px;
+}
+.mejs__controls .mejs__hide-playlist button {
+  background: transparent url(controls-playlist.png) no-repeat;
+  background-position: -16px 0;
+}
+/* End: Show/Hide Playlist */
+
+/* Start: Previous */
+.mejs__controls .mejs__prevtrack button {
+  background: transparent url(controls-playlist.png) no-repeat;
+  background-position: 0 -16px;
+}
+/* End: Previous */
+
+/* Start: Next */
+.mejs__controls .mejs__nexttrack button {
+  background: transparent url(controls-playlist.png) no-repeat;
+}
+/* End: Next */
+
+/* Start: Shuffle */
+.mejs__controls .mejs__shuffle-on button {
+  background: transparent url(controls-playlist.png) no-repeat;
+  background-position: -32px 0;
+}
+.mejs__controls .mejs__shuffle-off button {
+  background: transparent url(controls-playlist.png) no-repeat;
+  background-position: -32px -16px;
+}
+/* End: Shuffle */
+
+/*Start: Playlist*/
+.mejs__playlist {
+  position: absolute;
+  left: 0;
+  height: 200px !important;
+  overflow-y: auto;
+  background: #000000;
+  opacity: 0.8;
+}
+.mejs__playlist ul {
+  margin: 0;
+  padding: 5px;
+}
+.mejs__playlist li {
+  color: white;
+  font-size: 11px;
+  height: 16px;
+  overflow: hidden;
+  margin: 2px;
+  cursor: pointer;
+}
+.mejs__playlist li:hover {
+  color: #a8a8a8;
+}
+.mejs__playlist li.current {
+  color: white;
+  font-weight: bold;
+}
+.mejs__controls {
+  height: 35px!important;
+}
+/*End: Playlist*/
+
+

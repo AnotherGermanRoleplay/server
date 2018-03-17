@@ -1,0 +1,32 @@
+.am_embed,
+.oembed,
+.oembedall-container {
+    width: 90%;
+    text-align:center;
+    margin: auto auto;
+}
+
+.am_embed iframe,
+.oembed iframe,
+.oembedall-container iframe {
+    max-width: 100%;
+}
+
+.embedly-card {
+    text-align:center;
+    margin: auto auto;
+}
+
+.embedly-card-hug {
+    width: 100%;
+}
+
+[id^=player_],
+#player {
+    border: none;
+}
+
+.mediawrapper{
+    width: 430px;
+    min-height: 300px;
+}         

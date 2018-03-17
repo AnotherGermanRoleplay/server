@@ -1,0 +1,61 @@
+ul.thread_tools,
+ul.thread_tools li {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+ul.thread_tools li:before {
+	font-family: FontAwesome;
+	display: inline-block;
+	padding: 0px 0px 2px 2px;
+	margin-bottom: 2px;
+}
+
+ul.thread_tools li.printable:before {
+	font-size: 13px;
+	content: "\f02f"; 
+	color: #666;
+	padding-right: 5px;
+}
+
+ul.thread_tools li.sendthread:before {
+	font-size: 13px;
+	content: "\f023"; 
+	color: #ef7351;
+	padding-right: 5px;
+}
+
+ul.thread_tools li.subscription_add:before {
+	font-size: 13px;
+	content: "\f02e"; 
+	color: #666;
+	padding-right: 6px;
+	padding-left: 3px;
+}
+
+ul.thread_tools li.subscription_remove:before {
+	font-size: 13px;
+	content: "\f097"; 
+	color: #666;
+	padding-right: 6px;
+	padding-left: 3px;
+}
+
+ul.thread_tools li.poll {
+	background-position: 0 -80px;
+}
+
+.showthread_spinner {
+	width: 100%;
+	margin: 0 auto;
+	display: block;
+	text-align: center;
+	padding: 20px;
+}
+
+
+		
+		
+		
+		
