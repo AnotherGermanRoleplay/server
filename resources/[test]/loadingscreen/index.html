@@ -5,7 +5,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     </head>
     <body>
-		<audio autoplay="" id="Loading" loop="">
+		<audio autoplay loop id="Loading">
 			<!-- If you want change the sound please, convert your sound in .ogg and put this in music folder  and change Loading.ogg to your sound .ogg-->
 			<source src="music/Loading.ogg" type="audio/ogg">
 		</audio>
@@ -14,7 +14,7 @@
         <img style="display: none;" class="background hidden" src="loadscreen2.jpg" />
         <div class="backdrop">
             <div class="top">
-                <h1 title="Wolfsrudel Life Roleplay">Wolfsrudel Life Roleplay</h1>
+                <h1 title="Another German Roleplay">Another German Roleplay</h1>
                 <h2 title="Herzlich willkommen!">Herzlich willkommen!</h2>
             </div>
 
@@ -22,10 +22,10 @@
                 <h2 title="Laden... ">Laden... </h2>
                 <h3></h3>
                 <div class="loadbar"><div class="thingy"></div></div>
-                <p class="paragraph first" style="display: block;">Herzlich Willkommen bei Wolfsrudel Life!</p>
-                <p class="paragraph " style="display: none;">Forum: follow</p>
-                <p class="paragraph" style="display: none;">Teamspeak: ts.wolfsrudel.life</p>
-                <p class="paragraph" style="display: none;">Discord: follow</p>
+                <p class="paragraph first" style="display: block;">Herzlich Willkommen auf Another German Roleplay!</p>
+                <p class="paragraph " style="display: none;">Forum: another-grp.de</p>
+                <p class="paragraph" style="display: none;">Teamspeak: 92.51.167.35:2155</p>
+                <p class="paragraph" style="display: none;">Discord: discord.gg/FKfU9WM</p>
                 <p class="timer" style="float: right;">Ladezeit: 0 Sekunden</p>
             </div>
             <div class="bottom">
@@ -49,16 +49,19 @@ const emoji = {
 };
 
 const backgrounds = {
-    1: ['loadscreen.jpg'],
+    0: ['loadscreen.jpg'],
+    1: ['loadscreen0.jpg'],
     2: ['loadscreen1.jpg'],
     3: ['loadscreen2.jpg']
+    4: ['loadscreen3.jpg']
+    5: ['loadscreen4.jpg']
 }
 
 
 let music = $('audio');
-let volume = 0.05;
+let volume = 0.35;
 music.prop('volume', volume);
-let isPause = true;
+let isPause = false;
 
 const timeout = 4000;
 const timeout2 = 12000;
