@@ -7,9 +7,9 @@ Config.EnablePlayerManagement     = true
 Config.EnableArmoryManagement     = false
 Config.EnableESXIdentity          = true -- only turn this on if you are using esx_identity
 Config.EnableNonFreemodePeds      = true -- turn this on if you want custom peds
-Config.EnableSocietyOwnedVehicles = true
+Config.EnableSocietyOwnedVehicles = false
 Config.EnableLicenses             = true
-Config.MaxInService               = -1
+Config.MaxInService               = 7
 Config.Locale                     = 'de'
 
 Config.PoliceStations = {
@@ -25,20 +25,50 @@ Config.PoliceStations = {
     },
 
     AuthorizedWeapons = {
-      { name = 'WEAPON_NIGHTSTICK',       price = 200 },
+      -- { name = 'WEAPON_NIGHTSTICK',       price = 200 },
+      -- { name = 'WEAPON_COMBATPISTOL',     price = 300 },
+      -- { name = 'WEAPON_ASSAULTSMG',       price = 1250 },
+      -- { name = 'WEAPON_ASSAULTRIFLE',     price = 1500 },
+      -- { name = 'WEAPON_PUMPSHOTGUN',      price = 600 },
+      -- { name = 'WEAPON_STUNGUN',          price = 500 },
+      -- { name = 'WEAPON_FLASHLIGHT',       price = 80 },
+      -- { name = 'WEAPON_FIREEXTINGUISHER', price = 120 },
+      -- { name = 'WEAPON_FLAREGUN',         price = 60 },
+      -- { name = 'WEAPON_STICKYBOMB',       price = 250 },
+      -- { name = 'GADGET_PARACHUTE',        price = 300 },
+	  { name = 'WEAPON_NIGHTSTICK',       price = 200 },
       { name = 'WEAPON_COMBATPISTOL',     price = 300 },
       { name = 'WEAPON_ASSAULTSMG',       price = 1250 },
       { name = 'WEAPON_ASSAULTRIFLE',     price = 1500 },
       { name = 'WEAPON_PUMPSHOTGUN',      price = 600 },
       { name = 'WEAPON_STUNGUN',          price = 500 },
       { name = 'WEAPON_FLASHLIGHT',       price = 80 },
-      { name = 'WEAPON_FIREEXTINGUISHER', price = 120 },
+      -- { name = 'WEAPON_FIREEXTINGUISHER', price = 0 },
       { name = 'WEAPON_FLAREGUN',         price = 60 },
-      { name = 'WEAPON_STICKYBOMB',       price = 250 },
       { name = 'GADGET_PARACHUTE',        price = 300 },
+      { name = 'WEAPON_SNIPERRIFLE',      price = 1800 },
     },
 
     AuthorizedVehicles = {
+	  { name = 'police4',   label = 'Streifenfahrzeug 4 [R:0]', rank = 0 },
+
+      { name = 'police',  	label = 'Streifenfahrzeug 1 [R:1]', rank = 1 },
+      { name = 'police2', 	label = 'Streifenfahrzeug 2 [R:1]', rank = 1 },
+      { name = 'police3', 	label = 'Streifenfahrzeug 3 [R:1]', rank = 1 },
+      { name = 'policeb', 	label = 'Motorrad           [R:1]', rank = 1 },
+      { name = 'riot', 		  label = 'Riot (Sperre)      [R:1]', rank = 1 },
+	  
+      { name = 'sheriff', 	label = 'Sheriff 1 (Auto)   [R:2]', rank = 2 },
+      { name = 'sheriff2', 	label = 'Sheriff 2 (SUV)    [R:2]', rank = 2 },
+      { name = 'policet', 	label = 'Transporter        [R:2]', rank = 2 },
+	 
+	    { name = 'polf430', 	label = 'Pursuit Ferrari    [R:2]', rank = 2 },
+      { name = 'pol718', 	  label = 'Pursuit Porsche    [R:2]', rank = 2 },
+	    { name = 'rmodpolice',label = 'Pursuit Nissan     [R:2]', rank = 2 },
+      { name = 'polrs',     label = 'Pursuit Renault    [R:2]', rank = 2 },
+	  
+	    { name = 'fbi', 		  label = 'FBI 1 (Auto)       [R:3]', rank = 3 },
+      { name = 'fbi2', 		  label = 'FBI 2 (SUV)        [R:3]', rank = 3 }
     },
 
     Cloakrooms = {
