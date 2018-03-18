@@ -9,9 +9,15 @@
 			<!-- If you want change the sound please, convert your sound in .ogg and put this in music folder  and change Loading.ogg to your sound .ogg-->
 			<source src="music/Loading.ogg" type="audio/ogg">
 		</audio>
-        <img style="display: block;" class="background visible" src="loadscreen.jpg" />
-        <img style="display: none;" class="background hidden" src="loadscreen1.jpg" />
-        <img style="display: none;" class="background hidden" src="loadscreen2.jpg" />
+        <img style="display: block;" class="background visible" src="screens/loadscreen.jpg" />
+        <img style="display: none;" class="background hidden" src="screens/loadscreen0.jpg" />
+        <img style="display: none;" class="background hidden" src="screens/loadscreen1.jpg" />
+        <img style="display: none;" class="background hidden" src="screens/loadscreen2.jpg" />
+        <img style="display: none;" class="background hidden" src="screens/loadscreen3.jpg" />
+        <img style="display: none;" class="background hidden" src="screens/loadscreen4.jpg" />
+        <img style="display: none;" class="background hidden" src="screens/loadscreen5.jpg" />
+        <img style="display: none;" class="background hidden" src="screens/loadscreen6.jpg" />
+        <img style="display: none;" class="background hidden" src="screens/loadscreen7.jpg" />
         <div class="backdrop">
             <div class="top">
                 <h1 title="Another German Roleplay">Another German Roleplay</h1>
@@ -23,7 +29,7 @@
                 <h3></h3>
                 <div class="loadbar"><div class="thingy"></div></div>
                 <p class="paragraph first" style="display: block;">Herzlich Willkommen auf Another German Roleplay!</p>
-                <p class="paragraph " style="display: none;">Forum: https://another-grp.de</p>
+                <p class="paragraph " style="display: none;">Forum: https://another-grp.com</p>
                 <p class="paragraph" style="display: none;">Teamspeak: 92.51.167.35:2155</p>
                 <p class="paragraph" style="display: none;">Discord: discord.gg/FKfU9WM</p>
                 <p class="timer" style="float: right;">Ladezeit: 0 Sekunden</p>
@@ -61,10 +67,9 @@ const backgrounds = {
 }
 
 
-let music = $('audio');
+let music = document.getElementById("Loading");
 let volume = 0.35;
-music.prop('volume', volume);
-let isPause = false;
+music.volume = volume;
 
 const timeout = 4000;
 const timeout2 = 12000;
