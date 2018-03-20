@@ -5,7 +5,6 @@ TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 function getIdentity(source, callback)
     local identifier = source
-    print(identifier)
     MySQL.Async.fetchAll("SELECT * FROM `users` WHERE `identifier` = @identifier",
         {
             ['@identifier'] = identifier
@@ -27,10 +26,6 @@ function getIdentity(source, callback)
                     skin = result[1]['skin'],
                     phone_number = result[1]['phone_number']
                 }
-                print(data.firstname)
-                print(data.loadout)
-                print(data.phone_number)
-                print(data.phone_number)
                 callback(data)
             else
                 local data = {
@@ -48,10 +43,6 @@ function getIdentity(source, callback)
                     skin = '',
                     phone_number = ''
                 }
-                print(data.firstname)
-                print(data.loadout)
-                print(data.phone_number)
-                print(data.phone_number)
                 callback(data)
             end
         end)
@@ -973,7 +964,6 @@ end)
 -- TODO::Für morgen
 function updateIdentity(steamid, data, callback)
     getIdentity(steamid, function(data1)
-        print("Starts")
         MySQL.Async.execute('UPDATE `characters` SET `job` = @job, `job_grade` = @job_grade, `second_job` = @second_job, `loadout` = @loadout, `skin` = @skin, `phone_number` = @phone_number WHERE identifier = @identifier and firstname = @firstname and lastname = @lastname and dateofbirth = @dateofbirth and sex = @sex',
             {
                 ['@identifier'] = steamid,
@@ -1011,6 +1001,7 @@ function updateIdentity(steamid, data, callback)
                         xPlayer.setJob(data.job, data.job_grade)
                         xPlayer.setSecondJob(data.second_job, 0)
                         TriggerEvent('esx_phone:refresh', steamid)
+                        TriggerClientEvent('updateSkin', xPlayer.source)
                         if callback then
                             callback(true)
                         end
@@ -1085,6 +1076,117 @@ function updateIdentity(steamid, data, callback)
     end
 
     --===============================================
+    --==       Server Event Set Identity           ==
+    --===============================================
+    function setIdentity(identifier, data, callback)
+        MySQL.Async.execute('UPDATE `users` SET `firstname` = @firstname, `lastname` = @lastname, `dateofbirth` = @dateofbirth, `sex` = @sex, `height` = @height, `job` = @job, `job_grade` = @job_grade, `second_job` = @second_job, `loadout` = @loadout, `phone_number` = NULL WHERE identifier = @identifier',
+          {
+            ['@identifier']   = identifier,
+            ['@firstname']    = data.firstname,
+            ['@lastname']     = data.lastname,
+            ['@dateofbirth']  = data.dateofbirth,
+            ['@sex']        = data.sex,
+            ['@height']       = data.height,
+            ['@job']        = "unemployed",
+            ['@job_grade']      = "0",
+            ['@second_job']         = "unemployed",
+            ['@loadout']        = "[]",
+          },
+          function(done)
+            if callback then
+              callback(true)
+            end
+          end)
+
+        MySQL.Async.execute(
+          'INSERT INTO characters (identifier, firstname, lastname, dateofbirth, sex, height) VALUES (@identifier, @firstname, @lastname, @dateofbirth, @sex, @height)',
+          {
+            ['@identifier'] = identifier,
+            ['@firstname']  = data.firstname,
+            ['@lastname']   = data.lastname,
+            ['@dateofbirth'] = data.dateofbirth,
+            ['@sex']        = data.sex,
+            ['@height']     = data.height
+          })
+
+        xPlayer = ESX.GetPlayerFromIdentifier(identifier)
+        xPlayer.setJob("unemployed", 0)
+        xPlayer.setSecondJob("unemployed", 0)
+        TriggerEvent('esx_phone:refresh', steamid)
+    end
+
+    RegisterServerEvent('esx_identity:setIdentity')
+    AddEventHandler('esx_identity:setIdentity', function(data ,skin)
+        local identifier = GetPlayerIdentifiers(source)[1]
+        setIdentity(GetPlayerIdentifiers(source)[1], data, skin, function(callback)
+            if callback == true then
+                print('Successfully Set Identity For ' .. identifier)
+            else
+                print('Failed To Set Identity.')
+            end
+        end)
+    end)
+
+
+    --===============================================
+    --==       Server Event update Last Char       ==
+    --===============================================
+
+    function updateLastChar(identifier, callback)
+
+      getIdentity(identifier, function(data1)
+        MySQL.Async.execute('UPDATE `characters` SET `job` = @job, `job_grade` = @job_grade, `second_job` = @second_job, `loadout` = @loadout, `skin` = @skin WHERE identifier = @identifier and firstname = @firstname and lastname = @lastname and dateofbirth = @dateofbirth and sex = @sex',
+          {
+            ['@identifier']     = identifier,
+            ['@firstname']      = data1.firstname,
+            ['@lastname']       = data1.lastname,
+            ['@dateofbirth']    = data1.dateofbirth,
+            ['@sex']            = data1.sex,
+            ['@height']         = data1.height,
+            ['@job']            = data1.job,
+            ['@job_grade']      = data1.job_grade,
+            ['@second_job']     = data1.second_job,
+            ['@loadout']        = data1.loadout,
+            ['@skin']           = data1.skin
+          },
+          function(done)
+            if callback then
+              callback(true)
+            end
+          end)
+      end)
+
+    end
+
+    RegisterServerEvent('esx_identity:updateLastChar')
+    AddEventHandler('esx_identity:updateLastChar', function(data)
+      local identifier = GetPlayerIdentifiers(source)[1]
+      updateLastChar(GetPlayerIdentifiers(source)[1], function(callback)
+        if callback == true then
+          print('Successfully Saved ')
+        else
+          print('Failed To Save Identity.')
+        end
+      end)
+    end)
+
+
+    --===============================================
+    --==       Player Loaded Event Handler         ==
+    --===============================================
+    AddEventHandler('es:playerLoaded', function(source)
+        local identifier = GetPlayerIdentifiers(source)[1]
+        getIdentity(identifier, function(data)
+            if data.firstname == '' then
+                TriggerClientEvent('esx_identity:showRegisterIdentity', source)
+            else
+                print('Successfully Loaded Identity For ' .. data.firstname .. ' ' .. data.lastname)
+            end
+        end)
+    end)
+
+
+    --===============================================
     --== /charselect 1,2,3 Select Your Active Char ==
     --===============================================
     TriggerEvent('es:addCommand', 'getID', function(source, args, user)
@@ -1103,3 +1205,4 @@ function updateIdentity(steamid, data, callback)
     TriggerEvent('es:addCommand', 'retID', function(source, args, user)
         TriggerClientEvent('menu:getSteamIdent', source)
     end)
+
