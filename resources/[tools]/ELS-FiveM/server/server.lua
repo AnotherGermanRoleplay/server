@@ -8,31 +8,6 @@ if build == nil then
 	build = "master"
 end
 
-PerformHttpRequest('https://git.mrdagree.com/mrdagree/ELS-FiveM-Info/raw/' .. build .. '/VERSION', function(Error, NewestVersion, Header)
-	PerformHttpRequest('https://git.mrdagree.com/mrdagree/ELS-FiveM-Info/raw/' .. build .. '/CHANGES', function(Error, Changes, Header)
-		print("\n---------- ELS (" .. build .. " Build) by MrDaGree ----------")
-		print('           Current Version: ' .. _VERSION)
-		print('           Newest Version: ' .. NewestVersion)
-		print('')
-		if _VERSION ~= NewestVersion then
-			print('---------- Outdated ----------\n')
-			PerformHttpRequest('https://git.mrdagree.com/mrdagree/ELS-FiveM-Info/raw/' .. build .. '/PERVIOUSVERSION', function(Error, PreviousVersion, Header)
-				if _VERSION == PreviousVersion then
-					UpdateAvailable = true
-				end
-				if UpdateAvailable then
-					print('\nPlease download the newest version or use "els update"')
-				end
-			end)
-			
-			print('CHANGES: \n' .. Changes)
-		else
-			UpdateAvailable = false
-			print('\n       All good! You are all up to date.')
-			print('-------------------------------------------------')
-		end
-	end)
-end)
 
 RegisterServerEvent('els:update')
 AddEventHandler('els:update', function()
