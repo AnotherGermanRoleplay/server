@@ -3,7 +3,6 @@ files {
     'keks.css',
     'jquery.fancybox.pack.js',
     'bankgothic.ttf',
-    'screens/loadscreen.jpg',
     'screens/loadscreen0.jpg',
     'screens/loadscreen1.jpg',
     'screens/loadscreen2.jpg',
@@ -12,7 +11,6 @@ files {
     'screens/loadscreen5.jpg',
     'screens/loadscreen6.jpg',
     'screens/loadscreen7.jpg',
-	'music/Loading.ogg',
 }
 
 loadscreen 'index.html'
