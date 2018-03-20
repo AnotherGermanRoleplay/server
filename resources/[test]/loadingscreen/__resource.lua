@@ -3,10 +3,14 @@ files {
     'keks.css',
     'jquery.fancybox.pack.js',
     'bankgothic.ttf',
-    'loadscreen.jpg',
-    'loadscreen1.jpg',
-    'loadscreen2.jpg',
-	'Loading.ogg'
+    'screens/loadscreen0.jpg',
+    'screens/loadscreen1.jpg',
+    'screens/loadscreen2.jpg',
+    'screens/loadscreen3.jpg',
+    'screens/loadscreen4.jpg',
+    'screens/loadscreen5.jpg',
+    'screens/loadscreen6.jpg',
+    'screens/loadscreen7.jpg',
 }
 
 loadscreen 'index.html'
