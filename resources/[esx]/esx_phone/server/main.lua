@@ -380,34 +380,35 @@ function getIdentity(identifier, callback)
         ['@identifier'] = identifier
       },
       function(result)
-        MySQL.Async.fetchAll("SELECT * FROM `characters` WHERE `identifier` = @identifier AND `firstname` = @firstname AND `lastname` = @lastname AND `job` = @job AND `job_grade` = job_grade AND `second_job` = @second_job",
-          {
-            ['@identifier'] = identifier,
-            ['@firstname'] = result[1].firstname,
-            ['@lastname'] = result[1].lastname,
-            ['@job'] = result[1].job,
-            ['@job_grade'] = result[1].job_grade,
-            ['@second_job'] = result[1].second_job,
-          },
-          function(result1)
-            local data = {
-              identifier	= result1[1]['identifier'],
-              characterId = result1[1]['id'],
-              firstname	= result1[1]['firstname'],
-              lastname	= result1[1]['lastname'],
-              dateofbirth	= result1[1]['dateofbirth'],
-              sex			= result1[1]['sex'],
-              height		= result1[1]['height'],
-              job		    = result1[1]['job'],
-              job_grade	= result1[1]['job_grade'],
-              second_job	= result1[1]['second_job'],
-              loadout     = result1[1]['loadout'],
-              skin		= result1[1]['skin'],
-              phone_number = result1[1]['phone_number']
-            }
-            callback(data)
-          end
-        )
+        --(Woogy) There're some "empty" characters in the db. Characters without a name shouldn't be saved in the db anyway
+          MySQL.Async.fetchAll("SELECT * FROM `characters` WHERE `identifier` = @identifier AND `firstname` = @firstname AND `lastname` = @lastname AND `job` = @job AND `job_grade` = job_grade AND `second_job` = @second_job",
+            {
+              ['@identifier'] = identifier,
+              ['@firstname'] = result[1].firstname,
+              ['@lastname'] = result[1].lastname,
+              ['@job'] = result[1].job,
+              ['@job_grade'] = result[1].job_grade,
+              ['@second_job'] = result[1].second_job,
+            },
+            function(result1)
+              local data = {
+                identifier	= result1[1]['identifier'] or nil,
+                characterId = result1[1]['id'] or nil,
+                firstname	= result1[1]['firstname'] or nil,
+                lastname	= result1[1]['lastname'] or nil,
+                dateofbirth	= result1[1]['dateofbirth'] or nil,
+                sex			= result1[1]['sex'] or nil,
+                height		= result1[1]['height'] or nil,
+                job		    = result1[1]['job'] or nil,
+                job_grade	= result1[1]['job_grade'] or nil,
+                second_job	= result1[1]['second_job'] or nil,
+                loadout     = result1[1]['loadout'] or nil,
+                skin		= result1[1]['skin'] or nil,
+                phone_number = result1[1]['phone_number'] or nil
+              }
+              callback(data)
+            end
+          )
       end
     )
   end
