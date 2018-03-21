@@ -35,7 +35,59 @@ AddEventHandler('playerConnecting', function(playerID, setKickReason)
 	end
 end)
 
-TriggerEvent('es:addCommand', 'ban', function (source, args, user)
+--[[
+	for printing tables
+]]
+local tabsCount = 0
+function prettyPrintTable(o)
+	if type(o) == 'table' then
+		local s = string.rep('\t', tabsCount) .. '{\n'
+		tabsCount = tabsCount + 1
+
+		local i = 1
+		for k,v in pairs(o) do
+			if type(k) ~= 'number' then
+				k = '"'..k..'"'
+			end
+
+
+			if(i == #o) then
+				s = s .. string.rep('\t', tabsCount) .. '['..k..'] = ' .. printTable(v).. '\n'
+			else
+				s = s .. string.rep('\t', tabsCount) .. '['..k..'] = ' .. printTable(v) .. ',\n'
+			end
+			i = i + 1
+		end
+		tabsCount = tabsCount - 1
+		return s .. string.rep('\t', tabsCount) .. '}'
+	else
+		return tostring(o)
+	end
+end
+
+function printTable(o)
+	if type(o) == 'table' then
+		local s = '{ '
+		local i = 1
+		for k,v in pairs(o) do
+			if type(k) ~= 'number' then
+				k = '"'..k..'"'
+			end
+
+			if(i == #o) then
+				s = s .. '['..k..'] = ' .. printTable(v)
+			else
+				s = s .. '['..k..'] = ' .. printTable(v) .. ', '
+			end
+			i = i + 1
+		end
+		return s .. ' }'
+	else
+		return tostring(o)
+	end
+end
+
+TriggerEvent('es:addAdminCommand', 'ban', 1, function (source, args, user)
 	--[[
 		args:
 			1: wildcard name || player id
@@ -44,7 +96,7 @@ TriggerEvent('es:addCommand', 'ban', function (source, args, user)
 	]]
 
 	if (#args < 1) then
-		TriggerClientEvent('chatMessage', k, "BAN ERROR", {255, 0, 0}, " "..settings['banerror_numArgs'])
+		TriggerClientEvent('chatMessage', source, "BAN ERROR", {255, 0, 0}, " "..settings['banerror_numArgs'])
 		return
 	end
 
@@ -55,28 +107,29 @@ TriggerEvent('es:addCommand', 'ban', function (source, args, user)
 		if (bannedDuration == nil) then
 			bannedDuration = tonumber(string.sub(args[2], 2)) --d45
 			if(bannedDuration == nil) then
-				TriggerClientEvent('chatMessage', k, "BAN ERROR", {255, 0, 0}, " "..settings['banerror_timeNotNumber'])
+				TriggerClientEvent('chatMessage', source, "BAN ERROR", {255, 0, 0}, " "..settings['banerror_timeNotNumber'])
 				return
 			end
 
-			bannTimeType = string.sub(args[2], 1, 1)
-			if(bannTimeType ~= "y" or bannTimeType ~= "d" or bannTimeType ~= "h" or bannTimeType ~= "m" or bannTimeType ~= "u") then
-				TriggerClientEvent('chatMessage', k, "BAN ERROR", {255, 0, 0}, " "..settings['banerror_wrongBannTimeType'])
+			bannTimeType = string.sub(args[2], 1, 1):lower()
+			if(bannTimeType ~= "y" and bannTimeType ~= "d" and bannTimeType ~= "h" and bannTimeType ~= "m" and bannTimeType ~= "u") then
+				TriggerClientEvent('chatMessage', source, "BAN ERROR", {255, 0, 0}, " "..settings['banerror_wrongBannTimeType'])
 				return
 			end
+		else
+			bannTimeType = "d"
 		end
-		bannTimeType = "d"
 	end
 
-	local reason = nil
+	local reason = settings['noReason']
 	if (#args >= 3) then
 		--remove first two arguments
-		local reasonTable = args
-		reasonTable.remove(1)
-		reasonTable.remove(1)
+		local reasonTable = {table.unpack(args)}
+		table.remove(reasonTable, 1)
+		table.remove(reasonTable, 1)
+		--print("reasonTable:\n"..prettyPrintTable(reasonTable))
 
 		reason = table.concat(reasonTable, " ")
-
 	end
 
 	local players = GetPlayers()
@@ -91,11 +144,14 @@ TriggerEvent('es:addCommand', 'ban', function (source, args, user)
 	--args[1] is player id?
 	if (playerID==nil) then --no
 		for k,v in pairs(players) do
+			print("-------------------------- "..tostring(args[1]))
 			local name = GetPlayerName(v)
-			local i,j = name.find(args[1])
+			print("-------------------------- "..tostring(name))
+			local i,j = name:lower():find(args[1]:lower())
+			print("-------------------------- "..tostring(i)..", "..tostring(j))
 			if (i ~= nil and j ~= nil) then
 				if (playerFound) then
-					TriggerClientEvent('chatMessage', k, "BAN ERROR", {255, 0, 0}, " "..settings['banerror_tooManyFound'])
+					TriggerClientEvent('chatMessage', source, "BAN ERROR", {255, 0, 0}, " "..settings['banerror_tooManyFound'])
 					return
 				end
 
@@ -106,9 +162,25 @@ TriggerEvent('es:addCommand', 'ban', function (source, args, user)
 		end
 	end
 
-	local playerSteamID, playerLicense, playerIP = getSortedIdentifiers(playerID)
+	if(not playerFound) then
+		TriggerClientEvent('chatMessage', source, "BAN ERROR", {255, 0, 0}, " "..settings['banerror_noPlayerfound'])
+	else
+		local playerSteamID, playerLicense, playerIP = getSortedIdentifiers(playerID)
 
-	BanPlayer(playerName, playerIP, playerSteamID, playerLicense, bannedDuration, bannTimeType, reason, adminName, adminSteamID, adminLicense)
+		print(playerName)
+		print(playerIP)
+		print(playerSteamID)
+		print(playerLicense)
+		print(bannedDuration)
+		print(bannTimeType)
+		print(reason)
+		print(adminName)
+		print(adminSteamID)
+		print(adminLicense)
+		--BanPlayer(playerName, playerIP, playerSteamID, playerLicense, bannedDuration, bannTimeType, reason, adminName, adminSteamID, adminLicense)
+	end
+end, function(source, args, user)
+	TriggerClientEvent('chatMessage', source, "ERROR", {255, 0, 0}, " "..settings['banerror_noPermission'])
 end, 
 {
 	help = "Bannt einen Spieler vom Server. Beispiele: /ban Hans d60 Weil du eine Wurst bist (Bannt Hans für 60 Tage) - /ban Karl (Bannt Karl für immer ohne Grundangabe)", 
@@ -130,12 +202,8 @@ end,
 })
 
 function BanPlayer(playerName, playerIP, playerSteamID, playerLicense, bannedDuration, bannTimeType, reason, adminName, adminSteamID, adminLicense)
-	local duration = bannedDuration
+	local duration = bannedDuration or 999
 	local timeType = ({["u"]="YEAR",["y"]="YEAR",["d"]="DAY",["h"]="HOUR",["m"]="MINUTE"})[bannTimeType]
-
-	if(bannTimeType == "u") then
-		duration = 999
-	end
 
 	MySQL.ready(function ()
 		MySQL.Async.execute
