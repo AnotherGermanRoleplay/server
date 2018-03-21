@@ -20,5 +20,5 @@ settings = {
 	['banerror_tomanyfound'] = "Zu viele Spieler gefunden!",
 	['banerror_numargs'] = "Mindestens Name oder ID müssen eingegeben werden!",
 	['banerror_timeNotNumber'] = "Die Dauer des Banns muss als Zahl angegeben werden.",
-	['banerror_wrongBannTimeType'] = "Unbekannte Zeitangabe (Gültig: y, d, h, m, u")
+	['banerror_wrongBannTimeType'] = "Unbekannte Zeitangabe (Gültig: y, d, h, m, u)"
 }
