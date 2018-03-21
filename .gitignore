@@ -45,3 +45,6 @@ mtsaves/
 *[lL]og*/*
 
 .idea/
+*.log
+resources/[essential]/essentialmode/logs/
+server.cfg
