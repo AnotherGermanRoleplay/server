@@ -48,3 +48,5 @@ mtsaves/
 *.log
 resources/[essential]/essentialmode/logs/
 server.cfg
+loadscreen_hq.zip
+citizen/*
