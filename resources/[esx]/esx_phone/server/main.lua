@@ -381,7 +381,7 @@ function getIdentity(identifier, callback)
       },
       function(result)
         --(Woogy) There're some "empty" characters in the db. Characters without a name shouldn't be saved in the db anyway
-          MySQL.Async.fetchAll("SELECT * FROM `characters` WHERE `identifier` = @identifier AND `firstname` = @firstname AND `lastname` = @lastname AND `job` = @job AND `job_grade` = job_grade AND `second_job` = @second_job",
+          MySQL.Async.fetchAll("SELECT * FROM `characters` WHERE `identifier` = @identifier AND `firstname` = @firstname AND `lastname` = @lastname AND `job` = @job AND `job_grade` = @job_grade AND `second_job` = @second_job",
             {
               ['@identifier'] = identifier,
               ['@firstname'] = result[1].firstname,
