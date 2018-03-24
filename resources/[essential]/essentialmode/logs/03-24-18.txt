@@ -1,0 +1,8 @@
+-- Begin of log for 03-24-18 --
+== EssentialMode started, version 5.0.1 ==
+== EssentialMode started, version 5.0.1 ==
+== EssentialMode started, version 5.0.1 ==
+== EssentialMode started, version 5.0.1 ==
+== EssentialMode started, version 5.0.1 ==
+== EssentialMode started, version 5.0.1 ==
+User (steam:110000106abab10) loaded
