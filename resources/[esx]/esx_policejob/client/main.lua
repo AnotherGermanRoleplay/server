@@ -467,7 +467,7 @@ function OpenCloakroomMenu()
         ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
 
         if skin.sex == 0 then
-          local model = GetHashKey("s_m_y_swat_01")
+          local model = GetHashKey("ig_fbisuit_01")
 
           RequestModel(model)
           while not HasModelLoaded(model) do
@@ -478,7 +478,7 @@ function OpenCloakroomMenu()
           SetPlayerModel(PlayerId(), model)
           SetModelAsNoLongerNeeded(model)
       else
-          local model = GetHashKey("s_m_y_swat_01")
+          local model = GetHashKey("ig_fbisuit_01")
 
           RequestModel(model)
           while not HasModelLoaded(model) do
@@ -521,7 +521,7 @@ function OpenArmoryMenu(station)
       {label = 'Déposer objet',  value = 'put_stock'}
     }
 
-    if PlayerData.job.grade_name == 'boss' then
+    if PlayerData.job.grade_name == 'boss' or PlayerData.job.grade_name == 'captain' then
       table.insert(elements, {label = _U('buy_weapons'), value = 'buy_weapons'})
     end
 
@@ -628,19 +628,20 @@ function OpenVehicleSpawnerMenu(station, partNum)
           elements = elements,
         },
         function(data, menu)
-
           menu.close()
 
           local vehicleProps = data.current.value
-
-          ESX.Game.SpawnVehicle(vehicleProps.model, vehicles[partNum].SpawnPoint, 270.0, function(vehicle)
-            ESX.Game.SetVehicleProperties(vehicle, vehicleProps)
-            local playerPed = GetPlayerPed(-1)
-            TaskWarpPedIntoVehicle(playerPed,  vehicle,  -1)
-          end)
-
-          TriggerServerEvent('esx_society:removeVehicleFromGarage', 'police', vehicleProps)
-
+		  
+		if (PlayerData.job.grade >= vehicles[partNum].rank) then
+			ESX.Game.SpawnVehicle(vehicleProps.model, vehicles[partNum].SpawnPoint, 270.0, function(vehicle)
+				ESX.Game.SetVehicleProperties(vehicle, vehicleProps)
+				local playerPed = GetPlayerPed(-1)
+				TaskWarpPedIntoVehicle(playerPed, vehicle, -1)
+			end)
+			TriggerServerEvent('esx_society:removeVehicleFromGarage', 'police', vehicleProps)
+		  else
+			-- ERROR
+			ESX.ShowNotification('Du kannst dieses Auto mit deinem aktuellen Cop-Rang nicht ausparken.')
         end,
         function(data, menu)
 
@@ -666,7 +667,7 @@ function OpenPoliceActionsMenu()
   ESX.UI.Menu.Open(
     'default', GetCurrentResourceName(), 'police_actions',
     {
-      title    = 'Police',
+      title    = 'LSPD',
       align    = 'top-left',
       elements = {
         {label = _U('citizen_interaction'), value = 'citizen_interaction'},
@@ -821,7 +822,7 @@ function OpenPoliceActionsMenu()
               {label = _U('barrier'), value = 'prop_barrier_work06a'},
               {label = _U('spikestrips'),    value = 'p_ld_stinger_s'},
               {label = _U('box'),   value = 'prop_boxpile_07d'},
-              {label = _U('cash'),   value = 'hei_prop_cash_crate_half_full'}
+              -- {label = _U('cash'),   value = 'hei_prop_cash_crate_half_full'}
             },
           },
           function(data2, menu2)
@@ -861,7 +862,19 @@ function OpenPoliceActionsMenu()
 
     end
   )
+end
 
+function openPolice()
+  if PlayerData.job ~= nil and PlayerData.job.name == 'police' and not ESX.UI.Menu.IsOpen('default', GetCurrentResourceName(), 'police_actions') and (GetGameTimer() - GUI.Time) > 150 then
+    OpenPoliceActionsMenu()
+    GUI.Time = GetGameTimer()
+  end
+end
+
+function getJob()
+  if PlayerData.job ~= nil then
+  return PlayerData.job.name
+  end
 end
 
 function OpenIdentityCardMenu(player)
@@ -885,31 +898,31 @@ function OpenIdentityCardMenu(player)
 
       if data.sex ~= nil then
         if (data.sex == 'm') or (data.sex == 'M') then
-          sex = 'Male'
+          sex = 'Mann'
         else
-          sex = 'Female'
+          sex = 'Frau'
         end
-        sexLabel = 'Sex : ' .. sex
+        sexLabel = 'Geschlecht : ' .. sex
       else
-        sexLabel = 'Sex : Unknown'
+        sexLabel = 'Geschlecht : Unbekannt'
       end
 
       if data.dob ~= nil then
-        dobLabel = 'DOB : ' .. data.dob
+        dobLabel = 'Geb. : ' .. data.dob
       else
-        dobLabel = 'DOB : Unknown'
+        dobLabel = 'Geb. : Unbekannt'
       end
 
       if data.height ~= nil then
-        heightLabel = 'Height : ' .. data.height
+        heightLabel = 'Größe : ' .. data.height
       else
-        heightLabel = 'Height : Unknown'
+        heightLabel = 'Größe : Unbekannt'
       end
 
       if data.name ~= nil then
         idLabel = 'ID : ' .. data.name
       else
-        idLabel = 'ID : Unknown'
+        idLabel = 'ID : Unbekannt'
       end
 
       local elements = {
@@ -927,7 +940,7 @@ function OpenIdentityCardMenu(player)
 
       if data.licenses ~= nil then
 
-        table.insert(elements, {label = '--- Licenses ---', value = nil})
+        table.insert(elements, {label = '--- Lizenzen ---', value = nil})
 
         for i=1, #data.licenses, 1 do
           table.insert(elements, {label = data.licenses[i].label, value = nil})
@@ -975,7 +988,7 @@ function OpenIdentityCardMenu(player)
 
       if data.licenses ~= nil then
 
-        table.insert(elements, {label = '--- Licenses ---', value = nil})
+        table.insert(elements, {label = '--- Lizenzen ---', value = nil})
 
         for i=1, #data.licenses, 1 do
           table.insert(elements, {label = data.licenses[i].label, value = nil})
@@ -1025,7 +1038,7 @@ function OpenBodySearchMenu(player)
       amount         = blackMoney
     })
 
-    table.insert(elements, {label = '--- Armes ---', value = nil})
+    table.insert(elements, {label = '--- Waffen ---', value = nil})
 
     for i=1, #data.weapons, 1 do
       table.insert(elements, {
@@ -1089,10 +1102,13 @@ function OpenFineMenu(player)
       title    = _U('fine'),
       align    = 'top-left',
       elements = {
-        {label = _U('traffic_offense'),   value = 0},
-        {label = _U('minor_offense'),     value = 1},
-        {label = _U('average_offense'),   value = 2},
-        {label = _U('major_offense'),     value = 3}
+		{label = 'STVO / Verkehrsdelikte',     		value = 0},
+		{label = 'BtMG / Drogen',     				value = 1},
+		{label = 'StGB / Wirtschaftskriminalität',  value = 2},
+		{label = 'StGB / Waffendelikte',     		value = 3},
+		{label = 'StGB / Körperliche Integrität',   value = 4},
+		{label = 'StGB / Umgang mit Beamten',     	value = 5},
+		{label = 'StGB / Sonstige Delikte',     	value = 6}
       },
     },
     function(data, menu)
@@ -1409,7 +1425,7 @@ function OpenPutStocksMenu()
 
             local count = tonumber(data2.value)
 
-            if count == nil then
+            if count == nil or count < 1 then
               ESX.ShowNotification(_U('quantity_invalid'))
             else
               menu2.close()
@@ -1449,7 +1465,7 @@ RegisterNetEvent('esx_phone:loaded')
 AddEventHandler('esx_phone:loaded', function(phoneNumber, contacts)
 
   local specialContact = {
-    name       = 'Police',
+    name       = 'Polizei',
     number     = 'police',
     base64Icon = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NDFGQTJDRkI0QUJCMTFFN0JBNkQ5OENBMUI4QUEzM0YiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NDFGQTJDRkM0QUJCMTFFN0JBNkQ5OENBMUI4QUEzM0YiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo0MUZBMkNGOTRBQkIxMUU3QkE2RDk4Q0ExQjhBQTMzRiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo0MUZBMkNGQTRBQkIxMUU3QkE2RDk4Q0ExQjhBQTMzRiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PoW66EYAAAjGSURBVHjapJcLcFTV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'
   }
@@ -1539,7 +1555,7 @@ AddEventHandler('esx_policejob:hasEnteredEntityZone', function(entity)
     CurrentActionData = {entity = entity}
   end
 
-  if GetEntityModel(entity) == GetHashKey('p_ld_stinger_s') then
+  if GetEntityModel(entity) == GetHashKey('p_ld_stinger_s') and PlayerData.job.name ~= 'police' then
 
     local playerPed = GetPlayerPed(-1)
     local coords    = GetEntityCoords(playerPed)
@@ -1579,7 +1595,7 @@ AddEventHandler('esx_policejob:handcuff', function()
       RequestAnimDict('mp_arresting')
 
       while not HasAnimDictLoaded('mp_arresting') do
-        Wait(100)
+        Wait(50)
       end
 
       TaskPlayAnim(playerPed, 'mp_arresting', 'idle', 8.0, -8, -1, 49, 0, 0, 0, 0)
@@ -1669,7 +1685,14 @@ Citizen.CreateThread(function()
   while true do
     Wait(0)
     if IsHandcuffed then
-      DisableControlAction(0, 142, true) -- MeleeAttackAlternate
+      DisableControlAction(0, 24,   true) -- Input Attack
+      DisableControlAction(0, 140,  true) -- Melee Attack Alternate
+      DisableControlAction(0, 141,  true) -- Melee Attack Alternate
+      DisableControlAction(0, 142,  true) -- Melee Attack Alternate
+      DisableControlAction(0, 257,  true) -- Input Attack 2
+      DisableControlAction(0, 263,  true) -- Input Melee Attack
+      DisableControlAction(0, 264,  true) -- Input Melee Attack 2
+      
       DisableControlAction(0, 30,  true) -- MoveLeftRight
       DisableControlAction(0, 31,  true) -- MoveUpDown
     end
@@ -1728,6 +1751,12 @@ Citizen.CreateThread(function()
           end
         end
 
+		for i=1, #v.Helicopters, 1 do
+          if GetDistanceBetweenCoords(coords,  v.Helicopters[i].Spawner.x,  v.Helicopters[i].Spawner.y,  v.Helicopters[i].Spawner.z,  true) < Config.DrawDistance then
+            DrawMarker(Config.MarkerType, v.Helicopters[i].Spawner.x, v.Helicopters[i].Spawner.y, v.Helicopters[i].Spawner.z, 0.0, 0.0, 0.0, 0, 0.0, 0.0, Config.MarkerSize.x, Config.MarkerSize.y, Config.MarkerSize.z, Config.MarkerColor.r, Config.MarkerColor.g, Config.MarkerColor.b, 100, false, true, 2, false, false, false, false)
+          end
+        end
+		
         for i=1, #v.VehicleDeleters, 1 do
           if GetDistanceBetweenCoords(coords,  v.VehicleDeleters[i].x,  v.VehicleDeleters[i].y,  v.VehicleDeleters[i].z,  true) < Config.DrawDistance then
             DrawMarker(Config.MarkerType, v.VehicleDeleters[i].x, v.VehicleDeleters[i].y, v.VehicleDeleters[i].z, 0.0, 0.0, 0.0, 0, 0.0, 0.0, Config.MarkerSize.x, Config.MarkerSize.y, Config.MarkerSize.z, Config.MarkerColor.r, Config.MarkerColor.g, Config.MarkerColor.b, 100, false, true, 2, false, false, false, false)
