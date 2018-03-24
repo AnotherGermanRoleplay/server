@@ -656,6 +656,91 @@ function OpenVehicleSpawnerMenu(station, partNum)
 
     end, 'police')
 
+  else
+
+    local elements = {}
+
+    for i=1, #Config.PoliceStations[station].AuthorizedVehicles, 1 do
+      local vehicle = Config.PoliceStations[station].AuthorizedVehicles[i]
+      table.insert(elements, {label = vehicle.label, value = vehicle.name, rank = vehicle.rank})
+    end
+
+    ESX.UI.Menu.Open(
+      'default', GetCurrentResourceName(), 'vehicle_spawner',
+      {
+        title    = _U('vehicle_menu'),
+        align    = 'top-left',
+        elements = elements,
+      },
+      function(data, menu)
+        menu.close()
+
+        local model = data.current.value
+        local vehicle = GetClosestVehicle(vehicles[partNum].SpawnPoint.x, 
+						vehicles[partNum].SpawnPoint.y, 
+						vehicles[partNum].SpawnPoint.z, 3.0, 0, 71)
+
+        if not DoesEntityExist(vehicle) then
+          local playerPed = GetPlayerPed(-1)
+
+          if Config.MaxInService == -1 then
+			if (PlayerData.job.grade >= data.current.rank) then
+				ESX.Game.SpawnVehicle(model, {
+				  x = vehicles[partNum].SpawnPoint.x,
+				  y = vehicles[partNum].SpawnPoint.y,
+				  z = vehicles[partNum].SpawnPoint.z
+				}, vehicles[partNum].Heading, function(vehicle)
+				  TaskWarpPedIntoVehicle(playerPed,  vehicle,  -1)
+				  SetVehicleMaxMods(vehicle)
+				end)
+			else
+				-- ERROR
+				ESX.ShowNotification('Du kannst dieses Auto mit deinem aktuellen Cop-Rang nicht ausparken.')
+			end
+          else
+
+            ESX.TriggerServerCallback('esx_service:enableService', function(canTakeService, maxInService, inServiceCount)
+
+              if canTakeService then
+
+				if (PlayerData.job.grade >= vehicles[partNum].rank) then
+					ESX.Game.SpawnVehicle(model, {
+					  x = vehicles[partNum].SpawnPoint.x,
+					  y = vehicles[partNum].SpawnPoint.y,
+					  z = vehicles[partNum].SpawnPoint.z
+					}, vehicles[partNum].Heading, function(vehicle)
+					  TaskWarpPedIntoVehicle(playerPed,  vehicle,  -1)
+					  SetVehicleMaxMods(vehicle)
+					end)
+				else
+					-- ERROR
+					ESX.ShowNotification('Du kannst dieses Auto mit deinem aktuellen Cop-Rang nicht ausparken.')
+				end
+
+              else
+                ESX.ShowNotification(_U('service_max') .. inServiceCount .. '/' .. maxInService)
+              end
+
+            end, 'police')
+
+          end
+
+        else
+          ESX.ShowNotification(_U('vehicle_out'))
+        end
+
+      end,
+      function(data, menu)
+
+        menu.close()
+
+        CurrentAction     = 'menu_vehicle_spawner'
+        CurrentActionMsg  = _U('vehicle_spawner')
+        CurrentActionData = {station = station, partNum = partNum}
+
+      end
+    )
+
   end
 
 end
@@ -1751,11 +1836,11 @@ Citizen.CreateThread(function()
           end
         end
 
-		for i=1, #v.Helicopters, 1 do
-          if GetDistanceBetweenCoords(coords,  v.Helicopters[i].Spawner.x,  v.Helicopters[i].Spawner.y,  v.Helicopters[i].Spawner.z,  true) < Config.DrawDistance then
-            DrawMarker(Config.MarkerType, v.Helicopters[i].Spawner.x, v.Helicopters[i].Spawner.y, v.Helicopters[i].Spawner.z, 0.0, 0.0, 0.0, 0, 0.0, 0.0, Config.MarkerSize.x, Config.MarkerSize.y, Config.MarkerSize.z, Config.MarkerColor.r, Config.MarkerColor.g, Config.MarkerColor.b, 100, false, true, 2, false, false, false, false)
-          end
-        end
+		-- for i=1, #v.Helicopters, 1 do
+          -- if GetDistanceBetweenCoords(coords,  v.Helicopters[i].Spawner.x,  v.Helicopters[i].Spawner.y,  v.Helicopters[i].Spawner.z,  true) < Config.DrawDistance then
+            -- DrawMarker(Config.MarkerType, v.Helicopters[i].Spawner.x, v.Helicopters[i].Spawner.y, v.Helicopters[i].Spawner.z, 0.0, 0.0, 0.0, 0, 0.0, 0.0, Config.MarkerSize.x, Config.MarkerSize.y, Config.MarkerSize.z, Config.MarkerColor.r, Config.MarkerColor.g, Config.MarkerColor.b, 100, false, true, 2, false, false, false, false)
+          -- end
+        -- end
 		
         for i=1, #v.VehicleDeleters, 1 do
           if GetDistanceBetweenCoords(coords,  v.VehicleDeleters[i].x,  v.VehicleDeleters[i].y,  v.VehicleDeleters[i].z,  true) < Config.DrawDistance then
