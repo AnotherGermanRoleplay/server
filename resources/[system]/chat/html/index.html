@@ -19,6 +19,7 @@
   <script type="text/x-template" id="app_template">
     <div id="app">
       <div class="chat-window" :style="this.style" :class="{ 'fadeOut animated': !showWindow }">
+		<div class="watermark">Another German RolePlay</div>
         <div class="chat-messages" ref="messages">
           <message v-for="msg in messages"
                    :templates="templates"
@@ -36,11 +37,11 @@
           <p>[Z] - <small>Aktionenmenü</small></p>
           <br>
           <p><b><small>Teamspeak:</small></b></p>
-          <p>92.51.167.35:2155</p><span style="height: 10px; clear: both; display: block;"></span>
+          <p>ts3.another-grp.com</p><span style="height: 10px; clear: both; display: block;"></span>
           <p><b><small>Discord:</small></b></p>
           <p>discord.gg/FKfU9WM</p><span style="height: 10px; clear: both; display: block;"></span>
           <p><b><small>Forum:</small></b></p>
-          <p>another-grp.de</p>
+          <p>another-grp.com</p>
         </div>
       </div>
       <div class="chat-input" v-show="showInput">
