@@ -100,16 +100,13 @@ Citizen.CreateThread(function()
 
   	if GUI.ControlsShowed and IsControlPressed(0, Keys['ENTER']) and (GetGameTimer() - GUI.Time) > 1000 then
 
-  		heure=tonumber(GetClockHours())
-		
-		
-		
-				SendNUIMessage({
-					showControls = false
-				})
+  		local heure = tonumber(GetClockHours())
+		SendNUIMessage({
+			showControls = false
+		})
+		GUI.ControlsShowed = false
+		GUI.Time           = GetGameTimer()
 
-	  		GUI.ControlsShowed = false
-		  	GUI.Time           = GetGameTimer()
 		if heure >= Config.openHours and heure <= Config.closeHours then	
 			TriggerServerEvent('esx_moneywash:startWash', percent)
 		else
@@ -117,6 +114,5 @@ Citizen.CreateThread(function()
 			TriggerServerEvent('esx_moneywash:pasLa')
 		end
     end
-
   end
 end)
