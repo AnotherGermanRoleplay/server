@@ -526,7 +526,7 @@ CREATE TABLE `items` (
   `rare` int(11) NOT NULL DEFAULT 0,
   `can_remove` int(11) NOT NULL DEFAULT 1,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=83 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=84 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of items
@@ -585,6 +585,7 @@ INSERT INTO `items` VALUES ('79', 'donut', 'Donut', '-1', '0', '1');
 INSERT INTO `items` VALUES ('80', 'corny', 'Müsliriegel', '-1', '0', '1');
 INSERT INTO `items` VALUES ('81', 'redbull', 'Dose RedBull', '-1', '0', '1');
 INSERT INTO `items` VALUES ('82', 'coffee', 'Kaffee', '-1', '0', '1');
+INSERT INTO `items` VALUES ('83', 'blackberry', 'BlackBerry MOTION', '-1', '0', '1');
 
 -- ----------------------------
 -- Table structure for jobs
