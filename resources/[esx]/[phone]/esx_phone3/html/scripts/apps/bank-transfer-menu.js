@@ -30,7 +30,7 @@
 
     app.enter = function () {
 
-        const elems = $('#app-bank-transfer-menu .transfer-wrapper div input')
+        const elems = $('#app-bank-transfer-menu .transfer-wrapper div input');
 
         for (let i = 0; i < elems.length; i++) {
 

@@ -56,7 +56,7 @@
             }
 
             case 'transfer' : {
-                $.post('http://esx_phone3/get_players', JSON.stringify({reason: 'bank_transfer'}))
+                $.post('http://esx_phone3/get_players', JSON.stringify({reason: 'bank_transfer'}));
                 break;
             }
 
