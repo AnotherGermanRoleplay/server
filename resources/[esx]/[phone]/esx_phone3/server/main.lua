@@ -370,7 +370,8 @@ AddEventHandler('esx_phone:refresh', function(indentifier)
 
 end)
 
-function getIdentity(identifier, callback)
+function getIdentity(source, callback)
+  local identifier = source
   if identifier ~= nil then
     MySQL.Async.fetchAll("SELECT * FROM `users` WHERE `identifier` = @identifier",
       {
