@@ -10,8 +10,8 @@ end
 
 RegisterServerEvent('esx_holdup:toofar')
 AddEventHandler('esx_holdup:toofar', function(robb)
-    local _source = _source
-    local xPlayer  = ESX.GetPlayerFromId(_source)
+    local _source = source
+    local xPlayers = ESX.GetPlayers()
     rob = false
     for i=1, #xPlayers, 1 do
          local xPlayer = ESX.GetPlayerFromId(xPlayers[i])
@@ -30,7 +30,7 @@ end)
 RegisterServerEvent('esx_holdup:rob')
 AddEventHandler('esx_holdup:rob', function(robb)
 
-    local _source = _source
+    local _source = source
     local xPlayer  = ESX.GetPlayerFromId(_source)
     local xPlayers = ESX.GetPlayers()
 
