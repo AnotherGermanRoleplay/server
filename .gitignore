@@ -45,8 +45,11 @@ mtsaves/
 *[lL]og*/*
 
 .idea/
+*.iml
 *.log
-resources/[essential]/essentialmode/logs/
+resources/[essential]/essentialmode/logs/*
 server.cfg
 loadscreen_hq.zip
 citizen/*
+*.bat
+*.cmd

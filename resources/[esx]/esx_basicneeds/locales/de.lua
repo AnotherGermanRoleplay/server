@@ -1,9 +1,14 @@
 Locales['de'] = {
 
-	['used_bread'] = 'Du hast 1x Burger gegessen',
-	['used_water'] = 'Du hast 1x Wasser getrunken',
+	-----------------[   FOOD   ]-----------------
+	['used_bread'] = 'Du hast einen Burger gegessen',
+	['used_curry'] = 'Du hast einen Teller Curry gegessen',
+	['used_corny'] = 'Du hast einen Müsliriegel gegessen',
+	['used_donut'] = 'Du hast einen Donut gegessen',
 
-	['used_curry'] = 'Du hast 1x Curry gegessen',
-	['used_cola'] = 'Du hast 1x Coke getrunken',
-
+	----------------[   DRINKS   ]----------------
+	['used_cola'] = 'Du hast eine Dose Cola getrunken',
+	['used_coffee'] = 'Du hast einen Kaffee getrunken',
+	['used_redbull'] = 'Du hast eine Dose Redbull getrunken',
+	['used_water'] = 'Du hast eine Flasche Wasser getrunken',
 }

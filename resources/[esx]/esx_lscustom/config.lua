@@ -453,37 +453,37 @@ Config.Menus = {
 		label = _U('engine'),
 		parent = 'upgrades',
 		modType = 11,
-		price = {13.95, 32.56, 65.12, 139.53}
+		price = {5.95, 10.56, 15.12, 20.53}
 	},
 	modBrakes = {
 		label = _U('brakes'),
 		parent = 'upgrades',
 		modType = 12,
-		price = {4.65, 9.3, 18.6, 13.95}
+		price = {3.65, 7.3, 11.6, 13.95}
 	},
 	modTransmission = {
 		label = _U('transmission'),
 		parent = 'upgrades',
 		modType = 13,
-		price = {13.95, 20.93, 46.51}
+		price = {2.95, 6.93, 12.51}
 	},
 	modSuspension = {
 		label = _U('suspension'),
 		parent = 'upgrades',
 		modType = 15,
-		price = {3.72, 7.44, 14.88, 29.77, 40.2}
+		price = {3.72, 7.44, 9.88, 12.77, 15.2}
 	},
 	modArmor = {
 		label = _U('armor'),
 		parent = 'upgrades',
 		modType = 16,
-		price = {69.77, 116.28, 6666666.6, 6666666.6, 6666666.6, 6666666.6}
+		price = {5.77, 9.28, 14.14, 16.88, 20.69, 23.55}
 	},
 	modTurbo = {
 		label = _U('turbo'),
 		parent = 'upgrades',
 		modType = 17,
-		price = {55.81}
+		price = {25.81}
 	},
 	cosmetics = {
 		label = _U('cosmetics'),
@@ -798,7 +798,7 @@ Config.Menus = {
 		label = _U('headlights'),
 		parent = 'cosmetics',
 		modType = 22,
-		price = 3.72
+		price = 2.72
 	},
 	bodyparts = {
 		label = _U('bodyparts'),
@@ -819,67 +819,67 @@ Config.Menus = {
 		label = _U('spoilers'),
 		parent = 'bodyparts',
 		modType = 0,
-		price = 4.65
+		price = 3.15
 	},
 	modFrontBumper = {
 		label = _U('frontbumper'),
 		parent = 'bodyparts',
 		modType = 1,
-		price = 5.12
+		price = 4.12
 	},
 	modRearBumper = {
 		label = _U('rearbumper'),
 		parent = 'bodyparts',
 		modType = 2,
-		price = 5.12
+		price = 4.12
 	},
 	modSideSkirt = {
 		label = _U('sideskirt'),
 		parent = 'bodyparts',
 		modType = 3,
-		price = 4.65
+		price = 3.65
 	},
 	modExhaust = {
 		label = _U('exhaust'),
 		parent = 'bodyparts',
 		modType = 4,
-		price = 5.12
+		price = 4.12
 	},
 	modFrame = {
 		label = _U('cage'),
 		parent = 'bodyparts',
 		modType = 5,
-		price = 5.12
+		price = 4.12
 	},
 	modGrille = {
 		label = _U('grille'),
 		parent = 'bodyparts',
 		modType = 6,
-		price = 3.72
+		price = 2.72
 	},
 	modHood = {
 		label = _U('hood'),
 		parent = 'bodyparts',
 		modType = 7,
-		price = 4.88
+		price = 3.88
 	},
 	modFender = {
 		label = _U('leftfender'),
 		parent = 'bodyparts',
 		modType = 8,
-		price = 5.12
+		price = 4.12
 	},
 	modRightFender = {
 		label = _U('rightfender'),
 		parent = 'bodyparts',
 		modType = 9,
-		price = 5.12
+		price = 4.12
 	},
 	modRoof = {
 		label = _U('roof'),
 		parent = 'bodyparts',
 		modType = 10,
-		price = 5.58
+		price = 4.58
 	},
 	windowTint = {
 		label = _U('windowtint'),

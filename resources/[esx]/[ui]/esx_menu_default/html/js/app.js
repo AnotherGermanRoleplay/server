@@ -216,12 +216,12 @@
 
 						for(let i=0; i<menu.elements.length; i++){
 							if(i == ESX_MENU.pos[focused.namespace][focused.name])
-								menu.elements[i].selected = true
+								menu.elements[i].selected = true;
 							else
 								menu.elements[i].selected = false
 						}
 
-						ESX_MENU.change(focused.namespace, focused.name, elem)
+						ESX_MENU.change(focused.namespace, focused.name, elem);
 						ESX_MENU.render();
 
 						$('#menu_' + focused.namespace + '_' + focused.name).find('.menu-item.selected')[0].scrollIntoView();
@@ -246,12 +246,12 @@
 
 						for(let i=0; i<menu.elements.length; i++){
 							if(i == ESX_MENU.pos[focused.namespace][focused.name])
-								menu.elements[i].selected = true
+								menu.elements[i].selected = true;
 							else
 								menu.elements[i].selected = false
 						}
 
-						ESX_MENU.change(focused.namespace, focused.name, elem)
+						ESX_MENU.change(focused.namespace, focused.name, elem);
 						ESX_MENU.render();
 
 						$('#menu_' + focused.namespace + '_' + focused.name).find('.menu-item.selected')[0].scrollIntoView();
