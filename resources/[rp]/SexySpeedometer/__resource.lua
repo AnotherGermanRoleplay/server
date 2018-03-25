@@ -9,6 +9,8 @@ client_scripts {
 	"skins/id5.lua",
 	"skins/id6.lua",
 	"skins/id7.lua",
+
+
 }
 
 exports {
