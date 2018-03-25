@@ -54,6 +54,7 @@ Config.Weapons = {
   { name = 'WEAPON_PROXMINE', label = _U('weapon_proxmine') },
   { name = 'WEAPON_SNOWBALL', label = _U('weapon_snowball') },
   { name = 'WEAPON_FLAREGUN', label = _U('weapon_flaregun') },
+  { name = 'WEAPON_FLARE', label = 'Flare' },
   { name = 'WEAPON_GARBAGEBAG', label = _U('weapon_garbagebag') },
   { name = 'WEAPON_HANDCUFFS', label = _U('weapon_handcuffs') },
   { name = 'WEAPON_COMBATPDW', label = _U('weapon_combatpdw') },
