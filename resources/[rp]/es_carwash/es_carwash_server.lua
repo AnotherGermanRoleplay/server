@@ -2,7 +2,7 @@
 
 enableprice = true -- true = carwash is paid, false = carwash is free
 
-price = 50 -- you may edit this to your liking. if "enableprice = false" ignore this one
+price = 75 -- you may edit this to your liking. if "enableprice = false" ignore this one
 
 --DO-NOT-EDIT-BELLOW-THIS-LINE--
 
