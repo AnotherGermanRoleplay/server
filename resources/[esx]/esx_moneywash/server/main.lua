@@ -15,7 +15,7 @@ local function WashMoney(source,percent)
 					TriggerClientEvent('esx_moneywash:showNotification', source, 'Du hast nicht genug Geld zum waschen, minimum : $' .. Config.Slice)
 				else
 					
-					local bonus = math.random(0,60)
+					local bonus = math.random(0,58)
 					local washedMoney = math.floor(Config.Slice / 100 * (_percent + bonus))
 					
 					xPlayer.removeAccountMoney('black_money', Config.Slice)
