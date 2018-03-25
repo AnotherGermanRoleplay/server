@@ -47,7 +47,6 @@
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
     let player;
-
     function onYouTubeIframeAPIReady() {
         player = new YT.Player('player', {
             height: '1',
@@ -58,8 +57,8 @@
             }
         });
 
-        if (player.getVolume() > 1) {
-            player.setVolume(100);
+        if (player.getVolume() > 50) {
+            player.setVolume(50);
         }
     }
 
