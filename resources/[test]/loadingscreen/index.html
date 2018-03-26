@@ -46,12 +46,22 @@
     let firstScriptTag = document.getElementsByTagName('script')[0];
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
+    let videos = [
+        'YVkUvmDQ3HY', // Eminem - Without Me
+        'W4VTq0sa9yg', // GTA San Andreas
+        'bR-s4ReIxJo', // Foster the People - Pumped Up Kicks (Remix)
+        'ou-rVp6EbhM', // It's Ok, You're Ok - Bonjr
+        'jqE8M2ZnFL8', // Grand Theft Auto 4 Theme Song
+        'heHc41h47I8', // Pirates of the Caribbean (Froto Remix)
+    ];
+    let videoId = videos[Math.floor(Math.random() * videos.length)];
+
     let player;
     function onYouTubeIframeAPIReady() {
         player = new YT.Player('player', {
             height: '1',
             width: '1',
-            videoId: 'W4VTq0sa9yg',
+            videoId: videoId,
             events: {
                 'onReady': onPlayerReady
             }
