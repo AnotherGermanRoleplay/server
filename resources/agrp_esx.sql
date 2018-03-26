@@ -526,7 +526,7 @@ CREATE TABLE `items` (
   `rare` int(11) NOT NULL DEFAULT 0,
   `can_remove` int(11) NOT NULL DEFAULT 1,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=84 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=89 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of items
@@ -584,8 +584,18 @@ INSERT INTO `items` VALUES ('78', 'sekt', 'Flasche Sekt', '-1', '0', '1');
 INSERT INTO `items` VALUES ('79', 'donut', 'Donut', '-1', '0', '1');
 INSERT INTO `items` VALUES ('80', 'corny', 'Müsliriegel', '-1', '0', '1');
 INSERT INTO `items` VALUES ('81', 'redbull', 'Dose RedBull', '-1', '0', '1');
-INSERT INTO `items` VALUES ('82', 'coffee', 'Kaffee', '-1', '0', '1');
-INSERT INTO `items` VALUES ('83', 'blackberry', 'BlackBerry MOTION', '-1', '0', '1');
+INSERT INTO `items` VALUES ('82', 'coffee', 'Tasse Kaffee', '-1', '0', '1');
+INSERT INTO `items` VALUES ('83', 'blackberry', 'BlackBerry MOTION', '1', '0', '1');
+-- TODO: add item functionality if necessary! vvv
+INSERT INTO `items` VALUES ('84', 'medics1', 'Aspirin', '10', '0', '1');
+INSERT INTO `items` VALUES ('84', 'medics2', 'Antibiotika', '10', '0', '1');
+INSERT INTO `items` VALUES ('84', 'medics3', 'Morphin', '10', '0', '1');
+INSERT INTO `items` VALUES ('84', 'medics4', 'Sufentanil', '10', '0', '1');
+INSERT INTO `items` VALUES ('84', 'medics5', 'Ibuprofen', '10', '0', '1');
+INSERT INTO `items` VALUES ('85', 'roses', 'Bund Rosen', '1', '0', '1');
+INSERT INTO `items` VALUES ('86', 'pralines', 'Schachtel Pralinen', '1', '0', '1');
+INSERT INTO `items` VALUES ('87', 'ring', 'Goldener Ehering (24 Karat)', '2', '0', '1');
+INSERT INTO `items` VALUES ('88', 'defi', 'Defibrilator', '3', '0', '1');
 
 -- ----------------------------
 -- Table structure for jobs
