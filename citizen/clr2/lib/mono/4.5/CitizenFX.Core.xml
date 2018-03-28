@@ -6474,8 +6474,8 @@
             See also: [Resource manifest](https://wiki.fivem.net/wiki/Resource_manifest)
             </summary>
             <param name="metadataKey">The key in the resource manifest.</param>
-            <param name="index">The value index, in a range from [0..GET_NUM_RESOURCE_METDATA-1].</param>
             <param name="resourceName">The resource name.</param>
+            <param name="index">The value index, in a range from [0..GET_NUM_RESOURCE_METDATA-1].</param>
         </member>
         <member name="M:CitizenFX.Core.Native.API.IsDuplicityVersion">
             <summary>

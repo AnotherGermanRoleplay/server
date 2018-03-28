@@ -1419,6 +1419,10 @@ function Global.CanRegisterMissionPeds(amount)
 	return _in(0xBCBF4FEF9FA5D781, amount, _r)
 end
 
+function Global.CanRegisterMissionPickups(p0)
+	return _in(0x0A49D1CB6E34AF72, p0, _r)
+end
+
 function Global.CanRegisterMissionVehicles(amount)
 	return _in(0x7277F1F2E085EE74, amount, _r)
 end
@@ -1443,6 +1447,10 @@ end
 --- this returns if you can use the weapon while using a parachute
 function Global.CanUseWeaponOnParachute(weaponHash)
 	return _in(0xBC7BE5ABC0879F74, _ch(weaponHash), _r)
+end
+
+function Global.CanVehicleParachuteBeActivated(vehicle)
+	return _in(0xA916396DF4154EE3, vehicle, _r)
 end
 
 --- Cancels the currently executing event. See https://wiki.fivem.net/wiki/CancelEvent
@@ -3104,6 +3112,10 @@ function Global.DoesVehicleHaveDecal(vehicle, p1)
 end
 Global.HasVehicleGotDecal = Global.DoesVehicleHaveDecal
 
+function Global.DoesVehicleHaveDoor(vehicle, doorIndex)
+	return _in(0x645F4B6E8499F632, vehicle, doorIndex, _r)
+end
+
 function Global.DoesVehicleHaveRoof(vehicle)
 	return _in(0x8AC862B0B32C5B80, vehicle, _r)
 end
@@ -4232,6 +4244,10 @@ function Global.GetAiBlip(ped)
 end
 Global.N_0x56176892826a4fe8 = Global.GetAiBlip
 
+function Global.GetAllVehicles(vehArray)
+	return _in(0x9B8E1BF04B51F2E8, _ii(vehArray) --[[ may be optional ]], _r, _ri)
+end
+
 function Global.GetAllocatedStackSize()
 	return _in(0x8B3CA62B1EF19B62, _r, _ri)
 end
@@ -5186,6 +5202,10 @@ function Global.GetEntityVelocity(entity)
 	return _in(0x4805D2B1D8CF94A9, entity, _r, _rv)
 end
 
+function Global.GetEntryPositionOfDoor(vehicle, doorIndex)
+	return _in(0xC0572928C0ABFDA3, vehicle, doorIndex, _r, _rv)
+end
+
 --- eventGroup: 0 = CEventGroupScriptAI, 1 = CEventGroupScriptNetwork
 function Global.GetEventAtIndex(eventGroup, eventIndex)
 	return _in(0xD8F66A3A60C62153, eventGroup, eventIndex, _r, _ri)
@@ -5317,7 +5337,7 @@ end
 
 --- p0 seems to consistently be 2 across scripts
 -- Function is called faily often by CAM::CREATE_CAM_WITH_PARAMS
-function Global.GetGameplayCamRot(rotationOrder)
+function Global.GetGameplayCamRot_2(rotationOrder)
 	return _in(0x5B4E4C817FCC2DFB, rotationOrder, _r, _rv)
 end
 
@@ -5350,6 +5370,10 @@ end
 --- p1 may be a BOOL representing whether or not the group even exists
 function Global.GetGroupSize(groupID)
 	return _in(0x8DE69FE35CA09A45, groupID, _i, _i)
+end
+
+function Global.GetHasLowerableWheels(vehicle)
+	return _in(0xDCA174A42133F08C, vehicle, _r)
 end
 
 --- This native converts its past string to hash. It is hashed using jenkins one at a time method.
@@ -6180,6 +6204,10 @@ function Global.GetNumberOfVehicleColours(vehicle)
 	return _in(0x3B963160CD65D41E, vehicle, _r, _ri)
 end
 
+function Global.GetNumberOfVehicleDoors(vehicle)
+	return _in(0x92922A607497B14D, vehicle, _r, _ri)
+end
+
 --- Returns the number of *types* of licence plates, enumerated below in SET_VEHICLE_NUMBER_PLATE_TEXT_INDEX.
 function Global.GetNumberOfVehicleNumberPlates()
 	return _in(0x4C4D6B2644F458CB, _r, _ri)
@@ -6273,6 +6301,10 @@ function Global.GetPedAmmoTypeFromWeapon(ped, weaponHash)
 	return _in(0x7FEAD38B326B9F74, ped, _ch(weaponHash), _r, _ri)
 end
 Global.GetPedAmmoType = Global.GetPedAmmoTypeFromWeapon
+
+function Global.GetPedAmmoTypeFromWeapon_2(ped, weaponHash)
+	return _in(0xF489B44DD5AF4BD9, ped, _ch(weaponHash), _r, _ri)
+end
 
 function Global.GetPedArmour(ped)
 	return _in(0x9483AF821605B1D8, ped, _r, _ri)
@@ -7142,13 +7174,6 @@ function Global.GetScaleformMovieFunctionReturnInt(method_return)
 end
 Global.N_0x2de7efa66b906036 = Global.GetScaleformMovieFunctionReturnInt
 
---- World to relative screen coords
--- this world to screen will keep the text on screen. it will keep it in the screen pos. good for a deer hunting mod
-function Global.GetScreenCoordFromWorldCoord(worldX, worldY, worldZ)
-	return _in(0xF9904D11F1ACBEC3, worldX, worldY, worldZ, _f, _f, _r)
-end
-Global.N_0xf9904d11f1acbec3 = Global.GetScreenCoordFromWorldCoord
-
 --- Convert a world coordinate into its relative screen coordinate.  (WorldToScreen)
 -- Returns a boolean; whether or not the operation was successful. It will return false if the coordinates given are not visible to the rendering camera.
 -- For .NET users...
@@ -7173,6 +7198,13 @@ function Global.GetScreenCoordFromWorldCoord(worldX, worldY, worldZ)
 	return _in(0x34E82F05DF2974F5, worldX, worldY, worldZ, _f, _f, _r)
 end
 Global.World3dToScreen2d = Global.GetScreenCoordFromWorldCoord
+
+--- World to relative screen coords
+-- this world to screen will keep the text on screen. it will keep it in the screen pos. good for a deer hunting mod
+function Global.GetScreenCoordFromWorldCoord(worldX, worldY, worldZ)
+	return _in(0xF9904D11F1ACBEC3, worldX, worldY, worldZ, _f, _f, _r)
+end
+Global.N_0xf9904d11f1acbec3 = Global.GetScreenCoordFromWorldCoord
 
 --- Returns whether the specified screen effect is active.
 -- See the effects list in _START_SCREEN_EFFECT
@@ -7703,6 +7735,10 @@ function Global.GetVehicleCustomSecondaryColour(vehicle)
 	return _in(0x8389CD56CA8072DC, vehicle, _i, _i, _i)
 end
 
+function Global.GetVehicleDashboardColour(vehicle, color)
+	return _in(0xB7635E80A5C31BFF, vehicle, _ii(color) --[[ may be optional ]])
+end
+
 function Global.GetVehicleDashboardSpeed(vehicle)
 	return _in(0x9aad420e, vehicle, _r, _rf)
 end
@@ -7787,8 +7823,8 @@ end
 
 --- Returns the effective handling data of a vehicle as a floating-point value.
 -- Example: `local fSteeringLock = GetVehicleHandlingFloat(vehicle, 'CHandlingData', 'fSteeringLock')`
--- @param class The handling class to get. Only "CHandlingData" is supported at this time.
 -- @param fieldName The field name to get. These match the keys in `handling.meta`.
+-- @param class The handling class to get. Only "CHandlingData" is supported at this time.
 -- @param vehicle The vehicle to obtain data for.
 -- @return A floating-point value.
 function Global.GetVehicleHandlingFloat(vehicle, class, fieldName)
@@ -7797,8 +7833,8 @@ end
 
 --- Returns the effective handling data of a vehicle as an integer value.
 -- Example: `local modelFlags = GetVehicleHandlingInt(vehicle, 'CHandlingData', 'strModelFlags')`
--- @param class The handling class to get. Only "CHandlingData" is supported at this time.
 -- @param fieldName The field name to get. These match the keys in `handling.meta`.
+-- @param class The handling class to get. Only "CHandlingData" is supported at this time.
 -- @param vehicle The vehicle to obtain data for.
 -- @return An integer.
 function Global.GetVehicleHandlingInt(vehicle, class, fieldName)
@@ -7807,8 +7843,8 @@ end
 
 --- Returns the effective handling data of a vehicle as a vector value.
 -- Example: `local inertiaMultiplier = GetVehicleHandlingVector(vehicle, 'CHandlingData', 'vecInertiaMultiplier')`
--- @param class The handling class to get. Only "CHandlingData" is supported at this time.
 -- @param fieldName The field name to get. These match the keys in `handling.meta`.
+-- @param class The handling class to get. Only "CHandlingData" is supported at this time.
 -- @param vehicle The vehicle to obtain data for.
 -- @return An integer.
 function Global.GetVehicleHandlingVector(vehicle, class, fieldName)
@@ -7816,7 +7852,7 @@ function Global.GetVehicleHandlingVector(vehicle, class, fieldName)
 end
 
 function Global.GetVehicleHighGear(vehicle)
-	return _in(0xf1d1d689, vehicle, _r, _rf)
+	return _in(0xf1d1d689, vehicle, _r, _ri)
 end
 
 --- Seems to get the hash of the vehicle's currently installed horn?
@@ -7834,6 +7870,10 @@ end
 -- @return An integer.
 function Global.GetVehicleIndicatorLights(vehicle)
 	return _in(0x83070354, vehicle, _r, _ri)
+end
+
+function Global.GetVehicleInteriorColour(vehicle, color)
+	return _in(0x7D1464D472D32136, vehicle, _ii(color) --[[ may be optional ]])
 end
 
 function Global.GetVehicleLayoutHash(vehicle)
@@ -8863,8 +8903,20 @@ function Global.HasVehicleGotProjectileAttached(driver, vehicle, weaponHash, p3)
 	return _in(0x717C8481234E3B88, driver, vehicle, _ch(weaponHash), p3, _r)
 end
 
+function Global.HasVehicleJumpingAbility(vehicle)
+	return _in(0x9078C0C5EF8C19E9, vehicle, _r)
+end
+
+function Global.HasVehicleParachute(vehicle)
+	return _in(0xBC9CFF381338CB4F, vehicle, _r)
+end
+
 function Global.HasVehicleRecordingBeenLoaded(p0, p1)
 	return _in(0x300D614A4C785FC4, p0, _ii(p1) --[[ may be optional ]], _r)
+end
+
+function Global.HasVehicleRocketBoost(vehicle)
+	return _in(0x36D782F68B309BDA, vehicle, _r)
 end
 
 function Global.HasWeaponAssetLoaded(weaponHash)
@@ -9634,7 +9686,7 @@ function Global.IsItemsetValid(p0)
 end
 
 function Global.IsLoadingPromptBeingDisplayed()
-	return _in(0xD422FCC5F239A915, _r, _s)
+	return _in(0xD422FCC5F239A915, _r)
 end
 Global.N_0xd422fcc5f239a915 = Global.IsLoadingPromptBeingDisplayed
 
@@ -9673,6 +9725,10 @@ end
 
 function Global.IsMobilePhoneRadioActive()
 	return _in(0xB35CE999E8EF317E, _r)
+end
+
+function Global.IsModelAPed(modelHash)
+	return _in(0x75816577FEA6DAD5, _ch(modelHash), _r)
 end
 
 --- Returns whether the specified model represents a vehicle.
@@ -10752,6 +10808,10 @@ function Global.IsThisModelATrain(model)
 	return _in(0xAB935175B22E822B, _ch(model), _r)
 end
 
+function Global.IsThisModelAnAmphibiousCar(model)
+	return _in(0x633F6F44A537EBB6, _ch(model), _r)
+end
+
 function Global.IsThreadActive(threadId)
 	return _in(0x46E9AE36D8FA6417, threadId, _r)
 end
@@ -10933,6 +10993,10 @@ end
 
 function Global.IsVehicleRadioLoud(vehicle)
 	return _in(0x032A116663A4D5AC, vehicle, _r)
+end
+
+function Global.IsVehicleRocketBoostActive(vehicle)
+	return _in(0x3D34E80EED4AE3BE, vehicle, _r)
 end
 
 --- Possibly: Returns whether the searchlight (found on police vehicles) is toggled on.
@@ -11320,6 +11384,10 @@ function Global.N_0x0032a6dba562c518()
 	return _in(0x0032A6DBA562C518)
 end
 
+function Global.N_0x0035bb914316f1e3(p0, p1, p2, p3)
+	return _in(0x0035BB914316F1E3, p0, p1, p2, p3)
+end
+
 --- if ((NETWORK::_597F8DBA9B206FC7() &gt; 0) &amp;&amp; DATAFILE::_01095C95CD46B624(0)) {
 -- v_10 = DATAFILE::_GET_ROOT_OBJECT();
 -- v_11 = DATAFILE::_OBJECT_VALUE_GET_INTEGER(v_10, "pt");
@@ -11342,6 +11410,10 @@ end
 
 function Global.N_0x0150b6ff25a9e2e5()
 	return _in(0x0150B6FF25A9E2E5)
+end
+
+function Global.N_0x015b03ee1c43e6ec(p0)
+	return _in(0x015B03EE1C43E6EC, p0)
 end
 
 function Global.N_0x01708e8dd3ff8c65(p0, p1, p2, p3, p4, p5)
@@ -11418,12 +11490,20 @@ function Global.N_0x0378c08504160d0d(p0)
 	return _in(0x0378C08504160D0D, p0, _r)
 end
 
+function Global.N_0x0379daf89ba09aa5(p0, p1)
+	return _in(0x0379DAF89BA09AA5, p0, p1)
+end
+
 function Global.N_0x0395cb47b022e62c(p0)
 	return _in(0x0395CB47B022E62C, _ii(p0) --[[ may be optional ]], _r)
 end
 
 function Global.N_0x03c27e13b42a0e82(doorHash, p1, p2, p3)
 	return _in(0x03C27E13B42A0E82, _ch(doorHash), p1, p2, p3)
+end
+
+function Global.N_0x03c2eebb04b3fb72(p0, p1, p2, p3, p4, p5, p6)
+	return _in(0x03C2EEBB04B3FB72, p0, p1, p2, p3, p4, p5, p6)
 end
 
 function Global.N_0x03ea03af85a85cb7(ped, p1, p2, p3, p4, p5, p6, p7, p8)
@@ -11436,6 +11516,14 @@ end
 
 function Global.N_0x03fc694ae06c5a20()
 	return _in(0x03FC694AE06C5A20)
+end
+
+function Global.N_0x0419b167ee128f33(p0, p1)
+	return _in(0x0419B167EE128F33, p0, p1, _r, _ri)
+end
+
+function Global.N_0x041c7f2a6c9894e6(p0, p1, p2)
+	return _in(0x041C7F2A6C9894E6, p0, p1, p2, _r, _ri)
 end
 
 --- Found in the b617d scripts, duplicates removed:
@@ -11456,9 +11544,29 @@ function Global.N_0x047cbed6f6f8b63c()
 	return _in(0x047CBED6F6F8B63C)
 end
 
+function Global.N_0x04918a41bc9b8157(p0, p1, p2)
+	return _in(0x04918A41BC9B8157, p0, p1, p2, _r, _ri)
+end
+
+function Global.N_0x04d90ba8207ada2d(p0)
+	return _in(0x04D90BA8207ADA2D, p0)
+end
+
 --- p0 was always 0xAE2602A3.
 function Global.N_0x052991e59076e4e4(p0, p1)
 	return _in(0x052991E59076E4E4, _ch(p0), _ii(p1) --[[ may be optional ]], _r)
+end
+
+function Global.N_0x0581730ab9380412(p0, p1, p2, p3, p4, p5)
+	return _in(0x0581730AB9380412, p0, p1, p2, p3, p4, p5)
+end
+
+function Global.N_0x0596843b34b95ce5(p0, p1)
+	return _in(0x0596843B34B95CE5, p0, p1)
+end
+
+function Global.N_0x05f04155a226fbbf(p0, p1, p2, p3)
+	return _in(0x05F04155A226FBBF, p0, p1, p2, p3)
 end
 
 function Global.N_0x06087579e7aa85a9(p0, p1, p2, p3, p4, p5)
@@ -11489,6 +11597,10 @@ function Global.N_0x06582aff74894c75(vehicle, p1)
 	return _in(0x06582AFF74894C75, vehicle, p1)
 end
 
+function Global.N_0x065d03a9d6b2c6b5(p0, p1)
+	return _in(0x065D03A9D6B2C6B5, p0, p1)
+end
+
 function Global.N_0x06a320535f5f0248(p0)
 	return _in(0x06A320535F5F0248, p0)
 end
@@ -11499,6 +11611,10 @@ end
 
 function Global.N_0x06c0023bed16dd6b(p0, p1)
 	return _in(0x06C0023BED16DD6B, p0, p1)
+end
+
+function Global.N_0x06eaf70ae066441e(p0)
+	return _in(0x06EAF70AE066441E, p0)
 end
 
 function Global.N_0x06ee9048fd080382(p0)
@@ -11521,8 +11637,16 @@ function Global.N_0x07c61676e5bb52cd(p0)
 	return _in(0x07C61676E5BB52CD, p0, _r, _ri)
 end
 
+function Global.N_0x07dbd622d9533857(p0)
+	return _in(0x07DBD622D9533857, p0, _r, _ri)
+end
+
 function Global.N_0x07dd29d5e22763f1(p0)
 	return _in(0x07DD29D5E22763F1, _ii(p0) --[[ may be optional ]], _r)
+end
+
+function Global.N_0x07eab372c8841d99(p0, p1, p2)
+	return _in(0x07EAB372C8841D99, p0, p1, p2, _r, _ri)
 end
 
 function Global.N_0x07fb139b592fa687(p0, p1, p2, p3)
@@ -11531,6 +11655,14 @@ end
 
 function Global.N_0x0811381ef5062fec(p0)
 	return _in(0x0811381EF5062FEC, p0)
+end
+
+function Global.N_0x08a1b82b91900682(p0, p1, p2)
+	return _in(0x08A1B82B91900682, p0, p1, p2)
+end
+
+function Global.N_0x08b0ca7a6ab3ac32(p0, p1, p2)
+	return _in(0x08B0CA7A6AB3AC32, p0, p1, p2)
 end
 
 function Global.N_0x0923dbf87dff735e(x, y, z)
@@ -11557,6 +11689,10 @@ function Global.N_0x0a46af8a78dc5e0a()
 	return _in(0x0A46AF8A78DC5E0A)
 end
 
+function Global.N_0x0a50d2604e05cb94(p0, p1, p2, p3, p4)
+	return _in(0x0A50D2604E05CB94, p0, p1, p2, p3, p4)
+end
+
 function Global.N_0x0a60017f841a54f2(p0, p1, p2, p3)
 	return _in(0x0A60017F841A54F2, p0, p1, p2, p3)
 end
@@ -11569,12 +11705,24 @@ function Global.N_0x0a6d923dffc9bd89()
 	return _in(0x0A6D923DFFC9BD89, _r, _ri)
 end
 
+function Global.N_0x0a9c7f36e5d7b683(p0)
+	return _in(0x0A9C7F36E5D7B683, p0)
+end
+
 function Global.N_0x0a9f2a468b328e74(p0, p1, p2, p3)
 	return _in(0x0A9F2A468B328E74, p0, p1, p2, p3)
 end
 
+function Global.N_0x0aa27680a0bd43fa()
+	return _in(0x0AA27680A0BD43FA)
+end
+
 function Global.N_0x0abc54de641dc0fc(p0)
 	return _in(0x0ABC54DE641DC0FC, _ii(p0) --[[ may be optional ]], _r, _ri)
+end
+
+function Global.N_0x0abf535877897560(p0)
+	return _in(0x0ABF535877897560, p0, _r, _ri)
 end
 
 function Global.N_0x0ad9710cee2f590f(p0, p1, p2, p3, p4, p5, p6)
@@ -11597,12 +11745,24 @@ function Global.N_0x0b203b4afde53a4f(p2)
 	return _in(0x0B203B4AFDE53A4F, _i, _i, p2, _r, _ri)
 end
 
+function Global.N_0x0b3e35ac043707d9(p0, p1)
+	return _in(0x0B3E35AC043707D9, p0, p1)
+end
+
 function Global.N_0x0b40ed49d7d6ff84()
 	return _in(0x0B40ED49D7D6FF84)
 end
 
+function Global.N_0x0b565b0aae56a0e8(p0, p1, p2, p3, p4, p5, p6)
+	return _in(0x0B565B0AAE56A0E8, p0, p1, p2, p3, p4, p5, p6)
+end
+
 function Global.N_0x0b568201dd99f0eb(p0)
 	return _in(0x0B568201DD99F0EB, p0)
+end
+
+function Global.N_0x0b8b7f74bf061c6d()
+	return _in(0x0B8B7F74BF061C6D, _r, _ri)
 end
 
 function Global.N_0x0b919e1fb47cc4e0(p0)
@@ -11617,6 +11777,10 @@ function Global.N_0x0bca1d2c47b0d269(p0, p1, p2)
 	return _in(0x0BCA1D2C47B0D269, p0, p1, p2)
 end
 
+function Global.N_0x0be4be946463f917(p0)
+	return _in(0x0BE4BE946463F917, p0, _r, _ri)
+end
+
 function Global.N_0x0bf3b3bd47d79c08(hash, p1)
 	return _in(0x0BF3B3BD47D79C08, _ch(hash), p1)
 end
@@ -11625,6 +11789,10 @@ end
 -- Seems to return a value 0-2.
 function Global.N_0x0c0c4e81e1ac60a0()
 	return _in(0x0C0C4E81E1AC60A0, _r, _ri)
+end
+
+function Global.N_0x0c112765300c7e1e(p0)
+	return _in(0x0C112765300C7E1E, p0, _r, _ri)
 end
 
 function Global.N_0x0c15b0e443b2349d()
@@ -11639,9 +11807,21 @@ function Global.N_0x0c5a80a9e096d529(p0, p2, p3, p4, p5)
 	return _in(0x0C5A80A9E096D529, p0, _i, p2, p3, p4, p5, _r)
 end
 
+function Global.N_0x0c82d21a77c22d49(p0, p1, p2, p3)
+	return _in(0x0C82D21A77C22D49, p0, p1, p2, p3)
+end
+
+function Global.N_0x0c8fac83902a62df(p0)
+	return _in(0x0C8FAC83902A62DF, p0)
+end
+
 --- x360 Hash: 0x4AF0ADF5
 function Global.N_0x0c978fda19692c2c(p0, p1)
 	return _in(0x0C978FDA19692C2C, p0, p1)
+end
+
+function Global.N_0x0cb1be0633c024a8(p0, p1, p2, p3)
+	return _in(0x0CB1BE0633C024A8, p0, p1, p2, p3)
 end
 
 function Global.N_0x0cd9ab83489430ea(p0)
@@ -11656,8 +11836,20 @@ function Global.N_0x0cf54f20de43879c(p0)
 	return _in(0x0CF54F20DE43879C, p0)
 end
 
+function Global.N_0x0cf97f497fe7d048(p0)
+	return _in(0x0CF97F497FE7D048, p0)
+end
+
 function Global.N_0x0d01d20616fc73fb(p0, p1)
 	return _in(0x0D01D20616FC73FB, p0, p1)
+end
+
+function Global.N_0x0d30eb83668e63c5(p0, p1, p2, p3)
+	return _in(0x0D30EB83668E63C5, p0, p1, p2, p3)
+end
+
+function Global.N_0x0d5f65a8f4ebdab5(p0, p1)
+	return _in(0x0D5F65A8F4EBDAB5, p0, p1)
 end
 
 --- Dr. Underscore (1/6/18):
@@ -11678,12 +11870,24 @@ function Global.N_0x0e4299c549f0d1f1(p0)
 	return _in(0x0E4299C549F0D1F1, p0)
 end
 
+function Global.N_0x0e4f77f7b9d74d84(p0)
+	return _in(0x0E4F77F7B9D74D84, p0)
+end
+
+function Global.N_0x0eacdf8487d5155a(p0)
+	return _in(0x0EACDF8487D5155A, p0)
+end
+
 function Global.N_0x0ede326d47cd0f3e(ped, player)
 	return _in(0x0EDE326D47CD0F3E, ped, player, _r)
 end
 
 function Global.N_0x0f3b4d4e43177236(p0, p1)
 	return _in(0x0F3B4D4E43177236, p0, p1)
+end
+
+function Global.N_0x0f62619393661d6e(p0, p1, p2)
+	return _in(0x0F62619393661D6E, p0, p1, p2)
 end
 
 function Global.N_0x0f70731baccfbb96()
@@ -11703,6 +11907,10 @@ function Global.N_0x0fde9dbfc0a6bc65(p0)
 	return _in(0x0FDE9DBFC0A6BC65, _ii(p0) --[[ may be optional ]])
 end
 
+function Global.N_0x0fe8e1fcd2b86b33(p0, p1, p2, p3)
+	return _in(0x0FE8E1FCD2B86B33, p0, p1, p2, p3)
+end
+
 --- p0 is always false in scripts.
 function Global.N_0x0ff2862b61a58af9(p0)
 	return _in(0x0FF2862B61A58AF9, p0)
@@ -11714,6 +11922,14 @@ end
 
 function Global.N_0x1072f115dab0717e(p0, p1)
 	return _in(0x1072F115DAB0717E, p0, p1)
+end
+
+function Global.N_0x1086127b3a63505e(p0, p1, p2)
+	return _in(0x1086127B3A63505E, p0, p1, p2)
+end
+
+function Global.N_0x1087bc8ec540daeb(p0, p1)
+	return _in(0x1087BC8EC540DAEB, p0, p1)
 end
 
 function Global.N_0x108be26959a9d9bb(p0)
@@ -11751,12 +11967,20 @@ function Global.N_0x1121bfa1a1a522a8()
 	return _in(0x1121BFA1A1A522A8, _r, _ri)
 end
 
+function Global.N_0x112209ce0290c03a(p0, p1, p2, p3)
+	return _in(0x112209CE0290C03A, p0, p1, p2, p3)
+end
+
 function Global.N_0x113e6e3e50e286b0(p0)
 	return _in(0x113E6E3E50E286B0, p0)
 end
 
 function Global.N_0x1153fa02a659051c()
 	return _in(0x1153FA02A659051C)
+end
+
+function Global.N_0x11579d940949c49e(p0)
+	return _in(0x11579D940949C49E, p0)
 end
 
 function Global.N_0x116fb94dc4b79f17(p0)
@@ -11791,6 +12015,10 @@ function Global.N_0x11ff1c80276097ed(p0, p1, p2)
 	return _in(0x11FF1C80276097ED, _ts(p0), p1, p2)
 end
 
+function Global.N_0x1201e8a3290a3b98(p0, p1)
+	return _in(0x1201E8A3290A3B98, p0, p1)
+end
+
 function Global.N_0x120364de2845daf8(p1)
 	return _in(0x120364DE2845DAF8, _i, p1, _r, _ri)
 end
@@ -11806,6 +12034,10 @@ end
 --- p0 is usually 0. sometimes 2. Not sure what this does.
 function Global.N_0x12561fcbb62d5b9c(p0)
 	return _in(0x12561FCBB62D5B9C, p0)
+end
+
+function Global.N_0x125e6d638b8605d4(p0)
+	return _in(0x125E6D638B8605D4, p0, _r, _rv)
 end
 
 function Global.N_0x1280804f7cfd2d6c(p0)
@@ -11825,9 +12057,17 @@ function Global.N_0x12b6281b6c6706c0(p0)
 	return _in(0x12B6281B6C6706C0, p0, _r, _ri)
 end
 
+function Global.N_0x12d148d26538d0f9(p0, p1, p2, p3)
+	return _in(0x12D148D26538D0F9, p0, p1, p2, p3)
+end
+
 --- Hardcoded to only work in multiplayer.
 function Global.N_0x12ded8ca53d47ea5(p0)
 	return _in(0x12DED8CA53D47EA5, p0)
+end
+
+function Global.N_0x1312ddd8385aee4e(p0, p1)
+	return _in(0x1312DDD8385AEE4E, p0, p1)
 end
 
 function Global.N_0x1327e2fe9746baee(p0)
@@ -11847,6 +12087,10 @@ function Global.N_0x135f9b7b7add2185(p0)
 	return _in(0x135F9B7B7ADD2185, _ii(p0) --[[ may be optional ]], _r)
 end
 
+function Global.N_0x1398582b7f72b3ed(p0)
+	return _in(0x1398582B7F72B3ED, p0)
+end
+
 function Global.N_0x13b350b8ad0eee10()
 	return _in(0x13B350B8AD0EEE10)
 end
@@ -11855,12 +12099,24 @@ function Global.N_0x13c4b962653a5280()
 	return _in(0x13C4B962653A5280, _r, _ri)
 end
 
+function Global.N_0x13f1fcb111b820b0(p0)
+	return _in(0x13F1FCB111B820B0, p0)
+end
+
 function Global.N_0x140e6a44870a11ce()
 	return _in(0x140E6A44870A11CE)
 end
 
+function Global.N_0x144da052257ae7d8(p0)
+	return _in(0x144DA052257AE7D8, p0)
+end
+
 function Global.N_0x14590ddbedb1ec85(ped)
 	return _in(0x14590DDBEDB1EC85, ped, _r)
+end
+
+function Global.N_0x1461b28a06717d68(p0)
+	return _in(0x1461B28A06717D68, p0, _r, _ri)
 end
 
 function Global.N_0x14621bb1df14e2b2()
@@ -11869,6 +12125,10 @@ end
 
 function Global.N_0x14832bf2aba53fc5()
 	return _in(0x14832BF2ABA53FC5, _r, _ri)
+end
+
+function Global.N_0x148b08c2d2acb884(p0, p1, p2)
+	return _in(0x148B08C2D2ACB884, p0, p1, p2)
 end
 
 function Global.N_0x14922ed3e38761f0()
@@ -11891,6 +12151,10 @@ function Global.N_0x14e0b2d1ad1044e0()
 	return _in(0x14E0B2D1AD1044E0, _i, _i, _i, _i)
 end
 
+function Global.N_0x14eda9ee27bd1626(p0)
+	return _in(0x14EDA9EE27BD1626, p0)
+end
+
 function Global.N_0x14fc5833464340a8()
 	return _in(0x14FC5833464340A8)
 end
@@ -11899,8 +12163,20 @@ function Global.N_0x152d90e4c1b4738a()
 	return _in(0x152D90E4C1B4738A, _i, _i, _r)
 end
 
+function Global.N_0x15803fec3b9a872b(p0, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10)
+	return _in(0x15803FEC3B9A872B, p0, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10)
+end
+
 function Global.N_0x158ec424f35ec469(p0, p1, contentType)
 	return _in(0x158EC424F35EC469, _ts(p0), p1, _ts(contentType), _r)
+end
+
+function Global.N_0x159b7318403a1cd8(p0)
+	return _in(0x159B7318403A1CD8, p0)
+end
+
+function Global.N_0x15cfa549788d35ef()
+	return _in(0x15CFA549788D35EF)
 end
 
 function Global.N_0x15e33297c3e8dc60(p0)
@@ -11909,6 +12185,10 @@ end
 
 function Global.N_0x15e69e2802c24b8d(p0)
 	return _in(0x15E69E2802C24B8D, p0)
+end
+
+function Global.N_0x15f944730c832252(p0, p1)
+	return _in(0x15F944730C832252, p0, p1)
 end
 
 function Global.N_0x15ff52b809db2353(p0)
@@ -11936,10 +12216,22 @@ function Global.N_0x162f9d995753dc19()
 	return _in(0x162F9D995753DC19, _r, _rf)
 end
 
+function Global.N_0x1632be0ac1e62876(p0, p1)
+	return _in(0x1632BE0AC1E62876, p0, p1)
+end
+
+function Global.N_0x1636d7fc127b10d2(p0)
+	return _in(0x1636D7FC127B10D2, p0)
+end
+
 --- only documented params
 -- dont know what this does.... To Be Continued...
 function Global.N_0x163f8b586bc95f2a(coords, radius, modelHash, x, y, z, p7)
 	return _in(0x163F8B586BC95F2A, coords, radius, _ch(modelHash), x, y, z, _v, p7, _r, _ri)
+end
+
+function Global.N_0x164c5ff663790845(p0)
+	return _in(0x164C5FF663790845, p0)
 end
 
 --- 3 calls in the b617d scripts, removed duplicate.
@@ -11982,8 +12274,16 @@ function Global.N_0x170f541e1cadd1de(p0)
 	return _in(0x170F541E1CADD1DE, p0)
 end
 
+function Global.N_0x171bafb3c60389f4(p0)
+	return _in(0x171BAFB3C60389F4, p0, _r, _ri)
+end
+
 function Global.N_0x171df6a0c07fb3dc(p0, p1)
 	return _in(0x171DF6A0C07FB3DC, p0, p1, _r, _ri)
+end
+
+function Global.N_0x17330ebf2f2124a8()
+	return _in(0x17330EBF2F2124A8)
 end
 
 function Global.N_0x17440aa15d1d3739()
@@ -12006,12 +12306,20 @@ function Global.N_0x17e0198b3882c2cb()
 	return _in(0x17E0198B3882C2CB)
 end
 
+function Global.N_0x17f7471eaca78290(p0)
+	return _in(0x17F7471EACA78290, p0)
+end
+
 function Global.N_0x17fca7199a530203()
 	return _in(0x17FCA7199A530203, _r, _ri)
 end
 
 function Global.N_0x182f266c2d9e2beb(vehicle, p1)
 	return _in(0x182F266C2D9E2BEB, vehicle, p1)
+end
+
+function Global.N_0x1888694923ef4591()
+	return _in(0x1888694923EF4591)
 end
 
 function Global.N_0x18eb48cfc41f2ea0(p0, p1)
@@ -12024,6 +12332,10 @@ end
 
 function Global.N_0x192547247864dfdd(vehicle, p1)
 	return _in(0x192547247864DFDD, vehicle, p1)
+end
+
+function Global.N_0x1950dae9848a4739(p0, p1, p2)
+	return _in(0x1950DAE9848A4739, p0, p1, p2, _r, _ri)
 end
 
 function Global.N_0x19853b5b17d77bca(p0, p1)
@@ -12059,6 +12371,14 @@ function Global.N_0x19cafa3c87f7c2ff()
 	return _in(0x19CAFA3C87F7C2FF, _r, _ri)
 end
 
+function Global.N_0x19d1b791cb3670fe(p0, p1)
+	return _in(0x19D1B791CB3670FE, p0, p1)
+end
+
+function Global.N_0x19e50eb6e33e1d28(p0)
+	return _in(0x19E50EB6E33E1D28, p0)
+end
+
 --- SET_ENTITY_*
 function Global.N_0x1a092bb0c3808b96(entity, p1)
 	return _in(0x1A092BB0C3808B96, entity, p1)
@@ -12073,8 +12393,16 @@ function Global.N_0x1a78ad3d8240536f(vehicle, p1)
 	return _in(0x1A78AD3D8240536F, vehicle, p1)
 end
 
+function Global.N_0x1a7ce7cd3e653485(p0)
+	return _in(0x1A7CE7CD3E653485, p0)
+end
+
 function Global.N_0x1a8e2c8b9cf4549c()
 	return _in(0x1A8E2C8B9CF4549C, _i, _i)
+end
+
+function Global.N_0x1a8ea222f9c67dbb(p0)
+	return _in(0x1A8EA222F9C67DBB, p0, _r, _ri)
 end
 
 function Global.N_0x1aa8a837d2169d94(vehicle, p1)
@@ -12096,8 +12424,16 @@ function Global.N_0x1b0b4aeed5b9b41c(p0)
 	return _in(0x1B0B4AEED5B9B41C, p0)
 end
 
+function Global.N_0x1b212b26dd3c04df(p0, p1)
+	return _in(0x1B212B26DD3C04DF, p0, p1)
+end
+
 function Global.N_0x1b2366c3f2a5c8df()
 	return _in(0x1B2366C3F2A5C8DF, _r, _ri)
+end
+
+function Global.N_0x1b7abe26cbcbf8c7(p0, p1, p2)
+	return _in(0x1B7ABE26CBCBF8C7, p0, p1, p2)
 end
 
 --- Console Hash: 0x76A9FEB6
@@ -12109,6 +12445,10 @@ function Global.N_0x1bb299305c3e8c13(p0, p1, p2, p3)
 	return _in(0x1BB299305C3E8C13, p0, p1, p2, p3)
 end
 
+function Global.N_0x1bbac99c0bc53656(p0, p1)
+	return _in(0x1BBAC99C0BC53656, p0, p1)
+end
+
 --- Dr. Underscore (1/6/18):
 -- Only one instance across all scripts. (maintransition)
 -- May not be a bool, it could be one of these 0-2 values that are returned just about 500 god damn times.
@@ -12118,6 +12458,10 @@ end
 
 function Global.N_0x1c073274e065c6d2(p0, p1)
 	return _in(0x1C073274E065C6D2, p0, p1)
+end
+
+function Global.N_0x1c1b69fae509ba97(p0, p1)
+	return _in(0x1C1B69FAE509BA97, p0, p1)
 end
 
 --- NETWORK_CAN_R??? or NETWORK_CAN_S???
@@ -12154,12 +12498,28 @@ function Global.N_0x1d97d1e3a70a649f(vehicle, p1)
 	return _in(0x1D97D1E3A70A649F, vehicle, p1)
 end
 
+function Global.N_0x1da0da9cb3f0c8bf(p0)
+	return _in(0x1DA0DA9CB3F0C8BF, p0, _r, _ri)
+end
+
 function Global.N_0x1dd2139a9a20dce8()
 	return _in(0x1DD2139A9A20DCE8, _r)
 end
 
+function Global.N_0x1dda078d12879eee(p0, p1, p2)
+	return _in(0x1DDA078D12879EEE, p0, p1, p2)
+end
+
 function Global.N_0x1de0f5f50d723caa()
 	return _in(0x1DE0F5F50D723CAA, _i, _i, _i, _r)
+end
+
+function Global.N_0x1e3f1b1b891a2aaa(p0, p1)
+	return _in(0x1E3F1B1B891A2AAA, p0, p1)
+end
+
+function Global.N_0x1e45b34adebee48e()
+	return _in(0x1E45B34ADEBEE48E)
 end
 
 function Global.N_0x1e77fa7a62ee6c4c(p0)
@@ -12222,8 +12582,20 @@ function Global.N_0x1f2e4e06dea8992b(p0, p1)
 	return _in(0x1F2E4E06DEA8992B, p0, p1)
 end
 
+function Global.N_0x1f34b0626c594380(p0, p1)
+	return _in(0x1F34B0626C594380, p0, p1)
+end
+
+function Global.N_0x1f351cf1c6475734(p0, p1, p2, p3, p4, p5, p6, p7, p8, p9)
+	return _in(0x1F351CF1C6475734, p0, p1, p2, p3, p4, p5, p6, p7, p8, p9)
+end
+
 function Global.N_0x1f3f018bc3afa77c(p0, p1, p2, p3, p4, p5, p6, p7, p8)
 	return _in(0x1F3F018BC3AFA77C, p0, p1, p2, p3, p4, p5, p6, p7, p8, _r, _ri)
+end
+
+function Global.N_0x1f8e00fb18239600(p0)
+	return _in(0x1F8E00FB18239600, p0)
 end
 
 function Global.N_0x1f9fb66f3a3842d2(vehicle, p1)
@@ -12240,6 +12612,10 @@ end
 
 function Global.N_0x2016c603d6b8987c(p0, p1)
 	return _in(0x2016C603D6B8987C, p0, p1)
+end
+
+function Global.N_0x203b381133817079(p0)
+	return _in(0x203B381133817079, p0)
 end
 
 function Global.N_0x206bc5dc9d1ac70a(vehicle, p1)
@@ -12275,6 +12651,10 @@ end
 
 function Global.N_0x211c4ef450086857()
 	return _in(0x211C4EF450086857)
+end
+
+function Global.N_0x213aeb2b90cba7ac(p0, p1, p2)
+	return _in(0x213AEB2B90CBA7AC, p0, p1, p2)
 end
 
 --- example
@@ -12354,6 +12734,10 @@ function Global.N_0x237d5336a9a54108(p0)
 	return _in(0x237D5336A9A54108, p0, _r)
 end
 
+function Global.N_0x2382ab11450ae7ba(p0, p1)
+	return _in(0x2382AB11450AE7BA, p0, p1)
+end
+
 function Global.N_0x23b59d8912f94246()
 	return _in(0x23B59D8912F94246)
 end
@@ -12393,6 +12777,14 @@ function Global.N_0x24409fc4c55cb22d(p0)
 	return _in(0x24409FC4C55CB22D, p0, _r, _ri)
 end
 
+function Global.N_0x2467a2d807d37ca3(p0)
+	return _in(0x2467A2D807D37CA3, p0, _r, _ri)
+end
+
+function Global.N_0x2472622ce1f2d45f(p0, p1, p2)
+	return _in(0x2472622CE1F2D45F, p0, p1, p2)
+end
+
 function Global.N_0x247acbc4abbc9d1c(p0)
 	return _in(0x247ACBC4ABBC9D1C, p0)
 end
@@ -12425,6 +12817,10 @@ function Global.N_0x2587a48bc88dfadf(p0)
 	return _in(0x2587A48BC88DFADF, p0)
 end
 
+function Global.N_0x259ba6d4e6f808f1(p0)
+	return _in(0x259BA6D4E6F808F1, p0)
+end
+
 function Global.N_0x25b99872d588a101(p0, p1, p2, p3, p4, p5)
 	return _in(0x25B99872D588A101, p0, p1, p2, p3, p4, p5, _r, _ri)
 end
@@ -12441,6 +12837,10 @@ function Global.N_0x25fc3e33a31ad0c9(p0)
 	return _in(0x25FC3E33A31AD0C9, p0)
 end
 
+function Global.N_0x2605663bd4f23b5d(p0)
+	return _in(0x2605663BD4F23B5D, p0)
+end
+
 function Global.N_0x260ee4fdbdf4db01(p0)
 	return _in(0x260EE4FDBDF4DB01, p0, _r, _rf)
 end
@@ -12451,6 +12851,10 @@ end
 
 function Global.N_0x2632482fd6b9ab87()
 	return _in(0x2632482FD6B9AB87)
+end
+
+function Global.N_0x265559da40b3f327(p0)
+	return _in(0x265559DA40B3F327, p0)
 end
 
 function Global.N_0x265635150fb0d82e()
@@ -12480,6 +12884,10 @@ end
 -- Identical in ingamehud &amp; maintransition.
 function Global.N_0x26d7399b9587fe89(p0)
 	return _in(0x26D7399B9587FE89, p0)
+end
+
+function Global.N_0x26d99d5a82fd18e8(p0)
+	return _in(0x26D99D5A82FD18E8, p0)
 end
 
 --- spook.
@@ -12513,8 +12921,16 @@ function Global.N_0x274a1519dfc1094f(p1)
 	return _in(0x274A1519DFC1094F, _i, p1, _i, _r)
 end
 
+function Global.N_0x2790f4b17d098e26(p0)
+	return _in(0x2790F4B17D098E26, p0)
+end
+
 function Global.N_0x279d50de5652d935(p0, p1)
 	return _in(0x279D50DE5652D935, p0, p1)
+end
+
+function Global.N_0x27aa1c973cacfe63(p0, p1, p2, p3, p4, p5, p6, p7, p8, p9)
+	return _in(0x27AA1C973CACFE63, p0, p1, p2, p3, p4, p5, p6, p7, p8, p9)
 end
 
 --- IS_VEHICLE_BUMPER_HANGING_OFF
@@ -12547,6 +12963,10 @@ function Global.N_0x280c7e3ac7f56e90(p0)
 	return _in(0x280C7E3AC7F56E90, p0, _i, _i, _i)
 end
 
+function Global.N_0x282b6739644f4347(p0)
+	return _in(0x282B6739644F4347, p0)
+end
+
 function Global.N_0x283b6062a2c01e9b()
 	return _in(0x283B6062A2C01E9B)
 end
@@ -12557,6 +12977,22 @@ end
 
 function Global.N_0x288df530c92dad6f(p0, p1)
 	return _in(0x288DF530C92DAD6F, p0, p1)
+end
+
+function Global.N_0x28b18377eb6e25f6(p0, p1)
+	return _in(0x28B18377EB6E25F6, p0, p1)
+end
+
+function Global.N_0x28ecb8ac2f607db2(p0, p1, p2, p3, p4)
+	return _in(0x28ECB8AC2F607DB2, p0, p1, p2, p3, p4)
+end
+
+function Global.N_0x2916a928514c9827()
+	return _in(0x2916A928514C9827)
+end
+
+function Global.N_0x29280002282f1928(p0, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19, p20, p21, p22, p23)
+	return _in(0x29280002282F1928, p0, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19, p20, p21, p22, p23)
 end
 
 function Global.N_0x293220da1b46cebc(p0, p1, p2)
@@ -12587,8 +13023,16 @@ function Global.N_0x2a56c06ebef2b0d9(cutsceneEntName, ped, modelHash)
 	return _in(0x2A56C06EBEF2B0D9, _ts(cutsceneEntName), ped, _ch(modelHash))
 end
 
+function Global.N_0x2a5e0621dd815a9a(p0, p1, p2, p3)
+	return _in(0x2A5E0621DD815A9A, p0, p1, p2, p3)
+end
+
 function Global.N_0x2a7776c709904ab0(p0)
 	return _in(0x2A7776C709904AB0, p0, _r, _ri)
+end
+
+function Global.N_0x2a86a0475b6a1434(p0, p1)
+	return _in(0x2A86A0475B6A1434, p0, p1)
 end
 
 --- 2 matches across 2 scripts. Only showed in appcamera &amp; appmedia. Both were 0.
@@ -12608,6 +13052,18 @@ end
 -- CAM::_2AED6301F67007D5(l_228);
 function Global.N_0x2aed6301f67007d5(entity)
 	return _in(0x2AED6301F67007D5, entity)
+end
+
+function Global.N_0x2afc2d19b50797f2(p0, p1, p2, p3)
+	return _in(0x2AFC2D19B50797F2, p0, p1, p2, p3)
+end
+
+function Global.N_0x2b1c623823db0d9d(p0, p1, p2, p3, p4, p5, p6)
+	return _in(0x2B1C623823DB0D9D, p0, p1, p2, p3, p4, p5, p6, _r, _ri)
+end
+
+function Global.N_0x2b40a97646381508(p0)
+	return _in(0x2B40A97646381508, p0)
 end
 
 function Global.N_0x2b51edbefc301339(p0, p1)
@@ -12642,6 +13098,10 @@ function Global.N_0x2b949a1e6aec8f6a()
 	return _in(0x2B949A1E6AEC8F6A, _r, _ri)
 end
 
+function Global.N_0x2bc54a8188768488(p0, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10)
+	return _in(0x2BC54A8188768488, p0, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10)
+end
+
 function Global.N_0x2be4bc731d039d5a(p0, p1)
 	return _in(0x2BE4BC731D039D5A, p0, p1)
 end
@@ -12652,6 +13112,14 @@ end
 
 function Global.N_0x2bf72ad5b41aa739()
 	return _in(0x2BF72AD5B41AA739)
+end
+
+function Global.N_0x2c173ae2bdb9385e(p0)
+	return _in(0x2C173AE2BDB9385E, p0, _r, _ri)
+end
+
+function Global.N_0x2c1d8b3b19e517cc(p0, p1)
+	return _in(0x2C1D8B3B19E517CC, p0, p1, _r, _ri)
 end
 
 --- SET_ENTITY_*
@@ -12679,8 +13147,20 @@ function Global.N_0x2c96cdb04fca358e(p0)
 	return _in(0x2C96CDB04FCA358E, p0)
 end
 
+function Global.N_0x2c9f302398e13141(p0, p1)
+	return _in(0x2C9F302398E13141, p0, p1)
+end
+
 function Global.N_0x2cc848a861d01493()
 	return _in(0x2CC848A861D01493, _r, _ri)
+end
+
+function Global.N_0x2cd90358f67d0aa8(p0)
+	return _in(0x2CD90358F67D0AA8, p0)
+end
+
+function Global.N_0x2ce9d95e4051aecd(p0)
+	return _in(0x2CE9D95E4051AECD, p0)
 end
 
 function Global.N_0x2d4259f1feb81da9(p0, p1, p2, p3)
@@ -12691,8 +13171,20 @@ function Global.N_0x2d5dc831176d0114(p0)
 	return _in(0x2D5DC831176D0114, p0, _r)
 end
 
+function Global.N_0x2da41ed6e1fcd7a5(p0, p1)
+	return _in(0x2DA41ED6E1FCD7A5, p0, p1, _r, _ri)
+end
+
+function Global.N_0x2de6c5e2e996f178(p0)
+	return _in(0x2DE6C5E2E996F178, p0)
+end
+
 function Global.N_0x2df9038c90ad5264(p0, p1, p2, p3, p4, interiorFlags, scale, duration)
 	return _in(0x2DF9038C90AD5264, p0, p1, p2, p3, p4, interiorFlags, scale, duration)
+end
+
+function Global.N_0x2dfc81c9b9608549(p0, p1)
+	return _in(0x2DFC81C9B9608549, p0, p1, _r, _ri)
 end
 
 function Global.N_0x2e0bf682cc778d49(p0)
@@ -12701,6 +13193,10 @@ end
 
 function Global.N_0x2e22fefa0100275e()
 	return _in(0x2E22FEFA0100275E, _r, _ri)
+end
+
+function Global.N_0x2e4c123d1c8a710e(p0, p1, p2, p3, p4, p5, p6)
+	return _in(0x2E4C123D1C8A710E, p0, p1, p2, p3, p4, p5, p6, _r, _ri)
 end
 
 function Global.N_0x2e65248609523599(p0, p1, p2)
@@ -12724,6 +13220,10 @@ function Global.N_0x2f057596f2bd0061()
 	return _in(0x2F057596F2BD0061, _r, _ri)
 end
 
+function Global.N_0x2f074c904d85129e(p0, p1, p2, p3, p4, p5, p6)
+	return _in(0x2F074C904D85129E, p0, p1, p2, p3, p4, p5, p6)
+end
+
 --- only documented. to be continued...
 function Global.N_0x2f09f7976c512404(xCoord, yCoord, zCoord, p3)
 	return _in(0x2F09F7976C512404, xCoord, yCoord, zCoord, p3, _r)
@@ -12735,6 +13235,10 @@ end
 
 function Global.N_0x2f3c3d9f50681de4(p0, p1)
 	return _in(0x2F3C3D9F50681DE4, p0, p1)
+end
+
+function Global.N_0x2f41a3bae005e5fa(p0, p1)
+	return _in(0x2F41A3BAE005E5FA, p0, p1)
 end
 
 --- Used with radios:
@@ -12764,6 +13268,14 @@ end
 
 function Global.N_0x2f7f2b26dd3f18ee(p0, p1)
 	return _in(0x2F7F2B26DD3F18EE, p0, p1)
+end
+
+function Global.N_0x2fa2494b47fdd009(p0, p1)
+	return _in(0x2FA2494B47FDD009, p0, p1)
+end
+
+function Global.N_0x2fab6614ce22e196(p0, p1, p2, p3)
+	return _in(0x2FAB6614CE22E196, p0, p1, p2, p3)
 end
 
 --- NETWORK_IS_IN_???
@@ -12797,6 +13309,10 @@ end
 
 function Global.N_0x30ed88d5e0c56a37(p0)
 	return _in(0x30ED88D5E0C56A37, p0, _r)
+end
+
+function Global.N_0x30fd873ece50e9f6(p0, p1, p2, p3, p4)
+	return _in(0x30FD873ECE50E9F6, p0, p1, p2, p3, p4)
 end
 
 function Global.N_0x31125fd509d9043f(p0)
@@ -12838,6 +13354,10 @@ function Global.N_0x3195f8dd0d531052(p0, p1)
 	return _in(0x3195F8DD0D531052, p0, p1, _i, _i, _r)
 end
 
+function Global.N_0x31e90b8873a4cd3b(p0, p1)
+	return _in(0x31E90B8873A4CD3B, p0, p1)
+end
+
 function Global.N_0x31f924b53eaddf65(p0)
 	return _in(0x31F924B53EADDF65, p0)
 end
@@ -12846,12 +13366,32 @@ function Global.N_0x3270f67eed31fbc1(p0)
 	return _in(0x3270F67EED31FBC1, p0, _i, _i, _r)
 end
 
+function Global.N_0x32888337579a5970()
+	return _in(0x32888337579A5970)
+end
+
 function Global.N_0x32c7a7e8c43a1f80(p0, p1, p2, p3, p4, p5, p6, p7)
 	return _in(0x32C7A7E8C43A1F80, p0, p1, p2, p3, p4, p5, p6, p7, _r, _ri)
 end
 
+function Global.N_0x32cac93c9de73d32()
+	return _in(0x32CAC93C9DE73D32, _r, _ri)
+end
+
+function Global.N_0x32caedf24a583345(p0)
+	return _in(0x32CAEDF24A583345, p0)
+end
+
 function Global.N_0x32dd916f3f7c9672(p0)
 	return _in(0x32DD916F3F7C9672, p0, _r, _ri)
+end
+
+function Global.N_0x32ebd154cb6b8b99(p0, p1, p2)
+	return _in(0x32EBD154CB6B8B99, p0, p1, p2)
+end
+
+function Global.N_0x32f34ff7f617643b(p0, p1)
+	return _in(0x32F34FF7F617643B, p0, p1)
 end
 
 function Global.N_0x33506883545ac0df(vehicle, p1)
@@ -12867,8 +13407,20 @@ function Global.N_0x336b3d200ab007cb(p0, p1, p2, p3, p4)
 	return _in(0x336B3D200AB007CB, p0, p1, p2, p3, p4, _r, _ri)
 end
 
+function Global.N_0x33981d6804e62f49(p0, p1, p2, p3)
+	return _in(0x33981D6804E62F49, p0, p1, p2, p3)
+end
+
 function Global.N_0x33d47e85b476abcd(p0)
 	return _in(0x33D47E85B476ABCD, _i --[[ actually bool ]], _r)
+end
+
+function Global.N_0x33d72899e24c3365(p0, p1)
+	return _in(0x33D72899E24C3365, p0, p1, _r, _ri)
+end
+
+function Global.N_0x33de49edf4dde77a(p0)
+	return _in(0x33DE49EDF4DDE77A, p0, _r, _rv)
 end
 
 function Global.N_0x33e3c6c6f2f0b506(p0, p1, p2, p3)
@@ -12904,6 +13456,10 @@ function Global.N_0x350aa5ebc03d3bd2()
 	return _in(0x350AA5EBC03D3BD2, _r, _ri)
 end
 
+function Global.N_0x352e2b5cf420bf3b(p0, p1)
+	return _in(0x352E2B5CF420BF3B, p0, p1)
+end
+
 function Global.N_0x357b152ef96c30b6()
 	return _in(0x357B152EF96C30B6, _r, _ri)
 end
@@ -12918,6 +13474,10 @@ end
 
 function Global.N_0x35a1b3e1d1315cfa(p0, p1)
 	return _in(0x35A1B3E1D1315CFA, p0, p1, _r)
+end
+
+function Global.N_0x35bb21de06784373(p0, p1)
+	return _in(0x35BB21DE06784373, p0, p1)
 end
 
 function Global.N_0x35e0654f4bad7971(p0)
@@ -12943,6 +13503,10 @@ end
 --- Returns a float value related to slipstream.
 function Global.N_0x36492c2f0d134c56(p0)
 	return _in(0x36492C2F0D134C56, p0, _r, _ri)
+end
+
+function Global.N_0x365e877c61d6988b(p0, p1, p2, p3)
+	return _in(0x365E877C61D6988B, p0, p1, p2, p3)
 end
 
 function Global.N_0x3669f1b198dcaa4f()
@@ -12975,6 +13539,10 @@ function Global.N_0x36f1b38855f2a8df(player)
 	return _in(0x36F1B38855F2A8DF, player)
 end
 
+function Global.N_0x36f32de87082343e(p0, p1)
+	return _in(0x36F32DE87082343E, p0, p1)
+end
+
 function Global.N_0x36f6626459d91457(p0)
 	return _in(0x36F6626459D91457, p0)
 end
@@ -12987,9 +13555,21 @@ function Global.N_0x374706271354cb18(vehicle, p1, p2)
 	return _in(0x374706271354CB18, vehicle, p1, p2)
 end
 
+function Global.N_0x375a706a5c2fd084(p0)
+	return _in(0x375A706A5C2FD084, p0)
+end
+
+function Global.N_0x3795688a307e1eb6(p0)
+	return _in(0x3795688A307E1EB6, p0, _r, _ri)
+end
+
 --- NETWORK_IS_TRANSITION_???
 function Global.N_0x37a4494483b9f5c9()
 	return _in(0x37A4494483B9F5C9, _r, _ri)
+end
+
+function Global.N_0x37d5f739fd494675(p0)
+	return _in(0x37D5F739FD494675, p0, _r, _ri)
 end
 
 function Global.N_0x37deb0aa183fb6d8()
@@ -13006,6 +13586,10 @@ function Global.N_0x38491439b6ba7f7d(p0, p1)
 	return _in(0x38491439B6BA7F7D, p0, p1, _r, _rf)
 end
 
+function Global.N_0x3855fb5eb2c5e8b2(p0)
+	return _in(0x3855FB5EB2C5E8B2, p0, _r, _ri)
+end
+
 --- Sets profile setting 934
 function Global.N_0x38baaa5dd4c9d19f(value)
 	return _in(0x38BAAA5DD4C9D19F, value)
@@ -13016,12 +13600,24 @@ function Global.N_0x38d28da81e4e9bf9(player)
 	return _in(0x38D28DA81E4E9BF9, player, _r)
 end
 
+function Global.N_0x393bd2275ceb7793()
+	return _in(0x393BD2275CEB7793, _r, _ri)
+end
+
+function Global.N_0x394cd08e31313c28()
+	return _in(0x394CD08E31313C28)
+end
+
 function Global.N_0x397baa01068baa96()
 	return _in(0x397BAA01068BAA96, _r, _ri)
 end
 
 function Global.N_0x39917e1b4cb0f911(p0)
 	return _in(0x39917E1B4CB0F911, p0)
+end
+
+function Global.N_0x39a5fb7eaf150840(p0, p1)
+	return _in(0x39A5FB7EAF150840, p0, p1)
 end
 
 --- from extreme3.c4
@@ -13043,8 +13639,20 @@ function Global.N_0x3a48ab4445d499be()
 	return _in(0x3A48AB4445D499BE, _r, _ri)
 end
 
+function Global.N_0x3a8b55fda4c8ddef(p0, p1, p2)
+	return _in(0x3A8B55FDA4C8DDEF, p0, p1, p2, _r, _ri)
+end
+
+function Global.N_0x3b2fd68db5f8331c(p0, p1)
+	return _in(0x3B2FD68DB5F8331C, p0, p1)
+end
+
 function Global.N_0x3b39236746714134(p0)
 	return _in(0x3B39236746714134, p0, _r, _ri)
+end
+
+function Global.N_0x3b458ddb57038f08(p0, p1, p2)
+	return _in(0x3B458DDB57038F08, p0, p1, p2)
 end
 
 function Global.N_0x3bab9a4e4f2ff5c7()
@@ -13075,6 +13683,10 @@ function Global.N_0x3ca6050692bc61b0(p0)
 	return _in(0x3CA6050692BC61B0, p0)
 end
 
+function Global.N_0x3d120012440e6683()
+	return _in(0x3D120012440E6683, _r, _ri)
+end
+
 function Global.N_0x3d3d15af7bcaaf83(p0, p1, p2)
 	return _in(0x3D3D15AF7BCAAF83, p0, p1, p2)
 end
@@ -13100,6 +13712,14 @@ function Global.N_0x3dda37128dd1aca8(p0)
 	return _in(0x3DDA37128DD1ACA8, p0)
 end
 
+function Global.N_0x3de3aa516fb126a4(p0)
+	return _in(0x3DE3AA516FB126A4, p0)
+end
+
+function Global.N_0x3de51e9c80b116cf(p0)
+	return _in(0x3DE51E9C80B116CF, p0, _r, _ri)
+end
+
 --- 1 match in 1 script. cellphone_controller.
 -- p0 is -1 in scripts.
 -- Dr. Underscore (1/6/18):
@@ -13113,8 +13733,20 @@ function Global.N_0x3e38e28a1d80ddf6(ped)
 	return _in(0x3E38E28A1D80DDF6, ped, _r)
 end
 
+function Global.N_0x3e4adaff1830f146()
+	return _in(0x3E4ADAFF1830F146, _r, _ri)
+end
+
 function Global.N_0x3e802f11fbe27674(p0)
 	return _in(0x3E802F11FBE27674, p0, _r)
+end
+
+function Global.N_0x3e9679c1dfcf422c(p0, p1)
+	return _in(0x3E9679C1DFCF422C, p0, p1)
+end
+
+function Global.N_0x3ebeac6c3f81f6bd(p0)
+	return _in(0x3EBEAC6C3F81F6BD, p0)
 end
 
 --- p0 was always 2 in R* scripts.
@@ -13123,12 +13755,24 @@ function Global.N_0x3ed1438c1f5c6612(p0)
 	return _in(0x3ED1438C1F5C6612, p0)
 end
 
+function Global.N_0x3ed2b83ab2e82799(p0, p1)
+	return _in(0x3ED2B83AB2E82799, p0, p1)
+end
+
+function Global.N_0x3f0cf9cb7e589b88()
+	return _in(0x3F0CF9CB7E589B88, _r, _ri)
+end
+
 function Global.N_0x3f52e880aaf6c8ca(p0)
 	return _in(0x3F52E880AAF6C8CA, p0)
 end
 
 function Global.N_0x3f5cc444dcaaa8f2(p0, p1, p2)
 	return _in(0x3F5CC444DCAAA8F2, p0, p1, p2)
+end
+
+function Global.N_0x3f7325574e41b44d(p0, p1, p2, p3)
+	return _in(0x3F7325574E41B44D, p0, p1, p2, p3)
 end
 
 function Global.N_0x3f9990bf5f22759c(p0)
@@ -13151,6 +13795,10 @@ function Global.N_0x405591ec8fd9096d(p0)
 	return _in(0x405591EC8FD9096D, p0)
 end
 
+function Global.N_0x4056ea1105f5abd7(p0, p1)
+	return _in(0x4056EA1105F5ABD7, p0, p1)
+end
+
 --- Usage: INTERIOR::_0x405DC2AEF6AF95B9(INTERIOR::GET_KEY_FOR_ENTITY_IN_ROOM(PLAYER::PLAYER_PED_ID()));
 function Global.N_0x405dc2aef6af95b9(roomHashKey)
 	return _in(0x405DC2AEF6AF95B9, _ch(roomHashKey))
@@ -13161,12 +13809,28 @@ function Global.N_0x407091cf6037118e(netID)
 	return _in(0x407091CF6037118E, netID)
 end
 
+function Global.N_0x40763ea7b9b783e7(p0, p1, p2)
+	return _in(0x40763EA7B9B783E7, p0, p1, p2, _r, _ri)
+end
+
 function Global.N_0x40aefd1a244741f2(p0)
 	return _in(0x40AEFD1A244741F2, p0)
 end
 
 function Global.N_0x40f7e66472df3e5c(p0, p1)
 	return _in(0x40F7E66472DF3E5C, p0, p1, _r, _ri)
+end
+
+function Global.N_0x4128464231e3ca0b(p0, p1, p2, p3)
+	return _in(0x4128464231E3CA0B, p0, p1, p2, p3)
+end
+
+function Global.N_0x41290b40fa63e6da(p0)
+	return _in(0x41290B40FA63E6DA, p0)
+end
+
+function Global.N_0x412f1364fa066cfb(p0)
+	return _in(0x412F1364FA066CFB, p0, _r, _ri)
 end
 
 function Global.N_0x41350b4fc28e3941(p0)
@@ -13183,6 +13847,10 @@ end
 
 function Global.N_0x419594e137637120(p0, p1, p2)
 	return _in(0x419594E137637120, p0, p1, p2)
+end
+
+function Global.N_0x419615486bbf1956(p0)
+	return _in(0x419615486BBF1956, p0)
 end
 
 function Global.N_0x41faa8fb2ece8720(p0)
@@ -13205,8 +13873,16 @@ function Global.N_0x425aecf167663f48(ped, p1)
 	return _in(0x425AECF167663F48, ped, p1)
 end
 
+function Global.N_0x42613035157e4208(p0)
+	return _in(0x42613035157E4208, p0)
+end
+
 function Global.N_0x4282e08174868be3()
 	return _in(0x4282E08174868BE3, _r, _ri)
+end
+
+function Global.N_0x428ad3e26c8d9eb0(p0, p1, p2, p3, p4)
+	return _in(0x428AD3E26C8D9EB0, p0, p1, p2, p3, p4)
 end
 
 --- if (!ENTITY::DOES_ENTITY_BELONG_TO_THIS_SCRIPT(g_10A5A._f8B[a_0/*1*/], 1)) {
@@ -13228,8 +13904,20 @@ function Global.N_0x42a4beb35d372407(p0)
 	return _in(0x42A4BEB35D372407, p0, _r, _ri)
 end
 
+function Global.N_0x42b65deef2edf2a1(p0)
+	return _in(0x42B65DEEF2EDF2A1, p0)
+end
+
+function Global.N_0x4348bfda56023a2f(p0, p1)
+	return _in(0x4348BFDA56023A2F, p0, p1, _r, _ri)
+end
+
 function Global.N_0x437138b6a830166a()
 	return _in(0x437138B6A830166A)
+end
+
+function Global.N_0x438822c279b73b93(p0)
+	return _in(0x438822C279B73B93, p0)
 end
 
 function Global.N_0x43d1680c6d19a8e9()
@@ -13238,6 +13926,10 @@ end
 
 function Global.N_0x43fa0dfc5df87815(vehicle, p1)
 	return _in(0x43FA0DFC5DF87815, vehicle, p1)
+end
+
+function Global.N_0x4419966c9936071a(p0)
+	return _in(0x4419966C9936071A, p0)
 end
 
 --- sfink: related to: NETWORK_BAIL
@@ -13254,6 +13946,14 @@ function Global.N_0x444c4525ece0a4b9()
 	return _in(0x444C4525ECE0A4B9)
 end
 
+function Global.N_0x44621483ff966526(p0, p1)
+	return _in(0x44621483FF966526, p0, p1)
+end
+
+function Global.N_0x44919cc079bb60bf(p0)
+	return _in(0x44919CC079BB60BF, p0)
+end
+
 function Global.N_0x44a0bdc559b35f6e()
 	return _in(0x44A0BDC559B35F6E, _r, _ri)
 end
@@ -13266,6 +13966,14 @@ function Global.N_0x44b37cdcae765aae(p0, p1)
 	return _in(0x44B37CDCAE765AAE, p0, _ii(p1) --[[ may be optional ]], _r)
 end
 
+function Global.N_0x44cd1f493db2a0a6(p0, p1, p2)
+	return _in(0x44CD1F493DB2A0A6, p0, p1, p2)
+end
+
+function Global.N_0x44f1012b69313374(p0, p1, p2, p3)
+	return _in(0x44F1012B69313374, p0, p1, p2, p3)
+end
+
 --- yoga.ysc
 -- if (PED::IS_PED_WEARING_HELMET(iParam0) &amp;&amp; PED::_0x451294E859ECC018(iParam0) != -1)
 -- {
@@ -13276,8 +13984,16 @@ function Global.N_0x451294e859ecc018(p0)
 	return _in(0x451294E859ECC018, p0, _r)
 end
 
+function Global.N_0x451d05012ccec234(p0)
+	return _in(0x451D05012CCEC234, p0, _r, _ri)
+end
+
 function Global.N_0x459fd2c8d0ab78bc()
 	return _in(0x459FD2C8D0AB78BC, _r, _ri)
+end
+
+function Global.N_0x45a561a9421ab6ad(p0, p1)
+	return _in(0x45A561A9421AB6AD, p0, p1, _r, _ri)
 end
 
 function Global.N_0x45a83257ed02d9bc()
@@ -13333,8 +14049,20 @@ function Global.N_0x46d1a61a21f566fc(p0)
 	return _in(0x46D1A61A21F566FC, p0)
 end
 
+function Global.N_0x46f3add1e2d5baf2(p0, p1)
+	return _in(0x46F3ADD1E2D5BAF2, p0, p1)
+end
+
+function Global.N_0x46f8696933a63c9b(p0, p1)
+	return _in(0x46F8696933A63C9B, p0, p1, _r, _rv)
+end
+
 function Global.N_0x472397322e92a856()
 	return _in(0x472397322E92A856)
+end
+
+function Global.N_0x472841a026d26d8b()
+	return _in(0x472841A026D26D8B, _r, _ri)
 end
 
 function Global.N_0x4737980e8a283806(p0, p1)
@@ -13345,16 +14073,36 @@ function Global.N_0x4750fc27570311ec()
 	return _in(0x4750FC27570311EC, _r, _ri)
 end
 
+function Global.N_0x4757f00bc6323cfe(p0, p1)
+	return _in(0x4757F00BC6323CFE, p0, p1)
+end
+
 function Global.N_0x4759cc730f947c81()
 	return _in(0x4759CC730F947C81)
+end
+
+function Global.N_0x47b32f5611e6e483(p0)
+	return _in(0x47B32F5611E6E483, p0)
+end
+
+function Global.N_0x47b595d60664cffa(p0, p1)
+	return _in(0x47B595D60664CFFA, p0, p1)
 end
 
 function Global.N_0x4811bbac21c5fcd5(p0)
 	return _in(0x4811BBAC21C5FCD5, p0)
 end
 
+function Global.N_0x483aca1176ca93f1()
+	return _in(0x483ACA1176CA93F1)
+end
+
 function Global.N_0x4852fc386e2e1bb5(p0)
 	return _in(0x4852FC386E2E1BB5, p0, _i, _i, _i)
+end
+
+function Global.N_0x48608c3464f58ab4(p0, p1, p2)
+	return _in(0x48608C3464F58AB4, p0, p1, p2)
 end
 
 function Global.N_0x48621c9fca3ebd28(p0)
@@ -13371,8 +14119,20 @@ function Global.N_0x487912fd248efddf(p0, p1)
 	return _in(0x487912FD248EFDDF, p0, p1, _r)
 end
 
+function Global.N_0x4879e4fe39074cdf()
+	return _in(0x4879E4FE39074CDF, _r, _ri)
+end
+
+function Global.N_0x488043841bbe156f()
+	return _in(0x488043841BBE156F)
+end
+
 function Global.N_0x48adc8a773564670()
 	return _in(0x48ADC8A773564670)
+end
+
+function Global.N_0x48c633e94a8142a7(p0)
+	return _in(0x48C633E94A8142A7, p0, _r, _ri)
 end
 
 --- Only found 3 times in decompiled scripts. Not a whole lot to go off of.
@@ -13383,8 +14143,16 @@ function Global.N_0x48f069265a0e4bec(name)
 	return _in(0x48F069265A0E4BEC, _i, _ts(name))
 end
 
+function Global.N_0x490861b88f4fd846(p0)
+	return _in(0x490861B88F4FD846, p0)
+end
+
 function Global.N_0x49482f9fcd825aaa(entity)
 	return _in(0x49482F9FCD825AAA, entity)
+end
+
+function Global.N_0x497420e022796b3f()
+	return _in(0x497420E022796B3F, _r, _ri)
 end
 
 function Global.N_0x49e50bdb8ba4dab2(ped, p1)
@@ -13416,12 +14184,24 @@ function Global.N_0x4a9923385bdb9dad()
 	return _in(0x4A9923385BDB9DAD, _r)
 end
 
+function Global.N_0x4ad490ae1536933b(p0, p1)
+	return _in(0x4AD490AE1536933B, p0, p1, _r, _ri)
+end
+
 function Global.N_0x4af92acd3141d96c()
 	return _in(0x4AF92ACD3141D96C)
 end
 
+function Global.N_0x4b5b620c9b59ed34(p0, p1)
+	return _in(0x4B5B620C9B59ED34, p0, p1)
+end
+
 function Global.N_0x4b5cfc83122df602()
 	return _in(0x4B5CFC83122DF602)
+end
+
+function Global.N_0x4ba166079d658ed4(p0, p1)
+	return _in(0x4BA166079D658ED4, p0, p1)
 end
 
 --- Seems to call GET_PAUSED_MAP_STREAMING_REQUEST lol wtf
@@ -13462,12 +14242,20 @@ function Global.N_0x4c2330e61d3deb56(interiorID)
 	return _in(0x4C2330E61D3DEB56, interiorID, _r, _ri)
 end
 
+function Global.N_0x4c2a9fdc22377075()
+	return _in(0x4C2A9FDC22377075)
+end
+
 function Global.N_0x4c61b39930d045da(p0)
 	return _in(0x4C61B39930D045DA, p0, _r)
 end
 
 function Global.N_0x4c61c75bee8184c2(p0, p1, p2)
 	return _in(0x4C61C75BEE8184C2, _ts(p0), p1, p2)
+end
+
+function Global.N_0x4c815eb175086f84(p0, p1)
+	return _in(0x4C815EB175086F84, p0, p1, _r, _ri)
 end
 
 function Global.N_0x4c89fe2bdeb3f169()
@@ -13481,6 +14269,10 @@ end
 
 function Global.N_0x4d02279c83be69fe()
 	return _in(0x4D02279C83BE69FE, _r, _ri)
+end
+
+function Global.N_0x4d1cb8dc40208a17(p0, p1)
+	return _in(0x4D1CB8DC40208A17, p0, p1, _r, _ri)
 end
 
 function Global.N_0x4d89d607cb3dd1d2(object, toggle)
@@ -13509,6 +14301,10 @@ function Global.N_0x4dfdd9eb705f8140(p0)
 	return _in(0x4DFDD9EB705F8140, _i --[[ actually bool ]], _r)
 end
 
+function Global.N_0x4e20d2a627011e8e(p0, p1)
+	return _in(0x4E20D2A627011E8E, p0, p1, _r, _ri)
+end
+
 function Global.N_0x4e3cd0ef8a489541()
 	return _in(0x4E3CD0EF8A489541, _r, _ri)
 end
@@ -13526,6 +14322,10 @@ function Global.N_0x4e404a9361f75bb2(radioStation, p1, p2)
 	return _in(0x4E404A9361F75BB2, _ts(radioStation), _ts(p1), p2)
 end
 
+function Global.N_0x4e417c547182c84d(p0)
+	return _in(0x4E417C547182C84D, p0, _r, _ri)
+end
+
 function Global.N_0x4e52e752c76e7e7a(p0)
 	return _in(0x4E52E752C76E7E7A, p0)
 end
@@ -13536,6 +14336,10 @@ end
 
 function Global.N_0x4e74e62e0a97e901(vehicle, p1)
 	return _in(0x4E74E62E0A97E901, vehicle, p1)
+end
+
+function Global.N_0x4e90d746056e273d(p0, p1)
+	return _in(0x4E90D746056E273D, p0, p1)
 end
 
 --- The "disabled" variant of _0x5B84D09CEC5209C5.
@@ -13557,8 +14361,16 @@ function Global.N_0x5009dfd741329729(p0, p1)
 	return _in(0x5009DFD741329729, _ts(p0), p1)
 end
 
+function Global.N_0x501478855a6074ce(p0, p1, p2, p3, p4, p5)
+	return _in(0x501478855A6074CE, p0, p1, p2, p3, p4, p5)
+end
+
 function Global.N_0x503f5920162365b2(p0, p1, p2, p3)
 	return _in(0x503F5920162365B2, p0, p1, p2, p3)
+end
+
+function Global.N_0x50634e348c8d44ef(p0)
+	return _in(0x50634E348C8D44EF, p0, _r, _ri)
 end
 
 function Global.N_0x5068f488ddb54dd8()
@@ -13569,12 +14381,24 @@ function Global.N_0x5096fd9ccb49056d(p0)
 	return _in(0x5096FD9CCB49056D, _ii(p0) --[[ may be optional ]])
 end
 
+function Global.N_0x50c375537449f369(p0)
+	return _in(0x50C375537449F369, p0)
+end
+
 function Global.N_0x50f457823ce6eb5f(p0, p1, p2, p3)
 	return _in(0x50F457823CE6EB5F, p0, p1, p2, p3, _r, _ri)
 end
 
 function Global.N_0x511f1a683387c7e2(p0)
 	return _in(0x511F1A683387C7E2, p0, _r, _ri)
+end
+
+function Global.N_0x516fc96eb88eefe5(p0)
+	return _in(0x516FC96EB88EEFE5, p0)
+end
+
+function Global.N_0x5182a339a3474510(p0, p1, p2)
+	return _in(0x5182A339A3474510, p0, p1, p2)
 end
 
 function Global.N_0x51bb2d88d31a914b(vehicle, p1)
@@ -13605,8 +14429,20 @@ function Global.N_0x5324a0e3e4ce3570(p0, p1)
 	return _in(0x5324A0E3E4CE3570, p0, p1, _i, _i, _r)
 end
 
+function Global.N_0x5335be58c083e74e(p0)
+	return _in(0x5335BE58C083E74E, p0)
+end
+
 function Global.N_0x53afd64c6758f2f9()
 	return _in(0x53AFD64C6758F2F9, _r, _ri)
+end
+
+function Global.N_0x53c10c8bd774f2c9()
+	return _in(0x53C10C8BD774F2C9, _r, _ri)
+end
+
+function Global.N_0x53cae13e9b426993(p0)
+	return _in(0x53CAE13E9B426993, p0)
 end
 
 function Global.N_0x53f4892d18ec90a4(p0)
@@ -13623,6 +14459,14 @@ end
 
 function Global.N_0x544810ed9db6bbe6()
 	return _in(0x544810ED9DB6BBE6, _r, _ri)
+end
+
+function Global.N_0x544996c0081abdeb(p0, p1)
+	return _in(0x544996C0081ABDEB, p0, p1)
+end
+
+function Global.N_0x547237aa71ab44de(p0)
+	return _in(0x547237AA71AB44DE, p0)
 end
 
 function Global.N_0x54b0f614960f4a5f(p0, p1, p2, p3, p4, p5, p6)
@@ -13662,11 +14506,35 @@ function Global.N_0x5539c3ebf104a53a(p0)
 	return _in(0x5539C3EBF104A53A, p0)
 end
 
+function Global.N_0x55a1e095db052fa5(p0, p1)
+	return _in(0x55A1E095DB052FA5, p0, p1)
+end
+
+function Global.N_0x55a8becaf28a4eb7()
+	return _in(0x55A8BECAF28A4EB7, _r, _ri)
+end
+
+function Global.N_0x55fcc0c390620314(p0, p1, p2)
+	return _in(0x55FCC0C390620314, p0, p1, p2)
+end
+
 --- GET_PLAYER_*
 -- Seems to do something with network (?)
 -- PLAYER::_56105E599CAB0EFA(NETWORK::NETWORK_GET_PLAYER_INDEX_FROM_PED(ped))
 function Global.N_0x56105e599cab0efa(p0)
 	return _in(0x56105E599CAB0EFA, _ii(p0) --[[ may be optional ]], _r, _ri)
+end
+
+function Global.N_0x5615e0c5eb2bc6e2(p0, p1)
+	return _in(0x5615E0C5EB2BC6E2, p0, p1)
+end
+
+function Global.N_0x5626d9d6810730d5()
+	return _in(0x5626D9D6810730D5, _r, _ri)
+end
+
+function Global.N_0x563b65a643ed072e(p0, p1, p2)
+	return _in(0x563B65A643ED072E, p0, p1, p2, _r, _ri)
 end
 
 function Global.N_0x567384dfa67029e6()
@@ -13713,6 +14581,10 @@ function Global.N_0x576594e8d64375e2(p0, p1)
 	return _in(0x576594E8D64375E2, p0, p1)
 end
 
+function Global.N_0x577599cced639ca2(p0)
+	return _in(0x577599CCED639CA2, p0)
+end
+
 function Global.N_0x57d760d55f54e071(p0)
 	return _in(0x57D760D55F54E071, p0)
 end
@@ -13733,8 +14605,20 @@ function Global.N_0x584770794d758c18(p0, p1)
 	return _in(0x584770794D758C18, p0, _ii(p1) --[[ may be optional ]], _r)
 end
 
+function Global.N_0x585847c5e4e11709(p0, p1, p2)
+	return _in(0x585847C5E4E11709, p0, p1, p2, _r, _ri)
+end
+
+function Global.N_0x5873c14a52d74236(p0)
+	return _in(0x5873C14A52D74236, p0, _r, _ri)
+end
+
 function Global.N_0x589f80b325cc82c5(p0, p1, p2, p3, p4)
 	return _in(0x589F80B325CC82C5, p0, p1, p2, p3, _ii(p4) --[[ may be optional ]], _r)
+end
+
+function Global.N_0x58a39be597ce99cd()
+	return _in(0x58A39BE597CE99CD)
 end
 
 --- LEADERBOARDS_GET_CACHE_???
@@ -13783,6 +14667,10 @@ end
 --- Same behavior as GET_LOCAL_PLAYER_AIM_STATE but only used on the PC version.
 function Global.N_0x59b9a7af4c95133c()
 	return _in(0x59B9A7AF4C95133C, _r, _ri)
+end
+
+function Global.N_0x59d421683d31835a(p0)
+	return _in(0x59D421683D31835A, p0)
 end
 
 --- may be 0x6CDAA7D2
@@ -13888,6 +14776,22 @@ function Global.N_0x5b8ed3db018927b1(p0)
 	return _in(0x5B8ED3DB018927B1, p0)
 end
 
+function Global.N_0x5b91b229243351a8(p0, p1)
+	return _in(0x5B91B229243351A8, p0, p1)
+end
+
+function Global.N_0x5b9853296731e88d(p0, p1, p2, p3, p4, p5)
+	return _in(0x5B9853296731E88D, p0, p1, p2, p3, p4, p5)
+end
+
+function Global.N_0x5ba68a0840d546ac(p0, p1)
+	return _in(0x5BA68A0840D546AC, p0, p1, _r, _ri)
+end
+
+function Global.N_0x5bcde0f640c773d2(p0, p1, p2, p3)
+	return _in(0x5BCDE0F640C773D2, p0, p1, p2, p3)
+end
+
 function Global.N_0x5bd5f255321c4aaf(p0)
 	return _in(0x5BD5F255321C4AAF, p0, _r, _ri)
 end
@@ -13908,6 +14812,10 @@ end
 
 function Global.N_0x5c48a1d6e3b33179(p0)
 	return _in(0x5C48A1D6E3B33179, p0, _r)
+end
+
+function Global.N_0x5c48b75732c8456c(p0, p1, p2, p3, p4, p5)
+	return _in(0x5C48B75732C8456C, p0, p1, p2, p3, p4, p5)
 end
 
 function Global.N_0x5c497525f803486b()
@@ -13937,6 +14845,10 @@ function Global.N_0x5d10b3795f3fc886()
 	return _in(0x5D10B3795F3FC886, _r)
 end
 
+function Global.N_0x5d2bfaab8d956e0e()
+	return _in(0x5D2BFAAB8D956E0E)
+end
+
 function Global.N_0x5d517b27cf6ecd04(p0)
 	return _in(0x5D517B27CF6ECD04, p0)
 end
@@ -13949,13 +14861,25 @@ function Global.N_0x5d7b620dae436138(p0)
 	return _in(0x5D7B620DAE436138, p0)
 end
 
+function Global.N_0x5d97630a8a0ef123(p0, p1, p2)
+	return _in(0x5D97630A8A0EF123, p0, p1, p2)
+end
+
 --- longest time being ilde?
 function Global.N_0x5da3a8de8cb6226f(time)
 	return _in(0x5DA3A8DE8CB6226F, time)
 end
 
+function Global.N_0x5da825a85d0ea6e6(p0, p1, p2)
+	return _in(0x5DA825A85D0EA6E6, p0, p1, p2)
+end
+
 function Global.N_0x5db8010ee71fdef2(vehicle)
 	return _in(0x5DB8010EE71FDEF2, vehicle, _r)
+end
+
+function Global.N_0x5dbf05db5926d089(p0)
+	return _in(0x5DBF05DB5926D089, p0)
 end
 
 function Global.N_0x5dc40a8869c22141(p0, p1)
@@ -13973,6 +14897,10 @@ end
 
 function Global.N_0x5e0165278f6339ee(p0)
 	return _in(0x5E0165278F6339EE, p0, _r, _ri)
+end
+
+function Global.N_0x5e203da2ba15d436(p0)
+	return _in(0x5E203DA2BA15D436, p0, _r, _ri)
 end
 
 function Global.N_0x5e24341a7f92a74b()
@@ -14008,8 +14936,20 @@ function Global.N_0x5ead2bf6484852e4()
 	return _in(0x5EAD2BF6484852E4, _r)
 end
 
+function Global.N_0x5ecb40269053c0d4(p0)
+	return _in(0x5ECB40269053C0D4, p0, _r, _ri)
+end
+
+function Global.N_0x5ecd378ee64450ab(p0)
+	return _in(0x5ECD378EE64450AB, p0)
+end
+
 function Global.N_0x5edef0cf8c1dab3c()
 	return _in(0x5EDEF0CF8C1DAB3C, _r)
+end
+
+function Global.N_0x5ee5632f47ae9695(p0, p1)
+	return _in(0x5EE5632F47AE9695, p0, p1)
 end
 
 function Global.N_0x5f0f3f56635809ef(p0)
@@ -14025,6 +14965,10 @@ function Global.N_0x5f35f6732c3fbba0(p0)
 	return _in(0x5F35F6732C3FBBA0, p0, _r, _rf)
 end
 
+function Global.N_0x5f456788b05faeac(p0, p1, p2)
+	return _in(0x5F456788B05FAEAC, p0, p1, p2)
+end
+
 function Global.N_0x5fbd7095fe7ae57f(p0, p1)
 	return _in(0x5FBD7095FE7AE57F, p0, _fi(p1) --[[ may be optional ]], _r)
 end
@@ -14034,12 +14978,20 @@ function Global.N_0x5fc472c501ccadb3(player)
 	return _in(0x5FC472C501CCADB3, player, _r)
 end
 
+function Global.N_0x5ff2c33b13a02a11(p0)
+	return _in(0x5FF2C33B13A02A11, p0)
+end
+
 function Global.N_0x600048c60d5c2c51(p0)
 	return _in(0x600048C60D5C2C51, p0)
 end
 
 function Global.N_0x600f8cb31c7aab6e(p0)
 	return _in(0x600F8CB31C7AAB6E, p0)
+end
+
+function Global.N_0x60190048c0764a26(p0)
+	return _in(0x60190048C0764A26, p0, _r, _ri)
 end
 
 function Global.N_0x606e4d3e3cccf3eb()
@@ -14068,6 +15020,14 @@ function Global.N_0x60edd13eb3ac1ff3()
 	return _in(0x60EDD13EB3AC1FF3, _r, _ri)
 end
 
+function Global.N_0x60eedc12af66e846(p0)
+	return _in(0x60EEDC12AF66E846, p0)
+end
+
+function Global.N_0x613f125ba3bd2eb9()
+	return _in(0x613F125BA3BD2EB9, _r, _ri)
+end
+
 --- Unknown. Called after creating a checkpoint (type: 51) in the creators.
 function Global.N_0x615d3925e87a3b26(checkpoint)
 	return _in(0x615D3925E87A3B26, checkpoint)
@@ -14093,6 +15053,10 @@ function Global.N_0x61767f73eaceed21(ped)
 	return _in(0x61767F73EACEED21, ped, _r)
 end
 
+function Global.N_0x617f49c2668e6155()
+	return _in(0x617F49C2668E6155, _r, _ri)
+end
+
 function Global.N_0x61a885d3f7cfee9a()
 	return _in(0x61A885D3F7CFEE9A)
 end
@@ -14109,6 +15073,14 @@ end
 -- ped was PLAYER_PED_ID()
 function Global.N_0x621c6e4729388e41(ped)
 	return _in(0x621C6E4729388E41, ped, _r)
+end
+
+function Global.N_0x62374889a4d59f72()
+	return _in(0x62374889A4D59F72)
+end
+
+function Global.N_0x62454a641b41f3c5(p0)
+	return _in(0x62454A641B41F3C5, p0)
 end
 
 function Global.N_0x629526aba383bcaa()
@@ -14159,6 +15131,10 @@ function Global.N_0x63eb2b972a218cac()
 	return _in(0x63EB2B972A218CAC)
 end
 
+function Global.N_0x641f272b52e2f0f8(p0, p1)
+	return _in(0x641F272B52E2F0F8, p0, p1)
+end
+
 function Global.N_0x643ed62d5ea3bebd()
 	return _in(0x643ED62D5EA3BEBD)
 end
@@ -14175,8 +15151,16 @@ function Global.N_0x648e7a5434af7969(p0, p2, type)
 	return _in(0x648E7A5434AF7969, _ts(p0), _i, p2, _i, _i, _i, _ts(type), _r)
 end
 
+function Global.N_0x6493cf69859b116a()
+	return _in(0x6493CF69859B116A)
+end
+
 function Global.N_0x649c97d52332341a(p0)
 	return _in(0x649C97D52332341A, p0)
+end
+
+function Global.N_0x64d779659bc37b19(p0)
+	return _in(0x64D779659BC37B19, p0, _r, _rv)
 end
 
 --- this is lightly associated with the 2 above meaning it accesses a variable that them 2 access also
@@ -14184,8 +15168,16 @@ function Global.N_0x64f62afb081e260d()
 	return _in(0x64F62AFB081E260D)
 end
 
+function Global.N_0x6501129c9e0ffa05(p0, p1)
+	return _in(0x6501129C9E0FFA05, p0, p1)
+end
+
 function Global.N_0x6512765e3be78c50()
 	return _in(0x6512765E3BE78C50, _r, _ri)
+end
+
+function Global.N_0x651d3228960d08af(p0, p1)
+	return _in(0x651D3228960D08AF, p0, p1)
 end
 
 --- possibly called:
@@ -14194,13 +15186,37 @@ function Global.N_0x65499865fca6e5ec(doorHash)
 	return _in(0x65499865FCA6E5EC, _ch(doorHash), _r, _rf)
 end
 
+function Global.N_0x6551b1f7f6cd46ea(p0)
+	return _in(0x6551B1F7F6CD46EA, p0)
+end
+
+function Global.N_0x6558ac7c17bfef58(p0)
+	return _in(0x6558AC7C17BFEF58, p0, _r, _ri)
+end
+
+function Global.N_0x658500ae6d723a7e(p0)
+	return _in(0x658500AE6D723A7E, p0)
+end
+
 --- Something related to clearing the ped because always used with CLEAR_PED_WETNESS, CLEAR_PED_BLOOD_DAMAGE and RESET_PED_VISIBLE_DAMAGE.
 function Global.N_0x6585d955a68452a5(ped)
 	return _in(0x6585D955A68452A5, ped, _r, _ri)
 end
 
+function Global.N_0x659cf2ef7f550c4f()
+	return _in(0x659CF2EF7F550C4F, _r, _ri)
+end
+
+function Global.N_0x65b080555ea48149(p0)
+	return _in(0x65B080555EA48149, p0)
+end
+
 function Global.N_0x65d2ebb47e1cec21(p0)
 	return _in(0x65D2EBB47E1CEC21, p0)
+end
+
+function Global.N_0x65e7e78842e74cdb(p0)
+	return _in(0x65E7E78842E74CDB, p0, _r, _ri)
 end
 
 --- IS_PLAYER_*
@@ -14230,6 +15246,10 @@ function Global.N_0x66680a92700f43df(p0)
 	return _in(0x66680A92700F43DF, p0, _r)
 end
 
+function Global.N_0x668fd40bcba5de48(p0, p1, p2, p3, p4)
+	return _in(0x668FD40BCBA5DE48, p0, p1, p2, p3, p4, _r, _ri)
+end
+
 function Global.N_0x66972397e0757e7a(p0, p1, p2)
 	return _in(0x66972397E0757E7A, p0, p1, p2)
 end
@@ -14244,6 +15264,10 @@ end
 
 function Global.N_0x66b59cffd78467af()
 	return _in(0x66B59CFFD78467AF, _r, _ri)
+end
+
+function Global.N_0x66e3aaface2d1eb8(p0, p1, p2)
+	return _in(0x66E3AAFACE2D1EB8, p0, p1, p2)
 end
 
 function Global.N_0x66e7cb63c97b7d20()
@@ -14262,8 +15286,16 @@ function Global.N_0x675721c9f644d161()
 	return _in(0x675721C9F644D161)
 end
 
+function Global.N_0x675d19c6067cae08(p0, p1, p2, p3)
+	return _in(0x675D19C6067CAE08, p0, p1, p2, p3)
+end
+
 function Global.N_0x678bb03c1a3bd51e(p0, p1, p2)
 	return _in(0x678BB03C1A3BD51E, p0, p1, p2, _i, _i, _r)
+end
+
+function Global.N_0x678f86d8fc040bdb(p0)
+	return _in(0x678F86D8FC040BDB, p0)
 end
 
 function Global.N_0x67a5589628e0cff6()
@@ -14313,6 +15345,10 @@ function Global.N_0x687c0b594907d2e8(ped)
 	return _in(0x687C0B594907D2E8, ped)
 end
 
+function Global.N_0x68f8be6af5cdf8a6(p0, p1)
+	return _in(0x68F8BE6AF5CDF8A6, p0, p1)
+end
+
 --- p0 seems to be Ped
 -- Dr. Underscore (1/6/18):
 -- Has to do something with vehicles and teams. (same teams don't jack each other out of vehicles?)
@@ -14328,13 +15364,25 @@ function Global.N_0x692d808c34a82143(p0, p1, type)
 	return _in(0x692D808C34A82143, _ts(p0), p1, _ts(type), _r)
 end
 
+function Global.N_0x693478acbd7f18e7()
+	return _in(0x693478ACBD7F18E7)
+end
+
 --- what does it do?
 function Global.N_0x694e00132f2823ed(entity, p1)
 	return _in(0x694E00132F2823ED, entity, p1)
 end
 
+function Global.N_0x697f508861875b42(p0, p1, p2)
+	return _in(0x697F508861875B42, p0, p1, p2, _r, _ri)
+end
+
 function Global.N_0x699e4a5c8c893a18(p0, p1, p2)
 	return _in(0x699E4A5C8C893A18, p0, _ts(p1), _ii(p2) --[[ may be optional ]], _r)
+end
+
+function Global.N_0x69ef772b192614c1(p0, p1, p2, p3)
+	return _in(0x69EF772B192614C1, p0, p1, p2, p3)
 end
 
 function Global.N_0x69fe6dc87bd2a5e9(p0)
@@ -14345,9 +15393,21 @@ function Global.N_0x6a12d88881435dca()
 	return _in(0x6A12D88881435DCA)
 end
 
+function Global.N_0x6a1738b4323fe2d9(p0)
+	return _in(0x6A1738B4323FE2D9, p0)
+end
+
+function Global.N_0x6a51f78772175a51(p0)
+	return _in(0x6A51F78772175A51, p0)
+end
+
 --- Called in freemode related scripts but not freemode itself.
 function Global.N_0x6a5d89d7769a40d8(p0)
 	return _in(0x6A5D89D7769A40D8, p0)
+end
+
+function Global.N_0x6a60e43998228229(p0)
+	return _in(0x6A60E43998228229, p0)
 end
 
 function Global.N_0x6a98c2ecf57fa5d4(vehicle, entity)
@@ -14371,6 +15431,18 @@ function Global.N_0x6b1de27ee78e6a19(p0)
 	return _in(0x6B1DE27EE78E6A19, p0)
 end
 
+function Global.N_0x6bc0acd0673acebe(p0, p1, p2)
+	return _in(0x6BC0ACD0673ACEBE, p0, p1, p2)
+end
+
+function Global.N_0x6bc97f4f4bb3c04b(p0, p1)
+	return _in(0x6BC97F4F4BB3C04B, p0, p1)
+end
+
+function Global.N_0x6bccf9948492fd85(p0, p1, p2, p3, p4)
+	return _in(0x6BCCF9948492FD85, p0, p1, p2, p3, p4)
+end
+
 function Global.N_0x6bfb12ce158e3dd4(p0)
 	return _in(0x6BFB12CE158E3DD4, p0, _r)
 end
@@ -14389,6 +15461,18 @@ end
 
 function Global.N_0x6cd79468a1e595c6(inputGroup)
 	return _in(0x6CD79468A1E595C6, inputGroup, _r)
+end
+
+function Global.N_0x6cdd58146a436083(p0)
+	return _in(0x6CDD58146A436083, p0)
+end
+
+function Global.N_0x6ce177d014502e8a(p0)
+	return _in(0x6CE177D014502E8A, p0)
+end
+
+function Global.N_0x6ce50e47f5543d0c()
+	return _in(0x6CE50E47F5543D0C)
 end
 
 function Global.N_0x6d4cb481fac835e8(p0, p1, p3)
@@ -14455,12 +15539,24 @@ function Global.N_0x6e04f06094c87047()
 	return _in(0x6E04F06094C87047, _r, _ri)
 end
 
+function Global.N_0x6e0a5253375c4584()
+	return _in(0x6E0A5253375C4584, _r, _ri)
+end
+
+function Global.N_0x6e4361ff3e8cd7ca(p0)
+	return _in(0x6E4361FF3E8CD7CA, p0, _r, _ri)
+end
+
 --- Looks like a cousin of above function _6D6840CEE8845831 as it was found among them. Must be similar
 -- Here are possible values of argument -
 -- "ob_tv"
 -- "launcher_Darts"
 function Global.N_0x6e91b04e08773030(action)
 	return _in(0x6E91B04E08773030, _ts(action))
+end
+
+function Global.N_0x6eaaefc76acc311f(p0)
+	return _in(0x6EAAEFC76ACC311F, p0, _r, _ri)
 end
 
 --- sfink: sets bit in vehicle's structure, used by maintransition, fm_mission_controller, mission_race and a couple of other scripts. see dissassembly:
@@ -14530,6 +15626,10 @@ function Global.N_0x6fcf8ddea146c45b(p0)
 	return _in(0x6FCF8DDEA146C45B, p0)
 end
 
+function Global.N_0x6fd97159fe3c971a(p0, p1, p2, p3)
+	return _in(0x6FD97159FE3C971A, p0, p1, p2, p3)
+end
+
 function Global.N_0x6fddad856e36988a(p0, p1)
 	return _in(0x6FDDAD856E36988A, p0, p1)
 end
@@ -14551,6 +15651,10 @@ function Global.N_0x702bc4d605522539(p0)
 	return _in(0x702BC4D605522539, p0)
 end
 
+function Global.N_0x7033eefd9b28088e(p0)
+	return _in(0x7033EEFD9B28088E, p0)
+end
+
 function Global.N_0x703cc7f60cbb2b57(p0)
 	return _in(0x703CC7F60CBB2B57, p0)
 end
@@ -14561,6 +15665,10 @@ end
 
 function Global.N_0x705a276ebff3133d()
 	return _in(0x705A276EBFF3133D, _r)
+end
+
+function Global.N_0x705a844002b39dc0()
+	return _in(0x705A844002B39DC0, _r, _ri)
 end
 
 function Global.N_0x70894bd0915c5bca(p0)
@@ -14577,6 +15685,14 @@ end
 
 function Global.N_0x70ea8da57840f9be(p0)
 	return _in(0x70EA8DA57840F9BE, p0, _r)
+end
+
+function Global.N_0x711794453cfd692b(p0, p1)
+	return _in(0x711794453CFD692B, p0, p1)
+end
+
+function Global.N_0x71302ec70689052a(p0)
+	return _in(0x71302EC70689052A, p0, _r, _ri)
 end
 
 --- Used in am_mp_property_ext and am_mp_property_int
@@ -14607,6 +15723,10 @@ function Global.N_0x71bdb63dbaf8da59(p0)
 	return _in(0x71BDB63DBAF8DA59, p0)
 end
 
+function Global.N_0x71dc455f5cd1c2b1(p0)
+	return _in(0x71DC455F5CD1C2B1, p0, _r, _ri)
+end
+
 function Global.N_0x71e7b2e657449aad()
 	return _in(0x71E7B2E657449AAD, _r, _ri)
 end
@@ -14619,8 +15739,20 @@ function Global.N_0x723c1ce13fbfdb67(p0, p1)
 	return _in(0x723C1CE13FBFDB67, p0, p1)
 end
 
+function Global.N_0x7241ccb7d020db69(p0, p1)
+	return _in(0x7241CCB7D020DB69, p0, p1)
+end
+
+function Global.N_0x7242f8b741ce1086(p0)
+	return _in(0x7242F8B741CE1086, p0, _r, _ri)
+end
+
 function Global.N_0x728c4cc7920cd102(p0)
 	return _in(0x728C4CC7920CD102, p0, _r, _ri)
+end
+
+function Global.N_0x72beccf4b829522e(p0, p1)
+	return _in(0x72BECCF4B829522E, p0, p1)
 end
 
 --- Appears to be a HIDE_* native.
@@ -14648,6 +15780,10 @@ function Global.N_0x72eb7ba9b69bf6ab()
 	return _in(0x72EB7BA9B69BF6AB, _r)
 end
 
+function Global.N_0x73001e34f85137f8(p0)
+	return _in(0x73001E34F85137F8, p0)
+end
+
 --- NETWORK_CAN_R??? or NETWORK_CAN_S???
 function Global.N_0x7303e27cc6532080(p0, p1, p2, p3, p5)
 	return _in(0x7303E27CC6532080, p0, p1, p2, p3, _i, p5, _r)
@@ -14666,6 +15802,18 @@ end
 
 function Global.N_0x7350823473013c02(ped)
 	return _in(0x7350823473013C02, ped, _r)
+end
+
+function Global.N_0x73561d4425a021a2(p0, p1)
+	return _in(0x73561D4425A021A2, p0, p1)
+end
+
+function Global.N_0x736d7aa1b750856b(p0, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19, p20, p21, p22, p23, p24, p25, p26, p27, p28, p29, p30, p31)
+	return _in(0x736D7AA1B750856B, p0, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19, p20, p21, p22, p23, p24, p25, p26, p27, p28, p29, p30, p31)
+end
+
+function Global.N_0x737e398138550fff(p0, p1)
+	return _in(0x737E398138550FFF, p0, p1)
 end
 
 function Global.N_0x741a3d8380319a81()
@@ -14707,8 +15855,16 @@ function Global.N_0x7543bb439f63792b(bufferSize)
 	return _in(0x7543BB439F63792B, _i, bufferSize, _r)
 end
 
+function Global.N_0x756ae6e962168a04(p0, p1)
+	return _in(0x756AE6E962168A04, p0, p1)
+end
+
 function Global.N_0x75773e11ba459e90(p0, p1)
 	return _in(0x75773E11BA459E90, p0, p1)
+end
+
+function Global.N_0x758a5c1b3b1e1990(p0)
+	return _in(0x758A5C1B3B1E1990, p0)
 end
 
 function Global.N_0x759299c5bb31d2a9(p0, p1)
@@ -14747,8 +15903,16 @@ function Global.N_0x769951e2455e2eb5()
 	return _in(0x769951E2455E2EB5, _r, _ri)
 end
 
+function Global.N_0x76bba2cee66d47e9(p0)
+	return _in(0x76BBA2CEE66D47E9, p0, _r, _ri)
+end
+
 function Global.N_0x76bf03fadbf154f5()
 	return _in(0x76BF03FADBF154F5, _r, _ri)
+end
+
+function Global.N_0x76d26a22750e849e(p0)
+	return _in(0x76D26A22750E849E, p0)
 end
 
 --- 6 calls in the b617d scripts, removed identical lines:
@@ -14773,6 +15937,10 @@ end
 
 function Global.N_0x77faddcbe3499df7(p0)
 	return _in(0x77FADDCBE3499DF7, p0)
+end
+
+function Global.N_0x77fe3402004cd1b0(p0)
+	return _in(0x77FE3402004CD1B0, p0)
 end
 
 --- MulleDK19: This function is hard-coded to always return 1.
@@ -14815,9 +15983,17 @@ function Global.N_0x78c4e9961db3eb5b(p0, p1)
 	return _in(0x78C4E9961DB3EB5B, p0, p1)
 end
 
+function Global.N_0x78ceee41f49f421f(p0, p1)
+	return _in(0x78CEEE41F49F421F, p0, p1)
+end
+
 --- Related to cutscene entities. Unsure about the use.
 function Global.N_0x78e8e3a640178255(entity)
 	return _in(0x78E8E3A640178255, entity)
+end
+
+function Global.N_0x792271ab35c356a4(p0, p1)
+	return _in(0x792271AB35C356A4, p0, p1)
 end
 
 function Global.N_0x793ff272d5b365f4()
@@ -14826,6 +16002,10 @@ end
 
 function Global.N_0x796a877e459b99ea(p0, p1, p2, p3)
 	return _in(0x796A877E459B99EA, p0, p1, p2, p3)
+end
+
+function Global.N_0x799017f9e3b10112(p0, p1, p2, p3, p4, p5, p6, p7)
+	return _in(0x799017F9E3B10112, p0, p1, p2, p3, p4, p5, p6, p7)
 end
 
 function Global.N_0x79ab33f0fbfac40c(p0)
@@ -14852,6 +16032,10 @@ function Global.N_0x7ae0589093a2e088(p0, p1, p2, p3, p4, p5)
 	return _in(0x7AE0589093A2E088, p0, p1, p2, p3, p4, p5, _r, _ri)
 end
 
+function Global.N_0x7b18da61f6bae9d5(p0)
+	return _in(0x7B18DA61F6BAE9D5, p0)
+end
+
 function Global.N_0x7b21e0bb01e8224a(p0)
 	return _in(0x7B21E0BB01E8224A, p0)
 end
@@ -14860,12 +16044,28 @@ function Global.N_0x7b226c785a52a0a9()
 	return _in(0x7B226C785A52A0A9, _r, _ri)
 end
 
+function Global.N_0x7b8a361c1813fbef()
+	return _in(0x7B8A361C1813FBEF)
+end
+
+function Global.N_0x7bbe7ff626a591fe(p0)
+	return _in(0x7BBE7FF626A591FE, p0)
+end
+
 function Global.N_0x7bf1a54ae67ac070(p0, p1, p2)
 	return _in(0x7BF1A54AE67AC070, p0, p1, p2)
 end
 
 function Global.N_0x7c0043fdff6436bc(x)
 	return _in(0x7C0043FDFF6436BC, x)
+end
+
+function Global.N_0x7c06330bfdda182e(p0)
+	return _in(0x7C06330BFDDA182E, p0)
+end
+
+function Global.N_0x7c226d5346d4d10a(p0)
+	return _in(0x7C226D5346D4D10A, p0)
 end
 
 --- Used for cash gifts
@@ -14889,6 +16089,10 @@ end
 -- AUDIO::_7CDC8C3B89F661B3(PLAYER::PLAYER_PED_ID(), GAMEPLAY::GET_HASH_KEY("FEMALE_LOST_WHITE_PVG"));
 function Global.N_0x7cdc8c3b89f661b3(playerPed, p1)
 	return _in(0x7CDC8C3B89F661B3, playerPed, _ch(p1))
+end
+
+function Global.N_0x7d36291161859389(p0)
+	return _in(0x7D36291161859389, p0)
 end
 
 function Global.N_0x7d395ea61622e116(p0)
@@ -14935,8 +16139,20 @@ function Global.N_0x7d7a2e43e74e2eb8(p0)
 	return _in(0x7D7A2E43E74E2EB8, p0)
 end
 
+function Global.N_0x7d8ba05688ad64c7(p0)
+	return _in(0x7D8BA05688AD64C7, p0)
+end
+
+function Global.N_0x7db18ca8cad5b098()
+	return _in(0x7DB18CA8CAD5B098, _r, _ri)
+end
+
 function Global.N_0x7db53b37a2f211a0()
 	return _in(0x7DB53B37A2F211A0, _r, _ri)
+end
+
+function Global.N_0x7e07c78925d5fd96(p0)
+	return _in(0x7E07C78925D5FD96, p0, _r, _ri)
 end
 
 function Global.N_0x7e17be53e1aaabaf()
@@ -14965,6 +16181,10 @@ function Global.N_0x7e6946f68a38b74f(p0)
 	return _in(0x7E6946F68A38B74F, p0, _r)
 end
 
+function Global.N_0x7ec3c679d0e7e46b(p0, p1, p2, p3)
+	return _in(0x7EC3C679D0E7E46B, p0, p1, p2, p3)
+end
+
 function Global.N_0x7ec6f9a478a6a512()
 	return _in(0x7EC6F9A478A6A512)
 end
@@ -14972,6 +16192,10 @@ end
 --- _PLAYSTATS_ROB_ARMOURD_TRUCK
 function Global.N_0x7eec2a316c250073(p0, p1, p2)
 	return _in(0x7EEC2A316C250073, p0, p1, p2)
+end
+
+function Global.N_0x7ef7649b64d7ff10(p0)
+	return _in(0x7EF7649B64D7FF10, p0, _r, _ri)
 end
 
 function Global.N_0x7f2c4cdf2e82df4c(p0)
@@ -15006,6 +16230,10 @@ function Global.N_0x80054d7fcc70eec6(p0)
 	return _in(0x80054D7FCC70EEC6, p0)
 end
 
+function Global.N_0x801879a9b4f4b2fb()
+	return _in(0x801879A9B4F4B2FB, _r, _ri)
+end
+
 function Global.N_0x806058bbdc136e06()
 	return _in(0x806058BBDC136E06)
 end
@@ -15017,6 +16245,10 @@ end
 --- 0, 1 and 2 used in the scripts. 0 is by far the most common of them.
 function Global.N_0x80c2fd58d720c801(inputGroup, control, p2)
 	return _in(0x80C2FD58D720C801, inputGroup, control, p2, _r, _s)
+end
+
+function Global.N_0x80e3357fdef45c21(p0, p1)
+	return _in(0x80E3357FDEF45C21, p0, p1)
 end
 
 --- gets some camera fov
@@ -15032,13 +16264,41 @@ function Global.N_0x8147fff6a718e1ad(p0)
 	return _in(0x8147FFF6A718E1AD, p0, _r, _ri)
 end
 
+function Global.N_0x814af7dcaacc597b(p0)
+	return _in(0x814AF7DCAACC597B, p0)
+end
+
+function Global.N_0x815f18ad865f057f(p0)
+	return _in(0x815F18AD865F057F, p0, _r, _ri)
+end
+
 --- UI::_817B86108EB94E51(1, &amp;g_189F36._f10CD1[0/*16*/], &amp;g_189F36._f10CD1[1/*16*/], &amp;g_189F36._f10CD1[2/*16*/], &amp;g_189F36._f10CD1[3/*16*/], &amp;g_189F36._f10CD1[4/*16*/], &amp;g_189F36._f10CD1[5/*16*/], &amp;g_189F36._f10CD1[6/*16*/], &amp;g_189F36._f10CD1[7/*16*/]);
 function Global.N_0x817b86108eb94e51(p0)
 	return _in(0x817B86108EB94E51, p0, _i, _i, _i, _i, _i, _i, _i, _i)
 end
 
+function Global.N_0x8181ce2f25cb9bb7(p0, p1)
+	return _in(0x8181CE2F25CB9BB7, p0, p1, _r, _ri)
+end
+
+function Global.N_0x81aa517fbba05d39(p0)
+	return _in(0x81AA517FBBA05D39, p0, _r, _ri)
+end
+
 function Global.N_0x81cbae94390f9f89()
 	return _in(0x81CBAE94390F9F89)
+end
+
+function Global.N_0x820e9892a77e97cd(p0, p1)
+	return _in(0x820E9892A77E97CD, p0, p1)
+end
+
+function Global.N_0x821418c727fcacd7(p0)
+	return _in(0x821418C727FCACD7, p0)
+end
+
+function Global.N_0x821fdc827d6f4090(p0)
+	return _in(0x821FDC827D6F4090, p0)
 end
 
 --- "GET_OBJ_ENTITY" seems highly unlikely.
@@ -15053,11 +16313,23 @@ function Global.N_0x8269816f6cfd40f8(name)
 	return _in(0x8269816F6CFD40F8, _i, _ts(name))
 end
 
+function Global.N_0x826d1ee4d1cafc78(p0, p1)
+	return _in(0x826D1EE4D1CAFC78, p0, p1)
+end
+
 --- HUD_COLOUR_CONTROLLER_CHOP = 174;
 -- UI::GET_HUD_COLOUR(174, &amp;v_6, &amp;v_7, &amp;v_8, &amp;v_9);
 -- CONTROLS::_8290252FFF36ACB5(0, v_6, v_7, v_8);
 function Global.N_0x8290252fff36acb5(p0, red, green, blue)
 	return _in(0x8290252FFF36ACB5, p0, red, green, blue)
+end
+
+function Global.N_0x82a2b386716608f1()
+	return _in(0x82A2B386716608F1, _r, _ri)
+end
+
+function Global.N_0x82acc484ffa3b05f(p0)
+	return _in(0x82ACC484FFA3B05F, p0, _r, _ri)
 end
 
 function Global.N_0x82cedc33687e1f50(p0)
@@ -15066,6 +16338,14 @@ end
 
 function Global.N_0x82ebb79e258fa2b7(entity, interiorID)
 	return _in(0x82EBB79E258FA2B7, entity, interiorID)
+end
+
+function Global.N_0x83660b734994124d(p0, p1, p2)
+	return _in(0x83660B734994124D, p0, p1, p2, _r, _ri)
+end
+
+function Global.N_0x838da0936a24ed4d(p0, p1)
+	return _in(0x838DA0936A24ED4D, p0, p1)
 end
 
 function Global.N_0x83a169eabcdb10a2(p0, p1)
@@ -15104,6 +16384,10 @@ function Global.N_0x83f28ce49fbbffba(p0, p1, p2)
 	return _in(0x83F28CE49FBBFFBA, p0, p1, p2, _r)
 end
 
+function Global.N_0x83f813570ff519de(p0, p1)
+	return _in(0x83F813570FF519DE, p0, p1)
+end
+
 function Global.N_0x83fe8d7229593017()
 	return _in(0x83FE8D7229593017)
 end
@@ -15119,12 +16403,36 @@ function Global.N_0x84698ab38d0c6636(hash)
 	return _in(0x84698AB38D0C6636, _ch(hash), _r)
 end
 
+function Global.N_0x848b66100ee33b05(p0)
+	return _in(0x848B66100EE33B05, p0)
+end
+
+function Global.N_0x84a810b375e69c0e()
+	return _in(0x84A810B375E69C0E, _r, _ri)
+end
+
+function Global.N_0x84c0116d012e8fc2(p0)
+	return _in(0x84C0116D012E8FC2, p0)
+end
+
 function Global.N_0x84de3b5fb3e666f0(p0)
 	return _in(0x84DE3B5FB3E666F0, _ii(p0) --[[ may be optional ]], _r)
 end
 
+function Global.N_0x84dfc579c2fc214c(p0)
+	return _in(0x84DFC579C2FC214C, p0)
+end
+
+function Global.N_0x84ea99c62cb3ef0c(p0, p1, p2)
+	return _in(0x84EA99C62CB3EF0C, p0, p1, p2)
+end
+
 function Global.N_0x851cd923176eba7c()
 	return _in(0x851CD923176EBA7C)
+end
+
+function Global.N_0x8533cafde1f0f336(p0)
+	return _in(0x8533CAFDE1F0F336, p0, _r, _ri)
 end
 
 function Global.N_0x85535acf97fc0969(p0)
@@ -15133,6 +16441,14 @@ end
 
 function Global.N_0x855bc38818f6f684()
 	return _in(0x855BC38818F6F684, _r)
+end
+
+function Global.N_0x8586789730b10caf(p0, p1, p2, p3)
+	return _in(0x8586789730B10CAF, p0, p1, p2, p3)
+end
+
+function Global.N_0x858ec9fd25de04aa(p0, p1)
+	return _in(0x858EC9FD25DE04AA, p0, p1)
 end
 
 function Global.N_0x85a0ef54a500882c(p0)
@@ -15147,16 +16463,36 @@ function Global.N_0x85f6c9aba1de2bcf()
 	return _in(0x85F6C9ABA1DE2BCF, _r, _ri)
 end
 
+function Global.N_0x867458251d47ccb2(p0, p1)
+	return _in(0x867458251D47CCB2, p0, p1)
+end
+
 function Global.N_0x869daacbbe9fa006()
 	return _in(0x869DAACBBE9FA006, _r, _ri)
+end
+
+function Global.N_0x86b4b6212cb8b627(p0, p1)
+	return _in(0x86B4B6212CB8B627, p0, p1)
 end
 
 function Global.N_0x86e0660e4f5c956d()
 	return _in(0x86E0660E4F5C956D)
 end
 
+function Global.N_0x870b8b7a766615c8(p0, p1, p2)
+	return _in(0x870B8B7A766615C8, p0, p1, p2)
+end
+
 function Global.N_0x876928dddfccc9cd()
 	return _in(0x876928DDDFCCC9CD, _r, _ri)
+end
+
+function Global.N_0x878c75c09fbdb942()
+	return _in(0x878C75C09FBDB942, _r, _ri)
+end
+
+function Global.N_0x87ddeb611b329a9c(p0)
+	return _in(0x87DDEB611B329A9C, p0)
 end
 
 function Global.N_0x87e0052f08bd64e6(p0, p1)
@@ -15169,6 +16505,10 @@ end
 
 function Global.N_0x8806cebfabd3ce05(p0)
 	return _in(0x8806CEBFABD3CE05, p0, _r)
+end
+
+function Global.N_0x88087ee1f28024ae(p0)
+	return _in(0x88087EE1F28024AE, p0)
 end
 
 function Global.N_0x8817605c2ba76200()
@@ -15185,6 +16525,10 @@ end
 
 function Global.N_0x886913bbeaca68c1(p0)
 	return _in(0x886913BBEACA68C1, _ii(p0) --[[ may be optional ]], _r, _ri)
+end
+
+function Global.N_0x8881c98a31117998(p0)
+	return _in(0x8881C98A31117998, p0)
 end
 
 --- MulleDK19: This function is hard-coded to always return 0.
@@ -15231,14 +16575,26 @@ function Global.N_0x897433d292b44130()
 	return _in(0x897433D292B44130, _i, _i, _r)
 end
 
+function Global.N_0x8989cbd7b4e82534(p0, p1, p2, p3, p4, p5, p6)
+	return _in(0x8989CBD7B4E82534, p0, p1, p2, p3, p4, p5, p6)
+end
+
 function Global.N_0x89d630cf5ea96d23(vehicle, entity)
 	return _in(0x89D630CF5EA96D23, vehicle, entity, _r)
+end
+
+function Global.N_0x8a24b067d175a7bd(p0, p1, p2, p3, p4, p5)
+	return _in(0x8A24B067D175A7BD, p0, p1, p2, p3, p4, p5, _r, _ri)
 end
 
 --- One call found in the b617d scripts:
 -- AUDIO::_8A694D7A68F8DC38(NETWORK::NET_TO_PED(l_3989._f26F[0/*1*/]), "CONV_INTERRUPT_QUIT_IT", "LESTER");
 function Global.N_0x8a694d7a68f8dc38(p0, p1, p2)
 	return _in(0x8A694D7A68F8DC38, p0, _ts(p1), _ts(p2))
+end
+
+function Global.N_0x8a800daccc0da55d()
+	return _in(0x8A800DACCC0DA55D)
 end
 
 function Global.N_0x8aa464d4e0f6accd()
@@ -15258,8 +16614,20 @@ function Global.N_0x8b0c2964ba471961()
 	return _in(0x8B0C2964BA471961, _r, _ri)
 end
 
+function Global.N_0x8b4ffc790ca131ef(p0, p1, p2, p3)
+	return _in(0x8B4FFC790CA131EF, p0, p1, p2, p3, _r, _ri)
+end
+
+function Global.N_0x8b9cdbd6c566c38c()
+	return _in(0x8B9CDBD6C566C38C, _r, _ri)
+end
+
 function Global.N_0x8bbacbf51da047a8(p0)
 	return _in(0x8BBACBF51DA047A8, p0)
+end
+
+function Global.N_0x8bc515bae4aaf8ff(p0)
+	return _in(0x8BC515BAE4AAF8FF, p0, _r, _ri)
 end
 
 function Global.N_0x8bd6c6dea20e82c6(p0)
@@ -15274,12 +16642,24 @@ function Global.N_0x8bfceb5ea1b161b6()
 	return _in(0x8BFCEB5EA1B161B6, _r, _ri)
 end
 
+function Global.N_0x8c33220c8d78ca0d(p0, p1)
+	return _in(0x8C33220C8D78CA0D, p0, p1)
+end
+
 function Global.N_0x8c4f3bf23b6237db(ped, p1, p2)
 	return _in(0x8C4F3BF23B6237DB, ped, p1, p2, _r, _ri)
 end
 
 function Global.N_0x8c8d2739ba44af0f(p0)
 	return _in(0x8C8D2739BA44AF0F, p0, _r)
+end
+
+function Global.N_0x8c9d11605e59d955(p0)
+	return _in(0x8C9D11605E59D955, p0)
+end
+
+function Global.N_0x8caab2bd3ea58bd4(p0)
+	return _in(0x8CAAB2BD3EA58BD4, p0)
 end
 
 function Global.N_0x8cc469ab4d349b7c(p0, p1, p2)
@@ -15300,6 +16680,14 @@ function Global.N_0x8d74e26f54b4e5c3(p0)
 	return _in(0x8D74E26F54B4E5C3, _ts(p0))
 end
 
+function Global.N_0x8d768602adef2245(p0, p1)
+	return _in(0x8D768602ADEF2245, p0, p1)
+end
+
+function Global.N_0x8d8adb562f09a245(p0)
+	return _in(0x8D8ADB562F09A245, p0)
+end
+
 --- Example of usage:
 -- v_2 = SCRIPT::_30B4FA1C82DD4B9F(); // int _GET_ID_OF_NEXT_SCRIPT_IN_ENUMERATION()
 -- CUTSCENE::_8D9DF6ECA8768583(v_2);
@@ -15307,8 +16695,16 @@ function Global.N_0x8d9df6eca8768583(p0)
 	return _in(0x8D9DF6ECA8768583, p0)
 end
 
+function Global.N_0x8e243837643d9583(p0, p1, p2, p3)
+	return _in(0x8E243837643D9583, p0, p1, p2, p3)
+end
+
 function Global.N_0x8e2a065abdae6994()
 	return _in(0x8E2A065ABDAE6994)
+end
+
+function Global.N_0x8ea86df356801c7d(p0, p1)
+	return _in(0x8EA86DF356801C7D, p0, p1)
 end
 
 function Global.N_0x8ec74ceb042e7cff(p0)
@@ -15327,6 +16723,10 @@ end
 
 function Global.N_0x8f08017f9d7c47bd(p0, p2)
 	return _in(0x8F08017F9D7C47BD, p0, _i, p2, _r)
+end
+
+function Global.N_0x8f5d1ad832aeb06c(p0)
+	return _in(0x8F5D1AD832AEB06C, p0, _r, _ri)
 end
 
 function Global.N_0x8f5ea1c01d65a100(p0)
@@ -15409,6 +16809,10 @@ function Global.N_0x91d6dd290888cbab()
 	return _in(0x91D6DD290888CBAB, _r)
 end
 
+function Global.N_0x91ef34584710be99(p0, p1, p2, p3, p4, p5, p6, p7)
+	return _in(0x91EF34584710BE99, p0, p1, p2, p3, p4, p5, p6, p7, _r, _ri)
+end
+
 function Global.N_0x91ef6ee6419e5b97(p0)
 	return _in(0x91EF6EE6419E5B97, p0)
 end
@@ -15429,6 +16833,10 @@ function Global.N_0x9245e81072704b8a(p0)
 	return _in(0x9245E81072704B8A, p0)
 end
 
+function Global.N_0x9251b6abf2d0a5b4(p0, p1)
+	return _in(0x9251B6ABF2D0A5B4, p0, p1)
+end
+
 function Global.N_0x92523b76657a517d(p0, p1)
 	return _in(0x92523B76657A517D, p0, p1, _r, _ri)
 end
@@ -15440,8 +16848,16 @@ function Global.N_0x92790862e36c2ada()
 	return _in(0x92790862E36C2ADA)
 end
 
+function Global.N_0x928dbfb892638ef3()
+	return _in(0x928DBFB892638EF3)
+end
+
 function Global.N_0x92aefb5f6e294023(object, p1, p2)
 	return _in(0x92AEFB5F6E294023, object, p1, p2)
+end
+
+function Global.N_0x92c360b5f15d2302(p0, p1, p2, p3, p4, p5, p6)
+	return _in(0x92C360B5F15D2302, p0, p1, p2, p3, p4, p5, p6)
 end
 
 function Global.N_0x92ccc17a7a2285da()
@@ -15456,6 +16872,10 @@ end
 -- Seems to return either 0, 1, or -1.
 function Global.N_0x930de22f07b1cce3(p0)
 	return _in(0x930DE22F07B1CCE3, p0, _r, _ri)
+end
+
+function Global.N_0x930f504203f561c9(p0)
+	return _in(0x930F504203F561C9, p0)
 end
 
 function Global.N_0x933bbeeb8c61b5f4()
@@ -15514,8 +16934,16 @@ function Global.N_0x95cf81bd06ee1887()
 	return _in(0x95CF81BD06EE1887)
 end
 
+function Global.N_0x95eb5e34f821babe(p0, p1, p2)
+	return _in(0x95EB5E34F821BABE, p0, p1, p2, _r, _ri)
+end
+
 function Global.N_0x9614b71f8adb982b()
 	return _in(0x9614B71F8ADB982B, _r, _ri)
+end
+
+function Global.N_0x9641588dab93b4b5(p0)
+	return _in(0x9641588DAB93B4B5, p0)
 end
 
 function Global.N_0x966dd84fb6a46017()
@@ -15528,6 +16956,14 @@ end
 
 function Global.N_0x9689123e3f213aa5()
 	return _in(0x9689123E3F213AA5, _r)
+end
+
+function Global.N_0x96e6d5150dbf1c09(p0, p1, p2)
+	return _in(0x96E6D5150DBF1C09, p0, p1, p2)
+end
+
+function Global.N_0x96ee0eba0163df80(p0, p1)
+	return _in(0x96EE0EBA0163DF80, p0, p1)
 end
 
 --- SET_VEHICLE_DOORS_LOCKED_FOR_*
@@ -15543,6 +16979,14 @@ function Global.N_0x975d66a0bc17064c(p0)
 	return _in(0x975D66A0BC17064C, p0)
 end
 
+function Global.N_0x9777734dad16992f()
+	return _in(0x9777734DAD16992F, _r, _ri)
+end
+
+function Global.N_0x977ca98939e82e4b(p0, p1)
+	return _in(0x977CA98939E82E4B, p0, p1)
+end
+
 function Global.N_0x97e7e2c04245115b(p0)
 	return _in(0x97E7E2C04245115B, p0)
 end
@@ -15551,12 +16995,20 @@ function Global.N_0x98215325a695e78a(p0)
 	return _in(0x98215325A695E78A, p0)
 end
 
+function Global.N_0x98c3cf913d895111(p0, p1)
+	return _in(0x98C3CF913D895111, p0, p1, _r, _ri)
+end
+
 function Global.N_0x98e2bc1ca26287c3()
 	return _in(0x98E2BC1CA26287C3)
 end
 
 function Global.N_0x98edf76a7271e4f2()
 	return _in(0x98EDF76A7271E4F2)
+end
+
+function Global.N_0x99093f60746708ca(p0)
+	return _in(0x99093F60746708CA, p0, _r, _ri)
 end
 
 function Global.N_0x9911f4a24485f653(p0)
@@ -15571,6 +17023,10 @@ function Global.N_0x996dd1e1e02f1008()
 	return _in(0x996DD1E1E02F1008, _r, _ri)
 end
 
+function Global.N_0x998e18ceb44487fc(p0, p1, p2, p3)
+	return _in(0x998E18CEB44487FC, p0, p1, p2, p3)
+end
+
 function Global.N_0x99ac7f0d8b9c893d(p0)
 	return _in(0x99AC7F0D8B9C893D, p0)
 end
@@ -15581,6 +17037,10 @@ end
 
 function Global.N_0x99cad8e7afdb60fa(vehicle, p1, p2)
 	return _in(0x99CAD8E7AFDB60FA, vehicle, p1, p2)
+end
+
+function Global.N_0x9a53ded9921de990(p0, p1)
+	return _in(0x9A53DED9921DE990, p0, p1)
 end
 
 function Global.N_0x9a62ec95ae10e011()
@@ -15642,6 +17102,10 @@ function Global.N_0x9bf438815f5d96ea(p0, p1, p3, p4, p5)
 	return _in(0x9BF438815F5D96EA, p0, p1, _i, p3, p4, p5, _r)
 end
 
+function Global.N_0x9c16459b2324b2cf(p0, p1)
+	return _in(0x9C16459B2324B2CF, p0, p1)
+end
+
 function Global.N_0x9c6a6c19b6c0c496(p0, p1)
 	return _in(0x9C6A6C19B6C0C496, p0, _ii(p1) --[[ may be optional ]], _r)
 end
@@ -15655,6 +17119,10 @@ function Global.N_0x9cfdd90b2b844bf7(p0, p1, p2, p3, p4)
 	return _in(0x9CFDD90B2B844BF7, p0, p1, p2, p3, p4)
 end
 
+function Global.N_0x9d30687c57baa0bb(p0)
+	return _in(0x9D30687C57BAA0BB, p0)
+end
+
 function Global.N_0x9d3af56e94c9ae98(p0, p1)
 	return _in(0x9D3AF56E94C9AE98, p0, p1)
 end
@@ -15663,12 +17131,20 @@ function Global.N_0x9d728c1e12bf5518(p0)
 	return _in(0x9D728C1E12BF5518, p0, _r, _ri)
 end
 
+function Global.N_0x9d75795b9dc6ebbf(p0)
+	return _in(0x9D75795B9DC6EBBF, p0)
+end
+
 function Global.N_0x9d7afcbf21c51712(p0)
 	return _in(0x9D7AFCBF21C51712, p0)
 end
 
 function Global.N_0x9d8d44adbba61ef2(p0)
 	return _in(0x9D8D44ADBBA61EF2, p0)
+end
+
+function Global.N_0x9da58cdbf6bdbc08(p0, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10)
+	return _in(0x9DA58CDBF6BDBC08, p0, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, _r, _ri)
 end
 
 --- Found in the b617d scripts:
@@ -15699,6 +17175,22 @@ function Global.N_0x9e778248d6685fe0(p0)
 	return _in(0x9E778248D6685FE0, _ts(p0))
 end
 
+function Global.N_0x9e82f0f362881b29(p0, p1, p2, p3, p4)
+	return _in(0x9E82F0F362881B29, p0, p1, p2, p3, p4, _r, _ri)
+end
+
+function Global.N_0x9ebd751e5787baf2(p0)
+	return _in(0x9EBD751E5787BAF2, p0)
+end
+
+function Global.N_0x9ec8858184cd253a()
+	return _in(0x9EC8858184CD253A, _r, _ri)
+end
+
+function Global.N_0x9eca15adfe141431()
+	return _in(0x9ECA15ADFE141431, _r, _ri)
+end
+
 function Global.N_0x9edd76e87d5d51ba(player)
 	return _in(0x9EDD76E87D5D51BA, player)
 end
@@ -15713,6 +17205,10 @@ end
 
 function Global.N_0x9f6e2821885caee2(p0, p1, p2)
 	return _in(0x9F6E2821885CAEE2, p0, p1, p2, _i, _i, _r)
+end
+
+function Global.N_0x9fe5633880ecd8ed(p0, p1, p2, p3)
+	return _in(0x9FE5633880ECD8ED, p0, p1, p2, p3)
 end
 
 function Global.N_0x9fedf86898f100e9()
@@ -15747,6 +17243,14 @@ function Global.N_0xa0cefcea390aab9b(p0)
 	return _in(0xA0CEFCEA390AAB9B, p0)
 end
 
+function Global.N_0xa0d3e4f7aafb7e78(p0, p1)
+	return _in(0xA0D3E4F7AAFB7E78, p0, p1, _r, _ri)
+end
+
+function Global.N_0xa0f8a7517a273c05(p0, p1, p2, p3, p4)
+	return _in(0xA0F8A7517A273C05, p0, p1, p2, p3, p4, _r, _ri)
+end
+
 function Global.N_0xa0f93d5465b3094d(p0)
 	return _in(0xA0F93D5465B3094D, _ii(p0) --[[ may be optional ]], _r)
 end
@@ -15758,6 +17262,10 @@ end
 
 function Global.N_0xa0fe76168a189ddb()
 	return _in(0xA0FE76168A189DDB, _r, _ri)
+end
+
+function Global.N_0xa12d3a5a3753cc23()
+	return _in(0xA12D3A5A3753CC23, _r, _ri)
 end
 
 function Global.N_0xa134777ff7f33331(p0, p1)
@@ -15772,12 +17280,24 @@ function Global.N_0xa13e93403f26c812(p0)
 	return _in(0xA13E93403F26C812, p0, _r, _ri)
 end
 
+function Global.N_0xa17784fca9548d15(p0, p1, p2)
+	return _in(0xA17784FCA9548D15, p0, p1, p2)
+end
+
 function Global.N_0xa17bad153b51547e(cargobob, p1)
 	return _in(0xA17BAD153B51547E, cargobob, p1)
 end
 
+function Global.N_0xa1a9fc1c76a6730d(p0)
+	return _in(0xA1A9FC1C76A6730D, p0, _r, _ri)
+end
+
 function Global.N_0xa1c996c2a744262e(p0)
 	return _in(0xA1C996C2A744262E, _ii(p0) --[[ may be optional ]], _r)
+end
+
+function Global.N_0xa1dd82f3ccf9a01e(p0, p1, p2, p3, p4, p5)
+	return _in(0xA1DD82F3CCF9A01E, p0, p1, p2, p3, p4, p5)
 end
 
 function Global.N_0xa1e5e0204a6fcc70()
@@ -15797,6 +17317,10 @@ function Global.N_0xa238192f33110615()
 	return _in(0xA238192F33110615, _i, _i, _i, _r)
 end
 
+function Global.N_0xa247f9ef01d8082e(p0)
+	return _in(0xA247F9EF01D8082E, p0)
+end
+
 function Global.N_0xa2767257a320fc82(p0, p1)
 	return _in(0xA2767257A320FC82, p0, p1)
 end
@@ -15805,8 +17329,16 @@ function Global.N_0xa277800a9eae340e()
 	return _in(0xA277800A9EAE340E, _r, _ri)
 end
 
+function Global.N_0xa2a707979fe754dc(p0, p1)
+	return _in(0xA2A707979FE754DC, p0, p1)
+end
+
 function Global.N_0xa2c1f5e92afe49ed()
 	return _in(0xA2C1F5E92AFE49ED)
+end
+
+function Global.N_0xa2c9ac24b4061285(p0, p1)
+	return _in(0xA2C9AC24B4061285, p0, p1, _r, _ri)
 end
 
 --- Needs more research. If the "phone_cam12" filter is applied, this function is called with "TRUE"; otherwise, "FALSE".
@@ -15848,6 +17380,10 @@ function Global.N_0xa3a9299c4f2adb98(p0)
 	return _in(0xA3A9299C4F2ADB98, p0)
 end
 
+function Global.N_0xa3c53804bdb68ed2(p0, p1)
+	return _in(0xA3C53804BDB68ED2, p0, p1)
+end
+
 --- Only called once in the scripts:
 -- if (sub_1abd() &amp;&amp; (!PED::_A3F3564A5B3646C0(l_8C))) {
 -- if (sub_52e3("RESNA_CELLR", 0)) {
@@ -15859,6 +17395,10 @@ end
 -- }
 function Global.N_0xa3f3564a5b3646c0(ped)
 	return _in(0xA3F3564A5B3646C0, ped, _r)
+end
+
+function Global.N_0xa40cc53df8e50837(p0, args, argCount, bit)
+	return _in(0xA40CC53DF8E50837, p0, args, argCount, bit)
 end
 
 function Global.N_0xa41bcd7213805aac(p0)
@@ -15895,6 +17435,10 @@ end
 
 function Global.N_0xa4dede28b1814289()
 	return _in(0xA4DEDE28B1814289)
+end
+
+function Global.N_0xa51b086b0b2c0f7a(p0, p1, p2, p3)
+	return _in(0xA51B086B0B2C0F7A, p0, p1, p2, p3)
 end
 
 function Global.N_0xa51c4b86b71652ae(p0)
@@ -15956,6 +17500,14 @@ function Global.N_0xa69ac4ade82b57a4(p0)
 	return _in(0xA69AC4ADE82B57A4, p0, _r)
 end
 
+function Global.N_0xa6d3a8750dc73270(p0, p1)
+	return _in(0xA6D3A8750DC73270, p0, p1)
+end
+
+function Global.N_0xa6f54bb2ffca35ea(p0)
+	return _in(0xA6F54BB2FFCA35EA, p0)
+end
+
 function Global.N_0xa72835064dd63e4c()
 	return _in(0xA72835064DD63E4C, _r, _ri)
 end
@@ -15972,6 +17524,14 @@ end
 -- GAMEPLAY::_A74802FB8D0B7814("CONTRAILS", 0);
 function Global.N_0xa74802fb8d0b7814(p0, p1)
 	return _in(0xA74802FB8D0B7814, _ts(p0), p1)
+end
+
+function Global.N_0xa75ccf58a60a5fd1(p0, p1, p2, p3, p4, p5, p6, p7, p8, p9)
+	return _in(0xA75CCF58A60A5FD1, p0, p1, p2, p3, p4, p5, p6, p7, p8, p9)
+end
+
+function Global.N_0xa761d4ac6115623d()
+	return _in(0xA761D4AC6115623D, _r, _ri)
 end
 
 function Global.N_0xa76359fc80b2438e(p0)
@@ -15993,8 +17553,16 @@ function Global.N_0xa78b8fa58200da56(p0)
 	return _in(0xA78B8FA58200DA56, p0)
 end
 
+function Global.N_0xa78de25577300ba1(p0)
+	return _in(0xA78DE25577300BA1, p0)
+end
+
 function Global.N_0xa7a1127490312c36(p0)
 	return _in(0xA7A1127490312C36, p0)
+end
+
+function Global.N_0xa7c511fa1c5bda38(p0, p1)
+	return _in(0xA7C511FA1C5BDA38, p0, p1)
 end
 
 function Global.N_0xa7dcdf4ded40a8f4(vehicle, p1)
@@ -16034,6 +17602,10 @@ function Global.N_0xa8acb6459542a8c8()
 	return _in(0xA8ACB6459542A8C8, _r, _ri)
 end
 
+function Global.N_0xa8b6afdac320ac87(p0, p1)
+	return _in(0xA8B6AFDAC320AC87, p0, p1)
+end
+
 function Global.N_0xa8fdb297a8d25fba()
 	return _in(0xA8FDB297A8D25FBA)
 end
@@ -16042,8 +17614,20 @@ function Global.N_0xa905192a6781c41b(x, y, z)
 	return _in(0xA905192A6781C41B, x, y, z)
 end
 
+function Global.N_0xa90e7227a9303fa9(p0, p1)
+	return _in(0xA90E7227A9303FA9, p0, p1)
+end
+
 function Global.N_0xa9240a96c74cca13(p0)
 	return _in(0xA9240A96C74CCA13, p0, _r)
+end
+
+function Global.N_0xa943fd1722e11efd()
+	return _in(0xA943FD1722E11EFD, _r, _ri)
+end
+
+function Global.N_0xa95f667a755725da(p0, p1, p2, p3)
+	return _in(0xA95F667A755725DA, p0, p1, p2, p3)
 end
 
 function Global.N_0xa9b61a329bfdcbea(p0, p1)
@@ -16060,6 +17644,18 @@ end
 
 function Global.N_0xaa19f5572c38b564(p0)
 	return _in(0xAA19F5572C38B564, _ii(p0) --[[ may be optional ]], _r, _ri)
+end
+
+function Global.N_0xaa3f739abddcf21f()
+	return _in(0xAA3F739ABDDCF21F)
+end
+
+function Global.N_0xaa525dff66bb82f5(p0, p1, p2)
+	return _in(0xAA525DFF66BB82F5, p0, p1, p2)
+end
+
+function Global.N_0xaa5fafcd2c5f5e47()
+	return _in(0xAA5FAFCD2C5F5E47, _r, _ri)
 end
 
 function Global.N_0xaa76052dda9bfc3e(p0, p1, p2, p3, p4, p5, p6)
@@ -16083,8 +17679,16 @@ function Global.N_0xab13a5565480b6d9(p0, p1)
 	return _in(0xAB13A5565480B6D9, p0, p1, _r, _ri)
 end
 
+function Global.N_0xab31ef4de6800ce9(p0, p1)
+	return _in(0xAB31EF4DE6800CE9, p0, p1)
+end
+
 function Global.N_0xabb2fa71c83a1b72()
 	return _in(0xABB2FA71C83A1B72, _r, _ri)
+end
+
+function Global.N_0xac272c0ae01b4bd8(p0, p1, p2, p3)
+	return _in(0xAC272C0AE01B4BD8, p0, p1, p2, p3)
 end
 
 function Global.N_0xac2890471901861c(p0)
@@ -16140,6 +17744,10 @@ function Global.N_0xaeef48cdf5b6ce7c(p0, p1)
 	return _in(0xAEEF48CDF5B6CE7C, p0, p1, _r)
 end
 
+function Global.N_0xaf03011701811146(p0, p1)
+	return _in(0xAF03011701811146, p0, p1, _r, _ri)
+end
+
 --- Possible p0 values:
 -- "prologue"
 -- "Prologue_Main"
@@ -16157,6 +17765,10 @@ function Global.N_0xaf42195a42c63bba()
 	return _in(0xAF42195A42C63BBA, _r, _ri)
 end
 
+function Global.N_0xaf60e6a2936f982a(p0, p1)
+	return _in(0xAF60E6A2936F982A, p0, p1)
+end
+
 function Global.N_0xaf66dcee6609b148()
 	return _in(0xAF66DCEE6609B148)
 end
@@ -16167,6 +17779,10 @@ end
 
 function Global.N_0xaff4710e2a0a6c12(ped)
 	return _in(0xAFF4710E2A0A6C12, ped)
+end
+
+function Global.N_0xaff47709f1d5dcce()
+	return _in(0xAFF47709F1D5DCCE, _r, _ri)
 end
 
 function Global.N_0xb055a34527cb8fd7(vehicle, p1)
@@ -16189,12 +17805,20 @@ function Global.N_0xb094bc1db4018240(p0, p1, p2, p3)
 	return _in(0xB094BC1DB4018240, p0, p1, p2, p3)
 end
 
+function Global.N_0xb09d25e77c33eb3f(p0, p1, p2)
+	return _in(0xB09D25E77C33EB3F, p0, p1, p2, _r, _ri)
+end
+
 --- Examples:
 -- AI::_B0A6CFD2C69C1088(PLAYER::PLAYER_PED_ID(), "isFirstPerson", 0);
 -- AI::_B0A6CFD2C69C1088(PLAYER::PLAYER_PED_ID(), "isFirstPerson", 1);
 -- AI::_B0A6CFD2C69C1088(PLAYER::PLAYER_PED_ID(), "isBlocked", sub_179027());
 function Global.N_0xb0a6cfd2c69c1088(ped, p1, p2)
 	return _in(0xB0A6CFD2C69C1088, ped, _ts(p1), p2)
+end
+
+function Global.N_0xb0ad1238a709b1a2(p0)
+	return _in(0xB0AD1238A709B1A2, p0, _r, _ri)
 end
 
 function Global.N_0xb0c56bd3d808d863(p0)
@@ -16213,12 +17837,20 @@ function Global.N_0xb129e447a2eda4bf(p0, p1)
 	return _in(0xB129E447A2EDA4BF, p0, p1)
 end
 
+function Global.N_0xb13dcb4c6faad238(p0, p1, p2)
+	return _in(0xB13DCB4C6FAAD238, p0, p1, p2)
+end
+
 function Global.N_0xb13e88e655e5a3bc()
 	return _in(0xB13E88E655E5A3BC)
 end
 
 function Global.N_0xb1577667c3708f9b()
 	return _in(0xB1577667C3708F9B)
+end
+
+function Global.N_0xb17bc6453f6cf5ac(p0, p1)
+	return _in(0xB17BC6453F6CF5AC, p0, p1)
 end
 
 function Global.N_0xb1b6216ca2e7b55e(p0, p1, p2)
@@ -16238,10 +17870,22 @@ function Global.N_0xb1d2bb1e1631f5b1()
 	return _in(0xB1D2BB1E1631F5B1, _r)
 end
 
+function Global.N_0xb2092a1eaa7fd45f(p0)
+	return _in(0xB2092A1EAA7FD45F, p0, _r, _ri)
+end
+
+function Global.N_0xb214d570ead7f81a(p0, p1)
+	return _in(0xB214D570EAD7F81A, p0, p1)
+end
+
 --- This native doesn't seem to do anything, might be a debug-only native.
 -- Confirmed, it is a debug native.
 function Global.N_0xb264c4d2f2b0a78b(vehicle)
 	return _in(0xB264C4D2F2B0A78B, vehicle)
+end
+
+function Global.N_0xb282749d5e028163(p0, p1)
+	return _in(0xB282749D5E028163, p0, p1)
 end
 
 --- No observed effect.
@@ -16261,12 +17905,20 @@ function Global.N_0xb2d0bde54f0e8e5a(object, toggle)
 	return _in(0xB2D0BDE54F0E8E5A, object, toggle)
 end
 
+function Global.N_0xb2e0c0d6922d31f2(p0, p1)
+	return _in(0xB2E0C0D6922D31F2, p0, p1)
+end
+
 function Global.N_0xb2ebe8cbc58b90e9()
 	return _in(0xB2EBE8CBC58B90E9, _r, _ri)
 end
 
 function Global.N_0xb309ebea797e001f(p0)
 	return _in(0xB309EBEA797E001F, p0, _r, _ri)
+end
+
+function Global.N_0xb328dcc3a3aa401b(p0)
+	return _in(0xB328DCC3A3AA401B, p0, _r, _ri)
 end
 
 --- This line found 48 times in the scripts:
@@ -16296,6 +17948,14 @@ function Global.N_0xb3e6360dde733e82(p0)
 	return _in(0xB3E6360DDE733E82, p0)
 end
 
+function Global.N_0xb3ea4feabf41464b(p0, p1)
+	return _in(0xB3EA4FEABF41464B, p0, p1, _r, _ri)
+end
+
+function Global.N_0xb3eca65c7317f174()
+	return _in(0xB3ECA65C7317F174, _r, _ri)
+end
+
 function Global.N_0xb4271092ca7edf48(p0)
 	return _in(0xB4271092CA7EDF48, p0, _r, _ri)
 end
@@ -16313,6 +17973,14 @@ function Global.N_0xb475f27c6a994d65()
 	return _in(0xB475F27C6A994D65)
 end
 
+function Global.N_0xb4771b9aaf4e68e4(p0, p1, p2)
+	return _in(0xB4771B9AAF4E68E4, p0, p1, p2)
+end
+
+function Global.N_0xb49eca122467d05f(p0, p1, p2, p3)
+	return _in(0xB49ECA122467D05F, p0, p1, p2, p3)
+end
+
 --- Found in the b617d scripts, duplicates removed:
 -- AUDIO::_B4BBFD9CD8B3922B("V_CARSHOWROOM_PS_WINDOW_UNBROKEN");
 -- AUDIO::_B4BBFD9CD8B3922B("V_CIA_PS_WINDOW_UNBROKEN");
@@ -16321,6 +17989,10 @@ end
 -- AUDIO::_B4BBFD9CD8B3922B("V_MICHAEL_PS_BATHROOM_WITH_WINDOW");
 function Global.N_0xb4bbfd9cd8b3922b(p0)
 	return _in(0xB4BBFD9CD8B3922B, _ts(p0))
+end
+
+function Global.N_0xb4c2ec463672474e(p0, p1, p2, p3)
+	return _in(0xB4C2EC463672474E, p0, p1, p2, p3)
 end
 
 --- Only used once in the scripts
@@ -16344,6 +18016,14 @@ end
 
 function Global.N_0xb542de8c3d1cb210(p0)
 	return _in(0xB542DE8C3D1CB210, p0)
+end
+
+function Global.N_0xb552929b85fc27ec(p0, p1)
+	return _in(0xB552929B85FC27EC, p0, p1)
+end
+
+function Global.N_0xb569f41f3e7e83a4(p0)
+	return _in(0xB569F41F3E7E83A4, p0)
 end
 
 --- "Can request assets for cutscene entity"? (found in decompiled scripts)
@@ -16371,6 +18051,10 @@ function Global.N_0xb695e2cd0a2da9ee()
 	return _in(0xB695E2CD0A2DA9EE)
 end
 
+function Global.N_0xb7257ba2550ea10a(p0, p1, p2, p3, p4, p5, p6)
+	return _in(0xB7257BA2550EA10A, p0, p1, p2, p3, p4, p5, p6)
+end
+
 function Global.N_0xb743f735c03d7810(p0, p1)
 	return _in(0xB743F735C03D7810, p0, p1)
 end
@@ -16393,6 +18077,10 @@ function Global.N_0xb7ed70c49521a61d(decalType)
 	return _in(0xB7ED70C49521A61D, decalType)
 end
 
+function Global.N_0xb81cf134aeb56ffb()
+	return _in(0xB81CF134AEB56FFB)
+end
+
 function Global.N_0xb8721407ee9c3ff6(p0, p1, p2)
 	return _in(0xB8721407EE9C3FF6, p0, p1, p2)
 end
@@ -16412,6 +18100,14 @@ function Global.N_0xb8f87ead7533b176(p0)
 	return _in(0xB8F87EAD7533B176, p0)
 end
 
+function Global.N_0xb9496ce47546db2c(p0)
+	return _in(0xB9496CE47546DB2C, p0, _r, _ri)
+end
+
+function Global.N_0xb9562064627ff9db(p0, p1)
+	return _in(0xB9562064627FF9DB, p0, p1)
+end
+
 function Global.N_0xb9854dfde0d833d6(p0)
 	return _in(0xB9854DFDE0D833D6, p0)
 end
@@ -16420,11 +18116,23 @@ function Global.N_0xb99c4e4d9499df29(p0)
 	return _in(0xB99C4E4D9499DF29, p0)
 end
 
+function Global.N_0xb9c362babecddc7a(p0, p1, p2, p3, p4)
+	return _in(0xB9C362BABECDDC7A, p0, p1, p2, p3, p4)
+end
+
 --- Seem to return bool
 -- Dr. Underscore (1/6/18):
 -- It does return bool.
 function Global.N_0xb9cf1f793a9f1bf1()
 	return _in(0xB9CF1F793A9F1BF1, _r)
+end
+
+function Global.N_0xba0127da25fd54c9(p0, p1)
+	return _in(0xBA0127DA25FD54C9, p0, p1)
+end
+
+function Global.N_0xba3d194057c79a7b(p0)
+	return _in(0xBA3D194057C79A7B, p0)
 end
 
 --- Every p2 - p5 occurrence was 0f.
@@ -16444,16 +18152,40 @@ function Global.N_0xba751764f0821256()
 	return _in(0xBA751764F0821256)
 end
 
+function Global.N_0xba7f0b77d80a4eb7(p0, p1)
+	return _in(0xBA7F0B77D80A4EB7, p0, p1)
+end
+
+function Global.N_0xba8805a1108a2515(p0)
+	return _in(0xBA8805A1108A2515, p0, _r, _ri)
+end
+
 function Global.N_0xba8d65c1c65702e5(p0)
 	return _in(0xBA8D65C1C65702E5, p0)
+end
+
+function Global.N_0xba91d045575699ad(p0)
+	return _in(0xBA91D045575699AD, p0, _r, _ri)
 end
 
 function Global.N_0xba96394a0eecfa65()
 	return _in(0xBA96394A0EECFA65)
 end
 
+function Global.N_0xba9749cc94c1fd85()
+	return _in(0xBA9749CC94C1FD85, _r, _ri)
+end
+
 function Global.N_0xba9775570db788cf()
 	return _in(0xBA9775570DB788CF, _r, _ri)
+end
+
+function Global.N_0xbaa045b4e42f3c06(p0, p1)
+	return _in(0xBAA045B4E42F3C06, p0, p1)
+end
+
+function Global.N_0xbaa2f0490e146be8(p0)
+	return _in(0xBAA2F0490E146BE8, p0)
 end
 
 function Global.N_0xbae4f9b97cd43b30(p0)
@@ -16466,6 +18198,10 @@ end
 
 function Global.N_0xbb0527ec6341496d()
 	return _in(0xBB0527EC6341496D, _r, _ri)
+end
+
+function Global.N_0xbb2333bb87ddd87f(p0, p1)
+	return _in(0xBB2333BB87DDD87F, p0, p1)
 end
 
 function Global.N_0xbb90e12cac1dab25(p0)
@@ -16537,8 +18273,20 @@ function Global.N_0xbcedb009461da156()
 	return _in(0xBCEDB009461DA156, _r, _ri)
 end
 
+function Global.N_0xbcfde9ede4cf27dc(p0, p1)
+	return _in(0xBCFDE9EDE4CF27DC, p0, p1)
+end
+
 function Global.N_0xbd0be0bfc927eac1()
 	return _in(0xBD0BE0BFC927EAC1)
+end
+
+function Global.N_0xbd0efb25cca8f97a(p0, p1, p2, p3)
+	return _in(0xBD0EFB25CCA8F97A, p0, p1, p2, p3)
+end
+
+function Global.N_0xbd32e46aa95c1dd2(p0)
+	return _in(0xBD32E46AA95C1DD2, p0)
 end
 
 --- MulleDK19: This function is hard-coded to always return 1.
@@ -16563,6 +18311,14 @@ function Global.N_0xbe197eaa669238f4(p0, p1, p2, p3)
 	return _in(0xBE197EAA669238F4, p0, p1, p2, p3, _r, _ri)
 end
 
+function Global.N_0xbe3db208333d9844()
+	return _in(0xBE3DB208333D9844, _r, _ri)
+end
+
+function Global.N_0xbe509b0a3693de8b(p0)
+	return _in(0xBE509B0A3693DE8B, p0)
+end
+
 function Global.N_0xbe5c1255a1830ff5(vehicle, toggle)
 	return _in(0xBE5C1255A1830FF5, vehicle, toggle)
 end
@@ -16573,6 +18329,10 @@ end
 
 function Global.N_0xbeb3d46bb7f043c0(p0)
 	return _in(0xBEB3D46BB7F043C0, p0)
+end
+
+function Global.N_0xbec0816ff5acbcda(p0, p1)
+	return _in(0xBEC0816FF5ACBCDA, p0, p1)
 end
 
 function Global.N_0xbed8ca5ff5e04113(p0, p1, p2, p3)
@@ -16596,6 +18356,10 @@ function Global.N_0xbf22e0f32968e967(player, p1)
 	return _in(0xBF22E0F32968E967, player, p1)
 end
 
+function Global.N_0xbf371cd2b64212fd(p0)
+	return _in(0xBF371CD2B64212FD, p0)
+end
+
 function Global.N_0xbf4dc1784be94dfa(p0, p1, p2)
 	return _in(0xBF4DC1784BE94DFA, p0, p1, p2)
 end
@@ -16617,6 +18381,10 @@ function Global.N_0xbfa0a56a817c6c7d(p0)
 	return _in(0xBFA0A56A817C6C7D, p0)
 end
 
+function Global.N_0xbfafdb5faaa5c5ab(p0)
+	return _in(0xBFAFDB5FAAA5C5AB, p0)
+end
+
 function Global.N_0xc0416b061f2b7e5e(p0)
 	return _in(0xC0416B061F2B7E5E, p0)
 end
@@ -16633,6 +18401,10 @@ end
 
 function Global.N_0xc0e0d686ddfc6eae()
 	return _in(0xC0E0D686DDFC6EAE, _r, _ri)
+end
+
+function Global.N_0xc0ed6438e6d39ba8(p0, p1, p2)
+	return _in(0xC0ED6438E6D39BA8, p0, p1, p2)
 end
 
 function Global.N_0xc13c38e47ea5df31(p0)
@@ -16655,6 +18427,10 @@ function Global.N_0xc1805d05e6d4fe10(vehicle)
 	return _in(0xC1805D05E6D4FE10, vehicle)
 end
 
+function Global.N_0xc1952f3773ba18fe(p0, p1, p2)
+	return _in(0xC1952F3773BA18FE, p0, p1, p2)
+end
+
 function Global.N_0xc1f6ebf9a3d55538(p0, p1)
 	return _in(0xC1F6EBF9A3D55538, p0, p1)
 end
@@ -16669,12 +18445,20 @@ function Global.N_0xc22912b1d85f26b1(p0)
 	return _in(0xC22912B1D85F26B1, p0, _i, _v, _r)
 end
 
+function Global.N_0xc24075310a8b9cd1(p0, p1, p2, p3, p4)
+	return _in(0xC24075310A8B9CD1, p0, p1, p2, p3, p4)
+end
+
 function Global.N_0xc265df9fb44a9fbd(p0)
 	return _in(0xC265DF9FB44A9FBD, p0, _r)
 end
 
 function Global.N_0xc2d15bef167e27bc()
 	return _in(0xC2D15BEF167E27BC)
+end
+
+function Global.N_0xc2d2ad9eaae265b8()
+	return _in(0xC2D2AD9EAAE265B8, _r, _ri)
 end
 
 --- CAM::_C2EAE3FB8CDBED31("SHAKE_CAM_medium", "medium", "", 0.5f);
@@ -16698,6 +18482,10 @@ function Global.N_0xc3376f42b1faccc6(player)
 end
 Global.SetAreasGeneratorOrientation = Global.N_0xc3376f42b1faccc6
 
+function Global.N_0xc34bc448da29f5e9(p0, p1)
+	return _in(0xC34BC448DA29F5E9, p0, p1)
+end
+
 function Global.N_0xc35a6d07c93802b2()
 	return _in(0xC35A6D07C93802B2)
 end
@@ -16706,8 +18494,16 @@ function Global.N_0xc361aa040d6637a8(vehicle, p1)
 	return _in(0xC361AA040D6637A8, vehicle, p1)
 end
 
+function Global.N_0xc388a0f065f5bc34(p0, p1)
+	return _in(0xC388A0F065F5BC34, p0, p1)
+end
+
 function Global.N_0xc38dc1e90d22547c()
 	return _in(0xC38DC1E90D22547C, _i, _i, _i, _r)
+end
+
+function Global.N_0xc3bfed92026a2aad(p0, p1, p2, p3, p4)
+	return _in(0xC3BFED92026A2AAD, p0, p1, p2, p3, p4, _r, _ri)
 end
 
 function Global.N_0xc3c221addde31a11(p0)
@@ -16726,12 +18522,20 @@ function Global.N_0xc42dd763159f3461()
 	return _in(0xC42DD763159F3461, _r, _ri)
 end
 
+function Global.N_0xc434133d9ba52777(p0, p1)
+	return _in(0xC434133D9BA52777, p0, p1, _r, _ri)
+end
+
 function Global.N_0xc45c27ef50f36adc(vehicle, p1)
 	return _in(0xC45C27EF50F36ADC, vehicle, p1)
 end
 
 function Global.N_0xc485e07e4f0b7958(doorHash, p1, p2, p3)
 	return _in(0xC485E07E4F0B7958, _ch(doorHash), p1, p2, p3)
+end
+
+function Global.N_0xc4b3347bd68bd609(p0)
+	return _in(0xC4B3347BD68BD609, p0)
 end
 
 function Global.N_0xc505036a35afd01b(p0)
@@ -16776,6 +18580,10 @@ function Global.N_0xc5be134ec7ba96a0(p0, p1, p2, p3, p4)
 	return _in(0xC5BE134EC7BA96A0, p0, p1, p2, p3, p4)
 end
 
+function Global.N_0xc5c8f970d4edff71(p0)
+	return _in(0xC5C8F970D4EDFF71, p0)
+end
+
 function Global.N_0xc6033d32241f6fb5(p0, p1)
 	return _in(0xC6033D32241F6FB5, p0, p1)
 end
@@ -16804,6 +18612,10 @@ end
 
 function Global.N_0xc70ddce56d0d3a99()
 	return _in(0xC70DDCE56D0D3A99, _r, _ri)
+end
+
+function Global.N_0xc729991a9065376e(p0)
+	return _in(0xC729991A9065376E, p0)
 end
 
 function Global.N_0xc7397a83f7a2a462(p1, p2)
@@ -16844,6 +18656,10 @@ end
 
 function Global.N_0xc8391c309684595a()
 	return _in(0xC8391C309684595A)
+end
+
+function Global.N_0xc8407624cef2354b(p0, p1)
+	return _in(0xC8407624CEF2354B, p0, p1)
 end
 
 function Global.N_0xc84527e235fca219(p0, p1, p2, type, p6)
@@ -16902,6 +18718,14 @@ function Global.N_0xc9b43a33d09cada7(p0)
 	return _in(0xC9B43A33D09CADA7, p0)
 end
 
+function Global.N_0xca465d9cc0d231ba(p0)
+	return _in(0xCA465D9CC0D231BA, p0)
+end
+
+function Global.N_0xca4ac3eaae46ec7b(p0, p1)
+	return _in(0xCA4AC3EAAE46EC7B, p0, p1, _r, _ri)
+end
+
 function Global.N_0xca4ae345a153d573(p0)
 	return _in(0xCA4AE345A153D573, p0)
 end
@@ -16954,6 +18778,10 @@ function Global.N_0xcb215c4b56a7fae7(p0)
 	return _in(0xCB215C4B56A7FAE7, p0, _r, _ri)
 end
 
+function Global.N_0xcb645e85e97ea48b()
+	return _in(0xCB645E85E97EA48B, _r, _ri)
+end
+
 function Global.N_0xcb82a0bf0e3e3265(p0)
 	return _in(0xCB82A0BF0E3E3265, p0, _r, _ri)
 end
@@ -16962,8 +18790,16 @@ function Global.N_0xcb968b53fc7f916d(p0, p1, p2, p3)
 	return _in(0xCB968B53FC7F916D, p0, p1, p2, p3)
 end
 
+function Global.N_0xcc25a4553dfbf9ea(p0, p1, p2, p3, p4)
+	return _in(0xCC25A4553DFBF9EA, p0, p1, p2, p3, p4)
+end
+
 function Global.N_0xcc3fdded67bcfc63()
 	return _in(0xCC3FDDED67BCFC63)
+end
+
+function Global.N_0xcc6e3b6bb69501f1(p0)
+	return _in(0xCC6E3B6BB69501F1, p0, _r, _ri)
 end
 
 --- RESET_*
@@ -16992,12 +18828,40 @@ function Global.N_0xcd71a4ecab22709e(entity)
 	return _in(0xCD71A4ECAB22709E, entity)
 end
 
+function Global.N_0xcd74233600c4ea6b(p0)
+	return _in(0xCD74233600C4EA6B, p0)
+end
+
+function Global.N_0xcd79a550999d7d4f(p0)
+	return _in(0xCD79A550999D7D4F, p0, _r, _ri)
+end
+
+function Global.N_0xcda1c62be2777802(p0, p1, p2)
+	return _in(0xCDA1C62BE2777802, p0, p1, p2)
+end
+
 function Global.N_0xcdca26e80faecb8f()
 	return _in(0xCDCA26E80FAECB8F)
 end
 
 function Global.N_0xce5aa445aba8dee0(p0)
 	return _in(0xCE5AA445ABA8DEE0, _ii(p0) --[[ may be optional ]], _r, _ri)
+end
+
+function Global.N_0xce5d0e5e315db238(p0, p1, p2, p3, p4)
+	return _in(0xCE5D0E5E315DB238, p0, p1, p2, p3, p4, _r, _ri)
+end
+
+function Global.N_0xce6294a232d03786(p0, p1)
+	return _in(0xCE6294A232D03786, p0, p1, _r, _rv)
+end
+
+function Global.N_0xcea553e35c2246e1(p0, p1, p2)
+	return _in(0xCEA553E35C2246E1, p0, p1, p2)
+end
+
+function Global.N_0xcea7c8e1b48ff68c(p0, p1)
+	return _in(0xCEA7C8E1B48FF68C, p0, p1)
 end
 
 function Global.N_0xced08cbe8ebb97c7(p0, p1)
@@ -17022,6 +18886,10 @@ end
 
 function Global.N_0xcf61d4b4702ee9eb()
 	return _in(0xCF61D4B4702EE9EB, _r, _ri)
+end
+
+function Global.N_0xcf9159024555488c(p0)
+	return _in(0xCF9159024555488C, p0)
 end
 
 function Global.N_0xcfd115b373c0df63(p0, p1)
@@ -17088,8 +18956,20 @@ function Global.N_0xd10f442036302d50(p0, p1, p2)
 	return _in(0xD10F442036302D50, p0, p1, p2)
 end
 
+function Global.N_0xd12882d3ff82bf11()
+	return _in(0xD12882D3FF82BF11)
+end
+
 function Global.N_0xd1871251f3b5acd7(ped)
 	return _in(0xD1871251F3B5ACD7, ped, _r)
+end
+
+function Global.N_0xd1942374085c8469(p0)
+	return _in(0xD1942374085C8469, p0)
+end
+
+function Global.N_0xd1a1ee3b4fa8e760(p0)
+	return _in(0xD1A1EE3B4FA8E760, p0)
 end
 
 function Global.N_0xd1b0f412f109ea5d(p0, p1)
@@ -17103,6 +18983,10 @@ end
 
 function Global.N_0xd1c7cb175e012964(scaleformHandle)
 	return _in(0xD1C7CB175E012964, scaleformHandle, _r)
+end
+
+function Global.N_0xd1c9b92bdd3f151d(p0, p1, p2)
+	return _in(0xD1C9B92BDD3F151D, p0, p1, p2)
 end
 
 function Global.N_0xd1f8363dfad03848(p0)
@@ -17161,6 +19045,10 @@ function Global.N_0xd313de83394af134()
 	return _in(0xD313DE83394AF134, _r, _ri)
 end
 
+function Global.N_0xd3301660a57c9272(p0)
+	return _in(0xD3301660A57C9272, p0)
+end
+
 function Global.N_0xd33daa36272177c4(ped)
 	return _in(0xD33DAA36272177C4, ped)
 end
@@ -17189,6 +19077,18 @@ function Global.N_0xd3d15555431ab793()
 	return _in(0xD3D15555431AB793, _r)
 end
 
+function Global.N_0xd3e51c0ab8c26eee(p0, p1)
+	return _in(0xD3E51C0AB8C26EEE, p0, p1, _r, _ri)
+end
+
+function Global.N_0xd40aac51e8e4c663(p0)
+	return _in(0xD40AAC51E8E4C663, p0, _r, _ri)
+end
+
+function Global.N_0xd4196117af7bb974(p0, p1)
+	return _in(0xD4196117AF7BB974, p0, p1, _r, _ri)
+end
+
 function Global.N_0xd4438c0564490e63()
 	return _in(0xD4438C0564490E63)
 end
@@ -17206,6 +19106,14 @@ end
 
 function Global.N_0xd53acdbef24a46e8()
 	return _in(0xD53ACDBEF24A46E8, _r, _ri)
+end
+
+function Global.N_0xd558bec0bba7e8d2(p0, p1, p2, p3, p4)
+	return _in(0xD558BEC0BBA7E8D2, p0, p1, p2, p3, p4)
+end
+
+function Global.N_0xd565f438137f0e10(p0, p1)
+	return _in(0xD565F438137F0E10, p0, p1)
 end
 
 function Global.N_0xd57aaae0e2214d11()
@@ -17233,6 +19141,10 @@ function Global.N_0xd66c9e72b3cc4982(p1)
 	return _in(0xD66C9E72B3CC4982, _i, p1, _r, _ri)
 end
 
+function Global.N_0xd6781e42755531f7(p0)
+	return _in(0xD6781E42755531F7, p0)
+end
+
 function Global.N_0xd68a5ff8a3a89874(r, g, b, a)
 	return _in(0xD68A5FF8A3A89874, r, g, b, a)
 end
@@ -17253,8 +19165,20 @@ function Global.N_0xd7021272eb0a451e(p0)
 	return _in(0xD7021272EB0A451E, _ts(p0))
 end
 
+function Global.N_0xd7360051c885628b()
+	return _in(0xD7360051C885628B, _r, _ri)
+end
+
+function Global.N_0xd76eeef746057fd6(p0)
+	return _in(0xD76EEEF746057FD6, p0, _r, _ri)
+end
+
 function Global.N_0xd79185689f8fd5df(p0)
 	return _in(0xD79185689F8FD5DF, p0)
+end
+
+function Global.N_0xd7b6c73cad419bcf(p0)
+	return _in(0xD7B6C73CAD419BCF, p0)
 end
 
 --- Unloads GROUP_MAP (GTAO/MP) DLC data and loads GROUP_MAP_SP DLC. Neither are loaded by default, 0888C3502DBBEEF5 is a cognate to this function and loads MP DLC (and unloads SP DLC by extension).
@@ -17266,6 +19190,10 @@ function Global.N_0xd7c10c4a637992c9()
 	return _in(0xD7C10C4A637992C9)
 end
 Global.LoadSpDlcMaps = Global.N_0xd7c10c4a637992c9
+
+function Global.N_0xd7cccba28c4ecaf0(p0, p1, p2, p3, p4)
+	return _in(0xD7CCCBA28C4ECAF0, p0, p1, p2, p3, p4)
+end
 
 function Global.N_0xd7d0b00177485411(p0, p1)
 	return _in(0xD7D0B00177485411, p0, p1)
@@ -17284,8 +19212,20 @@ function Global.N_0xd801cc02177fa3f1()
 	return _in(0xD801CC02177FA3F1)
 end
 
+function Global.N_0xd80a80346a45d761(p0)
+	return _in(0xD80A80346A45D761, p0, _r, _ri)
+end
+
 function Global.N_0xd8122c407663b995()
 	return _in(0xD8122C407663B995, _r, _ri)
+end
+
+function Global.N_0xd81b7f27bc773e66(p0, p1, p2, p3, p4)
+	return _in(0xD81B7F27BC773E66, p0, p1, p2, p3, p4)
+end
+
+function Global.N_0xd821056b9acf8052(p0, p1)
+	return _in(0xD821056B9ACF8052, p0, p1)
 end
 
 function Global.N_0xd8295af639fd9cb8(p0)
@@ -17304,6 +19244,14 @@ function Global.N_0xd9454b5752c857dc()
 	return _in(0xD9454B5752C857DC)
 end
 
+function Global.N_0xd95cc5d2ab15a09f(p0)
+	return _in(0xD95CC5D2AB15A09F, p0, _r, _ri)
+end
+
+function Global.N_0xd99db210089617fe(p0, p1, p2)
+	return _in(0xD99DB210089617FE, p0, p1, p2)
+end
+
 function Global.N_0xd9b71952f78a2640(doorHash, p1)
 	return _in(0xD9B71952F78A2640, _ch(doorHash), p1)
 end
@@ -17317,9 +19265,25 @@ function Global.N_0xda024bdbd600f44a(networkHandle)
 	return _in(0xDA024BDBD600F44A, _ii(networkHandle) --[[ may be optional ]])
 end
 
+function Global.N_0xda05194260cdcdf9(p0, p1)
+	return _in(0xDA05194260CDCDF9, p0, p1)
+end
+
+function Global.N_0xda07819e452ffe8f(p0)
+	return _in(0xDA07819E452FFE8F, p0)
+end
+
+function Global.N_0xdab963831dbfd3f4(p0, p1, p2, p3, p4)
+	return _in(0xDAB963831DBFD3F4, p0, p1, p2, p3, p4, _r, _ri)
+end
+
 --- Set profile setting 866
 function Global.N_0xdac073c7901f9e15(p0)
 	return _in(0xDAC073C7901F9E15, p0)
+end
+
+function Global.N_0xdaf80797fc534bec(p0)
+	return _in(0xDAF80797FC534BEC, p0)
 end
 
 function Global.N_0xdaf87174be7454ff(p0)
@@ -17354,6 +19318,10 @@ end
 -- VEHICLE::SET_VEHICLE_DOORS_LOCKED_FOR_PLAYER(a_0, PLAYER::PLAYER_ID(), 0);
 function Global.N_0xdbc631f109350b8c(vehicle, p1)
 	return _in(0xDBC631F109350B8C, vehicle, p1)
+end
+
+function Global.N_0xdbc966a01c02bca7(p0, p1, p2)
+	return _in(0xDBC966A01C02BCA7, p0, p1, p2)
 end
 
 --- probably 0x3461981 on console
@@ -17394,6 +19362,10 @@ end
 
 function Global.N_0xdcca191df9980fd7(ped)
 	return _in(0xDCCA191DF9980FD7, ped, _r)
+end
+
+function Global.N_0xdce97bdf8a0eabc8()
+	return _in(0xDCE97BDF8A0EABC8, _r, _ri)
 end
 
 function Global.N_0xdcfb5d4db8bf367e(p0, p1)
@@ -17465,6 +19437,10 @@ function Global.N_0xdf649c4e9afdd788()
 	return _in(0xDF649C4E9AFDD788, _r, _ri)
 end
 
+function Global.N_0xdf6ca0330f2e737b(p0, p1)
+	return _in(0xDF6CA0330F2E737B, p0, p1)
+end
+
 --- Outputs 2 Vector3's.
 -- Scripts check if out2.x - out1.x &gt; someshit.x
 -- Could be suspension related, as in max suspension height and min suspension height, considering the natives location.
@@ -17478,6 +19454,10 @@ end
 
 function Global.N_0xdfa80cb25d0a19b3()
 	return _in(0xDFA80CB25D0A19B3, _r, _ri)
+end
+
+function Global.N_0xdffa5be8381c3314()
+	return _in(0xDFFA5BE8381C3314, _r, _ri)
 end
 
 function Global.N_0xdffcef48e511db48(p0, p1)
@@ -17539,6 +19519,10 @@ function Global.N_0xe1615ec03b3bb4fd()
 	return _in(0xE1615EC03B3BB4FD, _r)
 end
 
+function Global.N_0xe16aa70ce9beedc3(p0)
+	return _in(0xE16AA70CE9BEEDC3, p0, _r, _ri)
+end
+
 function Global.N_0xe1c8709406f2c41c()
 	return _in(0xE1C8709406F2C41C)
 end
@@ -17549,6 +19533,10 @@ end
 
 function Global.N_0xe1cd1e48e025e661()
 	return _in(0xE1CD1E48E025E661)
+end
+
+function Global.N_0xe23adc6fcb1f29ae(p0, p1, p2)
+	return _in(0xE23ADC6FCB1F29AE, p0, p1, p2)
 end
 
 function Global.N_0xe260e0bb9cd995ac(p0)
@@ -17563,6 +19551,10 @@ function Global.N_0xe2892e7e55d7073a(p0)
 	return _in(0xE2892E7E55D7073A, p0)
 end
 
+function Global.N_0xe2f53f172b45ede1()
+	return _in(0xE2F53F172B45EDE1)
+end
+
 function Global.N_0xe301bd63e9e13cf0(vehicle, cargobob)
 	return _in(0xE301BD63E9E13CF0, vehicle, cargobob)
 end
@@ -17572,9 +19564,17 @@ function Global.N_0xe30524e1871f481d(p0)
 	return _in(0xE30524E1871F481D, p0)
 end
 
+function Global.N_0xe3261d791eb44acb(p0)
+	return _in(0xE3261D791EB44ACB, p0)
+end
+
 --- IS_*
 function Global.N_0xe33ffa906ce74880(vehicle, p1)
 	return _in(0xE33FFA906CE74880, vehicle, p1, _r)
+end
+
+function Global.N_0xe35b38a27e8e7179(p0)
+	return _in(0xE35B38A27E8E7179, p0, _r, _ri)
 end
 
 function Global.N_0xe36a98d8ab3d3c66(p0)
@@ -17626,12 +19626,24 @@ function Global.N_0xe4dcec7fd5b739a5(ped)
 	return _in(0xE4DCEC7FD5B739A5, ped)
 end
 
+function Global.N_0xe4e2fd323574965c(p0, p1)
+	return _in(0xE4E2FD323574965C, p0, p1)
+end
+
 function Global.N_0xe4e6dd5566d28c82()
 	return _in(0xE4E6DD5566D28C82)
 end
 
 function Global.N_0xe532ec1a63231b4f(p0, p1)
 	return _in(0xE532EC1A63231B4F, p0, p1)
+end
+
+function Global.N_0xe547e9114277098f()
+	return _in(0xE547E9114277098F, _r, _ri)
+end
+
+function Global.N_0xe574a662acaefbb1()
+	return _in(0xE574A662ACAEFBB1)
 end
 
 function Global.N_0xe5810ac70602f2f5(vehicle, p1)
@@ -17658,12 +19670,20 @@ function Global.N_0xe66c690248f11150(p0, p1)
 	return _in(0xE66C690248F11150, p0, p1)
 end
 
+function Global.N_0xe6717e652b8c8d8a(p0, p1)
+	return _in(0xE6717E652B8C8D8A, p0, p1)
+end
+
 function Global.N_0xe67c6dfd386ea5e7(p0)
 	return _in(0xE67C6DFD386EA5E7, p0)
 end
 
 function Global.N_0xe6869becdd8f2403(p0, p1)
 	return _in(0xE6869BECDD8F2403, p0, p1)
+end
+
+function Global.N_0xe6a9f00d4240b519(p0, p1)
+	return _in(0xE6A9F00D4240B519, p0, p1)
 end
 
 --- GET_VEHICLE_*
@@ -17700,13 +19720,29 @@ function Global.N_0xe791df1f73ed2c8b(p0)
 	return _in(0xE791DF1F73ED2C8B, p0, _r, _ri)
 end
 
+function Global.N_0xe7df4e0545dfb56e(p0, p1, p2)
+	return _in(0xE7DF4E0545DFB56E, p0, p1, p2)
+end
+
 function Global.N_0xe7e4c198b0185900(p0, p1, p2)
 	return _in(0xE7E4C198B0185900, p0, p1, p2)
+end
+
+function Global.N_0xe82728f0de75d13a(p0, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19, p20, p21, p22, p23, p24)
+	return _in(0xE82728F0DE75D13A, p0, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19, p20, p21, p22, p23, p24)
+end
+
+function Global.N_0xe827b9382cfb41ba(p0, p1, p2, p3)
+	return _in(0xE827B9382CFB41BA, p0, p1, p2, p3)
 end
 
 --- Vehicle must be a boat.
 function Global.N_0xe842a9398079bd82(vehicle, p1)
 	return _in(0xE842A9398079BD82, vehicle, p1)
+end
+
+function Global.N_0xe84eb93729c5f36a(p0)
+	return _in(0xE84EB93729C5F36A, p0, _r, _ri)
 end
 
 function Global.N_0xe851e480b814d4ba(vehicle, p1)
@@ -17717,12 +19753,24 @@ function Global.N_0xe861d0b05c7662b8(p0, p1, p2)
 	return _in(0xE861D0B05C7662B8, p0, p1, _ii(p2) --[[ may be optional ]])
 end
 
+function Global.N_0xe8853fbce7d8d0d6()
+	return _in(0xE8853FBCE7D8D0D6, _r, _ri)
+end
+
 function Global.N_0xe8a169e666cbc541()
 	return _in(0xE8A169E666CBC541, _r, _ri)
 end
 
+function Global.N_0xe8b0b270b6e7c76e(p0, p1, p2, p3)
+	return _in(0xE8B0B270B6E7C76E, p0, p1, p2, p3)
+end
+
 function Global.N_0xe8b9c0ec9e183f35()
 	return _in(0xE8B9C0EC9E183F35, _r)
+end
+
+function Global.N_0xe906ec930f5fe7c8(p0, p1)
+	return _in(0xE906EC930F5FE7C8, p0, p1)
 end
 
 function Global.N_0xe95b0c7d5ba3b96b(p0)
@@ -17763,6 +19811,10 @@ end
 
 function Global.N_0xeb2104e905c6f2e9()
 	return _in(0xEB2104E905C6F2E9, _r, _ri)
+end
+
+function Global.N_0xeb2bf817463dfa28(p0, p1)
+	return _in(0xEB2BF817463DFA28, p0, p1, _r, _ri)
 end
 
 function Global.N_0xeb2d525b57f42b40()
@@ -17834,6 +19886,10 @@ function Global.N_0xec6935ebe0847b90(p0, p1, p2, p3)
 	return _in(0xEC6935EBE0847B90, p0, p1, p2, p3, _r, _ri)
 end
 
+function Global.N_0xec69adf931aae0c3(p0)
+	return _in(0xEC69ADF931AAE0C3, p0, _r, _ri)
+end
+
 --- This function is hard-coded to always return 0.
 function Global.N_0xec72c258667be5ea(p0)
 	return _in(0xEC72C258667BE5EA, p0, _r, _ri)
@@ -17843,8 +19899,16 @@ function Global.N_0xec9264727eec0f28()
 	return _in(0xEC9264727EEC0F28)
 end
 
+function Global.N_0xeca658ce2a4e5a72(p0, p1)
+	return _in(0xECA658CE2A4E5A72, p0, p1)
+end
+
 function Global.N_0xecb41ac6ab754401()
 	return _in(0xECB41AC6AB754401, _r)
+end
+
+function Global.N_0xecdc202b25e5cf48(p0, p1, p2)
+	return _in(0xECDC202B25E5CF48, p0, p1, p2)
 end
 
 function Global.N_0xecf128344e9ff9f1(p0)
@@ -17855,12 +19919,32 @@ function Global.N_0xed3c76adfa6d07c4(ped)
 	return _in(0xED3C76ADFA6D07C4, ped)
 end
 
+function Global.N_0xed5ede9e676643c9(p0, p1)
+	return _in(0xED5EDE9E676643C9, p0, p1)
+end
+
+function Global.N_0xed5fd7af10f5e262(p0, p1, p2, p3)
+	return _in(0xED5FD7AF10F5E262, p0, p1, p2, p3)
+end
+
 function Global.N_0xed6d8e27a43b8cde(p0)
 	return _in(0xED6D8E27A43B8CDE, p0, _r)
 end
 
 function Global.N_0xed8286f71a819baa(cargobob, p1)
 	return _in(0xED8286F71A819BAA, cargobob, p1)
+end
+
+function Global.N_0xedbc8405b3895cc9(p0, p1)
+	return _in(0xEDBC8405B3895CC9, p0, p1)
+end
+
+function Global.N_0xedbf6c9b0d2c65c8(p0)
+	return _in(0xEDBF6C9B0D2C65C8, p0)
+end
+
+function Global.N_0xedead9a91ec768b3(p0, p1, p2)
+	return _in(0xEDEAD9A91EC768B3, p0, p1, p2)
 end
 
 function Global.N_0xedf7f927136c224b()
@@ -17930,12 +20014,40 @@ function Global.N_0xefb55e7c25d3b3be()
 	return _in(0xEFB55E7C25D3B3BE)
 end
 
+function Global.N_0xefc13b1ce30d755d(p0, p1)
+	return _in(0xEFC13B1CE30D755D, p0, p1)
+end
+
+function Global.N_0xefd79fa81dfba9cb(p0, p1)
+	return _in(0xEFD79FA81DFBA9CB, p0, p1)
+end
+
+function Global.N_0xefd97ff47b745b8d(p0)
+	return _in(0xEFD97FF47B745B8D, p0)
+end
+
+function Global.N_0xeff296097ff1e509(p0, p1)
+	return _in(0xEFF296097FF1E509, p0, p1)
+end
+
 function Global.N_0xf033419d1b81fae8(p0)
 	return _in(0xF033419D1B81FAE8, p0, _r, _ri)
 end
 
 function Global.N_0xf03755696450470c()
 	return _in(0xF03755696450470C)
+end
+
+function Global.N_0xf051d9bfb6ba39c0(p0)
+	return _in(0xF051D9BFB6BA39C0, p0)
+end
+
+function Global.N_0xf06a16ca55d138d8(p0, p1)
+	return _in(0xF06A16CA55D138D8, p0, p1)
+end
+
+function Global.N_0xf06a6f41cb445443(p0)
+	return _in(0xF06A6F41CB445443, p0)
 end
 
 function Global.N_0xf06ebb91a81e09e3(p0)
@@ -17948,6 +20060,10 @@ end
 
 function Global.N_0xf086ad9354fac3a3(p0)
 	return _in(0xF086AD9354FAC3A3, p0)
+end
+
+function Global.N_0xf0a60040be558f2d(p0, p1, p2)
+	return _in(0xF0A60040BE558F2D, p0, p1, p2, _r, _ri)
 end
 
 function Global.N_0xf0daef2f545bee25(p0)
@@ -17971,6 +20087,18 @@ end
 --- Only 1 occurrence. p1 was 2.
 function Global.N_0xf10b44fd479d69f3(player, p1)
 	return _in(0xF10B44FD479D69F3, player, p1, _r)
+end
+
+function Global.N_0xf11f01d98113536a(p0)
+	return _in(0xF11F01D98113536A, p0, _r, _ri)
+end
+
+function Global.N_0xf12e33034d887f66(p0, p1, p2, p3, p4, p5)
+	return _in(0xF12E33034D887F66, p0, p1, p2, p3, p4, p5, _r, _ri)
+end
+
+function Global.N_0xf12e6cd06c73d69e()
+	return _in(0xF12E6CD06C73D69E, _r, _ri)
 end
 
 function Global.N_0xf13fe2a80c05c561()
@@ -18042,6 +20170,10 @@ function Global.N_0xf284ac67940c6812()
 	return _in(0xF284AC67940C6812, _r, _ri)
 end
 
+function Global.N_0xf287f506767cc8a9()
+	return _in(0xF287F506767CC8A9, _r, _ri)
+end
+
 --- toggle was always 0 except in one instance (b678).
 -- The one time this is set to true seems to do with when you fail the mission.
 function Global.N_0xf2bebcdfafdaa19e(toggle)
@@ -18071,8 +20203,16 @@ function Global.N_0xf2f6a2fa49278625(p0, p1, p2, p3, p4, p5, p6, p7, p8)
 	return _in(0xF2F6A2FA49278625, p0, p1, p2, p3, p4, p5, p6, p7, p8, _i, _i, _i, _i)
 end
 
+function Global.N_0xf3162836c28f9da5(p0, p1, p2, p3)
+	return _in(0xF3162836C28F9DA5, p0, p1, p2, p3, _r, _ri)
+end
+
 function Global.N_0xf3365489e0dd50f9(p0, p1)
 	return _in(0xF3365489E0DD50F9, p0, p1)
+end
+
+function Global.N_0xf3b0e0aed097a3f5(p0, p1)
+	return _in(0xF3B0E0AED097A3F5, p0, p1, _r, _ri)
 end
 
 --- characters
@@ -18111,6 +20251,10 @@ function Global.N_0xf46a1e03e8755980(p0)
 	return _in(0xF46A1E03E8755980, p0)
 end
 
+function Global.N_0xf47e567b3630dd12(p0, p1)
+	return _in(0xF47E567B3630DD12, p0, p1)
+end
+
 function Global.N_0xf488c566413b4232(p0, p1)
 	return _in(0xF488C566413B4232, p0, p1)
 end
@@ -18145,6 +20289,10 @@ end
 --- This does not move an existing checkpoint... so wtf.
 function Global.N_0xf51d36185993515d(checkpoint, posX, posY, posZ, unkX, unkY, unkZ)
 	return _in(0xF51D36185993515D, checkpoint, posX, posY, posZ, unkX, unkY, unkZ)
+end
+
+function Global.N_0xf534d94dfa2ead26(p0, p1, p2, p3, p4)
+	return _in(0xF534D94DFA2EAD26, p0, p1, p2, p3, p4)
 end
 
 function Global.N_0xf53e48461b71eecb(p0)
@@ -18184,6 +20332,10 @@ end
 
 function Global.N_0xf6baaaf762e1bf40(p0, p1)
 	return _in(0xF6BAAAF762E1BF40, _ts(p0), _ii(p1) --[[ may be optional ]], _r)
+end
+
+function Global.N_0xf6f4383b7c92f11a(p0)
+	return _in(0xF6F4383B7C92F11A, p0)
 end
 
 function Global.N_0xf70efa14fe091429(p0)
@@ -18279,6 +20431,14 @@ function Global.N_0xf9e1ccae8ba4c281(p0, p1)
 	return _in(0xF9E1CCAE8BA4C281, p0, p1, _i, _i, _r)
 end
 
+function Global.N_0xf9f2922717b819ec()
+	return _in(0xF9F2922717B819EC, _r, _ri)
+end
+
+function Global.N_0xfa07759e6fddd7cf(p0, p1, p2, p3)
+	return _in(0xFA07759E6FDDD7CF, p0, p1, p2, p3)
+end
+
 function Global.N_0xfa1e0e893d915215(p0)
 	return _in(0xFA1E0E893D915215, p0)
 end
@@ -18302,12 +20462,20 @@ function Global.N_0xfaa457ef263e8763(name)
 	return _in(0xFAA457EF263E8763, _i, _ts(name))
 end
 
+function Global.N_0xfac75988a7d078d3(p0)
+	return _in(0xFAC75988A7D078D3, p0)
+end
+
 function Global.N_0xfae628f1e9adb239(p0, p1, p2)
 	return _in(0xFAE628F1E9ADB239, p0, p1, p2)
 end
 
 function Global.N_0xfaf2a78061fd9ef4(p0, p1, p2, p3)
 	return _in(0xFAF2A78061FD9EF4, p0, p1, p2, p3)
+end
+
+function Global.N_0xfafc23aee23868db()
+	return _in(0xFAFC23AEE23868DB, _r, _ri)
 end
 
 function Global.N_0xfb00ca71da386228()
@@ -18327,6 +20495,14 @@ function Global.N_0xfb680d403909dc70(p0, p1)
 	return _in(0xFB680D403909DC70, p0, p1)
 end
 
+function Global.N_0xfb6c4072e9a32e92(p0, p1)
+	return _in(0xFB6C4072E9A32E92, p0, p1, _r, _ri)
+end
+
+function Global.N_0xfb80ab299d2ee1bd(p0)
+	return _in(0xFB80AB299D2EE1BD, p0)
+end
+
 function Global.N_0xfb8f2a6f3df08cbe()
 	return _in(0xFB8F2A6F3DF08CBE)
 end
@@ -18343,8 +20519,20 @@ function Global.N_0xfc18db55ae19e046(p0)
 	return _in(0xFC18DB55AE19E046, p0)
 end
 
+function Global.N_0xfc40cbf7b90ca77c(p0)
+	return _in(0xFC40CBF7B90CA77C, p0)
+end
+
+function Global.N_0xfc4ee00a7b3bfb76(p0, p1, p2)
+	return _in(0xFC4EE00A7B3BFB76, p0, p1, p2)
+end
+
 function Global.N_0xfc859e2374407556()
 	return _in(0xFC859E2374407556, _r)
+end
+
+function Global.N_0xfcc228e07217fcac(p0)
+	return _in(0xFCC228E07217FCAC, p0)
 end
 
 function Global.N_0xfccae5b92a830878(p0)
@@ -18353,6 +20541,14 @@ end
 
 function Global.N_0xfcf37a457cb96dc0(p0, p1, p2, p3, p4)
 	return _in(0xFCF37A457CB96DC0, p0, p1, p2, p3, p4, _r)
+end
+
+function Global.N_0xfcfacd0db9d7a57d(p0, p1)
+	return _in(0xFCFACD0DB9D7A57D, p0, p1)
+end
+
+function Global.N_0xfd1695c5d3b05439(p0, p1, p2, p3, p4, p5)
+	return _in(0xFD1695C5D3B05439, p0, p1, p2, p3, p4, p5)
 end
 
 function Global.N_0xfd3151cd37ea2245(p0)
@@ -18384,12 +20580,20 @@ function Global.N_0xfe07ff6495d52e2a(p0, p1, p2, p3)
 	return _in(0xFE07FF6495D52E2A, p0, p1, p2, p3, _r, _ri)
 end
 
+function Global.N_0xfe205f38aaa58e5b(p0, p1)
+	return _in(0xFE205F38AAA58E5B, p0, p1)
+end
+
 function Global.N_0xfe26117a5841b2ff(vehicle, p1)
 	return _in(0xFE26117A5841B2FF, vehicle, p1, _r, _ri)
 end
 
 function Global.N_0xfe4c1d0d3b9cc17e(p0, p1)
 	return _in(0xFE4C1D0D3B9CC17E, p0, p1, _r)
+end
+
+function Global.N_0xfebfbfdfb66039de(p0)
+	return _in(0xFEBFBFDFB66039DE, p0)
 end
 
 function Global.N_0xfec9a3b1820f3331(p0)
@@ -18423,8 +20627,16 @@ function Global.N_0xff56381874f82086(p0, p1, outComponent)
 	return _in(0xFF56381874F82086, p0, p1, _ii(outComponent) --[[ may be optional ]], _r)
 end
 
+function Global.N_0xff5992e1c9e65d05(p0)
+	return _in(0xFF5992E1C9E65D05, p0)
+end
+
 function Global.N_0xff8f3a92b75ed67a()
 	return _in(0xFF8F3A92B75ED67A, _r, _ri)
+end
+
+function Global.N_0xffbe02cd385356bd()
+	return _in(0xFFBE02CD385356BD, _r, _ri)
 end
 
 --- may be 0xBF21818E
@@ -21427,6 +23639,10 @@ function Global.RaiseConvertibleRoof(vehicle, instantlyRaise)
 	return _in(0x8F5FB35D7E88FC70, vehicle, instantlyRaise)
 end
 
+function Global.RaiseLowerableWheels(vehicle)
+	return _in(0xF660602546D27BA8, vehicle)
+end
+
 function Global.RefreshInterior(interiorID)
 	return _in(0x41F37C3427C75AE0, interiorID)
 end
@@ -24205,8 +26421,8 @@ end
 --- Sets a global handling override for a specific vehicle class. The name is supposed to match the `handlingName` field from handling.meta.
 -- Example: `SetHandlingField('AIRTUG', 'CHandlingData', 'fSteeringLock', 360.0)`
 -- @param class The handling class to set. Only "CHandlingData" is supported at this time.
--- @param value The value to set.
 -- @param fieldName The field name to set. These match the keys in `handling.meta`.
+-- @param value The value to set.
 -- @param vehicle The vehicle class to set data for.
 function Global.SetHandlingField(vehicle, class, fieldName, value)
 	return _in(0xfe8064e3, _ts(vehicle), _ts(class), _ts(fieldName), value)
@@ -24215,8 +26431,8 @@ end
 --- Sets a global handling override for a specific vehicle class. The name is supposed to match the `handlingName` field from handling.meta.
 -- Example: `SetHandlingFloat('AIRTUG', 'CHandlingData', 'fSteeringLock', 360.0)`
 -- @param class The handling class to set. Only "CHandlingData" is supported at this time.
--- @param value The floating-point value to set.
 -- @param fieldName The field name to set. These match the keys in `handling.meta`.
+-- @param value The floating-point value to set.
 -- @param vehicle The vehicle class to set data for.
 function Global.SetHandlingFloat(vehicle, class, fieldName, value)
 	return _in(0x90dd01c, _ts(vehicle), _ts(class), _ts(fieldName), value)
@@ -24224,8 +26440,8 @@ end
 
 --- Sets a global handling override for a specific vehicle class. The name is supposed to match the `handlingName` field from handling.meta.
 -- @param class The handling class to set. Only "CHandlingData" is supported at this time.
--- @param value The integer value to set.
 -- @param fieldName The field name to set. These match the keys in `handling.meta`.
+-- @param value The integer value to set.
 -- @param vehicle The vehicle class to set data for.
 function Global.SetHandlingInt(vehicle, class, fieldName, value)
 	return _in(0x8ab3f46c, _ts(vehicle), _ts(class), _ts(fieldName), value)
@@ -24234,8 +26450,8 @@ end
 --- Sets a global handling override for a specific vehicle class. The name is supposed to match the `handlingName` field from handling.meta.
 -- Example: `SetHandlingVector('AIRTUG', 'CHandlingData', 'vecCentreOfMassOffset', vector3(0.0, 0.0, -5.0))`
 -- @param class The handling class to set. Only "CHandlingData" is supported at this time.
--- @param value The Vector3 value to set.
 -- @param fieldName The field name to set. These match the keys in `handling.meta`.
+-- @param value The Vector3 value to set.
 -- @param vehicle The vehicle class to set data for.
 function Global.SetHandlingVector(vehicle, class, fieldName, value)
 	return _in(0x7f9d543, _ts(vehicle), _ts(class), _ts(fieldName), value)
@@ -24322,6 +26538,10 @@ function Global.SetInteriorActive(interiorID, toggle)
 	return _in(0xE37B76C387BE28ED, interiorID, toggle)
 end
 
+function Global.SetInteriorPropColor(interiorID, propName, color)
+	return _in(0xC1F1920BAF281317, interiorID, _ts(propName), color)
+end
+
 function Global.SetLastDrivenVehicle(vehicle)
 	return _in(0xACFB2463CC22BED2, vehicle)
 end
@@ -24382,12 +26602,12 @@ function Global.SetMinimapComponent(p0, p1, p2)
 end
 
 --- Sets the display info for a minimap overlay.
+-- @param xScale The X scale for the overlay. This is equivalent to the Flash _xscale property, therefore 100 = 100%.
 -- @param miniMap The minimap overlay ID.
--- @param yScale The Y scale for the overlay. This is equivalent to the Flash _yscale property.
--- @param x The X position for the overlay. This is equivalent to a game coordinate X.
 -- @param y The Y position for the overlay. This is equivalent to a game coordinate Y, except that it's inverted (gfxY = -gameY).
 -- @param alpha The alpha value for the overlay. This is equivalent to the Flash _alpha property, therefore 100 = 100%.
--- @param xScale The X scale for the overlay. This is equivalent to the Flash _xscale property, therefore 100 = 100%.
+-- @param yScale The Y scale for the overlay. This is equivalent to the Flash _yscale property.
+-- @param x The X position for the overlay. This is equivalent to a game coordinate X.
 function Global.SetMinimapOverlayDisplay(miniMap, x, y, xScale, yScale, alpha)
 	return _in(0x6a48b3ca, miniMap, x, y, xScale, yScale, alpha)
 end
@@ -24657,11 +26877,22 @@ end
 Global.N_0x17430b918701c342 = Global.SetNotificationFlashColor
 
 --- List of picNames: pastebin.com/XdpJVbHz
-function Global.SetNotificationMessage(picName1, picName2, flash, iconType, p4, sender, subject)
-	return _in(0x2B7E9A4EAAA93C89, _ts(picName1), picName2, flash, iconType, p4, _ts(sender), _ts(subject), _r, _ri)
+-- flash is a bool for fading in.
+-- iconTypes:
+-- 1 : Chat Box
+-- 2 : Email
+-- 3 : Add Friend Request
+-- 4 : Nothing
+-- 5 : Nothing
+-- 6 : Nothing
+-- 7 : Right Jumping Arrow
+-- 8 : RP Icon
+-- 9 : $ Icon
+-- "sender" is the very top header. This can be any old string.
+-- "subject" is the header under the sender.
+function Global.SetNotificationMessage(picName1, picName2, flash, iconType, sender, subject)
+	return _in(0x1CCD9A37359072CF, _ts(picName1), _ts(picName2), flash, iconType, _ts(sender), _ts(subject), _r, _ri)
 end
-Global.N_0x2b7e9a4eaaa93c89 = Global.SetNotificationMessage
-Global.SetNotificationMessage_2 = Global.SetNotificationMessage
 
 --- List of picNames pastebin.com/XdpJVbHz
 -- flash is a bool for fading in.
@@ -24712,23 +26943,10 @@ function Global.SetNotificationMessageClanTag_2(picName1, picName2, flash, iconT
 end
 
 --- List of picNames: pastebin.com/XdpJVbHz
--- flash is a bool for fading in.
--- iconTypes:
--- 1 : Chat Box
--- 2 : Email
--- 3 : Add Friend Request
--- 4 : Nothing
--- 5 : Nothing
--- 6 : Nothing
--- 7 : Right Jumping Arrow
--- 8 : RP Icon
--- 9 : $ Icon
--- "sender" is the very top header. This can be any old string.
--- "subject" is the header under the sender.
-function Global.SetNotificationMessage_2(picName1, picName2, flash, iconType, sender, subject)
-	return _in(0x1CCD9A37359072CF, _ts(picName1), _ts(picName2), flash, iconType, _ts(sender), _ts(subject), _r, _ri)
+function Global.SetNotificationMessage_2(picName1, picName2, flash, iconType, p4, sender, subject)
+	return _in(0x2B7E9A4EAAA93C89, _ts(picName1), picName2, flash, iconType, p4, _ts(sender), _ts(subject), _r, _ri)
 end
-Global.SetNotificationMessage = Global.SetNotificationMessage_2
+Global.N_0x2b7e9a4eaaa93c89 = Global.SetNotificationMessage_2
 
 --- Needs more research.
 -- Only one type of usage in the scripts:
@@ -26535,6 +28753,10 @@ function Global.SetRainFxIntensity(intensity)
 	return _in(0x643E26EA6E024D92, intensity)
 end
 
+function Global.SetRampVehicleReceivesRampDamage(vehicle, receivesDamage)
+	return _in(0x28D034A93FE31BF5, vehicle, receivesDamage)
+end
+
 function Global.SetRandomBoats(toggle)
 	return _in(0x84436EC293B1415F, toggle, _r, _ri)
 end
@@ -26600,6 +28822,12 @@ end
 
 function Global.SetResourceKvpInt(key, value)
 	return _in(0x6a2b1e8, _ts(key), value)
+end
+
+--- Sets the player's rich presence detail state for social platform providers to a specified string.
+-- @param presenceState The rich presence string to set.
+function Global.SetRichPresence(presenceState)
+	return _in(0x7bdcbd45, _ts(presenceState))
 end
 
 --- missing a last parameter int p6
@@ -26797,7 +29025,7 @@ function Global.SetStreaming(toggle)
 end
 
 function Global.SetSuperJumpThisFrame(player)
-	return _in(0x57FFF03E423A4C0B, player)
+	return _in(0x57FFF03E423A4C0B, player, _r, _ri)
 end
 
 --- Swim speed multiplier.
@@ -27110,8 +29338,8 @@ function Global.SetVehicleAsNoLongerNeeded(vehicle)
 end
 
 --- Disables the vehicle from being repaired when a vehicle extra is enabled.
--- @param vehicle The vehicle to set disable auto vehicle repair.
 -- @param value Setting the value to  true prevents the vehicle from being repaired when a extra is enabled. Setting the value to false allows the vehicle from being repaired when a extra is enabled.
+-- @param vehicle The vehicle to set disable auto vehicle repair.
 function Global.SetVehicleAutoRepairDisabled(vehicle, value)
 	return _in(0x5f3a3574, vehicle, value)
 end
@@ -27217,6 +29445,10 @@ end
 -- Radius of effect damage applied in a sphere at impact location
 function Global.SetVehicleDamage(vehicle, xOffset, yOffset, zOffset, damage, radius, p6)
 	return _in(0xA1DD317EA8FD4F29, vehicle, xOffset, yOffset, zOffset, damage, radius, p6)
+end
+
+function Global.SetVehicleDashboardColour(vehicle, color)
+	return _in(0x6089CDF6A57F326C, vehicle, color)
 end
 
 --- This fixes the deformation of a vehicle but the vehicle health doesn't improve
@@ -27500,8 +29732,8 @@ end
 --- Sets a handling override for a specific vehicle. Certain handling flags can only be set globally using `SET_HANDLING_FIELD`, this might require some experimentation.
 -- Example: `SetVehicleHandlingField(vehicle, 'CHandlingData', 'fSteeringLock', 360.0)`
 -- @param class The handling class to set. Only "CHandlingData" is supported at this time.
--- @param value The value to set.
 -- @param fieldName The field name to set. These match the keys in `handling.meta`.
+-- @param value The value to set.
 -- @param vehicle The vehicle to set data for.
 function Global.SetVehicleHandlingField(vehicle, class, fieldName, value)
 	return _in(0x2ba40795, vehicle, _ts(class), _ts(fieldName), value)
@@ -27510,8 +29742,8 @@ end
 --- Sets a handling override for a specific vehicle. Certain handling flags can only be set globally using `SET_HANDLING_FLOAT`, this might require some experimentation.
 -- Example: `SetVehicleHandlingFloat(vehicle, 'CHandlingData', 'fSteeringLock', 360.0)`
 -- @param class The handling class to set. Only "CHandlingData" is supported at this time.
--- @param value The floating-point value to set.
 -- @param fieldName The field name to set. These match the keys in `handling.meta`.
+-- @param value The floating-point value to set.
 -- @param vehicle The vehicle to set data for.
 function Global.SetVehicleHandlingFloat(vehicle, class, fieldName, value)
 	return _in(0x488c86d2, vehicle, _ts(class), _ts(fieldName), value)
@@ -27519,8 +29751,8 @@ end
 
 --- Sets a handling override for a specific vehicle. Certain handling flags can only be set globally using `SET_HANDLING_INT`, this might require some experimentation.
 -- @param class The handling class to set. Only "CHandlingData" is supported at this time.
--- @param value The integer value to set.
 -- @param fieldName The field name to set. These match the keys in `handling.meta`.
+-- @param value The integer value to set.
 -- @param vehicle The vehicle to set data for.
 function Global.SetVehicleHandlingInt(vehicle, class, fieldName, value)
 	return _in(0xc37f4cf9, vehicle, _ts(class), _ts(fieldName), value)
@@ -27528,8 +29760,8 @@ end
 
 --- Sets a handling override for a specific vehicle. Certain handling flags can only be set globally using `SET_HANDLING_VECTOR`, this might require some experimentation.
 -- @param class The handling class to set. Only "CHandlingData" is supported at this time.
--- @param value The Vector3 value to set.
 -- @param fieldName The field name to set. These match the keys in `handling.meta`.
+-- @param value The Vector3 value to set.
 -- @param vehicle The vehicle to set data for.
 function Global.SetVehicleHandlingVector(vehicle, class, fieldName, value)
 	return _in(0x12497890, vehicle, _ts(class), _ts(fieldName), value)
@@ -27558,6 +29790,10 @@ Global.N_0x99c82f8a139f3e4e = Global.SetVehicleHudSpecialAbilityBarActive
 -- Set turnSignal to 1 for left light, 0 for right light.
 function Global.SetVehicleIndicatorLights(vehicle, turnSignal, toggle)
 	return _in(0xB5D45264751B7DF0, vehicle, turnSignal, toggle)
+end
+
+function Global.SetVehicleInteriorColour(vehicle, color)
+	return _in(0xF40DD601A65F7F19, vehicle, color)
 end
 
 function Global.SetVehicleInteriorlight(vehicle, toggle)
@@ -27780,6 +30016,10 @@ function Global.SetVehicleOutOfControl(vehicle, killDriver, explodeOnImpact)
 	return _in(0xF19D095E42D430CC, vehicle, killDriver, explodeOnImpact)
 end
 
+function Global.SetVehicleParachuteActive(vehicle, active)
+	return _in(0x0BFFB028B3DD0A97, vehicle, active)
+end
+
 --- 1000 is max health
 -- Begins leaking gas at around 650 health
 function Global.SetVehiclePetrolTankHealth(vehicle, health)
@@ -27806,6 +30046,18 @@ end
 --- Reduces grip significantly so it's hard to go anywhere.
 function Global.SetVehicleReduceGrip(vehicle, toggle)
 	return _in(0x222FF6A823D122E2, vehicle, toggle)
+end
+
+function Global.SetVehicleRocketBoostActive(vehicle, active)
+	return _in(0x81E1552E35DC3839, vehicle, active)
+end
+
+function Global.SetVehicleRocketBoostPercentage(vehicle, percentage)
+	return _in(0xFEB2DDED3509562E, vehicle, percentage)
+end
+
+function Global.SetVehicleRocketBoostRefillTime(vehicle, time)
+	return _in(0xE00F2AB100B76E89, vehicle, time)
 end
 
 function Global.SetVehicleRudderBroken(vehicle, p1)
@@ -30761,6 +33013,16 @@ function Global.VehicleHasLandingGear(vehicle)
 	return _in(0x4198AB0022B15F87, vehicle, _r)
 end
 Global.N_0x4198ab0022b15f87 = Global.VehicleHasLandingGear
+
+--- parachuteModel = 230075693
+function Global.VehicleSetCustomParachuteModel(vehicle, parachuteModel)
+	return _in(0x4D610C6B56031351, vehicle, _ch(parachuteModel))
+end
+
+--- colorIndex = 0
+function Global.VehicleSetCustomParachuteTexture(vehicle, colorIndex)
+	return _in(0xA74AD2439468C883, vehicle, colorIndex)
+end
 
 function Global.VehicleWaypointPlaybackOverrideSpeed(p0, p1)
 	return _in(0x121F0593E0A431D7, p0, p1)

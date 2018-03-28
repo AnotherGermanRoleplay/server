@@ -1390,8 +1390,8 @@ declare function CalculateTravelDistanceBetweenPoints(x1: number, y1: number, z1
 
 /**
  * This is similar to the PushScaleformMovieFunction natives, except it calls in the `TIMELINE` of a minimap overlay.
- * @param fnName A function in the overlay's TIMELINE.
  * @param miniMap The minimap overlay ID.
+ * @param fnName A function in the overlay's TIMELINE.
  */
 declare function CallMinimapScaleformFunction(miniMap: number, fnName: string): number;
 
@@ -1494,6 +1494,8 @@ declare function CanRegisterMissionObjects(amount: number): number;
 
 declare function CanRegisterMissionPeds(amount: number): number;
 
+declare function CanRegisterMissionPickups(p0: number): number;
+
 declare function CanRegisterMissionVehicles(amount: number): number;
 
 /**
@@ -1511,6 +1513,8 @@ declare function CanShuffleSeat(vehicle: number, p1: number): number;
  * this returns if you can use the weapon while using a parachute
  */
 declare function CanUseWeaponOnParachute(weaponHash: string | number): number;
+
+declare function CanVehicleParachuteBeActivated(vehicle: number): number;
 
 /**
  * Cancels the currently executing event. See https://wiki.fivem.net/wiki/CancelEvent
@@ -3029,6 +3033,8 @@ declare function DoesVehicleHaveDecal(vehicle: number, p1: number): number;
  */
 declare function HasVehicleGotDecal(vehicle: number, p1: number): number;
 
+declare function DoesVehicleHaveDoor(vehicle: number, doorIndex: number): number;
+
 declare function DoesVehicleHaveRoof(vehicle: number): number;
 
 /**
@@ -4392,6 +4398,8 @@ declare function GetAiBlip(ped: number): number;
  */
 declare function N_0x56176892826a4fe8(ped: number): number;
 
+declare function GetAllVehicles(vehArray: number): number;
+
 declare function GetAllocatedStackSize(): number;
 
 declare function GetAmmoInClip(ped: number, weaponHash: string | number, ammo: number): number;
@@ -5311,6 +5319,8 @@ declare function GetEntityUprightValue(entity: number): number;
  */
 declare function GetEntityVelocity(entity: number): number[];
 
+declare function GetEntryPositionOfDoor(vehicle: number, doorIndex: number): number[];
+
 /**
  * eventGroup: 0 = CEventGroupScriptAI, 1 = CEventGroupScriptNetwork
  */
@@ -5427,7 +5437,7 @@ declare function GetGameplayCamRot(rotationOrder: number): number[];
  * p0 seems to consistently be 2 across scripts
  * Function is called faily often by CAM::CREATE_CAM_WITH_PARAMS
  */
-declare function GetGameplayCamRot(rotationOrder: number): number[];
+declare function GetGameplayCamRot_2(rotationOrder: number): number[];
 
 declare function GetGameplayCamZoom(): number;
 
@@ -5463,6 +5473,8 @@ declare function GetGroundZFor_3dCoord(x: number, y: number, z: number, unk: boo
  * p1 may be a BOOL representing whether or not the group even exists
  */
 declare function GetGroupSize(groupID: number): [number, number];
+
+declare function GetHasLowerableWheels(vehicle: number): number;
 
 /**
  * This native converts its past string to hash. It is hashed using jenkins one at a time method.
@@ -6307,6 +6319,8 @@ declare function GetNumberOfStreamingRequests(): number;
  */
 declare function GetNumberOfVehicleColours(vehicle: number): number;
 
+declare function GetNumberOfVehicleDoors(vehicle: number): number;
+
 /**
  * Returns the number of *types* of licence plates, enumerated below in SET_VEHICLE_NUMBER_PLATE_TEXT_INDEX.
  */
@@ -6401,6 +6415,8 @@ declare function GetPedAmmoTypeFromWeapon(ped: number, weaponHash: string | numb
  * Returns an ammo type hash, which is defined in AmmoInfo.
  */
 declare function GetPedAmmoType(ped: number, weaponHash: string | number): number;
+
+declare function GetPedAmmoTypeFromWeapon_2(ped: number, weaponHash: string | number): number;
 
 declare function GetPedArmour(ped: number): number;
 
@@ -7095,9 +7111,9 @@ declare function GetResourceKvpString(key: string): string;
 /**
  * Gets the metadata value at a specified key/index from a resource's manifest.
  * See also: [Resource manifest](https://wiki.fivem.net/wiki/Resource_manifest)
+ * @param index The value index, in a range from [0..GET_NUM_RESOURCE_METDATA-1].
  * @param resourceName The resource name.
  * @param metadataKey The key in the resource manifest.
- * @param index The value index, in a range from [0..GET_NUM_RESOURCE_METDATA-1].
  */
 declare function GetResourceMetadata(resourceName: string, metadataKey: string, index: number): string;
 
@@ -7217,17 +7233,6 @@ declare function GetScaleformMovieFunctionReturnInt(method_return: number): numb
 declare function N_0x2de7efa66b906036(method_return: number): number;
 
 /**
- * World to relative screen coords
- * this world to screen will keep the text on screen. it will keep it in the screen pos. good for a deer hunting mod
- */
-declare function GetScreenCoordFromWorldCoord(worldX: number, worldY: number, worldZ: number): [number, number, number];
-/**
- * World to relative screen coords
- * this world to screen will keep the text on screen. it will keep it in the screen pos. good for a deer hunting mod
- */
-declare function N_0xf9904d11f1acbec3(worldX: number, worldY: number, worldZ: number): [number, number, number];
-
-/**
  * Convert a world coordinate into its relative screen coordinate.  (WorldToScreen)
  * Returns a boolean; whether or not the operation was successful. It will return false if the coordinates given are not visible to the rendering camera.
  * For .NET users...
@@ -7273,6 +7278,17 @@ declare function GetScreenCoordFromWorldCoord(worldX: number, worldY: number, wo
  * I thought we lost you from the scene forever. It does seem however that calling SET_DRAW_ORIGIN then your natives, then ending it. Seems to work better for certain things such as keeping boxes around people for a predator missile e.g.
  */
 declare function World3dToScreen2d(worldX: number, worldY: number, worldZ: number): [number, number, number];
+
+/**
+ * World to relative screen coords
+ * this world to screen will keep the text on screen. it will keep it in the screen pos. good for a deer hunting mod
+ */
+declare function GetScreenCoordFromWorldCoord(worldX: number, worldY: number, worldZ: number): [number, number, number];
+/**
+ * World to relative screen coords
+ * this world to screen will keep the text on screen. it will keep it in the screen pos. good for a deer hunting mod
+ */
+declare function N_0xf9904d11f1acbec3(worldX: number, worldY: number, worldZ: number): [number, number, number];
 
 /**
  * Returns whether the specified screen effect is active.
@@ -7779,6 +7795,8 @@ declare function GetVehicleCustomPrimaryColour(vehicle: number): [number, number
 
 declare function GetVehicleCustomSecondaryColour(vehicle: number): [number, number, number];
 
+declare function GetVehicleDashboardColour(vehicle: number, color: number): void;
+
 declare function GetVehicleDashboardSpeed(vehicle: number): number;
 
 /**
@@ -7857,8 +7875,8 @@ declare function GetVehicleHandbrake(vehicle: number): number;
  * Returns the effective handling data of a vehicle as a floating-point value.
  * Example: `local fSteeringLock = GetVehicleHandlingFloat(vehicle, 'CHandlingData', 'fSteeringLock')`
  * @param vehicle The vehicle to obtain data for.
- * @param class The handling class to get. Only "CHandlingData" is supported at this time.
  * @param fieldName The field name to get. These match the keys in `handling.meta`.
+ * @param class The handling class to get. Only "CHandlingData" is supported at this time.
  * @return A floating-point value.
  */
 declare function GetVehicleHandlingFloat(vehicle: number, _class: string, fieldName: string): number;
@@ -7867,8 +7885,8 @@ declare function GetVehicleHandlingFloat(vehicle: number, _class: string, fieldN
  * Returns the effective handling data of a vehicle as an integer value.
  * Example: `local modelFlags = GetVehicleHandlingInt(vehicle, 'CHandlingData', 'strModelFlags')`
  * @param vehicle The vehicle to obtain data for.
- * @param class The handling class to get. Only "CHandlingData" is supported at this time.
  * @param fieldName The field name to get. These match the keys in `handling.meta`.
+ * @param class The handling class to get. Only "CHandlingData" is supported at this time.
  * @return An integer.
  */
 declare function GetVehicleHandlingInt(vehicle: number, _class: string, fieldName: string): number;
@@ -7877,8 +7895,8 @@ declare function GetVehicleHandlingInt(vehicle: number, _class: string, fieldNam
  * Returns the effective handling data of a vehicle as a vector value.
  * Example: `local inertiaMultiplier = GetVehicleHandlingVector(vehicle, 'CHandlingData', 'vecInertiaMultiplier')`
  * @param vehicle The vehicle to obtain data for.
- * @param class The handling class to get. Only "CHandlingData" is supported at this time.
  * @param fieldName The field name to get. These match the keys in `handling.meta`.
+ * @param class The handling class to get. Only "CHandlingData" is supported at this time.
  * @return An integer.
  */
 declare function GetVehicleHandlingVector(vehicle: number, _class: string, fieldName: string): number[];
@@ -7904,6 +7922,8 @@ declare function GetVehicleIndexFromEntityIndex(entity: number): number;
  * @return An integer.
  */
 declare function GetVehicleIndicatorLights(vehicle: number): number;
+
+declare function GetVehicleInteriorColour(vehicle: number, color: number): void;
 
 declare function GetVehicleLayoutHash(vehicle: number): number;
 
@@ -8853,7 +8873,13 @@ declare function HasVehicleAssetLoaded(vehicleAsset: number): number;
  */
 declare function HasVehicleGotProjectileAttached(driver: number, vehicle: number, weaponHash: string | number, p3: number): number;
 
+declare function HasVehicleJumpingAbility(vehicle: number): number;
+
+declare function HasVehicleParachute(vehicle: number): number;
+
 declare function HasVehicleRecordingBeenLoaded(p0: number, p1: number): number;
+
+declare function HasVehicleRocketBoost(vehicle: number): number;
 
 declare function HasWeaponAssetLoaded(weaponHash: string | number): number;
 
@@ -9460,8 +9486,8 @@ declare function IsIplActive(iplName: string): number;
 
 declare function IsItemsetValid(p0: number): number;
 
-declare function IsLoadingPromptBeingDisplayed(): string;
-declare function N_0xd422fcc5f239a915(): string;
+declare function IsLoadingPromptBeingDisplayed(): number;
+declare function N_0xd422fcc5f239a915(): number;
 
 declare function IsLookInverted(): number;
 
@@ -9481,6 +9507,8 @@ declare function IsMissionCreatorBlip(blip: number): number;
 declare function IsMobilePhoneCallOngoing(): number;
 
 declare function IsMobilePhoneRadioActive(): number;
+
+declare function IsModelAPed(modelHash: string | number): number;
 
 /**
  * Returns whether the specified model represents a vehicle.
@@ -10322,6 +10350,8 @@ declare function IsThisModelAQuadbike(model: string | number): number;
 
 declare function IsThisModelATrain(model: string | number): number;
 
+declare function IsThisModelAnAmphibiousCar(model: string | number): number;
+
 declare function IsThreadActive(threadId: number): number;
 
 /**
@@ -10485,6 +10515,8 @@ declare function IsVehicleOnAllWheels(vehicle: number): number;
 declare function IsVehiclePreviouslyOwnedByPlayer(vehicle: number): number;
 
 declare function IsVehicleRadioLoud(vehicle: number): number;
+
+declare function IsVehicleRocketBoostActive(vehicle: number): number;
 
 /**
  * Possibly: Returns whether the searchlight (found on police vehicles) is toggled on.
@@ -10824,6 +10856,8 @@ declare function MoveVehicleDecals(p0: number, p1: number): void;
  */
 declare function N_0x0032a6dba562c518(): void;
 
+declare function N_0x0035bb914316f1e3(p0: number, p1: number, p2: number, p3: number): void;
+
 /**
  * if ((NETWORK::_597F8DBA9B206FC7() &gt; 0) &amp;&amp; DATAFILE::_01095C95CD46B624(0)) {
  * v_10 = DATAFILE::_GET_ROOT_OBJECT();
@@ -10841,6 +10875,8 @@ declare function N_0x011883f41211432a(p0: number, p1: number, p2: number, p3: nu
 declare function N_0x013e5cfc38cd5387(p0: number): [number, number, number];
 
 declare function N_0x0150b6ff25a9e2e5(): void;
+
+declare function N_0x015b03ee1c43e6ec(p0: number): void;
 
 declare function N_0x01708e8dd3ff8c65(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number): number;
 
@@ -10888,15 +10924,23 @@ declare function N_0x03300b57fcac6ddb(p0: boolean): void;
 
 declare function N_0x0378c08504160d0d(p0: number): number;
 
+declare function N_0x0379daf89ba09aa5(p0: number, p1: number): void;
+
 declare function N_0x0395cb47b022e62c(p0: number): number;
 
 declare function N_0x03c27e13b42a0e82(doorHash: string | number, p1: number, p2: boolean, p3: boolean): void;
+
+declare function N_0x03c2eebb04b3fb72(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number): void;
 
 declare function N_0x03ea03af85a85cb7(ped: number, p1: boolean, p2: boolean, p3: boolean, p4: boolean, p5: boolean, p6: boolean, p7: boolean, p8: number): number;
 
 declare function N_0x03f1a106bda7dd3e(): void;
 
 declare function N_0x03fc694ae06c5a20(): void;
+
+declare function N_0x0419b167ee128f33(p0: number, p1: number): number;
+
+declare function N_0x041c7f2a6c9894e6(p0: number, p1: number, p2: number): number;
 
 /**
  * Found in the b617d scripts, duplicates removed:
@@ -10912,10 +10956,20 @@ declare function N_0x04655f9d075d0ae5(p0: boolean): void;
 
 declare function N_0x047cbed6f6f8b63c(): void;
 
+declare function N_0x04918a41bc9b8157(p0: number, p1: number, p2: number): number;
+
+declare function N_0x04d90ba8207ada2d(p0: number): void;
+
 /**
  * p0 was always 0xAE2602A3.
  */
 declare function N_0x052991e59076e4e4(p0: string | number, p1: number): number;
+
+declare function N_0x0581730ab9380412(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number): void;
+
+declare function N_0x0596843b34b95ce5(p0: number, p1: number): void;
+
+declare function N_0x05f04155a226fbbf(p0: number, p1: number, p2: number, p3: number): void;
 
 declare function N_0x06087579e7aa85a9(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number): number;
 
@@ -10931,11 +10985,15 @@ declare function N_0x06462a961e94b67c(): void;
 
 declare function N_0x06582aff74894c75(vehicle: number, p1: boolean): void;
 
+declare function N_0x065d03a9d6b2c6b5(p0: number, p1: number): void;
+
 declare function N_0x06a320535f5f0248(p0: number): void;
 
 declare function N_0x06a3524161c502ba(p0: number): void;
 
 declare function N_0x06c0023bed16dd6b(p0: number, p1: boolean): void;
+
+declare function N_0x06eaf70ae066441e(p0: number): void;
 
 declare function N_0x06ee9048fd080382(p0: boolean): void;
 
@@ -10947,11 +11005,19 @@ declare function N_0x07c313f94746702c(p0: number): number;
 
 declare function N_0x07c61676e5bb52cd(p0: number): number;
 
+declare function N_0x07dbd622d9533857(p0: number): number;
+
 declare function N_0x07dd29d5e22763f1(p0: number): number;
+
+declare function N_0x07eab372c8841d99(p0: number, p1: number, p2: number): number;
 
 declare function N_0x07fb139b592fa687(p0: number, p1: number, p2: number, p3: number): number;
 
 declare function N_0x0811381ef5062fec(p0: number): void;
+
+declare function N_0x08a1b82b91900682(p0: number, p1: number, p2: number): void;
+
+declare function N_0x08b0ca7a6ab3ac32(p0: number, p1: number, p2: number): void;
 
 declare function N_0x0923dbf87dff735e(x: number, y: number, z: number): void;
 
@@ -10965,15 +11031,23 @@ declare function N_0x0a436b8643716d14(): void;
 
 declare function N_0x0a46af8a78dc5e0a(): void;
 
+declare function N_0x0a50d2604e05cb94(p0: number, p1: number, p2: number, p3: number, p4: number): void;
+
 declare function N_0x0a60017f841a54f2(p0: number, p1: number, p2: number, p3: number): void;
 
 declare function N_0x0a6a279f3aa4fd70(vehicle: number, p1: boolean): void;
 
 declare function N_0x0a6d923dffc9bd89(): number;
 
+declare function N_0x0a9c7f36e5d7b683(p0: number): void;
+
 declare function N_0x0a9f2a468b328e74(p0: number, p1: number, p2: number, p3: number): void;
 
+declare function N_0x0aa27680a0bd43fa(): void;
+
 declare function N_0x0abc54de641dc0fc(p0: number): number;
+
+declare function N_0x0abf535877897560(p0: number): number;
 
 declare function N_0x0ad9710cee2f590f(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number): number;
 
@@ -10985,15 +11059,23 @@ declare function N_0x0afce529f69b21ff(): number;
 
 declare function N_0x0b203b4afde53a4f(p2: boolean): [number, number, number];
 
+declare function N_0x0b3e35ac043707d9(p0: number, p1: number): void;
+
 declare function N_0x0b40ed49d7d6ff84(): void;
 
+declare function N_0x0b565b0aae56a0e8(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number): void;
+
 declare function N_0x0b568201dd99f0eb(p0: boolean): void;
+
+declare function N_0x0b8b7f74bf061c6d(): number;
 
 declare function N_0x0b919e1fb47cc4e0(p0: number): void;
 
 declare function N_0x0bc3144deb678666(modelHash: string | number): number;
 
 declare function N_0x0bca1d2c47b0d269(p0: number, p1: number, p2: number): void;
+
+declare function N_0x0be4be946463f917(p0: number): number;
 
 declare function N_0x0bf3b3bd47d79c08(hash: string | number, p1: number): void;
 
@@ -11003,16 +11085,24 @@ declare function N_0x0bf3b3bd47d79c08(hash: string | number, p1: number): void;
  */
 declare function N_0x0c0c4e81e1ac60a0(): number;
 
+declare function N_0x0c112765300c7e1e(p0: number): number;
+
 declare function N_0x0c15b0e443b2349d(): number;
 
 declare function N_0x0c1f7d49c39d2289(): number;
 
 declare function N_0x0c5a80a9e096d529(p0: number, p2: number, p3: number, p4: number, p5: number): [number, number];
 
+declare function N_0x0c82d21a77c22d49(p0: number, p1: number, p2: number, p3: number): void;
+
+declare function N_0x0c8fac83902a62df(p0: number): void;
+
 /**
  * x360 Hash: 0x4AF0ADF5
  */
 declare function N_0x0c978fda19692c2c(p0: boolean, p1: boolean): void;
+
+declare function N_0x0cb1be0633c024a8(p0: number, p1: number, p2: number, p3: number): void;
 
 declare function N_0x0cd9ab83489430ea(p0: boolean): number;
 
@@ -11020,7 +11110,13 @@ declare function N_0x0cdda42f9e360ca6(vehicle: number, p1: boolean): void;
 
 declare function N_0x0cf54f20de43879c(p0: number): void;
 
+declare function N_0x0cf97f497fe7d048(p0: number): void;
+
 declare function N_0x0d01d20616fc73fb(p0: number, p1: number): void;
+
+declare function N_0x0d30eb83668e63c5(p0: number, p1: number, p2: number, p3: number): void;
+
+declare function N_0x0d5f65a8f4ebdab5(p0: number, p1: number): void;
 
 /**
  * Dr. Underscore (1/6/18):
@@ -11034,9 +11130,15 @@ declare function N_0x0dbd5d7e3c5bec3b(): number;
 
 declare function N_0x0e4299c549f0d1f1(p0: boolean): void;
 
+declare function N_0x0e4f77f7b9d74d84(p0: number): void;
+
+declare function N_0x0eacdf8487d5155a(p0: number): void;
+
 declare function N_0x0ede326d47cd0f3e(ped: number, player: number): number;
 
 declare function N_0x0f3b4d4e43177236(p0: number, p1: boolean): void;
+
+declare function N_0x0f62619393661d6e(p0: number, p1: number, p2: number): void;
 
 declare function N_0x0f70731baccfbb96(): number;
 
@@ -11049,6 +11151,8 @@ declare function N_0x0fb82563989cf4fb(p0: number, p1: number, p2: number, p3: nu
  */
 declare function N_0x0fde9dbfc0a6bc65(p0: number): void;
 
+declare function N_0x0fe8e1fcd2b86b33(p0: number, p1: number, p2: number, p3: number): void;
+
 /**
  * p0 is always false in scripts.
  */
@@ -11057,6 +11161,10 @@ declare function N_0x0ff2862b61a58af9(p0: boolean): void;
 declare function N_0x10655fab9915623d(p0: number, p1: number): void;
 
 declare function N_0x1072f115dab0717e(p0: boolean, p1: boolean): void;
+
+declare function N_0x1086127b3a63505e(p0: number, p1: number, p2: number): void;
+
+declare function N_0x1087bc8ec540daeb(p0: number, p1: number): void;
 
 declare function N_0x108be26959a9d9bb(p0: boolean): void;
 
@@ -11085,9 +11193,13 @@ declare function N_0x110f526ab784111f(ped: number, p1: number): void;
 
 declare function N_0x1121bfa1a1a522a8(): number;
 
+declare function N_0x112209ce0290c03a(p0: number, p1: number, p2: number, p3: number): void;
+
 declare function N_0x113e6e3e50e286b0(p0: number): void;
 
 declare function N_0x1153fa02a659051c(): void;
+
+declare function N_0x11579d940949c49e(p0: number): void;
 
 declare function N_0x116fb94dc4b79f17(p0: string): void;
 
@@ -11113,6 +11225,8 @@ declare function N_0x11fa5d3479c7dd47(p0: number): void;
 
 declare function N_0x11ff1c80276097ed(p0: string, p1: number, p2: number): void;
 
+declare function N_0x1201e8a3290a3b98(p0: number, p1: number): void;
+
 declare function N_0x120364de2845daf8(p1: number): [number, number];
 
 declare function N_0x1216e0bfa72cc703(p0: number, p1: number): void;
@@ -11123,6 +11237,8 @@ declare function N_0x121fb4dddc2d5291(p0: number, p1: number, p2: number, p3: nu
  * p0 is usually 0. sometimes 2. Not sure what this does.
  */
 declare function N_0x12561fcbb62d5b9c(p0: number): void;
+
+declare function N_0x125e6d638b8605d4(p0: number): number[];
 
 declare function N_0x1280804f7cfd2d6c(p0: number): void;
 
@@ -11135,10 +11251,14 @@ declare function N_0x12995f2e53ffa601(p0: number, p1: number, p2: number, p3: nu
 
 declare function N_0x12b6281b6c6706c0(p0: boolean): number;
 
+declare function N_0x12d148d26538d0f9(p0: number, p1: number, p2: number, p3: number): void;
+
 /**
  * Hardcoded to only work in multiplayer.
  */
 declare function N_0x12ded8ca53d47ea5(p0: number): void;
+
+declare function N_0x1312ddd8385aee4e(p0: number, p1: number): void;
 
 declare function N_0x1327e2fe9746baee(p0: number): number;
 
@@ -11151,17 +11271,27 @@ declare function N_0x1353f87e89946207(): number;
 
 declare function N_0x135f9b7b7add2185(p0: number): number;
 
+declare function N_0x1398582b7f72b3ed(p0: number): void;
+
 declare function N_0x13b350b8ad0eee10(): void;
 
 declare function N_0x13c4b962653a5280(): number;
 
+declare function N_0x13f1fcb111b820b0(p0: number): void;
+
 declare function N_0x140e6a44870a11ce(): void;
 
+declare function N_0x144da052257ae7d8(p0: number): void;
+
 declare function N_0x14590ddbedb1ec85(ped: number): number;
+
+declare function N_0x1461b28a06717d68(p0: number): number;
 
 declare function N_0x14621bb1df14e2b2(): void;
 
 declare function N_0x14832bf2aba53fc5(): number;
+
+declare function N_0x148b08c2d2acb884(p0: number, p1: number, p2: number): void;
 
 declare function N_0x14922ed3e38761f0(): number;
 
@@ -11173,15 +11303,25 @@ declare function N_0x14d29bb12d47f68c(p0: number, p1: number, p2: number, p3: nu
 
 declare function N_0x14e0b2d1ad1044e0(): [number, number, number, number];
 
+declare function N_0x14eda9ee27bd1626(p0: number): void;
+
 declare function N_0x14fc5833464340a8(): void;
 
 declare function N_0x152d90e4c1b4738a(): [number, number, number];
 
+declare function N_0x15803fec3b9a872b(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number, p7: number, p8: number, p9: number, p10: number): void;
+
 declare function N_0x158ec424f35ec469(p0: string, p1: boolean, contentType: string): number;
+
+declare function N_0x159b7318403a1cd8(p0: number): void;
+
+declare function N_0x15cfa549788d35ef(): void;
 
 declare function N_0x15e33297c3e8dc60(p0: number): void;
 
 declare function N_0x15e69e2802c24b8d(p0: number): void;
+
+declare function N_0x15f944730c832252(p0: number, p1: number): void;
 
 declare function N_0x15ff52b809db2353(p0: number): number;
 
@@ -11198,11 +11338,17 @@ declare function N_0x162c23ca83ed0a62(p0: number): number;
  */
 declare function N_0x162f9d995753dc19(): number;
 
+declare function N_0x1632be0ac1e62876(p0: number, p1: number): void;
+
+declare function N_0x1636d7fc127b10d2(p0: number): void;
+
 /**
  * only documented params
  * dont know what this does.... To Be Continued...
  */
 declare function N_0x163f8b586bc95f2a(coords: number, radius: number, modelHash: string | number, x: number, y: number, z: number, p7: number): [number, number[]];
+
+declare function N_0x164c5ff663790845(p0: number): void;
 
 /**
  * 3 calls in the b617d scripts, removed duplicate.
@@ -11236,7 +11382,11 @@ declare function N_0x170910093218c8b9(p0: number): number;
  */
 declare function N_0x170f541e1cadd1de(p0: boolean): void;
 
+declare function N_0x171bafb3c60389f4(p0: number): number;
+
 declare function N_0x171df6a0c07fb3dc(p0: number, p1: number): number;
+
+declare function N_0x17330ebf2f2124a8(): void;
 
 declare function N_0x17440aa15d1d3739(): void;
 
@@ -11248,15 +11398,21 @@ declare function N_0x17df68d720aa77f8(p0: number): number;
 
 declare function N_0x17e0198b3882c2cb(): void;
 
+declare function N_0x17f7471eaca78290(p0: number): void;
+
 declare function N_0x17fca7199a530203(): number;
 
 declare function N_0x182f266c2d9e2beb(vehicle: number, p1: number): void;
+
+declare function N_0x1888694923ef4591(): void;
 
 declare function N_0x18eb48cfc41f2ea0(p0: number, p1: number): void;
 
 declare function N_0x190428512b240692(p0: number, p1: boolean, p2: boolean, p3: boolean, p4: boolean): void;
 
 declare function N_0x192547247864dfdd(vehicle: number, p1: boolean): void;
+
+declare function N_0x1950dae9848a4739(p0: number, p1: number, p2: number): number;
 
 declare function N_0x19853b5b17d77bca(p0: number, p1: number): number;
 
@@ -11285,6 +11441,10 @@ declare function N_0x19bfed045c647c49(p0: number): number;
  */
 declare function N_0x19cafa3c87f7c2ff(): number;
 
+declare function N_0x19d1b791cb3670fe(p0: number, p1: number): void;
+
+declare function N_0x19e50eb6e33e1d28(p0: number): void;
+
 /**
  * SET_ENTITY_*
  */
@@ -11297,7 +11457,11 @@ declare function N_0x1a330d297aac6bc1(ped: number, p1: number): void;
 
 declare function N_0x1a78ad3d8240536f(vehicle: number, p1: boolean): void;
 
+declare function N_0x1a7ce7cd3e653485(p0: number): void;
+
 declare function N_0x1a8e2c8b9cf4549c(): [number, number];
+
+declare function N_0x1a8ea222f9c67dbb(p0: number): number;
 
 declare function N_0x1aa8a837d2169d94(vehicle: number, p1: boolean): void;
 
@@ -11312,7 +11476,11 @@ declare function N_0x1ad5b71586b94820(p0: number, p2: number): [number, number];
 
 declare function N_0x1b0b4aeed5b9b41c(p0: number): void;
 
+declare function N_0x1b212b26dd3c04df(p0: number, p1: number): void;
+
 declare function N_0x1b2366c3f2a5c8df(): number;
+
+declare function N_0x1b7abe26cbcbf8c7(p0: number, p1: number, p2: number): void;
 
 /**
  * Console Hash: 0x76A9FEB6
@@ -11320,6 +11488,8 @@ declare function N_0x1b2366c3f2a5c8df(): number;
 declare function N_0x1b857666604b1a74(p0: boolean): void;
 
 declare function N_0x1bb299305c3e8c13(p0: number, p1: number, p2: number, p3: number): void;
+
+declare function N_0x1bbac99c0bc53656(p0: number, p1: number): void;
 
 /**
  * Dr. Underscore (1/6/18):
@@ -11329,6 +11499,8 @@ declare function N_0x1bb299305c3e8c13(p0: number, p1: number, p2: number, p3: nu
 declare function N_0x1bbc135a4d25edde(p0: boolean): void;
 
 declare function N_0x1c073274e065c6d2(p0: number, p1: boolean): void;
+
+declare function N_0x1c1b69fae509ba97(p0: number, p1: number): void;
 
 /**
  * NETWORK_CAN_R??? or NETWORK_CAN_S???
@@ -11352,9 +11524,17 @@ declare function N_0x1d610eb0fea716d9(p0: number): number;
  */
 declare function N_0x1d97d1e3a70a649f(vehicle: number, p1: boolean): void;
 
+declare function N_0x1da0da9cb3f0c8bf(p0: number): number;
+
 declare function N_0x1dd2139a9a20dce8(): number;
 
+declare function N_0x1dda078d12879eee(p0: number, p1: number, p2: number): void;
+
 declare function N_0x1de0f5f50d723caa(): [number, number, number, number];
+
+declare function N_0x1e3f1b1b891a2aaa(p0: number, p1: number): void;
+
+declare function N_0x1e45b34adebee48e(): void;
 
 declare function N_0x1e77fa7a62ee6c4c(p0: number): number;
 
@@ -11407,7 +11587,13 @@ declare function N_0x1f2300cb7fa7b7f6(): number;
 
 declare function N_0x1f2e4e06dea8992b(p0: number, p1: boolean): void;
 
+declare function N_0x1f34b0626c594380(p0: number, p1: number): void;
+
+declare function N_0x1f351cf1c6475734(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number, p7: number, p8: number, p9: number): void;
+
 declare function N_0x1f3f018bc3afa77c(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number, p7: number, p8: number): number;
+
+declare function N_0x1f8e00fb18239600(p0: number): void;
 
 declare function N_0x1f9fb66f3a3842d2(vehicle: number, p1: boolean): void;
 
@@ -11416,6 +11602,8 @@ declare function N_0x1fc289a0c3ff470f(p0: boolean): number;
 declare function N_0x1ff6bf9a63e5757f(): void;
 
 declare function N_0x2016c603d6b8987c(p0: number, p1: boolean): void;
+
+declare function N_0x203b381133817079(p0: number): void;
 
 declare function N_0x206bc5dc9d1ac70a(vehicle: number, p1: boolean): void;
 
@@ -11437,6 +11625,8 @@ declare function N_0x2107a3773771186d(): number;
 declare function N_0x21115bcd6e44656a(p0: number, p1: boolean): void;
 
 declare function N_0x211c4ef450086857(): void;
+
+declare function N_0x213aeb2b90cba7ac(p0: number, p1: number, p2: number): void;
 
 /**
  * example
@@ -11495,6 +11685,8 @@ declare function N_0x23789e777d14ce44(): number;
 
 declare function N_0x237d5336a9a54108(p0: number): number;
 
+declare function N_0x2382ab11450ae7ba(p0: number, p1: number): void;
+
 declare function N_0x23b59d8912f94246(): void;
 
 /**
@@ -11528,6 +11720,10 @@ declare function N_0x2432784aca090da4(p0: number): number;
 
 declare function N_0x24409fc4c55cb22d(p0: number): number;
 
+declare function N_0x2467a2d807d37ca3(p0: number): number;
+
+declare function N_0x2472622ce1f2d45f(p0: number, p1: number, p2: number): void;
+
 declare function N_0x247acbc4abbc9d1c(p0: boolean): void;
 
 declare function N_0x2485d34e50a22e84(p0: number, p1: number, p2: number): void;
@@ -11544,6 +11740,8 @@ declare function N_0x25615540d894b814(p0: number, p1: boolean): void;
 
 declare function N_0x2587a48bc88dfadf(p0: boolean): void;
 
+declare function N_0x259ba6d4e6f808f1(p0: number): void;
+
 declare function N_0x25b99872d588a101(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number): number;
 
 declare function N_0x25d990f8e0e3f13c(): void;
@@ -11552,11 +11750,15 @@ declare function N_0x25f87b30c382fca7(): void;
 
 declare function N_0x25fc3e33a31ad0c9(p0: boolean): void;
 
+declare function N_0x2605663bd4f23b5d(p0: number): void;
+
 declare function N_0x260ee4fdbdf4db01(p0: number): number;
 
 declare function N_0x261e97ad7bcf3d40(p0: boolean): void;
 
 declare function N_0x2632482fd6b9ab87(): void;
+
+declare function N_0x265559da40b3f327(p0: number): void;
 
 declare function N_0x265635150fb0d82e(): void;
 
@@ -11579,6 +11781,8 @@ declare function N_0x26af0e8e30bd2a2c(ped: number): number;
  */
 declare function N_0x26d7399b9587fe89(p0: number): void;
 
+declare function N_0x26d99d5a82fd18e8(p0: number): void;
+
 /**
  * spook.
  * This function calls a function that gets another player stat, although implementation wasn't finished so it can only get your own stat.
@@ -11598,7 +11802,11 @@ declare function N_0x2735233a786b1bef(ped: number, p1: number): void;
 
 declare function N_0x274a1519dfc1094f(p1: boolean): [number, number, number];
 
+declare function N_0x2790f4b17d098e26(p0: number): void;
+
 declare function N_0x279d50de5652d935(p0: number, p1: boolean): void;
+
+declare function N_0x27aa1c973cacfe63(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number, p7: number, p8: number, p9: number): void;
 
 /**
  * IS_VEHICLE_BUMPER_HANGING_OFF
@@ -11618,11 +11826,21 @@ declare function N_0x2801d0012266df07(p0: number): void;
 
 declare function N_0x280c7e3ac7f56e90(p0: number): [number, number, number];
 
+declare function N_0x282b6739644f4347(p0: number): void;
+
 declare function N_0x283b6062a2c01e9b(): void;
 
 declare function N_0x287f1f75d2803595(p0: number, p1: number): number;
 
 declare function N_0x288df530c92dad6f(p0: number, p1: number): void;
+
+declare function N_0x28b18377eb6e25f6(p0: number, p1: number): void;
+
+declare function N_0x28ecb8ac2f607db2(p0: number, p1: number, p2: number, p3: number, p4: number): void;
+
+declare function N_0x2916a928514c9827(): void;
+
+declare function N_0x29280002282f1928(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number, p7: number, p8: number, p9: number, p10: number, p11: number, p12: number, p13: number, p14: number, p15: number, p16: number, p17: number, p18: number, p19: number, p20: number, p21: number, p22: number, p23: number): void;
 
 declare function N_0x293220da1b46cebc(p0: number, p1: number, p2: boolean): void;
 
@@ -11638,7 +11856,11 @@ declare function N_0x2a2a52824db96700(p0: number): void;
 
 declare function N_0x2a56c06ebef2b0d9(cutsceneEntName: string, ped: number, modelHash: string | number): void;
 
+declare function N_0x2a5e0621dd815a9a(p0: number, p1: number, p2: number, p3: number): void;
+
 declare function N_0x2a7776c709904ab0(p0: number): number;
+
+declare function N_0x2a86a0475b6a1434(p0: number, p1: number): void;
 
 /**
  * 2 matches across 2 scripts. Only showed in appcamera &amp; appmedia. Both were 0.
@@ -11659,6 +11881,12 @@ declare function N_0x2a8f319b392e7b3f(vehicle: number, p1: number): void;
  */
 declare function N_0x2aed6301f67007d5(entity: number): void;
 
+declare function N_0x2afc2d19b50797f2(p0: number, p1: number, p2: number, p3: number): void;
+
+declare function N_0x2b1c623823db0d9d(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number): number;
+
+declare function N_0x2b40a97646381508(p0: number): void;
+
 declare function N_0x2b51edbefc301339(p0: number, p1: string): number;
 
 declare function N_0x2b5aa717a181fb4c(p0: number, p1: boolean): void;
@@ -11675,11 +11903,17 @@ declare function N_0x2b69f5074c894811(p0: number, p1: number, p2: number, p3: nu
 
 declare function N_0x2b949a1e6aec8f6a(): number;
 
+declare function N_0x2bc54a8188768488(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number, p7: number, p8: number, p9: number, p10: number): void;
+
 declare function N_0x2be4bc731d039d5a(p0: number, p1: boolean): void;
 
 declare function N_0x2bf66d2e7414f686(): number;
 
 declare function N_0x2bf72ad5b41aa739(): void;
+
+declare function N_0x2c173ae2bdb9385e(p0: number): number;
+
+declare function N_0x2c1d8b3b19e517cc(p0: number, p1: number): number;
 
 /**
  * SET_ENTITY_*
@@ -11696,17 +11930,31 @@ declare function N_0x2c8cbfe1ea5fc631(p0: number): number;
 
 declare function N_0x2c96cdb04fca358e(p0: number): void;
 
+declare function N_0x2c9f302398e13141(p0: number, p1: number): void;
+
 declare function N_0x2cc848a861d01493(): number;
+
+declare function N_0x2cd90358f67d0aa8(p0: number): void;
+
+declare function N_0x2ce9d95e4051aecd(p0: number): void;
 
 declare function N_0x2d4259f1feb81da9(p0: number, p1: number, p2: number, p3: number): number;
 
 declare function N_0x2d5dc831176d0114(p0: number): number;
 
+declare function N_0x2da41ed6e1fcd7a5(p0: number, p1: number): number;
+
+declare function N_0x2de6c5e2e996f178(p0: number): void;
+
 declare function N_0x2df9038c90ad5264(p0: number, p1: number, p2: number, p3: number, p4: number, interiorFlags: number, scale: number, duration: number): void;
+
+declare function N_0x2dfc81c9b9608549(p0: number, p1: number): number;
 
 declare function N_0x2e0bf682cc778d49(p0: number): number;
 
 declare function N_0x2e22fefa0100275e(): number;
+
+declare function N_0x2e4c123d1c8a710e(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number): number;
 
 declare function N_0x2e65248609523599(p0: number, p1: number, p2: number): void;
 
@@ -11721,6 +11969,8 @@ declare function N_0x2ed61456317b8178(): void;
  */
 declare function N_0x2f057596f2bd0061(): number;
 
+declare function N_0x2f074c904d85129e(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number): void;
+
 /**
  * only documented. to be continued...
  */
@@ -11729,6 +11979,8 @@ declare function N_0x2f09f7976c512404(xCoord: number, yCoord: number, zCoord: nu
 declare function N_0x2f137b508de238f2(p0: boolean): void;
 
 declare function N_0x2f3c3d9f50681de4(p0: number, p1: boolean): void;
+
+declare function N_0x2f41a3bae005e5fa(p0: number, p1: number): void;
 
 /**
  * Used with radios:
@@ -11757,6 +12009,10 @@ declare function N_0x2f7ceb6520288061(p0: boolean): void;
 
 declare function N_0x2f7f2b26dd3f18ee(p0: number, p1: number): void;
 
+declare function N_0x2fa2494b47fdd009(p0: number, p1: number): void;
+
+declare function N_0x2fab6614ce22e196(p0: number, p1: number, p2: number, p3: number): void;
+
 /**
  * NETWORK_IS_IN_???
  */
@@ -11775,6 +12031,8 @@ declare function N_0x308f96458b7087cc(p1: number, p2: number, p3: number, p5: bo
 declare function N_0x30a6614c1f7799b8(p0: number, p1: number, p2: number): void;
 
 declare function N_0x30ed88d5e0c56a37(p0: number): number;
+
+declare function N_0x30fd873ece50e9f6(p0: number, p1: number, p2: number, p3: number, p4: number): void;
 
 declare function N_0x31125fd509d9043f(p0: number): void;
 
@@ -11801,13 +12059,25 @@ declare function N_0x318516e02de3ece2(p0: number): void;
 
 declare function N_0x3195f8dd0d531052(p0: number, p1: number): [number, number, number];
 
+declare function N_0x31e90b8873a4cd3b(p0: number, p1: number): void;
+
 declare function N_0x31f924b53eaddf65(p0: boolean): void;
 
 declare function N_0x3270f67eed31fbc1(p0: number): [number, number, number];
 
+declare function N_0x32888337579a5970(): void;
+
 declare function N_0x32c7a7e8c43a1f80(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: boolean, p7: boolean): number;
 
+declare function N_0x32cac93c9de73d32(): number;
+
+declare function N_0x32caedf24a583345(p0: number): void;
+
 declare function N_0x32dd916f3f7c9672(p0: number): number;
+
+declare function N_0x32ebd154cb6b8b99(p0: number, p1: number, p2: number): void;
+
+declare function N_0x32f34ff7f617643b(p0: number, p1: number): void;
 
 declare function N_0x33506883545ac0df(vehicle: number, p1: boolean): void;
 
@@ -11818,7 +12088,13 @@ declare function N_0x336511a34f2e5185(left: number, right: number): number;
 
 declare function N_0x336b3d200ab007cb(p0: number, p1: number, p2: number, p3: number, p4: number): number;
 
+declare function N_0x33981d6804e62f49(p0: number, p1: number, p2: number, p3: number): void;
+
 declare function N_0x33d47e85b476abcd(): [number, any /* actually bool */];
+
+declare function N_0x33d72899e24c3365(p0: number, p1: number): number;
+
+declare function N_0x33de49edf4dde77a(p0: number): number[];
 
 declare function N_0x33e3c6c6f2f0b506(p0: number, p1: number, p2: number, p3: number): void;
 
@@ -11841,6 +12117,8 @@ declare function N_0x34770b9ce0e03b91(p0: number, p1: number): number;
 
 declare function N_0x350aa5ebc03d3bd2(): number;
 
+declare function N_0x352e2b5cf420bf3b(p0: number, p1: number): void;
+
 declare function N_0x357b152ef96c30b6(): number;
 
 declare function N_0x3599d741c9ac6310(p0: number, p1: number, p2: number, p3: number): number;
@@ -11848,6 +12126,8 @@ declare function N_0x3599d741c9ac6310(p0: number, p1: number, p2: number, p3: nu
 declare function N_0x359af31a4b52f5ed(): number;
 
 declare function N_0x35a1b3e1d1315cfa(p0: boolean, p1: boolean): number;
+
+declare function N_0x35bb21de06784373(p0: number, p1: number): void;
 
 declare function N_0x35e0654f4bad7971(p0: boolean): void;
 
@@ -11863,6 +12143,8 @@ declare function N_0x36391f397731595d(p0: number): number;
  * Returns a float value related to slipstream.
  */
 declare function N_0x36492c2f0d134c56(p0: number): number;
+
+declare function N_0x365e877c61d6988b(p0: number, p1: number, p2: number, p3: number): void;
 
 declare function N_0x3669f1b198dcaa4f(): void;
 
@@ -11884,16 +12166,24 @@ declare function N_0x36ccb9be67b970fd(p0: number, p1: boolean): void;
 
 declare function N_0x36f1b38855f2a8df(player: number): void;
 
+declare function N_0x36f32de87082343e(p0: number, p1: number): void;
+
 declare function N_0x36f6626459d91457(p0: number): void;
 
 declare function N_0x372ef6699146a1e4(p0: number, entity: number, p2: number, p3: number): number;
 
 declare function N_0x374706271354cb18(vehicle: number, p1: number, p2: number): void;
 
+declare function N_0x375a706a5c2fd084(p0: number): void;
+
+declare function N_0x3795688a307e1eb6(p0: number): number;
+
 /**
  * NETWORK_IS_TRANSITION_???
  */
 declare function N_0x37a4494483b9f5c9(): number;
+
+declare function N_0x37d5f739fd494675(p0: number): number;
 
 declare function N_0x37deb0aa183fb6d8(): void;
 
@@ -11905,6 +12195,8 @@ declare function N_0x37ebbf3117bd6a25(vehicle: number, height: number): void;
 
 declare function N_0x38491439b6ba7f7d(p0: number, p1: number): number;
 
+declare function N_0x3855fb5eb2c5e8b2(p0: number): number;
+
 /**
  * Sets profile setting 934
  */
@@ -11915,9 +12207,15 @@ declare function N_0x38baaa5dd4c9d19f(value: number): void;
  */
 declare function N_0x38d28da81e4e9bf9(player: number): number;
 
+declare function N_0x393bd2275ceb7793(): number;
+
+declare function N_0x394cd08e31313c28(): void;
+
 declare function N_0x397baa01068baa96(): number;
 
 declare function N_0x39917e1b4cb0f911(p0: boolean): void;
+
+declare function N_0x39a5fb7eaf150840(p0: number, p1: number): void;
 
 /**
  * from extreme3.c4
@@ -11932,7 +12230,13 @@ declare function N_0x3a3d5568af297cd5(p0: number): number;
 
 declare function N_0x3a48ab4445d499be(): number;
 
+declare function N_0x3a8b55fda4c8ddef(p0: number, p1: number, p2: number): number;
+
+declare function N_0x3b2fd68db5f8331c(p0: number, p1: number): void;
+
 declare function N_0x3b39236746714134(p0: number): number;
+
+declare function N_0x3b458ddb57038f08(p0: number, p1: number, p2: number): void;
 
 declare function N_0x3bab9a4e4f2ff5c7(): number;
 
@@ -11947,6 +12251,8 @@ declare function N_0x3c67506996001f5e(): number;
 declare function N_0x3c891a251567dfce(p0: number): number;
 
 declare function N_0x3ca6050692bc61b0(p0: boolean): void;
+
+declare function N_0x3d120012440e6683(): number;
 
 declare function N_0x3d3d15af7bcaaf83(p0: number, p1: boolean, p2: boolean): void;
 
@@ -11963,6 +12269,10 @@ declare function N_0x3dbf2df0aeb7d289(p0: number): number;
 
 declare function N_0x3dda37128dd1aca8(p0: boolean): void;
 
+declare function N_0x3de3aa516fb126a4(p0: number): void;
+
+declare function N_0x3de51e9c80b116cf(p0: number): number;
+
 /**
  * 1 match in 1 script. cellphone_controller.
  * p0 is -1 in scripts.
@@ -11974,7 +12284,13 @@ declare function N_0x3dec726c25a11bac(p0: number): number;
 
 declare function N_0x3e38e28a1d80ddf6(ped: number): number;
 
+declare function N_0x3e4adaff1830f146(): number;
+
 declare function N_0x3e802f11fbe27674(p0: number): number;
+
+declare function N_0x3e9679c1dfcf422c(p0: number, p1: number): void;
+
+declare function N_0x3ebeac6c3f81f6bd(p0: number): void;
 
 /**
  * p0 was always 2 in R* scripts.
@@ -11982,9 +12298,15 @@ declare function N_0x3e802f11fbe27674(p0: number): number;
  */
 declare function N_0x3ed1438c1f5c6612(p0: number): void;
 
+declare function N_0x3ed2b83ab2e82799(p0: number, p1: number): void;
+
+declare function N_0x3f0cf9cb7e589b88(): number;
+
 declare function N_0x3f52e880aaf6c8ca(p0: boolean): void;
 
 declare function N_0x3f5cc444dcaaa8f2(p0: number, p1: number, p2: boolean): void;
+
+declare function N_0x3f7325574e41b44d(p0: number, p1: number, p2: number, p3: number): void;
 
 declare function N_0x3f9990bf5f22759c(p0: number): number;
 
@@ -11996,6 +12318,8 @@ declare function N_0x402f9ed62087e898(): void;
 
 declare function N_0x405591ec8fd9096d(p0: number): void;
 
+declare function N_0x4056ea1105f5abd7(p0: number, p1: number): void;
+
 /**
  * Usage: INTERIOR::_0x405DC2AEF6AF95B9(INTERIOR::GET_KEY_FOR_ENTITY_IN_ROOM(PLAYER::PLAYER_PED_ID()));
  */
@@ -12006,9 +12330,17 @@ declare function N_0x405dc2aef6af95b9(roomHashKey: string | number): void;
  */
 declare function N_0x407091cf6037118e(netID: number): void;
 
+declare function N_0x40763ea7b9b783e7(p0: number, p1: number, p2: number): number;
+
 declare function N_0x40aefd1a244741f2(p0: boolean): void;
 
 declare function N_0x40f7e66472df3e5c(p0: number, p1: number): number;
+
+declare function N_0x4128464231e3ca0b(p0: number, p1: number, p2: number, p3: number): void;
+
+declare function N_0x41290b40fa63e6da(p0: number): void;
+
+declare function N_0x412f1364fa066cfb(p0: number): number;
 
 declare function N_0x41350b4fc28e3941(p0: boolean): void;
 
@@ -12017,6 +12349,8 @@ declare function N_0x4167efe0527d706e(): number;
 declare function N_0x418dc16fae452c1c(p0: number): number;
 
 declare function N_0x419594e137637120(p0: boolean, p1: number, p2: boolean): void;
+
+declare function N_0x419615486bbf1956(p0: number): void;
 
 declare function N_0x41faa8fb2ece8720(p0: boolean): void;
 
@@ -12028,7 +12362,11 @@ declare function N_0x4237e822315d8ba9(): number;
 
 declare function N_0x425aecf167663f48(ped: number, p1: boolean): void;
 
+declare function N_0x42613035157e4208(p0: number): void;
+
 declare function N_0x4282e08174868be3(): number;
+
+declare function N_0x428ad3e26c8d9eb0(p0: number, p1: number, p2: number, p3: number, p4: number): void;
 
 /**
  * if (!ENTITY::DOES_ENTITY_BELONG_TO_THIS_SCRIPT(g_10A5A._f8B[a_0 -- [[1]] ], 1)) {
@@ -12049,11 +12387,19 @@ declare function N_0x428baccdf5e26ead(vehicle: number, p1: boolean): void;
  */
 declare function N_0x42a4beb35d372407(p0: number): number;
 
+declare function N_0x42b65deef2edf2a1(p0: number): void;
+
+declare function N_0x4348bfda56023a2f(p0: number, p1: number): number;
+
 declare function N_0x437138b6a830166a(): void;
+
+declare function N_0x438822c279b73b93(p0: number): void;
 
 declare function N_0x43d1680c6d19a8e9(): void;
 
 declare function N_0x43fa0dfc5df87815(vehicle: number, p1: boolean): void;
+
+declare function N_0x4419966c9936071a(p0: number): void;
 
 /**
  * sfink: related to: NETWORK_BAIL
@@ -12069,11 +12415,19 @@ declare function N_0x43fa0dfc5df87815(vehicle: number, p1: boolean): void;
  */
 declare function N_0x444c4525ece0a4b9(): void;
 
+declare function N_0x44621483ff966526(p0: number, p1: number): void;
+
+declare function N_0x44919cc079bb60bf(p0: number): void;
+
 declare function N_0x44a0bdc559b35f6e(): number;
 
 declare function N_0x44aca259d67651db(p1: number): number;
 
 declare function N_0x44b37cdcae765aae(p0: number, p1: number): number;
+
+declare function N_0x44cd1f493db2a0a6(p0: number, p1: number, p2: number): void;
+
+declare function N_0x44f1012b69313374(p0: number, p1: number, p2: number, p3: number): void;
 
 /**
  * yoga.ysc
@@ -12085,7 +12439,11 @@ declare function N_0x44b37cdcae765aae(p0: number, p1: number): number;
  */
 declare function N_0x451294e859ecc018(p0: number): number;
 
+declare function N_0x451d05012ccec234(p0: number): number;
+
 declare function N_0x459fd2c8d0ab78bc(): number;
+
+declare function N_0x45a561a9421ab6ad(p0: number, p1: number): number;
 
 declare function N_0x45a83257ed02d9bc(): void;
 
@@ -12122,17 +12480,33 @@ declare function N_0x46b05bcae43856b0(ped: number, flag: number): number;
 
 declare function N_0x46d1a61a21f566fc(p0: number): void;
 
+declare function N_0x46f3add1e2d5baf2(p0: number, p1: number): void;
+
+declare function N_0x46f8696933a63c9b(p0: number, p1: number): number[];
+
 declare function N_0x472397322e92a856(): void;
+
+declare function N_0x472841a026d26d8b(): number;
 
 declare function N_0x4737980e8a283806(p0: number, p1: number): number;
 
 declare function N_0x4750fc27570311ec(): number;
 
+declare function N_0x4757f00bc6323cfe(p0: number, p1: number): void;
+
 declare function N_0x4759cc730f947c81(): void;
+
+declare function N_0x47b32f5611e6e483(p0: number): void;
+
+declare function N_0x47b595d60664cffa(p0: number, p1: number): void;
 
 declare function N_0x4811bbac21c5fcd5(p0: number): void;
 
+declare function N_0x483aca1176ca93f1(): void;
+
 declare function N_0x4852fc386e2e1bb5(p0: number): [number, number, number];
+
+declare function N_0x48608c3464f58ab4(p0: number, p1: number, p2: number): void;
 
 declare function N_0x48621c9fca3ebd28(p0: boolean): void;
 
@@ -12144,7 +12518,13 @@ declare function N_0x4862437a486f91b0(p0: string, p3: boolean): [number, number,
 
 declare function N_0x487912fd248efddf(p0: number, p1: number): number;
 
+declare function N_0x4879e4fe39074cdf(): number;
+
+declare function N_0x488043841bbe156f(): void;
+
 declare function N_0x48adc8a773564670(): void;
+
+declare function N_0x48c633e94a8142a7(p0: number): number;
 
 /**
  * Only found 3 times in decompiled scripts. Not a whole lot to go off of.
@@ -12154,7 +12534,11 @@ declare function N_0x48adc8a773564670(): void;
  */
 declare function N_0x48f069265a0e4bec(name: string): number;
 
+declare function N_0x490861b88f4fd846(p0: number): void;
+
 declare function N_0x49482f9fcd825aaa(entity: number): void;
+
+declare function N_0x497420e022796b3f(): number;
 
 declare function N_0x49e50bdb8ba4dab2(ped: number, p1: boolean): void;
 
@@ -12175,9 +12559,15 @@ declare function N_0x4a7d6e727f941747(p0: number): number;
  */
 declare function N_0x4a9923385bdb9dad(): number;
 
+declare function N_0x4ad490ae1536933b(p0: number, p1: number): number;
+
 declare function N_0x4af92acd3141d96c(): void;
 
+declare function N_0x4b5b620c9b59ed34(p0: number, p1: number): void;
+
 declare function N_0x4b5cfc83122df602(): void;
+
+declare function N_0x4ba166079d658ed4(p0: number, p1: number): void;
 
 /**
  * Seems to call GET_PAUSED_MAP_STREAMING_REQUEST lol wtf
@@ -12215,9 +12605,13 @@ declare function N_0x4bc2854478f3a749(doorHash: string | number): number;
  */
 declare function N_0x4c2330e61d3deb56(interiorID: number): number;
 
+declare function N_0x4c2a9fdc22377075(): void;
+
 declare function N_0x4c61b39930d045da(p0: number): number;
 
 declare function N_0x4c61c75bee8184c2(p0: string, p1: number, p2: number): void;
+
+declare function N_0x4c815eb175086f84(p0: number, p1: number): number;
 
 declare function N_0x4c89fe2bdeb3f169(): number;
 
@@ -12227,6 +12621,8 @@ declare function N_0x4c89fe2bdeb3f169(): number;
 declare function N_0x4cebc1ed31e8925e(cutsceneName: string): number;
 
 declare function N_0x4d02279c83be69fe(): number;
+
+declare function N_0x4d1cb8dc40208a17(p0: number, p1: number): number;
 
 declare function N_0x4d89d607cb3dd1d2(object: number, toggle: boolean): void;
 
@@ -12244,6 +12640,8 @@ declare function N_0x4df7cfff471a7fb1(p0: number): number;
 
 declare function N_0x4dfdd9eb705f8140(): [number, any /* actually bool */];
 
+declare function N_0x4e20d2a627011e8e(p0: number, p1: number): number;
+
 declare function N_0x4e3cd0ef8a489541(): number;
 
 /**
@@ -12259,11 +12657,15 @@ declare function N_0x4e3cd0ef8a489541(): number;
  */
 declare function N_0x4e404a9361f75bb2(radioStation: string, p1: string, p2: boolean): void;
 
+declare function N_0x4e417c547182c84d(p0: number): number;
+
 declare function N_0x4e52e752c76e7e7a(p0: number): void;
 
 declare function N_0x4e548c0d7ae39ff9(p0: number, p1: number): number;
 
 declare function N_0x4e74e62e0a97e901(vehicle: number, p1: boolean): void;
+
+declare function N_0x4e90d746056e273d(p0: number, p1: number): void;
 
 /**
  * The "disabled" variant of _0x5B84D09CEC5209C5.
@@ -12280,15 +12682,25 @@ declare function N_0x500873a45724c863(vehicle: number, p1: number): void;
 
 declare function N_0x5009dfd741329729(p0: string, p1: number): void;
 
+declare function N_0x501478855a6074ce(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number): void;
+
 declare function N_0x503f5920162365b2(p0: number, p1: number, p2: number, p3: number): void;
+
+declare function N_0x50634e348c8d44ef(p0: number): number;
 
 declare function N_0x5068f488ddb54dd8(): number;
 
 declare function N_0x5096fd9ccb49056d(p0: number): void;
 
+declare function N_0x50c375537449f369(p0: number): void;
+
 declare function N_0x50f457823ce6eb5f(p0: number, p1: number, p2: number, p3: number): number;
 
 declare function N_0x511f1a683387c7e2(p0: number): number;
+
+declare function N_0x516fc96eb88eefe5(p0: number): void;
+
+declare function N_0x5182a339a3474510(p0: number, p1: number, p2: number): void;
 
 declare function N_0x51bb2d88d31a914b(vehicle: number, p1: boolean): void;
 
@@ -12304,7 +12716,13 @@ declare function N_0x52d59ab61ddc05dd(ped: number, p1: boolean): void;
 
 declare function N_0x5324a0e3e4ce3570(p0: number, p1: number): [number, number, number];
 
+declare function N_0x5335be58c083e74e(p0: number): void;
+
 declare function N_0x53afd64c6758f2f9(): number;
+
+declare function N_0x53c10c8bd774f2c9(): number;
+
+declare function N_0x53cae13e9b426993(p0: number): void;
 
 declare function N_0x53f4892d18ec90a4(p0: number): void;
 
@@ -12313,6 +12731,10 @@ declare function N_0x5407b7288d0478b7(p0: number): number;
 declare function N_0x54318c915d27e4ce(p0: number, p1: boolean): void;
 
 declare function N_0x544810ed9db6bbe6(): number;
+
+declare function N_0x544996c0081abdeb(p0: number, p1: number): void;
+
+declare function N_0x547237aa71ab44de(p0: number): void;
 
 declare function N_0x54b0f614960f4a5f(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number): number;
 
@@ -12343,12 +12765,24 @@ declare function N_0x55384438fc55ad8e(value: number): void;
 
 declare function N_0x5539c3ebf104a53a(p0: boolean): void;
 
+declare function N_0x55a1e095db052fa5(p0: number, p1: number): void;
+
+declare function N_0x55a8becaf28a4eb7(): number;
+
+declare function N_0x55fcc0c390620314(p0: number, p1: number, p2: number): void;
+
 /**
  * GET_PLAYER_*
  * Seems to do something with network (?)
  * PLAYER::_56105E599CAB0EFA(NETWORK::NETWORK_GET_PLAYER_INDEX_FROM_PED(ped))
  */
 declare function N_0x56105e599cab0efa(p0: number): number;
+
+declare function N_0x5615e0c5eb2bc6e2(p0: number, p1: number): void;
+
+declare function N_0x5626d9d6810730d5(): number;
+
+declare function N_0x563b65a643ed072e(p0: number, p1: number, p2: number): number;
 
 declare function N_0x567384dfa67029e6(): number;
 
@@ -12382,6 +12816,8 @@ declare function N_0x571feb383f629926(cargobob: number, p1: boolean): void;
 
 declare function N_0x576594e8d64375e2(p0: number, p1: boolean): void;
 
+declare function N_0x577599cced639ca2(p0: number): void;
+
 declare function N_0x57d760d55f54e071(p0: boolean): void;
 
 declare function N_0x583049884a2eee3c(): void;
@@ -12392,7 +12828,13 @@ declare function N_0x5845066d8a1ea7f7(vehicle: number, x: number, y: number, z: 
 
 declare function N_0x584770794d758c18(p0: number, p1: number): number;
 
+declare function N_0x585847c5e4e11709(p0: number, p1: number, p2: number): number;
+
+declare function N_0x5873c14a52d74236(p0: number): number;
+
 declare function N_0x589f80b325cc82c5(p0: number, p1: number, p2: number, p3: number, p4: number): number;
+
+declare function N_0x58a39be597ce99cd(): void;
 
 /**
  * LEADERBOARDS_GET_CACHE_???
@@ -12427,6 +12869,8 @@ declare function N_0x597f8dba9b206fc7(): number;
  * Same behavior as GET_LOCAL_PLAYER_AIM_STATE but only used on the PC version.
  */
 declare function N_0x59b9a7af4c95133c(): number;
+
+declare function N_0x59d421683d31835a(p0: number): void;
 
 /**
  * may be 0x6CDAA7D2
@@ -12501,6 +12945,14 @@ declare function N_0x5b84d09cec5209c5(inputGroup: number, control: number): numb
 
 declare function N_0x5b8ed3db018927b1(p0: number): void;
 
+declare function N_0x5b91b229243351a8(p0: number, p1: number): void;
+
+declare function N_0x5b9853296731e88d(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number): void;
+
+declare function N_0x5ba68a0840d546ac(p0: number, p1: number): number;
+
+declare function N_0x5bcde0f640c773d2(p0: number, p1: number, p2: number, p3: number): void;
+
 declare function N_0x5bd5f255321c4aaf(p0: number): number;
 
 declare function N_0x5bff36d6ed83e0ae(): number[];
@@ -12514,6 +12966,8 @@ declare function N_0x5c3b791d580e0bc2(entity: number, p1: number): void;
 declare function N_0x5c41e6babc9e2112(p0: number): void;
 
 declare function N_0x5c48a1d6e3b33179(p0: number): number;
+
+declare function N_0x5c48b75732c8456c(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number): void;
 
 declare function N_0x5c497525f803486b(): void;
 
@@ -12532,18 +12986,26 @@ declare function N_0x5ce62918f8d703c7(p0: number, p1: number, p2: number, p3: nu
 
 declare function N_0x5d10b3795f3fc886(): number;
 
+declare function N_0x5d2bfaab8d956e0e(): void;
+
 declare function N_0x5d517b27cf6ecd04(p0: number): void;
 
 declare function N_0x5d5caff661ddf6fc(p0: number, p1: number): void;
 
 declare function N_0x5d7b620dae436138(p0: number): void;
 
+declare function N_0x5d97630a8a0ef123(p0: number, p1: number, p2: number): void;
+
 /**
  * longest time being ilde?
  */
 declare function N_0x5da3a8de8cb6226f(time: number): void;
 
+declare function N_0x5da825a85d0ea6e6(p0: number, p1: number, p2: number): void;
+
 declare function N_0x5db8010ee71fdef2(vehicle: number): number;
+
+declare function N_0x5dbf05db5926d089(p0: number): void;
 
 declare function N_0x5dc40a8869c22141(p0: boolean, p1: number): void;
 
@@ -12555,6 +13017,8 @@ declare function N_0x5dc577201723960a(): number;
 declare function N_0x5debd9c4dc995692(): void;
 
 declare function N_0x5e0165278f6339ee(p0: number): number;
+
+declare function N_0x5e203da2ba15d436(p0: number): number;
 
 declare function N_0x5e24341a7f92a74b(): number;
 
@@ -12577,7 +13041,13 @@ declare function N_0x5ea784d197556507(): number;
  */
 declare function N_0x5ead2bf6484852e4(): number;
 
+declare function N_0x5ecb40269053c0d4(p0: number): number;
+
+declare function N_0x5ecd378ee64450ab(p0: number): void;
+
 declare function N_0x5edef0cf8c1dab3c(): number;
+
+declare function N_0x5ee5632f47ae9695(p0: number, p1: number): void;
 
 declare function N_0x5f0f3f56635809ef(p0: number): void;
 
@@ -12588,6 +13058,8 @@ declare function N_0x5f2013f8bc24ee69(p0: number): void;
 
 declare function N_0x5f35f6732c3fbba0(p0: number): number;
 
+declare function N_0x5f456788b05faeac(p0: number, p1: number, p2: number): void;
+
 declare function N_0x5fbd7095fe7ae57f(p0: number, p1: number): number;
 
 /**
@@ -12595,9 +13067,13 @@ declare function N_0x5fbd7095fe7ae57f(p0: number, p1: number): number;
  */
 declare function N_0x5fc472c501ccadb3(player: number): number;
 
+declare function N_0x5ff2c33b13a02a11(p0: number): void;
+
 declare function N_0x600048c60d5c2c51(p0: number): void;
 
 declare function N_0x600f8cb31c7aab6e(p0: number): void;
+
+declare function N_0x60190048c0764a26(p0: number): number;
 
 declare function N_0x606e4d3e3cccf3eb(): number;
 
@@ -12616,6 +13092,10 @@ declare function N_0x609278246a29ca34(p0: number, p1: number, p2: number): void;
 declare function N_0x60e892ba4f5bdca4(): void;
 
 declare function N_0x60edd13eb3ac1ff3(): number;
+
+declare function N_0x60eedc12af66e846(p0: number): void;
+
+declare function N_0x613f125ba3bd2eb9(): number;
 
 /**
  * Unknown. Called after creating a checkpoint (type: 51) in the creators.
@@ -12638,6 +13118,8 @@ declare function N_0x61631f5df50d1c34(p0: boolean): void;
 
 declare function N_0x61767f73eaceed21(ped: number): number;
 
+declare function N_0x617f49c2668e6155(): number;
+
 declare function N_0x61a885d3f7cfee9a(): void;
 
 declare function N_0x61f95e5bb3e0a8c6(p0: number): void;
@@ -12649,6 +13131,10 @@ declare function N_0x6216b116083a7cb4(p0: number): void;
  * ped was PLAYER_PED_ID()
  */
 declare function N_0x621c6e4729388e41(ped: number): number;
+
+declare function N_0x62374889a4d59f72(): void;
+
+declare function N_0x62454a641b41f3c5(p0: number): void;
 
 declare function N_0x629526aba383bcaa(): void;
 
@@ -12674,6 +13160,8 @@ declare function N_0x63b406d7884bfa95(): number;
 
 declare function N_0x63eb2b972a218cac(): void;
 
+declare function N_0x641f272b52e2f0f8(p0: number, p1: number): void;
+
 declare function N_0x643ed62d5ea3bebd(): void;
 
 declare function N_0x644546ec5287471b(): number;
@@ -12682,14 +13170,22 @@ declare function N_0x6483c25849031c4f(p0: number, p1: number, p2: number, p3: nu
 
 declare function N_0x648e7a5434af7969(p0: string, p2: boolean, _type: string): [number, number, number, number, number];
 
+declare function N_0x6493cf69859b116a(): void;
+
 declare function N_0x649c97d52332341a(p0: number): void;
+
+declare function N_0x64d779659bc37b19(p0: number): number[];
 
 /**
  * this is lightly associated with the 2 above meaning it accesses a variable that them 2 access also
  */
 declare function N_0x64f62afb081e260d(): void;
 
+declare function N_0x6501129c9e0ffa05(p0: number, p1: number): void;
+
 declare function N_0x6512765e3be78c50(): number;
+
+declare function N_0x651d3228960d08af(p0: number, p1: number): void;
 
 /**
  * possibly called:
@@ -12697,12 +13193,24 @@ declare function N_0x6512765e3be78c50(): number;
  */
 declare function N_0x65499865fca6e5ec(doorHash: string | number): number;
 
+declare function N_0x6551b1f7f6cd46ea(p0: number): void;
+
+declare function N_0x6558ac7c17bfef58(p0: number): number;
+
+declare function N_0x658500ae6d723a7e(p0: number): void;
+
 /**
  * Something related to clearing the ped because always used with CLEAR_PED_WETNESS, CLEAR_PED_BLOOD_DAMAGE and RESET_PED_VISIBLE_DAMAGE.
  */
 declare function N_0x6585d955a68452a5(ped: number): number;
 
+declare function N_0x659cf2ef7f550c4f(): number;
+
+declare function N_0x65b080555ea48149(p0: number): void;
+
 declare function N_0x65d2ebb47e1cec21(p0: boolean): void;
+
+declare function N_0x65e7e78842e74cdb(p0: number): number;
 
 /**
  * IS_PLAYER_*
@@ -12725,6 +13233,8 @@ declare function N_0x6647c5f6f5792496(ped: number, p1: boolean): void;
  */
 declare function N_0x66680a92700f43df(p0: number): number;
 
+declare function N_0x668fd40bcba5de48(p0: number, p1: number, p2: number, p3: number, p4: number): number;
+
 declare function N_0x66972397e0757e7a(p0: number, p1: number, p2: number): void;
 
 declare function N_0x66979acf5102fd2f(cargobob: number, p1: number): void;
@@ -12732,6 +13242,8 @@ declare function N_0x66979acf5102fd2f(cargobob: number, p1: number): void;
 declare function N_0x66a49d021870fe88(): void;
 
 declare function N_0x66b59cffd78467af(): number;
+
+declare function N_0x66e3aaface2d1eb8(p0: number, p1: number, p2: number): void;
 
 declare function N_0x66e7cb63c97b7d20(): number;
 
@@ -12741,7 +13253,11 @@ declare function N_0x673ed815d6e323b7(p0: number, p1: boolean, p2: boolean, p3: 
 
 declare function N_0x675721c9f644d161(): void;
 
+declare function N_0x675d19c6067cae08(p0: number, p1: number, p2: number, p3: number): void;
+
 declare function N_0x678bb03c1a3bd51e(p0: number, p1: number, p2: number): [number, number, number];
+
+declare function N_0x678f86d8fc040bdb(p0: number): void;
 
 declare function N_0x67a5589628e0cff6(): number;
 
@@ -12774,6 +13290,8 @@ declare function N_0x68772db2b2526f9f(ped: number, x: number, y: number, z: numb
 
 declare function N_0x687c0b594907d2e8(ped: number): void;
 
+declare function N_0x68f8be6af5cdf8a6(p0: number, p1: number): void;
+
 /**
  * p0 seems to be Ped
  * Dr. Underscore (1/6/18):
@@ -12785,21 +13303,33 @@ declare function N_0x692d58df40657e8c(p0: number, p1: number, p2: number, p4: nu
 
 declare function N_0x692d808c34a82143(p0: string, p1: number, _type: string): number;
 
+declare function N_0x693478acbd7f18e7(): void;
+
 /**
  * what does it do?
  */
 declare function N_0x694e00132f2823ed(entity: number, p1: boolean): void;
 
+declare function N_0x697f508861875b42(p0: number, p1: number, p2: number): number;
+
 declare function N_0x699e4a5c8c893a18(p0: number, p1: string, p2: number): number;
+
+declare function N_0x69ef772b192614c1(p0: number, p1: number, p2: number, p3: number): void;
 
 declare function N_0x69fe6dc87bd2a5e9(p0: number): void;
 
 declare function N_0x6a12d88881435dca(): void;
 
+declare function N_0x6a1738b4323fe2d9(p0: number): void;
+
+declare function N_0x6a51f78772175a51(p0: number): void;
+
 /**
  * Called in freemode related scripts but not freemode itself.
  */
 declare function N_0x6a5d89d7769a40d8(p0: boolean): void;
+
+declare function N_0x6a60e43998228229(p0: number): void;
 
 declare function N_0x6a98c2ecf57fa5d4(vehicle: number, entity: number): void;
 
@@ -12814,6 +13344,12 @@ declare function N_0x6b0e6172c9a4d902(p0: boolean): void;
 
 declare function N_0x6b1de27ee78e6a19(p0: number): void;
 
+declare function N_0x6bc0acd0673acebe(p0: number, p1: number, p2: number): void;
+
+declare function N_0x6bc97f4f4bb3c04b(p0: number, p1: number): void;
+
+declare function N_0x6bccf9948492fd85(p0: number, p1: number, p2: number, p3: number, p4: number): void;
+
 declare function N_0x6bfb12ce158e3dd4(p0: number): number;
 
 declare function N_0x6bff5f84102df80a(p0: number): void;
@@ -12823,6 +13359,12 @@ declare function N_0x6c34f1208b8923fd(p0: number): number;
 declare function N_0x6cc86e78358d5119(): void;
 
 declare function N_0x6cd79468a1e595c6(inputGroup: number): number;
+
+declare function N_0x6cdd58146a436083(p0: number): void;
+
+declare function N_0x6ce177d014502e8a(p0: number): void;
+
+declare function N_0x6ce50e47f5543d0c(): void;
 
 declare function N_0x6d4cb481fac835e8(p0: number, p1: number, p3: number): [number, number];
 
@@ -12874,6 +13416,10 @@ declare function N_0x6dee77aff8c21bd1(): [number, number, number];
 
 declare function N_0x6e04f06094c87047(): number;
 
+declare function N_0x6e0a5253375c4584(): number;
+
+declare function N_0x6e4361ff3e8cd7ca(p0: number): number;
+
 /**
  * Looks like a cousin of above function _6D6840CEE8845831 as it was found among them. Must be similar
  * Here are possible values of argument -
@@ -12881,6 +13427,8 @@ declare function N_0x6e04f06094c87047(): number;
  * "launcher_Darts"
  */
 declare function N_0x6e91b04e08773030(action: string): void;
+
+declare function N_0x6eaaefc76acc311f(p0: number): number;
 
 /**
  * sfink: sets bit in vehicle's structure, used by maintransition, fm_mission_controller, mission_race and a couple of other scripts. see dissassembly:
@@ -12933,6 +13481,8 @@ declare function N_0x6fb7bb3607d27fa2(): number;
  */
 declare function N_0x6fcf8ddea146c45b(p0: number): void;
 
+declare function N_0x6fd97159fe3c971a(p0: number, p1: number, p2: number, p3: number): void;
+
 declare function N_0x6fddad856e36988a(p0: number, p1: boolean): void;
 
 /**
@@ -12946,11 +13496,15 @@ declare function N_0x701fda1e82076ba4(): void;
 
 declare function N_0x702bc4d605522539(p0: number): void;
 
+declare function N_0x7033eefd9b28088e(p0: number): void;
+
 declare function N_0x703cc7f60cbb2b57(p0: number): void;
 
 declare function N_0x703f12425eca8bf5(p0: number): number;
 
 declare function N_0x705a276ebff3133d(): number;
+
+declare function N_0x705a844002b39dc0(): number;
 
 declare function N_0x70894bd0915c5bca(p0: number): number;
 
@@ -12959,6 +13513,10 @@ declare function N_0x708bdd8cd795b043(): void;
 declare function N_0x70b8ec8fc108a634(p0: boolean, p1: number): void;
 
 declare function N_0x70ea8da57840f9be(p0: number): number;
+
+declare function N_0x711794453cfd692b(p0: number, p1: number): void;
+
+declare function N_0x71302ec70689052a(p0: number): number;
 
 /**
  * Used in am_mp_property_ext and am_mp_property_int
@@ -12982,13 +13540,21 @@ declare function N_0x71b74d2ae19338d0(p0: number): number;
 
 declare function N_0x71bdb63dbaf8da59(p0: number): void;
 
+declare function N_0x71dc455f5cd1c2b1(p0: number): number;
+
 declare function N_0x71e7b2e657449aad(): number;
 
 declare function N_0x722f5d28b61c5ea8(p0: number): number;
 
 declare function N_0x723c1ce13fbfdb67(p0: number, p1: number): void;
 
+declare function N_0x7241ccb7d020db69(p0: number, p1: number): void;
+
+declare function N_0x7242f8b741ce1086(p0: number): number;
+
 declare function N_0x728c4cc7920cd102(p0: number): number;
+
+declare function N_0x72beccf4b829522e(p0: number, p1: number): void;
 
 /**
  * Appears to be a HIDE_* native.
@@ -13005,6 +13571,8 @@ declare function N_0x72de52178c291cb5(): number;
 
 declare function N_0x72eb7ba9b69bf6ab(): number;
 
+declare function N_0x73001e34f85137f8(p0: number): void;
+
 /**
  * NETWORK_CAN_R??? or NETWORK_CAN_S???
  */
@@ -13020,6 +13588,12 @@ declare function N_0x733adf241531e5c2(name: string, p1: number): void;
 declare function N_0x733c87d4ce22bea2(p0: number): void;
 
 declare function N_0x7350823473013c02(ped: number): number;
+
+declare function N_0x73561d4425a021a2(p0: number, p1: number): void;
+
+declare function N_0x736d7aa1b750856b(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number, p7: number, p8: number, p9: number, p10: number, p11: number, p12: number, p13: number, p14: number, p15: number, p16: number, p17: number, p18: number, p19: number, p20: number, p21: number, p22: number, p23: number, p24: number, p25: number, p26: number, p27: number, p28: number, p29: number, p30: number, p31: number): void;
+
+declare function N_0x737e398138550fff(p0: number, p1: number): void;
 
 declare function N_0x741a3d8380319a81(): void;
 
@@ -13048,7 +13622,11 @@ declare function N_0x74fb3e29e6d10fa9(): number;
  */
 declare function N_0x7543bb439f63792b(bufferSize: number): [number, number];
 
+declare function N_0x756ae6e962168a04(p0: number, p1: number): void;
+
 declare function N_0x75773e11ba459e90(p0: number, p1: boolean): void;
+
+declare function N_0x758a5c1b3b1e1990(p0: number): void;
 
 declare function N_0x759299c5bb31d2a9(p0: number, p1: number): number;
 
@@ -13068,7 +13646,11 @@ declare function N_0x7679cc1bcebe3d4c(p0: number, p1: number, p2: number): void;
 
 declare function N_0x769951e2455e2eb5(): number;
 
+declare function N_0x76bba2cee66d47e9(p0: number): number;
+
 declare function N_0x76bf03fadbf154f5(): number;
+
+declare function N_0x76d26a22750e849e(p0: number): void;
 
 /**
  * 6 calls in the b617d scripts, removed identical lines:
@@ -13085,6 +13667,8 @@ declare function N_0x7792424aa0eac32e(): void;
 declare function N_0x77f16b447824da6c(p0: number): void;
 
 declare function N_0x77faddcbe3499df7(p0: number): void;
+
+declare function N_0x77fe3402004cd1b0(p0: number): void;
 
 /**
  * MulleDK19: This function is hard-coded to always return 1.
@@ -13114,14 +13698,20 @@ declare function N_0x78c0d93253149435(): number;
 
 declare function N_0x78c4e9961db3eb5b(p0: number, p1: number): void;
 
+declare function N_0x78ceee41f49f421f(p0: number, p1: number): void;
+
 /**
  * Related to cutscene entities. Unsure about the use.
  */
 declare function N_0x78e8e3a640178255(entity: number): void;
 
+declare function N_0x792271ab35c356a4(p0: number, p1: number): void;
+
 declare function N_0x793ff272d5b365f4(): number;
 
 declare function N_0x796a877e459b99ea(p0: number, p1: number, p2: number, p3: number): void;
+
+declare function N_0x799017f9e3b10112(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number, p7: number): void;
 
 declare function N_0x79ab33f0fbfac40c(p0: number): void;
 
@@ -13135,13 +13725,23 @@ declare function N_0x7ac752103856fb20(p0: boolean): void;
 
 declare function N_0x7ae0589093a2e088(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number): number;
 
+declare function N_0x7b18da61f6bae9d5(p0: number): void;
+
 declare function N_0x7b21e0bb01e8224a(p0: number): void;
 
 declare function N_0x7b226c785a52a0a9(): number;
 
+declare function N_0x7b8a361c1813fbef(): void;
+
+declare function N_0x7bbe7ff626a591fe(p0: number): void;
+
 declare function N_0x7bf1a54ae67ac070(p0: number, p1: number, p2: number): void;
 
 declare function N_0x7c0043fdff6436bc(x: number): void;
+
+declare function N_0x7c06330bfdda182e(p0: number): void;
+
+declare function N_0x7c226d5346d4d10a(p0: number): void;
 
 /**
  * Used for cash gifts
@@ -13161,6 +13761,8 @@ declare function N_0x7cd934010e115c2c(ped: number): void;
  * AUDIO::_7CDC8C3B89F661B3(PLAYER::PLAYER_PED_ID(), GAMEPLAY::GET_HASH_KEY("FEMALE_LOST_WHITE_PVG"));
  */
 declare function N_0x7cdc8c3b89f661b3(playerPed: number, p1: string | number): void;
+
+declare function N_0x7d36291161859389(p0: number): void;
 
 declare function N_0x7d395ea61622e116(p0: boolean): void;
 
@@ -13202,7 +13804,13 @@ declare function N_0x7d6f9a3ef26136a0(vehicle: number, p1: boolean, p2: boolean)
  */
 declare function N_0x7d7a2e43e74e2eb8(p0: number): void;
 
+declare function N_0x7d8ba05688ad64c7(p0: number): void;
+
+declare function N_0x7db18ca8cad5b098(): number;
+
 declare function N_0x7db53b37a2f211a0(): number;
+
+declare function N_0x7e07c78925d5fd96(p0: number): number;
 
 declare function N_0x7e17be53e1aaabaf(): [number, number, number];
 
@@ -13226,12 +13834,16 @@ declare function N_0x7e2bd3ef6c205f09(p0: string, p1: boolean): void;
 
 declare function N_0x7e6946f68a38b74f(p0: number): number;
 
+declare function N_0x7ec3c679d0e7e46b(p0: number, p1: number, p2: number, p3: number): void;
+
 declare function N_0x7ec6f9a478a6a512(): void;
 
 /**
  * _PLAYSTATS_ROB_ARMOURD_TRUCK
  */
 declare function N_0x7eec2a316c250073(p0: number, p1: number, p2: number): void;
+
+declare function N_0x7ef7649b64d7ff10(p0: number): number;
 
 declare function N_0x7f2c4cdf2e82df4c(p0: number): number;
 
@@ -13249,6 +13861,8 @@ declare function N_0x7fd2990af016795e(p2: number, p3: number, p4: number): [numb
 
 declare function N_0x80054d7fcc70eec6(p0: number): void;
 
+declare function N_0x801879a9b4f4b2fb(): number;
+
 declare function N_0x806058bbdc136e06(): void;
 
 declare function N_0x8098c8d6597aae18(p0: number): number;
@@ -13257,6 +13871,8 @@ declare function N_0x8098c8d6597aae18(p0: number): number;
  * 0, 1 and 2 used in the scripts. 0 is by far the most common of them.
  */
 declare function N_0x80c2fd58d720c801(inputGroup: number, control: number, p2: boolean): string;
+
+declare function N_0x80e3357fdef45c21(p0: number, p1: number): void;
 
 /**
  * gets some camera fov
@@ -13267,12 +13883,26 @@ declare function N_0x80fe4f3ab4e1b62a(): void;
 
 declare function N_0x8147fff6a718e1ad(p0: number): number;
 
+declare function N_0x814af7dcaacc597b(p0: number): void;
+
+declare function N_0x815f18ad865f057f(p0: number): number;
+
 /**
  * UI::_817B86108EB94E51(1, &amp;g_189F36._f10CD1[0 -- [[16]] ], &amp;g_189F36._f10CD1[1 -- [[16]] ], &amp;g_189F36._f10CD1[2 -- [[16]] ], &amp;g_189F36._f10CD1[3 -- [[16]] ], &amp;g_189F36._f10CD1[4 -- [[16]] ], &amp;g_189F36._f10CD1[5 -- [[16]] ], &amp;g_189F36._f10CD1[6 -- [[16]] ], &amp;g_189F36._f10CD1[7 -- [[16]] ]);
  */
 declare function N_0x817b86108eb94e51(p0: boolean): [number, number, number, number, number, number, number, number];
 
+declare function N_0x8181ce2f25cb9bb7(p0: number, p1: number): number;
+
+declare function N_0x81aa517fbba05d39(p0: number): number;
+
 declare function N_0x81cbae94390f9f89(): void;
+
+declare function N_0x820e9892a77e97cd(p0: number, p1: number): void;
+
+declare function N_0x821418c727fcacd7(p0: number): void;
+
+declare function N_0x821fdc827d6f4090(p0: number): void;
 
 /**
  * "GET_OBJ_ENTITY" seems highly unlikely.
@@ -13286,6 +13916,8 @@ declare function N_0x82377b65e943f72d(p0: number): number;
  */
 declare function N_0x8269816f6cfd40f8(name: string): number;
 
+declare function N_0x826d1ee4d1cafc78(p0: number, p1: number): void;
+
 /**
  * HUD_COLOUR_CONTROLLER_CHOP = 174;
  * UI::GET_HUD_COLOUR(174, &amp;v_6, &amp;v_7, &amp;v_8, &amp;v_9);
@@ -13293,9 +13925,17 @@ declare function N_0x8269816f6cfd40f8(name: string): number;
  */
 declare function N_0x8290252fff36acb5(p0: number, red: number, green: number, blue: number): void;
 
+declare function N_0x82a2b386716608f1(): number;
+
+declare function N_0x82acc484ffa3b05f(p0: number): number;
+
 declare function N_0x82cedc33687e1f50(p0: boolean): void;
 
 declare function N_0x82ebb79e258fa2b7(entity: number, interiorID: number): void;
+
+declare function N_0x83660b734994124d(p0: number, p1: number, p2: number): number;
+
+declare function N_0x838da0936a24ed4d(p0: number, p1: number): void;
 
 declare function N_0x83a169eabcdb10a2(p0: number, p1: number): void;
 
@@ -13327,6 +13967,8 @@ declare function N_0x83bcce3224735f05(filename: string): number;
 
 declare function N_0x83f28ce49fbbffba(p0: number, p1: number, p2: boolean): number;
 
+declare function N_0x83f813570ff519de(p0: number, p1: number): void;
+
 declare function N_0x83fe8d7229593017(): void;
 
 /**
@@ -13338,13 +13980,29 @@ declare function N_0x8416fe4e4629d7d7(p0: string): number;
 
 declare function N_0x84698ab38d0c6636(hash: string | number): number;
 
+declare function N_0x848b66100ee33b05(p0: number): void;
+
+declare function N_0x84a810b375e69c0e(): number;
+
+declare function N_0x84c0116d012e8fc2(p0: number): void;
+
 declare function N_0x84de3b5fb3e666f0(p0: number): number;
 
+declare function N_0x84dfc579c2fc214c(p0: number): void;
+
+declare function N_0x84ea99c62cb3ef0c(p0: number, p1: number, p2: number): void;
+
 declare function N_0x851cd923176eba7c(): void;
+
+declare function N_0x8533cafde1f0f336(p0: number): number;
 
 declare function N_0x85535acf97fc0969(p0: number): number;
 
 declare function N_0x855bc38818f6f684(): number;
+
+declare function N_0x8586789730b10caf(p0: number, p1: number, p2: number, p3: number): void;
+
+declare function N_0x858ec9fd25de04aa(p0: number, p1: number): void;
 
 declare function N_0x85a0ef54a500882c(p0: number): number;
 
@@ -13352,17 +14010,29 @@ declare function N_0x85b6c850546fdde2(p0: number, p1: boolean, p2: boolean, p3: 
 
 declare function N_0x85f6c9aba1de2bcf(): number;
 
+declare function N_0x867458251d47ccb2(p0: number, p1: number): void;
+
 declare function N_0x869daacbbe9fa006(): number;
+
+declare function N_0x86b4b6212cb8b627(p0: number, p1: number): void;
 
 declare function N_0x86e0660e4f5c956d(): void;
 
+declare function N_0x870b8b7a766615c8(p0: number, p1: number, p2: number): void;
+
 declare function N_0x876928dddfccc9cd(): number;
+
+declare function N_0x878c75c09fbdb942(): number;
+
+declare function N_0x87ddeb611b329a9c(p0: number): void;
 
 declare function N_0x87e0052f08bd64e6(p0: number, p1: number): number;
 
 declare function N_0x87e5c46c187fe0ae(p0: number, p1: number): number;
 
 declare function N_0x8806cebfabd3ce05(p0: number): number;
+
+declare function N_0x88087ee1f28024ae(p0: number): void;
 
 declare function N_0x8817605c2ba76200(): void;
 
@@ -13371,6 +14041,8 @@ declare function N_0x883d79c4071e18b3(): number;
 declare function N_0x88578f6ec36b4a3a(p0: number, p1: number): number;
 
 declare function N_0x886913bbeaca68c1(p0: number): number;
+
+declare function N_0x8881c98a31117998(p0: number): void;
 
 /**
  * MulleDK19: This function is hard-coded to always return 0.
@@ -13406,13 +14078,19 @@ declare function N_0x8951eb9c6906d3c8(): void;
 
 declare function N_0x897433d292b44130(): [number, number, number];
 
+declare function N_0x8989cbd7b4e82534(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number): void;
+
 declare function N_0x89d630cf5ea96d23(vehicle: number, entity: number): number;
+
+declare function N_0x8a24b067d175a7bd(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number): number;
 
 /**
  * One call found in the b617d scripts:
  * AUDIO::_8A694D7A68F8DC38(NETWORK::NET_TO_PED(l_3989._f26F[0 -- [[1]] ]), "CONV_INTERRUPT_QUIT_IT", "LESTER");
  */
 declare function N_0x8a694d7a68f8dc38(p0: number, p1: string, p2: string): void;
+
+declare function N_0x8a800daccc0da55d(): void;
 
 declare function N_0x8aa464d4e0f6accd(): number;
 
@@ -13425,7 +14103,13 @@ declare function N_0x8abe8608576d9ce3(p0: number, p1: number, p2: number, p3: nu
  */
 declare function N_0x8b0c2964ba471961(): number;
 
+declare function N_0x8b4ffc790ca131ef(p0: number, p1: number, p2: number, p3: number): number;
+
+declare function N_0x8b9cdbd6c566c38c(): number;
+
 declare function N_0x8bbacbf51da047a8(p0: number): void;
+
+declare function N_0x8bc515bae4aaf8ff(p0: number): number;
 
 declare function N_0x8bd6c6dea20e82c6(p0: number): number;
 
@@ -13433,9 +14117,15 @@ declare function N_0x8bf907833be275de(p0: number, p1: number): void;
 
 declare function N_0x8bfceb5ea1b161b6(): number;
 
+declare function N_0x8c33220c8d78ca0d(p0: number, p1: number): void;
+
 declare function N_0x8c4f3bf23b6237db(ped: number, p1: boolean, p2: boolean): number;
 
 declare function N_0x8c8d2739ba44af0f(p0: number): number;
+
+declare function N_0x8c9d11605e59d955(p0: number): void;
+
+declare function N_0x8caab2bd3ea58bd4(p0: number): void;
 
 declare function N_0x8cc469ab4d349b7c(p0: number, p1: string, p2: number): number;
 
@@ -13451,6 +14141,10 @@ declare function N_0x8d30f648014a92b5(): number;
  */
 declare function N_0x8d74e26f54b4e5c3(p0: string): void;
 
+declare function N_0x8d768602adef2245(p0: number, p1: number): void;
+
+declare function N_0x8d8adb562f09a245(p0: number): void;
+
 /**
  * Example of usage:
  * v_2 = SCRIPT::_30B4FA1C82DD4B9F(); // int _GET_ID_OF_NEXT_SCRIPT_IN_ENUMERATION()
@@ -13458,7 +14152,11 @@ declare function N_0x8d74e26f54b4e5c3(p0: string): void;
  */
 declare function N_0x8d9df6eca8768583(p0: number): void;
 
+declare function N_0x8e243837643d9583(p0: number, p1: number, p2: number, p3: number): void;
+
 declare function N_0x8e2a065abdae6994(): void;
+
+declare function N_0x8ea86df356801c7d(p0: number, p1: number): void;
 
 declare function N_0x8ec74ceb042e7cff(p0: number): void;
 
@@ -13471,6 +14169,8 @@ declare function N_0x8ef5573a1f801a5c(p0: number): [number, number, number];
 declare function N_0x8efccf6ec66d85e4(p3: boolean, p4: boolean): [number, number, number, number];
 
 declare function N_0x8f08017f9d7c47bd(p0: number, p2: number): [number, number];
+
+declare function N_0x8f5d1ad832aeb06c(p0: number): number;
 
 declare function N_0x8f5ea1c01d65a100(p0: number): number;
 
@@ -13532,6 +14232,8 @@ declare function N_0x91b87c55093de351(): number;
 
 declare function N_0x91d6dd290888cbab(): number;
 
+declare function N_0x91ef34584710be99(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number, p7: number): number;
+
 declare function N_0x91ef6ee6419e5b97(p0: boolean): void;
 
 declare function N_0x920d853f3e17f1da(interiorID: number, roomHashKey: string | number): void;
@@ -13542,6 +14244,8 @@ declare function N_0x9237e334f6e43156(p0: number): number;
 
 declare function N_0x9245e81072704b8a(p0: boolean): void;
 
+declare function N_0x9251b6abf2d0a5b4(p0: number, p1: number): void;
+
 declare function N_0x92523b76657a517d(p0: number, p1: number): number;
 
 /**
@@ -13551,7 +14255,11 @@ declare function N_0x92523b76657a517d(p0: number, p1: number): number;
  */
 declare function N_0x92790862e36c2ada(): void;
 
+declare function N_0x928dbfb892638ef3(): void;
+
 declare function N_0x92aefb5f6e294023(object: number, p1: boolean, p2: boolean): void;
+
+declare function N_0x92c360b5f15d2302(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number): void;
 
 declare function N_0x92ccc17a7a2285da(): void;
 
@@ -13562,6 +14270,8 @@ declare function N_0x92da6e70ef249bd1(p0: string, p1: number): number;
  * Seems to return either 0, 1, or -1.
  */
 declare function N_0x930de22f07b1cce3(p0: number): number;
+
+declare function N_0x930f504203f561c9(p0: number): void;
 
 declare function N_0x933bbeeb8c61b5f4(): number;
 
@@ -13601,13 +14311,21 @@ declare function N_0x95cf53b3d687f9fa(vehicle: number): void;
 
 declare function N_0x95cf81bd06ee1887(): void;
 
+declare function N_0x95eb5e34f821babe(p0: number, p1: number, p2: number): number;
+
 declare function N_0x9614b71f8adb982b(): number;
+
+declare function N_0x9641588dab93b4b5(p0: number): void;
 
 declare function N_0x966dd84fb6a46017(): void;
 
 declare function N_0x967278682cb6967a(p0: number, p1: number, p2: number, p3: number): void;
 
 declare function N_0x9689123e3f213aa5(): number;
+
+declare function N_0x96e6d5150dbf1c09(p0: number, p1: number, p2: number): void;
+
+declare function N_0x96ee0eba0163df80(p0: number, p1: number): void;
 
 /**
  * SET_VEHICLE_DOORS_LOCKED_FOR_*
@@ -13618,13 +14336,21 @@ declare function N_0x973d76aa760a6cb6(p0: boolean): void;
 
 declare function N_0x975d66a0bc17064c(p0: number): void;
 
+declare function N_0x9777734dad16992f(): number;
+
+declare function N_0x977ca98939e82e4b(p0: number, p1: number): void;
+
 declare function N_0x97e7e2c04245115b(p0: number): void;
 
 declare function N_0x98215325a695e78a(p0: boolean): void;
 
+declare function N_0x98c3cf913d895111(p0: number, p1: number): number;
+
 declare function N_0x98e2bc1ca26287c3(): void;
 
 declare function N_0x98edf76a7271e4f2(): void;
+
+declare function N_0x99093f60746708ca(p0: number): number;
 
 declare function N_0x9911f4a24485f653(p0: boolean): void;
 
@@ -13632,11 +14358,15 @@ declare function N_0x993cbe59d350d225(p0: number): number;
 
 declare function N_0x996dd1e1e02f1008(): number;
 
+declare function N_0x998e18ceb44487fc(p0: number, p1: number, p2: number, p3: number): void;
+
 declare function N_0x99ac7f0d8b9c893d(p0: number): void;
 
 declare function N_0x99ad4cccb128cbc9(vehicle: number): void;
 
 declare function N_0x99cad8e7afdb60fa(vehicle: number, p1: number, p2: number): void;
+
+declare function N_0x9a53ded9921de990(p0: number, p1: number): void;
 
 declare function N_0x9a62ec95ae10e011(): number;
 
@@ -13681,6 +14411,8 @@ declare function N_0x9becd4b9fef3f8a6(vehicle: number, p1: boolean): void;
  */
 declare function N_0x9bf438815f5d96ea(p0: number, p1: number, p3: number, p4: number, p5: number): [number, number];
 
+declare function N_0x9c16459b2324b2cf(p0: number, p1: number): void;
+
 declare function N_0x9c6a6c19b6c0c496(p0: number, p1: number): number;
 
 declare function N_0x9cb0bfa7a9342c3d(p0: number, p1: boolean): number;
@@ -13690,13 +14422,19 @@ declare function N_0x9cb0bfa7a9342c3d(p0: number, p1: boolean): number;
  */
 declare function N_0x9cfdd90b2b844bf7(p0: number, p1: number, p2: number, p3: number, p4: number): void;
 
+declare function N_0x9d30687c57baa0bb(p0: number): void;
+
 declare function N_0x9d3af56e94c9ae98(p0: number, p1: number): void;
 
 declare function N_0x9d728c1e12bf5518(p0: number): number;
 
+declare function N_0x9d75795b9dc6ebbf(p0: number): void;
+
 declare function N_0x9d7afcbf21c51712(p0: boolean): void;
 
 declare function N_0x9d8d44adbba61ef2(p0: boolean): void;
+
+declare function N_0x9da58cdbf6bdbc08(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number, p7: number, p8: number, p9: number, p10: number): number;
 
 /**
  * Found in the b617d scripts:
@@ -13722,6 +14460,14 @@ declare function N_0x9e6542f0ce8e70a3(toggle: boolean): void;
  */
 declare function N_0x9e778248d6685fe0(p0: string): void;
 
+declare function N_0x9e82f0f362881b29(p0: number, p1: number, p2: number, p3: number, p4: number): number;
+
+declare function N_0x9ebd751e5787baf2(p0: number): void;
+
+declare function N_0x9ec8858184cd253a(): number;
+
+declare function N_0x9eca15adfe141431(): number;
+
 declare function N_0x9edd76e87d5d51ba(player: number): void;
 
 declare function N_0x9f3f689b814f2599(vehicle: number, p1: boolean): void;
@@ -13729,6 +14475,8 @@ declare function N_0x9f3f689b814f2599(vehicle: number, p1: boolean): void;
 declare function N_0x9f5e6bb6b34540da(p0: number): void;
 
 declare function N_0x9f6e2821885caee2(p0: number, p1: number, p2: number): [number, number, number];
+
+declare function N_0x9fe5633880ecd8ed(p0: number, p1: number, p2: number, p3: number): void;
 
 declare function N_0x9fedf86898f100e9(): number;
 
@@ -13746,6 +14494,10 @@ declare function N_0xa09f896ce912481f(p0: boolean): number;
 
 declare function N_0xa0cefcea390aab9b(p0: number): void;
 
+declare function N_0xa0d3e4f7aafb7e78(p0: number, p1: number): number;
+
+declare function N_0xa0f8a7517a273c05(p0: number, p1: number, p2: number, p3: number, p4: number): number;
+
 declare function N_0xa0f93d5465b3094d(p0: number): number;
 
 /**
@@ -13755,15 +14507,23 @@ declare function N_0xa0fa4ec6a05da44e(): number;
 
 declare function N_0xa0fe76168a189ddb(): number;
 
+declare function N_0xa12d3a5a3753cc23(): number;
+
 declare function N_0xa134777ff7f33331(p0: number, p1: number): number;
 
 declare function N_0xa13c11e1b5c06bfc(): void;
 
 declare function N_0xa13e93403f26c812(p0: number): number;
 
+declare function N_0xa17784fca9548d15(p0: number, p1: number, p2: number): void;
+
 declare function N_0xa17bad153b51547e(cargobob: number, p1: number): void;
 
+declare function N_0xa1a9fc1c76a6730d(p0: number): number;
+
 declare function N_0xa1c996c2a744262e(p0: number): number;
+
+declare function N_0xa1dd82f3ccf9a01e(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number): void;
 
 declare function N_0xa1e5e0204a6fcc70(): void;
 
@@ -13776,11 +14536,17 @@ declare function N_0xa21c118553bbdf02(ped: number): void;
 
 declare function N_0xa238192f33110615(): [number, number, number, number];
 
+declare function N_0xa247f9ef01d8082e(p0: number): void;
+
 declare function N_0xa2767257a320fc82(p0: number, p1: boolean): void;
 
 declare function N_0xa277800a9eae340e(): number;
 
+declare function N_0xa2a707979fe754dc(p0: number, p1: number): void;
+
 declare function N_0xa2c1f5e92afe49ed(): void;
+
+declare function N_0xa2c9ac24b4061285(p0: number, p1: number): number;
 
 /**
  * Needs more research. If the "phone_cam12" filter is applied, this function is called with "TRUE"; otherwise, "FALSE".
@@ -13809,6 +14575,8 @@ declare function N_0xa356990e161c9e65(p0: boolean): void;
 
 declare function N_0xa3a9299c4f2adb98(p0: number): void;
 
+declare function N_0xa3c53804bdb68ed2(p0: number, p1: number): void;
+
 /**
  * Only called once in the scripts:
  * if (sub_1abd() &amp;&amp; (!PED::_A3F3564A5B3646C0(l_8C))) {
@@ -13821,6 +14589,8 @@ declare function N_0xa3a9299c4f2adb98(p0: number): void;
  * }
  */
 declare function N_0xa3f3564a5b3646c0(ped: number): number;
+
+declare function N_0xa40cc53df8e50837(p0: boolean, args: number, argCount: number, bit: number): void;
 
 declare function N_0xa41bcd7213805aac(p0: boolean): void;
 
@@ -13839,6 +14609,8 @@ declare function N_0xa48931185f0536fe(): number;
 declare function N_0xa4a0065e39c9f25c(p0: number, p1: number, p2: number, p3: number): number;
 
 declare function N_0xa4dede28b1814289(): void;
+
+declare function N_0xa51b086b0b2c0f7a(p0: number, p1: number, p2: number, p3: number): void;
 
 declare function N_0xa51c4b86b71652ae(p0: boolean): void;
 
@@ -13875,6 +14647,10 @@ declare function N_0xa699957e60d80214(p0: number): number;
 
 declare function N_0xa69ac4ade82b57a4(p0: number): number;
 
+declare function N_0xa6d3a8750dc73270(p0: number, p1: number): void;
+
+declare function N_0xa6f54bb2ffca35ea(p0: number): void;
+
 declare function N_0xa72835064dd63e4c(): number;
 
 declare function N_0xa735353c77334ea0(): [number, number];
@@ -13886,6 +14662,10 @@ declare function N_0xa736cf7fb7c5bff4(): [number, number, number, number];
  * GAMEPLAY::_A74802FB8D0B7814("CONTRAILS", 0);
  */
 declare function N_0xa74802fb8d0b7814(p0: string, p1: number): void;
+
+declare function N_0xa75ccf58a60a5fd1(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number, p7: number, p8: number, p9: number): void;
+
+declare function N_0xa761d4ac6115623d(): number;
 
 declare function N_0xa76359fc80b2438e(p0: number): void;
 
@@ -13902,7 +14682,11 @@ declare function N_0xa7862bc5ed1dfd7e(p0: number, p1: number): [number, number, 
  */
 declare function N_0xa78b8fa58200da56(p0: number): void;
 
+declare function N_0xa78de25577300ba1(p0: number): void;
+
 declare function N_0xa7a1127490312c36(p0: number): void;
+
+declare function N_0xa7c511fa1c5bda38(p0: number, p1: number): void;
 
 declare function N_0xa7dcdf4ded40a8f4(vehicle: number, p1: boolean): void;
 
@@ -13931,11 +14715,19 @@ declare function N_0xa8733668d1047b51(p0: number): void;
 
 declare function N_0xa8acb6459542a8c8(): number;
 
+declare function N_0xa8b6afdac320ac87(p0: number, p1: number): void;
+
 declare function N_0xa8fdb297a8d25fba(): void;
 
 declare function N_0xa905192a6781c41b(x: number, y: number, z: number): void;
 
+declare function N_0xa90e7227a9303fa9(p0: number, p1: number): void;
+
 declare function N_0xa9240a96c74cca13(p0: number): number;
+
+declare function N_0xa943fd1722e11efd(): number;
+
+declare function N_0xa95f667a755725da(p0: number, p1: number, p2: number, p3: number): void;
 
 declare function N_0xa9b61a329bfdcbea(p0: number, p1: boolean): void;
 
@@ -13944,6 +14736,12 @@ declare function N_0xa9cbfd40b3fa3010(): number;
 declare function N_0xa9f9c2e0fde11cbb(p0: number, p1: number, p2: number): number;
 
 declare function N_0xaa19f5572c38b564(p0: number): number;
+
+declare function N_0xaa3f739abddcf21f(): void;
+
+declare function N_0xaa525dff66bb82f5(p0: number, p1: number, p2: number): void;
+
+declare function N_0xaa5fafcd2c5f5e47(): number;
 
 declare function N_0xaa76052dda9bfc3e(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number): void;
 
@@ -13958,7 +14756,11 @@ declare function N_0xab04325045427aae(vehicle: number, p1: boolean): void;
 
 declare function N_0xab13a5565480b6d9(p0: number, p1: number): number;
 
+declare function N_0xab31ef4de6800ce9(p0: number, p1: number): void;
+
 declare function N_0xabb2fa71c83a1b72(): number;
+
+declare function N_0xac272c0ae01b4bd8(p0: number, p1: number, p2: number, p3: number): void;
 
 declare function N_0xac2890471901861c(p0: number): void;
 
@@ -13995,6 +14797,8 @@ declare function N_0xaeab987727c5a8a4(p0: number): number;
 
 declare function N_0xaeef48cdf5b6ce7c(p0: number, p1: number): number;
 
+declare function N_0xaf03011701811146(p0: number, p1: number): number;
+
 /**
  * Possible p0 values:
  * "prologue"
@@ -14010,11 +14814,15 @@ declare function N_0xaf348afcb575a441(roomName: string): void;
 
 declare function N_0xaf42195a42c63bba(): number;
 
+declare function N_0xaf60e6a2936f982a(p0: number, p1: number): void;
+
 declare function N_0xaf66dcee6609b148(): void;
 
 declare function N_0xafc976fd0580c7b3(ped: number, toggle: boolean): void;
 
 declare function N_0xaff4710e2a0a6c12(ped: number): void;
+
+declare function N_0xaff47709f1d5dcce(): number;
 
 declare function N_0xb055a34527cb8fd7(vehicle: number, p1: boolean): void;
 
@@ -14026,6 +14834,8 @@ declare function N_0xb08b85d860e7ba3c(p0: number, p1: number, p2: number): void;
 
 declare function N_0xb094bc1db4018240(p0: number, p1: number, p2: number, p3: number): void;
 
+declare function N_0xb09d25e77c33eb3f(p0: number, p1: number, p2: number): number;
+
 /**
  * Examples:
  * AI::_B0A6CFD2C69C1088(PLAYER::PLAYER_PED_ID(), "isFirstPerson", 0);
@@ -14033,6 +14843,8 @@ declare function N_0xb094bc1db4018240(p0: number, p1: number, p2: number, p3: nu
  * AI::_B0A6CFD2C69C1088(PLAYER::PLAYER_PED_ID(), "isBlocked", sub_179027());
  */
 declare function N_0xb0a6cfd2c69c1088(ped: number, p1: string, p2: boolean): void;
+
+declare function N_0xb0ad1238a709b1a2(p0: number): number;
 
 declare function N_0xb0c56bd3d808d863(p0: boolean): void;
 declare function GetBroadcastFinshedLosSound(p0: boolean): void;
@@ -14046,9 +14858,13 @@ declare function N_0xb11d94bc55f41932(p0: string): void;
 
 declare function N_0xb129e447a2eda4bf(p0: number, p1: boolean): void;
 
+declare function N_0xb13dcb4c6faad238(p0: number, p1: number, p2: number): void;
+
 declare function N_0xb13e88e655e5a3bc(): void;
 
 declare function N_0xb1577667c3708f9b(): void;
+
+declare function N_0xb17bc6453f6cf5ac(p0: number, p1: number): void;
 
 declare function N_0xb1b6216ca2e7b55e(p0: number, p1: boolean, p2: boolean): void;
 
@@ -14063,11 +14879,17 @@ declare function N_0xb1bb03742917a5d6(_type: number, xPos: number, yPos: number,
 
 declare function N_0xb1d2bb1e1631f5b1(): number;
 
+declare function N_0xb2092a1eaa7fd45f(p0: number): number;
+
+declare function N_0xb214d570ead7f81a(p0: number, p1: number): void;
+
 /**
  * This native doesn't seem to do anything, might be a debug-only native.
  * Confirmed, it is a debug native.
  */
 declare function N_0xb264c4d2f2b0a78b(vehicle: number): void;
+
+declare function N_0xb282749d5e028163(p0: number, p1: number): void;
 
 /**
  * No observed effect.
@@ -14080,9 +14902,13 @@ declare function N_0xb2aff10216defa2f(x: number, y: number, z: number, p3: numbe
 
 declare function N_0xb2d0bde54f0e8e5a(object: number, toggle: boolean): void;
 
+declare function N_0xb2e0c0d6922d31f2(p0: number, p1: number): void;
+
 declare function N_0xb2ebe8cbc58b90e9(): number;
 
 declare function N_0xb309ebea797e001f(p0: number): number;
+
+declare function N_0xb328dcc3a3aa401b(p0: number): number;
 
 /**
  * This line found 48 times in the scripts:
@@ -14103,6 +14929,10 @@ declare function N_0xb3da2606774a8e2d(): number;
 
 declare function N_0xb3e6360dde733e82(p0: number): void;
 
+declare function N_0xb3ea4feabf41464b(p0: number, p1: number): number;
+
+declare function N_0xb3eca65c7317f174(): number;
+
 declare function N_0xb4271092ca7edf48(p0: number): number;
 
 /**
@@ -14116,6 +14946,10 @@ declare function N_0xb45eff719d8427a6(p0: number): void;
 
 declare function N_0xb475f27c6a994d65(): void;
 
+declare function N_0xb4771b9aaf4e68e4(p0: number, p1: number, p2: number): void;
+
+declare function N_0xb49eca122467d05f(p0: number, p1: number, p2: number, p3: number): void;
+
 /**
  * Found in the b617d scripts, duplicates removed:
  * AUDIO::_B4BBFD9CD8B3922B("V_CARSHOWROOM_PS_WINDOW_UNBROKEN");
@@ -14125,6 +14959,8 @@ declare function N_0xb475f27c6a994d65(): void;
  * AUDIO::_B4BBFD9CD8B3922B("V_MICHAEL_PS_BATHROOM_WITH_WINDOW");
  */
 declare function N_0xb4bbfd9cd8b3922b(p0: string): void;
+
+declare function N_0xb4c2ec463672474e(p0: number, p1: number, p2: number, p3: number): void;
 
 /**
  * Only used once in the scripts
@@ -14141,6 +14977,10 @@ declare function N_0xb51b9ab9ef81868c(toggle: boolean): void;
 
 declare function N_0xb542de8c3d1cb210(p0: boolean): void;
 
+declare function N_0xb552929b85fc27ec(p0: number, p1: number): void;
+
+declare function N_0xb569f41f3e7e83a4(p0: number): void;
+
 /**
  * "Can request assets for cutscene entity"? (found in decompiled scripts)
  */
@@ -14156,6 +14996,8 @@ declare function N_0xb6871b0555b02996(p2: number, p5: number): [number, number, 
 
 declare function N_0xb695e2cd0a2da9ee(): void;
 
+declare function N_0xb7257ba2550ea10a(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number): void;
+
 declare function N_0xb743f735c03d7810(p0: number, p1: number): void;
 
 declare function N_0xb746d20b17f2a229(): [number, number, number];
@@ -14169,6 +15011,8 @@ declare function N_0xb7c7f6ad6424304b(): void;
  * GRAPHICS::SET_STREAMED_TEXTURE_DICT_AS_NO_LONGER_NEEDED("MPMissMarkers256");
  */
 declare function N_0xb7ed70c49521a61d(decalType: number): void;
+
+declare function N_0xb81cf134aeb56ffb(): void;
 
 declare function N_0xb8721407ee9c3ff6(p0: number, p1: number, p2: number): void;
 
@@ -14185,9 +15029,15 @@ declare function N_0xb8b52e498014f5b0(ped: number): number;
 
 declare function N_0xb8f87ead7533b176(p0: number): void;
 
+declare function N_0xb9496ce47546db2c(p0: number): number;
+
+declare function N_0xb9562064627ff9db(p0: number, p1: number): void;
+
 declare function N_0xb9854dfde0d833d6(p0: number): void;
 
 declare function N_0xb99c4e4d9499df29(p0: boolean): void;
+
+declare function N_0xb9c362babecddc7a(p0: number, p1: number, p2: number, p3: number, p4: number): void;
 
 /**
  * Seem to return bool
@@ -14195,6 +15045,10 @@ declare function N_0xb99c4e4d9499df29(p0: boolean): void;
  * It does return bool.
  */
 declare function N_0xb9cf1f793a9f1bf1(): number;
+
+declare function N_0xba0127da25fd54c9(p0: number, p1: number): void;
+
+declare function N_0xba3d194057c79a7b(p0: number): void;
 
 /**
  * Every p2 - p5 occurrence was 0f.
@@ -14207,17 +15061,31 @@ declare function N_0xba63d9fe45412247(ped: number, p1: boolean): number;
 
 declare function N_0xba751764f0821256(): void;
 
+declare function N_0xba7f0b77d80a4eb7(p0: number, p1: number): void;
+
+declare function N_0xba8805a1108a2515(p0: number): number;
+
 declare function N_0xba8d65c1c65702e5(p0: boolean): void;
+
+declare function N_0xba91d045575699ad(p0: number): number;
 
 declare function N_0xba96394a0eecfa65(): void;
 
+declare function N_0xba9749cc94c1fd85(): number;
+
 declare function N_0xba9775570db788cf(): number;
+
+declare function N_0xbaa045b4e42f3c06(p0: number, p1: number): void;
+
+declare function N_0xbaa2f0490e146be8(p0: number): void;
 
 declare function N_0xbae4f9b97cd43b30(p0: boolean): void;
 
 declare function N_0xbaf6babf9e7ccc13(p0: number, p1: number): number;
 
 declare function N_0xbb0527ec6341496d(): number;
+
+declare function N_0xbb2333bb87ddd87f(p0: number, p1: number): void;
 
 declare function N_0xbb90e12cac1dab25(p0: number): void;
 
@@ -14270,7 +15138,13 @@ declare function N_0xbce595371a5fbaaf(p0: number, p1: boolean): void;
 
 declare function N_0xbcedb009461da156(): number;
 
+declare function N_0xbcfde9ede4cf27dc(p0: number, p1: number): void;
+
 declare function N_0xbd0be0bfc927eac1(): void;
+
+declare function N_0xbd0efb25cca8f97a(p0: number, p1: number, p2: number, p3: number): void;
+
+declare function N_0xbd32e46aa95c1dd2(p0: number): void;
 
 /**
  * MulleDK19: This function is hard-coded to always return 1.
@@ -14288,11 +15162,17 @@ declare function N_0xbdeb86f4d5809204(p0: number): void;
  */
 declare function N_0xbe197eaa669238f4(p0: number, p1: number, p2: number, p3: number): number;
 
+declare function N_0xbe3db208333d9844(): number;
+
+declare function N_0xbe509b0a3693de8b(p0: number): void;
+
 declare function N_0xbe5c1255a1830ff5(vehicle: number, toggle: boolean): void;
 
 declare function N_0xbeb2d9a1d9a8f55a(p0: number, p1: number, p2: number, p3: number): void;
 
 declare function N_0xbeb3d46bb7f043c0(p0: number): void;
+
+declare function N_0xbec0816ff5acbcda(p0: number, p1: number): void;
 
 declare function N_0xbed8ca5ff5e04113(p0: number, p1: number, p2: number, p3: number): void;
 
@@ -14307,6 +15187,8 @@ declare function N_0xbf09786a7fcab582(p0: number): number;
  */
 declare function N_0xbf22e0f32968e967(player: number, p1: boolean): void;
 
+declare function N_0xbf371cd2b64212fd(p0: number): void;
+
 declare function N_0xbf4dc1784be94dfa(p0: number, p1: boolean, p2: number): void;
 
 declare function N_0xbf4f34a85ca2970c(): void;
@@ -14320,6 +15202,8 @@ declare function N_0xbf72910d0f26f025(): number;
 
 declare function N_0xbfa0a56a817c6c7d(p0: boolean): void;
 
+declare function N_0xbfafdb5faaa5c5ab(p0: number): void;
+
 declare function N_0xc0416b061f2b7e5e(p0: boolean): void;
 
 /**
@@ -14332,6 +15216,8 @@ declare function N_0xc0d2af00bcc234ca(): number;
 
 declare function N_0xc0e0d686ddfc6eae(): number;
 
+declare function N_0xc0ed6438e6d39ba8(p0: number, p1: number, p2: number): void;
+
 declare function N_0xc13c38e47ea5df31(p0: number): number;
 
 declare function N_0xc141b8917e0017ec(): void;
@@ -14341,6 +15227,8 @@ declare function N_0xc15907d667f7cfb2(vehicle: number, toggle: boolean): void;
 declare function N_0xc17ad0e5752becda(componentHash: string | number): number;
 
 declare function N_0xc1805d05e6d4fe10(vehicle: number): void;
+
+declare function N_0xc1952f3773ba18fe(p0: number, p1: number, p2: number): void;
 
 declare function N_0xc1f6ebf9a3d55538(p0: number, p1: number): void;
 
@@ -14354,9 +15242,13 @@ declare function N_0xc1f981a6f74f0c23(p0: number, p1: boolean): void;
  */
 declare function N_0xc22912b1d85f26b1(p0: number): [number, number, number[]];
 
+declare function N_0xc24075310a8b9cd1(p0: number, p1: number, p2: number, p3: number, p4: number): void;
+
 declare function N_0xc265df9fb44a9fbd(p0: number): number;
 
 declare function N_0xc2d15bef167e27bc(): void;
+
+declare function N_0xc2d2ad9eaae265b8(): number;
 
 /**
  * CAM::_C2EAE3FB8CDBED31("SHAKE_CAM_medium", "medium", "", 0.5f);
@@ -14380,11 +15272,17 @@ declare function N_0xc3376f42b1faccc6(player: number): void;
  */
 declare function SetAreasGeneratorOrientation(player: number): void;
 
+declare function N_0xc34bc448da29f5e9(p0: number, p1: number): void;
+
 declare function N_0xc35a6d07c93802b2(): void;
 
 declare function N_0xc361aa040d6637a8(vehicle: number, p1: boolean): void;
 
+declare function N_0xc388a0f065f5bc34(p0: number, p1: number): void;
+
 declare function N_0xc38dc1e90d22547c(): [number, number, number, number];
+
+declare function N_0xc3bfed92026a2aad(p0: number, p1: number, p2: number, p3: number, p4: number): number;
 
 declare function N_0xc3c221addde31a11(p0: number): void;
 
@@ -14394,9 +15292,13 @@ declare function N_0xc4278f70131baa6d(p0: number, p1: boolean): void;
 
 declare function N_0xc42dd763159f3461(): number;
 
+declare function N_0xc434133d9ba52777(p0: number, p1: number): number;
+
 declare function N_0xc45c27ef50f36adc(vehicle: number, p1: boolean): void;
 
 declare function N_0xc485e07e4f0b7958(doorHash: string | number, p1: boolean, p2: boolean, p3: boolean): void;
+
+declare function N_0xc4b3347bd68bd609(p0: number): void;
 
 declare function N_0xc505036a35afd01b(p0: boolean): void;
 
@@ -14428,6 +15330,8 @@ declare function N_0xc594b315edf2d4af(ped: number): void;
 
 declare function N_0xc5be134ec7ba96a0(p0: number, p1: number, p2: number, p3: number, p4: number): void;
 
+declare function N_0xc5c8f970d4edff71(p0: number): void;
+
 declare function N_0xc6033d32241f6fb5(p0: number, p1: boolean): void;
 
 /**
@@ -14448,6 +15352,8 @@ declare function N_0xc6e0e2616a7576bb(): number;
 
 declare function N_0xc70ddce56d0d3a99(): number;
 
+declare function N_0xc729991a9065376e(p0: number): void;
+
 declare function N_0xc7397a83f7a2a462(p1: number, p2: boolean): [number, number, number];
 
 declare function N_0xc78e239ac5b2ddb9(p0: boolean, p1: number, p2: number): void;
@@ -14467,6 +15373,8 @@ declare function N_0xc7e7181c09f33b69(p0: boolean): void;
 declare function N_0xc7f29ca00f46350e(p0: boolean): void;
 
 declare function N_0xc8391c309684595a(): void;
+
+declare function N_0xc8407624cef2354b(p0: number, p1: number): void;
 
 declare function N_0xc84527e235fca219(p0: string, p1: boolean, p2: string, _type: string, p6: boolean): [number, number, number];
 
@@ -14495,6 +15403,10 @@ declare function N_0xc9a763d8fe87436a(player: number): void;
 declare function N_0xc9b18b4619f48f7b(p0: number): void;
 
 declare function N_0xc9b43a33d09cada7(p0: number): void;
+
+declare function N_0xca465d9cc0d231ba(p0: number): void;
+
+declare function N_0xca4ac3eaae46ec7b(p0: number, p1: number): number;
 
 declare function N_0xca4ae345a153d573(p0: boolean): void;
 
@@ -14530,11 +15442,17 @@ declare function N_0xcb0360efefb2580d(p0: number): void;
 
 declare function N_0xcb215c4b56a7fae7(p0: boolean): number;
 
+declare function N_0xcb645e85e97ea48b(): number;
+
 declare function N_0xcb82a0bf0e3e3265(p0: number): number;
 
 declare function N_0xcb968b53fc7f916d(p0: number, p1: boolean, p2: number, p3: number): void;
 
+declare function N_0xcc25a4553dfbf9ea(p0: number, p1: number, p2: number, p3: number, p4: number): void;
+
 declare function N_0xcc3fdded67bcfc63(): void;
+
+declare function N_0xcc6e3b6bb69501f1(p0: number): number;
 
 /**
  * RESET_*
@@ -14554,9 +15472,23 @@ declare function N_0xcd018c591f94cb43(p0: number, p1: boolean): void;
 
 declare function N_0xcd71a4ecab22709e(entity: number): void;
 
+declare function N_0xcd74233600c4ea6b(p0: number): void;
+
+declare function N_0xcd79a550999d7d4f(p0: number): number;
+
+declare function N_0xcda1c62be2777802(p0: number, p1: number, p2: number): void;
+
 declare function N_0xcdca26e80faecb8f(): void;
 
 declare function N_0xce5aa445aba8dee0(p0: number): number;
+
+declare function N_0xce5d0e5e315db238(p0: number, p1: number, p2: number, p3: number, p4: number): number;
+
+declare function N_0xce6294a232d03786(p0: number, p1: number): number[];
+
+declare function N_0xcea553e35c2246e1(p0: number, p1: number, p2: number): void;
+
+declare function N_0xcea7c8e1b48ff68c(p0: number, p1: number): void;
 
 declare function N_0xced08cbe8ebb97c7(p0: number, p1: number): void;
 
@@ -14569,6 +15501,8 @@ declare function N_0xcf1182f682f65307(p0: number, p1: number): void;
 declare function N_0xcf38dafbb49ede5e(p0: number): number;
 
 declare function N_0xcf61d4b4702ee9eb(): number;
+
+declare function N_0xcf9159024555488c(p0: number): void;
 
 declare function N_0xcfd115b373c0df63(p0: number, p1: number): void;
 
@@ -14612,7 +15546,13 @@ declare function N_0xd1032e482629049e(p0: boolean): void;
 
 declare function N_0xd10f442036302d50(p0: number, p1: number, p2: number): void;
 
+declare function N_0xd12882d3ff82bf11(): void;
+
 declare function N_0xd1871251f3b5acd7(ped: number): number;
+
+declare function N_0xd1942374085c8469(p0: number): void;
+
+declare function N_0xd1a1ee3b4fa8e760(p0: number): void;
 
 declare function N_0xd1b0f412f109ea5d(p0: number, p1: number): void;
 
@@ -14622,6 +15562,8 @@ declare function N_0xd1b0f412f109ea5d(p0: number, p1: number): void;
 declare function N_0xd1c55b110e4df534(p0: number): void;
 
 declare function N_0xd1c7cb175e012964(scaleformHandle: number): number;
+
+declare function N_0xd1c9b92bdd3f151d(p0: number, p1: number, p2: number): void;
 
 declare function N_0xd1f8363dfad03848(p0: number): void;
 
@@ -14659,6 +15601,8 @@ declare function N_0xd302e99edf0449cf(p0: number): number;
 
 declare function N_0xd313de83394af134(): number;
 
+declare function N_0xd3301660a57c9272(p0: number): void;
+
 declare function N_0xd33daa36272177c4(ped: number): void;
 
 declare function N_0xd38c4a6d047c019d(): number;
@@ -14673,6 +15617,12 @@ declare function N_0xd3a6a0ef48823a8c(): number;
 
 declare function N_0xd3d15555431ab793(): number;
 
+declare function N_0xd3e51c0ab8c26eee(p0: number, p1: number): number;
+
+declare function N_0xd40aac51e8e4c663(p0: number): number;
+
+declare function N_0xd4196117af7bb974(p0: number, p1: number): number;
+
 declare function N_0xd4438c0564490e63(): void;
 
 declare function N_0xd4793dff3af2abcd(): void;
@@ -14685,6 +15635,10 @@ declare function N_0xd4793dff3af2abcd(): void;
 declare function N_0xd4c4642cb7f50b5d(vehicle: number): number;
 
 declare function N_0xd53acdbef24a46e8(): number;
+
+declare function N_0xd558bec0bba7e8d2(p0: number, p1: number, p2: number, p3: number, p4: number): void;
+
+declare function N_0xd565f438137f0e10(p0: number, p1: number): void;
 
 declare function N_0xd57aaae0e2214d11(): void;
 
@@ -14703,6 +15657,8 @@ declare function N_0xd642319c54aadeb6(): number;
 
 declare function N_0xd66c9e72b3cc4982(p1: number): [number, number];
 
+declare function N_0xd6781e42755531f7(p0: number): void;
+
 declare function N_0xd68a5ff8a3a89874(r: number, g: number, b: number, a: number): void;
 
 /**
@@ -14719,7 +15675,13 @@ declare function N_0xd6ade981781fca09(p0: number): void;
  */
 declare function N_0xd7021272eb0a451e(p0: string): void;
 
+declare function N_0xd7360051c885628b(): number;
+
+declare function N_0xd76eeef746057fd6(p0: number): number;
+
 declare function N_0xd79185689f8fd5df(p0: boolean): void;
+
+declare function N_0xd7b6c73cad419bcf(p0: number): void;
 
 /**
  * Unloads GROUP_MAP (GTAO/MP) DLC data and loads GROUP_MAP_SP DLC. Neither are loaded by default, 0888C3502DBBEEF5 is a cognate to this function and loads MP DLC (and unloads SP DLC by extension).
@@ -14738,6 +15700,8 @@ declare function N_0xd7c10c4a637992c9(): void;
  */
 declare function LoadSpDlcMaps(): void;
 
+declare function N_0xd7cccba28c4ecaf0(p0: number, p1: number, p2: number, p3: number, p4: number): void;
+
 declare function N_0xd7d0b00177485411(p0: number, p1: number): void;
 
 declare function N_0xd7d22f5592aed8ba(p0: number): number;
@@ -14751,7 +15715,13 @@ declare function N_0xd7d22f5592aed8ba(p0: number): number;
  */
 declare function N_0xd801cc02177fa3f1(): void;
 
+declare function N_0xd80a80346a45d761(p0: number): number;
+
 declare function N_0xd8122c407663b995(): number;
+
+declare function N_0xd81b7f27bc773e66(p0: number, p1: number, p2: number, p3: number, p4: number): void;
+
+declare function N_0xd821056b9acf8052(p0: number, p1: number): void;
 
 declare function N_0xd8295af639fd9cb8(p0: number): void;
 
@@ -14760,6 +15730,10 @@ declare function N_0xd8c3be3ee94caf2d(p0: number, p1: number, p2: number, p3: nu
 declare function N_0xd8e694757bcea8e9(): void;
 
 declare function N_0xd9454b5752c857dc(): void;
+
+declare function N_0xd95cc5d2ab15a09f(p0: number): number;
+
+declare function N_0xd99db210089617fe(p0: number, p1: number, p2: number): void;
 
 declare function N_0xd9b71952f78a2640(doorHash: string | number, p1: boolean): void;
 
@@ -14770,10 +15744,18 @@ declare function N_0xd9f692d349249528(): void;
  */
 declare function N_0xda024bdbd600f44a(networkHandle: number): void;
 
+declare function N_0xda05194260cdcdf9(p0: number, p1: number): void;
+
+declare function N_0xda07819e452ffe8f(p0: number): void;
+
+declare function N_0xdab963831dbfd3f4(p0: number, p1: number, p2: number, p3: number, p4: number): number;
+
 /**
  * Set profile setting 866
  */
 declare function N_0xdac073c7901f9e15(p0: number): void;
+
+declare function N_0xdaf80797fc534bec(p0: number): void;
 
 declare function N_0xdaf87174be7454ff(p0: number): number;
 
@@ -14798,6 +15780,8 @@ declare function N_0xdbaa5ec848ba2d46(p0: number, p1: number): void;
  * VEHICLE::SET_VEHICLE_DOORS_LOCKED_FOR_PLAYER(a_0, PLAYER::PLAYER_ID(), 0);
  */
 declare function N_0xdbc631f109350b8c(vehicle: number, p1: boolean): void;
+
+declare function N_0xdbc966a01c02bca7(p0: number, p1: number, p2: number): void;
 
 /**
  * probably 0x3461981 on console
@@ -14828,6 +15812,8 @@ declare function N_0xdc9274a7ef6b2867(): number;
 declare function N_0xdc9da9e8789f5246(): void;
 
 declare function N_0xdcca191df9980fd7(ped: number): number;
+
+declare function N_0xdce97bdf8a0eabc8(): number;
 
 declare function N_0xdcfb5d4db8bf367e(p0: number, p1: boolean): void;
 
@@ -14878,6 +15864,8 @@ declare function N_0xdf4b952f7d381b95(): number;
 
 declare function N_0xdf649c4e9afdd788(): number;
 
+declare function N_0xdf6ca0330f2e737b(p0: number, p1: number): void;
+
 /**
  * Outputs 2 Vector3's.
  * Scripts check if out2.x - out1.x &gt; someshit.x
@@ -14888,6 +15876,8 @@ declare function N_0xdf7e3eeb29642c38(vehicle: number): [number[], number[]];
 declare function N_0xdf97cdd4fc08fd34(p0: number): number;
 
 declare function N_0xdfa80cb25d0a19b3(): number;
+
+declare function N_0xdffa5be8381c3314(): number;
 
 declare function N_0xdffcef48e511db48(p0: number, p1: boolean): void;
 
@@ -14932,17 +15922,23 @@ declare function N_0xe16142b94664defd(vehicle: number, p1: boolean): void;
  */
 declare function N_0xe1615ec03b3bb4fd(): number;
 
+declare function N_0xe16aa70ce9beedc3(p0: number): number;
+
 declare function N_0xe1c8709406f2c41c(): void;
 
 declare function N_0xe1ca84ebf72e691d(p0: number, p1: number): [number, number, number];
 
 declare function N_0xe1cd1e48e025e661(): void;
 
+declare function N_0xe23adc6fcb1f29ae(p0: number, p1: number, p2: number): void;
+
 declare function N_0xe260e0bb9cd995ac(p0: number): number;
 
 declare function N_0xe266ed23311f24d4(p0: number, p3: number, p4: number, p5: boolean): [number, number];
 
 declare function N_0xe2892e7e55d7073a(p0: number): void;
+
+declare function N_0xe2f53f172b45ede1(): void;
 
 declare function N_0xe301bd63e9e13cf0(vehicle: number, cargobob: number): void;
 
@@ -14951,10 +15947,14 @@ declare function N_0xe301bd63e9e13cf0(vehicle: number, cargobob: number): void;
  */
 declare function N_0xe30524e1871f481d(p0: number): void;
 
+declare function N_0xe3261d791eb44acb(p0: number): void;
+
 /**
  * IS_*
  */
 declare function N_0xe33ffa906ce74880(vehicle: number, p1: number): number;
+
+declare function N_0xe35b38a27e8e7179(p0: number): number;
 
 declare function N_0xe36a98d8ab3d3c66(p0: boolean): void;
 
@@ -14991,9 +15991,15 @@ declare function N_0xe496a53ba5f50a56(p0: number): number;
 
 declare function N_0xe4dcec7fd5b739a5(ped: number): void;
 
+declare function N_0xe4e2fd323574965c(p0: number, p1: number): void;
+
 declare function N_0xe4e6dd5566d28c82(): void;
 
 declare function N_0xe532ec1a63231b4f(p0: number, p1: number): void;
+
+declare function N_0xe547e9114277098f(): number;
+
+declare function N_0xe574a662acaefbb1(): void;
 
 declare function N_0xe5810ac70602f2f5(vehicle: number, p1: number): void;
 
@@ -15007,9 +16013,13 @@ declare function N_0xe64a3ca08dfa37a9(p0: number): number;
 
 declare function N_0xe66c690248f11150(p0: number, p1: number): void;
 
+declare function N_0xe6717e652b8c8d8a(p0: number, p1: number): void;
+
 declare function N_0xe67c6dfd386ea5e7(p0: boolean): void;
 
 declare function N_0xe6869becdd8f2403(p0: number, p1: boolean): void;
+
+declare function N_0xe6a9f00d4240b519(p0: number, p1: number): void;
 
 /**
  * GET_VEHICLE_*
@@ -15033,20 +16043,34 @@ declare function N_0xe73364db90778ffa(): number;
  */
 declare function N_0xe791df1f73ed2c8b(p0: number): number;
 
+declare function N_0xe7df4e0545dfb56e(p0: number, p1: number, p2: number): void;
+
 declare function N_0xe7e4c198b0185900(p0: number, p1: number, p2: boolean): void;
+
+declare function N_0xe82728f0de75d13a(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number, p7: number, p8: number, p9: number, p10: number, p11: number, p12: number, p13: number, p14: number, p15: number, p16: number, p17: number, p18: number, p19: number, p20: number, p21: number, p22: number, p23: number, p24: number): void;
+
+declare function N_0xe827b9382cfb41ba(p0: number, p1: number, p2: number, p3: number): void;
 
 /**
  * Vehicle must be a boat.
  */
 declare function N_0xe842a9398079bd82(vehicle: number, p1: number): void;
 
+declare function N_0xe84eb93729c5f36a(p0: number): number;
+
 declare function N_0xe851e480b814d4ba(vehicle: number, p1: boolean): void;
 
 declare function N_0xe861d0b05c7662b8(p0: number, p1: number, p2: number): void;
 
+declare function N_0xe8853fbce7d8d0d6(): number;
+
 declare function N_0xe8a169e666cbc541(): number;
 
+declare function N_0xe8b0b270b6e7c76e(p0: number, p1: number, p2: number, p3: number): void;
+
 declare function N_0xe8b9c0ec9e183f35(): number;
+
+declare function N_0xe906ec930f5fe7c8(p0: number, p1: number): void;
 
 declare function N_0xe95b0c7d5ba3b96b(p0: number): number;
 
@@ -15067,6 +16091,8 @@ declare function N_0xeaf0fa793d05c592(): number;
 declare function N_0xeb078ca2b5e82add(p0: number, p1: number): void;
 
 declare function N_0xeb2104e905c6f2e9(): number;
+
+declare function N_0xeb2bf817463dfa28(p0: number, p1: number): number;
 
 declare function N_0xeb2d525b57f42b40(): void;
 
@@ -15119,6 +16145,8 @@ declare function N_0xec52c631a1831c03(p0: number): void;
 
 declare function N_0xec6935ebe0847b90(p0: number, p1: number, p2: number, p3: number): number;
 
+declare function N_0xec69adf931aae0c3(p0: number): number;
+
 /**
  * This function is hard-coded to always return 0.
  */
@@ -15126,15 +16154,29 @@ declare function N_0xec72c258667be5ea(p0: number): number;
 
 declare function N_0xec9264727eec0f28(): void;
 
+declare function N_0xeca658ce2a4e5a72(p0: number, p1: number): void;
+
 declare function N_0xecb41ac6ab754401(): number;
+
+declare function N_0xecdc202b25e5cf48(p0: number, p1: number, p2: number): void;
 
 declare function N_0xecf128344e9ff9f1(p0: boolean): void;
 
 declare function N_0xed3c76adfa6d07c4(ped: number): void;
 
+declare function N_0xed5ede9e676643c9(p0: number, p1: number): void;
+
+declare function N_0xed5fd7af10f5e262(p0: number, p1: number, p2: number, p3: number): void;
+
 declare function N_0xed6d8e27a43b8cde(p0: number): number;
 
 declare function N_0xed8286f71a819baa(cargobob: number, p1: number): void;
+
+declare function N_0xedbc8405b3895cc9(p0: number, p1: number): void;
+
+declare function N_0xedbf6c9b0d2c65c8(p0: number): void;
+
+declare function N_0xedead9a91ec768b3(p0: number, p1: number, p2: number): void;
 
 declare function N_0xedf7f927136c224b(): number;
 
@@ -15187,15 +16229,31 @@ declare function N_0xefabc7722293da7c(): void;
 
 declare function N_0xefb55e7c25d3b3be(): void;
 
+declare function N_0xefc13b1ce30d755d(p0: number, p1: number): void;
+
+declare function N_0xefd79fa81dfba9cb(p0: number, p1: number): void;
+
+declare function N_0xefd97ff47b745b8d(p0: number): void;
+
+declare function N_0xeff296097ff1e509(p0: number, p1: number): void;
+
 declare function N_0xf033419d1b81fae8(p0: number): number;
 
 declare function N_0xf03755696450470c(): void;
+
+declare function N_0xf051d9bfb6ba39c0(p0: number): void;
+
+declare function N_0xf06a16ca55d138d8(p0: number, p1: number): void;
+
+declare function N_0xf06a6f41cb445443(p0: number): void;
 
 declare function N_0xf06ebb91a81e09e3(p0: boolean): void;
 
 declare function N_0xf083835b70ba9bfe(): void;
 
 declare function N_0xf086ad9354fac3a3(p0: number): void;
+
+declare function N_0xf0a60040be558f2d(p0: number, p1: number, p2: number): number;
 
 declare function N_0xf0daef2f545bee25(p0: number): number;
 
@@ -15215,6 +16273,12 @@ declare function N_0xf0f2103efaf8cba7(p0: number, p1: number): number[];
  * Only 1 occurrence. p1 was 2.
  */
 declare function N_0xf10b44fd479d69f3(player: number, p1: number): number;
+
+declare function N_0xf11f01d98113536a(p0: number): number;
+
+declare function N_0xf12e33034d887f66(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number): number;
+
+declare function N_0xf12e6cd06c73d69e(): number;
 
 declare function N_0xf13fe2a80c05c561(): number;
 
@@ -15259,6 +16323,8 @@ declare function N_0xf25e02cb9c5818f8(): void;
 
 declare function N_0xf284ac67940c6812(): number;
 
+declare function N_0xf287f506767cc8a9(): number;
+
 /**
  * toggle was always 0 except in one instance (b678).
  * The one time this is set to true seems to do with when you fail the mission.
@@ -15285,7 +16351,11 @@ declare function N_0xf2eac213d5ea0623(): number;
 
 declare function N_0xf2f6a2fa49278625(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number, p6: number, p7: number, p8: number): [number, number, number, number];
 
+declare function N_0xf3162836c28f9da5(p0: number, p1: number, p2: number, p3: number): number;
+
 declare function N_0xf3365489e0dd50f9(p0: number, p1: boolean): void;
+
+declare function N_0xf3b0e0aed097a3f5(p0: number, p1: number): number;
 
 /**
  * characters
@@ -15315,6 +16385,8 @@ declare function N_0xf45352426ff3a4f0(bufferSize: number): [number, number];
 
 declare function N_0xf46a1e03e8755980(p0: boolean): void;
 
+declare function N_0xf47e567b3630dd12(p0: number, p1: number): void;
+
 declare function N_0xf488c566413b4232(p0: number, p1: number): void;
 
 declare function N_0xf49abc20d8552257(p0: number): void;
@@ -15341,6 +16413,8 @@ declare function N_0xf4ff020a08bc8863(p0: number, p1: number): void;
  */
 declare function N_0xf51d36185993515d(checkpoint: number, posX: number, posY: number, posZ: number, unkX: number, unkY: number, unkZ: number): void;
 
+declare function N_0xf534d94dfa2ead26(p0: number, p1: number, p2: number, p3: number, p4: number): void;
+
 declare function N_0xf53e48461b71eecb(p0: number): number;
 
 declare function N_0xf55e4046f6f831dc(p0: number, p1: number): void;
@@ -15365,6 +16439,8 @@ declare function N_0xf60165e1d2c5370b(ped: number): [number, number, number];
 declare function N_0xf6792800ac95350d(p0: number): void;
 
 declare function N_0xf6baaaf762e1bf40(p0: string, p1: number): number;
+
+declare function N_0xf6f4383b7c92f11a(p0: number): void;
 
 declare function N_0xf70efa14fe091429(p0: number): number;
 
@@ -15421,6 +16497,10 @@ declare function N_0xf9c1681347c8bd15(object: number): void;
 
 declare function N_0xf9e1ccae8ba4c281(p0: number, p1: number): [number, number, number];
 
+declare function N_0xf9f2922717b819ec(): number;
+
+declare function N_0xfa07759e6fddd7cf(p0: number, p1: number, p2: number, p3: number): void;
+
 declare function N_0xfa1e0e893d915215(p0: boolean): void;
 
 declare function N_0xfa2888e3833c8e96(): void;
@@ -15440,9 +16520,13 @@ declare function N_0xfa2888e3833c8e96(): void;
  */
 declare function N_0xfaa457ef263e8763(name: string): number;
 
+declare function N_0xfac75988a7d078d3(p0: number): void;
+
 declare function N_0xfae628f1e9adb239(p0: number, p1: number, p2: number): void;
 
 declare function N_0xfaf2a78061fd9ef4(p0: number, p1: number, p2: number, p3: number): void;
+
+declare function N_0xfafc23aee23868db(): number;
 
 declare function N_0xfb00ca71da386228(): void;
 
@@ -15455,6 +16539,10 @@ declare function N_0xfb1f9381e80fa13f(p0: number, p1: number): number;
 
 declare function N_0xfb680d403909dc70(p0: number, p1: number): void;
 
+declare function N_0xfb6c4072e9a32e92(p0: number, p1: number): number;
+
+declare function N_0xfb80ab299d2ee1bd(p0: number): void;
+
 declare function N_0xfb8f2a6f3df08cbe(): void;
 
 declare function N_0xfbc5e768c7a77a6a(): number;
@@ -15463,11 +16551,21 @@ declare function N_0xfbe20329593dec9d(p0: number, p1: number, p2: number, p3: nu
 
 declare function N_0xfc18db55ae19e046(p0: boolean): void;
 
+declare function N_0xfc40cbf7b90ca77c(p0: number): void;
+
+declare function N_0xfc4ee00a7b3bfb76(p0: number, p1: number, p2: number): void;
+
 declare function N_0xfc859e2374407556(): number;
+
+declare function N_0xfcc228e07217fcac(p0: number): void;
 
 declare function N_0xfccae5b92a830878(p0: number): number;
 
 declare function N_0xfcf37a457cb96dc0(p0: number, p1: number, p2: number, p3: number, p4: number): number;
+
+declare function N_0xfcfacd0db9d7a57d(p0: number, p1: number): void;
+
+declare function N_0xfd1695c5d3b05439(p0: number, p1: number, p2: number, p3: number, p4: number, p5: number): void;
 
 declare function N_0xfd3151cd37ea2245(p0: number): void;
 
@@ -15486,9 +16584,13 @@ declare function N_0xfdec055ab549e328(): void;
 
 declare function N_0xfe07ff6495d52e2a(p0: number, p1: number, p2: number, p3: number): number;
 
+declare function N_0xfe205f38aaa58e5b(p0: number, p1: number): void;
+
 declare function N_0xfe26117a5841b2ff(vehicle: number, p1: number): number;
 
 declare function N_0xfe4c1d0d3b9cc17e(p0: number, p1: number): number;
+
+declare function N_0xfebfbfdfb66039de(p0: number): void;
 
 declare function N_0xfec9a3b1820f3331(p0: number): number;
 
@@ -15513,7 +16615,11 @@ declare function N_0xff4803bc019852d9(p0: number, p1: number): void;
 
 declare function N_0xff56381874f82086(p0: number, p1: number, outComponent: number): number;
 
+declare function N_0xff5992e1c9e65d05(p0: number): void;
+
 declare function N_0xff8f3a92b75ed67a(): number;
+
+declare function N_0xffbe02cd385356bd(): number;
 
 /**
  * may be 0xBF21818E
@@ -18243,6 +19349,8 @@ declare function PushTimecycleModifier(): void;
 
 declare function RaiseConvertibleRoof(vehicle: number, instantlyRaise: boolean): void;
 
+declare function RaiseLowerableWheels(vehicle: number): void;
+
 declare function RefreshInterior(interiorID: number): void;
 
 declare function RefreshWaypoint(): void;
@@ -20845,39 +21953,39 @@ declare function SetGroupSeparationRange(groupHandle: number, separationRange: n
 /**
  * Sets a global handling override for a specific vehicle class. The name is supposed to match the `handlingName` field from handling.meta.
  * Example: `SetHandlingField('AIRTUG', 'CHandlingData', 'fSteeringLock', 360.0)`
- * @param vehicle The vehicle class to set data for.
  * @param value The value to set.
- * @param class The handling class to set. Only "CHandlingData" is supported at this time.
+ * @param vehicle The vehicle class to set data for.
  * @param fieldName The field name to set. These match the keys in `handling.meta`.
+ * @param class The handling class to set. Only "CHandlingData" is supported at this time.
  */
 declare function SetHandlingField(vehicle: string, _class: string, fieldName: string, value: number): void;
 
 /**
  * Sets a global handling override for a specific vehicle class. The name is supposed to match the `handlingName` field from handling.meta.
  * Example: `SetHandlingFloat('AIRTUG', 'CHandlingData', 'fSteeringLock', 360.0)`
- * @param vehicle The vehicle class to set data for.
  * @param value The floating-point value to set.
- * @param class The handling class to set. Only "CHandlingData" is supported at this time.
+ * @param vehicle The vehicle class to set data for.
  * @param fieldName The field name to set. These match the keys in `handling.meta`.
+ * @param class The handling class to set. Only "CHandlingData" is supported at this time.
  */
 declare function SetHandlingFloat(vehicle: string, _class: string, fieldName: string, value: number): void;
 
 /**
  * Sets a global handling override for a specific vehicle class. The name is supposed to match the `handlingName` field from handling.meta.
- * @param vehicle The vehicle class to set data for.
  * @param value The integer value to set.
- * @param class The handling class to set. Only "CHandlingData" is supported at this time.
+ * @param vehicle The vehicle class to set data for.
  * @param fieldName The field name to set. These match the keys in `handling.meta`.
+ * @param class The handling class to set. Only "CHandlingData" is supported at this time.
  */
 declare function SetHandlingInt(vehicle: string, _class: string, fieldName: string, value: number): void;
 
 /**
  * Sets a global handling override for a specific vehicle class. The name is supposed to match the `handlingName` field from handling.meta.
  * Example: `SetHandlingVector('AIRTUG', 'CHandlingData', 'vecCentreOfMassOffset', vector3(0.0, 0.0, -5.0))`
- * @param vehicle The vehicle class to set data for.
  * @param value The Vector3 value to set.
- * @param class The handling class to set. Only "CHandlingData" is supported at this time.
+ * @param vehicle The vehicle class to set data for.
  * @param fieldName The field name to set. These match the keys in `handling.meta`.
+ * @param class The handling class to set. Only "CHandlingData" is supported at this time.
  */
 declare function SetHandlingVector(vehicle: string, _class: string, fieldName: string): void;
 
@@ -20956,6 +22064,8 @@ declare function SetInputExclusive(inputGroup: number, control: number): void;
 
 declare function SetInteriorActive(interiorID: number, toggle: boolean): void;
 
+declare function SetInteriorPropColor(interiorID: number, propName: string, color: number): void;
+
 declare function SetLastDrivenVehicle(vehicle: number): void;
 declare function N_0xacfb2463cc22bed2(vehicle: number): void;
 
@@ -21007,12 +22117,12 @@ declare function SetMinimapComponent(p0: number, p1: boolean, p2: number): numbe
 
 /**
  * Sets the display info for a minimap overlay.
- * @param x The X position for the overlay. This is equivalent to a game coordinate X.
- * @param alpha The alpha value for the overlay. This is equivalent to the Flash _alpha property, therefore 100 = 100%.
- * @param yScale The Y scale for the overlay. This is equivalent to the Flash _yscale property.
  * @param xScale The X scale for the overlay. This is equivalent to the Flash _xscale property, therefore 100 = 100%.
- * @param y The Y position for the overlay. This is equivalent to a game coordinate Y, except that it's inverted (gfxY = -gameY).
+ * @param yScale The Y scale for the overlay. This is equivalent to the Flash _yscale property.
  * @param miniMap The minimap overlay ID.
+ * @param alpha The alpha value for the overlay. This is equivalent to the Flash _alpha property, therefore 100 = 100%.
+ * @param x The X position for the overlay. This is equivalent to a game coordinate X.
+ * @param y The Y position for the overlay. This is equivalent to a game coordinate Y, except that it's inverted (gfxY = -gameY).
  */
 declare function SetMinimapOverlayDisplay(miniMap: number, x: number, y: number, xScale: number, yScale: number, alpha: number): void;
 
@@ -21337,16 +22447,21 @@ declare function N_0x17430b918701c342(red: number, green: number, blue: number, 
 
 /**
  * List of picNames: pastebin.com/XdpJVbHz
+ * flash is a bool for fading in.
+ * iconTypes:
+ * 1 : Chat Box
+ * 2 : Email
+ * 3 : Add Friend Request
+ * 4 : Nothing
+ * 5 : Nothing
+ * 6 : Nothing
+ * 7 : Right Jumping Arrow
+ * 8 : RP Icon
+ * 9 : $ Icon
+ * "sender" is the very top header. This can be any old string.
+ * "subject" is the header under the sender.
  */
-declare function SetNotificationMessage(picName1: string, picName2: number, flash: boolean, iconType: number, p4: boolean, sender: string, subject: string): number;
-/**
- * List of picNames: pastebin.com/XdpJVbHz
- */
-declare function N_0x2b7e9a4eaaa93c89(picName1: string, picName2: number, flash: boolean, iconType: number, p4: boolean, sender: string, subject: string): number;
-/**
- * List of picNames: pastebin.com/XdpJVbHz
- */
-declare function SetNotificationMessage_2(picName1: string, picName2: number, flash: boolean, iconType: number, p4: boolean, sender: string, subject: string): number;
+declare function SetNotificationMessage(picName1: string, picName2: string, flash: boolean, iconType: number, sender: string, subject: string): number;
 
 /**
  * List of picNames pastebin.com/XdpJVbHz
@@ -21398,38 +22513,12 @@ declare function SetNotificationMessageClanTag_2(picName1: string, picName2: str
 
 /**
  * List of picNames: pastebin.com/XdpJVbHz
- * flash is a bool for fading in.
- * iconTypes:
- * 1 : Chat Box
- * 2 : Email
- * 3 : Add Friend Request
- * 4 : Nothing
- * 5 : Nothing
- * 6 : Nothing
- * 7 : Right Jumping Arrow
- * 8 : RP Icon
- * 9 : $ Icon
- * "sender" is the very top header. This can be any old string.
- * "subject" is the header under the sender.
  */
-declare function SetNotificationMessage_2(picName1: string, picName2: string, flash: boolean, iconType: number, sender: string, subject: string): number;
+declare function SetNotificationMessage_2(picName1: string, picName2: number, flash: boolean, iconType: number, p4: boolean, sender: string, subject: string): number;
 /**
  * List of picNames: pastebin.com/XdpJVbHz
- * flash is a bool for fading in.
- * iconTypes:
- * 1 : Chat Box
- * 2 : Email
- * 3 : Add Friend Request
- * 4 : Nothing
- * 5 : Nothing
- * 6 : Nothing
- * 7 : Right Jumping Arrow
- * 8 : RP Icon
- * 9 : $ Icon
- * "sender" is the very top header. This can be any old string.
- * "subject" is the header under the sender.
  */
-declare function SetNotificationMessage(picName1: string, picName2: string, flash: boolean, iconType: number, sender: string, subject: string): number;
+declare function N_0x2b7e9a4eaaa93c89(picName1: string, picName2: number, flash: boolean, iconType: number, p4: boolean, sender: string, subject: string): number;
 
 /**
  * Needs more research.
@@ -23078,6 +24167,8 @@ declare function SetRadioTrack(radioStation: string, radioTrack: string): void;
 
 declare function SetRainFxIntensity(intensity: number): void;
 
+declare function SetRampVehicleReceivesRampDamage(vehicle: number, receivesDamage: boolean): void;
+
 declare function SetRandomBoats(toggle: boolean): number;
 
 /**
@@ -23124,6 +24215,12 @@ declare function SetResourceKvp(key: string, value: string): void;
 declare function SetResourceKvpFloat(key: string, value: number): void;
 
 declare function SetResourceKvpInt(key: string, value: number): void;
+
+/**
+ * Sets the player's rich presence detail state for social platform providers to a specified string.
+ * @param presenceState The rich presence string to set.
+ */
+declare function SetRichPresence(presenceState: string): void;
 
 /**
  * missing a last parameter int p6
@@ -23297,7 +24394,7 @@ declare function SetStreamedTextureDictAsNoLongerNeeded(textureDict: string): vo
 
 declare function SetStreaming(toggle: boolean): void;
 
-declare function SetSuperJumpThisFrame(player: number): void;
+declare function SetSuperJumpThisFrame(player: number): number;
 
 /**
  * Swim speed multiplier.
@@ -23606,8 +24703,8 @@ declare function SetVehicleAsNoLongerNeeded(vehicle: number): void;
 
 /**
  * Disables the vehicle from being repaired when a vehicle extra is enabled.
- * @param vehicle The vehicle to set disable auto vehicle repair.
  * @param value Setting the value to  true prevents the vehicle from being repaired when a extra is enabled. Setting the value to false allows the vehicle from being repaired when a extra is enabled.
+ * @param vehicle The vehicle to set disable auto vehicle repair.
  */
 declare function SetVehicleAutoRepairDisabled(vehicle: number, value: boolean): void;
 
@@ -23716,6 +24813,8 @@ declare function SetVehicleCustomSecondaryColour(vehicle: number, r: number, g: 
  * Radius of effect damage applied in a sphere at impact location
  */
 declare function SetVehicleDamage(vehicle: number, xOffset: number, yOffset: number, zOffset: number, damage: number, radius: number, p6: boolean): void;
+
+declare function SetVehicleDashboardColour(vehicle: number, color: number): void;
 
 /**
  * This fixes the deformation of a vehicle but the vehicle health doesn't improve
@@ -23999,38 +25098,38 @@ declare function SetVehicleHandbrake(vehicle: number, toggle: boolean): void;
 /**
  * Sets a handling override for a specific vehicle. Certain handling flags can only be set globally using `SET_HANDLING_FIELD`, this might require some experimentation.
  * Example: `SetVehicleHandlingField(vehicle, 'CHandlingData', 'fSteeringLock', 360.0)`
- * @param vehicle The vehicle to set data for.
  * @param value The value to set.
- * @param class The handling class to set. Only "CHandlingData" is supported at this time.
+ * @param vehicle The vehicle to set data for.
  * @param fieldName The field name to set. These match the keys in `handling.meta`.
+ * @param class The handling class to set. Only "CHandlingData" is supported at this time.
  */
 declare function SetVehicleHandlingField(vehicle: number, _class: string, fieldName: string, value: number): void;
 
 /**
  * Sets a handling override for a specific vehicle. Certain handling flags can only be set globally using `SET_HANDLING_FLOAT`, this might require some experimentation.
  * Example: `SetVehicleHandlingFloat(vehicle, 'CHandlingData', 'fSteeringLock', 360.0)`
- * @param vehicle The vehicle to set data for.
  * @param value The floating-point value to set.
- * @param class The handling class to set. Only "CHandlingData" is supported at this time.
+ * @param vehicle The vehicle to set data for.
  * @param fieldName The field name to set. These match the keys in `handling.meta`.
+ * @param class The handling class to set. Only "CHandlingData" is supported at this time.
  */
 declare function SetVehicleHandlingFloat(vehicle: number, _class: string, fieldName: string, value: number): void;
 
 /**
  * Sets a handling override for a specific vehicle. Certain handling flags can only be set globally using `SET_HANDLING_INT`, this might require some experimentation.
- * @param vehicle The vehicle to set data for.
  * @param value The integer value to set.
- * @param class The handling class to set. Only "CHandlingData" is supported at this time.
+ * @param vehicle The vehicle to set data for.
  * @param fieldName The field name to set. These match the keys in `handling.meta`.
+ * @param class The handling class to set. Only "CHandlingData" is supported at this time.
  */
 declare function SetVehicleHandlingInt(vehicle: number, _class: string, fieldName: string, value: number): void;
 
 /**
  * Sets a handling override for a specific vehicle. Certain handling flags can only be set globally using `SET_HANDLING_VECTOR`, this might require some experimentation.
- * @param vehicle The vehicle to set data for.
  * @param value The Vector3 value to set.
- * @param class The handling class to set. Only "CHandlingData" is supported at this time.
+ * @param vehicle The vehicle to set data for.
  * @param fieldName The field name to set. These match the keys in `handling.meta`.
+ * @param class The handling class to set. Only "CHandlingData" is supported at this time.
  */
 declare function SetVehicleHandlingVector(vehicle: number, _class: string, fieldName: string): void;
 
@@ -24057,6 +25156,8 @@ declare function N_0x99c82f8a139f3e4e(vehicle: number, active: boolean): void;
  * Set turnSignal to 1 for left light, 0 for right light.
  */
 declare function SetVehicleIndicatorLights(vehicle: number, turnSignal: number, toggle: boolean): void;
+
+declare function SetVehicleInteriorColour(vehicle: number, color: number): void;
 
 declare function SetVehicleInteriorlight(vehicle: number, toggle: boolean): void;
 
@@ -24294,6 +25395,8 @@ declare function SetVehicleOnGroundProperly(vehicle: number): number;
  */
 declare function SetVehicleOutOfControl(vehicle: number, killDriver: boolean, explodeOnImpact: boolean): void;
 
+declare function SetVehicleParachuteActive(vehicle: number, active: boolean): void;
+
 /**
  * 1000 is max health
  * Begins leaking gas at around 650 health
@@ -24315,6 +25418,12 @@ declare function SetVehicleRadioLoud(vehicle: number, toggle: boolean): void;
  * Reduces grip significantly so it's hard to go anywhere.
  */
 declare function SetVehicleReduceGrip(vehicle: number, toggle: boolean): void;
+
+declare function SetVehicleRocketBoostActive(vehicle: number, active: boolean): void;
+
+declare function SetVehicleRocketBoostPercentage(vehicle: number, percentage: number): void;
+
+declare function SetVehicleRocketBoostRefillTime(vehicle: number, time: number): void;
 
 declare function SetVehicleRudderBroken(vehicle: number, p1: boolean): void;
 
@@ -27044,6 +28153,16 @@ declare function VehicleHasLandingGear(vehicle: number): number;
  * Vehicle has landing gear?
  */
 declare function N_0x4198ab0022b15f87(vehicle: number): number;
+
+/**
+ * parachuteModel = 230075693
+ */
+declare function VehicleSetCustomParachuteModel(vehicle: number, parachuteModel: string | number): void;
+
+/**
+ * colorIndex = 0
+ */
+declare function VehicleSetCustomParachuteTexture(vehicle: number, colorIndex: number): void;
 
 declare function VehicleWaypointPlaybackOverrideSpeed(p0: number, p1: number): void;
 
