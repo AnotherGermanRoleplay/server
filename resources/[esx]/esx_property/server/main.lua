@@ -256,24 +256,27 @@ RegisterServerEvent('esx_property:getItem')
 AddEventHandler('esx_property:getItem', function(owner, type, item, count)
 
   local _source      = source
-  local xPlayer      = ESX.GetPlayerFromId(_source)
-  local xPlayerOwner = ESX.GetPlayerFromIdentifier(owner)
+	local xPlayer      = ESX.GetPlayerFromId(_source)
+	local xPlayerOwner = ESX.GetPlayerFromIdentifier(owner)
 
   if type == 'item_standard' then
-
+    local sourceItem = xPlayer.getInventoryItem(item)
     TriggerEvent('esx_addoninventory:getInventory', 'property', xPlayerOwner.identifier, function(inventory)
-
-      local roomItemCount = inventory.getItem(item).count
-
-      if roomItemCount >= count then
-        inventory.removeItem(item, count)
-        xPlayer.addInventoryItem(item, count)
+        
+      -- is there enough in the property?
+      if count > 0 and inventory.getItem(item).count >= count then
+        
+        -- can the player carry the said amount of x item?
+        if sourceItem.limit ~= -1 and (sourceItem.count + count) > sourceItem.limit then
+          TriggerClientEvent('esx:showNotification', _source, _U('player_cannot_hold'))
+        else
+          inventory.removeItem(item, count)
+          xPlayer.addInventoryItem(item, count)
+        end
       else
-        TriggerClientEvent('esx:showNotification', _source, _U('invalid_quantity'))
+        TriggerClientEvent('esx:showNotification', _source, _U('not_enough_in_property'))
       end
-
     end)
-
   end
 
   if type == 'item_account' then

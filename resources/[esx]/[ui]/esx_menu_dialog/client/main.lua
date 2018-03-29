@@ -79,6 +79,9 @@ Citizen.CreateThread(function()
 		local menu = ESX.UI.Menu.GetOpened(MenuType, data._namespace, data._name)
 		
 		if menu.submit ~= nil then
+      if(type(data.value) == "number") then
+        data.value = math.floor(tonumber(data.value))
+      end
 			menu.submit(data, menu)
 		end
 
