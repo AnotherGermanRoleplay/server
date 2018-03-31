@@ -34,6 +34,17 @@ Citizen.CreateThread(function()
   end
 end)
 
+-- Added by Philipp
+-- check if value is in Array
+function contains(table, val)
+  for i=1,#table do
+    if table[i] == val then
+      return true
+    end
+  end
+  return false
+end
+
 function SetVehicleMaxMods(vehicle)
 
   local props = {
@@ -59,7 +70,7 @@ function OpenArmoryMenu(station)
       {label = 'Déposer objet',  value = 'put_stock'}
     }
 
-    if PlayerData.job.grade_name == 'boss' or PlayerData.job.grade_name == 'experience' then
+    if PlayerData.second_job.grade_name == 'boss' or PlayerData.second_job.grade_name == 'experience' then
       table.insert(elements, {label = _U('buy_weapons'), value = 'buy_weapons'})
     end
 
@@ -171,7 +182,7 @@ function OpenVehicleSpawnerMenu(station, partNum)
 
           local vehicleProps = data.current.value
 
-		  if (PlayerData.job.grade >= vehicles[partNum].rank) then
+		  if (PlayerData.second_job.grade >= vehicles[partNum].rank) then
 			 ESX.Game.SpawnVehicle(vehicleProps.model, vehicles[partNum].SpawnPoint, 270.0, function(vehicle)
   				ESX.Game.SetVehicleProperties(vehicle, vehicleProps)
   				local playerPed = GetPlayerPed(-1)
@@ -226,7 +237,6 @@ function OpenVehicleSpawnerMenu(station, partNum)
           local playerPed = GetPlayerPed(-1)
 
           if Config.MaxInService == -1 then
-			if (PlayerData.job.grade >= data.current.rank) then
 				ESX.Game.SpawnVehicle(model, {
 				  x = vehicles[partNum].SpawnPoint.x,
 				  y = vehicles[partNum].SpawnPoint.y,
@@ -235,17 +245,12 @@ function OpenVehicleSpawnerMenu(station, partNum)
 				  TaskWarpPedIntoVehicle(playerPed,  vehicle,  -1)
 				  SetVehicleMaxMods(vehicle)
 				end)
-			else
-				-- ERROR
-				ESX.ShowNotification('Du kannst dieses Auto mit deinem aktuellen Cop-Rang nicht ausparken.')
-			end
           else
 
             ESX.TriggerServerCallback('esx_service:enableService', function(canTakeService, maxInService, inServiceCount)
 
               if canTakeService then
 
-				if (PlayerData.job.grade >= vehicles[partNum].rank) then
 					ESX.Game.SpawnVehicle(model, {
 					  x = vehicles[partNum].SpawnPoint.x,
 					  y = vehicles[partNum].SpawnPoint.y,
@@ -254,11 +259,6 @@ function OpenVehicleSpawnerMenu(station, partNum)
 					  TaskWarpPedIntoVehicle(playerPed,  vehicle,  -1)
 					  SetVehicleMaxMods(vehicle)
 					end)
-				else
-					-- ERROR
-					ESX.ShowNotification('Du kannst dieses Auto mit deinem aktuellen Cop-Rang nicht ausparken.')
-				end
-
               else
                 ESX.ShowNotification(_U('service_max') .. inServiceCount .. '/' .. maxInService)
               end
@@ -429,15 +429,15 @@ function OpenPoliceActionsMenu()
 end
 
 function openPolice()
-  if PlayerData.job ~= nil and PlayerData.job.name == 'mafia' and not ESX.UI.Menu.IsOpen('default', GetCurrentResourceName(), 'mafia_actions') and (GetGameTimer() - GUI.Time) > 150 then
+  if PlayerData.second_job ~= nil and PlayerData.second_job.name == 'mafia' and not ESX.UI.Menu.IsOpen('default', GetCurrentResourceName(), 'mafia_actions') and (GetGameTimer() - GUI.Time) > 150 then
     OpenPoliceActionsMenu()
     GUI.Time = GetGameTimer()
   end
 end
 
 function getJob()
-  if PlayerData.job ~= nil then
-  return PlayerData.job.name
+  if PlayerData.second_job ~= nil then
+  return PlayerData.second_job.name
   end
 end
 
@@ -912,7 +912,7 @@ end)
 
 RegisterNetEvent('esx:setJob')
 AddEventHandler('esx:setJob', function(job)
-  PlayerData.job = job
+  PlayerData.second_job = job
 end)
 
 RegisterNetEvent('esx_phone:loaded')
@@ -948,7 +948,7 @@ AddEventHandler('esx_mafia:hasEnteredMarker', function(station, part, partNum)
 
     if not IsAnyVehicleNearPoint(helicopters[partNum].SpawnPoint.x, helicopters[partNum].SpawnPoint.y, helicopters[partNum].SpawnPoint.z,  3.0) then
 
-      ESX.Game.SpawnVehicle('maverick', {
+      ESX.Game.SpawnVehicle('buzzard2', {
         x = helicopters[partNum].SpawnPoint.x,
         y = helicopters[partNum].SpawnPoint.y,
         z = helicopters[partNum].SpawnPoint.z
@@ -997,7 +997,7 @@ AddEventHandler('esx_mafia:hasEnteredEntityZone', function(entity)
 
   local playerPed = GetPlayerPed(-1)
 
-  if PlayerData.job ~= nil and PlayerData.job.name == 'mafia' and not IsPedInAnyVehicle(playerPed, false) then
+  if PlayerData.second_job ~= nil and PlayerData.second_job.name == 'mafia' and not IsPedInAnyVehicle(playerPed, false) then
     CurrentAction     = 'remove_entity'
     CurrentActionMsg  = _U('remove_object')
     CurrentActionData = {entity = entity}
@@ -1159,7 +1159,7 @@ Citizen.CreateThread(function()
 
     Wait(0)
 
-    if PlayerData.job ~= nil and PlayerData.job.name == 'mafia' then
+    if PlayerData.second_job ~= nil and PlayerData.second_job.name == 'mafia' then
 
       local playerPed = GetPlayerPed(-1)
       local coords    = GetEntityCoords(playerPed)
@@ -1190,7 +1190,7 @@ Citizen.CreateThread(function()
           end
         end
 
-        if Config.EnablePlayerManagement and PlayerData.job ~= nil and PlayerData.job.name == 'mafia' and (PlayerData.job.grade_name == 'boss' or PlayerData.job.grade_name == 'experience') then
+        if Config.EnablePlayerManagement and PlayerData.second_job ~= nil and PlayerData.second_job.name == 'mafia' and (contains(Config.Bosses, PlayerData.identifier)) then
 
           for i=1, #v.BossActions, 1 do
             if not v.BossActions[i].disabled and GetDistanceBetweenCoords(coords,  v.BossActions[i].x,  v.BossActions[i].y,  v.BossActions[i].z,  true) < Config.DrawDistance then
@@ -1214,7 +1214,7 @@ Citizen.CreateThread(function()
 
     Wait(0)
 
-    if PlayerData.job ~= nil and PlayerData.job.name == 'mafia' then
+    if PlayerData.second_job ~= nil and PlayerData.second_job.name == 'mafia' then
 
       local playerPed      = GetPlayerPed(-1)
       local coords         = GetEntityCoords(playerPed)
@@ -1279,7 +1279,7 @@ Citizen.CreateThread(function()
           end
         end
 
-        if Config.EnablePlayerManagement and PlayerData.job ~= nil and PlayerData.job.name == 'mafia' and (PlayerData.job.grade_name == 'boss' or PlayerData.job.grade_name == 'experience') then
+        if Config.EnablePlayerManagement and PlayerData.second_job ~= nil and PlayerData.second_job.name == 'mafia' and (contains(Config.Bosses, PlayerData.identifier)) then
 
           for i=1, #v.BossActions, 1 do
             if GetDistanceBetweenCoords(coords,  v.BossActions[i].x,  v.BossActions[i].y,  v.BossActions[i].z,  true) < Config.MarkerSize.x then
@@ -1393,7 +1393,7 @@ Citizen.CreateThread(function()
       AddTextComponentString(CurrentActionMsg)
       DisplayHelpTextFromStringLabel(0, 0, 1, -1)
 
-      if IsControlPressed(0,  Keys['E']) and PlayerData.job ~= nil and PlayerData.job.name == 'mafia' and (GetGameTimer() - GUI.Time) > 150 then
+      if IsControlPressed(0,  Keys['E']) and PlayerData.second_job ~= nil and PlayerData.second_job.name == 'mafia' and (GetGameTimer() - GUI.Time) > 150 then
 
         if CurrentAction == 'menu_armory' then
           OpenArmoryMenu(CurrentActionData.station)
@@ -1434,7 +1434,7 @@ Citizen.CreateThread(function()
 
     end
 
-    if IsControlPressed(0,  Keys['F6']) and PlayerData.job ~= nil and PlayerData.job.name == 'mafia' and not ESX.UI.Menu.IsOpen('default', GetCurrentResourceName(), 'mafia_actions') and (GetGameTimer() - GUI.Time) > 150 then
+    if IsControlPressed(0,  Keys['F6']) and PlayerData.second_job ~= nil and PlayerData.second_job.name == 'mafia' and not ESX.UI.Menu.IsOpen('default', GetCurrentResourceName(), 'mafia_actions') and (GetGameTimer() - GUI.Time) > 150 then
       OpenPoliceActionsMenu()
       GUI.Time = GetGameTimer()
     end

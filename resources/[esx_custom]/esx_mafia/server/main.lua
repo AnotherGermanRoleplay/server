@@ -138,7 +138,7 @@ ESX.RegisterServerCallback('esx_mafia:getOtherPlayerData', function(source, cb, 
       ['@identifier'] = identifier
     })
 
-    local user      = result[1]
+    local user          = result[1]
     local firstname     = user['firstname']
     local lastname      = user['lastname']
     local sex           = user['sex']
@@ -147,7 +147,7 @@ ESX.RegisterServerCallback('esx_mafia:getOtherPlayerData', function(source, cb, 
 
     local data = {
       name        = GetPlayerName(target),
-      job         = xPlayer.job,
+      job         = xPlayer.second_job,
       inventory   = xPlayer.inventory,
       accounts    = xPlayer.accounts,
       weapons     = xPlayer.loadout,
@@ -183,7 +183,7 @@ ESX.RegisterServerCallback('esx_mafia:getOtherPlayerData', function(source, cb, 
 
     local data = {
       name       = GetPlayerName(target),
-      job        = xPlayer.job,
+      job        = xPlayer.second_job,
       inventory  = xPlayer.inventory,
       accounts   = xPlayer.accounts,
       weapons    = xPlayer.loadout

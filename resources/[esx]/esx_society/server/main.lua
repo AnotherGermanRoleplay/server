@@ -204,7 +204,7 @@ ESX.RegisterServerCallback('esx_society:getEmployees', function(source, cb, soci
   _society = society
   if Config.EnableESXIdentity then
     MySQL.Async.fetchAll(
-      'SELECT * FROM characters WHERE job = @job ORDER BY job_grade DESC',
+      'SELECT * FROM characters WHERE job = @job OR second_job = @job ORDER BY job_grade DESC',
       { ['@job'] = society },
       function (results)
         local employees = {}
@@ -321,6 +321,61 @@ ESX.RegisterServerCallback('esx_society:setJob', function(source, cb, identifier
       {
         ['@job']        = job,
         ['@job_grade']  = grade,
+        ['@identifier'] = identifier
+      },
+      function(rowsChanged)
+        cb()
+      end
+    )
+  end
+end)
+
+ESX.RegisterServerCallback('esx_society:setSecondJob', function(source, cb, identifier, job, type, characterId)
+
+  local xPlayer = ESX.GetPlayerFromIdentifier(identifier)
+
+  if xPlayer ~= nil then
+
+    if type == 'hire' then
+      TriggerClientEvent('esx:showNotification', xPlayer.source, _U('you_have_been_hired', job))
+    elseif type == 'promote' then
+      TriggerClientEvent('esx:showNotification', xPlayer.source, "Hier gibt's keine Ränge")
+    elseif type == 'fire' then
+      TriggerClientEvent('esx:showNotification', xPlayer.source, _U('you_have_been_fired', xPlayer.getJob().label))
+    end
+
+    xPlayer.setJob(job, grade)
+  end
+
+  if Config.EnableESXIdentity then
+    MySQL.Async.execute(
+      'UPDATE characters SET second_job = @job WHERE identifier = @identifier and id = @characterid',
+      {
+        ['@job']          = job,
+        -- ['@job_grade']    = grade,
+        ['@identifier']   = identifier,
+        ['@characterid']  = characterId
+      },
+      function(rowsChanged)
+        MySQL.Async.execute(
+          'UPDATE users SET second_job = @job WHERE identifier = @identifier',
+          {
+            ['@job']        = job,
+            -- ['@job_grade']  = grade,
+            ['@identifier'] = identifier
+          },
+          function(rowsChanged)
+            cb()
+          end
+        )
+      end
+    )
+  else
+    MySQL.Async.execute(
+      'UPDATE users SET second_job = @job WHERE identifier = @identifier',
+      {
+        ['@job']        = job,
+        -- ['@job_grade']  = grade,
         ['@identifier'] = identifier
       },
       function(rowsChanged)

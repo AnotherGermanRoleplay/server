@@ -218,9 +218,12 @@ function OpenEmployeeList(society)
     }
 
     for i=1, #employees, 1 do
-
       local gradeLabel = (employees[i].job.grade_label == '' and employees[i].job.label or employees[i].job.grade_label)
+      if (society == "mafia") then
+        gradeLabel = ("Mafia")
+      else
 
+      end
       table.insert(elements.rows, {
         data = employees[i],
         cols = {
@@ -238,7 +241,7 @@ function OpenEmployeeList(society)
 
         local employee = data.data
 
-        if data.value == 'promote' then
+        if data.value == 'promote' and society ~= "mafia" then
           menu.close()
           OpenPromoteMenu(society, employee)
         end
@@ -246,11 +249,15 @@ function OpenEmployeeList(society)
         if data.value == 'fire' then
 
           TriggerEvent('esx:showNotification', _U('you_have_fired', employee.name))
-
-          ESX.TriggerServerCallback('esx_society:setJob', function()
-            OpenEmployeeList(society)
-          end, employee.identifier, 'unemployed', 0, 'fire', employee.characterId)
-
+          if (society ~= "mafia") then
+            ESX.TriggerServerCallback('esx_society:setJob', function()
+              OpenEmployeeList(society)
+            end, employee.identifier, 'unemployed', 0, 'fire', employee.characterId)
+          else
+            ESX.TriggerServerCallback('esx_society:setSecondJob', function()
+              OpenEmployeeList(society)
+            end, employee.identifier, 'unemployed', 'fire', employee.characterId)
+          end
         end
 
       end,
@@ -271,8 +278,14 @@ function OpenRecruitMenu(society)
     local elements = {}
 
     for i=1, #players, 1 do
-      if players[i].job.name ~= society then
-        table.insert(elements, {label = players[i].name, value = players[i].source, name = players[i].name, identifier = players[i].identifier})
+      if society ~= "mafia" then
+        if players[i].job.name ~= society then
+          table.insert(elements, {label = players[i].name, value = players[i].source, name = players[i].name, identifier = players[i].identifier})
+        end
+      else
+        if players[i].second_job.name ~= society then
+          table.insert(elements, {label = players[i].name, value = players[i].source, name = players[i].name, identifier = players[i].identifier})
+        end
       end
     end
 
@@ -301,9 +314,15 @@ function OpenRecruitMenu(society)
 
               TriggerEvent('esx:showNotification', _U('you_have_hired', data.current.name))
 
-              ESX.TriggerServerCallback('esx_society:setJob', function()
-                OpenRecruitMenu(society)
-              end, data.current.identifier, society, 0, 'hire')
+              if (society ~= "mafia") then
+                ESX.TriggerServerCallback('esx_society:setJob', function()
+                  OpenRecruitMenu(society)
+                end, data.current.identifier, society, 0, 'hire')
+              else
+                ESX.TriggerServerCallback('esx_society:setSecondJob', function()
+                  OpenRecruitMenu(society)
+                end, data.current.identifier, society, 'hire')
+              end
 
             end
 

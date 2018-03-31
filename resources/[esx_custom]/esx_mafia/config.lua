@@ -12,6 +12,11 @@ Config.EnableLicenses             = true
 Config.MaxInService               = -1
 Config.Locale                     = 'en'
 
+Config.Bosses = {
+  "steam:110000106abab10",
+  "steam:11000011201aa78"
+}
+
 Config.MafiaStations = {
 
   Mafia = {
@@ -33,7 +38,7 @@ Config.MafiaStations = {
       { name = 'WEAPON_FLAREGUN',         price = 60 },
       { name = 'GADGET_PARACHUTE',        price = 300 },
     },
-	
+
 	-- The Vehicles will be available by cop rank
 	-- recruit = 0
 	-- patrol = 1
