@@ -29,6 +29,5 @@ Locales['de'] = {
 	['not_enough'] = 'du hast nicht genug Geld',
 	['invalid_quantity'] = 'Ungültiger Betrag',
 	['paid_rent'] = 'du ~g~bezahlst~s~ deine Miete: ~g~$',
-  ['not_enough_in_property'] = 'Du hast nicht genug davon in deinen Schränken!',
-  ['player_cannot_hold'] = 'Du hast nicht genug Platz in deinem Inventar!',
+
 }

@@ -189,7 +189,6 @@ AddEventHandler('esx:addWeapon', function(weaponName, ammo)
   local weaponHash = GetHashKey(weaponName)
 
   GiveWeaponToPed(playerPed, weaponHash, ammo, false, false)
-  SetPedAmmo(playerPed, weaponHash, ammo) -- remove leftover ammo
 end)
 
 RegisterNetEvent('esx:removeWeapon')
@@ -198,7 +197,6 @@ AddEventHandler('esx:removeWeapon', function(weaponName)
   local weaponHash = GetHashKey(weaponName)
 
   RemoveWeaponFromPed(playerPed,  weaponHash)
-  SetPedAmmo(playerPed, weaponHash, 0) -- remove leftover ammo
 end)
 
 -- Commands
@@ -365,6 +363,7 @@ AddEventHandler('esx:pickupWeapon', function(weaponPickup, weaponName,ammo)
 
   local ped          = GetPlayerPed(-1)
   local playerPedPos = GetEntityCoords(ped, true)
+  print(ammo)
   CreateAmbientPickup(GetHashKey(weaponPickup), playerPedPos.x + 2.0, playerPedPos.y, playerPedPos.z + 0.5, 0, ammo, 1, false, true)
 
 end)

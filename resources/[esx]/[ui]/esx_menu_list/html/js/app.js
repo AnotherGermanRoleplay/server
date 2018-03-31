@@ -142,7 +142,7 @@
 	}
 
 	ESX_MENU.submit = function(namespace, name, data){
-		SendMessage(ESX_MENU.ResourceName, 'menu_submit', {
+		$.post('http://' + ESX_MENU.ResourceName + '/menu_submit', JSON.stringify({
 			_namespace: namespace,
 			_name     : name,
 			data      : data.data,
@@ -151,7 +151,7 @@
 	}
 
 	ESX_MENU.cancel = function(namespace, name){
-		SendMessage(ESX_MENU.ResourceName, 'menu_cancel', {
+		$.post('http://' + ESX_MENU.ResourceName + '/menu_cancel', JSON.stringify({
 			_namespace: namespace,
 			_name     : name
 		}));
