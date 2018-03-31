@@ -169,9 +169,9 @@ end
 
 --- Gets the metadata value at a specified key/index from a resource's manifest.
 -- See also: [Resource manifest](https://wiki.fivem.net/wiki/Resource_manifest)
--- @param index The value index, in a range from [0..GET_NUM_RESOURCE_METDATA-1].
 -- @param resourceName The resource name.
 -- @param metadataKey The key in the resource manifest.
+-- @param index The value index, in a range from [0..GET_NUM_RESOURCE_METDATA-1].
 function Global.GetResourceMetadata(resourceName, metadataKey, index)
 	return _in(0x964bab1d, _ts(resourceName), _ts(metadataKey), index, _r, _s)
 end
@@ -214,9 +214,9 @@ end
 
 --- Writes the specified data to a file in the specified resource.
 -- Using a length of `-1` will automatically detect the length assuming the data is a C string.
+-- @param resourceName The name of the resource.
 -- @param dataLength The length of the written data.
 -- @param data The data to write to the file.
--- @param resourceName The name of the resource.
 -- @param fileName The name of the file.
 -- @return A value indicating if the write succeeded.
 function Global.SaveResourceFile(resourceName, fileName, data, dataLength)

@@ -44,6 +44,22 @@ Config.Zones = {
 		Name  = "Los Santos Customs",
 		Hint  = _U('press_custom')
     },
+	ls6 = {
+		Pos   = { x = -1931.068359375, y = 2106.6437988281, z = 139.52886962891},
+		Size  = {x = 3.0, y = 3.0, z = 0.2},
+		Color = {r = 204, g = 204, b = 0},
+		Marker= 1,
+		Name  = "Los Santos Customs",
+		Hint  = _U('press_custom')
+	},
+	ls7 = {
+		Pos   = { x = 907.08898925781, y = 1252.4932861328, z = 362.10925292969},
+		Size  = {x = 3.0, y = 3.0, z = 0.2},
+		Color = {r = 204, g = 204, b = 0},
+		Marker= 1,
+		Name  = "Los Santos Customs",
+		Hint  = _U('press_custom')
+	}
 }
 
 Config.Colors = {

@@ -53,7 +53,7 @@ Citizen.CreateThread(function()
 
 	ESX.UI.Menu.RegisterType(MenuType, openMenu, closeMenu)
 
-	RegisterNUICallback('menu_submit', function(data, cb)
+	AddEventHandler('esx_menu_list:message:menu_submit', function(data)
 		local menu = ESX.UI.Menu.GetOpened(MenuType, data._namespace, data._name)
 		
 		if menu.submit ~= nil then
@@ -63,7 +63,7 @@ Citizen.CreateThread(function()
 		cb('OK')
 	end)
 
-	RegisterNUICallback('menu_cancel', function(data, cb)
+	AddEventHandler('esx_menu_list:message:menu_cancel', function(data)
 		
 		local menu = ESX.UI.Menu.GetOpened(MenuType, data._namespace, data._name)
 		

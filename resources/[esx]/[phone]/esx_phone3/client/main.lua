@@ -477,7 +477,7 @@ Citizen.CreateThread(function()
       DisableControlAction(0, 17,   true) -- Select Prev Weapon
     else
 
-      if IsDisabledControlJustReleased(0, Keys['1']) then
+      if IsDisabledControlJustReleased(0, Keys['F1']) then
 
         if not GUI.IsOpen then
           ESX.UI.Menu.CloseAll()
