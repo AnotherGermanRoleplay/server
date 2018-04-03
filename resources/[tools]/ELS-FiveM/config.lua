@@ -12,7 +12,7 @@ vcf_files = {
 	"lspd11.xml",
 	"lspd12.xml",
 	"POLICE2.xml",
-	"police.xml",
+	"POLICE.xml",
 	"SHERIFF.xml",
 	"SHERIFF2.xml",
 	"police4.xml",
