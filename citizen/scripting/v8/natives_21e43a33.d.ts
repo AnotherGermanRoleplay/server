@@ -1278,9 +1278,9 @@ declare function GetGameplayCamRelativeHeading(): number;
 
 declare function GetGameplayCamRelativePitch(): number;
 
-declare function GetGameplayCamRot(p0: number): number[];
-
 declare function GetGameplayCamRot(p0: number): number;
+
+declare function GetGameplayCamRot(p0: number): number[];
 
 declare function GetGameplayCamZoom(): number;
 
@@ -1467,8 +1467,8 @@ declare function GetNumReservedMissionVehicles(p0: boolean): number;
 /**
  * Gets the amount of metadata values with the specified key existing in the specified resource's manifest.
  * See also: [Resource manifest](https://wiki.fivem.net/wiki/Resource_manifest)
- * @param metadataKey The key to look up in the resource manifest.
  * @param resourceName The resource name.
+ * @param metadataKey The key to look up in the resource manifest.
  */
 declare function GetNumResourceMetadata(resourceName: string, metadataKey: string): number;
 
@@ -1966,8 +1966,8 @@ declare function GetVehicleHandbrake(vehicle: number): number;
  * Returns the effective handling data of a vehicle as a floating-point value.
  * Example: `local fSteeringLock = GetVehicleHandlingFloat(vehicle, 'CHandlingData', 'fSteeringLock')`
  * @param class The handling class to get. Only "CHandlingData" is supported at this time.
- * @param fieldName The field name to get. These match the keys in `handling.meta`.
  * @param vehicle The vehicle to obtain data for.
+ * @param fieldName The field name to get. These match the keys in `handling.meta`.
  * @return A floating-point value.
  */
 declare function GetVehicleHandlingFloat(vehicle: number, _class: string, fieldName: string): number;
@@ -1976,8 +1976,8 @@ declare function GetVehicleHandlingFloat(vehicle: number, _class: string, fieldN
  * Returns the effective handling data of a vehicle as an integer value.
  * Example: `local modelFlags = GetVehicleHandlingInt(vehicle, 'CHandlingData', 'strModelFlags')`
  * @param class The handling class to get. Only "CHandlingData" is supported at this time.
- * @param fieldName The field name to get. These match the keys in `handling.meta`.
  * @param vehicle The vehicle to obtain data for.
+ * @param fieldName The field name to get. These match the keys in `handling.meta`.
  * @return An integer.
  */
 declare function GetVehicleHandlingInt(vehicle: number, _class: string, fieldName: string): number;
@@ -1986,8 +1986,8 @@ declare function GetVehicleHandlingInt(vehicle: number, _class: string, fieldNam
  * Returns the effective handling data of a vehicle as a vector value.
  * Example: `local inertiaMultiplier = GetVehicleHandlingVector(vehicle, 'CHandlingData', 'vecInertiaMultiplier')`
  * @param class The handling class to get. Only "CHandlingData" is supported at this time.
- * @param fieldName The field name to get. These match the keys in `handling.meta`.
  * @param vehicle The vehicle to obtain data for.
+ * @param fieldName The field name to get. These match the keys in `handling.meta`.
  * @return An integer.
  */
 declare function GetVehicleHandlingVector(vehicle: number, _class: string, fieldName: string): number[];
@@ -3173,8 +3173,8 @@ declare function LoadMpDlcMaps(): void;
  * Reads the contents of a text file in a specified resource.
  * If executed on the client, this file has to be included in `files` in the resource manifest.
  * Example: `local data = LoadResourceFile("devtools", "data.json")`
- * @param fileName The file in the resource.
  * @param resourceName The resource name.
+ * @param fileName The file in the resource.
  * @return The file contents
  */
 declare function LoadResourceFile(resourceName: string, fileName: string): string;
@@ -9993,39 +9993,39 @@ declare function SetGroupSeparationRange(groupHandle: number, separationRange: n
 /**
  * Sets a global handling override for a specific vehicle class. The name is supposed to match the `handlingName` field from handling.meta.
  * Example: `SetHandlingField('AIRTUG', 'CHandlingData', 'fSteeringLock', 360.0)`
- * @param value The value to set.
  * @param class The handling class to set. Only "CHandlingData" is supported at this time.
- * @param fieldName The field name to set. These match the keys in `handling.meta`.
+ * @param value The value to set.
  * @param vehicle The vehicle class to set data for.
+ * @param fieldName The field name to set. These match the keys in `handling.meta`.
  */
 declare function SetHandlingField(vehicle: string, _class: string, fieldName: string, value: number): void;
 
 /**
  * Sets a global handling override for a specific vehicle class. The name is supposed to match the `handlingName` field from handling.meta.
  * Example: `SetHandlingFloat('AIRTUG', 'CHandlingData', 'fSteeringLock', 360.0)`
- * @param value The floating-point value to set.
  * @param class The handling class to set. Only "CHandlingData" is supported at this time.
- * @param fieldName The field name to set. These match the keys in `handling.meta`.
+ * @param value The floating-point value to set.
  * @param vehicle The vehicle class to set data for.
+ * @param fieldName The field name to set. These match the keys in `handling.meta`.
  */
 declare function SetHandlingFloat(vehicle: string, _class: string, fieldName: string, value: number): void;
 
 /**
  * Sets a global handling override for a specific vehicle class. The name is supposed to match the `handlingName` field from handling.meta.
- * @param value The integer value to set.
  * @param class The handling class to set. Only "CHandlingData" is supported at this time.
- * @param fieldName The field name to set. These match the keys in `handling.meta`.
+ * @param value The integer value to set.
  * @param vehicle The vehicle class to set data for.
+ * @param fieldName The field name to set. These match the keys in `handling.meta`.
  */
 declare function SetHandlingInt(vehicle: string, _class: string, fieldName: string, value: number): void;
 
 /**
  * Sets a global handling override for a specific vehicle class. The name is supposed to match the `handlingName` field from handling.meta.
  * Example: `SetHandlingVector('AIRTUG', 'CHandlingData', 'vecCentreOfMassOffset', vector3(0.0, 0.0, -5.0))`
- * @param value The Vector3 value to set.
  * @param class The handling class to set. Only "CHandlingData" is supported at this time.
- * @param fieldName The field name to set. These match the keys in `handling.meta`.
+ * @param value The Vector3 value to set.
  * @param vehicle The vehicle class to set data for.
+ * @param fieldName The field name to set. These match the keys in `handling.meta`.
  */
 declare function SetHandlingVector(vehicle: string, _class: string, fieldName: string): void;
 
@@ -10087,8 +10087,8 @@ declare function SetMinimapComponent(p0: number, p1: number): number;
 /**
  * Sets the display info for a minimap overlay.
  * @param miniMap The minimap overlay ID.
- * @param xScale The X scale for the overlay. This is equivalent to the Flash _xscale property, therefore 100 = 100%.
  * @param alpha The alpha value for the overlay. This is equivalent to the Flash _alpha property, therefore 100 = 100%.
+ * @param xScale The X scale for the overlay. This is equivalent to the Flash _xscale property, therefore 100 = 100%.
  * @param yScale The Y scale for the overlay. This is equivalent to the Flash _yscale property.
  * @param x The X position for the overlay. This is equivalent to a game coordinate X.
  * @param y The Y position for the overlay. This is equivalent to a game coordinate Y, except that it's inverted (gfxY = -gameY).
@@ -10887,8 +10887,8 @@ declare function SetVehicleAsNoLongerNeeded(vehicle: number): void;
 
 /**
  * Disables the vehicle from being repaired when a vehicle extra is enabled.
- * @param value Setting the value to  true prevents the vehicle from being repaired when a extra is enabled. Setting the value to false allows the vehicle from being repaired when a extra is enabled.
  * @param vehicle The vehicle to set disable auto vehicle repair.
+ * @param value Setting the value to  true prevents the vehicle from being repaired when a extra is enabled. Setting the value to false allows the vehicle from being repaired when a extra is enabled.
  */
 declare function SetVehicleAutoRepairDisabled(vehicle: number, value: boolean): void;
 
@@ -10989,38 +10989,38 @@ declare function SetVehicleHandbrake(vehicle: number, Toggle: boolean): void;
 /**
  * Sets a handling override for a specific vehicle. Certain handling flags can only be set globally using `SET_HANDLING_FIELD`, this might require some experimentation.
  * Example: `SetVehicleHandlingField(vehicle, 'CHandlingData', 'fSteeringLock', 360.0)`
- * @param value The value to set.
  * @param class The handling class to set. Only "CHandlingData" is supported at this time.
- * @param fieldName The field name to set. These match the keys in `handling.meta`.
+ * @param value The value to set.
  * @param vehicle The vehicle to set data for.
+ * @param fieldName The field name to set. These match the keys in `handling.meta`.
  */
 declare function SetVehicleHandlingField(vehicle: number, _class: string, fieldName: string, value: number): void;
 
 /**
  * Sets a handling override for a specific vehicle. Certain handling flags can only be set globally using `SET_HANDLING_FLOAT`, this might require some experimentation.
  * Example: `SetVehicleHandlingFloat(vehicle, 'CHandlingData', 'fSteeringLock', 360.0)`
- * @param value The floating-point value to set.
  * @param class The handling class to set. Only "CHandlingData" is supported at this time.
- * @param fieldName The field name to set. These match the keys in `handling.meta`.
+ * @param value The floating-point value to set.
  * @param vehicle The vehicle to set data for.
+ * @param fieldName The field name to set. These match the keys in `handling.meta`.
  */
 declare function SetVehicleHandlingFloat(vehicle: number, _class: string, fieldName: string, value: number): void;
 
 /**
  * Sets a handling override for a specific vehicle. Certain handling flags can only be set globally using `SET_HANDLING_INT`, this might require some experimentation.
- * @param value The integer value to set.
  * @param class The handling class to set. Only "CHandlingData" is supported at this time.
- * @param fieldName The field name to set. These match the keys in `handling.meta`.
+ * @param value The integer value to set.
  * @param vehicle The vehicle to set data for.
+ * @param fieldName The field name to set. These match the keys in `handling.meta`.
  */
 declare function SetVehicleHandlingInt(vehicle: number, _class: string, fieldName: string, value: number): void;
 
 /**
  * Sets a handling override for a specific vehicle. Certain handling flags can only be set globally using `SET_HANDLING_VECTOR`, this might require some experimentation.
- * @param value The Vector3 value to set.
  * @param class The handling class to set. Only "CHandlingData" is supported at this time.
- * @param fieldName The field name to set. These match the keys in `handling.meta`.
+ * @param value The Vector3 value to set.
  * @param vehicle The vehicle to set data for.
+ * @param fieldName The field name to set. These match the keys in `handling.meta`.
  */
 declare function SetVehicleHandlingVector(vehicle: number, _class: string, fieldName: string): void;
 

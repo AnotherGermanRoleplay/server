@@ -314,7 +314,7 @@ function OpenRecruitMenu(society)
 
               TriggerEvent('esx:showNotification', _U('you_have_hired', data.current.name))
 
-              if (society ~= "mafia") then
+              if society ~= "mafia" then
                 ESX.TriggerServerCallback('esx_society:setJob', function()
                   OpenRecruitMenu(society)
                 end, data.current.identifier, society, 0, 'hire')

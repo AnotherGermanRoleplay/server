@@ -2903,11 +2903,11 @@ window.GetGameplayCamRelativePitch = function () {
 };
 
 window.GetGameplayCamRot = function (rotationOrder) {
-	return _in("0x837765A25378F0BB", rotationOrder, _r, _rv);
+	return _in("0x5B4E4C817FCC2DFB", rotationOrder, _r, _rv);
 };
 
 window.GetGameplayCamRot = function (rotationOrder) {
-	return _in("0x5B4E4C817FCC2DFB", rotationOrder, _r, _rv);
+	return _in("0x837765A25378F0BB", rotationOrder, _r, _rv);
 };
 
 window.GetGameplayCamZoom = function () {
@@ -3825,11 +3825,11 @@ window.GetPositionOfVehicleRecordingAtTime = function (p0, p1, p2) {
 };
 
 window.GetPosixTime = function () {
-	return _in("0xDA488F299A5B164E", _i, _i, _i, _i, _i, _i);
+	return _in("0x9A73240B49945C76", _r, _ri);
 };
 
 window.GetPosixTime = function () {
-	return _in("0x9A73240B49945C76", _r, _ri);
+	return _in("0xDA488F299A5B164E", _i, _i, _i, _i, _i, _i);
 };
 
 window.GetPrevWeatherTypeHashName = function () {
@@ -3999,11 +3999,11 @@ window.GetSafeZoneSize = function () {
 };
 
 window.GetScreenCoordFromWorldCoord = function (worldX, worldY, worldZ) {
-	return _in("0xF9904D11F1ACBEC3", _fv(worldX), _fv(worldY), _fv(worldZ), _f, _f, _r);
+	return _in("0x34E82F05DF2974F5", _fv(worldX), _fv(worldY), _fv(worldZ), _f, _f, _r);
 };
 
 window.GetScreenCoordFromWorldCoord = function (worldX, worldY, worldZ) {
-	return _in("0x34E82F05DF2974F5", _fv(worldX), _fv(worldY), _fv(worldZ), _f, _f, _r);
+	return _in("0xF9904D11F1ACBEC3", _fv(worldX), _fv(worldY), _fv(worldZ), _f, _f, _r);
 };
 
 window.GetScreenEffectIsActive = function (effectName) {
@@ -4377,8 +4377,8 @@ window.GetVehicleHandbrake = function (vehicle) {
 /**
  * Returns the effective handling data of a vehicle as a floating-point value.
  * Example: `local fSteeringLock = GetVehicleHandlingFloat(vehicle, 'CHandlingData', 'fSteeringLock')`
- * @param fieldName The field name to get. These match the keys in `handling.meta`.
  * @param class The handling class to get. Only "CHandlingData" is supported at this time.
+ * @param fieldName The field name to get. These match the keys in `handling.meta`.
  * @param vehicle The vehicle to obtain data for.
  * @return A floating-point value.
  */
@@ -4389,8 +4389,8 @@ window.GetVehicleHandlingFloat = function (vehicle, _class, fieldName) {
 /**
  * Returns the effective handling data of a vehicle as an integer value.
  * Example: `local modelFlags = GetVehicleHandlingInt(vehicle, 'CHandlingData', 'strModelFlags')`
- * @param fieldName The field name to get. These match the keys in `handling.meta`.
  * @param class The handling class to get. Only "CHandlingData" is supported at this time.
+ * @param fieldName The field name to get. These match the keys in `handling.meta`.
  * @param vehicle The vehicle to obtain data for.
  * @return An integer.
  */
@@ -4401,8 +4401,8 @@ window.GetVehicleHandlingInt = function (vehicle, _class, fieldName) {
 /**
  * Returns the effective handling data of a vehicle as a vector value.
  * Example: `local inertiaMultiplier = GetVehicleHandlingVector(vehicle, 'CHandlingData', 'vecInertiaMultiplier')`
- * @param fieldName The field name to get. These match the keys in `handling.meta`.
  * @param class The handling class to get. Only "CHandlingData" is supported at this time.
+ * @param fieldName The field name to get. These match the keys in `handling.meta`.
  * @param vehicle The vehicle to obtain data for.
  * @return An integer.
  */
@@ -19617,9 +19617,9 @@ window.SetGroupSeparationRange = function (groupHandle, separationRange) {
 /**
  * Sets a global handling override for a specific vehicle class. The name is supposed to match the `handlingName` field from handling.meta.
  * Example: `SetHandlingField('AIRTUG', 'CHandlingData', 'fSteeringLock', 360.0)`
- * @param vehicle The vehicle class to set data for.
- * @param fieldName The field name to set. These match the keys in `handling.meta`.
  * @param class The handling class to set. Only "CHandlingData" is supported at this time.
+ * @param fieldName The field name to set. These match the keys in `handling.meta`.
+ * @param vehicle The vehicle class to set data for.
  * @param value The value to set.
  */
 window.SetHandlingField = function (vehicle, _class, fieldName, value) {
@@ -19629,9 +19629,9 @@ window.SetHandlingField = function (vehicle, _class, fieldName, value) {
 /**
  * Sets a global handling override for a specific vehicle class. The name is supposed to match the `handlingName` field from handling.meta.
  * Example: `SetHandlingFloat('AIRTUG', 'CHandlingData', 'fSteeringLock', 360.0)`
- * @param vehicle The vehicle class to set data for.
- * @param fieldName The field name to set. These match the keys in `handling.meta`.
  * @param class The handling class to set. Only "CHandlingData" is supported at this time.
+ * @param fieldName The field name to set. These match the keys in `handling.meta`.
+ * @param vehicle The vehicle class to set data for.
  * @param value The floating-point value to set.
  */
 window.SetHandlingFloat = function (vehicle, _class, fieldName, value) {
@@ -19640,9 +19640,9 @@ window.SetHandlingFloat = function (vehicle, _class, fieldName, value) {
 
 /**
  * Sets a global handling override for a specific vehicle class. The name is supposed to match the `handlingName` field from handling.meta.
- * @param vehicle The vehicle class to set data for.
- * @param fieldName The field name to set. These match the keys in `handling.meta`.
  * @param class The handling class to set. Only "CHandlingData" is supported at this time.
+ * @param fieldName The field name to set. These match the keys in `handling.meta`.
+ * @param vehicle The vehicle class to set data for.
  * @param value The integer value to set.
  */
 window.SetHandlingInt = function (vehicle, _class, fieldName, value) {
@@ -19652,9 +19652,9 @@ window.SetHandlingInt = function (vehicle, _class, fieldName, value) {
 /**
  * Sets a global handling override for a specific vehicle class. The name is supposed to match the `handlingName` field from handling.meta.
  * Example: `SetHandlingVector('AIRTUG', 'CHandlingData', 'vecCentreOfMassOffset', vector3(0.0, 0.0, -5.0))`
- * @param vehicle The vehicle class to set data for.
- * @param fieldName The field name to set. These match the keys in `handling.meta`.
  * @param class The handling class to set. Only "CHandlingData" is supported at this time.
+ * @param fieldName The field name to set. These match the keys in `handling.meta`.
+ * @param vehicle The vehicle class to set data for.
  * @param value The Vector3 value to set.
  */
 window.SetHandlingVector = function (vehicle, _class, fieldName, value) {
@@ -19784,12 +19784,12 @@ window.SetMinimapComponent = function (p0, p1, p2) {
 
 /**
  * Sets the display info for a minimap overlay.
- * @param miniMap The minimap overlay ID.
- * @param xScale The X scale for the overlay. This is equivalent to the Flash _xscale property, therefore 100 = 100%.
  * @param y The Y position for the overlay. This is equivalent to a game coordinate Y, except that it's inverted (gfxY = -gameY).
- * @param x The X position for the overlay. This is equivalent to a game coordinate X.
- * @param alpha The alpha value for the overlay. This is equivalent to the Flash _alpha property, therefore 100 = 100%.
+ * @param miniMap The minimap overlay ID.
  * @param yScale The Y scale for the overlay. This is equivalent to the Flash _yscale property.
+ * @param alpha The alpha value for the overlay. This is equivalent to the Flash _alpha property, therefore 100 = 100%.
+ * @param x The X position for the overlay. This is equivalent to a game coordinate X.
+ * @param xScale The X scale for the overlay. This is equivalent to the Flash _xscale property, therefore 100 = 100%.
  */
 window.SetMinimapOverlayDisplay = function (miniMap, x, y, xScale, yScale, alpha) {
 	return _in("0x6a48b3ca", miniMap, _fv(x), _fv(y), _fv(xScale), _fv(yScale), _fv(alpha));
@@ -21699,9 +21699,9 @@ window.SetVehicleHandbrake = function (vehicle, toggle) {
 /**
  * Sets a handling override for a specific vehicle. Certain handling flags can only be set globally using `SET_HANDLING_FIELD`, this might require some experimentation.
  * Example: `SetVehicleHandlingField(vehicle, 'CHandlingData', 'fSteeringLock', 360.0)`
- * @param vehicle The vehicle to set data for.
- * @param fieldName The field name to set. These match the keys in `handling.meta`.
  * @param class The handling class to set. Only "CHandlingData" is supported at this time.
+ * @param fieldName The field name to set. These match the keys in `handling.meta`.
+ * @param vehicle The vehicle to set data for.
  * @param value The value to set.
  */
 window.SetVehicleHandlingField = function (vehicle, _class, fieldName, value) {
@@ -21711,9 +21711,9 @@ window.SetVehicleHandlingField = function (vehicle, _class, fieldName, value) {
 /**
  * Sets a handling override for a specific vehicle. Certain handling flags can only be set globally using `SET_HANDLING_FLOAT`, this might require some experimentation.
  * Example: `SetVehicleHandlingFloat(vehicle, 'CHandlingData', 'fSteeringLock', 360.0)`
- * @param vehicle The vehicle to set data for.
- * @param fieldName The field name to set. These match the keys in `handling.meta`.
  * @param class The handling class to set. Only "CHandlingData" is supported at this time.
+ * @param fieldName The field name to set. These match the keys in `handling.meta`.
+ * @param vehicle The vehicle to set data for.
  * @param value The floating-point value to set.
  */
 window.SetVehicleHandlingFloat = function (vehicle, _class, fieldName, value) {
@@ -21722,9 +21722,9 @@ window.SetVehicleHandlingFloat = function (vehicle, _class, fieldName, value) {
 
 /**
  * Sets a handling override for a specific vehicle. Certain handling flags can only be set globally using `SET_HANDLING_INT`, this might require some experimentation.
- * @param vehicle The vehicle to set data for.
- * @param fieldName The field name to set. These match the keys in `handling.meta`.
  * @param class The handling class to set. Only "CHandlingData" is supported at this time.
+ * @param fieldName The field name to set. These match the keys in `handling.meta`.
+ * @param vehicle The vehicle to set data for.
  * @param value The integer value to set.
  */
 window.SetVehicleHandlingInt = function (vehicle, _class, fieldName, value) {
@@ -21733,9 +21733,9 @@ window.SetVehicleHandlingInt = function (vehicle, _class, fieldName, value) {
 
 /**
  * Sets a handling override for a specific vehicle. Certain handling flags can only be set globally using `SET_HANDLING_VECTOR`, this might require some experimentation.
- * @param vehicle The vehicle to set data for.
- * @param fieldName The field name to set. These match the keys in `handling.meta`.
  * @param class The handling class to set. Only "CHandlingData" is supported at this time.
+ * @param fieldName The field name to set. These match the keys in `handling.meta`.
+ * @param vehicle The vehicle to set data for.
  * @param value The Vector3 value to set.
  */
 window.SetVehicleHandlingVector = function (vehicle, _class, fieldName, value) {

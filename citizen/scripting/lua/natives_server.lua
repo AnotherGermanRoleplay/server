@@ -38,6 +38,11 @@ function Global.CancelEvent()
 	return _in(0xfa29d35d)
 end
 
+--- thisScriptCheck - can be destroyed if it belongs to the calling script.
+function Global.CreateVehicle(modelHash, x, y, z, heading, isNetwork, thisScriptCheck)
+	return _in(0xdd75460a, _ch(modelHash), x, y, z, heading, isNetwork, thisScriptCheck)
+end
+
 function Global.DeleteFunctionReference(referenceIdentity)
 	return _in(0x1e86f206, _ts(referenceIdentity))
 end
@@ -76,10 +81,19 @@ function Global.GetCurrentResourceName()
 	return _in(0xe5e9ebbb, _r, _s)
 end
 
+function Global.GetEntityCoords(entity)
+	return _in(0x1647f1cb, entity, _r, _rv)
+end
+
 --- Gets the current game timer in milliseconds.
 -- @return The game time.
 function Global.GetGameTimer()
 	return _in(0xa4ea0691, _r, _rl)
+end
+
+--- This native converts the passed string to a hash.
+function Global.GetHashKey(model)
+	return _in(0x98eff6f1, _ts(model), _r, _ri)
 end
 
 function Global.GetHostId()
@@ -104,8 +118,8 @@ end
 
 --- Gets the amount of metadata values with the specified key existing in the specified resource's manifest.
 -- See also: [Resource manifest](https://wiki.fivem.net/wiki/Resource_manifest)
--- @param resourceName The resource name.
 -- @param metadataKey The key to look up in the resource manifest.
+-- @param resourceName The resource name.
 function Global.GetNumResourceMetadata(resourceName, metadataKey)
 	return _in(0x776e864, _ts(resourceName), _ts(metadataKey), _r, _ri)
 end
@@ -142,6 +156,10 @@ function Global.GetPlayerName(playerSrc)
 	return _in(0x406b4b20, _ts(playerSrc), _r, _s)
 end
 
+function Global.GetPlayerPed(playerSrc)
+	return _in(0x6e31e993, _ts(playerSrc), _r, _ri)
+end
+
 function Global.GetPlayerPing(playerSrc)
 	return _in(0xff1290d4, _ts(playerSrc), _r, _ri)
 end
@@ -169,9 +187,9 @@ end
 
 --- Gets the metadata value at a specified key/index from a resource's manifest.
 -- See also: [Resource manifest](https://wiki.fivem.net/wiki/Resource_manifest)
+-- @param index The value index, in a range from [0..GET_NUM_RESOURCE_METDATA-1].
 -- @param resourceName The resource name.
 -- @param metadataKey The key in the resource manifest.
--- @param index The value index, in a range from [0..GET_NUM_RESOURCE_METDATA-1].
 function Global.GetResourceMetadata(resourceName, metadataKey, index)
 	return _in(0x964bab1d, _ts(resourceName), _ts(metadataKey), index, _r, _s)
 end
@@ -197,8 +215,8 @@ end
 --- Reads the contents of a text file in a specified resource.
 -- If executed on the client, this file has to be included in `files` in the resource manifest.
 -- Example: `local data = LoadResourceFile("devtools", "data.json")`
--- @param resourceName The resource name.
 -- @param fileName The file in the resource.
+-- @param resourceName The resource name.
 -- @return The file contents
 function Global.LoadResourceFile(resourceName, fileName)
 	return _in(0x76a9ee1f, _ts(resourceName), _ts(fileName), _r, _s)
@@ -214,10 +232,10 @@ end
 
 --- Writes the specified data to a file in the specified resource.
 -- Using a length of `-1` will automatically detect the length assuming the data is a C string.
--- @param resourceName The name of the resource.
--- @param dataLength The length of the written data.
 -- @param data The data to write to the file.
+-- @param resourceName The name of the resource.
 -- @param fileName The name of the file.
+-- @param dataLength The length of the written data.
 -- @return A value indicating if the write succeeded.
 function Global.SaveResourceFile(resourceName, fileName, data, dataLength)
 	return _in(0xa09e7e7b, _ts(resourceName), _ts(fileName), _ts(data), dataLength, _r)
@@ -225,6 +243,13 @@ end
 
 function Global.SetConvar(varName, value)
 	return _in(0x341b16d2, _ts(varName), _ts(value))
+end
+
+--- p7 is always 1 in the scripts. Set to 1, an area around the destination coords for the moved entity is cleared from other entities.
+-- Often ends with 1, 0, 0, 1); in the scripts. It works.
+-- Axis - Invert Axis Flags
+function Global.SetEntityCoords(entity, xPos, yPos, zPos, xAxis, yAxis, zAxis, clearArea)
+	return _in(0xdf70b41b, entity, xPos, yPos, zPos, xAxis, yAxis, zAxis, clearArea)
 end
 
 function Global.SetGameType(gametypeName)
@@ -237,6 +262,34 @@ end
 
 function Global.SetMapName(mapName)
 	return _in(0xb7ba82dc, _ts(mapName))
+end
+
+--- Ped: The ped to warp.
+-- vehicle: The vehicle to warp the ped into.
+-- Seat_Index: [-1 is driver seat, -2 first free passenger seat]
+-- Moreinfo of Seat Index
+-- DriverSeat = -1
+-- Passenger = 0
+-- Left Rear = 1
+-- RightRear = 2
+function Global.SetPedIntoVehicle(ped, vehicle, seatIndex)
+	return _in(0x7500c79, ped, vehicle, seatIndex)
+end
+
+--- Call SET_PLAYER_WANTED_LEVEL_NOW for immediate effect
+-- wantedLevel is an integer value representing 0 to 5 stars even though the game supports the 6th wanted level but no police will appear since no definitions are present for it in the game files
+-- disableNoMission-  Disables When Off Mission- appears to always be false
+function Global.SetPlayerWantedLevel(player, wantedLevel, disableNoMission)
+	return _in(0xb7a0914b, player, wantedLevel, disableNoMission)
+end
+
+--- colorPrimary &amp; colorSecondary are the paint index for the vehicle.
+-- For a list of valid paint indexes, view: pastebin.com/pwHci0xK
+-- -------------------------------------------------------------------------
+-- Use this to get the number of color indices: pastebin.com/RQEeqTSM
+-- Note: minimum color index is 0, maximum color index is (numColorIndices - 1)
+function Global.SetVehicleColours(vehicle, colorPrimary, colorSecondary)
+	return _in(0x57f24253, vehicle, colorPrimary, colorSecondary)
 end
 
 function Global.StartResource(resourceName)

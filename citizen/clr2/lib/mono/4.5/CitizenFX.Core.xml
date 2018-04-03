@@ -6342,6 +6342,11 @@
             
             </summary>
         </member>
+        <member name="F:CitizenFX.Core.Native.Hash.CREATE_VEHICLE">
+            <summary>
+            thisScriptCheck - can be destroyed if it belongs to the calling script.
+            </summary>
+        </member>
         <member name="F:CitizenFX.Core.Native.Hash.GET_CURRENT_RESOURCE_NAME">
             <summary>
             Returns the name of the currently executing resource.
@@ -6351,6 +6356,11 @@
         <member name="F:CitizenFX.Core.Native.Hash.GET_GAME_TIMER">
             <summary>
             Gets the current game timer in milliseconds.
+            </summary>
+        </member>
+        <member name="F:CitizenFX.Core.Native.Hash.GET_HASH_KEY">
+            <summary>
+            This native converts the passed string to a hash.
             </summary>
         </member>
         <member name="F:CitizenFX.Core.Native.Hash.GET_NUM_RESOURCE_METADATA">
@@ -6408,6 +6418,47 @@
             
             </summary>
         </member>
+        <member name="F:CitizenFX.Core.Native.Hash.SET_ENTITY_COORDS">
+            <summary>
+            p7 is always 1 in the scripts. Set to 1, an area around the destination coords for the moved entity is cleared from other entities. 
+            
+            		Often ends with 1, 0, 0, 1); in the scripts. It works. 
+            
+            		Axis - Invert Axis Flags
+            </summary>
+        </member>
+        <member name="F:CitizenFX.Core.Native.Hash.SET_PED_INTO_VEHICLE">
+            <summary>
+            Ped: The ped to warp.
+            		vehicle: The vehicle to warp the ped into.
+            		Seat_Index: [-1 is driver seat, -2 first free passenger seat]
+            
+            		Moreinfo of Seat Index
+            		DriverSeat = -1
+            		Passenger = 0
+            		Left Rear = 1
+            		RightRear = 2
+            </summary>
+        </member>
+        <member name="F:CitizenFX.Core.Native.Hash.SET_PLAYER_WANTED_LEVEL">
+            <summary>
+            Call SET_PLAYER_WANTED_LEVEL_NOW for immediate effect
+            
+            		wantedLevel is an integer value representing 0 to 5 stars even though the game supports the 6th wanted level but no police will appear since no definitions are present for it in the game files
+            
+            		disableNoMission-  Disables When Off Mission- appears to always be false
+            
+            </summary>
+        </member>
+        <member name="F:CitizenFX.Core.Native.Hash.SET_VEHICLE_COLOURS">
+            <summary>
+            colorPrimary &amp; colorSecondary are the paint index for the vehicle.
+            		For a list of valid paint indexes, view: pastebin.com/pwHci0xK
+            		-------------------------------------------------------------------------
+            		Use this to get the number of color indices: pastebin.com/RQEeqTSM
+            		Note: minimum color index is 0, maximum color index is (numColorIndices - 1)
+            </summary>
+        </member>
         <member name="F:CitizenFX.Core.Native.Hash.TRIGGER_CLIENT_EVENT_INTERNAL">
             <summary>
             The backing function for TriggerClientEvent.
@@ -6431,6 +6482,11 @@
             Cancels the currently executing event. See https://wiki.fivem.net/wiki/CancelEvent
             </summary>
         </member>
+        <member name="M:CitizenFX.Core.Native.API.CreateVehicle(System.UInt32,System.Single,System.Single,System.Single,System.Single,System.Boolean,System.Boolean)">
+            <summary>
+            thisScriptCheck - can be destroyed if it belongs to the calling script.
+            </summary>
+        </member>
         <member name="M:CitizenFX.Core.Native.API.GetCurrentResourceName">
             <summary>
             Returns the name of the currently executing resource.
@@ -6442,6 +6498,11 @@
             Gets the current game timer in milliseconds.
             </summary>
             <returns>The game time.</returns>
+        </member>
+        <member name="M:CitizenFX.Core.Native.API.GetHashKey(System.String)">
+            <summary>
+            This native converts the passed string to a hash.
+            </summary>
         </member>
         <member name="M:CitizenFX.Core.Native.API.GetNumResourceMetadata(System.String,System.String)">
             <summary>
@@ -6474,8 +6535,8 @@
             See also: [Resource manifest](https://wiki.fivem.net/wiki/Resource_manifest)
             </summary>
             <param name="metadataKey">The key in the resource manifest.</param>
-            <param name="resourceName">The resource name.</param>
             <param name="index">The value index, in a range from [0..GET_NUM_RESOURCE_METDATA-1].</param>
+            <param name="resourceName">The resource name.</param>
         </member>
         <member name="M:CitizenFX.Core.Native.API.IsDuplicityVersion">
             <summary>
@@ -6498,11 +6559,46 @@
             Writes the specified data to a file in the specified resource.
             Using a length of `-1` will automatically detect the length assuming the data is a C string.
             </summary>
-            <param name="dataLength">The length of the written data.</param>
+            <param name="data">The data to write to the file.</param>
             <param name="fileName">The name of the file.</param>
             <param name="resourceName">The name of the resource.</param>
-            <param name="data">The data to write to the file.</param>
+            <param name="dataLength">The length of the written data.</param>
             <returns>A value indicating if the write succeeded.</returns>
+        </member>
+        <member name="M:CitizenFX.Core.Native.API.SetEntityCoords(System.Int32,System.Single,System.Single,System.Single,System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            p7 is always 1 in the scripts. Set to 1, an area around the destination coords for the moved entity is cleared from other entities.
+            Often ends with 1, 0, 0, 1); in the scripts. It works.
+            Axis - Invert Axis Flags
+            </summary>
+        </member>
+        <member name="M:CitizenFX.Core.Native.API.SetPedIntoVehicle(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Ped: The ped to warp.
+            vehicle: The vehicle to warp the ped into.
+            Seat_Index: [-1 is driver seat, -2 first free passenger seat]
+            Moreinfo of Seat Index
+            DriverSeat = -1
+            Passenger = 0
+            Left Rear = 1
+            RightRear = 2
+            </summary>
+        </member>
+        <member name="M:CitizenFX.Core.Native.API.SetPlayerWantedLevel(System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Call SET_PLAYER_WANTED_LEVEL_NOW for immediate effect
+            wantedLevel is an integer value representing 0 to 5 stars even though the game supports the 6th wanted level but no police will appear since no definitions are present for it in the game files
+            disableNoMission-  Disables When Off Mission- appears to always be false
+            </summary>
+        </member>
+        <member name="M:CitizenFX.Core.Native.API.SetVehicleColours(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            colorPrimary &amp; colorSecondary are the paint index for the vehicle.
+            For a list of valid paint indexes, view: pastebin.com/pwHci0xK
+            -------------------------------------------------------------------------
+            Use this to get the number of color indices: pastebin.com/RQEeqTSM
+            Note: minimum color index is 0, maximum color index is (numColorIndices - 1)
+            </summary>
         </member>
         <member name="M:CitizenFX.Core.Native.API.TriggerClientEventInternal(System.String,System.String,System.String,System.Int32)">
             <summary>

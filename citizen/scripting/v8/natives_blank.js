@@ -53,8 +53,8 @@ window.AddTextEntryByHash = function (entryKey, entryText) {
 
 /**
  * This is similar to the PushScaleformMovieFunction natives, except it calls in the `TIMELINE` of a minimap overlay.
- * @param fnName A function in the overlay's TIMELINE.
  * @param miniMap The minimap overlay ID.
+ * @param fnName A function in the overlay's TIMELINE.
  */
 window.CallMinimapScaleformFunction = function (miniMap, fnName) {
 	return _in("0x4c89c0ed", miniMap, _ts(fnName), _r);
@@ -278,9 +278,9 @@ window.GetResourceKvpString = function (key) {
 /**
  * Gets the metadata value at a specified key/index from a resource's manifest.
  * See also: [Resource manifest](https://wiki.fivem.net/wiki/Resource_manifest)
+ * @param index The value index, in a range from [0..GET_NUM_RESOURCE_METDATA-1].
  * @param metadataKey The key in the resource manifest.
  * @param resourceName The resource name.
- * @param index The value index, in a range from [0..GET_NUM_RESOURCE_METDATA-1].
  */
 window.GetResourceMetadata = function (resourceName, metadataKey, index) {
 	return _in("0x964bab1d", _ts(resourceName), _ts(metadataKey), index, _r, _s);
@@ -2768,11 +2768,11 @@ window.SetManualShutdownLoadingScreenNui = function (manualShutdown) {
 
 /**
  * Sets the display info for a minimap overlay.
- * @param yScale The Y scale for the overlay. This is equivalent to the Flash _yscale property.
- * @param alpha The alpha value for the overlay. This is equivalent to the Flash _alpha property, therefore 100 = 100%.
+ * @param y The Y position for the overlay. This is equivalent to a game coordinate Y, except that it's inverted (gfxY = -gameY).
  * @param xScale The X scale for the overlay. This is equivalent to the Flash _xscale property, therefore 100 = 100%.
  * @param miniMap The minimap overlay ID.
- * @param y The Y position for the overlay. This is equivalent to a game coordinate Y, except that it's inverted (gfxY = -gameY).
+ * @param alpha The alpha value for the overlay. This is equivalent to the Flash _alpha property, therefore 100 = 100%.
+ * @param yScale The Y scale for the overlay. This is equivalent to the Flash _yscale property.
  * @param x The X position for the overlay. This is equivalent to a game coordinate X.
  */
 window.SetMinimapOverlayDisplay = function (miniMap, x, y, xScale, yScale, alpha) {

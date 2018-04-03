@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- ELS VEHICLE CONFIGURATION FILE -->
-<vcfroot Description="Sample VCF" Author="Luxart" >
+<vcfroot Description="TopMods_T5_NEF_VCF" Author="Kompetenzz" >
 	<!-- INTERFACE -->
 	<INTERFACE>
-		<LstgActivationType>manual</LstgActivationType>
+		<LstgActivationType>euro</LstgActivationType>
 		<DefaultSirenMode>standby</DefaultSirenMode>
 		<InfoPanelHeaderColor>grey</InfoPanelHeaderColor>
 		<InfoPanelButtonLightColor>orange</InfoPanelButtonLightColor>
 	</INTERFACE>
 	<!-- EXTRAS OVERRIDE AND ENV LIGHTING-->
 	<EOVERRIDE>	
-		<Extra01 IsElsControlled="true" AllowEnvLight="true" Color="red" OffsetX="-0.70" OffsetY="-0.20" OffsetZ="0.50" />
-		<Extra02 IsElsControlled="true" AllowEnvLight="true" Color="red" OffsetX="-0.25" OffsetY="-0.20" OffsetZ="0.50" />
+		<Extra01 IsElsControlled="true" AllowEnvLight="true" Color="blue" OffsetX="-0.70" OffsetY="-0.20" OffsetZ="0.50" />
+		<Extra02 IsElsControlled="true" AllowEnvLight="true" Color="blue" OffsetX="-0.25" OffsetY="-0.20" OffsetZ="0.50" />
 		<Extra03 IsElsControlled="true" AllowEnvLight="true" Color="blue" OffsetX="0.25" OffsetY="-0.20" OffsetZ="0.50" />
 		<Extra04 IsElsControlled="true" AllowEnvLight="true" Color="blue" OffsetX="0.70" OffsetY="-0.20" OffsetZ="0.50" />
-		<Extra05 IsElsControlled="true" AllowEnvLight="true" Color="red" OffsetX="-0.70" OffsetY="-0.20" OffsetZ="0.50" />
+		<Extra05 IsElsControlled="true" AllowEnvLight="true" Color="amber" OffsetX="-0.70" OffsetY="-0.20" OffsetZ="0.50" />
 		<Extra06 IsElsControlled="true" AllowEnvLight="true" Color="blue" OffsetX="0.70" OffsetY="-0.20" OffsetZ="0.50" />
 		<Extra07 IsElsControlled="true" AllowEnvLight="true" Color="amber" OffsetX="-0.40" OffsetY="-0.80" OffsetZ="0.40" />
 		<Extra08 IsElsControlled="true" AllowEnvLight="true" Color="amber" OffsetX="0.00" OffsetY="-0.80" OffsetZ="0.40" />
@@ -30,7 +30,7 @@
 		<UseSteadyBurnLights>false</UseSteadyBurnLights>
 		<DfltSirenLtsActivateAtLstg>3</DfltSirenLtsActivateAtLstg>
 		<Takedowns AllowUse="true" Mirrored="true" />
-		<SceneLights AllowUse="true" IlluminateSidesOnly="true" />	
+		<SceneLights AllowUse="true" IlluminateSidesOnly="false" />	
 	</MISC>
 	<!-- CRUISE -->
 	<CRUISE>
@@ -39,7 +39,7 @@
 	</CRUISE>
 	<!-- AUX CORONAS -->
 	<ACORONAS>
-		<Headlights DfltPattern="0" ColorL="white" ColorR="white" />
+		<Headlights DfltPattern="2" ColorL="white" ColorR="white" />
 		<TailLights DfltPattern="0" ColorL="red" ColorR="red" />
 		<IndicatorsF DfltPattern="0" ColorL="white" ColorR="white" />
 		<IndicatorsB DfltPattern="0" ColorL="red" ColorR="red" />
@@ -47,7 +47,7 @@
 	</ACORONAS>
 	<!-- SOUNDS -->
 	<SOUNDS>
-		<MainHorn InterruptsSiren="true" AudioString="SIRENS_AIRHORN" />
+		<MainHorn InterruptsSiren="false" AudioString="SIRENS_AIRHORN" />
 		<ManTone1 AllowUse="true" AudioString="VEHICLES_HORNS_SIREN_1" />
 		<ManTone2 AllowUse="true" AudioString="VEHICLES_HORNS_SIREN_2" />
 		<SrnTone1 AllowUse="true" AudioString="VEHICLES_HORNS_SIREN_1" />
@@ -60,7 +60,7 @@
 	<!-- WRNL -->
 	<WRNL LightingFormat="leds" >
 		<PresetPatterns>
-			<Lstg3 Enabled="true" Pattern="3" />
+			<Lstg3 Enabled="true" Pattern="12" />
 		</PresetPatterns>
 		<ForcedPatterns>
 			<MainHorn Enabled="false" Pattern="0" />
@@ -78,10 +78,10 @@
 		</ScanPatternCustomPool>
 	</WRNL>
 	<!-- PRML -->
-	<PRML LightingFormat="leds" ExtrasActiveAtLstg2="1and4" >
+	<PRML LightingFormat="leds" ExtrasActiveAtLstg2="1and2and4" >
 		<PresetPatterns>
-			<Lstg2 Enabled="true" Pattern="67" />
-			<Lstg3 Enabled="true" Pattern="67" />
+			<Lstg2 Enabled="true" Pattern="91" />
+			<Lstg3 Enabled="true" Pattern="91" />
 		</PresetPatterns>
 		<ForcedPatterns>
 			<MainHorn Enabled="false" Pattern="0" />
@@ -101,9 +101,9 @@
 	<!-- SECL -->
 	<SECL LightingFormat="leds" DisableAtLstg3="false" >
 		<PresetPatterns>
-			<Lstg1 Enabled="false" Pattern="0" />
-			<Lstg2 Enabled="false" Pattern="0" />
-			<Lstg3 Enabled="false" Pattern="0" />
+			<Lstg1 Enabled="false" Pattern="138" />
+			<Lstg2 Enabled="false" Pattern="138" />
+			<Lstg3 Enabled="true" Pattern="138" />
 		</PresetPatterns>
 		<ForcedPatterns>
 			<MainHorn Enabled="false" Pattern="0" />

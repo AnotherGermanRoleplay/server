@@ -1,6 +1,5 @@
 vcf_files = {
-	"police3.xml",
-	"ambulance.xml",
+	"AMBULANCE.xml",
 	"lspd.xml",
 	"lspd2.xml",
 	"lspd3.xml",
@@ -17,11 +16,14 @@ vcf_files = {
 	"SHERIFF.xml",
 	"SHERIFF2.xml",
 	"police4.xml",
+	"police5.xml",
 	"police6.xml",
 	"police8.xml",
+	"POLICEB.xml",
 	"PRANGER.xml",
 	"PBUS.xml",
 	"POLICE7.xml",
+	"POLICET.xml",
 	"FBI2.xml"
 }
 
@@ -39,7 +41,6 @@ pattern_files = {
 }
 
 modelsWithTrafficAdvisor = {
-	"police3",
 	"ambulance",
 	"lspd",
 	"lspd2",
@@ -56,12 +57,14 @@ modelsWithTrafficAdvisor = {
 	"police6",
 	"police4",
 	"police8",
+	"police5",
 	"POLICE",
 	"SHERIFF",
 	"SHERIFF2",
 	"PRANGER",
 	"PBUS",
 	"POLICE7",
+	"POLICET",
 	"fbi2"
 }
 
@@ -72,9 +75,9 @@ modelsWithFireSiren =
 
 
 modelsWithAmbWarnSiren = {
-	"police3",
 	"police4",
 	"PRANGER",
+	"police5",
 	"PBUS",
 	"ambulance"
 }
@@ -82,7 +85,6 @@ modelsWithAmbWarnSiren = {
 stagethreewithsiren = false
 playButtonPressSounds = true
 vehicleStageThreeAdvisor = {
-	"police3",
 	"ambulance",
 	"lspd",
 	"lspd2",
@@ -95,16 +97,19 @@ vehicleStageThreeAdvisor = {
 	"lspd10",
 	"lspd11",
 	"lspd12",
+	"police5",
 	"police2",
 	"police4",
 	"POLICE7",
 	"police8",
 	"POLICE",
+	"POLICEB",
 	"police6",
 	"SHERIFF",
 	"SHERIFF2",
 	"PRANGER",
 	"PBUS",
+	"POLICET",
 	"fbi2"
 }
 

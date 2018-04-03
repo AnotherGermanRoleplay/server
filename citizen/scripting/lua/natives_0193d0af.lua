@@ -685,8 +685,8 @@ function Global.CalculateTravelDistanceBetweenPoints(x1, y1, z1, x2, y2, z2)
 end
 
 --- This is similar to the PushScaleformMovieFunction natives, except it calls in the `TIMELINE` of a minimap overlay.
--- @param fnName A function in the overlay's TIMELINE.
 -- @param miniMap The minimap overlay ID.
+-- @param fnName A function in the overlay's TIMELINE.
 function Global.CallMinimapScaleformFunction(miniMap, fnName)
 	return _in(0x4c89c0ed, miniMap, _ts(fnName), _r)
 end
@@ -2884,11 +2884,11 @@ function Global.GetGameplayCamRelativePitch()
 end
 
 function Global.GetGameplayCamRot(rotationOrder)
-	return _in(0x837765A25378F0BB, rotationOrder, _r, _rv)
+	return _in(0x5B4E4C817FCC2DFB, rotationOrder, _r, _rv)
 end
 
 function Global.GetGameplayCamRot(rotationOrder)
-	return _in(0x5B4E4C817FCC2DFB, rotationOrder, _r, _rv)
+	return _in(0x837765A25378F0BB, rotationOrder, _r, _rv)
 end
 
 function Global.GetGameplayCamZoom()
@@ -3804,11 +3804,11 @@ function Global.GetPositionOfVehicleRecordingAtTime(p0, p1, p2)
 end
 
 function Global.GetPosixTime()
-	return _in(0xDA488F299A5B164E, _i, _i, _i, _i, _i, _i)
+	return _in(0x9A73240B49945C76, _r, _ri)
 end
 
 function Global.GetPosixTime()
-	return _in(0x9A73240B49945C76, _r, _ri)
+	return _in(0xDA488F299A5B164E, _i, _i, _i, _i, _i, _i)
 end
 
 function Global.GetPrevWeatherTypeHashName()
@@ -3922,9 +3922,9 @@ end
 
 --- Gets the metadata value at a specified key/index from a resource's manifest.
 -- See also: [Resource manifest](https://wiki.fivem.net/wiki/Resource_manifest)
--- @param resourceName The resource name.
--- @param index The value index, in a range from [0..GET_NUM_RESOURCE_METDATA-1].
 -- @param metadataKey The key in the resource manifest.
+-- @param index The value index, in a range from [0..GET_NUM_RESOURCE_METDATA-1].
+-- @param resourceName The resource name.
 function Global.GetResourceMetadata(resourceName, metadataKey, index)
 	return _in(0x964bab1d, _ts(resourceName), _ts(metadataKey), index, _r, _s)
 end
@@ -3974,11 +3974,11 @@ function Global.GetSafeZoneSize()
 end
 
 function Global.GetScreenCoordFromWorldCoord(worldX, worldY, worldZ)
-	return _in(0xF9904D11F1ACBEC3, worldX, worldY, worldZ, _f, _f, _r)
+	return _in(0x34E82F05DF2974F5, worldX, worldY, worldZ, _f, _f, _r)
 end
 
 function Global.GetScreenCoordFromWorldCoord(worldX, worldY, worldZ)
-	return _in(0x34E82F05DF2974F5, worldX, worldY, worldZ, _f, _f, _r)
+	return _in(0xF9904D11F1ACBEC3, worldX, worldY, worldZ, _f, _f, _r)
 end
 
 function Global.GetScreenEffectIsActive(effectName)
@@ -4351,9 +4351,9 @@ end
 
 --- Returns the effective handling data of a vehicle as a floating-point value.
 -- Example: `local fSteeringLock = GetVehicleHandlingFloat(vehicle, 'CHandlingData', 'fSteeringLock')`
--- @param vehicle The vehicle to obtain data for.
 -- @param class The handling class to get. Only "CHandlingData" is supported at this time.
 -- @param fieldName The field name to get. These match the keys in `handling.meta`.
+-- @param vehicle The vehicle to obtain data for.
 -- @return A floating-point value.
 function Global.GetVehicleHandlingFloat(vehicle, class, fieldName)
 	return _in(0x642fc12f, vehicle, _ts(class), _ts(fieldName), _r, _rf)
@@ -4361,9 +4361,9 @@ end
 
 --- Returns the effective handling data of a vehicle as an integer value.
 -- Example: `local modelFlags = GetVehicleHandlingInt(vehicle, 'CHandlingData', 'strModelFlags')`
--- @param vehicle The vehicle to obtain data for.
 -- @param class The handling class to get. Only "CHandlingData" is supported at this time.
 -- @param fieldName The field name to get. These match the keys in `handling.meta`.
+-- @param vehicle The vehicle to obtain data for.
 -- @return An integer.
 function Global.GetVehicleHandlingInt(vehicle, class, fieldName)
 	return _in(0x27396c75, vehicle, _ts(class), _ts(fieldName), _r, _ri)
@@ -4371,9 +4371,9 @@ end
 
 --- Returns the effective handling data of a vehicle as a vector value.
 -- Example: `local inertiaMultiplier = GetVehicleHandlingVector(vehicle, 'CHandlingData', 'vecInertiaMultiplier')`
--- @param vehicle The vehicle to obtain data for.
 -- @param class The handling class to get. Only "CHandlingData" is supported at this time.
 -- @param fieldName The field name to get. These match the keys in `handling.meta`.
+-- @param vehicle The vehicle to obtain data for.
 -- @return An integer.
 function Global.GetVehicleHandlingVector(vehicle, class, fieldName)
 	return _in(0xfb341304, vehicle, _ts(class), _ts(fieldName), _r, _rv)
@@ -19567,39 +19567,39 @@ end
 
 --- Sets a global handling override for a specific vehicle class. The name is supposed to match the `handlingName` field from handling.meta.
 -- Example: `SetHandlingField('AIRTUG', 'CHandlingData', 'fSteeringLock', 360.0)`
--- @param fieldName The field name to set. These match the keys in `handling.meta`.
--- @param vehicle The vehicle class to set data for.
 -- @param class The handling class to set. Only "CHandlingData" is supported at this time.
 -- @param value The value to set.
+-- @param fieldName The field name to set. These match the keys in `handling.meta`.
+-- @param vehicle The vehicle class to set data for.
 function Global.SetHandlingField(vehicle, class, fieldName, value)
 	return _in(0xfe8064e3, _ts(vehicle), _ts(class), _ts(fieldName), value)
 end
 
 --- Sets a global handling override for a specific vehicle class. The name is supposed to match the `handlingName` field from handling.meta.
 -- Example: `SetHandlingFloat('AIRTUG', 'CHandlingData', 'fSteeringLock', 360.0)`
--- @param fieldName The field name to set. These match the keys in `handling.meta`.
--- @param vehicle The vehicle class to set data for.
 -- @param class The handling class to set. Only "CHandlingData" is supported at this time.
 -- @param value The floating-point value to set.
+-- @param fieldName The field name to set. These match the keys in `handling.meta`.
+-- @param vehicle The vehicle class to set data for.
 function Global.SetHandlingFloat(vehicle, class, fieldName, value)
 	return _in(0x90dd01c, _ts(vehicle), _ts(class), _ts(fieldName), value)
 end
 
 --- Sets a global handling override for a specific vehicle class. The name is supposed to match the `handlingName` field from handling.meta.
--- @param fieldName The field name to set. These match the keys in `handling.meta`.
--- @param vehicle The vehicle class to set data for.
 -- @param class The handling class to set. Only "CHandlingData" is supported at this time.
 -- @param value The integer value to set.
+-- @param fieldName The field name to set. These match the keys in `handling.meta`.
+-- @param vehicle The vehicle class to set data for.
 function Global.SetHandlingInt(vehicle, class, fieldName, value)
 	return _in(0x8ab3f46c, _ts(vehicle), _ts(class), _ts(fieldName), value)
 end
 
 --- Sets a global handling override for a specific vehicle class. The name is supposed to match the `handlingName` field from handling.meta.
 -- Example: `SetHandlingVector('AIRTUG', 'CHandlingData', 'vecCentreOfMassOffset', vector3(0.0, 0.0, -5.0))`
--- @param fieldName The field name to set. These match the keys in `handling.meta`.
--- @param vehicle The vehicle class to set data for.
 -- @param class The handling class to set. Only "CHandlingData" is supported at this time.
 -- @param value The Vector3 value to set.
+-- @param fieldName The field name to set. These match the keys in `handling.meta`.
+-- @param vehicle The vehicle class to set data for.
 function Global.SetHandlingVector(vehicle, class, fieldName, value)
 	return _in(0x7f9d543, _ts(vehicle), _ts(class), _ts(fieldName), value)
 end
@@ -19724,12 +19724,12 @@ function Global.SetMinimapComponent(p0, p1, p2)
 end
 
 --- Sets the display info for a minimap overlay.
--- @param yScale The Y scale for the overlay. This is equivalent to the Flash _yscale property.
--- @param xScale The X scale for the overlay. This is equivalent to the Flash _xscale property, therefore 100 = 100%.
+-- @param miniMap The minimap overlay ID.
+-- @param alpha The alpha value for the overlay. This is equivalent to the Flash _alpha property, therefore 100 = 100%.
 -- @param y The Y position for the overlay. This is equivalent to a game coordinate Y, except that it's inverted (gfxY = -gameY).
 -- @param x The X position for the overlay. This is equivalent to a game coordinate X.
--- @param alpha The alpha value for the overlay. This is equivalent to the Flash _alpha property, therefore 100 = 100%.
--- @param miniMap The minimap overlay ID.
+-- @param xScale The X scale for the overlay. This is equivalent to the Flash _xscale property, therefore 100 = 100%.
+-- @param yScale The Y scale for the overlay. This is equivalent to the Flash _yscale property.
 function Global.SetMinimapOverlayDisplay(miniMap, x, y, xScale, yScale, alpha)
 	return _in(0x6a48b3ca, miniMap, x, y, xScale, yScale, alpha)
 end
@@ -21633,38 +21633,38 @@ end
 
 --- Sets a handling override for a specific vehicle. Certain handling flags can only be set globally using `SET_HANDLING_FIELD`, this might require some experimentation.
 -- Example: `SetVehicleHandlingField(vehicle, 'CHandlingData', 'fSteeringLock', 360.0)`
--- @param fieldName The field name to set. These match the keys in `handling.meta`.
--- @param vehicle The vehicle to set data for.
 -- @param class The handling class to set. Only "CHandlingData" is supported at this time.
 -- @param value The value to set.
+-- @param fieldName The field name to set. These match the keys in `handling.meta`.
+-- @param vehicle The vehicle to set data for.
 function Global.SetVehicleHandlingField(vehicle, class, fieldName, value)
 	return _in(0x2ba40795, vehicle, _ts(class), _ts(fieldName), value)
 end
 
 --- Sets a handling override for a specific vehicle. Certain handling flags can only be set globally using `SET_HANDLING_FLOAT`, this might require some experimentation.
 -- Example: `SetVehicleHandlingFloat(vehicle, 'CHandlingData', 'fSteeringLock', 360.0)`
--- @param fieldName The field name to set. These match the keys in `handling.meta`.
--- @param vehicle The vehicle to set data for.
 -- @param class The handling class to set. Only "CHandlingData" is supported at this time.
 -- @param value The floating-point value to set.
+-- @param fieldName The field name to set. These match the keys in `handling.meta`.
+-- @param vehicle The vehicle to set data for.
 function Global.SetVehicleHandlingFloat(vehicle, class, fieldName, value)
 	return _in(0x488c86d2, vehicle, _ts(class), _ts(fieldName), value)
 end
 
 --- Sets a handling override for a specific vehicle. Certain handling flags can only be set globally using `SET_HANDLING_INT`, this might require some experimentation.
--- @param fieldName The field name to set. These match the keys in `handling.meta`.
--- @param vehicle The vehicle to set data for.
 -- @param class The handling class to set. Only "CHandlingData" is supported at this time.
 -- @param value The integer value to set.
+-- @param fieldName The field name to set. These match the keys in `handling.meta`.
+-- @param vehicle The vehicle to set data for.
 function Global.SetVehicleHandlingInt(vehicle, class, fieldName, value)
 	return _in(0xc37f4cf9, vehicle, _ts(class), _ts(fieldName), value)
 end
 
 --- Sets a handling override for a specific vehicle. Certain handling flags can only be set globally using `SET_HANDLING_VECTOR`, this might require some experimentation.
--- @param fieldName The field name to set. These match the keys in `handling.meta`.
--- @param vehicle The vehicle to set data for.
 -- @param class The handling class to set. Only "CHandlingData" is supported at this time.
 -- @param value The Vector3 value to set.
+-- @param fieldName The field name to set. These match the keys in `handling.meta`.
+-- @param vehicle The vehicle to set data for.
 function Global.SetVehicleHandlingVector(vehicle, class, fieldName, value)
 	return _in(0x12497890, vehicle, _ts(class), _ts(fieldName), value)
 end
