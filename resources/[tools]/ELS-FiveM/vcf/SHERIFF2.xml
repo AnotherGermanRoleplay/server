@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- ELS VEHICLE CONFIGURATION FILE -->
-<vcfroot Description="TopModsVCF" Author="Kompetenzz" >
+<vcfroot Description="British VCF" Author="ObsidianGames" >
 	<!-- INTERFACE -->
 	<INTERFACE>
 		<LstgActivationType>euro</LstgActivationType>
@@ -16,9 +16,9 @@
 		<Extra04 IsElsControlled="true" AllowEnvLight="true" Color="blue" OffsetX="0.70" OffsetY="-0.20" OffsetZ="0.50" />
 		<Extra05 IsElsControlled="true" AllowEnvLight="true" Color="blue" OffsetX="-0.70" OffsetY="-0.20" OffsetZ="0.50" />
 		<Extra06 IsElsControlled="true" AllowEnvLight="true" Color="blue" OffsetX="0.70" OffsetY="-0.20" OffsetZ="0.50" />
-		<Extra07 IsElsControlled="false" AllowEnvLight="false" Color="blue" OffsetX="-0.40" OffsetY="-0.80" OffsetZ="0.40" />
-		<Extra08 IsElsControlled="false" AllowEnvLight="false" Color="blue" OffsetX="0.00" OffsetY="-0.80" OffsetZ="0.40" />
-		<Extra09 IsElsControlled="false" AllowEnvLight="false" Color="blue" OffsetX="0.40" OffsetY="-0.80" OffsetZ="0.40" />
+		<Extra07 IsElsControlled="true" AllowEnvLight="true" Color="red" OffsetX="-0.40" OffsetY="-0.80" OffsetZ="0.40" />
+		<Extra08 IsElsControlled="true" AllowEnvLight="true" Color="red" OffsetX="0.00" OffsetY="-0.80" OffsetZ="0.40" />
+		<Extra09 IsElsControlled="true" AllowEnvLight="true" Color="red" OffsetX="0.40" OffsetY="-0.80" OffsetZ="0.40" />
 		<Extra10 IsElsControlled="true" />
 		<Extra11 IsElsControlled="true" />
 		<Extra12 IsElsControlled="true" />
@@ -47,7 +47,7 @@
 	</ACORONAS>
 	<!-- SOUNDS -->
 	<SOUNDS>
-		<MainHorn InterruptsSiren="false" AudioString="SIRENS_AIRHORN" />
+		<MainHorn InterruptsSiren="true" AudioString="SIRENS_AIRHORN" />
 		<ManTone1 AllowUse="true" AudioString="VEHICLES_HORNS_SIREN_1" />
 		<ManTone2 AllowUse="true" AudioString="VEHICLES_HORNS_SIREN_2" />
 		<SrnTone1 AllowUse="true" AudioString="VEHICLES_HORNS_SIREN_1" />
@@ -60,7 +60,7 @@
 	<!-- WRNL -->
 	<WRNL LightingFormat="leds" >
 		<PresetPatterns>
-			<Lstg3 Enabled="true" Pattern="9" />
+			<Lstg3 Enabled="true" Pattern="009" />
 		</PresetPatterns>
 		<ForcedPatterns>
 			<MainHorn Enabled="false" Pattern="0" />
@@ -78,10 +78,10 @@
 		</ScanPatternCustomPool>
 	</WRNL>
 	<!-- PRML -->
-	<PRML LightingFormat="leds" ExtrasActiveAtLstg2="1and4and3" >
+	<PRML LightingFormat="leds" ExtrasActiveAtLstg2="1and4" >
 		<PresetPatterns>
-			<Lstg2 Enabled="true" Pattern="16" />
-			<Lstg3 Enabled="true" Pattern="16" />
+			<Lstg2 Enabled="true" Pattern="002" />
+			<Lstg3 Enabled="true" Pattern="002" />
 		</PresetPatterns>
 		<ForcedPatterns>
 			<MainHorn Enabled="false" Pattern="0" />
@@ -101,9 +101,9 @@
 	<!-- SECL -->
 	<SECL LightingFormat="leds" DisableAtLstg3="true" >
 		<PresetPatterns>
-			<Lstg1 Enabled="true" Pattern="34" />
-			<Lstg2 Enabled="true" Pattern="34" />
-			<Lstg3 Enabled="false" Pattern="34" />
+			<Lstg1 Enabled="true" Pattern="006" />
+			<Lstg2 Enabled="true" Pattern="006" />
+			<Lstg3 Enabled="true" Pattern="006" />
 		</PresetPatterns>
 		<ForcedPatterns>
 			<MainHorn Enabled="false" Pattern="0" />
