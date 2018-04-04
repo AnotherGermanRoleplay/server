@@ -945,53 +945,53 @@ end)
 --===============================================
 -- TODO::Für morgen
 function updateIdentity(steamid, data, callback)
-    getIdentity(steamid, function(data1)
-        MySQL.Async.execute('UPDATE `characters` SET `job` = @job, `job_grade` = @job_grade, `second_job` = @second_job, `loadout` = @loadout, `skin` = @skin, `phone_number` = @phone_number WHERE identifier = @identifier and firstname = @firstname and lastname = @lastname and dateofbirth = @dateofbirth and sex = @sex',
-            {
-                ['@identifier'] = steamid,
-                ['@firstname'] = data1.firstname,
-                ['@lastname'] = data1.lastname,
-                ['@dateofbirth'] = data1.dateofbirth,
-                ['@sex'] = data1.sex,
-                ['@height'] = data1.height,
-                ['@job'] = data1.job,
-                ['@job_grade'] = data1.job_grade,
-                ['@second_job'] = data1.second_job,
-                ['@loadout'] = data1.loadout,
-                ['@skin'] = data1.skin,
-                ['@phone_number'] = data1.phone_number
-            },
-            function(done)
+  local _steamid = steamid
+  getIdentity(_steamid, function(data1)
+    MySQL.Async.execute('UPDATE `characters` SET `job` = @job, `job_grade` = @job_grade, `second_job` = @second_job, `loadout` = @loadout, `skin` = @skin, `phone_number` = @phone_number WHERE identifier = @identifier and firstname = @firstname and lastname = @lastname and dateofbirth = @dateofbirth and sex = @sex',
+      {
+        ['@identifier'] = data1.identifier,
+        ['@firstname'] = data1.firstname,
+        ['@lastname'] = data1.lastname,
+        ['@dateofbirth'] = data1.dateofbirth,
+        ['@sex'] = data1.sex,
+        ['@height'] = data1.height,
+        ['@job'] = data1.job,
+        ['@job_grade'] = data1.job_grade,
+        ['@second_job'] = data1.second_job,
+        ['@loadout'] = data1.loadout,
+        ['@skin'] = data1.skin,
+        ['@phone_number'] = data1.phone_number
+      },
+      function(done)
 
-                MySQL.Async.execute('UPDATE `users` SET `firstname` = @firstname, `lastname` = @lastname, `dateofbirth` = @dateofbirth, `sex` = @sex, `height` = @height, `job` = @job, `job_grade` = @job_grade, `second_job` = @second_job, `loadout` = @loadout, `skin` = @skin, `phone_number` = @phone_number WHERE identifier = @identifier',
-                    {
-                        ['@identifier'] = steamid,
-                        ['@firstname'] = data.firstname,
-                        ['@lastname'] = data.lastname,
-                        ['@dateofbirth'] = data.dateofbirth,
-                        ['@sex'] = data.sex,
-                        ['@height'] = data.height,
-                        ['@job'] = data.job,
-                        ['@job_grade'] = data.job_grade,
-                        ['@second_job'] = data.second_job,
-                        ['@loadout'] = data.loadout,
-                        ['@skin'] = data.skin,
-                        ['@phone_number'] = data.phone_number
-                    },
-                    function(done)
-                        xPlayer = ESX.GetPlayerFromIdentifier(steamid)
-                        xPlayer.setJob(data.job, data.job_grade)
-                        xPlayer.setSecondJob(data.second_job, 0)
-                        TriggerEvent('esx_phone:refresh', steamid)
-                        TriggerClientEvent('updateSkin', xPlayer.source)
-                        if callback then
-                            callback(true)
-                        end
-                        end)
-                    end)
-
-            end)
-    end
+        MySQL.Async.execute('UPDATE `users` SET `firstname` = @firstname, `lastname` = @lastname, `dateofbirth` = @dateofbirth, `sex` = @sex, `height` = @height, `job` = @job, `job_grade` = @job_grade, `second_job` = @second_job, `loadout` = @loadout, `skin` = @skin, `phone_number` = @phone_number WHERE identifier = @identifier',
+          {
+            ['@identifier'] = data.identifier,
+            ['@firstname'] = data.firstname,
+            ['@lastname'] = data.lastname,
+            ['@dateofbirth'] = data.dateofbirth,
+            ['@sex'] = data.sex,
+            ['@height'] = data.height,
+            ['@job'] = data.job,
+            ['@job_grade'] = data.job_grade,
+            ['@second_job'] = data.second_job,
+            ['@loadout'] = data.loadout,
+            ['@skin'] = data.skin,
+            ['@phone_number'] = data.phone_number
+          },
+          function(done)
+            xPlayer = ESX.GetPlayerFromIdentifier(data.identifier)
+            xPlayer.setJob(data.job, data.job_grade)
+            xPlayer.setSecondJob(data.second_job, 0)
+            TriggerEvent('esx_phone:refresh', steamid)
+            TriggerClientEvent('updateSkin', xPlayer.source)
+            if callback then
+              callback(true)
+            end
+          end)
+      end)
+  end)
+end
 
     --===============================================
     --==  Delete The Player's Character            ==

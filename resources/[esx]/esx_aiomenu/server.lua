@@ -963,31 +963,32 @@ function updateIdentity(steamid, data, callback)
             },
             function(done)
 
-                MySQL.Async.execute('UPDATE `users` SET `firstname` = @firstname, `lastname` = @lastname, `dateofbirth` = @dateofbirth, `sex` = @sex, `height` = @height, `job` = @job, `job_grade` = @job_grade, `second_job` = @second_job, `loadout` = @loadout, `skin` = @skin, `phone_number` = @phone_number WHERE identifier = @identifier',
-                    {
-                        ['@identifier'] = data.identifier,
-                        ['@firstname'] = data.firstname,
-                        ['@lastname'] = data.lastname,
-                        ['@dateofbirth'] = data.dateofbirth,
-                        ['@sex'] = data.sex,
-                        ['@height'] = data.height,
-                        ['@job'] = data.job,
-                        ['@job_grade'] = data.job_grade,
-                        ['@second_job'] = data.second_job,
-                        ['@loadout'] = data.loadout,
-                        ['@skin'] = data.skin,
-                        ['@phone_number'] = data.phone_number
-                    },
-                    function(done)
-                        xPlayer = ESX.GetPlayerFromIdentifier(data.identifier)
-                        xPlayer.setJob(data.job, data.job_grade)
-                        xPlayer.setSecondJob(data.second_job, 0)
-                        TriggerEvent('esx_phone:refresh', steamid)
-                        TriggerClientEvent('updateSkin', xPlayer.source)
-                        if callback then
-                            callback(true)
-                        end
-                    end)
+            end)
+
+        MySQL.Async.execute('UPDATE `users` SET `firstname` = @firstname, `lastname` = @lastname, `dateofbirth` = @dateofbirth, `sex` = @sex, `height` = @height, `job` = @job, `job_grade` = @job_grade, `second_job` = @second_job, `loadout` = @loadout, `skin` = @skin, `phone_number` = @phone_number WHERE identifier = @identifier',
+            {
+                ['@identifier'] = data.identifier,
+                ['@firstname'] = data.firstname,
+                ['@lastname'] = data.lastname,
+                ['@dateofbirth'] = data.dateofbirth,
+                ['@sex'] = data.sex,
+                ['@height'] = data.height,
+                ['@job'] = data.job,
+                ['@job_grade'] = data.job_grade,
+                ['@second_job'] = data.second_job,
+                ['@loadout'] = data.loadout,
+                ['@skin'] = data.skin,
+                ['@phone_number'] = data.phone_number
+            },
+            function(done)
+                xPlayer = ESX.GetPlayerFromIdentifier(data.identifier)
+                xPlayer.setJob(data.job, data.job_grade)
+                xPlayer.setSecondJob(data.second_job, 0)
+                TriggerEvent('esx_phone:refresh', steamid)
+                TriggerClientEvent('updateSkin', xPlayer.source)
+                if callback then
+                    callback(true)
+                end
             end)
         end)
     end
