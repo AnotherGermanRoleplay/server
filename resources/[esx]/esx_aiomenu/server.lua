@@ -944,8 +944,10 @@ end)
 --==  Update The Player's Identification       ==
 --===============================================
 function updateIdentity(steamid, data, callback)
+    TriggerEvent('discord_bot:dev_log', "Starte updateIdentity")
     local _steamid = steamid
     getIdentity(_steamid, function(data1)
+        TriggerEvent('discord_bot:dev_log', "geted Identity")
         MySQL.Async.execute('UPDATE `characters` SET `job` = @job, `job_grade` = @job_grade, `second_job` = @second_job, `loadout` = @loadout, `skin` = @skin, `phone_number` = @phone_number WHERE identifier = @identifier and firstname = @firstname and lastname = @lastname and dateofbirth = @dateofbirth and sex = @sex',
             {
                 ['@identifier'] = data1.identifier,
@@ -962,8 +964,10 @@ function updateIdentity(steamid, data, callback)
                 ['@phone_number'] = data1.phone_number
             },
             function(done)
-
+                TriggerEvent('discord_bot:dev_log', "update characters done")
             end)
+
+        end)
 
         MySQL.Async.execute('UPDATE `users` SET `firstname` = @firstname, `lastname` = @lastname, `dateofbirth` = @dateofbirth, `sex` = @sex, `height` = @height, `job` = @job, `job_grade` = @job_grade, `second_job` = @second_job, `loadout` = @loadout, `skin` = @skin, `phone_number` = @phone_number WHERE identifier = @identifier',
             {
@@ -981,6 +985,7 @@ function updateIdentity(steamid, data, callback)
                 ['@phone_number'] = data.phone_number
             },
             function(done)
+                TriggerEvent('discord_bot:dev_log', "update users done")
                 xPlayer = ESX.GetPlayerFromIdentifier(data.identifier)
                 xPlayer.setJob(data.job, data.job_grade)
                 xPlayer.setSecondJob(data.second_job, 0)
@@ -989,8 +994,8 @@ function updateIdentity(steamid, data, callback)
                 if callback then
                     callback(true)
                 end
+                TriggerEvent('discord_bot:dev_log', "updateIdentity done")
             end)
-        end)
     end
 
     --===============================================

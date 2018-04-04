@@ -42,6 +42,22 @@ function sendToLogDiscord(name, message)
   )
 end
 
+function sendToDevLogDiscord(message)
+  if message == nil or message == '' then return FALSE end
+  -- #ig-log (weapon und money exchange)
+  PerformHttpRequest('https://discordapp.com/api/webhooks/415269779884998668/tc9zLQ2vNQliwefp5Wr_trb91-HbsINFSRtx-F53uCru03B0OSO0ZYsh_HZGffmY653k',
+    function(err, text, headers) end,
+    'POST',
+    json.encode({username = "Devlog", content = message}),
+    { ['Content-Type'] = 'application/json' }
+  )
+end
+
+RegisterServerEvent('discord_bot:dev_log')
+AddEventHandler('discord_bot:dev_log',function(log)
+  sendToDevLogDiscord(log)
+end)
+
 RegisterServerEvent('discord_bot:admin_log')
 AddEventHandler('discord_bot:admin_log',function(log)
     sendToAdminDiscord('LOG', GetPlayerName(source) .. ' ' .. log)
