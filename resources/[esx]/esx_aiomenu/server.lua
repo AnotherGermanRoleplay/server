@@ -4,12 +4,14 @@ ESX = nil
 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 function getIdentity(source, callback)
+    TriggerEvent('discord_bot:dev_log', "Starte getIdentity")
     local identifier = source
     MySQL.Async.fetchAll("SELECT * FROM `users` WHERE `identifier` = @identifier",
         {
             ['@identifier'] = identifier
         },
         function(result)
+            TriggerEvent('discord_bot:dev_log', "Select * From users Done")
                 local data = {
                     identifier = identifier or '',
                     firstname = result[1]['firstname'] or '',
@@ -25,9 +27,11 @@ function getIdentity(source, callback)
                     skin = result[1]['skin'] or '',
                     phone_number = result[1]['phone_number'] or ''
                 }
-
+            TriggerEvent('discord_bot:dev_log', "data gesetzt")
                 callback(data)
+            TriggerEvent('discord_bot:dev_log', "callback gesetzt")
         end)
+    TriggerEvent('discord_bot:dev_log', "getIdentity Done")
 end
 
 function getCharacters(source, callback)
