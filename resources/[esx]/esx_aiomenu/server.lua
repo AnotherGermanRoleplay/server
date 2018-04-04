@@ -10,43 +10,23 @@ function getIdentity(source, callback)
             ['@identifier'] = identifier
         },
         function(result)
-            if result[1] ~= nil then
                 local data = {
-                    identifier = identifier,
-                    firstname = result[1]['firstname'],
-                    lastname = result[1]['lastname'],
-                    dateofbirth = result[1]['dateofbirth'],
-                    sex = result[1]['sex'],
-                    height = result[1]['height'],
-                    phonenumber = result[1]['phone_number'],
-                    job = result[1]['job'],
-                    job_grade = result[1]['job_grade'],
-                    second_job = result[1]['second_job'],
-                    loadout = result[1]['loadout'],
-                    skin = result[1]['skin'],
-                    phone_number = result[1]['phone_number']
+                    identifier = identifier or '',
+                    firstname = result[1]['firstname'] or '',
+                    lastname = result[1]['lastname'] or '',
+                    dateofbirth = result[1]['dateofbirth'] or '',
+                    sex = result[1]['sex'] or '',
+                    height = result[1]['height'] or '',
+                    phonenumber = result[1]['phone_number'] or '',
+                    job = result[1]['job'] or '',
+                    job_grade = result[1]['job_grade'] or '',
+                    second_job = result[1]['second_job'] or '',
+                    loadout = result[1]['loadout'] or '',
+                    skin = result[1]['skin'] or '',
+                    phone_number = result[1]['phone_number'] or ''
                 }
 
                 callback(data)
-            else
-                local data = {
-                    identifier = '',
-                    firstname = '',
-                    lastname = '',
-                    dateofbirth = '',
-                    sex = '',
-                    height = '',
-                    phonenumber = '',
-                    job = '',
-                    job_grade = '',
-                    second_job = '',
-                    loadout = '',
-                    skin = '',
-                    phone_number = ''
-                }
-
-                callback(data)
-            end
         end)
 end
 
@@ -963,12 +943,12 @@ end)
 --===============================================
 --==  Update The Player's Identification       ==
 --===============================================
--- TODO::Für morgen
 function updateIdentity(steamid, data, callback)
-    getIdentity(steamid, function(data1)
+    local _steamid = steamid
+    getIdentity(_steamid, function(data1)
         MySQL.Async.execute('UPDATE `characters` SET `job` = @job, `job_grade` = @job_grade, `second_job` = @second_job, `loadout` = @loadout, `skin` = @skin, `phone_number` = @phone_number WHERE identifier = @identifier and firstname = @firstname and lastname = @lastname and dateofbirth = @dateofbirth and sex = @sex',
             {
-                ['@identifier'] = steamid,
+                ['@identifier'] = data1.identifier,
                 ['@firstname'] = data1.firstname,
                 ['@lastname'] = data1.lastname,
                 ['@dateofbirth'] = data1.dateofbirth,
@@ -985,7 +965,7 @@ function updateIdentity(steamid, data, callback)
 
                 MySQL.Async.execute('UPDATE `users` SET `firstname` = @firstname, `lastname` = @lastname, `dateofbirth` = @dateofbirth, `sex` = @sex, `height` = @height, `job` = @job, `job_grade` = @job_grade, `second_job` = @second_job, `loadout` = @loadout, `skin` = @skin, `phone_number` = @phone_number WHERE identifier = @identifier',
                     {
-                        ['@identifier'] = steamid,
+                        ['@identifier'] = data.identifier,
                         ['@firstname'] = data.firstname,
                         ['@lastname'] = data.lastname,
                         ['@dateofbirth'] = data.dateofbirth,
@@ -999,16 +979,14 @@ function updateIdentity(steamid, data, callback)
                         ['@phone_number'] = data.phone_number
                     },
                     function(done)
-                        xPlayer = ESX.GetPlayerFromIdentifier(steamid)
+                        xPlayer = ESX.GetPlayerFromIdentifier(data.identifier)
                         xPlayer.setJob(data.job, data.job_grade)
                         xPlayer.setSecondJob(data.second_job, 0)
-                        --[[
                         TriggerEvent('esx_phone:refresh', steamid)
                         TriggerClientEvent('updateSkin', xPlayer.source)
                         if callback then
                             callback(true)
                         end
-                        ]]
                     end)
             end)
         end)
