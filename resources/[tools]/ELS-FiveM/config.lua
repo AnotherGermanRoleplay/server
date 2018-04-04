@@ -24,7 +24,8 @@ vcf_files = {
 	"PBUS.xml",
 	"POLICE7.xml",
 	"POLICET.xml",
-	"FBI2.xml"
+	"FBI2.xml",
+	"SFTSU.xml"
 }
 
 pattern_files = {
@@ -65,7 +66,8 @@ modelsWithTrafficAdvisor = {
 	"PBUS",
 	"POLICE7",
 	"POLICET",
-	"fbi2"
+	"fbi2",
+	"SFTSU"
 }
 
 modelsWithFireSiren =
@@ -110,7 +112,8 @@ vehicleStageThreeAdvisor = {
 	"PRANGER",
 	"PBUS",
 	"POLICET",
-	"fbi2"
+	"fbi2",
+	"SFTSU"
 }
 
 
