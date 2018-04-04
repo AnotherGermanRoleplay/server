@@ -6,7 +6,6 @@ TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 function getIdentity(source, callback)
     TriggerEvent('discord_bot:dev_log', "Starte getIdentity")
     local identifier = source
-    local data = nil
     MySQL.Async.fetchAll("SELECT * FROM `users` WHERE `identifier` = @identifier",
         {
             ['@identifier'] = identifier
@@ -14,7 +13,7 @@ function getIdentity(source, callback)
         function(result)
             TriggerEvent('discord_bot:dev_log', "Select * From users Done")
             if result[1] ~= nil then
-                data = {
+                 local data = {
                     identifier = identifier,
                     firstname = result[1]['firstname'],
                     lastname = result[1]['lastname'],
@@ -28,46 +27,30 @@ function getIdentity(source, callback)
                     loadout = result[1]['loadout'],
                     skin = result[1]['skin'],
                     phone_number = result[1]['phone_number']
-                }
-                TriggerEvent('discord_bot:dev_log', "data gesetzt")
-            else
-                data = {
-                    identifier = '',
-                    firstname = '',
-                    lastname = '',
-                    dateofbirth = '',
-                    sex = '',
-                    height = '',
-                    phonenumber = '',
-                    job = '',
-                    job_grade = '',
-                    second_job = '',
-                    loadout = '',
-                    skin = '',
-                    phone_number = ''
-                }
+                 }
 
+                TriggerEvent('discord_bot:dev_log', "data gesetzt")
+
+                MySQL.Async.execute('UPDATE `characters` SET `job` = @job, `job_grade` = @job_grade, `second_job` = @second_job, `loadout` = @loadout, `skin` = @skin, `phone_number` = @phone_number WHERE identifier = @identifier and firstname = @firstname and lastname = @lastname and dateofbirth = @dateofbirth and sex = @sex',
+                    {
+                        ['@identifier'] = data.identifier,
+                        ['@firstname'] = data.firstname,
+                        ['@lastname'] = data.lastname,
+                        ['@dateofbirth'] = data.dateofbirth,
+                        ['@sex'] = data.sex,
+                        ['@height'] = data.height,
+                        ['@job'] = data.job,
+                        ['@job_grade'] = data.job_grade,
+                        ['@second_job'] = data.second_job,
+                        ['@loadout'] = data.loadout,
+                        ['@skin'] = data.skin,
+                        ['@phone_number'] = data.phone_number
+                    },
+                    function(done)
+                        TriggerEvent('discord_bot:dev_log', "update characters done")
+                    end)
             end
             TriggerEvent('discord_bot:dev_log', "getIdentity Done")
-        end)
-
-    MySQL.Async.execute('UPDATE `characters` SET `job` = @job, `job_grade` = @job_grade, `second_job` = @second_job, `loadout` = @loadout, `skin` = @skin, `phone_number` = @phone_number WHERE identifier = @identifier and firstname = @firstname and lastname = @lastname and dateofbirth = @dateofbirth and sex = @sex',
-        {
-            ['@identifier'] = data.identifier,
-            ['@firstname'] = data.firstname,
-            ['@lastname'] = data.lastname,
-            ['@dateofbirth'] = data.dateofbirth,
-            ['@sex'] = data.sex,
-            ['@height'] = data.height,
-            ['@job'] = data.job,
-            ['@job_grade'] = data.job_grade,
-            ['@second_job'] = data.second_job,
-            ['@loadout'] = data.loadout,
-            ['@skin'] = data.skin,
-            ['@phone_number'] = data.phone_number
-        },
-        function(done)
-            TriggerEvent('discord_bot:dev_log', "update characters done")
         end)
 
 end
