@@ -4,30 +4,50 @@ ESX = nil
 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 function getIdentity(source, callback)
-    local identifier = source
-    MySQL.Async.fetchAll("SELECT * FROM `users` WHERE `identifier` = @identifier",
-        {
-            ['@identifier'] = identifier
-        },
-        function(result)
-          local data = {
-            identifier = identifier or '',
-            firstname = result[1]['firstname'] or '',
-            lastname = result[1]['lastname'] or '',
-            dateofbirth = result[1]['dateofbirth'] or '',
-            sex = result[1]['sex'] or '',
-            height = result[1]['height'] or '',
-            phonenumber = result[1]['phone_number'] or '',
-            job = result[1]['job'] or '',
-            job_grade = result[1]['job_grade'] or '',
-            second_job = result[1]['second_job'] or '',
-            loadout = result[1]['loadout'] or '',
-            skin = result[1]['skin'] or '',
-            phone_number = result[1]['phone_number'] or ''
-          }
+  local identifier = source
+  MySQL.Async.fetchAll("SELECT * FROM `users` WHERE `identifier` = @identifier",
+    {
+      ['@identifier'] = identifier
+    },
+    function(result)
+      if result[1] ~= nil then
+        local data = {
+          identifier = identifier,
+          firstname = result[1]['firstname'],
+          lastname = result[1]['lastname'],
+          dateofbirth = result[1]['dateofbirth'],
+          sex = result[1]['sex'],
+          height = result[1]['height'],
+          phonenumber = result[1]['phone_number'],
+          job = result[1]['job'],
+          job_grade = result[1]['job_grade'],
+          second_job = result[1]['second_job'],
+          loadout = result[1]['loadout'],
+          skin = result[1]['skin'],
+          phone_number = result[1]['phone_number']
+        }
 
-          callback(data)
-        end)
+        callback(data)
+      else
+        local data = {
+          identifier = '',
+          firstname = '',
+          lastname = '',
+          dateofbirth = '',
+          sex = '',
+          height = '',
+          phonenumber = '',
+          job = '',
+          job_grade = '',
+          second_job = '',
+          loadout = '',
+          skin = '',
+          phone_number = ''
+        }
+
+        callback(data)
+      end
+    end)
 end
 
 function getCharacters(source, callback)

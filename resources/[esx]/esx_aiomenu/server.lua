@@ -4,7 +4,6 @@ ESX = nil
 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 function getIdentity(source, callback)
-    TriggerEvent('discord_bot:dev_log', "Starte getIdentity")
     local identifier = source
     local data = MySQL.Async.fetchAll("SELECT * FROM `users` WHERE `identifier` = @identifier",
         {
@@ -28,10 +27,8 @@ function getIdentity(source, callback)
                     skin = result[1]['skin'],
                     phone_number = result[1]['phone_number']
                  }
-                TriggerEvent('discord_bot:dev_log', "data gesetzt")
                 return data
             end
-            TriggerEvent('discord_bot:dev_log', "getIdentity Done")
         end)
     while (data == nil) do
         Citizen.Wait(0)
@@ -52,7 +49,7 @@ function getIdentity(source, callback)
             ['@phone_number'] = data.phone_number
         },
         function(done)
-            TriggerEvent('discord_bot:dev_log', "update characters done")
+
         end)
 
 end
@@ -971,10 +968,8 @@ end)
 --==  Update The Player's Identification       ==
 --===============================================
 function updateIdentity(steamid, data, callback)
-    TriggerEvent('discord_bot:dev_log', "Starte updateIdentity")
     local _steamid = steamid
-    local data1 = getIdentity(_steamid)
-    TriggerEvent('discord_bot:dev_log', "geted Identity")
+    getIdentity(_steamid)
 
     MySQL.Async.execute('UPDATE `users` SET `firstname` = @firstname, `lastname` = @lastname, `dateofbirth` = @dateofbirth, `sex` = @sex, `height` = @height, `job` = @job, `job_grade` = @job_grade, `second_job` = @second_job, `loadout` = @loadout, `skin` = @skin, `phone_number` = @phone_number WHERE identifier = @identifier',
         {
@@ -992,7 +987,6 @@ function updateIdentity(steamid, data, callback)
             ['@phone_number'] = data.phone_number
         },
         function(done)
-            TriggerEvent('discord_bot:dev_log', "update users done")
             xPlayer = ESX.GetPlayerFromIdentifier(data.identifier)
             xPlayer.setJob(data.job, data.job_grade)
             xPlayer.setSecondJob(data.second_job, 0)
@@ -1001,7 +995,6 @@ function updateIdentity(steamid, data, callback)
             if callback then
                 callback(true)
             end
-            TriggerEvent('discord_bot:dev_log', "updateIdentity done")
         end)
 end
 
