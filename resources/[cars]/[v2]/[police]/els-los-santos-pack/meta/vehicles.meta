@@ -530,7 +530,7 @@
     <Item>
       <modelName>lspd5</modelName>
       <txdName>lspd5</txdName>
-      <handlingId>POLICE</handlingId>
+      <handlingId>SHERIFF</handlingId>
       <gameName>POLICEO1</gameName>
       <vehicleMakeName />
       <expressionDictName>null</expressionDictName>
@@ -901,7 +901,7 @@
     <Item>
       <modelName>lspd8</modelName>
       <txdName>lspd8</txdName>
-      <handlingId>POLICE</handlingId>
+      <handlingId>police3</handlingId>
       <gameName>FBI2</gameName>
       <vehicleMakeName />
       <expressionDictName>null</expressionDictName>
@@ -1165,7 +1165,7 @@
     <Item>
       <modelName>lspd10</modelName>
       <txdName>lspd10</txdName>
-      <handlingId>POLICE</handlingId>
+      <handlingId>police3</handlingId>
       <gameName>POLICEO2</gameName>
       <vehicleMakeName />
       <expressionDictName>null</expressionDictName>
@@ -1428,7 +1428,7 @@
     <Item>
       <modelName>lspd12</modelName>
       <txdName>lspd12</txdName>
-      <handlingId>police</handlingId>
+      <handlingId>police3</handlingId>
       <gameName>BISON</gameName>
       <vehicleMakeName>BRAVADO</vehicleMakeName>
       <expressionDictName>null</expressionDictName>
