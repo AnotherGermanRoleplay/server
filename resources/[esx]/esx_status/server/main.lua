@@ -67,8 +67,9 @@ AddEventHandler('esx_status:update', function(status)
 	
 	local _source = source
 	local xPlayer = ESX.GetPlayerFromId(_source)
-	
-	xPlayer.set('status', status)
+	if xPlayer ~= nil then
+    xPlayer.set('status', status)
+  end
 
 end)
 
