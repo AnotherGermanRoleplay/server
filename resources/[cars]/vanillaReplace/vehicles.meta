@@ -6065,7 +6065,7 @@
     <Item>
       <modelName>policet</modelName>
       <txdName>policet</txdName>
-      <handlingId>POLICET</handlingId>
+      <handlingId>POLICE</handlingId>
       <gameName>POLICET</gameName>
       <vehicleMakeName />
       <expressionDictName>null</expressionDictName>

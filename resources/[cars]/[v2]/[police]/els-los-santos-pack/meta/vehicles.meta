@@ -530,7 +530,7 @@
     <Item>
       <modelName>lspd5</modelName>
       <txdName>lspd5</txdName>
-      <handlingId>SHERIFF</handlingId>
+      <handlingId>POLICE</handlingId>
       <gameName>POLICEO1</gameName>
       <vehicleMakeName />
       <expressionDictName>null</expressionDictName>
@@ -1165,7 +1165,7 @@
     <Item>
       <modelName>lspd10</modelName>
       <txdName>lspd10</txdName>
-      <handlingId>police3</handlingId>
+      <handlingId>POLICE</handlingId>
       <gameName>POLICEO2</gameName>
       <vehicleMakeName />
       <expressionDictName>null</expressionDictName>
