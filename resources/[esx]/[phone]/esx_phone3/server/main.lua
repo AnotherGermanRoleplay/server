@@ -136,10 +136,14 @@ AddEventHandler('esx:playerLoaded', function(source)
 
   local xPlayer = ESX.GetPlayerFromId(source)
   local xIdentity = {}
+  local identifier = xPlayer.identifier
 
-  getIdentity(xPlayer.identifier, function(data)
+  getIdentity(identifier, function(data)
+    while (data == nil) do
+      Citizen.Wait(0)
+    end
     xIdentity = data
-
+    local characterId = xIdentity.characterId
     for num,v in pairs(PhoneNumbers) do
       if tonumber(num) == num then -- If phonenumber is a player phone number
         for src,_ in pairs(v.sources) do
@@ -151,7 +155,7 @@ AddEventHandler('esx:playerLoaded', function(source)
     MySQL.Async.fetchAll(
       'SELECT * FROM users WHERE identifier = @identifier',
       {
-        ['@identifier'] = xPlayer.identifier
+        ['@identifier'] = identifier
       },
       function(result)
 
@@ -164,7 +168,7 @@ AddEventHandler('esx:playerLoaded', function(source)
           MySQL.Async.execute(
             'UPDATE users SET phone_number = @phone_number WHERE identifier = @identifier',
             {
-              ['@identifier']   = xPlayer.identifier,
+              ['@identifier']   = identifier,
               ['@phone_number'] = phoneNumber
             }
           )
@@ -173,7 +177,7 @@ AddEventHandler('esx:playerLoaded', function(source)
             'UPDATE characters SET phone_number = @phone_number WHERE id = @identifier',
             {
               --TODO :: CharacterId!!! statt Identifier
-              ['@identifier'] = xIdentity.characterId,
+              ['@identifier'] = characterId,
               ['@phone_number'] = phoneNumber
             }
           )
@@ -201,7 +205,7 @@ AddEventHandler('esx:playerLoaded', function(source)
         MySQL.Async.fetchAll(
           'SELECT * FROM user_contacts WHERE identifier = @identifier ORDER BY name ASC',
           {
-            ['@identifier'] = xIdentity.characterId
+            ['@identifier'] = characterId
           },
           function(result2)
 
@@ -274,18 +278,20 @@ end)
 RegisterServerEvent('esx_phone:refresh')
 AddEventHandler('esx_phone:refresh', function(indentifier)
 
-  local _source  = indentifier
-  local xPlayer  = ESX.GetPlayerFromIdentifier(_source)
+  local _indentifier  = indentifier
+  local xPlayer  = ESX.GetPlayerFromIdentifier(_indentifier)
+  local _source = xPlayer.source
   local xIdentity = {}
 
-  getIdentity(xPlayer.identifier, function(data)
-    xIdentity = data
+  getIdentity(_indentifier, function(data)
 
+    xIdentity = data
+    local characterId = xIdentity.characterId
 
     for num,v in pairs(PhoneNumbers) do
       if tonumber(num) == num then -- If phonenumber is a player phone number
         for src,_ in pairs(v.sources) do
-          TriggerClientEvent('esx_phone:setPhoneNumberSource', xPlayer.source, num, tonumber(src))
+          TriggerClientEvent('esx_phone:setPhoneNumberSource', _source, num, tonumber(src))
         end
       end
     end
@@ -293,7 +299,7 @@ AddEventHandler('esx_phone:refresh', function(indentifier)
     MySQL.Async.fetchAll(
       'SELECT * FROM users WHERE identifier = @identifier',
       {
-        ['@identifier'] = _source
+        ['@identifier'] = _indentifier
       },
       function(result)
 
@@ -306,7 +312,7 @@ AddEventHandler('esx_phone:refresh', function(indentifier)
           MySQL.Async.execute(
             'UPDATE users SET phone_number = @phone_number WHERE identifier = @identifier',
             {
-              ['@identifier']   = xPlayer.identifier,
+              ['@identifier']   = _indentifier,
               ['@phone_number'] = phoneNumber
             }
           )
@@ -314,13 +320,13 @@ AddEventHandler('esx_phone:refresh', function(indentifier)
           MySQL.Async.execute(
             'UPDATE characters SET phone_number = @phone_number WHERE id = @identifier',
             {
-              ['@identifier'] = xIdentity.characterId,
+              ['@identifier'] = characterId,
               ['@phone_number'] = phoneNumber
             }
           )
         end
 
-        TriggerClientEvent('esx_phone:setPhoneNumberSource', -1, phoneNumber, xPlayer.source)
+        TriggerClientEvent('esx_phone:setPhoneNumberSource', -1, phoneNumber, _source)
 
         PhoneNumbers[phoneNumber] = {
           type          = 'player',
@@ -328,13 +334,13 @@ AddEventHandler('esx_phone:refresh', function(indentifier)
           sharePos      = false,
           hideNumber    = false,
           hidePosIfAnon = false,
-          sources       = {[xPlayer.source] = true}
+          sources       = {[_source] = true}
         }
 
         xPlayer.set('phoneNumber', phoneNumber)
 
         if PhoneNumbers[xPlayer.job.name] ~= nil then
-          TriggerEvent('esx_phone:addSource', xPlayer.job.name, xPlayer.source)
+          TriggerEvent('esx_phone:addSource', xPlayer.job.name, _source)
         end
 
 
@@ -342,7 +348,7 @@ AddEventHandler('esx_phone:refresh', function(indentifier)
         MySQL.Async.fetchAll(
           'SELECT * FROM user_contacts WHERE identifier = @identifier ORDER BY name ASC',
           {
-            ['@identifier'] = xIdentity.characterId
+            ['@identifier'] = characterId
           },
           function(result2)
             local contacts = {}
@@ -357,7 +363,7 @@ AddEventHandler('esx_phone:refresh', function(indentifier)
 
             xPlayer.set('contacts', contacts)
 
-            TriggerClientEvent('esx_phone:loaded', xPlayer.source, phoneNumber, contacts)
+            TriggerClientEvent('esx_phone:loaded', _source, phoneNumber, contacts)
 
           end
         )
@@ -378,10 +384,13 @@ function getIdentity(source, callback)
         ['@identifier'] = identifier
       },
       function(result)
+        while (result == nil) do
+          Citizen.Wait(0)
+        end
         -- TODO: (Woogy) There're some "empty" characters in the db. Characters without a name shouldn't be saved in the db anyway
         MySQL.Async.fetchAll("SELECT * FROM `characters` WHERE `identifier` = @identifier AND `firstname` = @firstname AND `lastname` = @lastname AND `job` = @job AND `job_grade` = @job_grade AND `second_job` = @second_job",
           {
-            ['@identifier'] = identifier,
+            ['@identifier'] = result[1].identifier,
             ['@firstname'] = result[1].firstname,
             ['@lastname'] = result[1].lastname,
             ['@job'] = result[1].job,
@@ -389,6 +398,9 @@ function getIdentity(source, callback)
             ['@second_job'] = result[1].second_job,
           },
           function(result1)
+            while (result1 == nil) do
+              Citizen.Wait(0)
+            end
             local data = {
               identifier	= result1[1]['identifier'] or nil,
               characterId = result1[1]['id'] or nil,
@@ -480,6 +492,9 @@ AddEventHandler('esx_phone:addPlayerContact', function(phoneNumber, contactName)
   local foundPlayer = nil
   local xIdentity = {}
   getIdentity(xPlayer.identifier, function(data1)
+    while (data1 == nil) do
+      Citizen.Wait(0)
+    end
     xIdentity = data1
 
     MySQL.Async.fetchAll(
