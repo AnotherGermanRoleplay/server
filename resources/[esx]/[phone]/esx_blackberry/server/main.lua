@@ -6,7 +6,8 @@ TriggerEvent('esx_phone:registerNumber', 'deepweb', 'DeepWeb', true, false, true
 
 function OnBlackBerryItemChange(source)
 
-	local xPlayer    = ESX.GetPlayerFromId(source)
+	local _source = source
+	local xPlayer    = ESX.GetPlayerFromId(_source)
 	local found      = false
 	local blackberry = xPlayer.getInventoryItem('blackberry')
 
@@ -15,12 +16,12 @@ function OnBlackBerryItemChange(source)
 	end
 
 	if found then
-		TriggerEvent('esx_phone:addSource', 'deepweb', source)
+		TriggerEvent('esx_phone:addSource', 'deepweb', _source)
 	else
-		TriggerEvent('esx_phone:removeSource', 'deepweb', source)
+		TriggerEvent('esx_phone:removeSource', 'deepweb', _source)
 	end
 
-	TriggerClientEvent('esx_blackberry:onHasBlackberry', source, found)
+	TriggerClientEvent('esx_blackberry:onHasBlackberry', _source, found)
 
 end
 
@@ -29,14 +30,15 @@ AddEventHandler('esx:playerLoaded', function(source)
 	local xPlayer    = ESX.GetPlayerFromId(source)
 	local blackberry = xPlayer.getInventoryItem('blackberry')
 
-	if blackberry.count > 0 then
+	if blackberry.count > 0  then
 		TriggerEvent('esx_phone:addSource', 'deepweb', source)
 	end
 
 end)
 
 AddEventHandler('esx:playerDropped', function(source)
-	TriggerEvent('esx_phone:removeSource', 'deepweb', source)
+	local _source = source
+	TriggerEvent('esx_phone:removeSource', 'deepweb', _source)
 end)
 
 AddEventHandler('esx:onAddInventoryItem', function(source, item, count)

@@ -232,7 +232,8 @@ end)
 
 AddEventHandler('esx:playerDropped', function(source)
 
-  local xPlayer = ESX.GetPlayerFromId(source)
+  local _source = source
+  local xPlayer = ESX.GetPlayerFromId(_source)
   local onCall  = xPlayer.get('onCall')
 
   TriggerClientEvent('esx_phone:setPhoneNumberSource', -1, xPlayer.get('phoneNumber'), -1)
@@ -240,23 +241,25 @@ AddEventHandler('esx:playerDropped', function(source)
   PhoneNumbers[xPlayer.get('phoneNumber')] = nil
 
   if PhoneNumbers[xPlayer.job.name] ~= nil then
-    TriggerEvent('esx_phone:removeSource', xPlayer.job.name, source)
+    TriggerEvent('esx_phone:removeSource', xPlayer.job.name, _source)
   end
 
   if onCall ~= nil then
-    EndCall(source, onCall.channel, onCall.target)
+    EndCall(_source, onCall.channel, onCall.target)
   end
 
 end)
 
 AddEventHandler('esx:setJob', function(source, job, lastJob)
-
+  local _source = source
+  local _job = job
+  local _lastJob = lastJob
   if PhoneNumbers[lastJob.name] ~= nil then
-    TriggerEvent('esx_phone:removeSource', lastJob.name, source)
+    TriggerEvent('esx_phone:removeSource', _lastJob.name, _source)
   end
 
   if PhoneNumbers[job.name] ~= nil then
-    TriggerEvent('esx_phone:addSource', job.name, source)
+    TriggerEvent('esx_phone:addSource', _job.name, _source)
   end
 
 end)
@@ -476,11 +479,19 @@ AddEventHandler('esx_phone:registerNumber', function(number, type, sharePos, has
 end)
 
 AddEventHandler('esx_phone:addSource', function(number, source)
-  PhoneNumbers[number].sources[tostring(source)] = true
+  local _number = number
+  local _source = source
+  if _number ~= nil and _source ~= nil then
+      PhoneNumbers[number].sources[tostring(_source)] = true
+  end
 end)
 
 AddEventHandler('esx_phone:removeSource', function(number, source)
-  PhoneNumbers[number].sources[tostring(source)] = nil
+  local _number = number
+  local _source = source
+  if _number ~= nil and _source ~= nil then
+      PhoneNumbers[_number].sources[tostring(_source)] = nil
+  end
 end)
 
 RegisterServerEvent('esx_phone:addPlayerContact')
