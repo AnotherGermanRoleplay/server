@@ -405,19 +405,19 @@ function getIdentity(source, callback)
               Citizen.Wait(0)
             end
             local data = {
-              identifier	= result1[1]['identifier'] or nil,
-              characterId = result1[1]['id'] or nil,
-              firstname	= result1[1]['firstname'] or nil,
-              lastname	= result1[1]['lastname'] or nil,
-              dateofbirth	= result1[1]['dateofbirth'] or nil,
-              sex			= result1[1]['sex'] or nil,
-              height		= result1[1]['height'] or nil,
-              job		    = result1[1]['job'] or nil,
-              job_grade	= result1[1]['job_grade'] or nil,
-              second_job	= result1[1]['second_job'] or nil,
-              loadout     = result1[1]['loadout'] or nil,
-              skin		= result1[1]['skin'] or nil,
-              phone_number = result1[1]['phone_number'] or nil
+              identifier	= result1[1]['identifier'],
+              characterId = result1[1]['id'],
+              firstname	= result1[1]['firstname'],
+              lastname	= result1[1]['lastname'],
+              dateofbirth	= result1[1]['dateofbirth'],
+              sex			= result1[1]['sex'],
+              height		= result1[1]['height'],
+              job		    = result1[1]['job'],
+              job_grade	= result1[1]['job_grade'],
+              second_job	= result1[1]['second_job'],
+              loadout     = result1[1]['loadout'],
+              skin		= result1[1]['skin'],
+              phone_number = result1[1]['phone_number']
             }
             callback(data)
           end

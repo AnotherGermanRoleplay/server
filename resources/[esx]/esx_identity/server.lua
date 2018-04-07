@@ -1081,18 +1081,19 @@ end
     --==       Server Event Set Identity           ==
     --===============================================
     function setIdentity(identifier, data, callback)
-        MySQL.Async.execute('UPDATE `users` SET `firstname` = @firstname, `lastname` = @lastname, `dateofbirth` = @dateofbirth, `sex` = @sex, `height` = @height, `job` = @job, `job_grade` = @job_grade, `second_job` = @second_job, `loadout` = @loadout, `phone_number` = NULL WHERE identifier = @identifier',
+        MySQL.Async.execute('UPDATE `users` SET `loadout` = @loadout, `skin` = @skin, `firstname` = @firstname, `lastname` = @lastname, `dateofbirth` = @dateofbirth, `sex` = @sex, `height` = @height, `job` = @job, `job_grade` = @job_grade, `second_job` = @second_job, `loadout` = @loadout, `phone_number` = NULL WHERE identifier = @identifier',
           {
-            ['@identifier']   = identifier,
-            ['@firstname']    = data.firstname,
-            ['@lastname']     = data.lastname,
-            ['@dateofbirth']  = data.dateofbirth,
-            ['@sex']        = data.sex,
-            ['@height']       = data.height,
-            ['@job']        = "unemployed",
-            ['@job_grade']      = "0",
+            ['@identifier']         = identifier,
+            ['@firstname']          = data.firstname,
+            ['@lastname']           = data.lastname,
+            ['@dateofbirth']        = data.dateofbirth,
+            ['@sex']                = data.sex,
+            ['@height']             = data.height,
+            ['@job']                = "unemployed",
+            ['@job_grade']          = "0",
             ['@second_job']         = "unemployed",
-            ['@loadout']        = "[]",
+            ['@loadout']            = "[]",
+            ['@skin']               = "{}",
           },
           function(done)
             if callback then
@@ -1101,14 +1102,19 @@ end
           end)
 
         MySQL.Async.execute(
-          'INSERT INTO characters (identifier, firstname, lastname, dateofbirth, sex, height) VALUES (@identifier, @firstname, @lastname, @dateofbirth, @sex, @height)',
+          'INSERT INTO characters (identifier, firstname, lastname, dateofbirth, sex, height, job, job_grade, second_job, loadout, skin) VALUES (@identifier, @firstname, @lastname, @dateofbirth, @sex, @height, @job, @job_grade, @second_job, @loadout, @skin)',
           {
-            ['@identifier'] = identifier,
-            ['@firstname']  = data.firstname,
-            ['@lastname']   = data.lastname,
-            ['@dateofbirth'] = data.dateofbirth,
-            ['@sex']        = data.sex,
-            ['@height']     = data.height
+            ['@identifier']       = identifier,
+            ['@firstname']        = data.firstname,
+            ['@lastname']         = data.lastname,
+            ['@dateofbirth']      = data.dateofbirth,
+            ['@sex']              = data.sex,
+            ['@height']           = data.height,
+            ['@job']              = "unemployed",
+            ['@job_grade']        = "0",
+            ['@second_job']       = "unemployed",
+            ['@loadout']          = "[]",
+            ['@skin']             = "{}",
           })
 
         xPlayer = ESX.GetPlayerFromIdentifier(identifier)
