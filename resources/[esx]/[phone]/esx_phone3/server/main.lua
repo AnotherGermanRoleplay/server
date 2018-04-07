@@ -483,7 +483,7 @@ end)
 AddEventHandler('esx_phone:addSource', function(number, source)
   local _number = number or nil
   local _source = source or nil
-  if _number ~= nil and _source ~= nil then
+  if _number ~= nil and _source ~= nil and PhoneNumbers[_number] ~= nil and PhoneNumbers[_number].sources[tostring(_source)] then
       PhoneNumbers[number].sources[tostring(_source)] = true
   end
 end)
@@ -491,7 +491,7 @@ end)
 AddEventHandler('esx_phone:removeSource', function(number, source)
   local _number = number or nil
   local _source = source or nil
-  if _number ~= nil and _source ~= nil then
+  if _number ~= nil and _source ~= nil and PhoneNumbers[_number] ~= nil and PhoneNumbers[_number].sources[tostring(_source)] then
       PhoneNumbers[_number].sources[tostring(_source)] = nil
   end
 end)
