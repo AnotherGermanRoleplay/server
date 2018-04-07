@@ -238,7 +238,9 @@ AddEventHandler('esx:playerDropped', function(source)
 
   TriggerClientEvent('esx_phone:setPhoneNumberSource', -1, xPlayer.get('phoneNumber'), -1)
 
-  PhoneNumbers[xPlayer.get('phoneNumber')] = nil
+  if (PhoneNumbers[xPlayer.get('phoneNumber')] ~= nil) then
+    PhoneNumbers[xPlayer.get('phoneNumber')] = nil
+  end
 
   if PhoneNumbers[xPlayer.job.name] ~= nil then
     TriggerEvent('esx_phone:removeSource', xPlayer.job.name, _source)
@@ -479,16 +481,16 @@ AddEventHandler('esx_phone:registerNumber', function(number, type, sharePos, has
 end)
 
 AddEventHandler('esx_phone:addSource', function(number, source)
-  local _number = number
-  local _source = source
+  local _number = number or nil
+  local _source = source or nil
   if _number ~= nil and _source ~= nil then
       PhoneNumbers[number].sources[tostring(_source)] = true
   end
 end)
 
 AddEventHandler('esx_phone:removeSource', function(number, source)
-  local _number = number
-  local _source = source
+  local _number = number or nil
+  local _source = source or nil
   if _number ~= nil and _source ~= nil then
       PhoneNumbers[_number].sources[tostring(_source)] = nil
   end
@@ -502,76 +504,77 @@ AddEventHandler('esx_phone:addPlayerContact', function(phoneNumber, contactName)
   local foundNumber = false
   local foundPlayer = nil
   local xIdentity = {}
-  getIdentity(xPlayer.identifier, function(data1)
-    while (data1 == nil) do
-      Citizen.Wait(0)
-    end
-    xIdentity = data1
-
-    MySQL.Async.fetchAll(
-      'SELECT phone_number FROM characters WHERE phone_number = @number',
-      {
-        ['@number'] = phoneNumber
-      },
-      function(result)
-
-        if result[1] ~= nil then
-          foundNumber = true
+  if xPlayer ~= nil then
+      getIdentity(xPlayer.identifier, function(data1)
+        while (data1 == nil) do
+          Citizen.Wait(0)
         end
+        xIdentity = data1
 
-        if foundNumber then
+        MySQL.Async.fetchAll(
+          'SELECT phone_number FROM characters WHERE phone_number = @number',
+          {
+            ['@number'] = phoneNumber
+          },
+          function(result)
 
-          if phoneNumber == xPlayer.get('phoneNumber') then
-            TriggerClientEvent('esx:showNotification', _source, 'Du kannst dich nicht selbst hinzufügen.')
-          else
-
-            local hasAlreadyAdded = false
-            local contacts        = xPlayer.get('contacts')
-
-            for i=1, #contacts, 1 do
-              if contacts[i].number == phoneNumber then
-                hasAlreadyAdded = true
-              end
+            if result[1] ~= nil then
+              foundNumber = true
             end
 
-            if hasAlreadyAdded then
-              TriggerClientEvent('esx:showNotification', _source, 'Diese Nummer ist bereits in deinen Kontakten.')
-            else
+            if foundNumber then
 
-              table.insert(contacts, {
-                name   = contactName,
-                number = phoneNumber,
-              })
+              if phoneNumber == xPlayer.get('phoneNumber') then
+                TriggerClientEvent('esx:showNotification', _source, 'Du kannst dich nicht selbst hinzufügen.')
+              else
 
-              xPlayer.set('contacts', contacts)
+                local hasAlreadyAdded = false
+                local contacts        = xPlayer.get('contacts')
 
-              MySQL.Async.execute(
-                'INSERT INTO user_contacts (identifier, name, number) VALUES (@identifier, @name, @number)',
-                {
-                  ['@identifier'] = xIdentity.characterId,
-                  ['@name']       = contactName,
-                  ['@number']     = phoneNumber
-                },
-                function(rowsChanged)
-
-                  TriggerClientEvent('esx:showNotification', _source, 'Der Kontakt wurde hinzugefügt.')
-
-                  TriggerClientEvent('esx_phone:addContact', _source, contactName, phoneNumber)
+                for i=1, #contacts, 1 do
+                  if contacts[i].number == phoneNumber then
+                    hasAlreadyAdded = true
+                  end
                 end
-              )
 
+                if hasAlreadyAdded then
+                  TriggerClientEvent('esx:showNotification', _source, 'Diese Nummer ist bereits in deinen Kontakten.')
+                else
+
+                  table.insert(contacts, {
+                    name   = contactName,
+                    number = phoneNumber,
+                  })
+
+                  xPlayer.set('contacts', contacts)
+
+                  MySQL.Async.execute(
+                    'INSERT INTO user_contacts (identifier, name, number) VALUES (@identifier, @name, @number)',
+                    {
+                      ['@identifier'] = xIdentity.characterId,
+                      ['@name']       = contactName,
+                      ['@number']     = phoneNumber
+                    },
+                    function(rowsChanged)
+
+                      TriggerClientEvent('esx:showNotification', _source, 'Der Kontakt wurde hinzugefügt.')
+
+                      TriggerClientEvent('esx_phone:addContact', _source, contactName, phoneNumber)
+                    end
+                  )
+
+                end
+              end
+
+            else
+              TriggerClientEvent('esx:showNotification', source, 'Diese Nummer ist nicht vergeben.')
             end
+
           end
-
-        else
-          TriggerClientEvent('esx:showNotification', source, 'Diese Nummer ist nicht vergeben.')
-        end
-
+        )
       end
-    )
+      )
   end
-  )
-
 end)
 
 RegisterServerEvent('esx_phone:stopDispatch')
