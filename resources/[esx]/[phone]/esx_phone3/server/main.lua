@@ -419,7 +419,7 @@ function getIdentity(source, callback)
               second_job	= result1[1]['second_job'],
               loadout     = result1[1]['loadout'],
               skin		= result1[1]['skin'],
-              phone_number = result1[1]['phone_number']
+              phone_number = result1[1]['phone_number'] or nil
             }
             callback(data)
           end
