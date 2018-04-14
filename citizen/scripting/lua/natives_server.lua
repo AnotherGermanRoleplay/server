@@ -118,8 +118,8 @@ end
 
 --- Gets the amount of metadata values with the specified key existing in the specified resource's manifest.
 -- See also: [Resource manifest](https://wiki.fivem.net/wiki/Resource_manifest)
--- @param metadataKey The key to look up in the resource manifest.
 -- @param resourceName The resource name.
+-- @param metadataKey The key to look up in the resource manifest.
 function Global.GetNumResourceMetadata(resourceName, metadataKey)
 	return _in(0x776e864, _ts(resourceName), _ts(metadataKey), _r, _ri)
 end
@@ -187,9 +187,9 @@ end
 
 --- Gets the metadata value at a specified key/index from a resource's manifest.
 -- See also: [Resource manifest](https://wiki.fivem.net/wiki/Resource_manifest)
--- @param index The value index, in a range from [0..GET_NUM_RESOURCE_METDATA-1].
--- @param resourceName The resource name.
 -- @param metadataKey The key in the resource manifest.
+-- @param resourceName The resource name.
+-- @param index The value index, in a range from [0..GET_NUM_RESOURCE_METDATA-1].
 function Global.GetResourceMetadata(resourceName, metadataKey, index)
 	return _in(0x964bab1d, _ts(resourceName), _ts(metadataKey), index, _r, _s)
 end
@@ -215,8 +215,8 @@ end
 --- Reads the contents of a text file in a specified resource.
 -- If executed on the client, this file has to be included in `files` in the resource manifest.
 -- Example: `local data = LoadResourceFile("devtools", "data.json")`
--- @param fileName The file in the resource.
 -- @param resourceName The resource name.
+-- @param fileName The file in the resource.
 -- @return The file contents
 function Global.LoadResourceFile(resourceName, fileName)
 	return _in(0x76a9ee1f, _ts(resourceName), _ts(fileName), _r, _s)
@@ -232,10 +232,10 @@ end
 
 --- Writes the specified data to a file in the specified resource.
 -- Using a length of `-1` will automatically detect the length assuming the data is a C string.
--- @param data The data to write to the file.
+-- @param dataLength The length of the written data.
 -- @param resourceName The name of the resource.
 -- @param fileName The name of the file.
--- @param dataLength The length of the written data.
+-- @param data The data to write to the file.
 -- @return A value indicating if the write succeeded.
 function Global.SaveResourceFile(resourceName, fileName, data, dataLength)
 	return _in(0xa09e7e7b, _ts(resourceName), _ts(fileName), _ts(data), dataLength, _r)

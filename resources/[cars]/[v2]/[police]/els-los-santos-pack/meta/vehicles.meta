@@ -140,7 +140,7 @@
     <Item>
       <modelName>lspd2</modelName>
       <txdName>lspd2</txdName>
-      <handlingId>POLICE</handlingId>
+      <handlingId>POLICE2</handlingId>
       <gameName>lspd2</gameName>
       <vehicleMakeName />
       <expressionDictName>null</expressionDictName>
@@ -400,7 +400,7 @@
     <Item>
       <modelName>lspd4</modelName>
       <txdName>lspd4</txdName>
-      <handlingId>POLICE</handlingId>
+      <handlingId>POLICE3</handlingId>
       <gameName>POLICE4</gameName>
       <vehicleMakeName />
       <expressionDictName>null</expressionDictName>
@@ -530,7 +530,7 @@
     <Item>
       <modelName>lspd5</modelName>
       <txdName>lspd5</txdName>
-      <handlingId>POLICE</handlingId>
+      <handlingId>POLICE3</handlingId>
       <gameName>POLICEO1</gameName>
       <vehicleMakeName />
       <expressionDictName>null</expressionDictName>
@@ -651,8 +651,8 @@
     <Item>
       <modelName>lspd6</modelName>
       <txdName>lspd6</txdName>
-      <handlingId>SHERIFF</handlingId>
-      <gameName>SHERIFF</gameName>
+      <handlingId>POLICE3</handlingId>
+      <gameName>POLICE</gameName>
       <vehicleMakeName />
       <expressionDictName>null</expressionDictName>
       <expressionName>null</expressionName>
@@ -782,7 +782,7 @@
       <modelName>lspd7</modelName>
       <txdName>lspd7</txdName>
       <handlingId>POLICE2</handlingId>
-      <gameName>SHERIFF2</gameName>
+      <gameName>POLICE</gameName>
       <vehicleMakeName />
       <expressionDictName>null</expressionDictName>
       <expressionName>null</expressionName>
@@ -901,8 +901,8 @@
     <Item>
       <modelName>lspd8</modelName>
       <txdName>lspd8</txdName>
-      <handlingId>police3</handlingId>
-      <gameName>FBI2</gameName>
+      <handlingId>POLICE2</handlingId>
+      <gameName>POLICE</gameName>
       <vehicleMakeName />
       <expressionDictName>null</expressionDictName>
       <expressionName>null</expressionName>
@@ -1296,8 +1296,8 @@
     <Item>
       <modelName>lspd11</modelName>
       <txdName>lspd11</txdName>
-      <handlingId>police</handlingId>
-      <gameName>PRANGER</gameName>
+      <handlingId>POLICE3</handlingId>
+      <gameName>AMBULANCE</gameName>
       <vehicleMakeName />
       <expressionDictName>null</expressionDictName>
       <expressionName>null</expressionName>
@@ -1428,8 +1428,8 @@
     <Item>
       <modelName>lspd12</modelName>
       <txdName>lspd12</txdName>
-      <handlingId>police3</handlingId>
-      <gameName>BISON</gameName>
+      <handlingId>POLICE</handlingId>
+      <gameName>AMBULANCE</gameName>
       <vehicleMakeName>BRAVADO</vehicleMakeName>
       <expressionDictName>null</expressionDictName>
       <expressionName>null</expressionName>

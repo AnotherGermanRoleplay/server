@@ -1472,8 +1472,8 @@ window.CalculateTravelDistanceBetweenPoints = function (x1, y1, z1, x2, y2, z2) 
 
 /**
  * This is similar to the PushScaleformMovieFunction natives, except it calls in the `TIMELINE` of a minimap overlay.
- * @param miniMap The minimap overlay ID.
  * @param fnName A function in the overlay's TIMELINE.
+ * @param miniMap The minimap overlay ID.
  */
 window.CallMinimapScaleformFunction = function (miniMap, fnName) {
 	return _in("0x4c89c0ed", miniMap, _ts(fnName), _r);
@@ -7036,8 +7036,8 @@ window.GetNumReservedMissionVehicles = function (p0) {
 /**
  * Gets the amount of metadata values with the specified key existing in the specified resource's manifest.
  * See also: [Resource manifest](https://wiki.fivem.net/wiki/Resource_manifest)
- * @param metadataKey The key to look up in the resource manifest.
  * @param resourceName The resource name.
+ * @param metadataKey The key to look up in the resource manifest.
  */
 window.GetNumResourceMetadata = function (resourceName, metadataKey) {
 	return _in("0x776e864", _ts(resourceName), _ts(metadataKey), _r, _ri);
@@ -8167,8 +8167,8 @@ window.GetResourceKvpString = function (key) {
 /**
  * Gets the metadata value at a specified key/index from a resource's manifest.
  * See also: [Resource manifest](https://wiki.fivem.net/wiki/Resource_manifest)
- * @param metadataKey The key in the resource manifest.
  * @param index The value index, in a range from [0..GET_NUM_RESOURCE_METDATA-1].
+ * @param metadataKey The key in the resource manifest.
  * @param resourceName The resource name.
  */
 window.GetResourceMetadata = function (resourceName, metadataKey, index) {
@@ -12951,8 +12951,8 @@ window.LoadMpDlcMaps = function () {
  * Reads the contents of a text file in a specified resource.
  * If executed on the client, this file has to be included in `files` in the resource manifest.
  * Example: `local data = LoadResourceFile("devtools", "data.json")`
- * @param fileName The file in the resource.
  * @param resourceName The resource name.
+ * @param fileName The file in the resource.
  * @return The file contents
  */
 window.LoadResourceFile = function (resourceName, fileName) {
@@ -29806,12 +29806,12 @@ window.SetMinimapComponent = function (p0, p1, p2) {
 
 /**
  * Sets the display info for a minimap overlay.
- * @param miniMap The minimap overlay ID.
- * @param x The X position for the overlay. This is equivalent to a game coordinate X.
- * @param alpha The alpha value for the overlay. This is equivalent to the Flash _alpha property, therefore 100 = 100%.
- * @param y The Y position for the overlay. This is equivalent to a game coordinate Y, except that it's inverted (gfxY = -gameY).
  * @param xScale The X scale for the overlay. This is equivalent to the Flash _xscale property, therefore 100 = 100%.
  * @param yScale The Y scale for the overlay. This is equivalent to the Flash _yscale property.
+ * @param y The Y position for the overlay. This is equivalent to a game coordinate Y, except that it's inverted (gfxY = -gameY).
+ * @param miniMap The minimap overlay ID.
+ * @param alpha The alpha value for the overlay. This is equivalent to the Flash _alpha property, therefore 100 = 100%.
+ * @param x The X position for the overlay. This is equivalent to a game coordinate X.
  */
 window.SetMinimapOverlayDisplay = function (miniMap, x, y, xScale, yScale, alpha) {
 	return _in("0x6a48b3ca", miniMap, _fv(x), _fv(y), _fv(xScale), _fv(yScale), _fv(alpha));

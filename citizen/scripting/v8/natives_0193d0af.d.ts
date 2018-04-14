@@ -1982,8 +1982,8 @@ declare function GetResourceKvpString(key: string): string;
 /**
  * Gets the metadata value at a specified key/index from a resource's manifest.
  * See also: [Resource manifest](https://wiki.fivem.net/wiki/Resource_manifest)
- * @param index The value index, in a range from [0..GET_NUM_RESOURCE_METDATA-1].
  * @param metadataKey The key in the resource manifest.
+ * @param index The value index, in a range from [0..GET_NUM_RESOURCE_METDATA-1].
  * @param resourceName The resource name.
  */
 declare function GetResourceMetadata(resourceName: string, metadataKey: string, index: number): string;
@@ -9956,12 +9956,12 @@ declare function SetMinimapComponent(p0: number, p1: boolean, p2: number): numbe
 
 /**
  * Sets the display info for a minimap overlay.
- * @param yScale The Y scale for the overlay. This is equivalent to the Flash _yscale property.
- * @param alpha The alpha value for the overlay. This is equivalent to the Flash _alpha property, therefore 100 = 100%.
  * @param xScale The X scale for the overlay. This is equivalent to the Flash _xscale property, therefore 100 = 100%.
- * @param x The X position for the overlay. This is equivalent to a game coordinate X.
+ * @param yScale The Y scale for the overlay. This is equivalent to the Flash _yscale property.
  * @param y The Y position for the overlay. This is equivalent to a game coordinate Y, except that it's inverted (gfxY = -gameY).
  * @param miniMap The minimap overlay ID.
+ * @param alpha The alpha value for the overlay. This is equivalent to the Flash _alpha property, therefore 100 = 100%.
+ * @param x The X position for the overlay. This is equivalent to a game coordinate X.
  */
 declare function SetMinimapOverlayDisplay(miniMap: number, x: number, y: number, xScale: number, yScale: number, alpha: number): void;
 

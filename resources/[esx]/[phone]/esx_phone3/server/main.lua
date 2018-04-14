@@ -285,100 +285,102 @@ AddEventHandler('esx_phone:refresh', function(indentifier)
 
   local _indentifier  = indentifier
   local xPlayer  = ESX.GetPlayerFromIdentifier(_indentifier)
-  local _source = xPlayer.source
-  local xIdentity = {}
 
-  getIdentity(_indentifier, function(data)
+  if xPlayer ~= nil then
+      local _source = xPlayer.source
+      local xIdentity = {}
 
-    xIdentity = data
-    local characterId = xIdentity.characterId
+      getIdentity(_indentifier, function(data)
 
-    for num,v in pairs(PhoneNumbers) do
-      if tonumber(num) == num then -- If phonenumber is a player phone number
-        for src,_ in pairs(v.sources) do
-          TriggerClientEvent('esx_phone:setPhoneNumberSource', _source, num, tonumber(src))
+        xIdentity = data
+        local characterId = xIdentity.characterId
+
+        for num,v in pairs(PhoneNumbers) do
+          if tonumber(num) == num then -- If phonenumber is a player phone number
+            for src,_ in pairs(v.sources) do
+              TriggerClientEvent('esx_phone:setPhoneNumberSource', _source, num, tonumber(src))
+            end
+          end
         end
-      end
-    end
-
-    MySQL.Async.fetchAll(
-      'SELECT * FROM users WHERE identifier = @identifier',
-      {
-        ['@identifier'] = _indentifier
-      },
-      function(result)
-
-        local phoneNumber = result[1].phone_number
-
-        if phoneNumber == nil then
-
-          phoneNumber = GenerateUniquePhoneNumber()
-
-          MySQL.Async.execute(
-            'UPDATE users SET phone_number = @phone_number WHERE identifier = @identifier',
-            {
-              ['@identifier']   = _indentifier,
-              ['@phone_number'] = phoneNumber
-            }
-          )
-
-          MySQL.Async.execute(
-            'UPDATE characters SET phone_number = @phone_number WHERE id = @identifier',
-            {
-              ['@identifier'] = characterId,
-              ['@phone_number'] = phoneNumber
-            }
-          )
-        end
-
-        TriggerClientEvent('esx_phone:setPhoneNumberSource', -1, phoneNumber, _source)
-
-        PhoneNumbers[phoneNumber] = {
-          type          = 'player',
-          hashDispatch  = false,
-          sharePos      = false,
-          hideNumber    = false,
-          hidePosIfAnon = false,
-          sources       = {[_source] = true}
-        }
-
-        xPlayer.set('phoneNumber', phoneNumber)
-
-        if PhoneNumbers[xPlayer.job.name] ~= nil then
-          TriggerEvent('esx_phone:addSource', xPlayer.job.name, _source)
-        end
-
-
 
         MySQL.Async.fetchAll(
-          'SELECT * FROM user_contacts WHERE identifier = @identifier ORDER BY name ASC',
+          'SELECT * FROM users WHERE identifier = @identifier',
           {
-            ['@identifier'] = characterId
+            ['@identifier'] = _indentifier
           },
-          function(result2)
-            local contacts = {}
+          function(result)
 
-            for i=1, #result2, 1 do
+            local phoneNumber = result[1].phone_number
 
-              table.insert(contacts, {
-                name   = result2[i].name,
-                number = result2[i].number,
-              })
+            if phoneNumber == nil then
+
+              phoneNumber = GenerateUniquePhoneNumber()
+
+              MySQL.Async.execute(
+                'UPDATE users SET phone_number = @phone_number WHERE identifier = @identifier',
+                {
+                  ['@identifier']   = _indentifier,
+                  ['@phone_number'] = phoneNumber
+                }
+              )
+
+              MySQL.Async.execute(
+                'UPDATE characters SET phone_number = @phone_number WHERE id = @identifier',
+                {
+                  ['@identifier'] = characterId,
+                  ['@phone_number'] = phoneNumber
+                }
+              )
             end
 
-            xPlayer.set('contacts', contacts)
+            TriggerClientEvent('esx_phone:setPhoneNumberSource', -1, phoneNumber, _source)
 
-            TriggerClientEvent('esx_phone:loaded', _source, phoneNumber, contacts)
+            PhoneNumbers[phoneNumber] = {
+              type          = 'player',
+              hashDispatch  = false,
+              sharePos      = false,
+              hideNumber    = false,
+              hidePosIfAnon = false,
+              sources       = {[_source] = true}
+            }
 
+            xPlayer.set('phoneNumber', phoneNumber)
+
+            if PhoneNumbers[xPlayer.job.name] ~= nil then
+              TriggerEvent('esx_phone:addSource', xPlayer.job.name, _source)
+            end
+
+
+
+            MySQL.Async.fetchAll(
+              'SELECT * FROM user_contacts WHERE identifier = @identifier ORDER BY name ASC',
+              {
+                ['@identifier'] = characterId
+              },
+              function(result2)
+                local contacts = {}
+
+                for i=1, #result2, 1 do
+
+                  table.insert(contacts, {
+                    name   = result2[i].name,
+                    number = result2[i].number,
+                  })
+                end
+
+                xPlayer.set('contacts', contacts)
+
+                TriggerClientEvent('esx_phone:loaded', _source, phoneNumber, contacts)
+
+              end
+            )
           end
         )
+
+
       end
-    )
-
-
+      )
   end
-  )
-
 end)
 
 function getIdentity(source, callback)
@@ -407,18 +409,18 @@ function getIdentity(source, callback)
               Citizen.Wait(0)
             end
             local data = {
-              identifier	= result1[1]['identifier'],
-              characterId = result1[1]['id'],
-              firstname	= result1[1]['firstname'],
-              lastname	= result1[1]['lastname'],
-              dateofbirth	= result1[1]['dateofbirth'],
-              sex			= result1[1]['sex'],
-              height		= result1[1]['height'],
-              job		    = result1[1]['job'],
-              job_grade	= result1[1]['job_grade'],
-              second_job	= result1[1]['second_job'],
-              loadout     = result1[1]['loadout'],
-              skin		= result1[1]['skin'],
+              identifier	= result1[1]['identifier'] or nil,
+              characterId = result1[1]['id'] or nil,
+              firstname	= result1[1]['firstname'] or nil,
+              lastname	= result1[1]['lastname'] or nil,
+              dateofbirth	= result1[1]['dateofbirth'] or nil,
+              sex			= result1[1]['sex'] or nil,
+              height		= result1[1]['height'] or nil,
+              job		    = result1[1]['job'] or nil,
+              job_grade	= result1[1]['job_grade'] or nil,
+              second_job	= result1[1]['second_job'] or nil,
+              loadout     = result1[1]['loadout'] or nil,
+              skin		= result1[1]['skin'] or nil,
               phone_number = result1[1]['phone_number'] or nil
             }
             callback(data)

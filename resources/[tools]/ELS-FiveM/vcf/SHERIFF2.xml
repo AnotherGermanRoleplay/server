@@ -39,7 +39,7 @@
 	</CRUISE>
 	<!-- AUX CORONAS -->
 	<ACORONAS>
-		<Headlights DfltPattern="0" ColorL="white" ColorR="white" />
+		<Headlights DfltPattern="o" ColorL="white" ColorR="white" />
 		<TailLights DfltPattern="0" ColorL="red" ColorR="red" />
 		<IndicatorsF DfltPattern="0" ColorL="white" ColorR="white" />
 		<IndicatorsB DfltPattern="0" ColorL="red" ColorR="red" />
@@ -60,7 +60,7 @@
 	<!-- WRNL -->
 	<WRNL LightingFormat="leds" >
 		<PresetPatterns>
-			<Lstg3 Enabled="true" Pattern="009" />
+			<Lstg3 Enabled="true" Pattern="01" />
 		</PresetPatterns>
 		<ForcedPatterns>
 			<MainHorn Enabled="false" Pattern="0" />
@@ -80,8 +80,8 @@
 	<!-- PRML -->
 	<PRML LightingFormat="leds" ExtrasActiveAtLstg2="1and4" >
 		<PresetPatterns>
-			<Lstg2 Enabled="true" Pattern="002" />
-			<Lstg3 Enabled="true" Pattern="002" />
+			<Lstg2 Enabled="true" Pattern="12" />
+			<Lstg3 Enabled="true" Pattern="12" />
 		</PresetPatterns>
 		<ForcedPatterns>
 			<MainHorn Enabled="false" Pattern="0" />
@@ -101,9 +101,9 @@
 	<!-- SECL -->
 	<SECL LightingFormat="leds" DisableAtLstg3="true" >
 		<PresetPatterns>
-			<Lstg1 Enabled="true" Pattern="006" />
-			<Lstg2 Enabled="true" Pattern="006" />
-			<Lstg3 Enabled="true" Pattern="006" />
+			<Lstg1 Enabled="true" Pattern="6" />
+			<Lstg2 Enabled="true" Pattern="6" />
+			<Lstg3 Enabled="true" Pattern="6" />
 		</PresetPatterns>
 		<ForcedPatterns>
 			<MainHorn Enabled="false" Pattern="0" />
