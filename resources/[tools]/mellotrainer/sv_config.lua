@@ -45,7 +45,7 @@ local steamOnly = true
 	specified in the below admins table can use it. 
 	Options: true, false 
 -------------------------------------------------------------]]
-local adminOnlyTrainer = false
+local adminOnlyTrainer = true
 
 --[[-----------------------------------------------------------
 	Name: adminOnlyNoclip 
@@ -53,7 +53,7 @@ local adminOnlyTrainer = false
 	reserved for admins only
 	Options: true, false 
 -------------------------------------------------------------]]
-local adminOnlyNoclip = false
+local adminOnlyNoclip = true
 
 --[[-----------------------------------------------------------
 	List of identifiers that is used to grant admin
@@ -63,7 +63,8 @@ local adminOnlyNoclip = false
 https://forum.fivem.net/t/how-to-steam-hex-value-pictures/41071
 -------------------------------------------------------------]]
 local admins = {
-	"steam:11000011201aa78",   -- Add all steam hexs heres.
+	"steam:11000011201aa78",   -- Philipp
+	"steam:110000106abab10",   -- PolluX
 }
 
 
