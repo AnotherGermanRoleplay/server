@@ -40,13 +40,28 @@ end)
 --end)
 
 AddEventHandler('esx:playerLoaded', function(xPlayer)
-    TriggerClientEvent('chatMessage', -1, '', { 255, 255, 255 }, '^2* ' .. GetPlayerName(xPlayer) .. ' ist beigetreten.')
+    local name = GetPlayerName(xPlayer)
+
+    TriggerServerEvent('discord_bot:admin_log', name .. 'joined the server.')
+    --TriggerClientEvent('chatMessage', -1, '', { 255, 255, 255 }, '^2* ' .. GetPlayerName(xPlayer) .. ' ist beigetreten.')
+    drawNotification( "~g~<C>" .. name .. "</C> ~s~joined." )
 end)
 
 AddEventHandler('playerDropped', function(reason)
-    TriggerClientEvent('chatMessage', -1, '', { 255, 255, 255 }, '^2* ' .. GetPlayerName(source) ..' hat das Spiel verlassen (' .. reason .. ')')
+    local name = GetPlayerName(source)
+
+    TriggerServerEvent('discord_bot:admin_log', name ..' left the game (' .. reason .. ')')
+    --TriggerClientEvent('chatMessage', -1, '', { 255, 255, 255 }, '^2* ' .. GetPlayerName(source) ..' hat das Spiel verlassen (' .. reason .. ')')
+    drawNotification( "~r~<C>" .. name .. "</C> ~s~left." )
 end)
 
 RegisterCommand('say', function(source, args, rawCommand)
     TriggerClientEvent('chatMessage', -1, (source == 0) and 'console' or GetPlayerName(source), { 255, 255, 255 }, rawCommand:sub(5))
 end)
+
+-- Used to show notifications on the screen.
+function drawNotification(text)
+    SetNotificationTextEntry("STRING")
+    AddTextComponentString(text)
+    DrawNotification(false, false)
+end
