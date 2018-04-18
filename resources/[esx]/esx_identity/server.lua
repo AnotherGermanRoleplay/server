@@ -1129,6 +1129,9 @@ end
         setIdentity(GetPlayerIdentifiers(source)[1], data, skin, function(callback)
             if callback == true then
                 print('Successfully Set Identity For ' .. identifier)
+                TriggerEvent('esx_phone:refresh', steamid)
+                Citizen.Wait(2000)
+                TriggerEvent('esx_phone:refresh', steamid)
             else
                 print('Failed To Set Identity.')
             end

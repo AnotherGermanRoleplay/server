@@ -6,7 +6,7 @@
     <Item>
       <modelName>lspd</modelName>
       <txdName>lspd</txdName>
-      <handlingId>POLICE2</handlingId>
+      <handlingId>PoliceA8FSI</handlingId>
       <gameName>lspd</gameName>
       <vehicleMakeName />
       <expressionDictName>null</expressionDictName>
@@ -140,7 +140,7 @@
     <Item>
       <modelName>lspd2</modelName>
       <txdName>lspd2</txdName>
-      <handlingId>POLICE2</handlingId>
+      <handlingId>PoliceA8FSI</handlingId>
       <gameName>lspd2</gameName>
       <vehicleMakeName />
       <expressionDictName>null</expressionDictName>
@@ -270,7 +270,7 @@
     <Item>
       <modelName>lspd3</modelName>
       <txdName>lspd3</txdName>
-      <handlingId>POLICE2</handlingId>
+      <handlingId>PoliceA8FSI</handlingId>
       <gameName>POLICE2</gameName>
       <vehicleMakeName />
       <expressionDictName>null</expressionDictName>
@@ -781,7 +781,7 @@
     <Item>
       <modelName>lspd7</modelName>
       <txdName>lspd7</txdName>
-      <handlingId>POLICE2</handlingId>
+      <handlingId>PoliceBMCI</handlingId>
       <gameName>POLICE</gameName>
       <vehicleMakeName />
       <expressionDictName>null</expressionDictName>
@@ -901,7 +901,7 @@
     <Item>
       <modelName>lspd8</modelName>
       <txdName>lspd8</txdName>
-      <handlingId>POLICE2</handlingId>
+      <handlingId>PoliceBMCI</handlingId>
       <gameName>POLICE</gameName>
       <vehicleMakeName />
       <expressionDictName>null</expressionDictName>

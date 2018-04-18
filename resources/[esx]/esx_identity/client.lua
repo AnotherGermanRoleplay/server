@@ -68,10 +68,15 @@ RegisterNUICallback('register', function(data)
   Wait (500)
   TriggerServerEvent('esx_identity:updateLastChar', data)
   TriggerEvent('esx_skin:openSaveableMenu', function(submitCb)
-    while submitCb == nil do
-      Citizen.Wait(0)
-    end
+    TriggerEvent('skinchanger:getSkin', function(skin)
+      TriggerServerEvent('esx_skin:save', skin)
+    end)
     TriggerServerEvent('esx_identity:setIdentity', data)
+    Citizen.Wait(20000)
+    TriggerEvent('skinchanger:getSkin', function(skin)
+      TriggerServerEvent('esx_skin:save', skin)
+    end)
+    TriggerServerEvent('esx_phone:refresh', ESX.PlayerData.identifier)
   end)
 end)
 
