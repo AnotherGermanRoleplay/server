@@ -1,7 +1,7 @@
 
 Config = {
 	DrawDistance = 100,
-	Price = 1200,
+	Price = 420,
 	BlipInfos = {
 		Sprite = 290,
 		Color = 38 
