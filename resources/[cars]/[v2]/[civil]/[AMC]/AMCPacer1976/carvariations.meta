@@ -1,0 +1,222 @@
+<CVehicleModelInfoVariation>
+  <variationData>
+
+    <Item>
+      <modelName>yamcPacer</modelName>
+      <colors>
+        <Item>
+          <indices content="char_array">
+            0 
+            97 
+            118 
+            118 
+          </indices>
+          <liveries>
+            <Item value="false" />
+            <Item value="false" />
+          </liveries>
+        </Item>
+        <Item>
+          <indices content="char_array">
+            2 
+            97 
+            118 
+            118 
+          </indices>
+          <liveries>
+            <Item value="false" />
+            <Item value="false" />
+          </liveries>
+        </Item>
+        <Item>
+          <indices content="char_array">
+            8 
+            97 
+            118 
+            118 
+          </indices>
+          <liveries>
+            <Item value="false" />
+            <Item value="false" />
+          </liveries>
+        </Item>
+        <Item>
+          <indices content="char_array">
+            19 
+            97 
+            118 
+            118 
+          </indices>
+          <liveries>
+            <Item value="false" />
+            <Item value="false" />
+          </liveries>
+        </Item>
+
+        <Item>
+          <indices content="char_array">
+            43 
+            97 
+            118 
+            118 
+          </indices>
+          <liveries>
+            <Item value="false" />
+            <Item value="false" />
+          </liveries>
+        </Item>
+        <Item>
+          <indices content="char_array">
+            150 
+            104 
+            118 
+            118 
+          </indices>
+          <liveries>
+            <Item value="false" />
+            <Item value="false" />
+          </liveries>
+        </Item>
+        <Item>
+          <indices content="char_array">
+            88 
+            104 
+            118 
+            118 
+          </indices>
+          <liveries>
+            <Item value="false" />
+            <Item value="false" />
+          </liveries>
+        </Item>
+
+        <Item>
+          <indices content="char_array">
+            62 
+            97 
+            118 
+            118 
+          </indices>
+          <liveries>
+            <Item value="false" />
+            <Item value="false" />
+          </liveries>
+        </Item>
+        <Item>
+          <indices content="char_array">
+            73 
+            97 
+            118 
+            118 
+          </indices>
+          <liveries>
+            <Item value="false" />
+            <Item value="false" />
+          </liveries>
+        </Item>
+        <Item>
+          <indices content="char_array">
+            68 
+            110 
+            118 
+            118 
+          </indices>
+          <liveries>
+            <Item value="false" />
+            <Item value="false" />
+          </liveries>
+        </Item>
+
+        <Item>
+          <indices content="char_array">
+            147 
+            110 
+            118 
+            118 
+          </indices>
+          <liveries>
+            <Item value="false" />
+            <Item value="false" />
+          </liveries>
+        </Item>
+        <Item>
+          <indices content="char_array">
+            101 
+            104 
+            118 
+            118 
+          </indices>
+          <liveries>
+            <Item value="false" />
+            <Item value="false" />
+          </liveries>
+        </Item>
+        <Item>
+          <indices content="char_array">
+            107 
+            97 
+            118 
+            118 
+          </indices>
+          <liveries>
+            <Item value="false" />
+            <Item value="false" />
+          </liveries>
+        </Item>
+
+        <Item>
+          <indices content="char_array">
+            51 
+            91 
+            118 
+            118 
+          </indices>
+          <liveries>
+            <Item value="false" />
+            <Item value="false" />
+          </liveries>
+        </Item>
+        <Item>
+          <indices content="char_array">
+            71 
+            107 
+            118 
+            118 
+          </indices>
+          <liveries>
+            <Item value="false" />
+            <Item value="false" />
+          </liveries>
+        </Item>
+      </colors>
+      <kits>
+        <Item>0_default_modkit</Item>
+      </kits>
+      <windowsWithExposedEdges />
+      <plateProbabilities>
+        <Probabilities>
+          <Item>
+            <Name>Standard White</Name>
+            <Value value="25" />
+          </Item>
+          <Item>
+            <Name>White Plate 2</Name>
+            <Value value="25" />
+          </Item>
+          <Item>
+            <Name>Blue Plate</Name>
+            <Value value="25" />
+          </Item>
+          <Item>
+            <Name>Yellow Plate</Name>
+            <Value value="25" />
+          </Item>
+        </Probabilities>
+      </plateProbabilities>
+      <lightSettings value="0" />
+      <sirenSettings value="0" />
+    </Item>
+
+
+    </variationData>
+</CVehicleModelInfoVariation>
