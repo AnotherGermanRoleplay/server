@@ -1148,286 +1148,131 @@ CREATE TABLE `vehicles` (
 -- ----------------------------
 -- Records of vehicles
 -- ----------------------------
-INSERT INTO `vehicles` VALUES ('1', 'Blade', 'blade', '15000', 'muscle', null, null);
-INSERT INTO `vehicles` VALUES ('2', 'Buccaneer', 'buccaneer', '18000', 'muscle', null, null);
-INSERT INTO `vehicles` VALUES ('3', 'Buccaneer Rider', 'buccaneer2', '24000', 'muscle', null, null);
-INSERT INTO `vehicles` VALUES ('4', 'Chino', 'chino', '15000', 'muscle', null, null);
-INSERT INTO `vehicles` VALUES ('5', 'Chino Luxe', 'chino2', '19000', 'muscle', null, null);
-INSERT INTO `vehicles` VALUES ('6', 'Coquette BlackFin', 'coquette3', '55000', 'muscle', null, null);
-INSERT INTO `vehicles` VALUES ('7', 'Dominator', 'dominator', '35000', 'muscle', null, null);
-INSERT INTO `vehicles` VALUES ('8', 'Dukes', 'dukes', '28000', 'muscle', null, null);
-INSERT INTO `vehicles` VALUES ('9', 'Gauntlet', 'gauntlet', '30000', 'muscle', null, null);
-INSERT INTO `vehicles` VALUES ('10', 'Hotknife', 'hotknife', '125000', 'muscle', null, null);
-INSERT INTO `vehicles` VALUES ('11', 'Faction', 'faction', '20000', 'muscle', null, null);
-INSERT INTO `vehicles` VALUES ('12', 'Faction Rider', 'faction2', '30000', 'muscle', null, null);
-INSERT INTO `vehicles` VALUES ('13', 'Faction XL', 'faction3', '40000', 'muscle', null, null);
-INSERT INTO `vehicles` VALUES ('14', 'Nightshade', 'nightshade', '65000', 'muscle', null, null);
-INSERT INTO `vehicles` VALUES ('15', 'Phoenix', 'phoenix', '12500', 'muscle', null, null);
-INSERT INTO `vehicles` VALUES ('16', 'Picador', 'picador', '18000', 'muscle', null, null);
-INSERT INTO `vehicles` VALUES ('17', 'Sabre Turbo', 'sabregt', '20000', 'muscle', null, null);
-INSERT INTO `vehicles` VALUES ('18', 'Sabre GT', 'sabregt2', '25000', 'muscle', null, null);
-INSERT INTO `vehicles` VALUES ('19', 'Slam Van', 'slamvan3', '11500', 'muscle', null, null);
-INSERT INTO `vehicles` VALUES ('20', 'Tampa', 'tampa', '16000', 'muscle', null, null);
-INSERT INTO `vehicles` VALUES ('21', 'Virgo', 'virgo', '14000', 'muscle', null, null);
-INSERT INTO `vehicles` VALUES ('22', 'Vigero', 'vigero', '12500', 'muscle', null, null);
-INSERT INTO `vehicles` VALUES ('23', 'Voodoo', 'voodoo', '7200', 'muscle', null, null);
-INSERT INTO `vehicles` VALUES ('24', 'Blista', 'blista', '8000', 'compacts', null, null);
-INSERT INTO `vehicles` VALUES ('25', 'Brioso R/A', 'brioso', '18000', 'compacts', null, null);
-INSERT INTO `vehicles` VALUES ('26', 'Issi', 'issi2', '10000', 'compacts', null, null);
-INSERT INTO `vehicles` VALUES ('27', 'Panto', 'panto', '10000', 'compacts', null, null);
-INSERT INTO `vehicles` VALUES ('28', 'Prairie', 'prairie', '12000', 'compacts', null, null);
-INSERT INTO `vehicles` VALUES ('29', 'Bison', 'bison', '45000', 'vans', null, null);
-INSERT INTO `vehicles` VALUES ('30', 'Bobcat XL', 'bobcatxl', '32000', 'vans', null, null);
-INSERT INTO `vehicles` VALUES ('31', 'Burrito', 'burrito3', '19000', 'vans', null, null);
-INSERT INTO `vehicles` VALUES ('32', 'Burrito', 'gburrito2', '29000', 'vans', null, null);
-INSERT INTO `vehicles` VALUES ('33', 'Camper', 'camper', '42000', 'vans', null, null);
-INSERT INTO `vehicles` VALUES ('34', 'Gang Burrito', 'gburrito', '45000', 'vans', null, null);
-INSERT INTO `vehicles` VALUES ('35', 'Journey', 'journey', '6500', 'vans', null, null);
-INSERT INTO `vehicles` VALUES ('36', 'Minivan', 'minivan', '13000', 'vans', null, null);
-INSERT INTO `vehicles` VALUES ('37', 'Moonbeam', 'moonbeam', '18000', 'vans', null, null);
-INSERT INTO `vehicles` VALUES ('38', 'Moonbeam Rider', 'moonbeam2', '35000', 'vans', null, null);
-INSERT INTO `vehicles` VALUES ('39', 'Paradise', 'paradise', '19000', 'vans', null, null);
-INSERT INTO `vehicles` VALUES ('40', 'Rumpo', 'rumpo', '15000', 'vans', null, null);
-INSERT INTO `vehicles` VALUES ('41', 'Rumpo Trail', 'rumpo3', '19500', 'vans', null, null);
-INSERT INTO `vehicles` VALUES ('42', 'Surfer', 'surfer', '12000', 'vans', null, null);
-INSERT INTO `vehicles` VALUES ('43', 'Youga', 'youga', '10800', 'vans', null, null);
-INSERT INTO `vehicles` VALUES ('44', 'Youga Luxuary', 'youga2', '14500', 'vans', null, null);
-INSERT INTO `vehicles` VALUES ('45', 'Asea', 'asea', '5500', 'sedans', null, null);
-INSERT INTO `vehicles` VALUES ('46', 'Cognoscenti', 'cognoscenti', '55000', 'sedans', null, null);
-INSERT INTO `vehicles` VALUES ('47', 'Emperor', 'emperor', '8500', 'sedans', null, null);
-INSERT INTO `vehicles` VALUES ('48', 'Fugitive', 'fugitive', '12000', 'sedans', null, null);
-INSERT INTO `vehicles` VALUES ('49', 'Glendale', 'glendale', '6500', 'sedans', null, null);
-INSERT INTO `vehicles` VALUES ('50', 'Intruder', 'intruder', '7500', 'sedans', null, null);
-INSERT INTO `vehicles` VALUES ('51', 'Premier', 'premier', '8000', 'sedans', null, null);
-INSERT INTO `vehicles` VALUES ('52', 'Primo Custom', 'primo2', '14000', 'sedans', null, null);
-INSERT INTO `vehicles` VALUES ('53', 'Regina', 'regina', '5000', 'sedans', null, null);
-INSERT INTO `vehicles` VALUES ('54', 'Schafter', 'schafter2', '25000', 'sedans', null, null);
-INSERT INTO `vehicles` VALUES ('55', 'Stretch', 'stretch', '90000', 'sedans', null, null);
-INSERT INTO `vehicles` VALUES ('56', 'Super Diamond', 'superd', '130000', 'sedans', null, null);
-INSERT INTO `vehicles` VALUES ('57', 'Tailgater', 'tailgater', '30000', 'sedans', null, null);
-INSERT INTO `vehicles` VALUES ('58', 'Warrener', 'warrener', '4000', 'sedans', null, null);
-INSERT INTO `vehicles` VALUES ('59', 'Washington', 'washington', '9000', 'sedans', null, null);
-INSERT INTO `vehicles` VALUES ('60', 'Baller', 'baller2', '40000', 'suvs', null, null);
-INSERT INTO `vehicles` VALUES ('61', 'Baller Sport', 'baller3', '60000', 'suvs', null, null);
-INSERT INTO `vehicles` VALUES ('62', 'Cavalcade', 'cavalcade2', '55000', 'suvs', null, null);
-INSERT INTO `vehicles` VALUES ('63', 'Contender', 'contender', '70000', 'suvs', null, null);
-INSERT INTO `vehicles` VALUES ('64', 'Dubsta', 'dubsta', '45000', 'suvs', null, null);
-INSERT INTO `vehicles` VALUES ('65', 'Dubsta Luxuary', 'dubsta2', '60000', 'suvs', null, null);
-INSERT INTO `vehicles` VALUES ('66', 'Fhantom', 'fq2', '17000', 'suvs', null, null);
-INSERT INTO `vehicles` VALUES ('67', 'Grabger', 'granger', '50000', 'suvs', null, null);
-INSERT INTO `vehicles` VALUES ('68', 'Gresley', 'gresley', '47500', 'suvs', null, null);
-INSERT INTO `vehicles` VALUES ('69', 'Huntley S', 'huntley', '40000', 'suvs', null, null);
-INSERT INTO `vehicles` VALUES ('70', 'Landstalker', 'landstalker', '35000', 'suvs', null, null);
-INSERT INTO `vehicles` VALUES ('71', 'Mesa', 'mesa', '16000', 'suvs', null, null);
-INSERT INTO `vehicles` VALUES ('72', 'Mesa Trail', 'mesa3', '40000', 'suvs', null, null);
-INSERT INTO `vehicles` VALUES ('73', 'Patriot', 'patriot', '55000', 'suvs', null, null);
-INSERT INTO `vehicles` VALUES ('74', 'Radius', 'radi', '29000', 'suvs', null, null);
-INSERT INTO `vehicles` VALUES ('75', 'Rocoto', 'rocoto', '45000', 'suvs', null, null);
-INSERT INTO `vehicles` VALUES ('76', 'Seminole', 'seminole', '25000', 'suvs', null, null);
-INSERT INTO `vehicles` VALUES ('77', 'XLS', 'xls', '32000', 'suvs', null, null);
-INSERT INTO `vehicles` VALUES ('78', 'Btype', 'btype', '62000', 'sportsclassics', null, null);
-INSERT INTO `vehicles` VALUES ('79', 'Btype Luxe', 'btype3', '85000', 'sportsclassics', null, null);
-INSERT INTO `vehicles` VALUES ('80', 'Btype Hotroad', 'btype2', '155000', 'sportsclassics', null, null);
-INSERT INTO `vehicles` VALUES ('81', 'Casco', 'casco', '30000', 'sportsclassics', null, null);
-INSERT INTO `vehicles` VALUES ('82', 'Coquette Classic', 'coquette2', '40000', 'sportsclassics', null, null);
-INSERT INTO `vehicles` VALUES ('83', 'Manana', 'manana', '12800', 'sportsclassics', null, null);
-INSERT INTO `vehicles` VALUES ('84', 'Monroe', 'monroe', '55000', 'sportsclassics', null, null);
-INSERT INTO `vehicles` VALUES ('85', 'Pigalle', 'pigalle', '20000', 'sportsclassics', null, null);
-INSERT INTO `vehicles` VALUES ('86', 'Stinger', 'stinger', '80000', 'sportsclassics', null, null);
-INSERT INTO `vehicles` VALUES ('87', 'Stinger GT', 'stingergt', '75000', 'sportsclassics', null, null);
-INSERT INTO `vehicles` VALUES ('88', 'Stirling GT', 'feltzer3', '65000', 'sportsclassics', null, null);
-INSERT INTO `vehicles` VALUES ('89', 'Z-Type', 'ztype', '220000', 'sportsclassics', null, null);
-INSERT INTO `vehicles` VALUES ('90', 'Bifta', 'bifta', '12000', 'offroad', null, null);
-INSERT INTO `vehicles` VALUES ('91', 'Bf Injection', 'bfinjection', '16000', 'offroad', null, null);
-INSERT INTO `vehicles` VALUES ('92', 'Blazer', 'blazer', '6500', 'offroad', null, null);
-INSERT INTO `vehicles` VALUES ('93', 'Blazer Sport', 'blazer4', '8500', 'offroad', null, null);
-INSERT INTO `vehicles` VALUES ('94', 'Brawler', 'brawler', '45000', 'offroad', null, null);
-INSERT INTO `vehicles` VALUES ('95', 'Bubsta 6x6', 'dubsta3', '120000', 'offroad', null, null);
-INSERT INTO `vehicles` VALUES ('96', 'Dune Buggy', 'dune', '8000', 'offroad', null, null);
-INSERT INTO `vehicles` VALUES ('97', 'Guardian', 'guardian', '45000', 'offroad', null, null);
-INSERT INTO `vehicles` VALUES ('98', 'Rebel', 'rebel2', '35000', 'offroad', null, null);
-INSERT INTO `vehicles` VALUES ('99', 'Sandking', 'sandking', '55000', 'offroad', null, null);
-INSERT INTO `vehicles` VALUES ('100', 'The Liberator', 'monster', '210000', 'offroad', null, null);
-INSERT INTO `vehicles` VALUES ('101', 'Trophy Truck', 'trophytruck', '60000', 'offroad', null, null);
-INSERT INTO `vehicles` VALUES ('102', 'Trophy Truck Limited', 'trophytruck2', '80000', 'offroad', null, null);
-INSERT INTO `vehicles` VALUES ('103', 'Cognoscenti Cabrio', 'cogcabrio', '55000', 'coupes', null, null);
-INSERT INTO `vehicles` VALUES ('104', 'Exemplar', 'exemplar', '32000', 'coupes', null, null);
-INSERT INTO `vehicles` VALUES ('105', 'Lexus RC F', 'f620', '40000', 'coupes', null, null);
-INSERT INTO `vehicles` VALUES ('106', 'Felon', 'felon', '42000', 'coupes', null, null);
-INSERT INTO `vehicles` VALUES ('107', 'Felon GT', 'felon2', '55000', 'coupes', null, null);
-INSERT INTO `vehicles` VALUES ('108', 'Jackal', 'jackal', '38000', 'coupes', null, null);
-INSERT INTO `vehicles` VALUES ('109', 'Oracle XS', 'oracle2', '35000', 'coupes', null, null);
-INSERT INTO `vehicles` VALUES ('110', 'Sentinel', 'sentinel', '32000', 'coupes', null, null);
-INSERT INTO `vehicles` VALUES ('111', 'Sentinel XS', 'sentinel2', '40000', 'coupes', null, null);
-INSERT INTO `vehicles` VALUES ('112', 'Windsor', 'windsor', '95000', 'coupes', null, null);
-INSERT INTO `vehicles` VALUES ('113', 'Windsor Drop', 'windsor2', '125000', 'coupes', null, null);
-INSERT INTO `vehicles` VALUES ('114', 'Zion', 'zion', '36000', 'coupes', null, null);
-INSERT INTO `vehicles` VALUES ('115', 'Zion Cabrio', 'zion2', '45000', 'coupes', null, null);
-INSERT INTO `vehicles` VALUES ('116', '9F', 'ninef', '65000', 'sports', null, null);
-INSERT INTO `vehicles` VALUES ('117', '9F Cabrio', 'ninef2', '80000', 'sports', null, null);
-INSERT INTO `vehicles` VALUES ('118', 'Alpha', 'alpha', '60000', 'sports', null, null);
-INSERT INTO `vehicles` VALUES ('119', 'Banshee', 'banshee', '70000', 'sports', null, null);
-INSERT INTO `vehicles` VALUES ('120', 'Bestia GTS', 'bestiagts', '55000', 'sports', null, null);
-INSERT INTO `vehicles` VALUES ('121', 'Buffalo', 'buffalo', '12000', 'sports', null, null);
-INSERT INTO `vehicles` VALUES ('122', 'Buffalo S', 'buffalo2', '20000', 'sports', null, null);
-INSERT INTO `vehicles` VALUES ('123', 'Carbonizzare', 'carbonizzare', '75000', 'sports', null, null);
-INSERT INTO `vehicles` VALUES ('124', 'Comet', 'comet2', '65000', 'sports', null, null);
-INSERT INTO `vehicles` VALUES ('125', 'Coquette', 'coquette', '65000', 'sports', null, null);
-INSERT INTO `vehicles` VALUES ('126', 'Drift Tampa', 'tampa2', '80000', 'sports', null, null);
-INSERT INTO `vehicles` VALUES ('127', 'Elegy', 'elegy2', '38500', 'sports', null, null);
-INSERT INTO `vehicles` VALUES ('128', 'Feltzer', 'feltzer2', '55000', 'sports', null, null);
-INSERT INTO `vehicles` VALUES ('129', 'Furore GT', 'furoregt', '45000', 'sports', null, null);
-INSERT INTO `vehicles` VALUES ('130', 'Fusilade', 'fusilade', '40000', 'sports', null, null);
-INSERT INTO `vehicles` VALUES ('131', 'Jester', 'jester', '65000', 'sports', null, null);
-INSERT INTO `vehicles` VALUES ('132', 'Jester(Racecar)', 'jester2', '135000', 'sports', null, null);
-INSERT INTO `vehicles` VALUES ('133', 'Khamelion', 'khamelion', '38000', 'sports', null, null);
-INSERT INTO `vehicles` VALUES ('134', 'Kuruma', 'kuruma', '30000', 'sports', null, null);
-INSERT INTO `vehicles` VALUES ('135', 'Lynx', 'lynx', '40000', 'sports', null, null);
-INSERT INTO `vehicles` VALUES ('136', 'Mamba', 'mamba', '70000', 'sports', null, null);
-INSERT INTO `vehicles` VALUES ('137', 'Massacro', 'massacro', '65000', 'sports', null, null);
-INSERT INTO `vehicles` VALUES ('138', 'Massacro(Racecar)', 'massacro2', '130000', 'sports', null, null);
-INSERT INTO `vehicles` VALUES ('139', 'Omnis', 'omnis', '35000', 'sports', null, null);
-INSERT INTO `vehicles` VALUES ('140', 'Penumbra', 'penumbra', '28000', 'sports', null, null);
-INSERT INTO `vehicles` VALUES ('141', 'Rapid GT', 'rapidgt', '35000', 'sports', null, null);
-INSERT INTO `vehicles` VALUES ('142', 'Rapid GT Convertible', 'rapidgt2', '45000', 'sports', null, null);
-INSERT INTO `vehicles` VALUES ('143', 'Schafter V12', 'schafter3', '50000', 'sports', null, null);
-INSERT INTO `vehicles` VALUES ('144', 'Seven 70', 'seven70', '39500', 'sports', null, null);
-INSERT INTO `vehicles` VALUES ('145', 'Sultan', 'sultan', '15000', 'sports', null, null);
-INSERT INTO `vehicles` VALUES ('146', 'Surano', 'surano', '50000', 'sports', null, null);
-INSERT INTO `vehicles` VALUES ('147', 'Tropos', 'tropos', '40000', 'sports', null, null);
-INSERT INTO `vehicles` VALUES ('148', 'Verlierer', 'verlierer2', '70000', 'sports', null, null);
-INSERT INTO `vehicles` VALUES ('149', 'Adder', 'adder', '200000', 'super', null, null);
-INSERT INTO `vehicles` VALUES ('150', 'Banshee 900R', 'banshee2', '155000', 'super', null, null);
-INSERT INTO `vehicles` VALUES ('151', 'Bullet', 'bullet', '90000', 'super', null, null);
-INSERT INTO `vehicles` VALUES ('152', 'Cheetah', 'cheetah', '175000', 'super', null, null);
-INSERT INTO `vehicles` VALUES ('153', 'Entity XF', 'entityxf', '225000', 'super', null, null);
-INSERT INTO `vehicles` VALUES ('154', 'ETR1', 'sheava', '220000', 'super', null, null);
-INSERT INTO `vehicles` VALUES ('155', 'FMJ', 'fmj', '185000', 'super', null, null);
-INSERT INTO `vehicles` VALUES ('156', 'Infernus', 'infernus', '180000', 'super', null, null);
-INSERT INTO `vehicles` VALUES ('157', 'Osiris', 'osiris', '160000', 'super', null, null);
-INSERT INTO `vehicles` VALUES ('158', 'Pfister', 'pfister811', '85000', 'super', null, null);
-INSERT INTO `vehicles` VALUES ('159', 'RE-7B', 'le7b', '325000', 'super', null, null);
-INSERT INTO `vehicles` VALUES ('160', 'Reaper', 'reaper', '150000', 'super', null, null);
-INSERT INTO `vehicles` VALUES ('161', 'Sultan RS', 'sultanrs', '165000', 'super', null, null);
-INSERT INTO `vehicles` VALUES ('162', 'T20', 't20', '130000', 'super', null, null);
-INSERT INTO `vehicles` VALUES ('163', 'Turismo R', 'turismor', '120000', 'super', null, null);
-INSERT INTO `vehicles` VALUES ('164', 'Tyrus', 'tyrus', '250000', 'super', null, null);
-INSERT INTO `vehicles` VALUES ('165', 'Vacca', 'vacca', '120000', 'super', null, null);
-INSERT INTO `vehicles` VALUES ('166', 'Voltic', 'voltic', '90000', 'super', null, null);
-INSERT INTO `vehicles` VALUES ('167', 'X80 Proto', 'prototipo', '250000', 'super', null, null);
-INSERT INTO `vehicles` VALUES ('168', 'Zentorno', 'zentorno', '150000', 'super', null, null);
-INSERT INTO `vehicles` VALUES ('169', 'Akuma', 'AKUMA', '7500', 'motorcycles', null, null);
-INSERT INTO `vehicles` VALUES ('170', 'Avarus', 'avarus', '18000', 'motorcycles', null, null);
-INSERT INTO `vehicles` VALUES ('171', 'Bagger', 'bagger', '13500', 'motorcycles', null, null);
-INSERT INTO `vehicles` VALUES ('172', 'Bati 801', 'bati', '12000', 'motorcycles', null, null);
-INSERT INTO `vehicles` VALUES ('173', 'Bati 801RR', 'bati2', '19000', 'motorcycles', null, null);
-INSERT INTO `vehicles` VALUES ('174', 'BF400', 'bf400', '6500', 'motorcycles', null, null);
-INSERT INTO `vehicles` VALUES ('175', 'BMX (velo)', 'bmx', '160', 'motorcycles', null, null);
-INSERT INTO `vehicles` VALUES ('176', 'Carbon RS', 'carbonrs', '18000', 'motorcycles', null, null);
-INSERT INTO `vehicles` VALUES ('177', 'Chimera', 'chimera', '38000', 'motorcycles', null, null);
-INSERT INTO `vehicles` VALUES ('178', 'Cliffhanger', 'cliffhanger', '9500', 'motorcycles', null, null);
-INSERT INTO `vehicles` VALUES ('179', 'Cruiser (velo)', 'cruiser', '510', 'motorcycles', null, null);
-INSERT INTO `vehicles` VALUES ('180', 'Daemon', 'daemon', '11500', 'motorcycles', null, null);
-INSERT INTO `vehicles` VALUES ('181', 'Daemon High', 'daemon2', '13500', 'motorcycles', null, null);
-INSERT INTO `vehicles` VALUES ('182', 'Defiler', 'defiler', '9800', 'motorcycles', null, null);
-INSERT INTO `vehicles` VALUES ('183', 'Double T', 'double', '28000', 'motorcycles', null, null);
-INSERT INTO `vehicles` VALUES ('184', 'Enduro', 'enduro', '5500', 'motorcycles', null, null);
-INSERT INTO `vehicles` VALUES ('185', 'Esskey', 'esskey', '4200', 'motorcycles', null, null);
-INSERT INTO `vehicles` VALUES ('186', 'Faggio', 'faggio', '1900', 'motorcycles', null, null);
-INSERT INTO `vehicles` VALUES ('187', 'Vespa', 'faggio2', '2800', 'motorcycles', null, null);
-INSERT INTO `vehicles` VALUES ('188', 'Fixter (velo)', 'fixter', '225', 'motorcycles', null, null);
-INSERT INTO `vehicles` VALUES ('189', 'Gargoyle', 'gargoyle', '16500', 'motorcycles', null, null);
-INSERT INTO `vehicles` VALUES ('190', 'Hakuchou', 'hakuchou', '31000', 'motorcycles', null, null);
-INSERT INTO `vehicles` VALUES ('191', 'Hakuchou Sport', 'hakuchou2', '55000', 'motorcycles', null, null);
-INSERT INTO `vehicles` VALUES ('192', 'Hexer', 'hexer', '12000', 'motorcycles', null, null);
-INSERT INTO `vehicles` VALUES ('193', 'Innovation', 'innovation', '23500', 'motorcycles', null, null);
-INSERT INTO `vehicles` VALUES ('194', 'Manchez', 'manchez', '5300', 'motorcycles', null, null);
-INSERT INTO `vehicles` VALUES ('195', 'Nemesis', 'nemesis', '5800', 'motorcycles', null, null);
-INSERT INTO `vehicles` VALUES ('196', 'Nightblade', 'nightblade', '35000', 'motorcycles', null, null);
-INSERT INTO `vehicles` VALUES ('197', 'PCJ-600', 'pcj', '6200', 'motorcycles', null, null);
-INSERT INTO `vehicles` VALUES ('198', 'Ruffian', 'ruffian', '6800', 'motorcycles', null, null);
-INSERT INTO `vehicles` VALUES ('199', 'Sanchez', 'sanchez', '5300', 'motorcycles', null, null);
-INSERT INTO `vehicles` VALUES ('200', 'Sanchez Sport', 'sanchez2', '5300', 'motorcycles', null, null);
-INSERT INTO `vehicles` VALUES ('201', 'Sanctus', 'sanctus', '25000', 'motorcycles', null, null);
-INSERT INTO `vehicles` VALUES ('202', 'Scorcher (velo)', 'scorcher', '280', 'motorcycles', null, null);
-INSERT INTO `vehicles` VALUES ('203', 'Sovereign', 'sovereign', '22000', 'motorcycles', null, null);
-INSERT INTO `vehicles` VALUES ('204', 'Shotaro Concept', 'shotaro', '160000', 'motorcycles', null, null);
-INSERT INTO `vehicles` VALUES ('205', 'Thrust', 'thrust', '24000', 'motorcycles', null, null);
-INSERT INTO `vehicles` VALUES ('206', 'Tri bike (velo)', 'tribike3', '520', 'motorcycles', null, null);
-INSERT INTO `vehicles` VALUES ('207', 'Vader', 'vader', '7200', 'motorcycles', null, null);
-INSERT INTO `vehicles` VALUES ('208', 'Vortex', 'vortex', '9800', 'motorcycles', null, null);
-INSERT INTO `vehicles` VALUES ('209', 'Woflsbane', 'wolfsbane', '9000', 'motorcycles', null, null);
-INSERT INTO `vehicles` VALUES ('210', 'Zombie', 'zombiea', '9500', 'motorcycles', null, null);
-INSERT INTO `vehicles` VALUES ('211', 'Zombie Luxuary', 'zombieb', '12000', 'motorcycles', null, null);
-INSERT INTO `vehicles` VALUES ('212', 'Buccaneer Rider', 'buccaneer2', '24000', 'customs', null, null);
-INSERT INTO `vehicles` VALUES ('213', 'Chino Luxe', 'chino2', '19000', 'customs', null, null);
-INSERT INTO `vehicles` VALUES ('214', 'Comet Retro', 'comet3', '75000', 'customs', null, null);
-INSERT INTO `vehicles` VALUES ('215', 'Elegy Retro', 'elegy', '45000', 'customs', null, null);
-INSERT INTO `vehicles` VALUES ('216', 'Faction Rider', 'faction2', '30000', 'customs', null, null);
-INSERT INTO `vehicles` VALUES ('217', 'Faction XL', 'faction3', '40000', 'customs', null, null);
-INSERT INTO `vehicles` VALUES ('218', 'FCR 1000', 'fcr2', '50000', 'customs', null, null);
-INSERT INTO `vehicles` VALUES ('219', 'Minivan', 'minivan2', '18000', 'customs', null, null);
-INSERT INTO `vehicles` VALUES ('220', 'Moonbeam Rider', 'moonbeam2', '35000', 'customs', null, null);
-INSERT INTO `vehicles` VALUES ('221', 'Nero', 'nero2', '200000', 'customs', null, null);
-INSERT INTO `vehicles` VALUES ('222', 'Primo Custom', 'primo2', '14000', 'customs', null, null);
-INSERT INTO `vehicles` VALUES ('223', 'Sabre GT', 'sabregt2', '25000', 'customs', null, null);
-INSERT INTO `vehicles` VALUES ('224', 'Slam Van', 'slamvan3', '11500', 'customs', null, null);
-INSERT INTO `vehicles` VALUES ('225', 'Specter', 'specter2', '120000', 'customs', null, null);
-INSERT INTO `vehicles` VALUES ('226', 'Tornado', 'tornado2', '45000', 'customs', null, null);
-INSERT INTO `vehicles` VALUES ('227', 'Virgo', 'virgo2', '19000', 'customs', null, null);
-INSERT INTO `vehicles` VALUES ('228', 'Voodoo', 'voodoo', '7200', 'customs', null, null);
-INSERT INTO `vehicles` VALUES ('229', 'Audi RS6 C7', 'rs6', '106000', 'audi', null, null);
-INSERT INTO `vehicles` VALUES ('231', 'Audi S8', 'audis8om', '60000', 'audi', null, null);
-INSERT INTO `vehicles` VALUES ('232', 'Audi TT RS', 'ttrs', '120000', 'audi', null, null);
-INSERT INTO `vehicles` VALUES ('233', 'Bentley Mulsanne', 'mulsanneom', '200000', 'addons', null, null);
-INSERT INTO `vehicles` VALUES ('234', 'Camaro ZL1', 'zl12017', '165000', 'addons', null, null);
-INSERT INTO `vehicles` VALUES ('235', 'Lexus RC F', 'f620', '40000', 'addons', null, null);
-INSERT INTO `vehicles` VALUES ('236', 'Mustang GT11', 'rmodfordgt', '340000', 'ford', null, null);
-INSERT INTO `vehicles` VALUES ('237', 'Nissan GTR R35', 'gtr', '100000', 'addons', null, null);
-INSERT INTO `vehicles` VALUES ('238', 'Peugeot 108', 'peug108', '4000', 'addons', null, null);
-INSERT INTO `vehicles` VALUES ('240', 'M4 GTS Liberty Walk', 'rmodm4gts', '480000', 'bmw', null, null);
-INSERT INTO `vehicles` VALUES ('241', 'Honda S2000', 'ap2', '35000', 'addons', null, null);
-INSERT INTO `vehicles` VALUES ('242', 'Eclipse', 'eclipse', '25000', 'mitsubishi', null, null);
-INSERT INTO `vehicles` VALUES ('243', 'Evo 9', 'evo9', '45000', 'mitsubishi', null, null);
-INSERT INTO `vehicles` VALUES ('245', 'Nissan Skyline GTR R34', 'skyline', '70000', 'addons', null, null);
-INSERT INTO `vehicles` VALUES ('246', 'CL65 AMG', 'cl65', '295000', 'benz', null, null);
-INSERT INTO `vehicles` VALUES ('247', 'S63 AMG', 's63w222', '160000', 'benz', null, null);
-INSERT INTO `vehicles` VALUES ('248', 'S600', 's600w220', '110000', 'benz', null, null);
-INSERT INTO `vehicles` VALUES ('249', 'G65 AMG', 'g65amg', '320000', 'benz', null, null);
-INSERT INTO `vehicles` VALUES ('250', 'M3 E36', 'rm3e36', '247500', 'bmw', null, null);
-INSERT INTO `vehicles` VALUES ('251', 'BMW 750Li', '750li', '55000', 'bmw', null, null);
-INSERT INTO `vehicles` VALUES ('252', 'Lumma 750', 'lumma750', '160000', 'bmw', null, null);
-INSERT INTO `vehicles` VALUES ('253', 'BMW e90', 'BMWe90', '115000', 'bmw', null, null);
-INSERT INTO `vehicles` VALUES ('254', 'Mercedes e400', 'e400w213', '50000', 'benz', null, null);
-INSERT INTO `vehicles` VALUES ('255', 'Mercedes Benz S63 (Wald)', 'W222Wald', '95000', 'benz', null, null);
-INSERT INTO `vehicles` VALUES ('256', 'BMW i8', 'i8', '135000', 'bmw', null, null);
-INSERT INTO `vehicles` VALUES ('257', 'BMW E92', 'E92', '105000', 'bmw', null, null);
-INSERT INTO `vehicles` VALUES ('258', 'BMW M235i', 'm235', '93000', 'bmw', null, null);
-INSERT INTO `vehicles` VALUES ('259', 'BMW z4i', 'z4i', '55000', 'bmw', null, null);
-INSERT INTO `vehicles` VALUES ('260', 'Golf GTi', 'golfgti', '35000', 'vw', null, null);
-INSERT INTO `vehicles` VALUES ('261', 'Passat', 'passat', '135000', 'vw', null, null);
-INSERT INTO `vehicles` VALUES ('262', 'Passat R', 'passatr', '140000', 'vw', null, null);
-INSERT INTO `vehicles` VALUES ('263', 'R50', 'R50', '125000', 'vw', null, null);
-INSERT INTO `vehicles` VALUES ('264', 'BMW e60', 'e60', '82000', 'bmw', null, null);
-INSERT INTO `vehicles` VALUES ('265', 'Dodge Challenger', '16challenger', '59000', 'addons', null, null);
-INSERT INTO `vehicles` VALUES ('266', 'M4 mit Bodykit', 'rmodm4', '650000', 'bmw', null, null);
-INSERT INTO `vehicles` VALUES ('267', 'DeClasse Rhapsody', 'rhapsody', '500', 'cheap', null, null);
-INSERT INTO `vehicles` VALUES ('268', 'BMW e90', 'BMWe90', '115000', 'bmw', null, null);
-INSERT INTO `vehicles` VALUES ('269', 'Lamborghini Centenario', 'rmodlp770', '3000000', 'addons', null, null);
-INSERT INTO `vehicles` VALUES ('270', 'SL65 AMG', 'benzsl63', '340000', 'benz', null, null);
-INSERT INTO `vehicles` VALUES ('271', 'Porsche 911r', 'p911r', '2500000', 'addons', null, null);
-INSERT INTO `vehicles` VALUES ('272', 'X6 M', 'x6m', '145000', 'bmw', null, null);
-INSERT INTO `vehicles` VALUES ('273', 'GLE63 AMG', 'gle', '155000', 'benz', null, null);
-INSERT INTO `vehicles` VALUES ('274', 'A45 AMG', 'a45', '140000', 'benz', null, null);
-INSERT INTO `vehicles` VALUES ('275', '850 R', 'v850r', '55000', 'volvo', null, null);
-INSERT INTO `vehicles` VALUES ('276', 'V60', 'v60pols', '11000', 'volvo', null, null);
-INSERT INTO `vehicles` VALUES ('277', 'GT86 mit RBC', 'gt86rbc', '525000', 'addons', null, null);
-INSERT INTO `vehicles` VALUES ('278', 'Mini Cooper', 'cooper15', '25000', 'bmw', null, null);
-INSERT INTO `vehicles` VALUES ('279', 'Toyota Supra', 'supra2', '85000', 'addons', null, null);
-INSERT INTO `vehicles` VALUES ('280', 'Yamaha R1', 'r1', '23000', 'addon_motos', null, null);
-INSERT INTO `vehicles` VALUES ('281', 'Yamaha R6', 'r6', '36000', 'addon_motos', null, null);
-INSERT INTO `vehicles` VALUES ('282', 'Lamborghini Huracane Spyder', 'lp610', '725000', 'addons', null, null);
-INSERT INTO `vehicles` VALUES ('283', 'Tempesta', 'tempesta', '175000', 'super', null, null);
+INSERT INTO `agrp-esx`.vehicles (`name`, model, price, category, job, grade) VALUES
+	('AMC Pacer', 'yAmcPacer', '3900', 'gg', null, null),
+	('Hyandai Accent', 'accent', '4290', 'gg', null, null),
+	('Honda Civic', 'civic', '3450', 'gg', null, null),
+	('Chevrolet Monza', 'monza', '4250', 'gg', null, null),
+
+	#####('Virage', 'virage', '200000', 'am', null, null),
+
+	('Virage', 'virage', '200000', 'am', null, null),
+	('DB7', 'db7zagato', '170000', 'am', null, null),
+
+	('RS6 C7', 'rs6', '120000', 'audi', null, null),
+	('A8', 'a8fsi', '90000', 'audi', null, null),
+	('TT RS', 'audittrs', '62000', 'audi', null, null),
+	('A7', 'a7', '70000', 'audi', null, null),
+
+	('Bentayga Mansory', 'bentaygam', '400000', 'bentley', null, null),
+	('Continental GT', 'ben17', '250000', 'bentley', null, null),
+
+	('M5', 'bmci', '130000', 'bmw', null, null),
+	('M6', 'm6f13', '130000', 'bmw', null, null),
+	('M3 E92', 'bmwm3e92', '80000', 'bmw', null, null),
+	('M3 E92 GTS', 'm3e92gts', '140000', 'bmw', null, null),
+	('M5 E60', 'm5e60', '103000', 'bmw', null, null),
+	('M3 F80', 'm3f80', '80000', 'bmw', null, null),
+	('Mini Cooper 2015', 'minicooper', '23500', 'bmw', null, null),
+	('i8', 'i8', '129900', 'bmw', null, null),
+	('750li Lumma', 'lumma750', '146700', 'bmw', null, null),
+	('M3 E36', 'rmodm3e36', '80000', 'bmw', null, null),
+	('X6M', 'x6m', '125000', 'bmw', null, null),
+	('E30', 'alpinae30', '49500', 'bmw', null, null),
+
+	('Escalade', 'gmt900escalade', '115000', 'cadi', null, null),
+	('XTS Limousine', 'limoxts', '80000', 'cadi', null, null),
+
+	('Camaro ZL 1', 'CamaroZL1', '58000', 'chevy', null, null),
+
+	('C3', 'citroenc3', '200000', 'citro', null, null),
+
+	('Challenger 1970', 'chall70', '45000', 'dodge', null, null),
+	('Challenger SRT 8 Hellcat', 'demon', '65000', 'dodge', null, null),
+	('Viper GTS', '99viper', '45000', 'dodge', null, null),
+
+	('360 Modena F1', 'modena', '140000', 'ferrari', null, null),
+	('F12 Berlinetta', 'f12m', '269000', 'ferrari', null, null),
+
+	('595 Abarth', 'yFiat595ssa', '8000', 'fiat', null, null),
+
+	('X351', 'XJR', '200000', 'jaguar', null, null),
+
+	('Grand Cherokee SRT8', 'srt8', '100000', 'jeep', null, null),
+	('Wrangler Trailcat', 'trailcat', '75000', 'jeep', null, null),
+	('Rubicon', 'jeep2012', '45000', 'jeep', null, null),
+
+	('Huracan LP610', 'lp610', '229000', 'lambo', null, null),
+	('Centenario LP770', 'lp770', '2450000', 'lambo', null, null),
+	('Vacca', 'vacca', '120000', 'lambo', null, null),
+	('Tempesta', 'tempesta', '175000', 'lambo', null, null),
+
+	('Range Rover', 'rr14', '95000', 'rover', null, null),
+
+	('Quattroporte GTS', 'mqgts', '147500', 'maserati', null, null),
+	('Levante Mansory', 'mlmansory', '150000', 'maserati', null, null),
+	('Gran Tourismo', 'masgt', '126000', 'maserati', null, null),
+
+	('RX-7', 'rx7tunable2', '20000', 'mazda', null, null),
+
+	('600sel', 'sel600', '35000', 'mercedes', null, null),
+	('G65 AMG Lifted', 'gclass', '350000', 'mercedes', null, null),
+	('MB 300sl Gullwing', 'mb300sl', '1200000', 'mercedes', null, null),
+	('S63 AMG Cabriolet', 'mb18', '170000', 'mercedes', null, null),
+	('CLA 45 Shootingbreak', 'cla45sb', '80000', 'mercedes', null, null),
+	('CLS 63 AMG', 'cls2015', '180000', 'mercedes', null, null),
+	('SLS AMG', 'slsamg', '248500', 'mercedes', null, null),
+	('V250', 'v250', '55000', 'mercedes', null, null),
+	('Brabus 850', 'brabus850', '230000', 'mercedes', null, null),
+	('C63s AMG', 'c63s', '150000', 'mercedes', null, null),
+	('S65 AMG WALD', 'w222wald', '230000', 'mercedes', null, null),
+	('A45 AMG', 'a45', '54750', 'mercedes', null, null),
+	('S63 AMG', 'S63w222', '204960', 'mercedes', null, null),
+	('G65 AMG', 'g65amg', '289950', 'mercedes', null, null),
+	('GLE 63 AMG Coupé', 'gle', '137900', 'mercedes', null, null),
+
+	('Eclipse', 'eclipse', '9900', 'mitsu', null, null),
+	('Lancer Evolution IX MR', 'evo9', '47500', 'mitsu', null, null),
+
+	('Patrol Nismo', 'tulenis', '105000', 'nissan', null, null),
+	('Skyline R34 GT-R', 'skyline', '57500', 'nissan', null, null),
+
+	('Adam', 'opeladam', '13000', 'opel', null, null),
+
+	('Zonda Tricolore', 'tricolore', '1950000', 'pagani', null, null),
+	('Huayra BC', 'bc', '2450000', 'pagani', null, null),
+
+	('308', 'peug308', '21000', 'peug', null, null),
+	('106', 'p106', '7000', 'peug', null, null),
+
+	('Panamera Turbo', 'panamera17turbo', '167500', 'porsche', null, null),
+	('911', 'por911', '112000', 'porsche', null, null),
+	('718 Cayenne', 'pcs18', '85000', 'porsche', null, null),
+	('911 GT3 RS', '911gt3rs', '245900', 'porsche', null, null),
+	('911 1982', 'turbo33', '56500', 'porsche', null, null),
+	('718', '718', '99999999', 'porsche', null, null),
+	('MC GTS', 'mcgts', '99999999', 'porsche', null, null),
+	('718 Cayman S', '718caymans', '99999999', 'porsche', null, null),
+
+	('Twingo', 'twingo', '200000', 'renault', null, null),
+	('Zoe', 'zoe', '200000', 'renault', null, null),
+
+	('Wraith', 'Wraith', '340000', 'rr', null, null),
+	('supra2', 'supra2', '99999999', 'rr', null, null),
+
+	('V60', 'v60pols', '39800', 'volvo', null, null),
+	('850r', 'v850r', '15450', 'volvo', null, null),
+
+	('Golf 3 GTI', 'mk3', '7500', 'vw', null, null),
+	('Passat GTE', 'pstgte', '50500', 'vw', null, null),
+	('Golf 5 GTI', 'golfgti', '32500', 'vw', null, null),
+	('Passat R-Line', 'passatr', '48850', 'vw', null, null),
+	('Touareg R50', 'R50', '94600', 'vw', null, null),
+
+	('Veloster Turbo', 'veln', '26990', 'hyundai', null, null),
+
+	('YZF-R 1', 'r1', '19325', 'moto', null, null),
+	('YZF-R 6', 'r6', '15999', 'moto', null, null);
 
 -- ----------------------------
 -- Table structure for vehicle_categories
@@ -1443,28 +1288,38 @@ CREATE TABLE `vehicle_categories` (
 -- ----------------------------
 -- Records of vehicle_categories
 -- ----------------------------
-INSERT INTO `vehicle_categories` VALUES ('1', 'compacts', 'Compacts');
-INSERT INTO `vehicle_categories` VALUES ('2', 'coupes', 'Coupés');
-INSERT INTO `vehicle_categories` VALUES ('3', 'sedans', 'Sedans');
-INSERT INTO `vehicle_categories` VALUES ('4', 'sports', 'Sports');
-INSERT INTO `vehicle_categories` VALUES ('5', 'sportsclassics', 'Sports Classics');
-INSERT INTO `vehicle_categories` VALUES ('6', 'super', 'Super');
-INSERT INTO `vehicle_categories` VALUES ('7', 'muscle', 'Muscle');
-INSERT INTO `vehicle_categories` VALUES ('8', 'offroad', 'Off Road');
-INSERT INTO `vehicle_categories` VALUES ('9', 'suvs', 'SUVs');
-INSERT INTO `vehicle_categories` VALUES ('10', 'vans', 'Vans');
-INSERT INTO `vehicle_categories` VALUES ('11', 'motorcycles', 'Motorräder');
-INSERT INTO `vehicle_categories` VALUES ('12', 'customs', 'Customs');
-INSERT INTO `vehicle_categories` VALUES ('13', 'addons', 'Addons');
-INSERT INTO `vehicle_categories` VALUES ('14', 'cheap', 'Gut&Günstig');
-INSERT INTO `vehicle_categories` VALUES ('15', 'audi', 'Audi');
-INSERT INTO `vehicle_categories` VALUES ('16', 'benz', 'Benz');
-INSERT INTO `vehicle_categories` VALUES ('17', 'bmw', 'BMW');
-INSERT INTO `vehicle_categories` VALUES ('18', 'ford', 'Ford');
-INSERT INTO `vehicle_categories` VALUES ('19', 'mitsubishi', 'Mitsubishi');
-INSERT INTO `vehicle_categories` VALUES ('20', 'volvo', 'Volvo');
-INSERT INTO `vehicle_categories` VALUES ('21', 'vw', 'VW');
-INSERT INTO `vehicle_categories` VALUES ('22', 'addon_motos', 'Motorräder [A]');
+INSERT INTO `agrp-esx`.vehicle_categories (`name`, `label`) VALUES
+	('gg', 'Gut & Günstig'),
+	('am', 'Aston Martin'),
+	('am', 'Aston Martin'),
+	('audi', 'Audi'),
+	('bentley', 'Bentley'),
+	('bmw', 'Bayerische Motorenwerke'),
+	('cadi', 'Cadillac'),
+	('chevy', 'Chevrolet'),
+	('citro', 'Citroen'),
+	('dodge', 'Dodge'),
+	('ferrari', 'Ferrari'),
+	('fiat', 'Fiat'),
+	('jaguar', 'Jaguar'),
+	('jeep', 'Jeep'),
+	('lambo', 'Lamborghini'),
+	('rover', 'Range Rover'),
+	('maserati', 'Maserati'),
+	('mazda', 'Mazda'),
+	('mercedes', 'Mercedes Benz'),
+	('mitsu', 'Mitsubishi'),
+	('nissan', 'Nissan'),
+	('opel', 'Opel'),
+	('pagani', 'Pagani'),
+	('peug', 'Peugeot'),
+	('porsche', 'Porsche'),
+	('renault', 'Renault'),
+	('rr', 'Rolls Royce'),
+	('volvo', 'Volvo'),
+	('vw', 'Volkswagen'),
+	('moto', 'Motorräder');
+	('hyundai', 'Hyundai');
 
 -- ----------------------------
 -- Table structure for weashops
