@@ -32,8 +32,8 @@ vcf_files = {
 }
 
 pattern_files = {
-	"WIGWAG",
-	"WIGWAG2",
+	"WIGWAG.xml",
+	"WIGWAG2.xml",
 	"BACKFOURTH.xml",
 	"BACKFOURTH2.xml",
 	"COMPLEX.xml",
@@ -51,8 +51,8 @@ pattern_files = {
 	"T_ADVIS_FLASH.xml",
 	"T_ADVIS_LEFT_RIGHT.xml",
 	"T_ADVIS_RIGHT_LEFT.xml",
-	"WIGWAG3",
-	"WIGWAG5"
+	"WIGWAG3.xml",
+	"WIGWAG5.xml"
 }
 
 modelsWithTrafficAdvisor = {
