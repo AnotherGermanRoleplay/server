@@ -47,12 +47,16 @@
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
     let videos = [
-        'YVkUvmDQ3HY', // Eminem - Without Me
+		'5T3cjBoRKJc', // GTA 5 Online Rap Song | Miami Rize
         'W4VTq0sa9yg', // GTA San Andreas
-        'bR-s4ReIxJo', // Foster the People - Pumped Up Kicks (Remix)
+		'OmML2WzfI2k', // Foster The People - Pumped Up Kicks (DSN remix)
         'ou-rVp6EbhM', // It's Ok, You're Ok - Bonjr
         'jqE8M2ZnFL8', // Grand Theft Auto 4 Theme Song
+		'1ClJIk5oq4g', // GTA 5 Rap Song
         'heHc41h47I8', // Pirates of the Caribbean (Froto Remix)
+		'jr3XJr4FCYk', // Kraddy - Android Porn **ORIGINAL**
+		'VaUzjcf81Ek', // Dezolent - Gone ft. Mona Moua
+		'7RtU-eISD_c', // GTA 5 Rap Song by Miami Rize
     ];
     let videoId = videos[Math.floor(Math.random() * videos.length)];
 
@@ -66,13 +70,13 @@
                 'onReady': onPlayerReady
             }
         });
-
-        if (player.getVolume() > 50) {
-            player.setVolume(50);
-        }
     }
 
     function onPlayerReady(event) {
+        if (event.target.getVolume() > 10 || event.target.getVolume() < 10) {
+            event.target.setVolume(10);
+        }
+		
         event.target.playVideo();
     }
 </script>
