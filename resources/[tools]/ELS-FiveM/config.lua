@@ -61,7 +61,6 @@ modelsWithTrafficAdvisor = {
 	"fbi2",
 	"sftsu",
 	"ghispo2",
-	"ambulance",
 	"policet",
 	"police",
 	"police2",
