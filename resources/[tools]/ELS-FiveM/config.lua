@@ -1,32 +1,34 @@
 vcf_files = {
-
-	"sheriff.xml",
-	"sheriff2.xml",
-	"pbus.xml",
-	"fbi2.xml",
-	"sftsu.xml",
-	"ghispo2.xml",
 	"ambulance.xml",
-	"policet.xml",
-	"police.xml",
-	"police2.xml",
-	"police3.xml",
-	"police4.xml",
-	"police5.xml",
-	"police7.xml",
-	"police8.xml",
+	"fbi2.xml",
+	"Flatbed.xml",
+	"ghispo2.xml",
 	"lspd.xml",
+	"lspd2.xml",
 	"lspd3.xml",
 	"lspd4.xml",
+	"lspd5.xml",
 	"lspd6.xml",
 	"lspd7.xml",
 	"lspd8.xml",
 	"lspd9.xml",
 	"lspd11.xml",
 	"lspd12.xml",
+	"PBUS.xml",
+	"police.xml",
+	"police2.xml",
+	"police3.xml",
+	"police4.xml",
+	"police5.xml",
+	"police6.xml",
+	"police7.xml",
+	"police8.xml",
 	"policeb.xml",
-	"pranger.xml",
-
+	"policet.xml",
+	"PRANGER.xml",
+	"SFTSU.xml",
+	"sheriff.xml",
+	"sheriff2.xml"
 }
 
 pattern_files = {
@@ -79,7 +81,7 @@ modelsWithTrafficAdvisor = {
 	"lspd11",
 	"lspd12",
 	"policeb",
-	"pranger",
+	"pranger"
 }
 
 modelsWithFireSiren =
@@ -124,7 +126,7 @@ vehicleStageThreeAdvisor = {
 	"lspd11",
 	"lspd12",
 	"policeb",
-	"pranger",
+	"pranger"
 }
 
 
