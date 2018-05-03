@@ -14,7 +14,6 @@ vcf_files = {
 	"lspd9.xml",
 	"lspd11.xml",
 	"lspd12.xml",
-	"PBUS.xml",
 	"police.xml",
 	"police2.xml",
 	"police3.xml",
