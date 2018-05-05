@@ -27,7 +27,8 @@ vcf_files = {
 	"PRANGER.xml",
 	"SFTSU.xml",
 	"sheriff.xml",
-	"sheriff2.xml"
+	"sheriff2.xml",
+	"firetruk.xml"
 }
 
 pattern_files = {
@@ -79,12 +80,13 @@ modelsWithTrafficAdvisor = {
 	"lspd11",
 	"lspd12",
 	"policeb",
-	"pranger"
+	"pranger",
+	"firetruk"
 }
 
 modelsWithFireSiren =
 {
-
+	"firetruk"
 }
 
 
@@ -124,7 +126,8 @@ vehicleStageThreeAdvisor = {
 	"lspd11",
 	"lspd12",
 	"policeb",
-	"pranger"
+	"pranger",
+	"firetruk"
 }
 
 
