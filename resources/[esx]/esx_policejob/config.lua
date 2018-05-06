@@ -29,16 +29,16 @@ Config.PoliceStations = {
 	  { name = 'WEAPON_NIGHTSTICK',         price = 200 },
 	  { name = 'WEAPON_STUNGUN',            price = 450 },
 	  { name = 'WEAPON_COMBATPISTOL',       price = 450 },
-      { name = 'WEAPON_FLARE',     		    price = 300 },
-      { name = 'WEAPON_FLAREGUN',     	    price = 300 },
-      { name = 'WEAPON_BZGAS',       	    price = 750 },
+    { name = 'WEAPON_FLARE',     		    price = 300 },
+    { name = 'WEAPON_FLAREGUN',     	    price = 300 },
+    { name = 'WEAPON_BZGAS',       	    price = 750 },
 	  { name = 'WEAPON_PUMPSHOTGUN',        price = 600 },
-      { name = 'WEAPON_ASSAULTSMG',         price = 1250 },
+    { name = 'WEAPON_ASSAULTSMG',         price = 1250 },
 	  { name = 'WEAPON_SMG_MK2',     	    price = 1350 },
-      { name = 'WEAPON_CARBINERIFLE',       price = 1500 },
+    { name = 'WEAPON_CARBINERIFLE',       price = 1500 },
 	  { name = 'WEAPON_CARBINERIFLE_MK2',   price = 1700 },
 	  { name = 'WEAPON_SPECIALCARBINE',     price = 1800 },
-      { name = 'WEAPON_SNIPERRIFLE',        price = 1800 },
+    { name = 'WEAPON_SNIPERRIFLE',        price = 1800 },
 	  { name = 'WEAPON_HEAVYSNIPER',        price = 2500 },
 	  { name = 'GADGET_PARACHUTE',          price = 1500 },
 	},
@@ -52,42 +52,42 @@ Config.PoliceStations = {
 	-- captain = 5
 	-- boss = 6
     AuthorizedVehicles = {
-	  { name = 'police',  	label = 'Ford CVPI 			     [R:1]', rank = 0 },
-	  { name = 'sfbc4',     label = 'Ford CVPI (Sheriff)     [R:1]', rank = 0 },
+      { name = 'police',  	label = 'Ford CVPI 			     [R:1]', rank = 0 },
+      { name = 'sfbc4',     label = 'Ford CVPI (Sheriff)     [R:1]', rank = 0 },
 
-      
+
       { name = 'police2', 	label = 'Ford Taurus 		     [R:1]', rank = 1 },
       { name = 'police3', 	label = 'Dodge Charger 2014      [R:1]', rank = 1 },
       { name = 'police5', 	label = 'Chevrolet Tahoe    	 [R:2]', rank = 2 },
-	  { name = 'police4', 	label = 'Dodge Charger 2016      [R:3]', rank = 3 },
-	  { name = 'police6', 	label = 'Ford Police Interceptor [R:3]', rank = 3 },
+      { name = 'police4', 	label = 'Dodge Charger 2016      [R:3]', rank = 3 },
+      { name = 'police6', 	label = 'Ford Police Interceptor [R:3]', rank = 3 },
       { name = 'police7', 	label = 'Chevrolet Silverado     [R:4]', rank = 4 },
-	  { name = 'policet', 	label = 'Mercedes Benz Vito      [R:4]', rank = 4 },
-	  { name = 'lspd', 	    label = 'Audi A4                 [R:4]', rank = 4 },
-	  { name = 'lspd2', 	label = 'Skoda Octavia           [R:4]', rank = 4 },
-	  { name = 'policeb', 	label = 'BMW 1200 RT             [R:4]', rank = 4 },
-	  { name = 'police8', 	label = 'Volkswagen T6           [R:5]', rank = 5 },
-	  { name = 'lspd4',     label = 'Range Rover Sport       [R:5]', rank = 5 },
-	  { name = 'lspd5',     label = 'Audi Q7                 [R:5]', rank = 5 },
-	  { name = 'lspd6',     label = 'Volvo XC90              [R:6]', rank = 6 },
-	  { name = 'lspd3',     label = 'BMW 530 Touring         [R:7]', rank = 7 },
-	  { name = 'lspd9',     label = 'BMW X5                  [R:9]', rank = 8 },
-	  { name = 'lspd7',     label = 'BMW M5                  [R:9]', rank = 9 },
-	  { name = 'riot', 		label = 'Riot (Sperre)           [R:1]', rank = 1 },
-	  
-      
+      { name = 'policet', 	label = 'Mercedes Benz Vito      [R:4]', rank = 4 },
+      { name = 'lspd', 	    label = 'Audi A4                 [R:4]', rank = 4 },
+      { name = 'lspd2', 	label = 'Skoda Octavia           [R:4]', rank = 4 },
+      { name = 'policeb', 	label = 'BMW 1200 RT             [R:4]', rank = 4 },
+      { name = 'police8', 	label = 'Volkswagen T6           [R:5]', rank = 5 },
+      { name = 'lspd4',     label = 'Range Rover Sport       [R:5]', rank = 5 },
+      { name = 'lspd5',     label = 'Audi Q7                 [R:5]', rank = 5 },
+      { name = 'lspd6',     label = 'Volvo XC90              [R:6]', rank = 6 },
+      { name = 'lspd3',     label = 'BMW 530 Touring         [R:7]', rank = 7 },
+      { name = 'lspd9',     label = 'BMW X5                  [R:9]', rank = 8 },
+      { name = 'lspd7',     label = 'BMW M5                  [R:9]', rank = 9 },
+      { name = 'riot', 		label = 'Riot (Sperre)           [R:1]', rank = 1 },
+
+
       { name = 'sheriff', 	label = 'Mercedes Benz CLA           [R:6]', rank = 6 },
-	  { name = 'sfum2', 	label = 'CVPI						 [R:6]', rank = 6 },
-	  { name = 'sfum1', 	label = 'Chevrolet Tahoe 2016        [R:7]', rank = 7 },
-	  { name = 'sheriff2', 	label = 'BMW X5                      [R:7]', rank = 7 },
-	  { name = 'fbi2', 		label = 'Mercedes Benz V250          [R:8]', rank = 8 },
-	  { name = 'fbi', 		label = 'Mercedes Benz E63AMG        [R:9]', rank = 9 },
-      
-	  
-	  { name = 'sfbc2',     label = 'Dodge Charger 2014 (Sheriff)           [R:1]', rank = 1 },
-	  { name = 'sfbc3',     label = 'Chevrolet Tahoe (Sheriff)              [R:2]', rank = 2 },
-	  { name = 'sfbc5',     label = 'Ford Police Interceptor 2014           [R:3]', rank = 3 },
-	  { name = 'sfbc1',     label = 'Ford Police Interceptor 2017 (Sheriff) [R:4]', rank = 4 }
+      { name = 'sfum2', 	label = 'CVPI						 [R:6]', rank = 6 },
+      { name = 'sfum1', 	label = 'Chevrolet Tahoe 2016        [R:7]', rank = 7 },
+      { name = 'sheriff2', 	label = 'BMW X5                      [R:7]', rank = 7 },
+      { name = 'fbi2', 		label = 'Mercedes Benz V250          [R:8]', rank = 8 },
+      { name = 'fbi', 		label = 'Mercedes Benz E63AMG        [R:9]', rank = 9 },
+
+
+      { name = 'sfbc2',     label = 'Dodge Charger 2014 (Sheriff)           [R:1]', rank = 1 },
+      { name = 'sfbc3',     label = 'Chevrolet Tahoe (Sheriff)              [R:2]', rank = 2 },
+      { name = 'sfbc5',     label = 'Ford Police Interceptor 2014           [R:3]', rank = 3 },
+      { name = 'sfbc1',     label = 'Ford Police Interceptor 2017 (Sheriff) [R:4]', rank = 4 }
     },
 
     Cloakrooms = {
@@ -124,7 +124,7 @@ Config.PoliceStations = {
     }
 
   },
-  
+
   LSPD2 = {
 
     Blip = {
@@ -153,12 +153,12 @@ Config.PoliceStations = {
 	  { name = 'WEAPON_HEAVYSNIPER',        price = 2500 },
 	  { name = 'GADGET_PARACHUTE',          price = 1500 },
 	},
-	
+
     AuthorizedVehicles = {
 	  { name = 'police',  	label = 'Ford CVPI 			     [R:1]', rank = 0 },
 	  { name = 'sfbc4',     label = 'Ford CVPI (Sheriff)     [R:1]', rank = 0 },
 
-      
+
       { name = 'police2', 	label = 'Ford Taurus 		     [R:1]', rank = 1 },
       { name = 'police3', 	label = 'Dodge Charger 2014      [R:1]', rank = 1 },
       { name = 'police5', 	label = 'Chevrolet Tahoe    	 [R:2]', rank = 2 },
@@ -177,16 +177,16 @@ Config.PoliceStations = {
 	  { name = 'lspd9',     label = 'BMW X5                  [R:9]', rank = 8 },
 	  { name = 'lspd7',     label = 'BMW M5                  [R:9]', rank = 9 },
 	  { name = 'riot', 		label = 'Riot (Sperre)           [R:1]', rank = 1 },
-	  
-      
+
+
       { name = 'sheriff', 	label = 'Mercedes Benz CLA           [R:6]', rank = 6 },
 	  { name = 'sfum2', 	label = 'CVPI						 [R:6]', rank = 6 },
 	  { name = 'sfum1', 	label = 'Chevrolet Tahoe 2016        [R:7]', rank = 7 },
 	  { name = 'sheriff2', 	label = 'BMW X5                      [R:7]', rank = 7 },
 	  { name = 'fbi2', 		label = 'Mercedes Benz V250          [R:8]', rank = 8 },
 	  { name = 'fbi', 		label = 'Mercedes Benz E63AMG        [R:9]', rank = 9 },
-      
-	  
+
+
 	  { name = 'sfbc2',     label = 'Dodge Charger 2014 (Sheriff)           [R:1]', rank = 1 },
 	  { name = 'sfbc3',     label = 'Chevrolet Tahoe (Sheriff)              [R:2]', rank = 2 },
 	  { name = 'sfbc5',     label = 'Ford Police Interceptor 2014           [R:3]', rank = 3 },
@@ -252,12 +252,12 @@ Config.PoliceStations = {
 	  { name = 'WEAPON_HEAVYSNIPER',        price = 2500 },
 	  { name = 'GADGET_PARACHUTE',          price = 1500 },
 	},
-	
+
     AuthorizedVehicles = {
 	  { name = 'police',  	label = 'Ford CVPI 			     [R:1]', rank = 0 },
 	  { name = 'sfbc4',     label = 'Ford CVPI (Sheriff)     [R:1]', rank = 0 },
 
-      
+
       { name = 'police2', 	label = 'Ford Taurus 		     [R:1]', rank = 1 },
       { name = 'police3', 	label = 'Dodge Charger 2014      [R:1]', rank = 1 },
       { name = 'police5', 	label = 'Chevrolet Tahoe    	 [R:2]', rank = 2 },
@@ -276,16 +276,16 @@ Config.PoliceStations = {
 	  { name = 'lspd9',     label = 'BMW X5                  [R:9]', rank = 8 },
 	  { name = 'lspd7',     label = 'BMW M5                  [R:9]', rank = 9 },
 	  { name = 'riot', 		label = 'Riot (Sperre)           [R:1]', rank = 1 },
-	  
-      
+
+
       { name = 'sheriff', 	label = 'Mercedes Benz CLA           [R:6]', rank = 6 },
 	  { name = 'sfum2', 	label = 'CVPI						 [R:6]', rank = 6 },
 	  { name = 'sfum1', 	label = 'Chevrolet Tahoe 2016        [R:7]', rank = 7 },
 	  { name = 'sheriff2', 	label = 'BMW X5                      [R:7]', rank = 7 },
 	  { name = 'fbi2', 		label = 'Mercedes Benz V250          [R:8]', rank = 8 },
 	  { name = 'fbi', 		label = 'Mercedes Benz E63AMG        [R:9]', rank = 9 },
-      
-	  
+
+
 	  { name = 'sfbc2',     label = 'Dodge Charger 2014 (Sheriff)           [R:1]', rank = 1 },
 	  { name = 'sfbc3',     label = 'Chevrolet Tahoe (Sheriff)              [R:2]', rank = 2 },
 	  { name = 'sfbc5',     label = 'Ford Police Interceptor 2014           [R:3]', rank = 3 },
@@ -325,7 +325,7 @@ Config.PoliceStations = {
     }
 
   },
-  
+
   SASP2 = {
 
     Blip = {
@@ -351,12 +351,12 @@ Config.PoliceStations = {
 	  { name = 'WEAPON_HEAVYSNIPER',        price = 2500 },
 	  { name = 'GADGET_PARACHUTE',          price = 1500 },
 	},
-	
+
     AuthorizedVehicles = {
 	  { name = 'police',  	label = 'Ford CVPI 			     [R:1]', rank = 0 },
 	  { name = 'sfbc4',     label = 'Ford CVPI (Sheriff)     [R:1]', rank = 0 },
 
-      
+
       { name = 'police2', 	label = 'Ford Taurus 		     [R:1]', rank = 1 },
       { name = 'police3', 	label = 'Dodge Charger 2014      [R:1]', rank = 1 },
       { name = 'police5', 	label = 'Chevrolet Tahoe    	 [R:2]', rank = 2 },
@@ -375,16 +375,16 @@ Config.PoliceStations = {
 	  { name = 'lspd9',     label = 'BMW X5                  [R:9]', rank = 8 },
 	  { name = 'lspd7',     label = 'BMW M5                  [R:9]', rank = 9 },
 	  { name = 'riot', 		label = 'Riot (Sperre)           [R:1]', rank = 1 },
-	  
-      
+
+
       { name = 'sheriff', 	label = 'Mercedes Benz CLA           [R:6]', rank = 6 },
 	  { name = 'sfum2', 	label = 'CVPI						 [R:6]', rank = 6 },
 	  { name = 'sfum1', 	label = 'Chevrolet Tahoe 2016        [R:7]', rank = 7 },
 	  { name = 'sheriff2', 	label = 'BMW X5                      [R:7]', rank = 7 },
 	  { name = 'fbi2', 		label = 'Mercedes Benz V250          [R:8]', rank = 8 },
 	  { name = 'fbi', 		label = 'Mercedes Benz E63AMG        [R:9]', rank = 9 },
-      
-	  
+
+
 	  { name = 'sfbc2',     label = 'Dodge Charger 2014 (Sheriff)           [R:1]', rank = 1 },
 	  { name = 'sfbc3',     label = 'Chevrolet Tahoe (Sheriff)              [R:2]', rank = 2 },
 	  { name = 'sfbc5',     label = 'Ford Police Interceptor 2014           [R:3]', rank = 3 },

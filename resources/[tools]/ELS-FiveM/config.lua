@@ -12,6 +12,7 @@ vcf_files = {
 	"lspd7.xml",
 	"lspd8.xml",
 	"lspd9.xml",
+	"lspd10.xml",
 	"lspd11.xml",
 	"lspd12.xml",
 	"police.xml",
@@ -28,7 +29,8 @@ vcf_files = {
 	"SFTSU.xml",
 	"sheriff.xml",
 	"sheriff2.xml",
-	"firetruk.xml"
+	"firetruk.xml",
+	"utillitruck3.xml"
 }
 
 pattern_files = {
@@ -77,11 +79,13 @@ modelsWithTrafficAdvisor = {
 	"lspd7",
 	"lspd8",
 	"lspd9",
+	"lspd10",
 	"lspd11",
 	"lspd12",
 	"policeb",
 	"pranger",
-	"firetruk"
+	"firetruk",
+	"utillitruck3"
 }
 
 modelsWithFireSiren =
@@ -92,6 +96,7 @@ modelsWithFireSiren =
 
 modelsWithAmbWarnSiren = {
 	"lspd11",
+	"lspd10",
 	"pranger",
 	"lspd12",
 	"pbus",
@@ -109,6 +114,7 @@ vehicleStageThreeAdvisor = {
 	"ghispo2",
 	"ambulance",
 	"policet",
+	"lspd10",
 	"police",
 	"police2",
 	"police3",
@@ -127,12 +133,13 @@ vehicleStageThreeAdvisor = {
 	"lspd12",
 	"policeb",
 	"pranger",
-	"firetruk"
+	"firetruk",
+	"utillitruck3"
 }
 
 
 vehicleSyncDistance = 150
-envirementLightBrightness = 0.2
+envirementLightBrightness = 0.6
 
 build = "master"
 
