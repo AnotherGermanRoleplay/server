@@ -225,7 +225,6 @@ ESX.RegisterServerCallback('esx_vehicleshop:buyVehicle', function (source, cb, v
         account.addMoney(price)
       end
     end)
-    xPlayer.removeMoney(vehicleData.price)
     TriggerEvent('esx_addonaccount:getSharedAccount', sharedAccountName4, function(account)
       if account ~= nil then
         price = math.floor(vehicleData.price/4)
@@ -233,6 +232,7 @@ ESX.RegisterServerCallback('esx_vehicleshop:buyVehicle', function (source, cb, v
       end
     end)
     cb(true)
+	TriggerEvent("discord_bot:log", xPlayer.name .. ' kauft sich gerade einen ' .. vehicleData .. ' für $' .. vehicleData.price .. ' in Bar')
   elseif xPlayer.get('bank') >= vehicleData.price then
     xPlayer.removeAccountMoney('bank', vehicleData.price)
     TriggerEvent('esx_addonaccount:getSharedAccount', sharedAccountName1, function(account)
@@ -253,13 +253,13 @@ ESX.RegisterServerCallback('esx_vehicleshop:buyVehicle', function (source, cb, v
         account.addMoney(price)
       end
     end)
-    xPlayer.removeMoney(vehicleData.price)
     TriggerEvent('esx_addonaccount:getSharedAccount', sharedAccountName4, function(account)
       if account ~= nil then
         price = math.floor(vehicleData.price/4)
         account.addMoney(price)
       end
     end)
+	TriggerEvent("discord_bot:log", xPlayer.name .. ' kauft sich gerade einen ' .. vehicleData .. ' für $' .. vehicleData.price)
     cb(true)
   else
     cb(false)
@@ -416,7 +416,7 @@ ESX.RegisterServerCallback('esx_vehicleshop:resellVehicle', function (source, cb
             if found then
               xPlayer.addMoney(price)
               RemoveOwnedVehicle(plate)
-
+				TriggerEvent("discord_bot:log", xPlayer.name .. ' hat gerade einen Wagen für $' .. price .. ' verkauft')
               cb(true)
             else
               if xPlayer.job.grade_name == 'boss' then

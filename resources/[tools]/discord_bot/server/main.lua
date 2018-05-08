@@ -53,16 +53,47 @@ function sendToDevLogDiscord(message)
   )
 end
 
+function sendToSocietyLogDiscord(society, message)
+  if message == nil or message == '' then return FALSE end
+  -- #ig-log (weapon und money exchange)
+  PerformHttpRequest('https://discordapp.com/api/webhooks/443367987668451328/zOdM9HtpCsirVeuP8xQ7HD5QAWi9J22GaPKYwva_Q0UeYtIxBtohaj1G1QzvXbEcikco',
+    function(err, text, headers) end,
+    'POST',
+    json.encode({username = society, content = message}),
+    { ['Content-Type'] = 'application/json' }
+  )
+end
+
+function sendToWeaponLogDiscord(message)
+  if message == nil or message == '' then return FALSE end
+  -- #ig-log (weapon und money exchange)
+  PerformHttpRequest('https://discordapp.com/api/webhooks/443380144082780180/xAeDZIRPAD-9M0iVQqj0-ZqXWz7WXJ3SUV9UuBBrYr0MdwNDHrxAhOqcj7N8jscmygdC',
+    function(err, text, headers) end,
+    'POST',
+    json.encode({username = LOG, content = message}),
+    { ['Content-Type'] = 'application/json' }
+  )
+end
+
+
+
 RegisterServerEvent('discord_bot:dev_log')
 AddEventHandler('discord_bot:dev_log',function(log)
   sendToDevLogDiscord(log)
 end)
 
+RegisterServerEvent('discord_bot:society_log')
+AddEventHandler('discord_bot:society_log',function(society, log)
+  sendToSocietyLogDiscord(society, log)
+end)
+
+--  TriggerEvent("discord_bot:admin_log", log)
 RegisterServerEvent('discord_bot:admin_log')
 AddEventHandler('discord_bot:admin_log',function(log)
     sendToAdminDiscord('LOG', GetPlayerName(source) .. ' ' .. log)
 end)
 
+--  TriggerEvent("discord_bot:log", message)
 RegisterServerEvent('discord_bot:log')
 AddEventHandler('discord_bot:log',function(log)
     sendToLogDiscord('LOG', log)
@@ -93,4 +124,32 @@ AddEventHandler('playerDied',function(killer,reason)
   else
     sendToAdminDiscord('SYSTEM', "``" .. GetPlayerName(source) .. "`` died respawn 2 minutes.")
   end
+end)
+
+-- Add event when a player give an item
+--  TriggerEvent("esx:giveitemalert",sourceXPlayer.name,targetXPlayer.name,ESX.Items[itemName].label,itemCount) -> ESX_extended
+RegisterServerEvent("esx:giveitemalert")
+AddEventHandler("esx:giveitemalert", function(name,nametarget,itemname,amount)
+	sendToLogDiscord('ITEM :: ' .. name .. ' gibt ' .. nametarget .. ' ' .. amount .. ' ' .. itemname)
+end)
+
+-- Add event when a player give money
+-- TriggerEvent("esx:givemoneyalert",sourceXPlayer.name,targetXPlayer.name,itemCount) -> ESX_extended
+RegisterServerEvent("esx:givemoneyalert")
+AddEventHandler("esx:givemoneyalert", function(name,nametarget,amount)
+	sendToLogDiscord('MONEY :: ' .. name .. ' gibt ' .. nametarget .. ' $' .. amount)
+end)
+
+-- Add event when a player give money
+-- TriggerEvent("esx:givemoneybankalert",sourceXPlayer.name,targetXPlayer.name,itemCount) -> ESX_extended
+RegisterServerEvent("esx:givemoneybankalert")
+AddEventHandler("esx:givemoneybankalert", function(name,nametarget,amount)
+	sendToLogDiscord('ACCOUNT_MONEY :: ' .. name .. ' gibt ' .. nametarget .. ' $' .. amount)
+end)
+
+-- Add event when a player give weapon
+--  TriggerEvent("esx:giveweaponalert",sourceXPlayer.name,targetXPlayer.name,weaponLabel) -> ESX_extended
+RegisterServerEvent("esx:giveweaponalert")
+AddEventHandler("esx:giveweaponalert", function(name,nametarget,weaponlabel)
+	sendToWeaponLogDiscord(name .. ' gibt ' .. nametarget .. ' - 1x ' .. weaponlabel)
 end)
