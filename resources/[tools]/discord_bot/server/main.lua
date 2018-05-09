@@ -70,7 +70,7 @@ function sendToWeaponLogDiscord(message)
   PerformHttpRequest('https://discordapp.com/api/webhooks/443380144082780180/xAeDZIRPAD-9M0iVQqj0-ZqXWz7WXJ3SUV9UuBBrYr0MdwNDHrxAhOqcj7N8jscmygdC',
     function(err, text, headers) end,
     'POST',
-    json.encode({username = LOG, content = message}),
+    json.encode({username = 'LOG', content = message}),
     { ['Content-Type'] = 'application/json' }
   )
 end

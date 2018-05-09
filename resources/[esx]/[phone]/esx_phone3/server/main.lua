@@ -161,7 +161,7 @@ AddEventHandler('esx:playerLoaded', function(source)
 
         local phoneNumber = result[1].phone_number
 
-        if phoneNumber == nil then
+        if phoneNumber == nil OR phoneNumber == " " then
 
           phoneNumber = GenerateUniquePhoneNumber()
 
@@ -381,6 +381,105 @@ AddEventHandler('esx_phone:refresh', function(indentifier)
       end
       )
   end
+end)
+
+RegisterServerEvent('esx_phone:errReload')
+AddEventHandler('esx_phone:errReload', function(source)
+
+  local xPlayer = ESX.GetPlayerFromId(source)
+  local xIdentity = {}
+  local identifier = xPlayer.identifier
+
+  getIdentity(identifier, function(data)
+    while (data == nil) do
+      Citizen.Wait(0)
+    end
+    xIdentity = data
+    local characterId = xIdentity.characterId
+    for num,v in pairs(PhoneNumbers) do
+      if tonumber(num) == num then -- If phonenumber is a player phone number
+        for src,_ in pairs(v.sources) do
+          TriggerClientEvent('esx_phone:setPhoneNumberSource', source, num, tonumber(src))
+        end
+      end
+    end
+
+    MySQL.Async.fetchAll(
+      'SELECT * FROM users WHERE identifier = @identifier',
+      {
+        ['@identifier'] = identifier
+      },
+      function(result)
+
+        local phoneNumber = result[1].phone_number
+
+        if phoneNumber == nil OR phoneNumber == " " then
+
+          phoneNumber = GenerateUniquePhoneNumber()
+
+          MySQL.Async.execute(
+            'UPDATE users SET phone_number = @phone_number WHERE identifier = @identifier',
+            {
+              ['@identifier']   = identifier,
+              ['@phone_number'] = phoneNumber
+            }
+          )
+
+          MySQL.Async.execute(
+            'UPDATE characters SET phone_number = @phone_number WHERE id = @identifier',
+            {
+              --TODO :: CharacterId!!! statt Identifier
+              ['@identifier'] = characterId,
+              ['@phone_number'] = phoneNumber
+            }
+          )
+        end
+
+        TriggerClientEvent('esx_phone:setPhoneNumberSource', -1, phoneNumber, source)
+
+        PhoneNumbers[phoneNumber] = {
+          type          = 'player',
+          hashDispatch  = false,
+          sharePos      = false,
+          hideNumber    = false,
+          hidePosIfAnon = false,
+          sources       = {[source] = true}
+        }
+
+        xPlayer.set('phoneNumber', phoneNumber)
+
+        if PhoneNumbers[xPlayer.job.name] ~= nil then
+          TriggerEvent('esx_phone:addSource', xPlayer.job.name, source)
+        end
+
+        local contacts = {}
+
+        MySQL.Async.fetchAll(
+          'SELECT * FROM user_contacts WHERE identifier = @identifier ORDER BY name ASC',
+          {
+            ['@identifier'] = characterId
+          },
+          function(result2)
+
+            for i=1, #result2, 1 do
+
+              table.insert(contacts, {
+                name   = result2[i].name,
+                number = result2[i].number,
+              })
+            end
+
+            xPlayer.set('contacts', contacts)
+
+            TriggerClientEvent('esx_phone:loaded', source, phoneNumber, contacts)
+
+          end
+        )
+      end
+    )
+  end
+  )
+
 end)
 
 function getIdentity(source, callback)

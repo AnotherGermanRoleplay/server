@@ -89,7 +89,7 @@ AddEventHandler('esx_society:withdrawMoney', function(society, amount)
       account.removeMoney(amount)
       xPlayer.addMoney(amount)
 
-      TriggerClientEvent('esx:showNotification', xPlayer.source, _U('have_withdrawn', amount))
+      TriggerClientEvent('esx:showNotification', xPlayer.source, _U('have_withdrawn') .. amount)
 	  TriggerEvent('discord_bot:society_log', society, GetPlayerName(xPlayer.source) .. ' hebt $' .. amount .. ' von der ' .. society .. ' Kasse ab.' )
 
     else
@@ -113,7 +113,7 @@ AddEventHandler('esx_society:depositMoney', function(society, amount)
       account.addMoney(amount)
     end)
 	TriggerEvent('discord_bot:society_log', society, GetPlayerName(xPlayer.source) .. ' bucht $' .. amount .. ' auf das Konto der ' .. society .. '.' )
-	TriggerClientEvent('esx:showNotification', xPlayer.source, _U('have_deposited', amount))
+	TriggerClientEvent('esx:showNotification', xPlayer.source, _U('have_deposited') .. amount)
 
   else
     TriggerClientEvent('esx:showNotification', xPlayer.source, _U('invalid_amount'))
@@ -139,7 +139,7 @@ AddEventHandler('esx_society:washMoney', function(society, amount)
           ['@amount']     = amount
         },
         function(rowsChanged)
-          TriggerClientEvent('esx:showNotification', xPlayer.source, _U('you_have', amount))
+          TriggerClientEvent('esx:showNotification', xPlayer.source, _U('you_have') .. amount)
 		  TriggerEvent('discord_bot:society_log', society, GetPlayerName(xPlayer.source) .. ' wäscht gerade $' .. amount .. ' über die Kasse der ' .. society .. '.' )
 
         end
@@ -285,14 +285,14 @@ ESX.RegisterServerCallback('esx_society:setJob', function(source, cb, identifier
 		xPlayer.setJob(job, grade)
 		
 		if type == 'hire' then
-			TriggerClientEvent('esx:showNotification', xPlayer.source, _U('you_have_been_hired', job))
-			TriggerEvent('discord_bot:society_log', job, GetPlayerName(source) .. ' hat gerade ' .. GetPlayerName(xPlayer.source) .. ' eingestellt.')
+			TriggerClientEvent('esx:showNotification', xPlayer.source, _U('you_have_been_hired') .. job)
+			TriggerEvent('discord_bot:society_log', job, GetPlayerName(source) .. ' hat gerade ' .. xPlayer.name .. ' eingestellt.')
 		elseif type == 'promote' then
 			TriggerClientEvent('esx:showNotification', xPlayer.source, _U('you_have_been_promoted'))
-			TriggerEvent('discord_bot:society_log', job, GetPlayerName(source) .. ' hat gerade ' .. GetPlayerName(xPlayer.source) .. ' auf den Rang ' .. grade .. ' befördert.')
+			TriggerEvent('discord_bot:society_log', job, GetPlayerName(source) .. ' hat gerade ' .. xPlayer.name .. ' auf den Rang ' .. grade .. ' befördert.')
 		elseif type == 'fire' then
-			TriggerClientEvent('esx:showNotification', xPlayer.source, _U('you_have_been_fired', xPlayer.getJob().label))
-			TriggerEvent('discord_bot:society_log', job, GetPlayerName(source) .. ' hat gerade ' .. GetPlayerName(xPlayer.source) .. ' gefeuert.')
+			TriggerClientEvent('esx:showNotification', xPlayer.source, _U('you_have_been_fired') .. xPlayer.getJob().label)
+			TriggerEvent('discord_bot:society_log', job, GetPlayerName(source) .. ' hat gerade ' .. xPlayer.name .. ' gefeuert.')
 		end
 	end
 	if Config.EnableESXIdentity then
@@ -341,11 +341,11 @@ ESX.RegisterServerCallback('esx_society:setSecondJob', function(source, cb, iden
   if xPlayer ~= nil then
 
     if type == 'hire' then
-      TriggerClientEvent('esx:showNotification', xPlayer.source, _U('you_have_been_hired', job))
+      TriggerClientEvent('esx:showNotification', xPlayer.source, _U('you_have_been_hired') .. job)
     elseif type == 'promote' then
       TriggerClientEvent('esx:showNotification', xPlayer.source, "Hier gibt's keine Ränge")
     elseif type == 'fire' then
-      TriggerClientEvent('esx:showNotification', xPlayer.source, _U('you_have_been_fired', xPlayer.getJob().label))
+      TriggerClientEvent('esx:showNotification', xPlayer.source, _U('you_have_been_fired') .. xPlayer.getJob().label)
     end
 
     xPlayer.setJob(job, grade)
@@ -473,7 +473,7 @@ function WashMoneyCRON()
 			-- send notification if player is online
 			local xPlayer = ESX.GetPlayerFromIdentifier(result[i].identifier)
 			if xPlayer ~= nil then
-				TriggerClientEvent('esx:showNotification', xPlayer.source, _U('you_have_laundered', result[i].amount))
+				TriggerClientEvent('esx:showNotification', xPlayer.source, _U('you_have_laundered') .. result[i].amount))
 			end
 
 			MySQL.Async.execute('DELETE FROM society_moneywash WHERE id = @id',

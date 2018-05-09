@@ -30,6 +30,7 @@ vcf_files = {
 	"sheriff.xml",
 	"sheriff2.xml",
 	"firetruk.xml",
+	"burrito4.xml",
 	"utillitruck3.xml"
 }
 
@@ -85,6 +86,7 @@ modelsWithTrafficAdvisor = {
 	"policeb",
 	"pranger",
 	"firetruk",
+	"burrito4",
 	"utillitruck3"
 }
 
@@ -134,6 +136,7 @@ vehicleStageThreeAdvisor = {
 	"policeb",
 	"pranger",
 	"firetruk",
+	"burrito4",
 	"utillitruck3"
 }
 

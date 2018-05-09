@@ -120,17 +120,21 @@ end)
 RegisterNetEvent('esx_phone:loaded')
 AddEventHandler('esx_phone:loaded', function(phoneNumber, contacts)
 
-  PhoneData.phoneNumber = phoneNumber
-  PhoneData.contacts    = {}
+	PhoneData.phoneNumber = phoneNumber
+	PhoneData.contacts    = {}
 
-  for i=1, #contacts, 1 do
-    table.insert(PhoneData.contacts, contacts[i])
-  end
+	if (phoneNumber == nil OR phoneNumber == " " OR phoneNumber == "0") then 
+		TriggerServerEvent("esx_phone:errReload")
+	end
+	
+	for i=1, #contacts, 1 do
+		table.insert(PhoneData.contacts, contacts[i])
+	end
 
-  SendNUIMessage({
-    reloadPhone = true,
-    phoneData   = PhoneData
-  })
+	SendNUIMessage({
+		reloadPhone = true,
+		phoneData   = PhoneData
+	})
 
 end)
 
