@@ -90,7 +90,7 @@ AddEventHandler('esx_society:withdrawMoney', function(society, amount)
       xPlayer.addMoney(amount)
 
       TriggerClientEvent('esx:showNotification', xPlayer.source, _U('have_withdrawn') .. amount)
-      TriggerEvent('discord_bot:society_log', society, GetPlayerName(xPlayer.source) .. ' hebt $' .. amount .. ' von der ' .. society .. ' Kasse ab.' )
+      TriggerEvent('discord_bot:society_log', society.name, GetPlayerName(xPlayer.source) .. ' hebt $' .. amount .. ' von der ' .. society.name .. ' Kasse ab.' )
     else
       TriggerClientEvent('esx:showNotification', xPlayer.source, _U('invalid_amount'))
     end
@@ -112,7 +112,7 @@ AddEventHandler('esx_society:depositMoney', function(society, amount)
       account.addMoney(amount)
     end)
 	
-    TriggerEvent('discord_bot:society_log', society, GetPlayerName(xPlayer.source) .. ' bucht $' .. amount .. ' auf das Konto der ' .. society .. '.' )
+    TriggerEvent('discord_bot:society_log', society.name, GetPlayerName(xPlayer.source) .. ' bucht $' .. amount .. ' auf das Konto der ' .. society.name .. '.' )
     TriggerClientEvent('esx:showNotification', xPlayer.source, _U('have_deposited') .. amount)
 
   else
@@ -206,7 +206,7 @@ ESX.RegisterServerCallback('esx_society:getEmployees', function(source, cb, soci
   _society = society
   if Config.EnableESXIdentity then
     MySQL.Async.fetchAll(
-      'SELECT * FROM characters WHERE job = @job OR second_job = @job ORDER BY job_grade DESC',
+      'SELECT * FROM users WHERE job = @job OR second_job = @job ORDER BY job_grade DESC',
       { ['@job'] = society },
       function (results)
         local employees = {}
