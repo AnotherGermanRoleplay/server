@@ -74,7 +74,6 @@ function OpenBossMenu(society, close, options)
     'default', GetCurrentResourceName(), 'boss_actions_' .. society,
     {
       title    = 'Patron',
-      align    = 'top-left',
       elements = elements
     },
     function(data, menu)
@@ -183,7 +182,6 @@ function OpenManageEmployeesMenu(society)
     'default', GetCurrentResourceName(), 'manage_employees_' .. society,
     {
       title    = _U('employee_management'),
-      align    = 'top-left',
       elements = {
         {label = _U('employee_list'), value = 'employee_list'},
         {label = _U('recruit'),       value = 'recruit'},
@@ -217,9 +215,12 @@ function OpenEmployeeList(society)
     }
 
     for i=1, #employees, 1 do
-
       local gradeLabel = (employees[i].job.grade_label == '' and employees[i].job.label or employees[i].job.grade_label)
+      if (society == "mafia") then
+        gradeLabel = ("Mafia")
+      else
 
+      end
       table.insert(elements.rows, {
         data = employees[i],
         cols = {
@@ -237,7 +238,7 @@ function OpenEmployeeList(society)
 
         local employee = data.data
 
-        if data.value == 'promote' then
+        if data.value == 'promote' and society ~= "mafia" then
           menu.close()
           OpenPromoteMenu(society, employee)
         end
@@ -245,12 +246,15 @@ function OpenEmployeeList(society)
         if data.value == 'fire' then
 
           TriggerEvent('esx:showNotification', _U('you_have_fired', employee.name))
-
-          ESX.TriggerServerCallback('esx_society:setJob', function()
-            OpenEmployeeList(society)
-          end, employee.identifier, 'unemployed', 0, 'fire', employee.characterId)
-
-
+          if (society ~= "mafia") then
+            ESX.TriggerServerCallback('esx_society:setJob', function()
+              OpenEmployeeList(society)
+            end, employee.identifier, 'unemployed', 0, 'fire', employee.characterId)
+          else
+            ESX.TriggerServerCallback('esx_society:setSecondJob', function()
+              OpenEmployeeList(society)
+            end, employee.identifier, 'unemployed', 'fire', employee.characterId)
+          end
         end
 
       end,
@@ -271,8 +275,14 @@ function OpenRecruitMenu(society)
     local elements = {}
 
     for i=1, #players, 1 do
-      if players[i].job.name ~= society then
-        table.insert(elements, {label = players[i].name, value = players[i].source, name = players[i].name, identifier = players[i].identifier})
+      if society ~= "mafia" then
+        if players[i].job.name ~= society then
+          table.insert(elements, {label = players[i].name, value = players[i].source, name = players[i].name, identifier = players[i].identifier})
+        end
+      else
+        if players[i].second_job.name ~= society then
+          table.insert(elements, {label = players[i].name, value = players[i].source, name = players[i].name, identifier = players[i].identifier})
+        end
       end
     end
 
@@ -280,7 +290,6 @@ function OpenRecruitMenu(society)
       'default', GetCurrentResourceName(), 'recruit_' .. society,
       {
         title    = _U('recruiting'),
-        align    = 'top-left',
         elements = elements
       },
       function(data, menu)
@@ -289,7 +298,6 @@ function OpenRecruitMenu(society)
           'default', GetCurrentResourceName(), 'recruit_confirm_' .. society,
           {
             title    = _U('do_you_want_to_recruit', data.current.name),
-            align    = 'top-left',
             elements = {
               {label = _U('yes'), value = 'yes'},
               {label = _U('no'),  value = 'no'},
@@ -303,9 +311,15 @@ function OpenRecruitMenu(society)
 
               TriggerEvent('esx:showNotification', _U('you_have_hired', data.current.name))
 
-              ESX.TriggerServerCallback('esx_society:setJob', function()
-                OpenRecruitMenu(society)
-              end, data.current.identifier, society, 0, 'hire')
+              if (society ~= "mafia") then
+                ESX.TriggerServerCallback('esx_society:setJob', function()
+                  OpenRecruitMenu(society)
+                end, data.current.identifier, society, 0, 'hire')
+              else
+                ESX.TriggerServerCallback('esx_society:setSecondJob', function()
+                  OpenRecruitMenu(society)
+                end, data.current.identifier, society, 'hire')
+              end
 
             end
 
@@ -340,7 +354,6 @@ function OpenPromoteMenu(society, employee)
       'default', GetCurrentResourceName(), 'promote_employee_' .. society,
       {
         title    = _U('promote_employee', employee.name),
-        align    = 'top-left',
         elements = elements
       },
       function(data, menu)
@@ -351,7 +364,6 @@ function OpenPromoteMenu(society, employee)
         ESX.TriggerServerCallback('esx_society:setJob', function()
           OpenEmployeeList(society)
         end, employee.identifier, society, data.current.value, 'promote', employee.characterId)
-
 
       end,
       function(data, menu)
@@ -379,7 +391,6 @@ function OpenManageGradesMenu(society)
       'default', GetCurrentResourceName(), 'manage_grades_' .. society,
       {
         title    = _U('salary_management'),
-        align    = 'top-left',
         elements = elements
       },
       function(data, menu)
@@ -428,7 +439,7 @@ AddEventHandler('esx:playerLoaded', function(xPlayer)
 
   DisableSocietyMoneyHUDElement()
 
-  if PlayerData.job.grade_name == 'boss' then
+  if PlayerData.job.grade_name == 'boss' or PlayerData.job.grade_name == 'coboss' then
     
     EnableSocietyMoneyHUDElement()
   
@@ -447,7 +458,7 @@ AddEventHandler('esx:setJob', function(job)
 
   DisableSocietyMoneyHUDElement()
 
-  if PlayerData.job.grade_name == 'boss' then
+  if PlayerData.job.grade_name == 'boss' or PlayerData.job.grade_name == 'coboss' then
     
     EnableSocietyMoneyHUDElement()
   
@@ -462,7 +473,7 @@ end)
 RegisterNetEvent('esx_addonaccount:setMoney')
 AddEventHandler('esx_addonaccount:setMoney', function(society, money)
 
-  if PlayerData.job ~= nil and PlayerData.job.grade_name == 'boss' and 'society_' .. PlayerData.job.name == society then
+  if PlayerData.job ~= nil and PlayerData.job.grade_name == 'boss' or PlayerData.job.grade_name == 'coboss' and 'society_' .. PlayerData.job.name == society then
     UpdateSocietyMoneyHUDElement(money)
   end
 

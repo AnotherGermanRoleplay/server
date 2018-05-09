@@ -231,8 +231,8 @@ ESX.RegisterServerCallback('esx_vehicleshop:buyVehicle', function (source, cb, v
         account.addMoney(price)
       end
     end)
+	TriggerEvent("discord_bot:log", xPlayer.name .. ' kauft sich gerade einen ' .. vehicleData.name .. ' für $' .. vehicleData.price .. ' in Bar')
     cb(true)
-	TriggerEvent("discord_bot:log", xPlayer.name .. ' kauft sich gerade einen ' .. vehicleData .. ' für $' .. vehicleData.price .. ' in Bar')
   elseif xPlayer.get('bank') >= vehicleData.price then
     xPlayer.removeAccountMoney('bank', vehicleData.price)
     TriggerEvent('esx_addonaccount:getSharedAccount', sharedAccountName1, function(account)
@@ -259,7 +259,7 @@ ESX.RegisterServerCallback('esx_vehicleshop:buyVehicle', function (source, cb, v
         account.addMoney(price)
       end
     end)
-	TriggerEvent("discord_bot:log", xPlayer.name .. ' kauft sich gerade einen ' .. vehicleData .. ' für $' .. vehicleData.price)
+	TriggerEvent("discord_bot:log", xPlayer.name .. ' kauft sich gerade einen ' .. vehicleData.name .. ' für $' .. vehicleData.price)
     cb(true)
   else
     cb(false)

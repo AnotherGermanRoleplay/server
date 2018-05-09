@@ -90,8 +90,7 @@ AddEventHandler('esx_society:withdrawMoney', function(society, amount)
       xPlayer.addMoney(amount)
 
       TriggerClientEvent('esx:showNotification', xPlayer.source, _U('have_withdrawn') .. amount)
-	  TriggerEvent('discord_bot:society_log', society, GetPlayerName(xPlayer.source) .. ' hebt $' .. amount .. ' von der ' .. society .. ' Kasse ab.' )
-
+      TriggerEvent('discord_bot:society_log', society, GetPlayerName(xPlayer.source) .. ' hebt $' .. amount .. ' von der ' .. society .. ' Kasse ab.' )
     else
       TriggerClientEvent('esx:showNotification', xPlayer.source, _U('invalid_amount'))
     end
@@ -112,8 +111,9 @@ AddEventHandler('esx_society:depositMoney', function(society, amount)
       xPlayer.removeMoney(amount)
       account.addMoney(amount)
     end)
-	TriggerEvent('discord_bot:society_log', society, GetPlayerName(xPlayer.source) .. ' bucht $' .. amount .. ' auf das Konto der ' .. society .. '.' )
-	TriggerClientEvent('esx:showNotification', xPlayer.source, _U('have_deposited') .. amount)
+	
+    TriggerEvent('discord_bot:society_log', society, GetPlayerName(xPlayer.source) .. ' bucht $' .. amount .. ' auf das Konto der ' .. society .. '.' )
+    TriggerClientEvent('esx:showNotification', xPlayer.source, _U('have_deposited') .. amount)
 
   else
     TriggerClientEvent('esx:showNotification', xPlayer.source, _U('invalid_amount'))
@@ -139,9 +139,8 @@ AddEventHandler('esx_society:washMoney', function(society, amount)
           ['@amount']     = amount
         },
         function(rowsChanged)
-          TriggerClientEvent('esx:showNotification', xPlayer.source, _U('you_have') .. amount)
 		  TriggerEvent('discord_bot:society_log', society, GetPlayerName(xPlayer.source) .. ' wäscht gerade $' .. amount .. ' über die Kasse der ' .. society .. '.' )
-
+          TriggerClientEvent('esx:showNotification', xPlayer.source, _U('you_have') .. amount .. '~s~ in die ~r~Geldwäsche~s~ gegeben. (24h)')
         end
       )
 
@@ -203,19 +202,21 @@ ESX.RegisterServerCallback('esx_society:getSocietyMoney', function(source, cb, s
 end)
 
 ESX.RegisterServerCallback('esx_society:getEmployees', function(source, cb, society)
-
+  local _society = nil 
+  _society = society
   if Config.EnableESXIdentity then
     MySQL.Async.fetchAll(
-      'SELECT * FROM characters WHERE job = @job ORDER BY job_grade DESC',
+      'SELECT * FROM characters WHERE job = @job OR second_job = @job ORDER BY job_grade DESC',
       { ['@job'] = society },
       function (results)
         local employees = {}
+
 
         for i=1, #results, 1 do
           table.insert(employees, {
             name        = results[i].firstname .. ' ' .. results[i].lastname,
             identifier  = results[i].identifier,
-			characterId = results[i].id,
+            characterId = results[i].id,
             job = {
               name        = results[i].job,
               label       = Jobs[results[i].job].label,
@@ -231,7 +232,7 @@ ESX.RegisterServerCallback('esx_society:getEmployees', function(source, cb, soci
     )
   else
     MySQL.Async.fetchAll(
-      'SELECT * FROM characters WHERE job = @job ORDER BY job_grade DESC',
+      'SELECT * FROM users WHERE job = @job ORDER BY job_grade DESC',
       { ['@job'] = society },
       function (result)
         local employees = {}
@@ -240,7 +241,6 @@ ESX.RegisterServerCallback('esx_society:getEmployees', function(source, cb, soci
           table.insert(employees, {
             name        = result[i].name,
             identifier  = result[i].identifier,
-			characterId = results[i].id,
             job = {
               name        = result[i].job,
               label       = Jobs[result[i].job].label,
@@ -279,59 +279,63 @@ end)
 
 ESX.RegisterServerCallback('esx_society:setJob', function(source, cb, identifier, job, grade, type, characterId)
 
-	local xPlayer = ESX.GetPlayerFromIdentifier(identifier)
+  local xPlayer = ESX.GetPlayerFromIdentifier(identifier)
 
-	if xPlayer ~= nil then
-		xPlayer.setJob(job, grade)
-		
-		if type == 'hire' then
-			TriggerClientEvent('esx:showNotification', xPlayer.source, _U('you_have_been_hired') .. job)
-			TriggerEvent('discord_bot:society_log', job, GetPlayerName(source) .. ' hat gerade ' .. xPlayer.name .. ' eingestellt.')
-		elseif type == 'promote' then
-			TriggerClientEvent('esx:showNotification', xPlayer.source, _U('you_have_been_promoted'))
-			TriggerEvent('discord_bot:society_log', job, GetPlayerName(source) .. ' hat gerade ' .. xPlayer.name .. ' auf den Rang ' .. grade .. ' befördert.')
-		elseif type == 'fire' then
-			TriggerClientEvent('esx:showNotification', xPlayer.source, _U('you_have_been_fired') .. xPlayer.getJob().label)
-			TriggerEvent('discord_bot:society_log', job, GetPlayerName(source) .. ' hat gerade ' .. xPlayer.name .. ' gefeuert.')
-		end
-	end
-	if Config.EnableESXIdentity then
-		MySQL.Async.execute(
-			'UPDATE characters SET job = @job, job_grade = @job_grade WHERE identifier = @identifier and id = @characterid',
-			{
-				['@job']          = job,
-				['@job_grade']    = grade,
-				['@identifier']   = identifier,
-				['@characterid']  = characterId
-			},
-			function(rowsChanged)
-				MySQL.Async.execute(
-					'UPDATE users SET job = @job, job_grade = @job_grade WHERE identifier = @identifier',
-					{
-						['@job']        = job,
-						['@job_grade']  = grade,
-						['@identifier'] = identifier
-					},
-					function(rowsChanged)
-						cb()
-					end
-				)
-			end
-		)
+  if xPlayer ~= nil then
 
-	else
-		MySQL.Async.execute(
-			'UPDATE users SET job = @job, job_grade = @job_grade WHERE identifier = @identifier',
-			{
-				['@job']        = job,
-				['@job_grade']  = grade,
-				['@identifier'] = identifier
-			},
-			function(rowsChanged)
-				cb()
-			end
-		)
-	end
+    if type == 'hire' then
+      TriggerClientEvent('esx:showNotification', xPlayer.source, _U('you_have_been_hired', job))
+	  TriggerEvent('discord_bot:society_log', job, GetPlayerName(source) .. ' hat gerade ' .. xPlayer.name .. ' eingestellt.')
+
+    elseif type == 'promote' then
+      TriggerClientEvent('esx:showNotification', xPlayer.source, _U('you_have_been_promoted'))
+	  TriggerEvent('discord_bot:society_log', job, GetPlayerName(source) .. ' hat gerade ' .. xPlayer.name .. ' auf den Rang ' .. grade .. ' befördert.')
+
+    elseif type == 'fire' then
+      TriggerClientEvent('esx:showNotification', xPlayer.source, _U('you_have_been_fired', xPlayer.getJob().label))
+	  TriggerEvent('discord_bot:society_log', job, GetPlayerName(source) .. ' hat gerade ' .. xPlayer.name .. ' gefeuert.')
+
+    end
+
+    xPlayer.setJob(job, grade)
+  end
+
+  if Config.EnableESXIdentity then
+    MySQL.Async.execute(
+      'UPDATE characters SET job = @job, job_grade = @job_grade WHERE identifier = @identifier and id = @characterid',
+      {
+        ['@job']          = job,
+        ['@job_grade']    = grade,
+        ['@identifier']   = identifier,
+        ['@characterid']  = characterId
+      },
+      function(rowsChanged)
+        MySQL.Async.execute(
+          'UPDATE users SET job = @job, job_grade = @job_grade WHERE identifier = @identifier',
+          {
+            ['@job']        = job,
+            ['@job_grade']  = grade,
+            ['@identifier'] = identifier
+          },
+          function(rowsChanged)
+            cb()
+          end
+        )
+      end
+    )
+  else  
+    MySQL.Async.execute(
+      'UPDATE users SET job = @job, job_grade = @job_grade WHERE identifier = @identifier',
+      {
+        ['@job']        = job,
+        ['@job_grade']  = grade,
+        ['@identifier'] = identifier
+      },
+      function(rowsChanged)
+        cb()
+      end
+    )
+  end
 end)
 
 ESX.RegisterServerCallback('esx_society:setSecondJob', function(source, cb, identifier, job, type, characterId)
@@ -341,11 +345,11 @@ ESX.RegisterServerCallback('esx_society:setSecondJob', function(source, cb, iden
   if xPlayer ~= nil then
 
     if type == 'hire' then
-      TriggerClientEvent('esx:showNotification', xPlayer.source, _U('you_have_been_hired') .. job)
+      TriggerClientEvent('esx:showNotification', xPlayer.source, _U('you_have_been_hired', job))
     elseif type == 'promote' then
       TriggerClientEvent('esx:showNotification', xPlayer.source, "Hier gibt's keine Ränge")
     elseif type == 'fire' then
-      TriggerClientEvent('esx:showNotification', xPlayer.source, _U('you_have_been_fired') .. xPlayer.getJob().label)
+      TriggerClientEvent('esx:showNotification', xPlayer.source, _U('you_have_been_fired', xPlayer.getJob().label))
     end
 
     xPlayer.setJob(job, grade)
@@ -390,9 +394,6 @@ ESX.RegisterServerCallback('esx_society:setSecondJob', function(source, cb, iden
 end)
 
 ESX.RegisterServerCallback('esx_society:setJobSalary', function(source, cb, job, grade, salary)
-
-	TriggerEvent('discord_bot:society_log', job, GetPlayerName(source) .. ' hat gerade den Lohn des Ranges ' .. grade .. ' auf $'.. salary .. ' .')
-
 
   MySQL.Async.execute(
     'UPDATE job_grades SET salary = @salary WHERE job_name = @job_name AND grade = @grade',
@@ -456,32 +457,51 @@ ESX.RegisterServerCallback('esx_society:getVehiclesInGarage', function(source, c
 
 end)
 
-function WashMoneyCRON()
-	MySQL.Async.fetchAll(
-	'SELECT * FROM society_moneywash', {},
-	function(result)
-		for i=1, #result, 1 do
+function WashMoneyCRON(d, h, m)
 
-			-- add society money
-			local society = GetSociety(result[i].society)
-			TriggerEvent('esx_addonaccount:getSharedAccount', society.account, function(account)
-				account.addMoney(result[i].amount)
-			end)
-			
-			TriggerEvent('discord_bot:society_log', result[i].society, 'Es wurden gerade $' .. result[i].amount .. ' gewaschen.')
+  MySQL.Async.fetchAll(
+    'SELECT * FROM society_moneywash',
+    {},
+    function(result)
 
-			-- send notification if player is online
-			local xPlayer = ESX.GetPlayerFromIdentifier(result[i].identifier)
-			if xPlayer ~= nil then
-				TriggerClientEvent('esx:showNotification', xPlayer.source, _U('you_have_laundered') .. result[i].amount))
-			end
+      local xPlayers = ESX.GetPlayers()
 
-			MySQL.Async.execute('DELETE FROM society_moneywash WHERE id = @id',
-			{
-				['@id'] = result[i].id
-			})
-		end
-	end)
+      for i=1, #result, 1 do
+
+        local foundPlayer = false
+        local xPlayer     = nil
+        local society     = GetSociety(result[i].society)
+
+        for j=1, #xPlayers, 1 do
+          local xPlayer2 = ESX.GetPlayerFromId(xPlayers[j])
+          if xPlayer2.identifier == result[i].identifier then
+            foundPlayer = true
+            xPlayer     = xPlayer2
+          end
+        end
+		
+        TriggerEvent('discord_bot:society_log', result[i].society, 'Es wurden gerade $' .. result[i].amount .. ' gewaschen.')
+
+        TriggerEvent('esx_addonaccount:getSharedAccount', society.account, function(account)
+          account.addMoney(result[i].amount)
+        end)
+
+        if foundPlayer then
+          TriggerClientEvent('esx:showNotification', xPlayer.source, _U('you_have_laundered') .. result[i].amount)
+        end
+
+        MySQL.Async.execute(
+          'DELETE FROM society_moneywash WHERE id = @id',
+          {
+            ['@id'] = result[i].id
+          }
+        )
+
+      end
+
+    end
+  )
+
 end
 
 TriggerEvent('cron:runAt', 3, 0, WashMoneyCRON)
