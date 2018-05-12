@@ -1080,47 +1080,79 @@ end
     --===============================================
     --==       Server Event Set Identity           ==
     --===============================================
-    function setIdentity(identifier, data, callback)
-        MySQL.Async.execute('UPDATE `users` SET `loadout` = @loadout, `skin` = @skin, `firstname` = @firstname, `lastname` = @lastname, `dateofbirth` = @dateofbirth, `sex` = @sex, `height` = @height, `job` = @job, `job_grade` = @job_grade, `second_job` = @second_job, `loadout` = @loadout, `phone_number` = NULL WHERE identifier = @identifier',
+    function GenerateUniquePhoneNumber()
+
+      local foundNumber = false
+      local phoneNumber = nil
+
+      while not foundNumber do
+
+        phoneNumber = math.random(10000, 99999)
+
+        local result = MySQL.Sync.fetchAll(
+          'SELECT COUNT(*) as count FROM characters WHERE phone_number = @phoneNumber',
           {
-            ['@identifier']         = identifier,
-            ['@firstname']          = data.firstname,
-            ['@lastname']           = data.lastname,
-            ['@dateofbirth']        = data.dateofbirth,
-            ['@sex']                = data.sex,
-            ['@height']             = data.height,
-            ['@job']                = "unemployed",
-            ['@job_grade']          = "0",
-            ['@second_job']         = "unemployed",
-            ['@loadout']            = "[]",
-            ['@skin']               = "{}",
-          },
-          function(done)
-            if callback then
-              callback(true)
-            end
-          end)
+            ['@phoneNumber'] = phoneNumber
+          }
+        )
+
+        local count  = tonumber(result[1].count)
+
+        if count == 0 then
+          foundNumber = true
+        end
+
+      end
+
+      return phoneNumber
+    end
+
+    function setIdentity(identifier, data, callback)
+        phoneNumber = GenerateUniquePhoneNumber()
+
+        MySQL.Async.execute('UPDATE `users` SET `loadout` = @loadout, `skin` = @skin, `firstname` = @firstname, `lastname` = @lastname, `dateofbirth` = @dateofbirth, `sex` = @sex, `height` = @height, `job` = @job, `job_grade` = @job_grade, `second_job` = @second_job, `loadout` = @loadout, `phone_number` = @phonenumber WHERE identifier = @identifier',
+            {
+                ['@identifier']         = identifier,
+                ['@firstname']          = data.firstname,
+                ['@lastname']           = data.lastname,
+                ['@dateofbirth']        = data.dateofbirth,
+                ['@sex']                = data.sex,
+                ['@height']             = data.height,
+                ['@job']                = "unemployed",
+                ['@job_grade']          = "0",
+                ['@second_job']         = "unemployed",
+                ['@loadout']            = "[]",
+                ['@skin']               = "{}",
+                ['@phonenumber']      = phoneNumber
+            },
+            function(done)
+                if callback then
+                    callback(true)
+                end
+            end)
 
         MySQL.Async.execute(
-          'INSERT INTO characters (identifier, firstname, lastname, dateofbirth, sex, height, job, job_grade, second_job, loadout, skin) VALUES (@identifier, @firstname, @lastname, @dateofbirth, @sex, @height, @job, @job_grade, @second_job, @loadout, @skin)',
-          {
-            ['@identifier']       = identifier,
-            ['@firstname']        = data.firstname,
-            ['@lastname']         = data.lastname,
-            ['@dateofbirth']      = data.dateofbirth,
-            ['@sex']              = data.sex,
-            ['@height']           = data.height,
-            ['@job']              = "unemployed",
-            ['@job_grade']        = "0",
-            ['@second_job']       = "unemployed",
-            ['@loadout']          = "[]",
-            ['@skin']             = "{}",
-          })
+            'INSERT INTO characters (identifier, firstname, lastname, dateofbirth, sex, height, job, job_grade, second_job, loadout, skin, phone_number) VALUES (@identifier, @firstname, @lastname, @dateofbirth, @sex, @height, @job, @job_grade, @second_job, @loadout, @skin, @phonenumber)',
+            {
+                ['@identifier']       = identifier,
+                ['@firstname']        = data.firstname,
+                ['@lastname']         = data.lastname,
+                ['@dateofbirth']      = data.dateofbirth,
+                ['@sex']              = data.sex,
+                ['@height']           = data.height,
+                ['@job']              = "unemployed",
+                ['@job_grade']        = "0",
+                ['@second_job']       = "unemployed",
+                ['@loadout']          = "[]",
+                ['@skin']             = "{}",
+                ['@phonenumber']      = phoneNumber
+            }
+        )
 
-        xPlayer = ESX.GetPlayerFromIdentifier(identifier)
-        xPlayer.setJob("unemployed", 0)
-        xPlayer.setSecondJob("unemployed", 0)
-        TriggerEvent('esx_phone:refresh', steamid)
+          xPlayer = ESX.GetPlayerFromIdentifier(identifier)
+          xPlayer.setJob("unemployed", 0)
+          xPlayer.setSecondJob("unemployed", 0)
+          TriggerEvent('esx_phone:refresh', steamid)
     end
 
     RegisterServerEvent('esx_identity:setIdentity')

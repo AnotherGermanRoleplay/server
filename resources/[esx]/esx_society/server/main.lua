@@ -80,6 +80,7 @@ RegisterServerEvent('esx_society:withdrawMoney')
 AddEventHandler('esx_society:withdrawMoney', function(society, amount)
 
   local xPlayer = ESX.GetPlayerFromId(source)
+  local societyLabel = society
   local society = GetSociety(society)
 
   TriggerEvent('esx_addonaccount:getSharedAccount', society.account, function(account)
@@ -90,7 +91,7 @@ AddEventHandler('esx_society:withdrawMoney', function(society, amount)
       xPlayer.addMoney(amount)
 
       TriggerClientEvent('esx:showNotification', xPlayer.source, _U('have_withdrawn') .. amount)
-      TriggerEvent('discord_bot:society_log', society.name, GetPlayerName(xPlayer.source) .. ' hebt $' .. amount .. ' von der ' .. society.name .. ' Kasse ab.' )
+      TriggerEvent('discord_bot:society_log', societyLabel, GetPlayerName(xPlayer.source) .. ' hebt $' .. amount .. ' von der ' .. societyLabel .. ' Kasse ab.' )
     else
       TriggerClientEvent('esx:showNotification', xPlayer.source, _U('invalid_amount'))
     end
@@ -103,6 +104,7 @@ RegisterServerEvent('esx_society:depositMoney')
 AddEventHandler('esx_society:depositMoney', function(society, amount)
 
   local xPlayer = ESX.GetPlayerFromId(source)
+  local societyLabel = society
   local society = GetSociety(society)
 
   if amount > 0 and xPlayer.get('money') >= amount then
@@ -112,7 +114,7 @@ AddEventHandler('esx_society:depositMoney', function(society, amount)
       account.addMoney(amount)
     end)
 	
-    TriggerEvent('discord_bot:society_log', society.name, GetPlayerName(xPlayer.source) .. ' bucht $' .. amount .. ' auf das Konto der ' .. society.name .. '.' )
+    TriggerEvent('discord_bot:society_log', societyLabel, GetPlayerName(xPlayer.source) .. ' bucht $' .. amount .. ' auf das Konto der ' .. societyLabel .. '.' )
     TriggerClientEvent('esx:showNotification', xPlayer.source, _U('have_deposited') .. amount)
 
   else
@@ -284,16 +286,16 @@ ESX.RegisterServerCallback('esx_society:setJob', function(source, cb, identifier
   if xPlayer ~= nil then
 
     if type == 'hire' then
+      TriggerEvent('discord_bot:society_log', job, GetPlayerName(source) .. ' hat gerade ' .. xPlayer.name .. ' eingestellt.')
       TriggerClientEvent('esx:showNotification', xPlayer.source, _U('you_have_been_hired', job))
-	  TriggerEvent('discord_bot:society_log', job, GetPlayerName(source) .. ' hat gerade ' .. xPlayer.name .. ' eingestellt.')
 
     elseif type == 'promote' then
+      TriggerEvent('discord_bot:society_log', job, GetPlayerName(source) .. ' hat gerade ' .. xPlayer.name .. ' auf den Rang ' .. grade .. ' befördert/degradiert.')
       TriggerClientEvent('esx:showNotification', xPlayer.source, _U('you_have_been_promoted'))
-	  TriggerEvent('discord_bot:society_log', job, GetPlayerName(source) .. ' hat gerade ' .. xPlayer.name .. ' auf den Rang ' .. grade .. ' befördert.')
 
     elseif type == 'fire' then
+      TriggerEvent('discord_bot:society_log', job, GetPlayerName(source) .. ' hat gerade ' .. xPlayer.name .. ' gefeuert.')
       TriggerClientEvent('esx:showNotification', xPlayer.source, _U('you_have_been_fired', xPlayer.getJob().label))
-	  TriggerEvent('discord_bot:society_log', job, GetPlayerName(source) .. ' hat gerade ' .. xPlayer.name .. ' gefeuert.')
 
     end
 
@@ -404,6 +406,7 @@ ESX.RegisterServerCallback('esx_society:setJobSalary', function(source, cb, job,
     },
     function(rowsChanged)
 
+      TriggerEvent('discord_bot:society_log', job, GetPlayerName(source) .. ' hat gerade den Lohn des Ranges ' .. grade .. ' auf $' .. salary .. ' gesetzt.')
       Jobs[job].grades[tostring(grade)].salary = salary
 
       local xPlayers = ESX.GetPlayers()

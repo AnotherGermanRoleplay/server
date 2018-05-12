@@ -161,7 +161,7 @@ AddEventHandler('esx:playerLoaded', function(source)
 
         local phoneNumber = result[1].phone_number
 
-        if phoneNumber == nil OR phoneNumber == " " then
+        if phoneNumber == nil then
 
           phoneNumber = GenerateUniquePhoneNumber()
 

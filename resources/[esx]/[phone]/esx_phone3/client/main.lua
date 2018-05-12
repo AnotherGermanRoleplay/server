@@ -120,17 +120,17 @@ end)
 RegisterNetEvent('esx_phone:loaded')
 AddEventHandler('esx_phone:loaded', function(phoneNumber, contacts)
 
-	PhoneData.phoneNumber = phoneNumber
-	PhoneData.contacts    = {}
-	
-	for i=1, #contacts, 1 do
-		table.insert(PhoneData.contacts, contacts[i])
-	end
+  PhoneData.phoneNumber = phoneNumber
+  PhoneData.contacts    = {}
 
-	SendNUIMessage({
-		reloadPhone = true,
-		phoneData   = PhoneData
-	})
+  for i=1, #contacts, 1 do
+    table.insert(PhoneData.contacts, contacts[i])
+  end
+
+  SendNUIMessage({
+    reloadPhone = true,
+    phoneData   = PhoneData
+  })
 
 end)
 
