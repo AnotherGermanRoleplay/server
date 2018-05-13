@@ -216,7 +216,7 @@ function OpenCloakroomMenu()
           else
 
             local clothesSkin = {
-              ['tshirt_1'] = 36,
+              ['tshirt_1'] = 35,
               ['tshirt_2'] = 0,
               ['torso_1'] = 48,
               ['torso_2'] = 0,
@@ -268,7 +268,7 @@ function OpenCloakroomMenu()
           else
 
             local clothesSkin = {
-              ['tshirt_1'] = 36,
+              ['tshirt_1'] = 35,
               ['tshirt_2'] = 0,
               ['torso_1'] = 48,
               ['torso_2'] = 0,
@@ -320,7 +320,7 @@ function OpenCloakroomMenu()
           else
 
             local clothesSkin = {
-              ['tshirt_1'] = 36,
+              ['tshirt_1'] = 35,
               ['tshirt_2'] = 0,
               ['torso_1'] = 48,
               ['torso_2'] = 0,
@@ -372,7 +372,7 @@ function OpenCloakroomMenu()
           else
 
             local clothesSkin = {
-              ['tshirt_1'] = 36,
+              ['tshirt_1'] = 35,
               ['tshirt_2'] = 0,
               ['torso_1'] = 48,
               ['torso_2'] = 0,
@@ -405,7 +405,7 @@ function OpenCloakroomMenu()
           if skin.sex == 0 then
 
             local clothesSkin = {
-              ['tshirt_1'] = 58,
+              ['tshirt_1'] = 130,
               ['tshirt_2'] = 0,
               ['torso_1'] = 55,
               ['torso_2'] = 0,
@@ -424,7 +424,7 @@ function OpenCloakroomMenu()
           else
 
             local clothesSkin = {
-              ['tshirt_1'] = 36,
+              ['tshirt_1'] = 35,
               ['tshirt_2'] = 0,
               ['torso_1'] = 48,
               ['torso_2'] = 0,
