@@ -7,28 +7,28 @@ body {
 }
 
 #phone {
-	display: none;
-  position: absolute;
-  bottom: 15px;
-  right: 15px;
-  font-family: Helvetica, Arial;
-  font-size: 14px;
-  width: 250px;
-  height: 535px;
-  border-radius: 43px;
-  border: 1px solid #000;
-  background-image: url('../img/phone.png');
+    display: none;
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    font-family: Helvetica, Arial;
+    font-size: 14px;
+    width: 250px;
+    height: 535px;
+    border-radius: 43px;
+    border: 1px solid #000;
+    background-image: url('../img/phone.png');
 }
 
 #screen {
-  background-image: url('../img/backgroundPhone.png');
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 235px;
-  height: 430px;
-  overflow: hidden;
+    background-image: url('../img/backgroundPhone.png');
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 235px;
+    height: 430px;
+    overflow: hidden;
 }
 
 .status-bar {
@@ -43,23 +43,23 @@ body {
 }
 
 .app-inner {
-	display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-	max-height: 100%;
-	padding: 5px 5px;
-	overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-height: 100%;
+    padding: 5px 5px;
+    overflow: hidden;
 }
 
 .status-bar {
-  width: inherit;
-  line-height: 18px;
-  font-size: 12px;
-  text-align: left;
-  font-weight: bold;
-  background: rgba(0, 0, 0, 0.9);
-  color: #ddd;
-  z-index: 101
+    width: inherit;
+    line-height: 18px;
+    font-size: 12px;
+    text-align: left;
+    font-weight: bold;
+    background: rgba(0, 0, 0, 0.9);
+    color: #ddd;
+    z-index: 101
 }
 
 .status-bar ul.signal {
@@ -111,8 +111,8 @@ body {
 }
 
 .status-bar div.time {
-  margin-top: -18px;
-  margin-left: 100px;
+    margin-top: -18px;
+    margin-left: 100px;
 }
 
 .status-bar .battery {
@@ -157,22 +157,22 @@ body {
 #app-home .menu-icon .counter {
 	position: relative;
 	display: inline-block;
-  background: #FF0000;
-  border-radius: 90px;
-  min-width: 16px;
-  height: 16px;
-  color: #FFF;
-  text-align: center;
-  margin-top: -50px;
-  margin-left: 30px;
-  padding: 1px;
-  font-weight: bold;
-  border: 1px solid #FFF;
+    background: #FF0000;
+    border-radius: 90px;
+    min-width: 16px;
+    height: 16px;
+    color: #FFF;
+    text-align: center;
+    margin-top: -50px;
+    margin-left: 30px;
+    padding: 1px;
+    font-weight: bold;
+    border: 1px solid #FFF;
 }
 
 #app-home .menu-icon-inner {
-  transform: translateX(-50%);
-  margin-left: 50%;
+    transform: translateX(-50%);
+    margin-left: 50%;
 	width: 32px;
 	height: 32px;
 	border-radius: 5px;
@@ -191,9 +191,9 @@ body {
 	height: 32px;
 	margin-left: 16px;
 	margin-top: 16px;
-  transform: translate(-16px, -8px);
-  color: #FFF;
-  font-size: 1.2em;
+    transform: translate(-16px, -8px);
+    color: #FFF;
+    font-size: 1.2em;
 }
 
 #app-home .menu-icon-contacts .menu-icon-inner {

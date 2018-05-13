@@ -45,7 +45,6 @@ AddEventHandler('chatMessage', function(source, name, message)
 end)
 
 TriggerEvent('es:addCommand', 'me', function(source, args, user)
-    table.remove(args, 1)
     if string.gsub(table.concat(args, " "), "%s$", "") ~= '' then
       getIdentity(source, function(data)
         TriggerClientEvent("sendProximityMessageMe", -1, source, data.firstname, table.concat(args, " "))
@@ -54,7 +53,6 @@ TriggerEvent('es:addCommand', 'me', function(source, args, user)
 end, {help = 'Versetze deinen Charakter in eine Chat-Rolle.'})
 
 TriggerEvent('es:addCommand', 'pm', function(source, args, user)
-    table.remove(args, 1)
     local id = args[1]
     if tonumber(id) and id ~= nil then
       table.remove(args, 1)
@@ -67,7 +65,6 @@ TriggerEvent('es:addCommand', 'pm', function(source, args, user)
 end, {help = 'Schreibe eine private Nachricht.'})
 
 TriggerEvent('es:addCommand', 'do', function(source, args, user)
-  table.remove(args, 1)
   if string.gsub(table.concat(args, " "), "%s$", "") ~= '' then
     getIdentity(source, function(data)
       TriggerClientEvent("sendProximityMessageDo", -1, source, data.firstname, table.concat(args, " "))
@@ -76,7 +73,6 @@ TriggerEvent('es:addCommand', 'do', function(source, args, user)
 end, {help = 'Zeige was du tust.'})
 
 TriggerEvent('es:addCommand', 't', function(source, args, user)
-  table.remove(args, 1)
   if string.gsub(table.concat(args, " "), "%s$", "") ~= '' then
     getIdentity(source, function(data)
       TriggerClientEvent("sendProximityMessageTeam", -1, source, data.firstname, table.concat(args, " "), ESX.GetPlayerFromId(source))
@@ -85,28 +81,24 @@ TriggerEvent('es:addCommand', 't', function(source, args, user)
 end, {help = 'Schreibe im Fraktionschat.'})
 
 TriggerEvent('es:addCommand', 'twt', function(source, args, user)
-  table.remove(args, 1)
   if string.gsub(table.concat(args, " "), "%s$", "") ~= '' then
     TriggerClientEvent('chatMessage', -1, "^0[^4Twitter^0] (^5@" .. GetPlayerName(source) .. "^0)", {30, 144, 255}, table.concat(args, " "))
   end
 end, {help = 'Sende einen Tweet. [IC]'})
 
 TriggerEvent('es:addCommand', 'ad', function(source, args, user)
-  table.remove(args, 1)
   if string.gsub(table.concat(args, " "), "%s$", "") ~= '' then
     TriggerClientEvent('chatMessage', -1, "^0[^6Werbung^0] (^1@" .. GetPlayerName(source) .. "^0)", {255, 144, 30}, table.concat(args, " "))
   end
 end, {help = 'Schreibe deine eigene Werbung. [IC]'})
 
 TriggerEvent('es:addCommand', 'ooc', function(source, args, user)
-  table.remove(args, 1)
   if string.gsub(table.concat(args, " "), "%s$", "") ~= '' then
     TriggerClientEvent('chatMessage', -1, "OOC | " .. GetPlayerName(source), {128, 128, 128}, table.concat(args, " "))
   end
 end, {help = 'Sende eine globale OutOfCharacter Nachricht.'})
 
 TriggerEvent('es:addCommand', 'anon', function(source, args, user)
-  table.remove(args, 1)
   if string.gsub(table.concat(args, " "), "%s$", "") ~= '' then
     TriggerClientEvent('chatMessage', -1, "Anonym | ", {195, 195, 195}, table.concat(args, " "))
   end

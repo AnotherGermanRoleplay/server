@@ -261,17 +261,18 @@ AddEventHandler('esx_property:getItem', function(owner, type, item, count)
 
   if type == 'item_standard' then
 
+    local sourceItem = xPlayer.getInventoryItem(item)
     TriggerEvent('esx_addoninventory:getInventory', 'property', xPlayerOwner.identifier, function(inventory)
 
-      local roomItemCount = inventory.getItem(item).count
+      -- is there enough in the property?
+      if count > 0 and inventory.getItem(item).count >= count then
 
-      if roomItemCount >= count then
-        inventory.removeItem(item, count)
-        xPlayer.addInventoryItem(item, count)
-      else
-        TriggerClientEvent('esx:showNotification', _source, _U('invalid_quantity'))
+        -- can the player carry the said amount of x item?
+        if sourceItem.limit == -1 and not (sourceItem.count + item) > sourceItem.limit then
+          inventory.removeItem(item, count)
+          xPlayer.addInventoryItem(item, count)
+        end
       end
-
     end)
 
   end
@@ -530,7 +531,7 @@ AddEventHandler('esx_property:removeOutfit', function(label)
         end
 
         label = label
-        
+
         table.remove(dressing, label)
 
         store.set('dressing', dressing)

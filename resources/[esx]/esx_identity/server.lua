@@ -1107,7 +1107,7 @@ end
       return phoneNumber
     end
 
-    function setIdentity(identifier, data, callback)
+    function setIdentity(identifier, data, skin, callback)
         phoneNumber = GenerateUniquePhoneNumber()
 
         MySQL.Async.execute('UPDATE `users` SET `loadout` = @loadout, `skin` = @skin, `firstname` = @firstname, `lastname` = @lastname, `dateofbirth` = @dateofbirth, `sex` = @sex, `height` = @height, `job` = @job, `job_grade` = @job_grade, `second_job` = @second_job, `loadout` = @loadout, `phone_number` = @phonenumber WHERE identifier = @identifier',
@@ -1122,7 +1122,7 @@ end
                 ['@job_grade']          = "0",
                 ['@second_job']         = "unemployed",
                 ['@loadout']            = "[]",
-                ['@skin']               = "{}",
+                ['@skin']               = skin,
                 ['@phonenumber']      = phoneNumber
             },
             function(done)
@@ -1144,7 +1144,7 @@ end
                 ['@job_grade']        = "0",
                 ['@second_job']       = "unemployed",
                 ['@loadout']          = "[]",
-                ['@skin']             = "{}",
+                ['@skin']             = skin,
                 ['@phonenumber']      = phoneNumber
             }
         )

@@ -130,21 +130,21 @@ end)
 --  TriggerEvent("esx:giveitemalert",sourceXPlayer.name,targetXPlayer.name,ESX.Items[itemName].label,itemCount) -> ESX_extended
 RegisterServerEvent("esx:giveitemalert")
 AddEventHandler("esx:giveitemalert", function(name,nametarget,itemname,amount)
-	sendToLogDiscord('ITEM :: ' .. name .. ' gibt ' .. nametarget .. ' ' .. amount .. ' ' .. itemname)
+	sendToLogDiscord('LOG', 'ITEM :: ' .. name .. ' gibt ' .. nametarget .. ' ' .. amount .. ' ' .. itemname)
 end)
 
 -- Add event when a player give money
 -- TriggerEvent("esx:givemoneyalert",sourceXPlayer.name,targetXPlayer.name,itemCount) -> ESX_extended
 RegisterServerEvent("esx:givemoneyalert")
 AddEventHandler("esx:givemoneyalert", function(name,nametarget,amount)
-	sendToLogDiscord('MONEY :: ' .. name .. ' gibt ' .. nametarget .. ' $' .. amount)
+	sendToLogDiscord('LOG', 'MONEY :: ' .. name .. ' gibt ' .. nametarget .. ' $' .. amount)
 end)
 
 -- Add event when a player give money
 -- TriggerEvent("esx:givemoneybankalert",sourceXPlayer.name,targetXPlayer.name,itemCount) -> ESX_extended
 RegisterServerEvent("esx:givemoneybankalert")
 AddEventHandler("esx:givemoneybankalert", function(name,nametarget,amount)
-	sendToLogDiscord('ACCOUNT_MONEY :: ' .. name .. ' gibt ' .. nametarget .. ' $' .. amount)
+	sendToLogDiscord('LOG', 'ACCOUNT_MONEY :: ' .. name .. ' gibt ' .. nametarget .. ' $' .. amount)
 end)
 
 -- Add event when a player give weapon

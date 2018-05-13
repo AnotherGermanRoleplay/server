@@ -207,6 +207,7 @@ ESX.RegisterServerCallback('esx_vehicleshop:buyVehicle', function (source, cb, v
   end
 
   if xPlayer.get('money') >= vehicleData.price then
+    xPlayer.removeMoney(vehicleData.price)
     TriggerEvent('esx_addonaccount:getSharedAccount', sharedAccountName1, function(account)
       if account ~= nil then
         price = math.floor(vehicleData.price/4)
@@ -477,7 +478,7 @@ if Config.EnablePvCommand then
 
 
   TriggerEvent('es:addGroupCommand', 'pvr', 'admin', function(source, args, user)
-    
+
     TriggerClientEvent('esx_vehicleshop:openPersonnalVehicleMenuResetTimer', source)
 
   end, function(source, args, user)
