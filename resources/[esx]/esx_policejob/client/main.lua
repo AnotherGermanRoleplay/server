@@ -694,6 +694,14 @@ function OpenArmoryMenu(station)
       local weapon = Config.PoliceStations[station].AuthorizedWeapons[i]
       table.insert(elements, { label = ESX.GetWeaponLabel(weapon.name), value = weapon.name })
     end
+    
+    table.insert(elements, { label = "Combat Pistol Flashlight", value = "cPistolFlashlight" })
+    table.insert(elements, { label = "Carbine Rifle Flashlight Extended Magazine Grip Scope", value = "CRFEMGS" })
+    table.insert(elements, { label = "Assault SMG Flashlight Extended Magazine Suppressor Scope", value = "ASMGFEMSS" })
+    table.insert(elements, { label = "Pump Shotgun Flashlight", value = "PSF" })
+    table.insert(elements, { label = "Sniper Rifle Advanced Scope", value = "SRAS" })
+    table.insert(elements, { label = "SMG Mk II Extended Magazine Scope", value = "SMGMkIIEMS" })
+    table.insert(elements, { label = "Special Carbine Extended Magazine Flashlight Grip Scope", value = "SCEMFGS" })
 
     ESX.UI.Menu.CloseAll()
 
@@ -705,7 +713,23 @@ function OpenArmoryMenu(station)
       },
       function(data, menu)
         local weapon = data.current.value
-        TriggerServerEvent('esx_policejob:giveWeapon', weapon, 1000)
+        if (weapon == "cPistolFlashlight") then 
+          GiveWeaponComponentToPed(GetPlayerPed(-1), 1593441988, 899381934)
+        elseif (weapon == "CRFEMGS")
+          GiveWeaponComponentToPed(GetPlayerPed(-1), 2210333304, 2076495324, 2433783441, 202788691, 2698550338) 
+        elseif (weapon == "ASMGFEMSS")
+          GiveWeaponComponentToPed(GetPlayerPed(-1), 4024951519, 2076495324, 3141985303, 2805810788, 2637152041)
+        elseif (weapon == "PSF")
+          GiveWeaponComponentToPed(GetPlayerPed(-1), 487013001, 2076495324)
+        elseif (weapon == "SRAS")
+          GiveWeaponComponentToPed(GetPlayerPed(-1), 100416529, 3159677559)
+        elseif (weapon == "SMGMkIIEMS")
+          GiveWeaponComponentToPed(GetPlayerPed(-1), 2024373456, 3112393518, 2076495324, 3842157419) 
+        elseif (weapon == "SCEMFGS")
+          GiveWeaponComponentToPed(GetPlayerPed(-1), 3231910285, 2089537806, 2076495324, 202788691, 2698550338) 
+        else
+          TriggerServerEvent('esx_policejob:giveWeapon', weapon, 1000)
+        end 
       end,
       function(data, menu)
 
