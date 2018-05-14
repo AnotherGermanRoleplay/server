@@ -18,7 +18,7 @@
 		if(elems.length > 0)
 			app.selectElem(elems[0]);
 
-	};
+	}
 
 	app.move = function(direction) {
 
@@ -59,11 +59,11 @@
 
 		app.selectElem(elems[currentRow]);
 
-	};
+	}
 
 	app.enter = function() {
 		Phone.open('contact-action-message', currentContact);
-	};
+	}
 
 	app.selectElem = function(elem) {
 		
@@ -74,7 +74,7 @@
 		elems.removeClass('selected');
 
 		$(elem).addClass('selected');
-	};
+	}
 
 	app.updateMessages = function() {
 
@@ -118,12 +118,12 @@
 
 		$('#app-messages .contact-list').html(html);
 		
-	};
+	}
 
 	app.getContactName = function(number) {
 
 		if(number == '-1')
-			return 'Anonym';
+			return 'Anonyme';
 
 		for(let i=0; i<Phone.contacts.length; i++)
 			if(Phone.contacts[i].number == number)
@@ -135,7 +135,7 @@
 			if($(elems[i]).data('args').number == number)
 				return $(elems[i]).data('args').name;
 
-		return 'Unbekannt #' + number;
+		return 'Inconnu #' + number;
 
 	}
 
