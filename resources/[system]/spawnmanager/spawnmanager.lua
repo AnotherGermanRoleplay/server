@@ -5,6 +5,8 @@ local spawnPoints = {}
 local autoSpawnEnabled = false
 local autoSpawnCallback
 
+
+
 -- support for mapmanager maps
 AddEventHandler('getMapDirectives', function(add)
     -- call the remote callback
