@@ -21,7 +21,7 @@ AddEventHandler('pv:setCruiseSpeed', function()
 			Citizen.CreateThread(function()
 				while cruise > 0 and GetPedInVehicleSeat(GetVehiclePedIsIn(GetPlayerPed(-1), false), -1) == GetPlayerPed(-1) do
 					local cruiseVeh = GetVehiclePedIsIn(GetPlayerPed(-1), false)
-					if IsVehicleOnAllWheels(cruiseVeh) and GetEntitySpeed(GetVehiclePedIsIn(GetPlayerPed(-1), false)) > (cruise - 2.0) then
+					if IsVehicleOnAllWheels(cruiseVeh) and  GetVehicleEngineHealth(cruiseVeh) > 0 and  GetEntitySpeed(GetVehiclePedIsIn(GetPlayerPed(-1), false)) > (cruise - 2.0) then
 						SetVehicleForwardSpeed(GetVehiclePedIsIn(GetPlayerPed(-1), false), cruise)
 					else
 						cruise = 0
