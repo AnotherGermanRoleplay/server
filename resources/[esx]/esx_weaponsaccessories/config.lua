@@ -1,5 +1,5 @@
 Config = {}
-Config.Locale                     = 'de'
+Config.Locale                     = 'en'
 Config.SilentWeapons = {
 	["WEAPON_PISTOL"] = "COMPONENT_AT_PI_SUPP_02",
 	["WEAPON_PISTOL_MK2"] = "COMPONENT_AT_PI_SUPP_02",
