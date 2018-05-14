@@ -715,17 +715,18 @@ function OpenArmoryMenu(station)
         local weapon = data.current.value
         if (weapon == "cPistolFlashlight") then 
           GiveWeaponComponentToPed(GetPlayerPed(-1), 1593441988, 899381934)
-        elseif (weapon == "CRFEMGS")
+        
+        if (weapon == "CRFEMGS") then
           GiveWeaponComponentToPed(GetPlayerPed(-1), 2210333304, 2076495324, 2433783441, 202788691, 2698550338) 
-        elseif (weapon == "ASMGFEMSS")
+        elseif (weapon == "ASMGFEMSS") then
           GiveWeaponComponentToPed(GetPlayerPed(-1), 4024951519, 2076495324, 3141985303, 2805810788, 2637152041)
-        elseif (weapon == "PSF")
+        elseif (weapon == "PSF") then
           GiveWeaponComponentToPed(GetPlayerPed(-1), 487013001, 2076495324)
-        elseif (weapon == "SRAS")
+        elseif (weapon == "SRAS") then
           GiveWeaponComponentToPed(GetPlayerPed(-1), 100416529, 3159677559)
-        elseif (weapon == "SMGMkIIEMS")
+        elseif (weapon == "SMGMkIIEMS") then
           GiveWeaponComponentToPed(GetPlayerPed(-1), 2024373456, 3112393518, 2076495324, 3842157419) 
-        elseif (weapon == "SCEMFGS")
+        elseif (weapon == "SCEMFGS") then
           GiveWeaponComponentToPed(GetPlayerPed(-1), 3231910285, 2089537806, 2076495324, 202788691, 2698550338) 
         else
           TriggerServerEvent('esx_policejob:giveWeapon', weapon, 1000)
