@@ -15,7 +15,7 @@ Config.RespawnToHospitalMenuTimer   = false
 Config.MenuRespawnToHospitalDelay   = 5 * minute
 
 Config.EnablePlayerManagement       = true
-Config.EnableSocietyOwnedVehicles   = true
+Config.EnableSocietyOwnedVehicles   = false
 
 Config.RemoveWeaponsAfterRPDeath    = true
 Config.RemoveCashAfterRPDeath       = true
