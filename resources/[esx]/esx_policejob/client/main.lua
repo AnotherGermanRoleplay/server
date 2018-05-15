@@ -695,13 +695,13 @@ function OpenArmoryMenu(station)
       table.insert(elements, { label = ESX.GetWeaponLabel(weapon.name), value = weapon.name })
     end
     
-    table.insert(elements, { label = "Combat Pistol Flashlight", value = "cPistolFlashlight" })
-    table.insert(elements, { label = "Carbine Rifle Flashlight Extended Magazine Grip Scope", value = "CRFEMGS" })
-    table.insert(elements, { label = "Assault SMG Flashlight Extended Magazine Suppressor Scope", value = "ASMGFEMSS" })
-    table.insert(elements, { label = "Pump Shotgun Flashlight", value = "PSF" })
-    table.insert(elements, { label = "Sniper Rifle Advanced Scope", value = "SRAS" })
-    table.insert(elements, { label = "SMG Mk II Extended Magazine Scope", value = "SMGMkIIEMS" })
-    table.insert(elements, { label = "Special Carbine Extended Magazine Flashlight Grip Scope", value = "SCEMFGS" })
+    table.insert(elements, { label = 'Combat Pistol Flashlight', value = 'cPistolFlashlight' })
+    table.insert(elements, { label = 'Carbine Rifle Flashlight Extended Magazine Grip Scope', value = 'CRFEMGS' })
+    table.insert(elements, { label = 'Assault SMG Flashlight Extended Magazine Suppressor Scope', value = 'ASMGFEMSS' })
+    table.insert(elements, { label = 'Pump Shotgun Flashlight', value = 'PSF' })
+    table.insert(elements, { label = 'Sniper Rifle Advanced Scope', value = 'SRAS' })
+    table.insert(elements, { label = 'SMG Mk II Extended Magazine Scope', value = 'SMGMkIIEMS' })
+    table.insert(elements, { label = 'Special Carbine Extended Magazine Flashlight Grip Scope', value = 'SCEMFGS' })
 
     ESX.UI.Menu.CloseAll()
 
@@ -715,8 +715,7 @@ function OpenArmoryMenu(station)
         local weapon = data.current.value
         if (weapon == "cPistolFlashlight") then 
           GiveWeaponComponentToPed(GetPlayerPed(-1), 1593441988, 899381934)
-        
-        if (weapon == "CRFEMGS") then
+        elseif (weapon == "CRFEMGS") then
           GiveWeaponComponentToPed(GetPlayerPed(-1), 2210333304, 2076495324, 2433783441, 202788691, 2698550338) 
         elseif (weapon == "ASMGFEMSS") then
           GiveWeaponComponentToPed(GetPlayerPed(-1), 4024951519, 2076495324, 3141985303, 2805810788, 2637152041)
