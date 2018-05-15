@@ -1,3 +1,4 @@
-client_script 'scripts/client/c.lua'
-server_script 'scripts/server/s.lua'
-server_script 'settings.lua'
+-- Revamped by Draziak
+
+client_script 'interiors_client.lua'
+server_script 'interiors_server.lua'
