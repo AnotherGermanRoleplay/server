@@ -32,6 +32,15 @@ Config.RespawnFineAmount            = 1250
 
 Config.Locale                       = 'de'
 
+Config.AuthorizedVehicles = {
+
+  {
+    model = 'ambulance',
+    label = 'Ambulance'
+  }
+
+}
+
 Config.Blip = {
   Pos     = { x = 307.76, y = -1433.47, z = 28.97 },
   Sprite  = 61,

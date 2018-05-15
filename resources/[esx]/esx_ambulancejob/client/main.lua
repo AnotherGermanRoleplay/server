@@ -296,7 +296,7 @@ function OpenAmbulanceActionsMenu()
             CurrentActionData = {}
           end)
         end
-        
+
       end
 
     end,
@@ -532,6 +532,7 @@ function OpenCloakroomMenu()
 
 end
 
+
 function OpenVehicleSpawnerMenu()
 
   ESX.UI.Menu.CloseAll()
@@ -552,34 +553,47 @@ function OpenVehicleSpawnerMenu()
           title    = _U('veh_menu'),
           align    = 'top-left',
           elements = elements,
-        },
-        function(data, menu)
+        }, function(data, menu)
+        menu.close()
 
-          menu.close()
+        local vehicleProps = data.current.value
+        ESX.Game.SpawnVehicle(vehicleProps.model, Config.Zones.VehicleSpawnPoint.Pos, 270.0, function(vehicle)
+          ESX.Game.SetVehicleProperties(vehicle, vehicleProps)
+          local playerPed = GetPlayerPed(-1)
+          TaskWarpPedIntoVehicle(playerPed,  vehicle,  -1)
+        end)
+        TriggerServerEvent('esx_society:removeVehicleFromGarage', 'ambulance', vehicleProps)
 
-          local vehicleProps = data.current.value
-
-          ESX.Game.SpawnVehicle(vehicleProps.model, Config.Zones.VehicleSpawnPoint.Pos, 270.0, function(vehicle)
-            ESX.Game.SetVehicleProperties(vehicle, vehicleProps)
-            local playerPed = GetPlayerPed(-1)
-            TaskWarpPedIntoVehicle(playerPed,  vehicle,  -1)
-          end)
-
-          TriggerServerEvent('esx_society:removeVehicleFromGarage', 'ambulance', vehicleProps)
-
-        end,
-        function(data, menu)
-
-          menu.close()
-
-          CurrentAction     = 'vehicle_spawner_menu'
-          CurrentActionMsg  = _U('veh_spawn')
-          CurrentActionData = {}
-
-        end
+      end, function(data, menu)
+        menu.close()
+        CurrentAction     = 'vehicle_spawner_menu'
+        CurrentActionMsg  = _U('veh_spawn')
+        CurrentActionData = {}
+      end
       )
-
     end, 'ambulance')
+
+  else -- not society vehicles
+
+    ESX.UI.Menu.Open(
+      'default', GetCurrentResourceName(), 'vehicle_spawner',
+      {
+        title    = _U('veh_menu'),
+        align    = 'top-left',
+        elements = Config.AuthorizedVehicles
+      }, function(data, menu)
+      menu.close()
+      ESX.Game.SpawnVehicle(data.current.model, Config.Zones.VehicleSpawnPoint.Pos, 230.0, function(vehicle)
+        local playerPed = GetPlayerPed(-1)
+        TaskWarpPedIntoVehicle(playerPed, vehicle, -1)
+      end)
+    end, function(data, menu)
+      menu.close()
+      CurrentAction     = 'vehicle_spawner_menu'
+      CurrentActionMsg  = _U('veh_spawn')
+      CurrentActionData = {}
+    end
+    )
   end
 end
 

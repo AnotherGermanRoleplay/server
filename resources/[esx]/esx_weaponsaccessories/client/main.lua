@@ -12,6 +12,13 @@ local Keys = {
 
 ESX          = nil
 local UsedAccessories = {}
+local PlayerData = {}
+
+RegisterNetEvent('esx:playerLoaded')
+AddEventHandler('esx:playerLoaded', function(xPlayer)
+  PlayerData = xPlayer
+end)
+
 
 Citizen.CreateThread(function()
 	while ESX == nil do
@@ -218,7 +225,7 @@ Citizen.CreateThread(function()
     while true do
         Citizen.Wait(10)
         if not IsPedInAnyVehicle(GetPlayerPed(-1), false) and GetSelectedPedWeapon(GetPlayerPed(-1)) ~= GetHashKey("WEAPON_UNARMED") then
-        if IsControlPressed(0, Keys['G']) and not ESX.UI.Menu.IsOpen('default', GetCurrentResourceName(), 'esx_weaponsaccessories') and PlayerData.job ~= nil and PlayerData.job.name == 'police'or PlayerData.job.name == 'mafia' then
+        if IsControlPressed(0, Keys['G']) and not ESX.UI.Menu.IsOpen('default', GetCurrentResourceName(), 'esx_weaponsaccessories') and PlayerData.job ~= nil and PlayerData.job.name == 'police'or PlayerData.job.name == 'mafia' or PlayerData.job.name == 'government' then
                 OpenComponentsMenu()
             end
             if IsControlPressed(0, Keys['U']) and not ESX.UI.Menu.IsOpen('default', GetCurrentResourceName(), 'esx_weaponsaccessories_skins') then
