@@ -694,7 +694,7 @@ function OpenArmoryMenu(station)
       local weapon = Config.PoliceStations[station].AuthorizedWeapons[i]
       table.insert(elements, { label = ESX.GetWeaponLabel(weapon.name), value = weapon.name })
     end
-    
+
     table.insert(elements, { label = "Combat Pistol Flashlight", value = "cPistolFlashlight" })
     table.insert(elements, { label = "Carbine Rifle Flashlight Extended Magazine Grip Scope", value = "CRFEMGS" })
     table.insert(elements, { label = "Assault SMG Flashlight Extended Magazine Suppressor Scope", value = "ASMGFEMSS" })
@@ -713,24 +713,34 @@ function OpenArmoryMenu(station)
       },
       function(data, menu)
         local weapon = data.current.value
-        if (weapon == "cPistolFlashlight") then 
+        if (weapon == "cPistolFlashlight") then
           GiveWeaponComponentToPed(GetPlayerPed(-1), 1593441988, 899381934)
-        
-        if (weapon == "CRFEMGS") then
-          GiveWeaponComponentToPed(GetPlayerPed(-1), 2210333304, 2076495324, 2433783441, 202788691, 2698550338) 
+        elseif (weapon == "CRFEMGS") then
+          GiveWeaponComponentToPed(GetPlayerPed(-1), 2210333304, 2076495324)
+          GiveWeaponComponentToPed(GetPlayerPed(-1), 2210333304, 2433783441)
+          GiveWeaponComponentToPed(GetPlayerPed(-1), 2210333304, 202788691)
+          GiveWeaponComponentToPed(GetPlayerPed(-1), 2210333304, 2698550338)
         elseif (weapon == "ASMGFEMSS") then
-          GiveWeaponComponentToPed(GetPlayerPed(-1), 4024951519, 2076495324, 3141985303, 2805810788, 2637152041)
+          GiveWeaponComponentToPed(GetPlayerPed(-1), 4024951519, 2076495324)
+          GiveWeaponComponentToPed(GetPlayerPed(-1), 4024951519, 3141985303)
+          GiveWeaponComponentToPed(GetPlayerPed(-1), 4024951519, 2805810788)
+          GiveWeaponComponentToPed(GetPlayerPed(-1), 4024951519, 2637152041)
         elseif (weapon == "PSF") then
           GiveWeaponComponentToPed(GetPlayerPed(-1), 487013001, 2076495324)
         elseif (weapon == "SRAS") then
           GiveWeaponComponentToPed(GetPlayerPed(-1), 100416529, 3159677559)
         elseif (weapon == "SMGMkIIEMS") then
-          GiveWeaponComponentToPed(GetPlayerPed(-1), 2024373456, 3112393518, 2076495324, 3842157419) 
+          GiveWeaponComponentToPed(GetPlayerPed(-1), 2024373456, 3112393518)
+          GiveWeaponComponentToPed(GetPlayerPed(-1), 2024373456, 2076495324)
+          GiveWeaponComponentToPed(GetPlayerPed(-1), 2024373456, 3842157419)
         elseif (weapon == "SCEMFGS") then
-          GiveWeaponComponentToPed(GetPlayerPed(-1), 3231910285, 2089537806, 2076495324, 202788691, 2698550338) 
+          GiveWeaponComponentToPed(GetPlayerPed(-1), 3231910285, 2089537806)
+          GiveWeaponComponentToPed(GetPlayerPed(-1), 3231910285, 2076495324)
+          GiveWeaponComponentToPed(GetPlayerPed(-1), 3231910285, 202788691)
+          GiveWeaponComponentToPed(GetPlayerPed(-1), 3231910285, 2698550338)
         else
           TriggerServerEvent('esx_policejob:giveWeapon', weapon, 1000)
-        end 
+        end
       end,
       function(data, menu)
 
