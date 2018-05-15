@@ -21,6 +21,7 @@ local CurrentActionMsg        = ''
 local CurrentActionData       = {}
 local RespawnToHospitalMenu   = nil
 
+
 ESX                           = nil
 GUI.Time                      = 0
 
@@ -607,7 +608,8 @@ function OpenPharmacyMenu()
             align    = 'top-left',
             elements = {
                 {label = _U('pharmacy_take') .. ' ' .. _('medikit'),  value = 'medikit'},
-                {label = _U('pharmacy_take') .. ' ' .. _('bandage'),  value = 'bandage'}
+                {label = _U('pharmacy_take') .. ' ' .. _('bandage'),  value = 'bandage'},
+				{label = _U('pharmacy_take') .. ' ' .. _('defi'),  value = 'defi'}
             },
         },
         function(data, menu)
