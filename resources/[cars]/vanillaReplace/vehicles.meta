@@ -5582,7 +5582,7 @@
     <Item>
       <modelName>burrito4</modelName>
       <txdName>burrito4</txdName>
-      <handlingId>BURRITO</handlingId>
+      <handlingId>POLICE</handlingId>
       <gameName>BURRITO</gameName>
       <vehicleMakeName>DECLASSE</vehicleMakeName>
       <expressionDictName>null</expressionDictName>
@@ -25601,7 +25601,7 @@
     <Item>
       <modelName>utillitruck3</modelName>
       <txdName>utillitruck3</txdName>
-      <handlingId>UTILTRUC3</handlingId>
+      <handlingId>POLICE3</handlingId>
       <gameName>UTILTRUC</gameName>
       <vehicleMakeName />
       <expressionDictName>null</expressionDictName>
