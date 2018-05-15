@@ -1,3 +1,5 @@
+local moneyToAlert = 3000000
+
 AddEventHandler('chatMessage', function(source, name, message)
   if string.sub(message, 1, string.len("/")) ~= "/"
     or string.sub(message, 1, string.len("/ooc")) == "/ooc"
@@ -75,6 +77,17 @@ function sendToWeaponLogDiscord(message)
   )
 end
 
+function sendToSuspectLogDiscord(message)
+  if message == nil or message == '' then return FALSE end
+  -- #ig-log (weapon und money exchange)
+  PerformHttpRequest('https://discordapp.com/api/webhooks/445940354546532355/pbFRWNTjtu7evK-jh24UF6ud5lhl5VqkvqJD3KVFwcU0MlpVQz9AGOG3C0euO-AHdPhg',
+    function(err, text, headers) end,
+    'POST',
+    json.encode({username = 'LOG', content = message}),
+    { ['Content-Type'] = 'application/json' }
+  )
+end
+
 
 
 RegisterServerEvent('discord_bot:dev_log')
@@ -114,6 +127,8 @@ end)
 
 RegisterServerEvent('playerDied')
 AddEventHandler('playerDied',function(killer,reason)
+  local date = os.date('*t')
+	
   if killer == nil then --Can't figure out what's generating invalid, it's late. If you figure it out, let me know. I just handle it as a string for now.
     reason = 2
   end
@@ -124,6 +139,43 @@ AddEventHandler('playerDied',function(killer,reason)
   else
     sendToAdminDiscord('SYSTEM', "``" .. GetPlayerName(source) .. "`` died respawn 2 minutes.")
   end
+  for i = 10,1,-1 
+  do 
+      Citizen.Wait(1000)
+      local playerint = GetPlayerFromServerId(source) or nil
+      if (playerint == nil) then 
+          if date.day < 10 then date.day = '0' .. tostring(date.day) end
+          if date.month < 10 then date.month = '0' .. tostring(date.month) end
+          if date.hour < 10 then date.hour = '0' .. tostring(date.hour) end
+          if date.min < 10 then date.min = '0' .. tostring(date.min) end
+          if date.sec < 10 then date.sec = '0' .. tostring(date.sec) end
+        
+        sendToSuspectLogDiscord("--------------Verdacht auf Combatlog------------------")
+        sendToSuspectLogDiscord("``" .. GetPlayerName(source) .. "`` hat am " .. ' `' .. date.day .. '.' .. date.month .. '.' .. date.year .. ' - ' .. date.hour .. ':' .. date.min .. ':' .. date.sec .. '` ' .. ' innerhalb von 10 Sekunden nach dem Tod die Verbindung getrennt.')
+        sendToSuspectLogDiscord('http://steamcommunity.com/profiles/' .. tonumber(GetIDFromSource('steam', source), 16))
+        if reason == 0 then
+          sendToSuspectLogDiscord("``" .. GetPlayerName(source) .. "`` committed suicide. ")
+        elseif reason == 1 then
+          sendToSuspectLogDiscord("``" .. killer .. "`` killed ``" .. GetPlayerName(source) .. "``")
+        else
+          sendToSuspectLogDiscord("``" .. GetPlayerName(source) .. "`` died respawn 2 minutes.")
+        end
+        sendToSuspectLogDiscord("``" .. GetPlayerName(source) .. "`` left.")
+        sendToSuspectLogDiscord("------------------------------------------------------")
+        return
+      end
+  end
+end)
+
+-- Add event when a player give an item
+--  TriggerEvent("esx:giveitemalert",sourceXPlayer.name,targetXPlayer.name,ESX.Items[itemName].label,itemCount) -> ESX_extended
+RegisterServerEvent("esx:cheatalert")
+AddEventHandler("esx:cheatalert", function(args)
+	  sendToSuspectLogDiscord("-----------------Verdacht auf Cheating-----------------")
+    for key,arg in args do
+      sendToSuspectLogDiscord(arg)
+    end
+    sendToSuspectLogDiscord("------------------------------------------------------")
 end)
 
 -- Add event when a player give an item
@@ -137,7 +189,14 @@ end)
 -- TriggerEvent("esx:givemoneyalert",sourceXPlayer.name,targetXPlayer.name,itemCount) -> ESX_extended
 RegisterServerEvent("esx:givemoneyalert")
 AddEventHandler("esx:givemoneyalert", function(name,nametarget,amount)
+
 	sendToLogDiscord('LOG', 'MONEY :: ' .. name .. ' gibt ' .. nametarget .. ' $' .. amount)
+  if (amount > moneyToAlert) then 
+    local args = {}
+    table.insert(args,name .. ' gibt ' .. nametarget .. ' $' .. amount);
+    table.insert(args,'Wollen wir vielleicht mal nachhaken ob da alles Koscher ist?');
+    TriggerEvent("esx:cheatalert", args)
+  end
 end)
 
 -- Add event when a player give money

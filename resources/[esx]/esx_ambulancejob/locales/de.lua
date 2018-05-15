@@ -32,6 +32,7 @@ Locales['de'] = {
   ['pharmacy_take'] = 'Mitnehmen: ',
   ['medikit'] = 'Medikit',
   ['bandage'] = 'Bandage',
+  ['defi'] = 'Defibrillator',
   ['max_item'] = 'Du kannst nicht mehr tragen.',
   -- F6 Menu
   ['ems_menu'] = 'Notdienst - Menü',

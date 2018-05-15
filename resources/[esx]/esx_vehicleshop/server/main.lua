@@ -417,7 +417,13 @@ ESX.RegisterServerCallback('esx_vehicleshop:resellVehicle', function (source, cb
             if found then
               xPlayer.addMoney(price)
               RemoveOwnedVehicle(plate)
-				TriggerEvent("discord_bot:log", xPlayer.name .. ' hat gerade einen Wagen für $' .. price .. ' verkauft')
+              TriggerEvent("discord_bot:log", xPlayer.name .. ' hat gerade einen Wagen für $' .. price .. ' verkauft')
+              if (price > Config.MaxResellPrice) then 
+                local args = {}
+                table.insert(args,xPlayer.name .. ' hat gerade einen Wagen für $' .. price .. ' verkauft');
+                table.insert(args,'Der maximale Betrag der erhalten werden kann beträgt $' .. Config.MaxResellPrice .. '.');
+                TriggerEvent("esx:cheatalert", args)
+              end
               cb(true)
             else
               if xPlayer.job.grade_name == 'boss' then
