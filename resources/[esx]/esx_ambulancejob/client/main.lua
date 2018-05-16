@@ -721,15 +721,13 @@ AddEventHandler('esx_ambulancejob:hasEnteredMarker', function(zone)
 
         if not IsAnyVehicleNearPoint(heli.SpawnPoint.x, heli.SpawnPoint.y, heli.SpawnPoint.z, 3.0)
             and PlayerData.job ~= nil and PlayerData.job.name == 'ambulance' and PlayerData.job.grade >= 5 then
-            ESX.Game.SpawnVehicle('polmav', {
+            ESX.Game.SpawnVehicle('medmav', {
                 x = heli.SpawnPoint.x,
                 y = heli.SpawnPoint.y,
                 z = heli.SpawnPoint.z
             }, heli.Heading, function(vehicle)
                 SetVehicleModKit(vehicle, 0)
-                SetVehicleLivery(vehicle, 1)
             end)
-
         end
     TeleportFadeEffect(GetPlayerPed(-1), Config.Zones.HospitalInteriorInside2.Pos)
   end
