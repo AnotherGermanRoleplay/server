@@ -1,85 +1,87 @@
-(function(){
+(function () {
 
-	Phone.apps['contact-actions'] = {};
-	const app                     = Phone.apps['contact-actions'];
+    Phone.apps['contact-actions'] = {};
+    const app = Phone.apps['contact-actions'];
 
-	let currentCol = 0;
-	let currentAction;
-	let currentContact;
+    let currentCol = 0;
+    let currentAction;
+    let currentContact;
 
-	app.open = function(contact) {
+    app.open = function (contact) {
 
-		currentContact = contact;
-		currentCol     = 0;
-		const elems    = $('#app-contact-actions .contact-action');
+        currentContact = contact;
+        currentCol = 0;
+        const elems = $('#app-contact-actions .contact-action');
 
-		$('#app-contact-actions .contact-name')  .text(contact.name);
-		$('#app-contact-actions .contact-number').text(contact.number);
+        $('#app-contact-actions .contact-name').text(contact.name);
+        $('#app-contact-actions .contact-number').text(contact.number);
 
-		if(elems.length > 0)
-			app.selectElem(elems[0]);
+        if (elems.length > 0)
+            app.selectElem(elems[0]);
 
-	}
+    };
 
-	app.move = function(direction) {
+    app.move = function (direction) {
 
-		const elems = $('#app-contact-actions .contact-action');
+        const elems = $('#app-contact-actions .contact-action');
 
-		switch(direction) {
+        switch (direction) {
 
-			case 'LEFT': {
+            case 'LEFT': {
 
-				if(currentCol > 0)
-					currentCol--;
+                if (currentCol > 0)
+                    currentCol--;
 
-				break;
-			}
+                break;
+            }
 
-			case 'RIGHT': {
+            case 'RIGHT': {
 
-				if(currentCol + 1 < elems.length)
-					currentCol++;
+                if (currentCol + 1 < elems.length)
+                    currentCol++;
 
-				break;
-			}
+                break;
+            }
 
-			default: break;
+            default:
+                break;
 
-		}
+        }
 
-		app.selectElem(elems[currentCol]);
+        app.selectElem(elems[currentCol]);
 
-	}
+    };
 
-	app.enter = function() {
+    app.enter = function () {
 
-		switch(currentAction) {
+        switch (currentAction) {
 
-			case 'call' : {
-				Phone.open('contact-action-call', currentContact)
-				break;
-			}
+            case 'call' : {
+                Phone.open('contact-action-call', currentContact);
+                break;
+            }
 
-			case 'message' : {
-				Phone.open('contact-action-message', currentContact)
-				break;
-			}
+            case 'message' : {
+                Phone.open('contact-action-message', currentContact);
+                break;
+            }
 
-			default: break;
+            default:
+                break;
 
-		}
+        }
 
-	}
+    };
 
-	app.selectElem = function(elem) {
-		
-		const elems = $('#app-contact-actions .contact-action');
+    app.selectElem = function (elem) {
 
-		currentAction = $(elem).data('action');
+        const elems = $('#app-contact-actions .contact-action');
 
-		elems.removeClass('selected animated pulse infinite');
+        currentAction = $(elem).data('action');
 
-		$(elem).addClass('selected animated pulse infinite');
-	}
+        elems.removeClass('selected animated pulse infinite');
+
+        $(elem).addClass('selected animated pulse infinite');
+    }
 
 })();

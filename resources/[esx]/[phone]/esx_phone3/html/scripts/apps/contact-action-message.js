@@ -1,176 +1,177 @@
-(function(){
+(function () {
 
-	Phone.apps['contact-action-message'] = {};
-	const app                            = Phone.apps['contact-action-message'];
+    Phone.apps['contact-action-message'] = {};
+    const app = Phone.apps['contact-action-message'];
 
-	const messagesTpl = '{{#messages}}<div class="time">{{time}}</div><div class="message{{#self}} self{{/self}}">{{body}}{{#position}}&nbsp;<i class="fa fa-map-marker" style="color: #FF0000;"/>{{/position}}</div>{{/messages}}';
+    const messagesTpl = '{{#messages}}<div class="time">{{time}}</div><div class="message{{#self}} self{{/self}}">{{body}}{{#position}}&nbsp;<i class="fa fa-map-marker" style="color: #FF0000;"/>{{/position}}</div>{{/messages}}';
 
-	let isTyping              = false;
-	let currentCol            = 0;
-	let currentContact;
+    let isTyping = false;
+    let currentCol = 0;
+    let currentContact;
 
-	app.open = function(contact) {
+    app.open = function (contact) {
 
-		isTyping       = false;
-		currentContact = contact;
+        isTyping = false;
+        currentContact = contact;
 
-		app.updateMessages();
+        app.updateMessages();
 
-		$('#app-contact-action-message .message-input textarea[name="message"]').removeClass('typing');
+        $('#app-contact-action-message .message-input textarea[name="message"]').removeClass('typing');
 
-		setTimeout(() => {
-			$('#app-contact-action-message .message-input textarea[name="message"]').focus();
-			$('#app-contact-action-message .message-actions')[0].scrollIntoView();
-		}, 50);
+        setTimeout(() => {
+            $('#app-contact-action-message .message-input textarea[name="message"]').focus();
+            $('#app-contact-action-message .message-actions')[0].scrollIntoView();
+        }, 50);
 
-	}
+    };
 
-	app.close = function() {
+    app.close = function () {
 
-		if(isTyping){
+        if (isTyping) {
 
-			isTyping = false;
-			$('#app-contact-action-message .message-input textarea[name="message"]').removeClass('typing');
-			$.post('http://esx_phone3/release_focus');
+            isTyping = false;
+            $('#app-contact-action-message .message-input textarea[name="message"]').removeClass('typing');
+            $.post('http://esx_phone3/release_focus');
 
-			return false;
-		
-		} else {
+            return false;
 
-			return true;
-		
-		}
-	}
+        } else {
 
-	app.move = function(direction) {
+            return true;
 
-		const scrollable = $('#app-contact-action-message .app-inner')[0];
+        }
+    };
 
-		switch(direction) {
+    app.move = function (direction) {
 
-			case 'TOP': {
-				scrollable.scrollTop -= 15;
-				break;
-			}
+        const scrollable = $('#app-contact-action-message .app-inner')[0];
 
-			case 'DOWN': {
-				scrollable.scrollTop += 15;
-				break;
-			}
+        switch (direction) {
 
-			case 'LEFT': {
-				
-				if(isShowingConfirmation) {
+            case 'TOP': {
+                scrollable.scrollTop -= 15;
+                break;
+            }
 
-					if(currentCol > 0) {
+            case 'DOWN': {
+                scrollable.scrollTop += 15;
+                break;
+            }
 
-						currentCol--;
+            case 'LEFT': {
 
-						$('#app-contact-action-message .message-confirm div').removeClass('selected animated pulse infinite');
-						$($('#app-contact-action-message .message-confirm div')[currentCol]).addClass('selected animated pulse infinite');
-						currentConfirmationAction = $($('#app-contact-action-message .message-confirm div')[currentCol]).data('action');
+                if (isShowingConfirmation) {
 
-					}
-				}
+                    if (currentCol > 0) {
 
-				break;
-			}
+                        currentCol--;
 
-			case 'RIGHT': {
+                        $('#app-contact-action-message .message-confirm div').removeClass('selected animated pulse infinite');
+                        $($('#app-contact-action-message .message-confirm div')[currentCol]).addClass('selected animated pulse infinite');
+                        currentConfirmationAction = $($('#app-contact-action-message .message-confirm div')[currentCol]).data('action');
 
-				if(isShowingConfirmation) {
+                    }
+                }
 
-					if(currentCol < $('#app-contact-action-message .message-confirm div').length - 1) {
+                break;
+            }
 
-						currentCol++;
+            case 'RIGHT': {
 
-						$('#app-contact-action-message .message-confirm div').removeClass('selected animated pulse infinite');
-						$($('#app-contact-action-message .message-confirm div')[currentCol]).addClass('selected animated pulse infinite');
-						currentConfirmationAction = $($('#app-contact-action-message .message-confirm div')[currentCol]).data('action');
+                if (isShowingConfirmation) {
 
-					}
-				}
+                    if (currentCol < $('#app-contact-action-message .message-confirm div').length - 1) {
 
-				break;
-			}
+                        currentCol++;
 
-			default: break;
+                        $('#app-contact-action-message .message-confirm div').removeClass('selected animated pulse infinite');
+                        $($('#app-contact-action-message .message-confirm div')[currentCol]).addClass('selected animated pulse infinite');
+                        currentConfirmationAction = $($('#app-contact-action-message .message-confirm div')[currentCol]).data('action');
 
-		}
+                    }
+                }
 
-	}
+                break;
+            }
 
-	app.enter = function() {
+            default:
+                break;
 
-		if(isTyping) {
+        }
 
-			const msg  = $('#app-contact-action-message .message-input textarea[name="message"]').val();
-			const date = new Date;
+    };
 
-			Phone.messages.push({
-				name     : currentContact.name,
-				number   : currentContact.number,
-				position : false,
-				anon     : false,
-				job      : false,
-				self     : true,
-				time     : date.getHours() + ':' + date.getMinutes().toString().padStart(2, '0'),
-				timestamp: +date,
-				body     : msg,
-				read     : true,
-			});
+    app.enter = function () {
 
-			$.post('http://esx_phone3/send', JSON.stringify({
-				message: msg,
-				number : currentContact.number,
-				anon   : $('input[name="anon"]').is(':checked'),
-			}))
+        if (isTyping) {
 
-			app.updateMessages();
+            const msg = $('#app-contact-action-message .message-input textarea[name="message"]').val();
+            const date = new Date;
+
+            Phone.messages.push({
+                name: currentContact.name,
+                number: currentContact.number,
+                position: false,
+                anon: false,
+                job: false,
+                self: true,
+                time: date.getHours() + ':' + date.getMinutes().toString().padStart(2, '0'),
+                timestamp: +date,
+                body: msg,
+                read: true,
+            });
+
+            $.post('http://esx_phone3/send', JSON.stringify({
+                message: msg,
+                number: currentContact.number,
+                anon: $('input[name="anon"]').is(':checked'),
+            }));
+
+            app.updateMessages();
 
 
-			$('#app-contact-action-message .message-dialog').hide();
-			$('#app-contact-action-message .message-input textarea[name="message"]').val('');
-			$('#app-contact-action-message .message-input textarea[name="message"]').focus();
-			$('#app-contact-action-message .message-input textarea[name="message"]').removeClass('typing');
-			$('#app-contact-action-message .message-actions')[0].scrollIntoView();
+            $('#app-contact-action-message .message-dialog').hide();
+            $('#app-contact-action-message .message-input textarea[name="message"]').val('');
+            $('#app-contact-action-message .message-input textarea[name="message"]').focus();
+            $('#app-contact-action-message .message-input textarea[name="message"]').removeClass('typing');
+            $('#app-contact-action-message .message-actions')[0].scrollIntoView();
 
-			isTyping = false;
+            isTyping = false;
 
-			$.post('http://esx_phone3/release_focus');
+            $.post('http://esx_phone3/release_focus');
 
-		} else {
+        } else {
 
-			isTyping = true;
-			$('#app-contact-action-message .message-input textarea[name="message"]').addClass('typing');
-			$.post('http://esx_phone3/request_focus');
-		}
-	}
+            isTyping = true;
+            $('#app-contact-action-message .message-input textarea[name="message"]').addClass('typing');
+            $.post('http://esx_phone3/request_focus');
+        }
+    };
 
-	app.updateMessages = function() {
+    app.updateMessages = function () {
 
-		const messages = Phone.messages.filter((e) => e.number == currentContact.number);
+        const messages = Phone.messages.filter((e) => e.number == currentContact.number);
 
-		for(let i=0; i<messages.length; i++)
-			messages[i].read = true;
+        for (let i = 0; i < messages.length; i++)
+            messages[i].read = true;
 
-		Phone.apps['messages'].updateMessages();
+        Phone.apps['messages'].updateMessages();
 
-		const html = Mustache.render(messagesTpl, {messages});
+        const html = Mustache.render(messagesTpl, {messages});
 
-		$('#app-contact-action-message .message-container').html(html);
+        $('#app-contact-action-message .message-container').html(html);
 
-	}
+    };
 
-	app.activateGPS = function() {
+    app.activateGPS = function () {
 
-		const filtered = Phone.messages.filter((e) => !e.self && e.number == currentContact.number && e.position != false);
+        const filtered = Phone.messages.filter((e) => !e.self && e.number == currentContact.number && e.position != false);
 
-		if(filtered.length > 0) {
-			filtered.reverse();
-			$.post('http://esx_phone3/activate_gps', JSON.stringify(filtered[0].position));
-		}
+        if (filtered.length > 0) {
+            filtered.reverse();
+            $.post('http://esx_phone3/activate_gps', JSON.stringify(filtered[0].position));
+        }
 
-	}
+    }
 
 })();

@@ -1,126 +1,127 @@
-(function(){
+(function () {
 
-	Phone.apps['contact-action-call'] = {};
-	const app                         = Phone.apps['contact-action-call'];
+    Phone.apps['contact-action-call'] = {};
+    const app = Phone.apps['contact-action-call'];
 
-	let currentCol     = 0;
-	let intervals      = [];
-	let currentContact = {}
-	let callSound      = null;
-	let currentChannel;
+    let currentCol = 0;
+    let intervals = [];
+    let currentContact = {};
+    let callSound = null;
+    let currentChannel;
 
-	app.open = function(contact) {
+    app.open = function (contact) {
 
-		currentCol     = 0;
-		currentContact = contact;
+        currentCol = 0;
+        currentContact = contact;
 
-		const elems = $('#app-contact-actions .contact-action');
+        const elems = $('#app-contact-actions .contact-action');
 
-		if(elems.length > 0)
-			app.selectElem(elems[0]);
+        if (elems.length > 0)
+            app.selectElem(elems[0]);
 
-		$('#app-contact-action-call .loader .info').text('Appel en cours');
-		$('#app-contact-action-call').removeClass('online');
-		$('#app-contact-action-call .contact-name')  .text(contact.name);
-		$('#app-contact-action-call .contact-number').text(contact.number);
+        $('#app-contact-action-call .loader .info').text('Anruf läuft');
+        $('#app-contact-action-call').removeClass('online');
+        $('#app-contact-action-call .contact-name').text(contact.name);
+        $('#app-contact-action-call .contact-number').text(contact.number);
 
-		callSound      = new Audio('ogg/outgoing-call.ogg');
-		callSound.loop = true;
+        callSound = new Audio('ogg/outgoing-call.ogg');
+        callSound.loop = true;
 
-		callSound.play();
+        callSound.play();
 
-		$.post('http://esx_phone3/start_call', JSON.stringify({number: currentContact.number}))
+        $.post('http://esx_phone3/start_call', JSON.stringify({number: currentContact.number}))
 
-	}
+    };
 
-	app.close = function() {
+    app.close = function () {
 
-		if(callSound != null) {
-			callSound.pause();
-			callSound = null;
-		}
+        if (callSound != null) {
+            callSound.pause();
+            callSound = null;
+        }
 
-		intervals.map(e => clearInterval(e));
+        intervals.map(e => clearInterval(e));
 
-		intervals = [];
+        intervals = [];
 
-		if(typeof currentChannel != 'undefined') {
+        if (typeof currentChannel != 'undefined') {
 
-			$.post('http://esx_phone3/end_call', JSON.stringify({
-				target : currentTarget,
-				channel: currentChannel,
-			}))
+            $.post('http://esx_phone3/end_call', JSON.stringify({
+                target: currentTarget,
+                channel: currentChannel,
+            }))
 
-		}
+        }
 
-		return true;
+        return true;
 
-	}
+    };
 
-	app.move = function(direction) {
+    app.move = function (direction) {
 
-		const elems = $('#app-contact-actions .contact-action');
+        const elems = $('#app-contact-actions .contact-action');
 
-		switch(direction) {
+        switch (direction) {
 
-			case 'LEFT': {
+            case 'LEFT': {
 
-				if(currentCol > 0)
-					currentCol--;
+                if (currentCol > 0)
+                    currentCol--;
 
-				break;
-			}
+                break;
+            }
 
-			case 'RIGHT': {
+            case 'RIGHT': {
 
-				if(currentCol + 1 < elems.length)
-					currentCol++;
+                if (currentCol + 1 < elems.length)
+                    currentCol++;
 
-				break;
-			}
+                break;
+            }
 
-			default: break;
+            default:
+                break;
 
-		}
+        }
 
-		app.selectElem(elems[currentCol]);
+        app.selectElem(elems[currentCol]);
 
-	}
+    };
 
-	app.enter = function() {
-		
-	}
+    app.enter = function () {
 
-	app.selectElem = function(elem) {
-		
-		const elems = $('#app-contact-actions .contact-action');
+    };
 
-		elems.removeClass('selected animated pulse infinite');
+    app.selectElem = function (elem) {
 
-		$(elem).addClass('selected animated pulse infinite');
-	}
+        const elems = $('#app-contact-actions .contact-action');
 
-	app.startCall = function(channel, target) {
+        elems.removeClass('selected animated pulse infinite');
 
-		const startDate = new Date;
-		currentChannel  = channel;
-		currentTarget   = target;
+        $(elem).addClass('selected animated pulse infinite');
+    };
 
-		callSound.pause();
-		callSound = null; 
+    app.startCall = function (channel, target) {
 
-		$('#app-contact-action-call').addClass('online');
-		$('#app-contact-action-call .loader .info').text('0:00');
+        const startDate = new Date;
+        currentChannel = channel;
+        currentTarget = target;
 
-		intervals.push(setInterval(() => {
+        callSound.pause();
+        callSound = null;
 
-			const currentDate = new Date;
-			const elapsed     = new Date(currentDate - startDate);
+        $('#app-contact-action-call').addClass('online');
+        $('#app-contact-action-call .loader .info').text('0:00');
 
-			$('#app-contact-action-call .loader .info').text(elapsed.getMinutes() + ':' + elapsed.getSeconds().toString().padStart(2, '0'));
+        intervals.push(setInterval(() => {
 
-		}, 1000));
+            const currentDate = new Date;
+            const elapsed = new Date(currentDate - startDate);
 
-	}
+            $('#app-contact-action-call .loader .info').text(elapsed.getMinutes() + ':' + elapsed.getSeconds().toString().padStart(2, '0'));
+
+        }, 1000));
+
+    }
 
 })();

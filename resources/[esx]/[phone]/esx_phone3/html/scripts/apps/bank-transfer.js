@@ -1,82 +1,83 @@
-(function(){
+(function () {
 
-	Phone.apps['bank-transfer']  = {};
-	const app                    = Phone.apps['bank-transfer'];
-	const MAX_CONTACTS_ON_SCREEN = 16;
-	const contactTpl             = '{{#players}}<div class="contact" data-source="{{source}}"><div class="contact-name">{{name}}</div></div>{{/players}}';
-	let currentRow               = 0;
-	let currentPlayer;
+    Phone.apps['bank-transfer'] = {};
+    const app = Phone.apps['bank-transfer'];
+    const MAX_CONTACTS_ON_SCREEN = 16;
+    const contactTpl = '{{#players}}<div class="contact" data-source="{{source}}"><div class="contact-name">{{name}}</div></div>{{/players}}';
+    let currentRow = 0;
+    let currentPlayer;
 
-	app.open = function(players) {
+    app.open = function (players) {
 
-		currentRow = 0;
+        currentRow = 0;
 
-		const html = Mustache.render(contactTpl, {players});
+        const html = Mustache.render(contactTpl, {players});
 
-		$('#app-bank-transfer .contact-list').html(html);
+        $('#app-bank-transfer .contact-list').html(html);
 
-		const elems = $('#app-bank-transfer .contact-list .contact');
+        const elems = $('#app-bank-transfer .contact-list .contact');
 
-		if(elems.length > 0)
-			app.selectElem(elems[0]);
+        if (elems.length > 0)
+            app.selectElem(elems[0]);
 
-	}
+    };
 
-	app.move = function(direction) {
+    app.move = function (direction) {
 
-		const elems = $('#app-bank-transfer .contact-list .contact');
+        const elems = $('#app-bank-transfer .contact-list .contact');
 
-		switch(direction) {
+        switch (direction) {
 
-			case 'TOP': {
+            case 'TOP': {
 
-				if(currentRow > 0)
-					currentRow--;
+                if (currentRow > 0)
+                    currentRow--;
 
-				break;
-			}
+                break;
+            }
 
-			case 'DOWN': {
+            case 'DOWN': {
 
-				if(currentRow + 1 < elems.length)
-					currentRow++;
+                if (currentRow + 1 < elems.length)
+                    currentRow++;
 
-				break;
-			}
+                break;
+            }
 
-			default: break;
+            default:
+                break;
 
-		}
+        }
 
-		elems.show();
+        elems.show();
 
-		let diff = currentRow - MAX_CONTACTS_ON_SCREEN + 2;
+        let diff = currentRow - MAX_CONTACTS_ON_SCREEN + 2;
 
-		if(diff > 0) {
+        if (diff > 0) {
 
-			for(let i=0; i<diff; i++)
-				$(elems[i]).hide();
+            for (let i = 0; i < diff; i++)
+                $(elems[i]).hide();
 
-		}
+        }
 
-		app.selectElem(elems[currentRow]);
+        app.selectElem(elems[currentRow]);
 
-	}
+    };
 
-	app.enter = function() {
+    app.enter = function () {
 
-		Phone.open('bank-transfer-menu', currentPlayer)
+        Phone.open('bank-transfer-menu', currentPlayer)
 
-	}
+    };
 
-	app.selectElem = function(elem) {
-		
-		const elems   = $('#app-bank-transfer .contact-list .contact');
-		currentPlayer = parseInt($(elem).data('source'));
-		
-		elems.removeClass('selected');
+    app.selectElem = function (elem) {
 
-		$(elem).addClass('selected');
-	}
+        const elems = $('#app-bank-transfer .contact-list .contact');
+        currentPlayer = parseInt($(elem).data('source'));
+
+        elems.removeClass('selected');
+
+        $(elem).addClass('selected');
+    }
 
 })();
