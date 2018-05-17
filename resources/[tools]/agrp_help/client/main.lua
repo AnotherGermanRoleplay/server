@@ -480,11 +480,11 @@ Citizen.CreateThread(function()
     while true 
     	do
 		-- These natives has to be called every frame.
-		SetVehicleDensityMultiplierThisFrame(0.0)
-		SetPedDensityMultiplierThisFrame(0.0)
-		SetRandomVehicleDensityMultiplierThisFrame(0.0)
-		SetParkedVehicleDensityMultiplierThisFrame(0.0)
-		SetScenarioPedDensityMultiplierThisFrame(0.0, 0.0)
+		SetVehicleDensityMultiplierThisFrame(0.5)
+		SetPedDensityMultiplierThisFrame(0.5)
+		SetRandomVehicleDensityMultiplierThisFrame(0.1)
+		SetParkedVehicleDensityMultiplierThisFrame(0.1)
+		SetScenarioPedDensityMultiplierThisFrame(0.1, 0.1)
 		
 		local playerPed = GetPlayerPed(-1)
 		local pos = GetEntityCoords(playerPed) 
