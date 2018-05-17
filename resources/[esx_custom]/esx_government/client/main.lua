@@ -1035,7 +1035,7 @@ AddEventHandler('esx_government:hasEnteredMarker', function(station, part, partN
 
     if not IsAnyVehicleNearPoint(helicopters[partNum].SpawnPoint.x, helicopters[partNum].SpawnPoint.y, helicopters[partNum].SpawnPoint.z,  3.0) then
 
-      ESX.Game.SpawnVehicle('maverick', {
+      ESX.Game.SpawnVehicle('supervolito', {
         x = helicopters[partNum].SpawnPoint.x,
         y = helicopters[partNum].SpawnPoint.y,
         z = helicopters[partNum].SpawnPoint.z
