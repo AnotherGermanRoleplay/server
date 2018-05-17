@@ -22,7 +22,7 @@ Config.Zones = {
   },
 
   VehicleDeleter = {
-    Pos   = {x = 471.899, y = -580.514, z = 28.499},
+    Pos   = {x = 471.899, y = -580.514, z = 21.299},
     Size  = {x = 3.0, y = 3.0, z = 1.0},
     Color = {r = 255, g = 0, b = 0},
     Type  = 1
