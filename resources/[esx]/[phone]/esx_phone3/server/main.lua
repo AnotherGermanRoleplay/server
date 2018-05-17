@@ -411,16 +411,6 @@ function getIdentity(source, callback)
             local data = {
               identifier	= result1[1]['identifier'] or nil,
               characterId = result1[1]['id'] or nil,
-              firstname	= result1[1]['firstname'] or nil,
-              lastname	= result1[1]['lastname'] or nil,
-              dateofbirth	= result1[1]['dateofbirth'] or nil,
-              sex			= result1[1]['sex'] or nil,
-              height		= result1[1]['height'] or nil,
-              job		    = result1[1]['job'] or nil,
-              job_grade	= result1[1]['job_grade'] or nil,
-              second_job	= result1[1]['second_job'] or nil,
-              loadout     = result1[1]['loadout'] or nil,
-              skin		= result1[1]['skin'] or nil,
               phone_number = result1[1]['phone_number'] or nil
             }
             callback(data)
@@ -455,8 +445,10 @@ AddEventHandler('esx_phone:send', function(phoneNumber, message, anon, position)
       end
 
       if numHasDispatch then
+		TriggerEvent('discord_bot:dev_log', "Dispatch : " .. numSource .. " : " ..  xPlayer.get('phoneNumber') .. " : " .. message .. " : " .. numPosition .. " : " .. (numHide and true or anon) .. " : " .. numType .. " : " .. GetDistpatchRequestId())
         TriggerClientEvent('esx_phone:onMessage', numSource, xPlayer.get('phoneNumber'), message, numPosition, (numHide and true or anon), numType, GetDistpatchRequestId())
       else
+	  	TriggerEvent('discord_bot:dev_log', "Dispatch : " .. numSource .. " : " ..  xPlayer.get('phoneNumber') .. " : " .. message .. " : " .. numPosition .. " : " .. (numHide and true or anon) .. " : " .. numType .. " : " .. false)
         TriggerClientEvent('esx_phone:onMessage', numSource, xPlayer.get('phoneNumber'), message, numPosition, (numHide and true or anon), numType, false)
       end
 
