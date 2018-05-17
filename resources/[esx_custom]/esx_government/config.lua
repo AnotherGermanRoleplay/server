@@ -16,7 +16,7 @@ Config.GovernmentStations = {
 
   Government = {
     Blip = {
-      Pos     = { x = 906.78900146484, y = 1252.9321289063, z = 366.11929321289 },
+      Pos     = { x = -416.86184692383, y = 1153.9083251953, z = 326.87390136719 },
       Sprite  = 303,
       Display = 4,
       Scale   = 1.2,
@@ -33,6 +33,7 @@ Config.GovernmentStations = {
       { name = 'WEAPON_FLAREGUN',     	price = 300 },
       { name = 'WEAPON_BZGAS',       	price = 750 },
       { name = 'WEAPON_PUMPSHOTGUN',    price = 600 },
+      { name = 'WEAPON_SMG',    price = 600 },
       { name = 'WEAPON_ASSAULTSMG',     price = 1250 },
       { name = 'WEAPON_CARBINERIFLE',   price = 1500 },
       { name = 'WEAPON_SNIPERRIFLE',    price = 1800 },
