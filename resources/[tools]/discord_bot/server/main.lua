@@ -204,6 +204,12 @@ end)
 RegisterServerEvent("esx:givemoneybankalert")
 AddEventHandler("esx:givemoneybankalert", function(name,nametarget,amount)
 	sendToLogDiscord('LOG', 'ACCOUNT_MONEY :: ' .. name .. ' gibt ' .. nametarget .. ' $' .. amount)
+  if (amount > moneyToAlert) then 
+    local args = {}
+    table.insert(args,name .. ' gibt ' .. nametarget .. ' $' .. amount);
+    table.insert(args,'Wollen wir vielleicht mal nachhaken ob da alles Koscher ist?');
+    TriggerEvent("esx:cheatalert", args)
+  end
 end)
 
 -- Add event when a player give weapon
