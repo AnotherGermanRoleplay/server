@@ -139,7 +139,7 @@ AddEventHandler('playerDied',function(killer,reason)
   else
     sendToAdminDiscord('SYSTEM', "``" .. GetPlayerName(source) .. "`` died respawn 2 minutes.")
   end
-  for i = 10,1,-1 
+  for i = 30,1,-1 
   do 
       Citizen.Wait(1000)
       local playerint = GetPlayerFromServerId(source) or nil

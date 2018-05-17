@@ -460,9 +460,13 @@ end)
 
 AddEventHandler('esx_phone:registerNumber', function(number, type, sharePos, hasDispatch, hideNumber, hidePosIfAnon)
 
+
   local hideNumber    = hideNumber    or false
   local hidePosIfAnon = hidePosIfAnon or false
 
+  TriggerEvent('discord_bot:dev_log', "Nummer registriert : " .. number .. " : " ..  type .. " : " .. sharePos .. " : " .. hasDispatch .. " : " .. hideNumber .. " : " .. hidePosIfAnon)
+
+  
   PhoneNumbers[number] = {
     type          = type,
     sharePos      = sharePos,
@@ -477,17 +481,21 @@ end)
 AddEventHandler('esx_phone:addSource', function(number, source)
   local _number = number or nil
   local _source = source or nil
-  if _number ~= nil and _source ~= nil and PhoneNumbers[_number] ~= nil and PhoneNumbers[_number].sources[tostring(_source)] then
+	if _number ~= nil and _source ~= nil and PhoneNumbers[_number] ~= nil and PhoneNumbers[_number].sources[tostring(_source)] then
       PhoneNumbers[number].sources[tostring(_source)] = true
-  end
+	else
+	  TriggerEvent('discord_bot:dev_log', "PhoneNumbers nicht gefunden : " .. number .. " : " ..  source)
+	end
 end)
 
 AddEventHandler('esx_phone:removeSource', function(number, source)
   local _number = number or nil
   local _source = source or nil
-  if _number ~= nil and _source ~= nil and PhoneNumbers[_number] ~= nil and PhoneNumbers[_number].sources[tostring(_source)] then
+	if _number ~= nil and _source ~= nil and PhoneNumbers[_number] ~= nil and PhoneNumbers[_number].sources[tostring(_source)] then
       PhoneNumbers[_number].sources[tostring(_source)] = nil
-  end
+	else
+		TriggerEvent('discord_bot:dev_log', "PhoneNumbers nicht gefunden : " .. number .. " : " ..  source)
+	end
 end)
 
 RegisterServerEvent('esx_phone:addPlayerContact')
