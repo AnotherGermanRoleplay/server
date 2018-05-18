@@ -482,20 +482,20 @@ end)
 AddEventHandler('esx_phone:addSource', function(number, source)
   local _number = number or nil
   local _source = source or nil
-	if _number ~= nil and _source ~= nil and PhoneNumbers[_number] ~= nil and PhoneNumbers[_number].sources[tostring(_source)] then
+	if _number ~= nil and _source ~= nil  then
       PhoneNumbers[number].sources[tostring(_source)] = true
 	else
-	  TriggerEvent('discord_bot:dev_log', "PhoneNumbers nicht gefunden : " .. number .. " : " ..  source)
+	  TriggerEvent('discord_bot:dev_log', "PhoneNumbers nicht gefunden add: " .. number .. " : " ..  source)
 	end
 end)
 
 AddEventHandler('esx_phone:removeSource', function(number, source)
   local _number = number or nil
   local _source = source or nil
-	if _number ~= nil and _source ~= nil and PhoneNumbers[_number] ~= nil and PhoneNumbers[_number].sources[tostring(_source)] then
+	if _number ~= nil and _source ~= nil  then
       PhoneNumbers[_number].sources[tostring(_source)] = nil
 	else
-		TriggerEvent('discord_bot:dev_log', "PhoneNumbers nicht gefunden : " .. number .. " : " ..  source)
+		TriggerEvent('discord_bot:dev_log', "PhoneNumbers nicht gefunden remove: " .. number .. " : " ..  source)
 	end
 end)
 
