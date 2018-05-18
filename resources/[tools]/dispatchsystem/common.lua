@@ -82,6 +82,5 @@ Citizen.CreateThread(function()
         return
     end
     SendNUIMessage({setname = true, metadata = GetCurrentResourceName()}) -- Telling JS of the resource name
-    sendMessage("DispatchSystem", {0,0,0}, "DispatchSystem.Client by BlockBa5her loaded")    
 end)
 --[[                                 END OF INIT                                 ]]

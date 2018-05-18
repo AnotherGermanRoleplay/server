@@ -463,14 +463,14 @@ AddEventHandler('esx_phone:registerNumber', function(number, type, sharePos, has
 
   local hideNumber    = hideNumber    or false
   local hidePosIfAnon = hidePosIfAnon or false
+  local hasDispatch = (hasDispatch or false)
+  local sharePos = (sharePos or false)
+  local type = (type or false)
 
-  
-
-  
   PhoneNumbers[number] = {
     type          = type,
     sharePos      = sharePos,
-    hasDispatch   = (hasDispatch or false),
+    hasDispatch   = hasDispatch,
     hideNumber    = hideNumber,
     hidePosIfAnon = hidePosIfAnon,
     sources       = {}
