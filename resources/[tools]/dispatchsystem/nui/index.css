@@ -47,7 +47,7 @@ button.back:after {
     position: fixed;
     top: 50%;
     left: 30%;
-    /*! display: none; */
+    display: none;
 }
 
 #civinfo, #ofcinfo {
@@ -59,7 +59,7 @@ button.back:after {
     background: white;
     width: 672px;
     height: 324px;
-    /*! display: none; */
+    display: none;
     font-family: 'Lato', sans-serif;
     color: #2d6eb9;
     border-radius: 2px;
