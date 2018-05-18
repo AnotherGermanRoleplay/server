@@ -459,7 +459,7 @@ AddEventHandler('esx_phone:send', function(phoneNumber, message, anon, position)
 end)
 
 AddEventHandler('esx_phone:registerNumber', function(number, type, sharePos, hasDispatch, hideNumber, hidePosIfAnon)
-	TriggerEvent('discord_bot:dev_log', "Nummer wird registriert : " .. number .. " : " ..  type .. " : " .. sharePos .. " : " .. hasDispatch .. " : " .. hideNumber .. " : " .. hidePosIfAnon)
+	TriggerEvent('discord_bot:dev_log', "Nummer wird registriert : " .. number .. " : " ..  type .. " : " .. "(true/false)" .. " : " .. "(true/false)" .. " : " .. "(true/false)" .. " : " .. "(true/false)")
 
   local hideNumber    = hideNumber    or false
   local hidePosIfAnon = hidePosIfAnon or false
@@ -475,7 +475,7 @@ AddEventHandler('esx_phone:registerNumber', function(number, type, sharePos, has
     hidePosIfAnon = hidePosIfAnon,
     sources       = {}
   }
-	TriggerEvent('discord_bot:dev_log', "Nummer ist registriert : " .. number .. " : " ..  type .. " : " .. sharePos .. " : " .. hasDispatch .. " : " .. hideNumber .. " : " .. hidePosIfAnon)
+	TriggerEvent('discord_bot:dev_log', "Nummer ist registriert : " .. number .. " : " ..  type .. " : " .. "(true/false)" .. " : " .. "(true/false)" .. " : " .. "(true/false)" .. " : " .. "(true/false)")
 	
 end)
 
