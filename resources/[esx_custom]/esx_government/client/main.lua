@@ -109,8 +109,8 @@ function OpenArmoryMenu(station)
 
     local elements = {}
 
-    for i = 1, #Config.PoliceStations[station].AuthorizedWeapons, 1 do
-      local weapon = Config.PoliceStations[station].AuthorizedWeapons[i]
+    for i = 1, #Config.GovernmentStations[station].AuthorizedWeapons, 1 do
+      local weapon = Config.GovernmentStations[station].AuthorizedWeapons[i]
       table.insert(elements, { label = ESX.GetWeaponLabel(weapon.name), value = weapon.name })
     end
 
