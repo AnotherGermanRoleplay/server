@@ -10,7 +10,6 @@ function getIdentity(source, callback)
             ['@identifier'] = identifier
         },
         function(result)
-            TriggerEvent('discord_bot:dev_log', "Select * From users Done")
             if result[1] ~= nil then
                  data = {
                     identifier = identifier,

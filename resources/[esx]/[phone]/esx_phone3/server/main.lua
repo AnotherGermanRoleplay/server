@@ -457,8 +457,6 @@ AddEventHandler('esx_phone:send', function(phoneNumber, message, anon, position)
 end)
 
 AddEventHandler('esx_phone:registerNumber', function(number, type, sharePos, hasDispatch, hideNumber, hidePosIfAnon)
-	TriggerEvent('discord_bot:dev_log', "Nummer wird registriert : " .. number .. " : " ..  type .. " : " .. "(true/false)" .. " : " .. "(true/false)" .. " : " .. "(true/false)" .. " : " .. "(true/false)")
-
   local hideNumber    = hideNumber    or false
   local hidePosIfAnon = hidePosIfAnon or false
   local hasDispatch = (hasDispatch or false)
@@ -473,8 +471,6 @@ AddEventHandler('esx_phone:registerNumber', function(number, type, sharePos, has
     hidePosIfAnon = hidePosIfAnon,
     sources       = {}
   }
-	TriggerEvent('discord_bot:dev_log', "Nummer ist registriert : " .. number .. " : " ..  type .. " : " .. "(true/false)" .. " : " .. "(true/false)" .. " : " .. "(true/false)" .. " : " .. "(true/false)")
-	
 end)
 
 AddEventHandler('esx_phone:addSource', function(number, source)
@@ -482,19 +478,6 @@ AddEventHandler('esx_phone:addSource', function(number, source)
   local _source = source or nil
 	if _number ~= nil and _source ~= nil and PhoneNumbers[_number] ~= nil and PhoneNumbers[_number].sources[tostring(_source)] == nil then
       PhoneNumbers[number].sources[tostring(_source)] = true
-    else
-        if PhoneNumbers[phoneNumber] == nil then
-            TriggerEvent('discord_bot:dev_log', "PhoneNumbers nicht gefunden add: " .. number .. " : " ..  source)
-        end
-        if _number == nil then
-          TriggerEvent('discord_bot:dev_log', "_number == nil add: " .. number .. " : " ..  source)
-        end
-        if _source == nil then
-          TriggerEvent('discord_bot:dev_log', "_source == nil add: " .. number .. " : " ..  source)
-        end
-        if _source == nil then
-          TriggerEvent('discord_bot:dev_log', "_source == nil add: " .. number .. " : " ..  source)
-        end
 	end
 end)
 
@@ -503,10 +486,6 @@ AddEventHandler('esx_phone:removeSource', function(number, source)
   local _source = source or nil
 	if _number ~= nil and _source ~= nil and PhoneNumbers[_number] ~= nil and PhoneNumbers[_number].sources[tostring(_source)] ~= nil then
       PhoneNumbers[_number].sources[tostring(_source)] = nil
-    else
-        if PhoneNumbers[phoneNumber] ~= nil then
-		    TriggerEvent('discord_bot:dev_log', "PhoneNumbers nicht gefunden remove: " .. number .. " : " ..  source)
-        end
 	end
 end)
 
