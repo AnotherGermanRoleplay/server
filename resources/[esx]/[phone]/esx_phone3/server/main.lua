@@ -445,10 +445,8 @@ AddEventHandler('esx_phone:send', function(phoneNumber, message, anon, position)
       end
 
       if numHasDispatch then
-		TriggerEvent('discord_bot:dev_log', "Dispatch : " .. numSource .. " : " ..  xPlayer.get('phoneNumber') .. " : " .. message .. " : " .. "[pos]" .. " : " .. "(numHide and true or anon)" .. " : " .. numType .. " : " .. GetDistpatchRequestId())
         TriggerClientEvent('esx_phone:onMessage', numSource, xPlayer.get('phoneNumber'), message, numPosition, (numHide and true or anon), numType, GetDistpatchRequestId())
       else
-	  	TriggerEvent('discord_bot:dev_log', "Non Dispatch : " .. numSource .. " : " ..  xPlayer.get('phoneNumber') .. " : " .. message .. " : " .. "[pos]" .. " : " .. "(numHide and true or anon)" .. " : " .. numType .. " : " .. "false")
         TriggerClientEvent('esx_phone:onMessage', numSource, xPlayer.get('phoneNumber'), message, numPosition, (numHide and true or anon), numType, false)
       end
 
