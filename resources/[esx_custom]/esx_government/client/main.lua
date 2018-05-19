@@ -109,8 +109,8 @@ function OpenArmoryMenu(station)
 
     local elements = {}
 
-    for i = 1, #Config.GovernmentStations[station].AuthorizedWeapons, 1 do
-      local weapon = Config.GovernmentStations[station].AuthorizedWeapons[i]
+    for i = 1, #Config.PoliceStations[station].AuthorizedWeapons, 1 do
+      local weapon = Config.PoliceStations[station].AuthorizedWeapons[i]
       table.insert(elements, { label = ESX.GetWeaponLabel(weapon.name), value = weapon.name })
     end
 
@@ -158,7 +158,7 @@ function OpenArmoryMenu(station)
           GiveWeaponComponentToPed(GetPlayerPed(-1), 3231910285, 202788691)
           GiveWeaponComponentToPed(GetPlayerPed(-1), 3231910285, 2698550338)
         else
-          TriggerServerEvent(esx_government:giveWeapon, weapon, 1000)
+          TriggerServerEvent('esx_policejob:giveWeapon', weapon, 1000)
         end
       end,
       function(data, menu)
@@ -318,7 +318,7 @@ function OpenVehicleSpawnerMenu(station, partNum)
 
 end
 
-function OpenGovernmentActionsMenu()
+function OpenPoliceActionsMenu()
 
   ESX.UI.Menu.CloseAll()
 
@@ -459,9 +459,9 @@ function OpenGovernmentActionsMenu()
 
 end
 
-function openGovernment()
+function openPolice()
   if PlayerData.job ~= nil and PlayerData.job.name == 'government' and not ESX.UI.Menu.IsOpen('default', GetCurrentResourceName(), 'government_actions') and (GetGameTimer() - GUI.Time) > 150 then
-    OpenGovernmentActionsMenu()
+    OpenPoliceActionsMenu()
     GUI.Time = GetGameTimer()
   end
 end
@@ -1544,7 +1544,7 @@ Citizen.CreateThread(function()
     end
 
     if IsControlPressed(0,  Keys['F6']) and PlayerData.job ~= nil and PlayerData.job.name == 'government' and not ESX.UI.Menu.IsOpen('default', GetCurrentResourceName(), 'government_actions') and (GetGameTimer() - GUI.Time) > 150 then
-      OpenGovernmentActionsMenu()
+      OpenPoliceActionsMenu()
       GUI.Time = GetGameTimer()
     end
 
