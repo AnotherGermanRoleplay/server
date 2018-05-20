@@ -38,3 +38,39 @@ Config.Zones = {
 	OpiumTreatment = {x=-98.670524597168, y=6205.1010742188, z=31.025020599365},
 	OpiumResell = 	 {x=2331.0881347656, y=2570.2250976562, z=46.681819915772}
 }
+
+Config.Prices = {
+	Coke = {
+		cops0 = 298,
+		cops1 = 358,
+		cops2 = 408,
+		cops3 = 558,
+		cops4 = 696,
+		cops5 = 728
+	},
+	Meth = {
+		cops0 = 376,
+		cops1 = 474,
+		cops2 = 574,
+		cops3 = 652,
+		cops4 = 716,
+		cops5 = 854,
+		cops6 = 986
+	},
+	Weed = {
+		cops0 = 308,
+		cops1 = 378,
+		cops2 = 422,
+		cops3 = 475,
+		cops4 = 510
+	},
+	Opium = {
+		cops0 = 300,
+		cops1 = 500,
+		cops2 = 700,
+		cops3 = 800,
+		cops4 = 900,
+		cops5 = 1000,
+		cops6 = 2500
+	}
+}
