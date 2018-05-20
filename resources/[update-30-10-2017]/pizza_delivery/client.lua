@@ -170,7 +170,7 @@ function spawn_faggio()
 
 	local myPed = GetPlayerPed(-1)
 	local player = PlayerId()
-	local vehicle = GetHashKey('faggio')
+	local vehicle = GetHashKey('faggio2')
 
 	RequestModel(vehicle)
 
