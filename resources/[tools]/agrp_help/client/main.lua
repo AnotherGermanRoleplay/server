@@ -67,14 +67,14 @@ RegisterCommand('help', function(source, args, rawCommand)
 		})
     elseif rawCommand == 'help server' or rawCommand == 'help s' then
 	    exports.pNotify:SendNotification({
-	    	text = "Discord: https://discord.gg/7KgTpuk",
+	    	text = "Discord: https://discord.gg/FKfU9WM",
 	    	type = "success",
 	    	timeout = 5000,
 		    layout = "bottomCenter",
         	queue = "bottomCenter"
 		})
 	    exports.pNotify:SendNotification({
-	    	text = "Teamspeak: dnet.xyz",
+	    	text = "Teamspeak: ts3.another-grp.com",
 	    	type = "success",
 	    	timeout = 5000,
 		    layout = "bottomCenter",
@@ -96,14 +96,14 @@ RegisterCommand('help', function(source, args, rawCommand)
         	queue = "centerRight"
 		})
 	    exports.pNotify:SendNotification({
-	    	text = "Discord: <b style='color: aqua;'>https://discord.gg/7KgTpuk</b>",
+	    	text = "Discord: <b style='color: aqua;'>https://discord.gg/FKfU9WM</b>",
 	    	type = "success",
 	    	timeout = 5000,
 		    layout = "centerLeft",
         	queue = "centerLeft"
 		})
 	    exports.pNotify:SendNotification({
-	    	text = "Teamspeak: <b style='color: aqua;'>dnet.xyz</b>",
+	    	text = "Teamspeak: <b style='color: aqua;'>ts3.another-grp.com</b>",
 	    	type = "success",
 	    	timeout = 5000,
 		    layout = "centerLeft",
@@ -253,7 +253,7 @@ RegisterCommand('help', function(source, args, rawCommand)
         	queue = "centerRight"
 		})
 	    exports.pNotify:SendNotification({
-	    	text = "Drücke <b style='color: yellow;'>[Y]</b> um den Tempomat ein- oder auszuschalten.",
+	    	text = "Drücke <b style='color: yellow;'>[X]</b> um den Tempomat ein- oder auszuschalten.",
 	    	type = "info",
 	    	timeout = 5000,
 		    layout = "centerRight",
@@ -318,7 +318,7 @@ RegisterCommand('help', function(source, args, rawCommand)
 		})
     elseif rawCommand == 'help job schlachter' then
 	    exports.pNotify:SendNotification({
-	    	text = "<span style='color: orange;'>Under Construction. Forum: </span><span style='color: lightblue;'>another-grp.de</span>",
+	    	text = "<span style='color: orange;'>Under Construction. Forum: </span><span style='color: lightblue;'>another-grp.com</span>",
 	    	type = "info",
 	    	timeout = 5000,
 		    layout = "bottomCenter",
@@ -326,7 +326,7 @@ RegisterCommand('help', function(source, args, rawCommand)
 		})
     elseif rawCommand == 'help job fischer' then
 	    exports.pNotify:SendNotification({
-	    	text = "<span style='color: orange;'>Under Construction. Forum: </span><span style='color: lightblue;'>another-grp.de</span>",
+	    	text = "<span style='color: orange;'>Under Construction. Forum: </span><span style='color: lightblue;'>another-grp.com</span>",
 	    	type = "info",
 	    	timeout = 5000,
 		    layout = "bottomCenter",
@@ -334,7 +334,7 @@ RegisterCommand('help', function(source, args, rawCommand)
 		})
     elseif rawCommand == 'help job bergarbeiter' then
 	    exports.pNotify:SendNotification({
-	    	text = "<span style='color: orange;'>Under Construction. Forum: </span><span style='color: lightblue;'>another-grp.de</span>",
+	    	text = "<span style='color: orange;'>Under Construction. Forum: </span><span style='color: lightblue;'>another-grp.com</span>",
 	    	type = "info",
 	    	timeout = 5000,
 		    layout = "bottomCenter",
@@ -342,7 +342,7 @@ RegisterCommand('help', function(source, args, rawCommand)
 		})
     elseif rawCommand == 'help job holzfaeller' then
 	    exports.pNotify:SendNotification({
-	    	text = "<span style='color: orange;'>Under Construction. Forum: </span><span style='color: lightblue;'>another-grp.de</span>",
+	    	text = "<span style='color: orange;'>Under Construction. Forum: </span><span style='color: lightblue;'>another-grp.com</span>",
 	    	type = "info",
 	    	timeout = 5000,
 		    layout = "bottomCenter",
@@ -350,7 +350,7 @@ RegisterCommand('help', function(source, args, rawCommand)
 		})
     elseif rawCommand == 'help job refiner' then
 	    exports.pNotify:SendNotification({
-	    	text = "<span style='color: orange;'>Under Construction. Forum: </span><span style='color: lightblue;'>another-grp.de</span>",
+	    	text = "<span style='color: orange;'>Under Construction. Forum: </span><span style='color: lightblue;'>another-grp.com</span>",
 	    	type = "info",
 	    	timeout = 5000,
 		    layout = "bottomCenter",
@@ -358,7 +358,7 @@ RegisterCommand('help', function(source, args, rawCommand)
 		})
     elseif rawCommand == 'help job reporter' then
 	    exports.pNotify:SendNotification({
-	    	text = "<span style='color: orange;'>Under Construction. Forum: </span><span style='color: lightblue;'>another-grp.de</span>",
+	    	text = "<span style='color: orange;'>Under Construction. Forum: </span><span style='color: lightblue;'>another-grp.com</span>",
 	    	type = "info",
 	    	timeout = 5000,
 		    layout = "bottomCenter",
@@ -366,7 +366,7 @@ RegisterCommand('help', function(source, args, rawCommand)
 		})
     elseif rawCommand == 'help job schneider' then
 	    exports.pNotify:SendNotification({
-	    	text = "<span style='color: orange;'>Under Construction. Forum: </span><span style='color: lightblue;'>another-grp.de</span>",
+	    	text = "<span style='color: orange;'>Under Construction. Forum: </span><span style='color: lightblue;'>another-grp.com</span>",
 	    	type = "info",
 	    	timeout = 5000,
 		    layout = "bottomCenter",
@@ -374,7 +374,7 @@ RegisterCommand('help', function(source, args, rawCommand)
 		})
     elseif rawCommand == 'help job lspd' then
 	    exports.pNotify:SendNotification({
-	    	text = "<span style='color: orange;'>Under Construction. Forum: </span><span style='color: lightblue;'>another-grp.de</span>",
+	    	text = "<span style='color: orange;'>Under Construction. Forum: </span><span style='color: lightblue;'>another-grp.com</span>",
 	    	type = "info",
 	    	timeout = 5000,
 		    layout = "bottomCenter",
@@ -382,7 +382,7 @@ RegisterCommand('help', function(source, args, rawCommand)
 		})
     elseif rawCommand == 'help job mechaniker' then
 	    exports.pNotify:SendNotification({
-	    	text = "<span style='color: orange;'>Under Construction. Forum: </span><span style='color: lightblue;'>another-grp.de</span>",
+	    	text = "<span style='color: orange;'>Under Construction. Forum: </span><span style='color: lightblue;'>another-grp.com</span>",
 	    	type = "info",
 	    	timeout = 5000,
 		    layout = "bottomCenter",
@@ -390,7 +390,7 @@ RegisterCommand('help', function(source, args, rawCommand)
 		})
     elseif rawCommand == 'help job makler' then
 	    exports.pNotify:SendNotification({
-	    	text = "<span style='color: orange;'>Under Construction. Forum: </span><span style='color: lightblue;'>another-grp.de</span>",
+	    	text = "<span style='color: orange;'>Under Construction. Forum: </span><span style='color: lightblue;'>another-grp.com</span>",
 	    	type = "info",
 	    	timeout = 5000,
 		    layout = "bottomCenter",
@@ -398,7 +398,7 @@ RegisterCommand('help', function(source, args, rawCommand)
 		})
     elseif rawCommand == 'help job taxi' then
 	    exports.pNotify:SendNotification({
-	    	text = "<span style='color: orange;'>Under Construction. Forum: </span><span style='color: lightblue;'>another-grp.de</span>",
+	    	text = "<span style='color: orange;'>Under Construction. Forum: </span><span style='color: lightblue;'>another-grp.com</span>",
 	    	type = "info",
 	    	timeout = 5000,
 		    layout = "bottomCenter",
@@ -406,7 +406,7 @@ RegisterCommand('help', function(source, args, rawCommand)
 		})
     elseif rawCommand == 'help job sanitaeter' then
 	    exports.pNotify:SendNotification({
-	    	text = "<span style='color: orange;'>Under Construction. Forum: </span><span style='color: lightblue;'>another-grp.de</span>",
+	    	text = "<span style='color: orange;'>Under Construction. Forum: </span><span style='color: lightblue;'>another-grp.com</span>",
 	    	type = "info",
 	    	timeout = 5000,
 		    layout = "bottomCenter",
@@ -414,7 +414,7 @@ RegisterCommand('help', function(source, args, rawCommand)
 		})
     elseif rawCommand == 'help job autohaendler' or rawCommand == 'help job ah' then
 	    exports.pNotify:SendNotification({
-	    	text = "<span style='color: orange;'>Under Construction. Forum: </span><span style='color: lightblue;'>another-grp.de</span>",
+	    	text = "<span style='color: orange;'>Under Construction. Forum: </span><span style='color: lightblue;'>another-grp.com</span>",
 	    	type = "info",
 	    	timeout = 5000,
 		    layout = "bottomCenter",
@@ -422,7 +422,7 @@ RegisterCommand('help', function(source, args, rawCommand)
 		})
     elseif rawCommand == 'help job banker' then
 	    exports.pNotify:SendNotification({
-	    	text = "<span style='color: orange;'>Under Construction. Forum: </span><span style='color: lightblue;'>another-grp.de</span>",
+	    	text = "<span style='color: orange;'>Under Construction. Forum: </span><span style='color: lightblue;'>another-grp.com</span>",
 	    	type = "info",
 	    	timeout = 5000,
 		    layout = "bottomCenter",
@@ -482,7 +482,7 @@ Citizen.CreateThread(function()
 		-- These natives has to be called every frame.
 		SetVehicleDensityMultiplierThisFrame(0.5)
 		SetPedDensityMultiplierThisFrame(0.5)
-		SetRandomVehicleDensityMultiplierThisFrame(0.1)
+		SetRandomVehicleDensityMultiplierThisFrame(0.25)
 		SetParkedVehicleDensityMultiplierThisFrame(0.1)
 		SetScenarioPedDensityMultiplierThisFrame(0.1, 0.1)
 		
