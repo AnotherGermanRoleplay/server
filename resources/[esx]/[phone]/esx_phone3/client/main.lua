@@ -330,12 +330,15 @@ RegisterNUICallback('send', function(data)
   if tonumber(phoneNumber) ~= nil then
     phoneNumber = tonumber(phoneNumber)
   end
-
+  TriggerServerEvent('discord_bot:dev_log', " versuche Nachricht zu versenden : " .. phoneNumber)
+  
   TriggerServerEvent('esx_phone:send', phoneNumber, data.message, data.anon, {
     x = coords.x,
     y = coords.y,
     z = coords.z
   })
+
+  TriggerServerEvent('discord_bot:dev_log', " Nachricht versand ")
 
   ESX.ShowNotification('Nachricht gesendet')
 

@@ -411,16 +411,6 @@ function getIdentity(source, callback)
             local data = {
               identifier	= result1[1]['identifier'] or nil,
               characterId = result1[1]['id'] or nil,
-              firstname	= result1[1]['firstname'] or nil,
-              lastname	= result1[1]['lastname'] or nil,
-              dateofbirth	= result1[1]['dateofbirth'] or nil,
-              sex			= result1[1]['sex'] or nil,
-              height		= result1[1]['height'] or nil,
-              job		    = result1[1]['job'] or nil,
-              job_grade	= result1[1]['job_grade'] or nil,
-              second_job	= result1[1]['second_job'] or nil,
-              loadout     = result1[1]['loadout'] or nil,
-              skin		= result1[1]['skin'] or nil,
               phone_number = result1[1]['phone_number'] or nil
             }
             callback(data)
@@ -467,35 +457,36 @@ AddEventHandler('esx_phone:send', function(phoneNumber, message, anon, position)
 end)
 
 AddEventHandler('esx_phone:registerNumber', function(number, type, sharePos, hasDispatch, hideNumber, hidePosIfAnon)
-
   local hideNumber    = hideNumber    or false
   local hidePosIfAnon = hidePosIfAnon or false
+  local hasDispatch = (hasDispatch or false)
+  local sharePos = (sharePos or false)
+  local type = (type or false)
 
   PhoneNumbers[number] = {
     type          = type,
     sharePos      = sharePos,
-    hasDispatch   = (hasDispatch or false),
+    hasDispatch   = hasDispatch,
     hideNumber    = hideNumber,
     hidePosIfAnon = hidePosIfAnon,
     sources       = {}
   }
-
 end)
 
 AddEventHandler('esx_phone:addSource', function(number, source)
   local _number = number or nil
   local _source = source or nil
-  if _number ~= nil and _source ~= nil and PhoneNumbers[_number] ~= nil and PhoneNumbers[_number].sources[tostring(_source)] then
+	if _number ~= nil and _source ~= nil and PhoneNumbers[_number] ~= nil and PhoneNumbers[_number].sources[tostring(_source)] == nil then
       PhoneNumbers[number].sources[tostring(_source)] = true
-  end
+	end
 end)
 
 AddEventHandler('esx_phone:removeSource', function(number, source)
   local _number = number or nil
   local _source = source or nil
-  if _number ~= nil and _source ~= nil and PhoneNumbers[_number] ~= nil and PhoneNumbers[_number].sources[tostring(_source)] then
+	if _number ~= nil and _source ~= nil and PhoneNumbers[_number] ~= nil and PhoneNumbers[_number].sources[tostring(_source)] ~= nil then
       PhoneNumbers[_number].sources[tostring(_source)] = nil
-  end
+	end
 end)
 
 RegisterServerEvent('esx_phone:addPlayerContact')

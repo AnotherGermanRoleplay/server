@@ -3,7 +3,8 @@ ESX = nil
 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 RegisterServerEvent('esx_ambulancejob:revive')
-AddEventHandler('esx_ambulancejob:revive', function(target)
+AddEventHandler('esx_ambulancejob:revive', function(source, target)
+  TriggerEvent("discord_bot:admin_log", 'SYSTEM', "``" .. GetPlayerName(source) .. "`` belebt ``" .. GetPlayerName(target) .. "`` gerade wieder")
   TriggerClientEvent('esx_ambulancejob:revive', target)
 end)
 

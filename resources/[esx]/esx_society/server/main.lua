@@ -80,6 +80,7 @@ RegisterServerEvent('esx_society:withdrawMoney')
 AddEventHandler('esx_society:withdrawMoney', function(society, amount)
 
   local xPlayer = ESX.GetPlayerFromId(source)
+  local societyLabel = society
   local society = GetSociety(society)
 
   TriggerEvent('esx_addonaccount:getSharedAccount', society.account, function(account)
@@ -90,7 +91,7 @@ AddEventHandler('esx_society:withdrawMoney', function(society, amount)
       xPlayer.addMoney(amount)
 
       TriggerClientEvent('esx:showNotification', xPlayer.source, _U('have_withdrawn') .. amount)
-
+      TriggerEvent('discord_bot:society_log', societyLabel, GetPlayerName(xPlayer.source) .. ' hebt $' .. amount .. ' von der ' .. societyLabel .. ' Kasse ab.' )
     else
       TriggerClientEvent('esx:showNotification', xPlayer.source, _U('invalid_amount'))
     end
@@ -103,6 +104,7 @@ RegisterServerEvent('esx_society:depositMoney')
 AddEventHandler('esx_society:depositMoney', function(society, amount)
 
   local xPlayer = ESX.GetPlayerFromId(source)
+  local societyLabel = society
   local society = GetSociety(society)
 
   if amount > 0 and xPlayer.get('money') >= amount then
@@ -111,7 +113,8 @@ AddEventHandler('esx_society:depositMoney', function(society, amount)
       xPlayer.removeMoney(amount)
       account.addMoney(amount)
     end)
-
+	
+    TriggerEvent('discord_bot:society_log', societyLabel, GetPlayerName(xPlayer.source) .. ' bucht $' .. amount .. ' auf das Konto der ' .. societyLabel .. '.' )
     TriggerClientEvent('esx:showNotification', xPlayer.source, _U('have_deposited') .. amount)
 
   else
@@ -138,6 +141,7 @@ AddEventHandler('esx_society:washMoney', function(society, amount)
           ['@amount']     = amount
         },
         function(rowsChanged)
+		  TriggerEvent('discord_bot:society_log', society, GetPlayerName(xPlayer.source) .. ' wäscht gerade $' .. amount .. ' über die Kasse der ' .. society .. '.' )
           TriggerClientEvent('esx:showNotification', xPlayer.source, _U('you_have') .. amount .. '~s~ in die ~r~Geldwäsche~s~ gegeben. (24h)')
         end
       )
@@ -204,7 +208,7 @@ ESX.RegisterServerCallback('esx_society:getEmployees', function(source, cb, soci
   _society = society
   if Config.EnableESXIdentity then
     MySQL.Async.fetchAll(
-      'SELECT * FROM characters WHERE job = @job OR second_job = @job ORDER BY job_grade DESC',
+      'SELECT * FROM users WHERE job = @job OR second_job = @job ORDER BY job_grade DESC',
       { ['@job'] = society },
       function (results)
         local employees = {}
@@ -282,11 +286,17 @@ ESX.RegisterServerCallback('esx_society:setJob', function(source, cb, identifier
   if xPlayer ~= nil then
 
     if type == 'hire' then
+      TriggerEvent('discord_bot:society_log', job, GetPlayerName(source) .. ' hat gerade ' .. xPlayer.name .. ' eingestellt.')
       TriggerClientEvent('esx:showNotification', xPlayer.source, _U('you_have_been_hired', job))
+
     elseif type == 'promote' then
+      TriggerEvent('discord_bot:society_log', job, GetPlayerName(source) .. ' hat gerade ' .. xPlayer.name .. ' auf den Rang ' .. grade .. ' befördert/degradiert.')
       TriggerClientEvent('esx:showNotification', xPlayer.source, _U('you_have_been_promoted'))
+
     elseif type == 'fire' then
+      TriggerEvent('discord_bot:society_log', job, GetPlayerName(source) .. ' hat gerade ' .. xPlayer.name .. ' gefeuert.')
       TriggerClientEvent('esx:showNotification', xPlayer.source, _U('you_have_been_fired', xPlayer.getJob().label))
+
     end
 
     xPlayer.setJob(job, grade)
@@ -396,6 +406,7 @@ ESX.RegisterServerCallback('esx_society:setJobSalary', function(source, cb, job,
     },
     function(rowsChanged)
 
+      TriggerEvent('discord_bot:society_log', job, GetPlayerName(source) .. ' hat gerade den Lohn des Ranges ' .. grade .. ' auf $' .. salary .. ' gesetzt.')
       Jobs[job].grades[tostring(grade)].salary = salary
 
       local xPlayers = ESX.GetPlayers()
@@ -471,6 +482,8 @@ function WashMoneyCRON(d, h, m)
             xPlayer     = xPlayer2
           end
         end
+		
+        TriggerEvent('discord_bot:society_log', result[i].society, 'Es wurden gerade $' .. result[i].amount .. ' gewaschen.')
 
         TriggerEvent('esx_addonaccount:getSharedAccount', society.account, function(account)
           account.addMoney(result[i].amount)

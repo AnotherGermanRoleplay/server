@@ -1,3 +1,5 @@
+local moneyToAlert = 3000000
+
 AddEventHandler('chatMessage', function(source, name, message)
   if string.sub(message, 1, string.len("/")) ~= "/"
     or string.sub(message, 1, string.len("/ooc")) == "/ooc"
@@ -53,16 +55,58 @@ function sendToDevLogDiscord(message)
   )
 end
 
+function sendToSocietyLogDiscord(society, message)
+  if message == nil or message == '' then return FALSE end
+  -- #ig-log (weapon und money exchange)
+  PerformHttpRequest('https://discordapp.com/api/webhooks/443367987668451328/zOdM9HtpCsirVeuP8xQ7HD5QAWi9J22GaPKYwva_Q0UeYtIxBtohaj1G1QzvXbEcikco',
+    function(err, text, headers) end,
+    'POST',
+    json.encode({username = society, content = message}),
+    { ['Content-Type'] = 'application/json' }
+  )
+end
+
+function sendToWeaponLogDiscord(message)
+  if message == nil or message == '' then return FALSE end
+  -- #ig-log (weapon und money exchange)
+  PerformHttpRequest('https://discordapp.com/api/webhooks/443380144082780180/xAeDZIRPAD-9M0iVQqj0-ZqXWz7WXJ3SUV9UuBBrYr0MdwNDHrxAhOqcj7N8jscmygdC',
+    function(err, text, headers) end,
+    'POST',
+    json.encode({username = 'LOG', content = message}),
+    { ['Content-Type'] = 'application/json' }
+  )
+end
+
+function sendToSuspectLogDiscord(message)
+  if message == nil or message == '' then return FALSE end
+  -- #ig-log (weapon und money exchange)
+  PerformHttpRequest('https://discordapp.com/api/webhooks/445940354546532355/pbFRWNTjtu7evK-jh24UF6ud5lhl5VqkvqJD3KVFwcU0MlpVQz9AGOG3C0euO-AHdPhg',
+    function(err, text, headers) end,
+    'POST',
+    json.encode({username = 'LOG', content = message}),
+    { ['Content-Type'] = 'application/json' }
+  )
+end
+
+
+-- TriggerEvent('discord_bot:dev_log', "Select * From users Done")
 RegisterServerEvent('discord_bot:dev_log')
 AddEventHandler('discord_bot:dev_log',function(log)
   sendToDevLogDiscord(log)
 end)
 
+RegisterServerEvent('discord_bot:society_log')
+AddEventHandler('discord_bot:society_log',function(society, log)
+  sendToSocietyLogDiscord(society, log)
+end)
+
+--  TriggerEvent("discord_bot:admin_log", log)
 RegisterServerEvent('discord_bot:admin_log')
 AddEventHandler('discord_bot:admin_log',function(log)
     sendToAdminDiscord('LOG', GetPlayerName(source) .. ' ' .. log)
 end)
 
+--  TriggerEvent("discord_bot:log", message)
 RegisterServerEvent('discord_bot:log')
 AddEventHandler('discord_bot:log',function(log)
     sendToLogDiscord('LOG', log)
@@ -81,8 +125,16 @@ AddEventHandler('playerDropped', function(reason)
     sendToDiscord('SYSTEM', GetPlayerName(source) .. ' left (' .. reason .. ')')
 end)
 
+RegisterServerEvent('discord_bot:respawn')
+AddEventHandler('discord_bot:respawn', function(source)
+  sendToAdminDiscord('SYSTEM', "``" .. GetPlayerName(source) .. "`` ist respawnt ``")
+end)
+
+
 RegisterServerEvent('playerDied')
 AddEventHandler('playerDied',function(killer,reason)
+  local date = os.date('*t')
+	
   if killer == nil then --Can't figure out what's generating invalid, it's late. If you figure it out, let me know. I just handle it as a string for now.
     reason = 2
   end
@@ -93,4 +145,84 @@ AddEventHandler('playerDied',function(killer,reason)
   else
     sendToAdminDiscord('SYSTEM', "``" .. GetPlayerName(source) .. "`` died respawn 2 minutes.")
   end
+  for i = 30,1,-1 
+  do 
+      Citizen.Wait(1000)
+      local playerint = GetPlayerFromServerId(source) or nil
+      if (playerint == nil) then 
+          if date.day < 10 then date.day = '0' .. tostring(date.day) end
+          if date.month < 10 then date.month = '0' .. tostring(date.month) end
+          if date.hour < 10 then date.hour = '0' .. tostring(date.hour) end
+          if date.min < 10 then date.min = '0' .. tostring(date.min) end
+          if date.sec < 10 then date.sec = '0' .. tostring(date.sec) end
+        
+        sendToSuspectLogDiscord("--------------Verdacht auf Combatlog------------------")
+        sendToSuspectLogDiscord("``" .. GetPlayerName(source) .. "`` hat am " .. ' `' .. date.day .. '.' .. date.month .. '.' .. date.year .. ' - ' .. date.hour .. ':' .. date.min .. ':' .. date.sec .. '` ' .. ' innerhalb von 10 Sekunden nach dem Tod die Verbindung getrennt.')
+        sendToSuspectLogDiscord('http://steamcommunity.com/profiles/' .. tonumber(GetIDFromSource('steam', source), 16))
+        if reason == 0 then
+          sendToSuspectLogDiscord("``" .. GetPlayerName(source) .. "`` committed suicide. ")
+        elseif reason == 1 then
+          sendToSuspectLogDiscord("``" .. killer .. "`` killed ``" .. GetPlayerName(source) .. "``")
+        else
+          sendToSuspectLogDiscord("``" .. GetPlayerName(source) .. "`` died respawn 2 minutes.")
+        end
+        sendToSuspectLogDiscord("``" .. GetPlayerName(source) .. "`` left.")
+        sendToSuspectLogDiscord("------------------------------------------------------")
+        return
+      end
+  end
+end)
+
+
+
+-- Add event when a player give an item
+--  TriggerEvent("esx:giveitemalert",sourceXPlayer.name,targetXPlayer.name,ESX.Items[itemName].label,itemCount) -> ESX_extended
+RegisterServerEvent("esx:cheatalert")
+AddEventHandler("esx:cheatalert", function(args)
+	  sendToSuspectLogDiscord("-----------------Verdacht auf Cheating-----------------")
+    for key,arg in args do
+      sendToSuspectLogDiscord(arg)
+    end
+    sendToSuspectLogDiscord("------------------------------------------------------")
+end)
+
+-- Add event when a player give an item
+--  TriggerEvent("esx:giveitemalert",sourceXPlayer.name,targetXPlayer.name,ESX.Items[itemName].label,itemCount) -> ESX_extended
+RegisterServerEvent("esx:giveitemalert")
+AddEventHandler("esx:giveitemalert", function(name,nametarget,itemname,amount)
+	sendToLogDiscord('LOG', 'ITEM :: ' .. name .. ' gibt ' .. nametarget .. ' ' .. amount .. ' ' .. itemname)
+end)
+
+-- Add event when a player give money
+-- TriggerEvent("esx:givemoneyalert",sourceXPlayer.name,targetXPlayer.name,itemCount) -> ESX_extended
+RegisterServerEvent("esx:givemoneyalert")
+AddEventHandler("esx:givemoneyalert", function(name,nametarget,amount)
+
+	sendToLogDiscord('LOG', 'MONEY :: ' .. name .. ' gibt ' .. nametarget .. ' $' .. amount)
+  if (amount > moneyToAlert) then 
+    local args = {}
+    table.insert(args,name .. ' gibt ' .. nametarget .. ' $' .. amount);
+    table.insert(args,'Wollen wir vielleicht mal nachhaken ob da alles Koscher ist?');
+    TriggerEvent("esx:cheatalert", args)
+  end
+end)
+
+-- Add event when a player give money
+-- TriggerEvent("esx:givemoneybankalert",sourceXPlayer.name,targetXPlayer.name,itemCount) -> ESX_extended
+RegisterServerEvent("esx:givemoneybankalert")
+AddEventHandler("esx:givemoneybankalert", function(name,nametarget,amount)
+	sendToLogDiscord('LOG', 'ACCOUNT_MONEY :: ' .. name .. ' gibt ' .. nametarget .. ' $' .. amount)
+  if (amount > moneyToAlert) then 
+    local args = {}
+    table.insert(args,name .. ' gibt ' .. nametarget .. ' $' .. amount);
+    table.insert(args,'Wollen wir vielleicht mal nachhaken ob da alles Koscher ist?');
+    TriggerEvent("esx:cheatalert", args)
+  end
+end)
+
+-- Add event when a player give weapon
+--  TriggerEvent("esx:giveweaponalert",sourceXPlayer.name,targetXPlayer.name,weaponLabel) -> ESX_extended
+RegisterServerEvent("esx:giveweaponalert")
+AddEventHandler("esx:giveweaponalert", function(name,nametarget,weaponlabel)
+	sendToWeaponLogDiscord(name .. ' gibt ' .. nametarget .. ' - 1x ' .. weaponlabel)
 end)

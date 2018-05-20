@@ -15,7 +15,7 @@ Config.RespawnToHospitalMenuTimer   = false
 Config.MenuRespawnToHospitalDelay   = 5 * minute
 
 Config.EnablePlayerManagement       = true
-Config.EnableSocietyOwnedVehicles   = true
+Config.EnableSocietyOwnedVehicles   = false
 
 Config.RemoveWeaponsAfterRPDeath    = true
 Config.RemoveCashAfterRPDeath       = true
@@ -31,6 +31,15 @@ Config.RespawnFine                  = true
 Config.RespawnFineAmount            = 1250
 
 Config.Locale                       = 'de'
+
+Config.AuthorizedVehicles = {
+
+  {
+    model = 'ambulance',
+    label = 'Ambulance'
+  }
+
+}
 
 Config.Blip = {
   Pos     = { x = 307.76, y = -1433.47, z = 28.97 },

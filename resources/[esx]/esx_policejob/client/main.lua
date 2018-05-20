@@ -129,20 +129,23 @@ function OpenCloakroomMenu()
 
   if PlayerData.job.grade_name == 'sergeant' then
     table.insert(elements, { label = _U('police_wear'), value = 'sergeant_wear' })
+    table.insert(elements, { label = _U('lieutenant_wear'), value = 'lieutenant_wear_freemode' })
   end
 
   if PlayerData.job.grade_name == 'lieutenant' then
     table.insert(elements, { label = _U('police_wear'), value = 'lieutenant_wear' })
+    table.insert(elements, { label = _U('lieutenant_wear'), value = 'lieutenant_wear_freemode' })
+    table.insert(elements, { label = _U('commandant_wear'), value = 'commandant_wear_freemode' })
   end
 
   if PlayerData.job.grade_name == 'boss' then
     table.insert(elements, { label = _U('police_wear'), value = 'commandant_wear' })
+    table.insert(elements, { label = _U('lieutenant_wear'), value = 'lieutenant_wear_freemode' })
+    table.insert(elements, { label = _U('commandant_wear'), value = 'commandant_wear_freemode' })
   end
 
   if Config.EnableNonFreemodePeds then
     table.insert(elements, { label = _U('sheriff_wear'), value = 'sheriff_wear_freemode' })
-    table.insert(elements, { label = _U('lieutenant_wear'), value = 'lieutenant_wear_freemode' })
-    table.insert(elements, { label = _U('commandant_wear'), value = 'commandant_wear_freemode' })
   end
 
   table.insert(elements, { label = _U('bullet_wear'), value = 'bullet_wear' })
@@ -194,21 +197,17 @@ function OpenCloakroomMenu()
           if skin.sex == 0 then
 
             local clothesSkin = {
-              ['tshirt_1'] = 59,
-              ['tshirt_2'] = 1,
+              ['tshirt_1'] = 58,
+              ['tshirt_2'] = 0,
               ['torso_1'] = 55,
               ['torso_2'] = 0,
               ['decals_1'] = 0,
               ['decals_2'] = 0,
               ['arms'] = 41,
               ['pants_1'] = 25,
-              ['pants_2'] = 0,
-              ['shoes_1'] = 25,
-              ['shoes_2'] = 0,
-              ['helmet_1'] = 46,
+              ['pants_2'] = 2,
+              ['helmet_1'] = -1,
               ['helmet_2'] = 0,
-              ['chain_1'] = 0,
-              ['chain_2'] = 0,
               ['ears_1'] = 2,
               ['ears_2'] = 0
             }
@@ -217,8 +216,8 @@ function OpenCloakroomMenu()
           else
 
             local clothesSkin = {
-              ['tshirt_1'] = 36,
-              ['tshirt_2'] = 1,
+              ['tshirt_1'] = 35,
+              ['tshirt_2'] = 0,
               ['torso_1'] = 48,
               ['torso_2'] = 0,
               ['decals_1'] = 0,
@@ -226,9 +225,7 @@ function OpenCloakroomMenu()
               ['arms'] = 44,
               ['pants_1'] = 34,
               ['pants_2'] = 0,
-              ['shoes_1'] = 27,
-              ['shoes_2'] = 0,
-              ['helmet_1'] = 45,
+              ['helmet_1'] = -1,
               ['helmet_2'] = 0,
               ['chain_1'] = 0,
               ['chain_2'] = 0,
@@ -260,13 +257,9 @@ function OpenCloakroomMenu()
               ['decals_2'] = 0,
               ['arms'] = 41,
               ['pants_1'] = 25,
-              ['pants_2'] = 0,
-              ['shoes_1'] = 25,
-              ['shoes_2'] = 0,
+              ['pants_2'] = 2,
               ['helmet_1'] = -1,
               ['helmet_2'] = 0,
-              ['chain_1'] = 0,
-              ['chain_2'] = 0,
               ['ears_1'] = 2,
               ['ears_2'] = 0
             }
@@ -284,8 +277,6 @@ function OpenCloakroomMenu()
               ['arms'] = 44,
               ['pants_1'] = 34,
               ['pants_2'] = 0,
-              ['shoes_1'] = 27,
-              ['shoes_2'] = 0,
               ['helmet_1'] = -1,
               ['helmet_2'] = 0,
               ['chain_1'] = 0,
@@ -318,13 +309,9 @@ function OpenCloakroomMenu()
               ['decals_2'] = 1,
               ['arms'] = 41,
               ['pants_1'] = 25,
-              ['pants_2'] = 0,
-              ['shoes_1'] = 25,
-              ['shoes_2'] = 0,
+              ['pants_2'] = 2,
               ['helmet_1'] = -1,
               ['helmet_2'] = 0,
-              ['chain_1'] = 0,
-              ['chain_2'] = 0,
               ['ears_1'] = 2,
               ['ears_2'] = 0
             }
@@ -342,8 +329,6 @@ function OpenCloakroomMenu()
               ['arms'] = 44,
               ['pants_1'] = 34,
               ['pants_2'] = 0,
-              ['shoes_1'] = 27,
-              ['shoes_2'] = 0,
               ['helmet_1'] = -1,
               ['helmet_2'] = 0,
               ['chain_1'] = 0,
@@ -376,13 +361,9 @@ function OpenCloakroomMenu()
               ['decals_2'] = 2,
               ['arms'] = 41,
               ['pants_1'] = 25,
-              ['pants_2'] = 0,
-              ['shoes_1'] = 25,
-              ['shoes_2'] = 0,
+              ['pants_2'] = 2,
               ['helmet_1'] = -1,
               ['helmet_2'] = 0,
-              ['chain_1'] = 0,
-              ['chain_2'] = 0,
               ['ears_1'] = 2,
               ['ears_2'] = 0
             }
@@ -400,8 +381,6 @@ function OpenCloakroomMenu()
               ['arms'] = 44,
               ['pants_1'] = 34,
               ['pants_2'] = 0,
-              ['shoes_1'] = 27,
-              ['shoes_2'] = 0,
               ['helmet_1'] = -1,
               ['helmet_2'] = 0,
               ['chain_1'] = 0,
@@ -434,13 +413,9 @@ function OpenCloakroomMenu()
               ['decals_2'] = 3,
               ['arms'] = 41,
               ['pants_1'] = 25,
-              ['pants_2'] = 0,
-              ['shoes_1'] = 25,
-              ['shoes_2'] = 0,
+              ['pants_2'] = 2,
               ['helmet_1'] = -1,
               ['helmet_2'] = 0,
-              ['chain_1'] = 0,
-              ['chain_2'] = 0,
               ['ears_1'] = 2,
               ['ears_2'] = 0
             }
@@ -458,8 +433,6 @@ function OpenCloakroomMenu()
               ['arms'] = 44,
               ['pants_1'] = 34,
               ['pants_2'] = 0,
-              ['shoes_1'] = 27,
-              ['shoes_2'] = 0,
               ['helmet_1'] = -1,
               ['helmet_2'] = 0,
               ['chain_1'] = 0,
@@ -596,31 +569,52 @@ function OpenCloakroomMenu()
 
       if data.current.value == 'commandant_wear_freemode' then
 
-        ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
+        TriggerEvent('skinchanger:getSkin', function(skin)
 
           if skin.sex == 0 then
-            local model = GetHashKey("ig_fbisuit_01")
 
-            RequestModel(model)
-            while not HasModelLoaded(model) do
-              RequestModel(model)
-              Citizen.Wait(0)
-            end
+            local clothesSkin = {
+              ['tshirt_1'] = 130,
+              ['tshirt_2'] = 0,
+              ['torso_1'] = 95,
+              ['torso_2'] = 1,
+              ['decals_1'] = 0,
+              ['decals_2'] = 0,
+              ['arms'] = 48,
+              ['pants_1'] = 25,
+              ['pants_2'] = 0,
+              ['helmet_1'] = -1,
+              ['helmet_2'] = 0,
+              ['ears_1'] = 2,
+              ['ears_2'] = 0
+            }
+            TriggerEvent('skinchanger:loadClothes', skin, clothesSkin)
 
-            SetPlayerModel(PlayerId(), model)
-            SetModelAsNoLongerNeeded(model)
           else
-            local model = GetHashKey("ig_fbisuit_01")
 
-            RequestModel(model)
-            while not HasModelLoaded(model) do
-              RequestModel(model)
-              Citizen.Wait(0)
-            end
-
-            SetPlayerModel(PlayerId(), model)
-            SetModelAsNoLongerNeeded(model)
+            local clothesSkin = {
+              ['tshirt_1'] = 160,
+              ['tshirt_2'] = 0,
+              ['torso_1'] = 9,
+              ['torso_2'] = 0,
+              ['decals_1'] = 0,
+              ['decals_2'] = 0,
+              ['arms'] = 44,
+              ['pants_1'] = 37,
+              ['pants_2'] = 0,
+              ['helmet_1'] = -1,
+              ['helmet_2'] = 0,
+              ['ears_1'] = 2,
+              ['ears_2'] = 0
+            }
+            TriggerEvent('skinchanger:loadClothes', skin, clothesSkin)
           end
+
+          local playerPed = GetPlayerPed(-1)
+          SetPedArmour(playerPed, 0)
+          ClearPedBloodDamage(playerPed)
+          ResetPedVisibleDamage(playerPed)
+          ClearPedLastWeaponDamage(playerPed)
         end)
       end
 
@@ -701,6 +695,14 @@ function OpenArmoryMenu(station)
       table.insert(elements, { label = ESX.GetWeaponLabel(weapon.name), value = weapon.name })
     end
 
+    table.insert(elements, { label = "Combat Pistol Flashlight", value = "cPistolFlashlight" })
+    table.insert(elements, { label = "Carbine Rifle Flashlight Extended Magazine Grip Scope", value = "CRFEMGS" })
+    table.insert(elements, { label = "Assault SMG Flashlight Extended Magazine Suppressor Scope", value = "ASMGFEMSS" })
+    table.insert(elements, { label = "Pump Shotgun Flashlight", value = "PSF" })
+    table.insert(elements, { label = "Sniper Rifle Advanced Scope", value = "SRAS" })
+    table.insert(elements, { label = "SMG Mk II Extended Magazine Scope", value = "SMGMkIIEMS" })
+    table.insert(elements, { label = "Special Carbine Extended Magazine Flashlight Grip Scope", value = "SCEMFGS" })
+
     ESX.UI.Menu.CloseAll()
 
     ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'armory',
@@ -711,7 +713,34 @@ function OpenArmoryMenu(station)
       },
       function(data, menu)
         local weapon = data.current.value
-        TriggerServerEvent('esx_policejob:giveWeapon', weapon, 1000)
+        if (weapon == "cPistolFlashlight") then
+          GiveWeaponComponentToPed(GetPlayerPed(-1), 1593441988, 899381934)
+        elseif (weapon == "CRFEMGS") then
+          GiveWeaponComponentToPed(GetPlayerPed(-1), 2210333304, 2076495324)
+          GiveWeaponComponentToPed(GetPlayerPed(-1), 2210333304, 2433783441)
+          GiveWeaponComponentToPed(GetPlayerPed(-1), 2210333304, 202788691)
+          GiveWeaponComponentToPed(GetPlayerPed(-1), 2210333304, 2698550338)
+        elseif (weapon == "ASMGFEMSS") then
+          GiveWeaponComponentToPed(GetPlayerPed(-1), 4024951519, 2076495324)
+          GiveWeaponComponentToPed(GetPlayerPed(-1), 4024951519, 3141985303)
+          GiveWeaponComponentToPed(GetPlayerPed(-1), 4024951519, 2805810788)
+          GiveWeaponComponentToPed(GetPlayerPed(-1), 4024951519, 2637152041)
+        elseif (weapon == "PSF") then
+          GiveWeaponComponentToPed(GetPlayerPed(-1), 487013001, 2076495324)
+        elseif (weapon == "SRAS") then
+          GiveWeaponComponentToPed(GetPlayerPed(-1), 100416529, 3159677559)
+        elseif (weapon == "SMGMkIIEMS") then
+          GiveWeaponComponentToPed(GetPlayerPed(-1), 2024373456, 3112393518)
+          GiveWeaponComponentToPed(GetPlayerPed(-1), 2024373456, 2076495324)
+          GiveWeaponComponentToPed(GetPlayerPed(-1), 2024373456, 3842157419)
+        elseif (weapon == "SCEMFGS") then
+          GiveWeaponComponentToPed(GetPlayerPed(-1), 3231910285, 2089537806)
+          GiveWeaponComponentToPed(GetPlayerPed(-1), 3231910285, 2076495324)
+          GiveWeaponComponentToPed(GetPlayerPed(-1), 3231910285, 202788691)
+          GiveWeaponComponentToPed(GetPlayerPed(-1), 3231910285, 2698550338)
+        else
+          TriggerServerEvent('esx_policejob:giveWeapon', weapon, 1000)
+        end
       end,
       function(data, menu)
 

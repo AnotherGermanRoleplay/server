@@ -530,7 +530,7 @@ function OpenMobileMecanoActionsMenu()
             if targetVehicle ~= 0 then
               if not IsPedInAnyVehicle(playerped, true) then
                 if vehicle ~= targetVehicle then
-                  AttachEntityToEntity(targetVehicle, vehicle, 20, -0.5, -5.0, 1.0, 0.0, 0.0, 0.0, false, false, false, false, 20, true)
+                  AttachEntityToEntity(targetVehicle, vehicle, 20, 0, -5.0, 0.6, 0.0, 0.0, 0.0, false, false, false, false, 20, true)
                   CurrentlyTowedVehicle = targetVehicle
                   ESX.ShowNotification(_U('vehicle_success_attached'))
 

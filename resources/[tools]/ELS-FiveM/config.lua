@@ -12,9 +12,9 @@ vcf_files = {
 	"lspd7.xml",
 	"lspd8.xml",
 	"lspd9.xml",
+	"lspd10.xml",
 	"lspd11.xml",
 	"lspd12.xml",
-	"PBUS.xml",
 	"police.xml",
 	"police2.xml",
 	"police3.xml",
@@ -28,12 +28,15 @@ vcf_files = {
 	"PRANGER.xml",
 	"SFTSU.xml",
 	"sheriff.xml",
-	"sheriff2.xml"
+	"sheriff2.xml",
+	"firetruk.xml",
+	"burrito4.xml",
+	"utillitruck3.xml"
 }
 
 pattern_files = {
-	"WIGWAG",
-	"WIGWAG2",
+	"WIGWAG.xml",
+	"WIGWAG2.xml",
 	"BACKFOURTH.xml",
 	"BACKFOURTH2.xml",
 	"COMPLEX.xml",
@@ -51,8 +54,8 @@ pattern_files = {
 	"T_ADVIS_FLASH.xml",
 	"T_ADVIS_LEFT_RIGHT.xml",
 	"T_ADVIS_RIGHT_LEFT.xml",
-	"WIGWAG3",
-	"WIGWAG5"
+	"WIGWAG3.xml",
+	"WIGWAG5.xml"
 }
 
 modelsWithTrafficAdvisor = {
@@ -62,7 +65,6 @@ modelsWithTrafficAdvisor = {
 	"fbi2",
 	"sftsu",
 	"ghispo2",
-	"ambulance",
 	"policet",
 	"police",
 	"police2",
@@ -78,20 +80,25 @@ modelsWithTrafficAdvisor = {
 	"lspd7",
 	"lspd8",
 	"lspd9",
+	"lspd10",
 	"lspd11",
 	"lspd12",
 	"policeb",
-	"pranger"
+	"pranger",
+	"firetruk",
+	"burrito4",
+	"utillitruck3"
 }
 
 modelsWithFireSiren =
 {
-
+	"firetruk"
 }
 
 
 modelsWithAmbWarnSiren = {
 	"lspd11",
+	"lspd10",
 	"pranger",
 	"lspd12",
 	"pbus",
@@ -109,6 +116,7 @@ vehicleStageThreeAdvisor = {
 	"ghispo2",
 	"ambulance",
 	"policet",
+	"lspd10",
 	"police",
 	"police2",
 	"police3",
@@ -126,12 +134,15 @@ vehicleStageThreeAdvisor = {
 	"lspd11",
 	"lspd12",
 	"policeb",
-	"pranger"
+	"pranger",
+	"firetruk",
+	"burrito4",
+	"utillitruck3"
 }
 
 
 vehicleSyncDistance = 150
-envirementLightBrightness = 0.2
+envirementLightBrightness = 0.6
 
 build = "master"
 

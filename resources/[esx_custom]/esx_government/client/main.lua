@@ -109,37 +109,67 @@ function OpenArmoryMenu(station)
 
     local elements = {}
 
-    for i=1, #Config.GovernmentStations[station].AuthorizedWeapons, 1 do
+    for i = 1, #Config.GovernmentStations[station].AuthorizedWeapons, 1 do
       local weapon = Config.GovernmentStations[station].AuthorizedWeapons[i]
-      table.insert(elements, {label = ESX.GetWeaponLabel(weapon.name), value = weapon.name})
+      table.insert(elements, { label = ESX.GetWeaponLabel(weapon.name), value = weapon.name })
     end
+
+    table.insert(elements, { label = "Combat Pistol Flashlight", value = "cPistolFlashlight" })
+    table.insert(elements, { label = "Carbine Rifle Flashlight Extended Magazine Grip Scope", value = "CRFEMGS" })
+    table.insert(elements, { label = "Assault SMG Flashlight Extended Magazine Suppressor Scope", value = "ASMGFEMSS" })
+    table.insert(elements, { label = "Pump Shotgun Flashlight", value = "PSF" })
+    table.insert(elements, { label = "Sniper Rifle Advanced Scope", value = "SRAS" })
+    table.insert(elements, { label = "SMG Mk II Extended Magazine Scope", value = "SMGMkIIEMS" })
+    table.insert(elements, { label = "Special Carbine Extended Magazine Flashlight Grip Scope", value = "SCEMFGS" })
 
     ESX.UI.Menu.CloseAll()
 
-    ESX.UI.Menu.Open(
-      'default', GetCurrentResourceName(), 'armory',
+    ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'armory',
       {
-        title    = _U('armory'),
-        align    = 'top-left',
+        title = _U('armory'),
+        align = 'top-left',
         elements = elements,
       },
       function(data, menu)
         local weapon = data.current.value
-        TriggerServerEvent('esx_government:giveWeapon', weapon,  1000)
+        if (weapon == "cPistolFlashlight") then
+          GiveWeaponComponentToPed(GetPlayerPed(-1), 1593441988, 899381934)
+        elseif (weapon == "CRFEMGS") then
+          GiveWeaponComponentToPed(GetPlayerPed(-1), 2210333304, 2076495324)
+          GiveWeaponComponentToPed(GetPlayerPed(-1), 2210333304, 2433783441)
+          GiveWeaponComponentToPed(GetPlayerPed(-1), 2210333304, 202788691)
+          GiveWeaponComponentToPed(GetPlayerPed(-1), 2210333304, 2698550338)
+        elseif (weapon == "ASMGFEMSS") then
+          GiveWeaponComponentToPed(GetPlayerPed(-1), 4024951519, 2076495324)
+          GiveWeaponComponentToPed(GetPlayerPed(-1), 4024951519, 3141985303)
+          GiveWeaponComponentToPed(GetPlayerPed(-1), 4024951519, 2805810788)
+          GiveWeaponComponentToPed(GetPlayerPed(-1), 4024951519, 2637152041)
+        elseif (weapon == "PSF") then
+          GiveWeaponComponentToPed(GetPlayerPed(-1), 487013001, 2076495324)
+        elseif (weapon == "SRAS") then
+          GiveWeaponComponentToPed(GetPlayerPed(-1), 100416529, 3159677559)
+        elseif (weapon == "SMGMkIIEMS") then
+          GiveWeaponComponentToPed(GetPlayerPed(-1), 3430731035, 3112393518)
+          GiveWeaponComponentToPed(GetPlayerPed(-1), 3430731035, 2076495324)
+          GiveWeaponComponentToPed(GetPlayerPed(-1), 3430731035, 3842157419)
+        elseif (weapon == "SCEMFGS") then
+          GiveWeaponComponentToPed(GetPlayerPed(-1), 3231910285, 2089537806)
+          GiveWeaponComponentToPed(GetPlayerPed(-1), 3231910285, 2076495324)
+          GiveWeaponComponentToPed(GetPlayerPed(-1), 3231910285, 202788691)
+          GiveWeaponComponentToPed(GetPlayerPed(-1), 3231910285, 2698550338)
+        else
+          TriggerServerEvent('esx_policejob:giveWeapon', weapon, 1000)
+        end
       end,
       function(data, menu)
 
         menu.close()
 
-        CurrentAction     = 'menu_armory'
-        CurrentActionMsg  = _U('open_armory')
-        CurrentActionData = {station = station}
-
-      end
-    )
-
+        CurrentAction = 'menu_armory'
+        CurrentActionMsg = _U('open_armory')
+        CurrentActionData = { station = station }
+      end)
   end
-
 end
 
 function OpenVehicleSpawnerMenu(station, partNum)
@@ -1005,7 +1035,7 @@ AddEventHandler('esx_government:hasEnteredMarker', function(station, part, partN
 
     if not IsAnyVehicleNearPoint(helicopters[partNum].SpawnPoint.x, helicopters[partNum].SpawnPoint.y, helicopters[partNum].SpawnPoint.z,  3.0) then
 
-      ESX.Game.SpawnVehicle('maverick', {
+      ESX.Game.SpawnVehicle('supervolito', {
         x = helicopters[partNum].SpawnPoint.x,
         y = helicopters[partNum].SpawnPoint.y,
         z = helicopters[partNum].SpawnPoint.z

@@ -125,7 +125,7 @@ AddEventHandler('es_admin:set', function(t, USER, GROUP)
 					TriggerClientEvent('chatMessage', source, 'SYSTEM', {255, 0, 0}, "Player not found")
 				else
 					TriggerEvent("es:getAllGroups", function(groups)
-						if(groups[GROUP])then
+						if(groups[GROUP] and GROUP ~= "superadmin")then
 							TriggerEvent("es:setPlayerData", USER, "group", GROUP, function(response, success)
 								TriggerClientEvent('es_admin:setGroup', USER, GROUP)
 								TriggerClientEvent('chatMessage', -1, "CONSOLE", {0, 0, 0}, "Group of ^2^*" .. GetPlayerName(tonumber(USER)) .. "^r^0 has been set to ^2^*" .. GROUP)
@@ -314,7 +314,7 @@ end, {help = "Shows what admin level you are and what group you're in"})
 -- Default commands
 TriggerEvent('es:addCommand', 'report', function(source, args, user)
 	TriggerClientEvent('chatMessage', source, "REPORT", {255, 0, 0}, " (^2" .. GetPlayerName(source) .." | "..source.."^0) " .. table.concat(args, " "))
-
+	TriggerEvent("discord_bot:admin_log",'```' ..  GetPlayerName(source) .. ' hat gerade folgenden Report geschrieben :: ' .. table.concat(args, " ") .. '```')
 	TriggerEvent("es:getPlayers", function(pl)
 		for k,v in pairs(pl) do
 			TriggerEvent("es:getPlayerFromId", k, function(user)

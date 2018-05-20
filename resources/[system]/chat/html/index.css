@@ -7,72 +7,99 @@
 .color-6{color: #aa66cc;}
 .color-8{color: #cc0000;}
 .color-9{color: #cc0068;}
+
+@font-face {
+  font-family: pcdown;
+  src: url('./vendor/fonts/pdown.ttf');
+}
+
 * {
   font-family: 'Roboto', sans-serif;
   margin: 0;
   padding: 0;
 }
+
 .no-grow {
   flex-grow: 0;
 }
+
 em {
   font-style: normal;
 }
+
 #app {
   font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: white;
 }
+
+.watermark {
+  position: absolute;
+  right: 50%;
+  font-family: pcdown, 'Roboto', sans-serif;
+  transform: translate(50%);
+  color: rgba(255, 255, 255, 0.1);
+  font-size: 2em;
+}
+
+
 .chat-window {
   position: absolute;
   top: 15px;
   right: 15px;
   width: 38%;
   height: 240px;
-  background-color: rgba(52, 73, 94, 0.8);
+
+  background-color: rgba(20,20,20, 0.7);
   -webkit-animation-duration: .3s;
 }
-.watermark {
-  position: absolute;
-  right: 50%;
-  transform: translate(50%);
-  bottom: 0;
-  color: rgba(10, 61, 61, .8);
-}
+
 .chat-messages {
   position: relative;
   height: 95%;
   font-size: 1.1rem;
   margin: 10px;
+
   overflow-x: hidden;
   overflow-y: hidden;
 }
+
+
 .chat-input {
   font-size: 1.2rem;
   position: absolute;
+
   top: 255px;
   right: 15px;
-  width: 38%;
+  width: calc(38% + 180px);
   min-height: 34px;
+
   box-sizing: border-box;
 }
+
+
 .chat-infos {
   padding: 8px;
   font-size: 1rem;
   position: absolute;
+
   top: 0;
-  left: -175px;
+  left: -180px;
   height: 240px;
   width: 180px;
-  background-color: rgba(10, 61, 61, .8);
+
+  background-color: rgba(45, 110, 185, 0.8);
+
   box-sizing: border-box;
 }
+
 .prefix {
   position: absolute;
   margin-top: 2px;
   left: 4px;
 }
+
 textarea {
   font-size: 1.1rem;
   display: block;
@@ -80,23 +107,30 @@ textarea {
   padding: 5px;
   padding-left: 27px;
   color: white;
-  background-color: rgba(44, 62, 80, 1.0);
+  background-color: rgba(0, 0, 25, 1);
   width: 100%;
   border-width: 0;
   height: 34px;
+  min-height: 34px;
+  min-width: 100%;
+  max-width: 100%;
   overflow: hidden;
 }
+
 textarea:focus, input:focus {
     outline: none;
 }
+
 .msg {
   margin-bottom: 3px;
 }
+
 .multiline {
   margin-left: 1.5rem;
   text-indent: -1.5rem;
   white-space: pre-line;
 }
+
 .suggestions {
   list-style-type: none;
   padding: 5px;
@@ -104,15 +138,18 @@ textarea:focus, input:focus {
   font-size: 1.1rem;
   box-sizing: border-box;
   color: white;
-  background-color: rgba(44, 62, 80, 1.0);
+  background-color: rgba(0, 0, 25, 1);
   width: 100%;
 }
+
 .help {
   color: #b0bbbd;
 }
+
 .disabled {
   color: #b0bbbd;
 }
+
 .suggestion {
   margin-bottom: 5px;
 }

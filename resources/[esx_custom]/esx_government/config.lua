@@ -16,7 +16,7 @@ Config.GovernmentStations = {
 
   Government = {
     Blip = {
-      Pos     = { x = 906.78900146484, y = 1252.9321289063, z = 366.11929321289 },
+      Pos     = { x = -416.86184692383, y = 1153.9083251953, z = 326.87390136719 },
       Sprite  = 303,
       Display = 4,
       Scale   = 1.2,
@@ -33,6 +33,7 @@ Config.GovernmentStations = {
       { name = 'WEAPON_FLAREGUN',     	price = 300 },
       { name = 'WEAPON_BZGAS',       	price = 750 },
       { name = 'WEAPON_PUMPSHOTGUN',    price = 600 },
+      { name = 'WEAPON_SMG',    price = 600 },
       { name = 'WEAPON_ASSAULTSMG',     price = 1250 },
       { name = 'WEAPON_CARBINERIFLE',   price = 1500 },
       { name = 'WEAPON_SNIPERRIFLE',    price = 1800 },
@@ -54,46 +55,46 @@ Config.GovernmentStations = {
 	-- captain = 5
 	-- boss = 6
     AuthorizedVehicles = {
-      { name = 'fbi2', 	label = 'Mercedes Vito [R:1]',        rank = 1 },
-      { name = 'fbi',      label = 'BMW M5 [R:1]',       rank = 1 },
-      { name = 'schafter2', label = 'Undercover [R:2]', rank = 2 },
-      { name = 'kuruma',    label = 'Kuruma [R:2]',     rank = 2 },
-      { name = 'sandking',  label = 'Sandking [R:2]',   rank = 2 },
-      { name = 'mule3',     label = 'Laster [R:2]',     rank = 2 },
-      { name = 'guardian',  label = 'Guardian [R:2]',   rank = 2 },
-      { name = 'stretch',   label = 'Limo [R:2]',       rank = 2 }
+      { name = 'fbi2', 	    label = 'Mercedes V-Klasse [R:1]',    rank = 1 },
+      { name = 'sfum2',     label = 'CVPI [R:1]',                 rank = 1 },
+      { name = 'lspd8',     label = 'BMW M5 [R:2]',               rank = 2 },
+      { name = 'sheriff2',  label = 'BMW X5 [R:2]',               rank = 2 },
+      { name = 'fbi',       label = 'Mercedes E63 [R:2]',         rank = 2 },
+      { name = 'sfum1',     label = 'Chevrolet Tahoe [R:2]',      rank = 2 },
+      { name = 'sspres',    label = 'Chevrolet Suburban [R:2]',   rank = 2 },
+      { name = 'onebeast',  label = 'One Beast [R:2]',            rank = 2 }
     },
 
     Cloakrooms = {
-      { x = 926.4970703125, y = 1238.0355224609, z = 365.01956787109 },
+      { x = -428.23330688477, y = 1060.6662597656, z = 322.64753417969 },
     },
 
     Armories = {
-      { x = 930.03063964844, y = 1259.7661132813, z = 365.0194152832 },
+      { x = -440.79693603516, y = 1070.66796875, z = 330.81019287109 },
     },
 
     Vehicles = {
       {
-        Spawner    = { x = 922.13653564453, y = 1247.3802490234, z = 361.00925292969 },
-        SpawnPoint = { x = 912.11285400391, y = 1250.9367675781, z = 361.00925292969 },
-        Heading    = 180.0,
+        Spawner    = { x = -423.72854614258, y = 1207.7795410156, z = 324.55830078125 },
+        SpawnPoint = { x = -405.77001953125, y = 1229.8961181641, z = 324.44178466797 },
+        Heading    = 162.0,
       }
     },
 
     Helicopters = {
       {
-        Spawner    = { x = 752.5517578125, y = 1285.8754882813, z = 359.196875 },
-        SpawnPoint = { x = 737.70770263672, y = 1294.5115966797, z = 359.1961730957 },
-        Heading    = 0.0,
+        Spawner    = { x = -444.92651367188, y = 1141.1663818359, z = 325.63358764648 },
+        SpawnPoint = { x = -453.30426025391, y = 1143.5422363281, z = 325.63358764648 },
+        Heading    = 251.5,
       }
     },
 
     VehicleDeleters = {
-      { x = 913.625244140639, y = 1266.6430664063, z = 361.00952758789 }
+      { x = -382.88458251953, y = 1219.1340332031, z = 324.44178466797 }
     },
 
     BossActions = {
-      { x = 939.99279785156, y = 1249.5911865234, z = 365.01959838867 }
+      { x = -435.37524414063, y = 1069.5850830078, z = 339.48133544922 }
     },
 
   },

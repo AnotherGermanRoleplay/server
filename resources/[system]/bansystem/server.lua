@@ -167,17 +167,18 @@ TriggerEvent('es:addAdminCommand', 'ban', 1, function (source, args, user)
 	else
 		local playerSteamID, playerLicense, playerIP = getSortedIdentifiers(playerID)
 
-		print(playerName)
-		print(playerIP)
-		print(playerSteamID)
-		print(playerLicense)
-		print(bannedDuration)
-		print(bannTimeType)
-		print(reason)
-		print(adminName)
-		print(adminSteamID)
-		print(adminLicense)
-		--BanPlayer(playerName, playerIP, playerSteamID, playerLicense, bannedDuration, bannTimeType, reason, adminName, adminSteamID, adminLicense)
+		-- print(playerName)
+		-- print(playerIP)
+		-- print(playerSteamID)
+		-- print(playerLicense)
+		-- print(bannedDuration)
+		-- print(bannTimeType)
+		-- print(reason)
+		-- print(adminName)
+		-- print(adminSteamID)
+		-- print(adminLicense)
+		BanPlayer(playerName, playerIP, playerSteamID, playerLicense, bannedDuration, bannTimeType, reason, adminName, adminSteamID, adminLicense)
+		DropPlayer(playerID, 'You are banned')
 	end
 end, function(source, args, user)
 	TriggerClientEvent('chatMessage', source, "ERROR", {255, 0, 0}, " "..settings['banerror_noPermission'])
@@ -297,3 +298,4 @@ function stringsplit(inputstr, sep)
 	end
 	return t
 end
+

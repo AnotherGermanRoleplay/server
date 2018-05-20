@@ -207,6 +207,7 @@ ESX.RegisterServerCallback('esx_vehicleshop:buyVehicle', function (source, cb, v
   end
 
   if xPlayer.get('money') >= vehicleData.price then
+    xPlayer.removeMoney(vehicleData.price)
     TriggerEvent('esx_addonaccount:getSharedAccount', sharedAccountName1, function(account)
       if account ~= nil then
         price = math.floor(vehicleData.price/4)
@@ -225,13 +226,13 @@ ESX.RegisterServerCallback('esx_vehicleshop:buyVehicle', function (source, cb, v
         account.addMoney(price)
       end
     end)
-    xPlayer.removeMoney(vehicleData.price)
     TriggerEvent('esx_addonaccount:getSharedAccount', sharedAccountName4, function(account)
       if account ~= nil then
         price = math.floor(vehicleData.price/4)
         account.addMoney(price)
       end
     end)
+	TriggerEvent("discord_bot:log", xPlayer.name .. ' kauft sich gerade einen ' .. vehicleData.name .. ' für $' .. vehicleData.price .. ' in Bar')
     cb(true)
   elseif xPlayer.get('bank') >= vehicleData.price then
     xPlayer.removeAccountMoney('bank', vehicleData.price)
@@ -253,13 +254,13 @@ ESX.RegisterServerCallback('esx_vehicleshop:buyVehicle', function (source, cb, v
         account.addMoney(price)
       end
     end)
-    xPlayer.removeMoney(vehicleData.price)
     TriggerEvent('esx_addonaccount:getSharedAccount', sharedAccountName4, function(account)
       if account ~= nil then
         price = math.floor(vehicleData.price/4)
         account.addMoney(price)
       end
     end)
+	TriggerEvent("discord_bot:log", xPlayer.name .. ' kauft sich gerade einen ' .. vehicleData.name .. ' für $' .. vehicleData.price)
     cb(true)
   else
     cb(false)
@@ -416,7 +417,13 @@ ESX.RegisterServerCallback('esx_vehicleshop:resellVehicle', function (source, cb
             if found then
               xPlayer.addMoney(price)
               RemoveOwnedVehicle(plate)
-
+              TriggerEvent("discord_bot:log", xPlayer.name .. ' hat gerade einen Wagen für $' .. price .. ' verkauft')
+              if (price > Config.MaxResellPrice) then 
+                local args = {}
+                table.insert(args,xPlayer.name .. ' hat gerade einen Wagen für $' .. price .. ' verkauft');
+                table.insert(args,'Der maximale Betrag der erhalten werden kann beträgt $' .. Config.MaxResellPrice .. '.');
+                TriggerEvent("esx:cheatalert", args)
+              end
               cb(true)
             else
               if xPlayer.job.grade_name == 'boss' then
@@ -477,7 +484,7 @@ if Config.EnablePvCommand then
 
 
   TriggerEvent('es:addGroupCommand', 'pvr', 'admin', function(source, args, user)
-    
+
     TriggerClientEvent('esx_vehicleshop:openPersonnalVehicleMenuResetTimer', source)
 
   end, function(source, args, user)

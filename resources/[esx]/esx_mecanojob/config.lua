@@ -1,16 +1,16 @@
 Config                            = {}
 Config.DrawDistance               = 100.0
 Config.MaxInService               = -1
-Config.EnablePlayerManagement     = false
+Config.EnablePlayerManagement     = true
 Config.EnableSocietyOwnedVehicles = false
 Config.NPCSpawnDistance           = 500.0
 Config.NPCNextToDistance          = 25.0
-Config.NPCJobEarnings             = { min = 15, max = 40 }
+Config.NPCJobEarnings             = { min = 150, max = 800 }
 Config.Locale                     = 'de'
 
 Config.Zones = {
   MecanoActions = {
-    Pos   = { x = -347.291, y = -133.370, z = 38.009 },
+    Pos   = { x = -344.231, y = -123.473, z = 38.009 },
     Size  = { x = 1.5, y = 1.5, z = 1.0 },
     Color = { r = 204, g = 204, b = 0 },
     Type  = 1,

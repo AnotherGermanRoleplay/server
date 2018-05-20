@@ -94,7 +94,6 @@ function OpenBossMenu(society, close, options)
             else
               menu.close()
               TriggerServerEvent('esx_society:withdrawMoney', society, amount)
-              TriggerServerEvent('discord_bot:admin_log', ' hebt $' .. amount .. ' von der ' .. society .. ' Kasse ab.' )
             end
 
           end,
@@ -121,7 +120,6 @@ function OpenBossMenu(society, close, options)
             else
               menu.close()
               TriggerServerEvent('esx_society:depositMoney', society, amount)
-              TriggerServerEvent('discord_bot:admin_log', ' bucht $' .. amount .. ' auf das Konto der ' .. society .. '.' )
             end
 
           end,
@@ -148,7 +146,6 @@ function OpenBossMenu(society, close, options)
             else
               menu.close()
               TriggerServerEvent('esx_society:washMoney', society, amount)
-              TriggerServerEvent('discord_bot:admin_log', ' wäscht $' .. amount .. ' über die Kasse der ' .. society .. '.')
             end
 
           end,
@@ -314,7 +311,7 @@ function OpenRecruitMenu(society)
 
               TriggerEvent('esx:showNotification', _U('you_have_hired', data.current.name))
 
-              if society ~= "mafia" then
+              if (society ~= "mafia") then
                 ESX.TriggerServerCallback('esx_society:setJob', function()
                   OpenRecruitMenu(society)
                 end, data.current.identifier, society, 0, 'hire')

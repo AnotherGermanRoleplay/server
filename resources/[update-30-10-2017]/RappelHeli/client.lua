@@ -9,7 +9,7 @@ AddEventHandler("CGC:rappel", function()
         
         heli = GetVehiclePedIsIn(GetPlayerPed(-1), false)
         
-        if not IsVehicleModel(heli, GetHashKey("maverick")) and not IsVehicleModel(heli, GetHashKey("polmav")) then
+        if not IsVehicleModel(heli, GetHashKey("maverick")) and not IsVehicleModel(heli, GetHashKey("polmav")) and not IsVehicleModel(heli, GetHashKey("medmav")) and not IsVehicleModel(heli, GetHashKey("supervolito")) and not IsVehicleModel(heli, GetHashKey("uh1nasa"))then
             TriggerEvent("chatMessage", "Error", {255, 0, 0}, "Du bist nicht in nem Maverick.")
             return
         end
