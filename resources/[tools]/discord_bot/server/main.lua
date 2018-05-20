@@ -89,7 +89,7 @@ function sendToSuspectLogDiscord(message)
 end
 
 
-
+-- TriggerEvent('discord_bot:dev_log', "Select * From users Done")
 RegisterServerEvent('discord_bot:dev_log')
 AddEventHandler('discord_bot:dev_log',function(log)
   sendToDevLogDiscord(log)
@@ -124,6 +124,12 @@ AddEventHandler('playerDropped', function(reason)
     sendToAdminDiscord('SYSTEM', GetPlayerName(source) .. ' left (' .. reason .. ')')
     sendToDiscord('SYSTEM', GetPlayerName(source) .. ' left (' .. reason .. ')')
 end)
+
+RegisterServerEvent('discord_bot:respawn')
+AddEventHandler('discord_bot:respawn', function(source)
+  sendToAdminDiscord('SYSTEM', "``" .. GetPlayerName(source) .. "`` ist respawnt ``")
+end)
+
 
 RegisterServerEvent('playerDied')
 AddEventHandler('playerDied',function(killer,reason)
@@ -166,6 +172,8 @@ AddEventHandler('playerDied',function(killer,reason)
       end
   end
 end)
+
+
 
 -- Add event when a player give an item
 --  TriggerEvent("esx:giveitemalert",sourceXPlayer.name,targetXPlayer.name,ESX.Items[itemName].label,itemCount) -> ESX_extended

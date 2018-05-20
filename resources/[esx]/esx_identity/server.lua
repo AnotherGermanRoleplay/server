@@ -465,27 +465,6 @@ function getID(steamid, callback)
         end)
 end
 
-RegisterServerEvent('menu:id')
-AddEventHandler('menu:id', function(myIdentifiers)
-
-    getID(myIdentifiers.steamidentifier, function(data)
-        if data ~= nil then
-            getJobByGrade(data.job, data.job_grade, function(job)
-                TriggerClientEvent("sendProximityMessageID", -1, myIdentifiers.playerid, data.firstname .. " " .. data.lastname .. " - " .. job.job .. " - " .. job.grade)
-            end)
-        end
-    end)
-end)
-
-RegisterNetEvent('menu:phone')
-AddEventHandler('menu:phone', function(myIdentifiers)
-    getID(myIdentifiers.steamidentifier, function(data)
-        if data ~= nil then
-            local name = data.firstname .. " " .. data.lastname
-            TriggerClientEvent("sendProximityMessagePhone", -1, myIdentifiers.playerid, name, data.phonenumber)
-        end
-    end)
-end)
 
 RegisterServerEvent('menu:characters')
 AddEventHandler('menu:characters', function(callback)

@@ -74,6 +74,7 @@ function StartRespawnToHospitalMenuTimer()
         },
         function(data, menu) --Submit Cb
           menu.close()
+          TriggerServerEvent("discord_bot:respawn")
           Citizen.CreateThread(function()
                   RemoveItemsAfterRPDeath(false)
                     end)
