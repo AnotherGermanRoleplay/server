@@ -31,7 +31,9 @@ vcf_files = {
 	"sheriff2.xml",
 	"firetruk.xml",
 	"burrito4.xml",
-	"utillitruck3.xml"
+	"utillitruck3.xml",
+	"PBUS.xml",
+	"policetswat.xml"
 }
 
 pattern_files = {
@@ -87,7 +89,9 @@ modelsWithTrafficAdvisor = {
 	"pranger",
 	"firetruk",
 	"burrito4",
-	"utillitruck3"
+	"utillitruck3",
+	"PBUS",
+	"policetswat"
 }
 
 modelsWithFireSiren =
@@ -137,7 +141,9 @@ vehicleStageThreeAdvisor = {
 	"pranger",
 	"firetruk",
 	"burrito4",
-	"utillitruck3"
+	"utillitruck3",
+	"PBUS",
+	"policetswat"
 }
 
 
