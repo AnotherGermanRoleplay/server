@@ -15,7 +15,6 @@ local keyParam = Keys["U"] -- e.g : Keys["H"] will be change the U key to the H 
 local soundEnable = true -- Set to false for disable sounds
 local disableCar_NPC = true -- Set to false for enable NPC's car
 local soundDistance = 10 -- Distance of sounds lock / unlock (default: 10m)
-local activated = false
 
 --[[
 		######### -- READ BELOW -- #########
@@ -37,7 +36,7 @@ Citizen.CreateThread(function()
 		vehicle = GetVehiclePedIsIn(player, false)
 		isPlayerInside = IsPedInAnyVehicle(player, true)
 
-		if IsControlJustPressed(1, keyParam) and activated == true then
+		if IsControlJustPressed(1, keyParam) then
 
 			player = GetPlayerPed(-1)
 			lastVehicle = GetPlayersLastVehicle()

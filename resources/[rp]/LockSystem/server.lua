@@ -6,7 +6,7 @@ local randomMsg = {	"You have found the keys on the sun-shield",
     				"The keys were already on the contact, you took them."}
 
 RegisterServerEvent("ls:check")
-AddEventHandler("ls:check", function(plate, vehicleId, isPlayerInside, notifParam)
+AddEventHandler("ls:check" function(plate, vehicleId, isPlayerInside, notifParam)
 
 	playerIdentifier = GetPlayerIdentifiers(source)[1]
 
