@@ -6192,7 +6192,7 @@
     </Item>
     <Item>
       <modelName>policetswat</modelName>
-      <txdName>policetswat</txdName>
+      <txdName>policet</txdName>
       <handlingId>POLICE</handlingId>
       <gameName>POLICET</gameName>
       <vehicleMakeName />
