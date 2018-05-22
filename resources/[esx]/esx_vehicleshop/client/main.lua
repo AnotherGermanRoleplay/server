@@ -181,7 +181,7 @@ function OpenShopMenu ()
                           }, Config.Zones.ShopOutside.Heading, function (vehicle)
 
                             TaskWarpPedIntoVehicle(playerPed, vehicle, -1)
-
+                            TriggerEvent("ls:newVehicle", GetPlayerServerId(PlayerId()), GetVehicleNumberPlateText(vehicle), nil)
                             local vehicleProps = ESX.Game.GetVehicleProperties(vehicle)
 
                             if Config.EnableOwnedVehicles then
@@ -218,7 +218,7 @@ function OpenShopMenu ()
                           }, Config.Zones.ShopOutside.Heading, function (vehicle)
 
                             TaskWarpPedIntoVehicle(playerPed, vehicle, -1)
-
+                            TriggerEvent("ls:newVehicle", GetPlayerServerId(PlayerId()), GetVehicleNumberPlateText(vehicle), nil)
                             local vehicleProps = ESX.Game.GetVehicleProperties(vehicle)
 
                             TriggerServerEvent('esx_vehicleshop:setVehicleOwnedSociety', playerData.job.name, vehicleProps)
@@ -259,7 +259,7 @@ function OpenShopMenu ()
                       }, Config.Zones.ShopOutside.Heading, function (vehicle)
 
                         TaskWarpPedIntoVehicle(playerPed, vehicle, -1)
-
+                        TriggerEvent("ls:newVehicle", GetPlayerServerId(PlayerId()), GetVehicleNumberPlateText(vehicle), nil)
                         local vehicleProps = ESX.Game.GetVehicleProperties(vehicle)
 
                         if Config.EnableOwnedVehicles then
@@ -567,6 +567,7 @@ function OpenPersonnalVehicleMenu ()
 
           ESX.Game.SetVehicleProperties(vehicle, vehicleData)
           TaskWarpPedIntoVehicle(playerPed, vehicle, -1)
+          TriggerEvent("ls:newVehicle", GetPlayerServerId(PlayerId()), GetVehicleNumberPlateText(vehicle), nil)
           LastVehicle = GetGameTimer()
         end)
       end,

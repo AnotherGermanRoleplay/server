@@ -249,7 +249,7 @@ function SpawnVehicle(vehicle)
 		y = this_Garage.SpawnPoint.Pos.y + math.random(-10, 10),
 		z = this_Garage.SpawnPoint.Pos.z + 1											
 		}, 240, function(callback_vehicle)
-
+			TriggerEvent("ls:newVehicle", GetPlayerServerId(PlayerId()), GetVehicleNumberPlateText(vehicle), nil)
 			ESX.Game.SetVehicleProperties(callback_vehicle, vehicle)
 
 	end)
@@ -267,6 +267,7 @@ function SpawnPoundedVehicle(vehicle)
 		z = this_Garage.SpawnMunicipalPoundPoint.Pos.z + 1											
 		},180, function(callback_vehicle)
 		ESX.Game.SetVehicleProperties(callback_vehicle, vehicle)
+			TriggerEvent("ls:newVehicle", GetPlayerServerId(PlayerId()), GetVehicleNumberPlateText(vehicle), nil)
 		end)
 	TriggerServerEvent('eden_garage:modifystate', vehicle, true)
 
