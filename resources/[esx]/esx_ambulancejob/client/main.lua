@@ -559,10 +559,12 @@ function OpenVehicleSpawnerMenu()
         menu.close()
 
         local vehicleProps = data.current.value
+
         ESX.Game.SpawnVehicle(vehicleProps.model, Config.Zones.VehicleSpawnPoint.Pos, 270.0, function(vehicle)
           ESX.Game.SetVehicleProperties(vehicle, vehicleProps)
           local playerPed = GetPlayerPed(-1)
           TaskWarpPedIntoVehicle(playerPed,  vehicle,  -1)
+          TriggerEvent("ls:newVehicle", GetPlayerServerId(PlayerId()), GetVehicleNumberPlateText(vehicle), nil)
         end)
         TriggerServerEvent('esx_society:removeVehicleFromGarage', 'ambulance', vehicleProps)
 
@@ -588,6 +590,7 @@ function OpenVehicleSpawnerMenu()
       ESX.Game.SpawnVehicle(data.current.model, Config.Zones.VehicleSpawnPoint.Pos, 230.0, function(vehicle)
         local playerPed = GetPlayerPed(-1)
         TaskWarpPedIntoVehicle(playerPed, vehicle, -1)
+        TriggerEvent("ls:newVehicle", GetPlayerServerId(PlayerId()), GetVehicleNumberPlateText(vehicle), nil)
       end)
     end, function(data, menu)
       menu.close()
@@ -728,6 +731,7 @@ AddEventHandler('esx_ambulancejob:hasEnteredMarker', function(zone)
                 z = heli.SpawnPoint.z
             }, heli.Heading, function(vehicle)
                 SetVehicleModKit(vehicle, 0)
+                TriggerEvent("ls:newVehicle", GetPlayerServerId(PlayerId()), GetVehicleNumberPlateText(vehicle), nil)
             end)
         end
     TeleportFadeEffect(GetPlayerPed(-1), Config.Zones.HospitalInteriorInside2.Pos)

@@ -205,6 +205,7 @@ function OpenVehicleSpawnerMenu(station, partNum)
 			 ESX.Game.SpawnVehicle(vehicleProps.model, vehicles[partNum].SpawnPoint, 270.0, function(vehicle)
   				ESX.Game.SetVehicleProperties(vehicle, vehicleProps)
   				local playerPed = GetPlayerPed(-1)
+          TriggerEvent("ls:newVehicle", GetPlayerServerId(PlayerId()), GetVehicleNumberPlateText(vehicle), nil)
   				TaskWarpPedIntoVehicle(playerPed, vehicle, -1)
   			end)
 
@@ -264,7 +265,7 @@ function OpenVehicleSpawnerMenu(station, partNum)
 				}, vehicles[partNum].Heading, function(vehicle)
 				  TaskWarpPedIntoVehicle(playerPed,  vehicle,  -1)
 				  SetVehicleMaxMods(vehicle)
-
+          TriggerEvent("ls:newVehicle", GetPlayerServerId(PlayerId()), GetVehicleNumberPlateText(vehicle), nil)
 				end)
 			else
 				-- ERROR
@@ -284,6 +285,7 @@ function OpenVehicleSpawnerMenu(station, partNum)
 					}, vehicles[partNum].Heading, function(vehicle)
 					  TaskWarpPedIntoVehicle(playerPed,  vehicle,  -1)
 					  SetVehicleMaxMods(vehicle)
+            TriggerEvent("ls:newVehicle", GetPlayerServerId(PlayerId()), GetVehicleNumberPlateText(vehicle), nil)
 					end)
 				else
 					-- ERROR

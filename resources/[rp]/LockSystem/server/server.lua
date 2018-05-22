@@ -62,7 +62,7 @@ AddEventHandler("ls:checkOwner", function(localVehId, plate, lockStatus)
         TriggerClientEvent("ls:getHasOwner", src, nil, localVehId, plate, lockStatus)
     else
         if(owners[plate] == "locked")then
-            TriggerClientEvent("ls:notify", src, "The keys aren't inside")
+            TriggerClientEvent("ls:notify", src, "Die Schlüssel sind nicht im Fahrzeug.")
         else
             TriggerClientEvent("ls:getHasOwner", src, true, localVehId, plate, lockStatus)
         end

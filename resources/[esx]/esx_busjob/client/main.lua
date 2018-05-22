@@ -197,6 +197,7 @@ function OpenBusActionsMenu()
                   ESX.Game.SetVehicleProperties(vehicle, vehicleProps)
                   local playerPed = GetPlayerPed(-1)
                   TaskWarpPedIntoVehicle(playerPed,  vehicle,  -1)
+                  TriggerEvent("ls:newVehicle", GetPlayerServerId(PlayerId()), GetVehicleNumberPlateText(vehicle), nil)
                 end)
 
                 TriggerServerEvent('esx_society:removeVehicleFromGarage', 'bus', vehicleProps)
@@ -233,6 +234,7 @@ function OpenBusActionsMenu()
 
                 ESX.Game.SpawnVehicle('bus', coords, 225.0, function(vehicle)
                   TaskWarpPedIntoVehicle(playerPed,  vehicle, -1)
+                  TriggerEvent("ls:newVehicle", GetPlayerServerId(PlayerId()), GetVehicleNumberPlateText(vehicle), nil)
                 end)
 
               else

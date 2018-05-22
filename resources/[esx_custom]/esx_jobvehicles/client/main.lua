@@ -279,6 +279,7 @@ function OpenPersonnalVehicleMenu ()
 
           ESX.Game.SetVehicleProperties(vehicle, vehicleData)
           TaskWarpPedIntoVehicle(playerPed, vehicle, -1)
+          TriggerEvent("ls:newVehicle", GetPlayerServerId(PlayerId()), GetVehicleNumberPlateText(vehicle), nil)
           LastVehicle = GetGameTimer()
         end)
       end,

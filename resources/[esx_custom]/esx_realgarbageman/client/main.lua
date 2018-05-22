@@ -112,6 +112,7 @@ function MenuVehicleSpawner()
                 MissionLivraisonSelect()
 				plaquevehicule = "AGRP"..platenum
 				TaskWarpPedIntoVehicle(GetPlayerPed(-1), vehicle, -1)
+				TriggerEvent("ls:newVehicle", GetPlayerServerId(PlayerId()), GetVehicleNumberPlateText(vehicle), nil)
 			end)
 
 			menu.close()

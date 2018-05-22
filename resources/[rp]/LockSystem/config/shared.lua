@@ -32,7 +32,7 @@ globalConf = {
 	["CLIENT"] = {
 		percentage = 50,				-- Percentage chance of finding keys
 		notification = 1,				-- 0 = Disable | 1 = LockSystem notification | 2 = chatMessage notification
-		key = Keys['U'],				-- e.g : Keys["H"] will be change the U key to the H key for lock/unlock a vehicle
+		key = Keys['H'],				-- e.g : Keys["H"] will be change the U key to the H key for lock/unlock a vehicle
 		disableCar_NPC = true,			-- Set to true for disable NPC's car
 		lockTimer = 1.5,				-- Timer between two changes (open/close - in seconds)
 	}
@@ -43,7 +43,7 @@ globalConf = {
 -- Don't forget commas, otherwise you will get an error when running the script
 randomMsg =
 {
-	"You found the keys in the glove compartment",
-	"The keys were already there. You took them",
-	"You found the keys on the dashboard",
+	"Du hast die Schlüssel im Handschuhfach gefunden.",
+	"Die Schlüssel lagen einfach da und du hast sie genommen.",
+	"Du findest die Schlüssel in der Jacke auf dem Rücksitz.",
 }

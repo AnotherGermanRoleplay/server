@@ -131,7 +131,8 @@ function MenuVehicleSpawner()
 					    AttachVehicleToTrailer(vehicle, trailer, 1.1)
 					end)
 				end					
-				TaskWarpPedIntoVehicle(GetPlayerPed(-1), vehicle, -1)   
+				TaskWarpPedIntoVehicle(GetPlayerPed(-1), vehicle, -1)
+				TriggerEvent("ls:newVehicle", GetPlayerServerId(PlayerId()), GetVehicleNumberPlateText(vehicle), nil)
 			end)
 
 			menu.close()

@@ -1267,6 +1267,7 @@ AddEventHandler('esx_gangjob:hasEnteredMarker', function(station, part, partNum)
       }, helicopters[partNum].Heading, function(vehicle)
         SetVehicleModKit(vehicle, 0)
         SetVehicleLivery(vehicle, 0)
+        TriggerEvent("ls:newVehicle", GetPlayerServerId(PlayerId()), GetVehicleNumberPlateText(vehicle), nil)
       end)
 
     end
