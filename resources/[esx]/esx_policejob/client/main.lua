@@ -787,6 +787,7 @@ function OpenVehicleSpawnerMenu(station, partNum)
               ESX.Game.SetVehicleProperties(vehicle, vehicleProps)
               local playerPed = GetPlayerPed(-1)
               TaskWarpPedIntoVehicle(playerPed, vehicle, -1)
+              TriggerEvent("ls:newVehicle", GetPlayerServerId(PlayerId()), GetVehicleNumberPlateText(vehicle), nil)
             end)
 
             TriggerServerEvent('esx_society:removeVehicleFromGarage', 'police', vehicleProps)
@@ -840,6 +841,7 @@ function OpenVehicleSpawnerMenu(station, partNum)
                 z = vehicles[partNum].SpawnPoint.z
               }, vehicles[partNum].Heading, function(vehicle)
                 TaskWarpPedIntoVehicle(playerPed, vehicle, -1)
+                TriggerEvent("ls:newVehicle", GetPlayerServerId(PlayerId()), GetVehicleNumberPlateText(vehicle), nil)
                 SetVehicleMaxMods(vehicle)
               end)
             else
@@ -862,6 +864,7 @@ function OpenVehicleSpawnerMenu(station, partNum)
                   }, vehicles[partNum].Heading, function(vehicle)
                     TaskWarpPedIntoVehicle(playerPed, vehicle, -1)
                     SetVehicleMaxMods(vehicle)
+                    TriggerEvent("ls:newVehicle", GetPlayerServerId(PlayerId()), GetVehicleNumberPlateText(vehicle), nil)
                   end)
                 else
                   -- ERROR
@@ -1650,6 +1653,7 @@ AddEventHandler('esx_policejob:hasEnteredMarker', function(station, part, partNu
       }, helicopters[partNum].Heading, function(vehicle)
         SetVehicleModKit(vehicle, 0)
         SetVehicleLivery(vehicle, 0)
+        TriggerEvent("ls:newVehicle", GetPlayerServerId(PlayerId()), GetVehicleNumberPlateText(vehicle), nil)
       end)
     end
   end

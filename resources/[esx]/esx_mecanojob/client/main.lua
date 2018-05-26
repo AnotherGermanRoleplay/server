@@ -144,6 +144,7 @@ function OpenMecanoActionsMenu()
                     ESX.Game.SetVehicleProperties(vehicle, vehicleProps)
                     local playerPed = GetPlayerPed(-1)
                     TaskWarpPedIntoVehicle(playerPed,  vehicle,  -1)
+                    TriggerEvent("ls:newVehicle", GetPlayerServerId(PlayerId()), GetVehicleNumberPlateText(vehicle), nil)
                   end)
 
                   TriggerServerEvent('esx_society:removeVehicleFromGarage', 'mecano', vehicleProps)
@@ -182,6 +183,7 @@ function OpenMecanoActionsMenu()
                     ESX.Game.SpawnVehicle(data.current.value, Config.Zones.VehicleSpawnPoint.Pos, 90.0, function(vehicle)
                       local playerPed = GetPlayerPed(-1)
                       TaskWarpPedIntoVehicle(playerPed, vehicle, -1)
+                      TriggerEvent("ls:newVehicle", GetPlayerServerId(PlayerId()), GetVehicleNumberPlateText(vehicle), nil)
                     end)
                     break
                   else
@@ -190,6 +192,7 @@ function OpenMecanoActionsMenu()
                         ESX.Game.SpawnVehicle(data.current.value, Config.Zones.VehicleSpawnPoint.Pos, 90.0, function(vehicle)
                           local playerPed = GetPlayerPed(-1)
                           TaskWarpPedIntoVehicle(playerPed,  vehicle, -1)
+                          TriggerEvent("ls:newVehicle", GetPlayerServerId(PlayerId()), GetVehicleNumberPlateText(vehicle), nil)
                         end)
                       else
                         ESX.ShowNotification(_U('service_full') .. inServiceCount .. '/' .. maxInService)

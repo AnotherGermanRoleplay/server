@@ -58,6 +58,8 @@ AddEventHandler('eden_garage:modifystate', function(vehicleProps, state)
 	local vehicules = getPlayerVehicles(xPlayer.getIdentifier())
 	local plate = vehicleProps.plate
 	local state = state
+	
+	TriggerClientEvent("ls:newVehicle", _source, plate, nil)
 
 	for _,v in pairs(vehicules) do
 		if(plate == v.plate)then

@@ -133,8 +133,6 @@ end)
 
 RegisterServerEvent('playerDied')
 AddEventHandler('playerDied',function(killer,reason)
-  local date = os.date('*t')
-	
   if killer == nil then --Can't figure out what's generating invalid, it's late. If you figure it out, let me know. I just handle it as a string for now.
     reason = 2
   end
@@ -144,32 +142,6 @@ AddEventHandler('playerDied',function(killer,reason)
     sendToAdminDiscord('SYSTEM', "``" .. killer .. "`` killed ``" .. GetPlayerName(source) .. "``")
   else
     sendToAdminDiscord('SYSTEM', "``" .. GetPlayerName(source) .. "`` died respawn 2 minutes.")
-  end
-  for i = 30,1,-1 
-  do 
-      Citizen.Wait(1000)
-      local playerint = GetPlayerFromServerId(source) or nil
-      if (playerint == nil) then 
-          if date.day < 10 then date.day = '0' .. tostring(date.day) end
-          if date.month < 10 then date.month = '0' .. tostring(date.month) end
-          if date.hour < 10 then date.hour = '0' .. tostring(date.hour) end
-          if date.min < 10 then date.min = '0' .. tostring(date.min) end
-          if date.sec < 10 then date.sec = '0' .. tostring(date.sec) end
-        
-        sendToSuspectLogDiscord("--------------Verdacht auf Combatlog------------------")
-        sendToSuspectLogDiscord("``" .. GetPlayerName(source) .. "`` hat am " .. ' `' .. date.day .. '.' .. date.month .. '.' .. date.year .. ' - ' .. date.hour .. ':' .. date.min .. ':' .. date.sec .. '` ' .. ' innerhalb von 10 Sekunden nach dem Tod die Verbindung getrennt.')
-        sendToSuspectLogDiscord('http://steamcommunity.com/profiles/' .. tonumber(GetIDFromSource('steam', source), 16))
-        if reason == 0 then
-          sendToSuspectLogDiscord("``" .. GetPlayerName(source) .. "`` committed suicide. ")
-        elseif reason == 1 then
-          sendToSuspectLogDiscord("``" .. killer .. "`` killed ``" .. GetPlayerName(source) .. "``")
-        else
-          sendToSuspectLogDiscord("``" .. GetPlayerName(source) .. "`` died respawn 2 minutes.")
-        end
-        sendToSuspectLogDiscord("``" .. GetPlayerName(source) .. "`` left.")
-        sendToSuspectLogDiscord("------------------------------------------------------")
-        return
-      end
   end
 end)
 

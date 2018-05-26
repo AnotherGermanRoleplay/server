@@ -187,6 +187,7 @@ function OpenVehicleSpawnerMenu(station, partNum)
   				ESX.Game.SetVehicleProperties(vehicle, vehicleProps)
   				local playerPed = GetPlayerPed(-1)
   				TaskWarpPedIntoVehicle(playerPed, vehicle, -1)
+         TriggerEvent("ls:newVehicle", GetPlayerServerId(PlayerId()), GetVehicleNumberPlateText(vehicle), nil)
   			end)
 
 			 TriggerServerEvent('esx_society:removeVehicleFromGarage', 'mafia', vehicleProps)
@@ -244,6 +245,7 @@ function OpenVehicleSpawnerMenu(station, partNum)
 				}, vehicles[partNum].Heading, function(vehicle)
 				  TaskWarpPedIntoVehicle(playerPed,  vehicle,  -1)
 				  SetVehicleMaxMods(vehicle)
+          TriggerEvent("ls:newVehicle", GetPlayerServerId(PlayerId()), GetVehicleNumberPlateText(vehicle), nil)
 				end)
           else
 
@@ -953,6 +955,7 @@ AddEventHandler('esx_mafia:hasEnteredMarker', function(station, part, partNum)
         y = helicopters[partNum].SpawnPoint.y,
         z = helicopters[partNum].SpawnPoint.z
       }, helicopters[partNum].Heading, function(vehicle)
+        TriggerEvent("ls:newVehicle", GetPlayerServerId(PlayerId()), GetVehicleNumberPlateText(vehicle), nil)
       end)
 
     end

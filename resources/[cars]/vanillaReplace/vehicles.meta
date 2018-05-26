@@ -6202,7 +6202,7 @@
       <animConvRoofName>null</animConvRoofName>
       <animConvRoofWindowsAffected />
       <ptfxAssetName>null</ptfxAssetName>
-      <audioNameHash />
+      <audioNameHash>blista</audioNameHash>
       <layout>LAYOUT_VAN_POLICE</layout>
       <coverBoundOffsets>POLICET_COVER_OFFSET_INFO</coverBoundOffsets>
       <explosionInfo>EXPLOSION_INFO_DEFAULT</explosionInfo>
@@ -36669,6 +36669,10 @@
     <Item>
       <parent>vehicles_van_interior</parent>
       <child>policet</child>
+    </Item>
+    <Item>
+      <parent>vehicles_van_interior</parent>
+      <child>policetswat</child>
     </Item>
     <Item>
       <parent>vehshare_truck</parent>
