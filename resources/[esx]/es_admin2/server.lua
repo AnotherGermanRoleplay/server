@@ -3,12 +3,12 @@ TriggerEvent("es:addGroup", "mod", "user", function(group) end)
 -- Modify if you want, btw the _admin_ needs to be able to target the group and it will work
 local groupsRequired = {
 	slay = "admin",
-	noclip = "admin",
+	noclip = "superadmin",
 	crash = "superadmin",
 	freeze = "mod",
 	bring = "mod",
 	["goto"] = "mod",
-	slap = "mod",
+	slap = "superadmin",
 	slay = "mod",
 	kick = "mod",
 	ban = "admin"
