@@ -11,9 +11,17 @@ Citizen.CreateThread(function()
                 ptable = GetPlayers()
                 for _, i in ipairs(ptable) do
                     local wantedLevel = GetPlayerWantedLevel(i)
+                    local wantedString = ''
+                    if wantedLevel > 0 then
+                        for i=1, wantedLevel, 1 do
+                            wantedString = wantedString .. '⭐'
+                        end
+                    else
+                        wantedString = '✅'
+                    end
                     r, g, b = GetPlayerRgbColour(i)
                     table.insert(players, 
-                    '<tr style=\"color: rgb(' .. r .. ', ' .. g .. ', ' .. b .. ')\"><td>' .. GetPlayerServerId(i) .. '</td><td>' .. sanitize(GetPlayerName(i)) .. '</td><td>' .. (wantedLevel and wantedLevel or tostring(0)) .. '</td></tr>'
+                        '<tr style=\"color: rgb(' .. r .. ', ' .. g .. ', ' .. b .. ')\"><td>' .. GetPlayerServerId(i) .. '</td><td>' .. GetPlayerName(i) .. '</td><td>' .. wantedString .. '</td></tr>'
                     )
                 end
                 
@@ -45,16 +53,4 @@ function GetPlayers()
     end
 
     return players
-end
-
-function sanitize(txt)
-    local replacements = {
-        ['&' ] = '&amp;', 
-        ['<' ] = '&lt;', 
-        ['>' ] = '&gt;', 
-        ['\n'] = '<br/>'
-    }
-    return txt
-        :gsub('[&<>\n]', replacements)
-        :gsub(' +', function(s) return ' '..('&nbsp;'):rep(#s-1) end)
 end

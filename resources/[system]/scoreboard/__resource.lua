@@ -16,3 +16,7 @@ files {
     'html/res/futurastd-medium.ttf',
     'html/res/futurastd-medium.svg',
 }
+
+server_scripts {
+  '@mysql-async/lib/MySQL.lua'
+}
