@@ -49,7 +49,6 @@ mtsaves/
 *.iml
 *.log
 resources/[essential]/essentialmode/logs/*
-server.cfg
 loadscreen_hq.zip
 citizen/*
 *.bat
