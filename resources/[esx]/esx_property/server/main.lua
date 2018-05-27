@@ -583,7 +583,12 @@ function PayRent(d, h, m)
               TriggerClientEvent('esx:showNotification', xPlayer.source, _U('paid_rent') .. result[i].price)
 
             else
-              newMoney[result[i].owner] = newMoney[result[i].owner] - result[i].price
+              local fee = result[i].price / 5;
+              if(fee < 300) then
+                fee = 300
+              end
+
+              newMoney[result[i].owner] = newMoney[result[i].owner] - fee
             end
 
             TriggerEvent('esx_addonaccount:getSharedAccount', 'society_realestateagent', function(account)
