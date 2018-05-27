@@ -564,10 +564,6 @@ INSERT INTO `items` VALUES ('32', 'carotool', 'Karosseriewerkzeug', '-1', '0', '
 INSERT INTO `items` VALUES ('33', 'blowpipe', 'Fackeln', '-1', '0', '1');
 INSERT INTO `items` VALUES ('34', 'fixkit', 'Reparatur-Kit', '-1', '0', '1');
 INSERT INTO `items` VALUES ('35', 'carokit', 'Karosserie-Kit', '-1', '0', '1');
-INSERT INTO `items` VALUES ('36', 'bread', 'Burger', '-1', '0', '1');
-INSERT INTO `items` VALUES ('37', 'water', 'Wasser', '-1', '0', '1');
-INSERT INTO `items` VALUES ('64', 'curry', 'Curry', '-1', '0', '1');
-INSERT INTO `items` VALUES ('65', 'cola', 'Coke', '-1', '0', '1');
 INSERT INTO `items` VALUES ('66', 'trash1', 'Müll (1KG)', '50', '0', '1');
 INSERT INTO `items` VALUES ('67', 'trash2', 'Müll (2KG)', '50', '0', '1');
 INSERT INTO `items` VALUES ('68', 'trash3', 'Müll (3KG)', '50', '0', '1');
@@ -577,6 +573,13 @@ INSERT INTO `items` VALUES ('71', 'bandage', 'Bandage', '20', '0', '1');
 INSERT INTO `items` VALUES ('72', 'medikit', 'Medikit', '5', '0', '1');
 INSERT INTO `items` VALUES ('73', 'defi', 'Defibrillator', '1', '0', '0');
 INSERT INTO `items` VALUES ('74', 'handcuffs', 'Handschellen', '-1', '0', '1');
+INSERT INTO `items` VALUES ('83', 'blackberry', 'BlackBerry MOTION', '1', '0', '1');
+
+-- FOOD & DRINKS
+INSERT INTO `items` VALUES ('36', 'bread', 'Burger', '-1', '0', '1');
+INSERT INTO `items` VALUES ('37', 'water', 'Wasser', '-1', '0', '1');
+INSERT INTO `items` VALUES ('64', 'curry', 'Curry', '-1', '0', '1');
+INSERT INTO `items` VALUES ('65', 'cola', 'Coke', '-1', '0', '1');
 INSERT INTO `items` VALUES ('75', 'whiskey', 'Glas Whiskey', '-1', '0', '1');
 INSERT INTO `items` VALUES ('76', 'vodka', 'Glas Vodka', '-1', '0', '1');
 INSERT INTO `items` VALUES ('77', 'tequila', 'Tequila-Shot', '-1', '0', '1');
@@ -585,7 +588,41 @@ INSERT INTO `items` VALUES ('79', 'donut', 'Donut', '-1', '0', '1');
 INSERT INTO `items` VALUES ('80', 'corny', 'Müsliriegel', '-1', '0', '1');
 INSERT INTO `items` VALUES ('81', 'redbull', 'Dose RedBull', '-1', '0', '1');
 INSERT INTO `items` VALUES ('82', 'coffee', 'Tasse Kaffee', '-1', '0', '1');
-INSERT INTO `items` VALUES ('83', 'blackberry', 'BlackBerry MOTION', '1', '0', '1');
+INSERT INTO `items` VALUES ('83', 'cake', 'Kuchen', '-1', '0', '1');
+INSERT INTO `items` VALUES ('84', 'bun', 'Brötchen', '-1', '0', '1');
+INSERT INTO `items` VALUES ('85', 'wine', 'Flasche Wein', '-1', '0', '1');
+INSERT INTO `items` VALUES ('86', 'chocoheart', 'Schoko-Herz', '-1', '0', '1');
+INSERT INTO `items` VALUES ('87', 'fanta', 'Fanta', '-1', '0', '1');
+INSERT INTO `items` VALUES ('88', 'sprite', 'Sprite', '-1', '0', '1');
+INSERT INTO `items` VALUES ('89', 'mezzomix', 'Mezzo Mix', '-1', '0', '1');
+INSERT INTO `items` VALUES ('90', 'ojuice', 'O-Saft', '-1', '0', '1');
+INSERT INTO `items` VALUES ('91', 'cacao', 'Kakao', '-1', '0', '1');
+INSERT INTO `items` VALUES ('92', 'espresso', 'Tasse Espresso', '-1', '0', '1');
+INSERT INTO `items` VALUES ('93', 'alcopop', 'Alkopops', '-1', '0', '1');
+INSERT INTO `items` VALUES ('94', 'juinggum', 'Kaugummis', '-1', '0', '1');
+INSERT INTO `items` VALUES ('95', 'tacco', 'Taccos', '-1', '0', '1');
+INSERT INTO `items` VALUES ('96', 'burrito', 'Burritos', '-1', '0', '1');
+INSERT INTO `items` VALUES ('97', 'nacho', 'Nachos', '-1', '0', '1');
+INSERT INTO `items` VALUES ('98', 'pizza', 'Pizza', '-1', '0', '1');
+INSERT INTO `items` VALUES ('99', 'schnitzel', 'Schnitzel', '-1', '0', '1');
+INSERT INTO `items` VALUES ('100', 'chickenwings', 'Chicken Wings', '-1', '0', '1');
+INSERT INTO `items` VALUES ('101', 'doener', 'Döner', '-1', '0', '1');
+INSERT INTO `items` VALUES ('102', 'bratwurst', 'Bratwurst', '-1', '0', '1');
+INSERT INTO `items` VALUES ('103', 'currywurst', 'Currywurst', '-1', '0', '1');
+INSERT INTO `items` VALUES ('104', 'hotdog', 'Hotdog', '-1', '0', '1');
+INSERT INTO `items` VALUES ('105', 'pommes', 'Pommes Frites', '-1', '0', '1');
+INSERT INTO `items` VALUES ('106', 'noodles', 'Instant Nudeln', '-1', '0', '1');
+INSERT INTO `items` VALUES ('107', 'fribun', 'Frikadellen Brötchen', '-1', '0', '1');
+INSERT INTO `items` VALUES ('108', 'bifi', 'BiFi', '-1', '0', '1');
+INSERT INTO `items` VALUES ('109', 'chocoice', 'Schoko-Eis', '-1', '0', '1');
+INSERT INTO `items` VALUES ('110', 'vanilleeis', 'Vanille-Eis', '-1', '0', '1');
+INSERT INTO `items` VALUES ('111', 'fruitice', 'Frucht-Eis', '-1', '0', '1');
+INSERT INTO `items` VALUES ('112', 'milkshake', 'Milkshake', '-1', '0', '1');
+INSERT INTO `items` VALUES ('113', 'milchschnitte', 'Milchschnitte', '-1', '0', '1');
+INSERT INTO `items` VALUES ('114', 'glueck', 'Glückskeks', '-1', '0', '1');
+INSERT INTO `items` VALUES ('115', 'springroll', 'Frühlingsrolle', '-1', '0', '1');
+INSERT INTO `items` VALUES ('116', 'ricewine', 'Flasche Reiswein', '-1', '0', '1');
+
 -- TODO: add item functionality if necessary! vvv
 INSERT INTO `items` VALUES ('84', 'medics1', 'Aspirin', '10', '0', '1');
 INSERT INTO `items` VALUES ('84', 'medics2', 'Antibiotika', '10', '0', '1');
@@ -972,17 +1009,89 @@ CREATE TABLE `shops` (
 -- ----------------------------
 -- Records of shops
 -- ----------------------------
-INSERT INTO `shops` VALUES ('1', 'TwentyFourSeven', 'bread', '20');
-INSERT INTO `shops` VALUES ('2', 'TwentyFourSeven', 'water', '15');
-INSERT INTO `shops` VALUES ('3', 'RobsLiquor', 'curry', '15');
-INSERT INTO `shops` VALUES ('4', 'RobsLiquor', 'cola', '10');
-INSERT INTO `shops` VALUES ('5', 'LTDgasoline', 'bread', '30');
-INSERT INTO `shops` VALUES ('6', 'LTDgasoline', 'water', '20');
-INSERT INTO `shops` VALUES ('7', 'TwentyFourSeven', 'curry', '10');
-INSERT INTO `shops` VALUES ('8', 'TwentyFourSeven', 'cola', '5');
-INSERT INTO `shops` VALUES ('9', 'TwentyFourSeven', 'beer', '9');
-INSERT INTO `shops` VALUES ('10', 'RobsLiquor', 'beer', '15');
-INSERT INTO `shops` VALUES ('11', 'LTDgasoline', 'beer', '12');
+
+-- ALCOHOL
+INSERT INTO `shops` VALUES ('1', 'RobsLiquor', 'whiskey', '3.90');
+INSERT INTO `shops` VALUES ('2', 'RobsLiquor', 'vodka', '2.90');
+INSERT INTO `shops` VALUES ('3', 'RobsLiquor', 'tequila', '2.70');
+INSERT INTO `shops` VALUES ('4', 'RobsLiquor', 'sekt', '29.90');
+INSERT INTO `shops` VALUES ('5', 'RobsLiquor', 'wine', '7.90');
+INSERT INTO `shops` VALUES ('6', 'LTDgasoline', 'wine', '1.40');
+INSERT INTO `shops` VALUES ('7', 'RobsLiquor', 'beer', '1.99');
+INSERT INTO `shops` VALUES ('8', 'LTDgasoline', 'beer', '1.40');
+INSERT INTO `shops` VALUES ('9', 'RobsLiquor', 'ricewine', '6.90');
+INSERT INTO `shops` VALUES ('10', 'RobsLiquor', 'alcopop', '2.49');
+INSERT INTO `shops` VALUES ('11', 'LTDgasoline', 'alcopop', '2.49');
+
+-- DRINKS
+INSERT INTO `shops` VALUES ('12', 'LTDgasoline', 'cola', '1.99');
+INSERT INTO `shops` VALUES ('13', 'TwentyFourSeven', 'cola', '1.99');
+INSERT INTO `shops` VALUES ('14', 'LTDgasoline', 'fanta', '1.99');
+INSERT INTO `shops` VALUES ('15', 'TwentyFourSeven', 'fanta', '1.99');
+INSERT INTO `shops` VALUES ('16', 'LTDgasoline', 'sprite', '1.99');
+INSERT INTO `shops` VALUES ('17', 'TwentyFourSeven', 'sprite', '1.99');
+INSERT INTO `shops` VALUES ('18', 'LTDgasoline', 'water', '1.40');
+INSERT INTO `shops` VALUES ('19', 'TwentyFourSeven', 'water', '1.40');
+INSERT INTO `shops` VALUES ('20', 'LTDgasoline', 'coffee', '1.90');
+INSERT INTO `shops` VALUES ('21', 'TwentyFourSeven', 'coffee', '1.90');
+INSERT INTO `shops` VALUES ('22', 'LTDgasoline', 'cacao', '1.90');
+INSERT INTO `shops` VALUES ('23', 'TwentyFourSeven', 'cacao', '1.90');
+INSERT INTO `shops` VALUES ('24', 'LTDgasoline', 'espresso', '2.10');
+INSERT INTO `shops` VALUES ('25', 'TwentyFourSeven', 'espresso', '2.10');
+INSERT INTO `shops` VALUES ('26', 'LTDgasoline', 'ojuice', '0.99');
+INSERT INTO `shops` VALUES ('27', 'TwentyFourSeven', 'ojuice', '0.99');
+INSERT INTO `shops` VALUES ('28', 'LTDgasoline', 'milkshake', '1.99');
+INSERT INTO `shops` VALUES ('29', 'TwentyFourSeven', 'milkshake', '1.99');
+
+-- FOOD
+INSERT INTO `shops` VALUES ('30', 'TwentyFourSeven', 'bread', '3.40');
+INSERT INTO `shops` VALUES ('31', 'LTDgasoline', 'bread', '3.40');
+INSERT INTO `shops` VALUES ('32', 'TwentyFourSeven', 'curry', '2');
+INSERT INTO `shops` VALUES ('33', 'TwentyFourSeven', 'corny', '0.75');
+INSERT INTO `shops` VALUES ('34', 'LTDgasoline', 'corny', '0.75');
+INSERT INTO `shops` VALUES ('35', 'TwentyFourSeven', 'donut', '1.10');
+INSERT INTO `shops` VALUES ('36', 'LTDgasoline', 'donut', '1.10');
+INSERT INTO `shops` VALUES ('37', 'TwentyFourSeven', 'cake', '3.90');
+INSERT INTO `shops` VALUES ('38', 'TwentyFourSeven', 'bun', '0.90');
+INSERT INTO `shops` VALUES ('39', 'LTDgasoline', 'bun', '0.90');
+INSERT INTO `shops` VALUES ('40', 'TwentyFourSeven', 'chocoheart', '3.90');
+INSERT INTO `shops` VALUES ('41', 'LTDgasoline', 'chocoheart', '3.90');
+INSERT INTO `shops` VALUES ('42', 'TwentyFourSeven', 'juinggum', '0.90');
+INSERT INTO `shops` VALUES ('43', 'LTDgasoline', 'juinggum', '0.90');
+INSERT INTO `shops` VALUES ('44', 'TwentyFourSeven', 'tacco', '2.90');
+INSERT INTO `shops` VALUES ('45', 'TwentyFourSeven', 'burrito', '2.49');
+INSERT INTO `shops` VALUES ('46', 'TwentyFourSeven', 'nacho', '1.90');
+INSERT INTO `shops` VALUES ('47', 'TwentyFourSeven', 'schnitzel', '6.90');
+INSERT INTO `shops` VALUES ('48', 'TwentyFourSeven', 'pizza', '4.90');
+INSERT INTO `shops` VALUES ('49', 'TwentyFourSeven', 'chickenwings', '4.90');
+INSERT INTO `shops` VALUES ('50', 'TwentyFourSeven', 'doener', '4');
+INSERT INTO `shops` VALUES ('51', 'TwentyFourSeven', 'fribun', '1.90');
+INSERT INTO `shops` VALUES ('52', 'LTDgasoline', 'fribun', '1.90');
+INSERT INTO `shops` VALUES ('53', 'TwentyFourSeven', 'bratwurst', '1.90');
+INSERT INTO `shops` VALUES ('54', 'LTDgasoline', 'bratwurst', '1.90');
+INSERT INTO `shops` VALUES ('55', 'TwentyFourSeven', 'currywurst', '2.20');
+INSERT INTO `shops` VALUES ('56', 'LTDgasoline', 'currywurst', '2.20');
+INSERT INTO `shops` VALUES ('57', 'TwentyFourSeven', 'hotdog', '2');
+INSERT INTO `shops` VALUES ('58', 'LTDgasoline', 'hotdog', '2');
+INSERT INTO `shops` VALUES ('59', 'TwentyFourSeven', 'pommes', '1.49');
+INSERT INTO `shops` VALUES ('60', 'LTDgasoline', 'pommes', '1.49');
+INSERT INTO `shops` VALUES ('61', 'TwentyFourSeven', 'noodles', '0.90');
+INSERT INTO `shops` VALUES ('62', 'TwentyFourSeven', 'chocoice', '1.20');
+INSERT INTO `shops` VALUES ('63', 'TwentyFourSeven', 'vanilleeis', '1.20');
+INSERT INTO `shops` VALUES ('64', 'TwentyFourSeven', 'fruitice', '1.20');
+INSERT INTO `shops` VALUES ('65', 'TwentyFourSeven', 'milchschnitte', '0.75');
+INSERT INTO `shops` VALUES ('66', 'LTDgasoline', 'milchschnitte', '0.75');
+INSERT INTO `shops` VALUES ('67', 'TwentyFourSeven', 'springroll', '1.50');
+INSERT INTO `shops` VALUES ('68', 'TwentyFourSeven', 'glueck', '0.50');
+INSERT INTO `shops` VALUES ('69', 'LTDgasoline', 'glueck', '0.50');
+INSERT INTO `shops` VALUES ('70', 'TwentyFourSeven', 'bifi', '0.90');
+INSERT INTO `shops` VALUES ('71', 'LTDgasoline', 'bifi', '0.90');
+INSERT INTO `shops` VALUES ('72', 'TwentyFourSeven', 'pralines', '5.90');
+INSERT INTO `shops` VALUES ('73', 'LTDgasoline', 'pralines', '5.90');
+
+-- OTHER ITEM
+INSERT INTO `shops` VALUES ('74', 'LTDgasoline', 'roses', '9.90');
+INSERT INTO `shops` VALUES ('75', 'TwentyFourSeven', 'ring', '299');
 
 -- ----------------------------
 -- Table structure for society_moneywash
