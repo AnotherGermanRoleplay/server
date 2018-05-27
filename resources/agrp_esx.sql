@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : LOKAL
-Source Server Version : 100206
-Source Host           : localhost:3306
+Source Server         : AGRP v2 - SoYouStart
+Source Server Version : 100126
+Source Host           : 164.132.200.154:5798
 Source Database       : agrp-esx
 
 Target Server Type    : MYSQL
-Target Server Version : 100206
+Target Server Version : 100126
 File Encoding         : 65001
 
-Date: 2018-03-25 17:52:18
+Date: 2018-05-27 16:46:02
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -30,6 +30,7 @@ CREATE TABLE `addon_account` (
 -- ----------------------------
 -- Records of addon_account
 -- ----------------------------
+INSERT INTO `addon_account` VALUES ('0', 'society_government', 'Regierung', '1');
 INSERT INTO `addon_account` VALUES ('1', 'caution', 'Caution', '0');
 INSERT INTO `addon_account` VALUES ('2', 'society_police', 'LSPD', '1');
 INSERT INTO `addon_account` VALUES ('3', 'society_mecano', 'Mechaniker', '1');
@@ -42,6 +43,7 @@ INSERT INTO `addon_account` VALUES ('9', 'society_banker', 'Banker', '1');
 INSERT INTO `addon_account` VALUES ('10', 'bank_savings', 'Livret Bleu', '0');
 INSERT INTO `addon_account` VALUES ('11', 'society_bus', 'Bus', '1');
 INSERT INTO `addon_account` VALUES ('12', 'society_mafia', 'Mafia', '1');
+INSERT INTO `addon_account` VALUES ('13', 'society_government', 'Regierung', '1');
 
 -- ----------------------------
 -- Table structure for addon_account_data
@@ -58,15 +60,20 @@ CREATE TABLE `addon_account_data` (
 -- ----------------------------
 -- Records of addon_account_data
 -- ----------------------------
-INSERT INTO `addon_account_data` VALUES ('1', 'society_police', '0', null);
-INSERT INTO `addon_account_data` VALUES ('2', 'society_mecano', '0', null);
-INSERT INTO `addon_account_data` VALUES ('3', 'society_realestateagent', '0', null);
-INSERT INTO `addon_account_data` VALUES ('4', 'society_taxi', '0', null);
-INSERT INTO `addon_account_data` VALUES ('5', 'society_ambulance', '0', null);
-INSERT INTO `addon_account_data` VALUES ('6', 'society_cardealer', '0', null);
-INSERT INTO `addon_account_data` VALUES ('7', 'society_banker', '0', null);
-INSERT INTO `addon_account_data` VALUES ('8', 'society_bus', '0', null);
-INSERT INTO `addon_account_data` VALUES ('9', 'society_mafia', '0', null);
+INSERT INTO `addon_account_data` VALUES ('1', 'society_police', '100000', null);
+INSERT INTO `addon_account_data` VALUES ('2', 'society_mecano', '100000', null);
+INSERT INTO `addon_account_data` VALUES ('3', 'society_realestateagent', '100000', null);
+INSERT INTO `addon_account_data` VALUES ('4', 'society_taxi', '100000', null);
+INSERT INTO `addon_account_data` VALUES ('5', 'society_ambulance', '100000', null);
+INSERT INTO `addon_account_data` VALUES ('6', 'society_cardealer', '100000', null);
+INSERT INTO `addon_account_data` VALUES ('7', 'society_banker', '100000', null);
+INSERT INTO `addon_account_data` VALUES ('8', 'society_bus', '100000', null);
+INSERT INTO `addon_account_data` VALUES ('9', 'society_mafia', '100000', null);
+INSERT INTO `addon_account_data` VALUES ('10', 'society_government', '100000', null);
+
+INSERT INTO `addon_account_data` VALUES ('2', 'bank_savings', '0', 'steam:110000106abab10'); -- Birdmachine
+INSERT INTO `addon_account_data` VALUES ('3', 'property_black_money', '0', 'steam:110000106abab10');
+INSERT INTO `addon_account_data` VALUES ('4', 'caution', '0', 'steam:110000106abab10');
 
 -- ----------------------------
 -- Table structure for addon_inventory
@@ -83,6 +90,7 @@ CREATE TABLE `addon_inventory` (
 -- ----------------------------
 -- Records of addon_inventory
 -- ----------------------------
+INSERT INTO `addon_inventory` VALUES ('0', 'society_government', 'Regierung', '1');
 INSERT INTO `addon_inventory` VALUES ('1', 'society_police', 'LSPD', '1');
 INSERT INTO `addon_inventory` VALUES ('2', 'society_mecano', 'Mechaniker', '1');
 INSERT INTO `addon_inventory` VALUES ('3', 'property', 'Propriété', '0');
@@ -104,10 +112,6 @@ CREATE TABLE `addon_inventory_items` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of addon_inventory_items
--- ----------------------------
-
--- ----------------------------
 -- Table structure for banned_user
 -- ----------------------------
 DROP TABLE IF EXISTS `banned_user`;
@@ -118,17 +122,13 @@ CREATE TABLE `banned_user` (
   `steamid` varchar(50) COLLATE utf8mb4_bin DEFAULT NULL,
   `license` varchar(50) COLLATE utf8mb4_bin DEFAULT NULL,
   `bannedUntil` datetime NOT NULL,
-  `reason` text COLLATE utf8mb4_bin DEFAULT NULL,
-  `dateTime` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `reason` text COLLATE utf8mb4_bin,
+  `dateTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `admin` varchar(30) COLLATE utf8mb4_bin NOT NULL,
   `adminSteamId` varchar(50) COLLATE utf8mb4_bin DEFAULT NULL,
   `adminLicense` varchar(50) COLLATE utf8mb4_bin DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
-
--- ----------------------------
--- Records of banned_user
--- ----------------------------
 
 -- ----------------------------
 -- Table structure for billing
@@ -146,8 +146,15 @@ CREATE TABLE `billing` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of billing
+-- Table structure for cardealer_vehicles
 -- ----------------------------
+DROP TABLE IF EXISTS `cardealer_vehicles`;
+CREATE TABLE `cardealer_vehicles` (
+  `id` int(11) NOT NULL,
+  `vehicle` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `price` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for cardealer_vehicles
@@ -216,7 +223,6 @@ INSERT INTO `cardealer_vehicles` VALUES ('50', 'intruder', '7500');
 INSERT INTO `cardealer_vehicles` VALUES ('51', 'premier', '8000');
 INSERT INTO `cardealer_vehicles` VALUES ('52', 'primo2', '14000');
 INSERT INTO `cardealer_vehicles` VALUES ('53', 'regina', '5000');
-INSERT INTO `cardealer_vehicles` VALUES ('54', 'schafter2', '25000');
 INSERT INTO `cardealer_vehicles` VALUES ('55', 'stretch', '90000');
 INSERT INTO `cardealer_vehicles` VALUES ('56', 'superd', '130000');
 INSERT INTO `cardealer_vehicles` VALUES ('57', 'tailgater', '30000');
@@ -337,7 +343,6 @@ INSERT INTO `cardealer_vehicles` VALUES ('171', 'bagger', '13500');
 INSERT INTO `cardealer_vehicles` VALUES ('172', 'bati', '12000');
 INSERT INTO `cardealer_vehicles` VALUES ('173', 'bati2', '19000');
 INSERT INTO `cardealer_vehicles` VALUES ('174', 'bf400', '6500');
-INSERT INTO `cardealer_vehicles` VALUES ('175', 'bmx', '160');
 INSERT INTO `cardealer_vehicles` VALUES ('176', 'carbonrs', '18000');
 INSERT INTO `cardealer_vehicles` VALUES ('177', 'chimera', '38000');
 INSERT INTO `cardealer_vehicles` VALUES ('178', 'cliffhanger', '9500');
@@ -385,20 +390,24 @@ CREATE TABLE `characters` (
   `firstname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
   `lastname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
   `dateofbirth` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `sex` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT 'f',
+  `sex` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT 'f',
   `height` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `job` varchar(255) DEFAULT 'unemployed',
-  `job_grade` int(11) DEFAULT 0,
-  `second_job` varchar(255) DEFAULT 'unemployed',
-  `loadout` longtext DEFAULT NULL,
-  `skin` longtext DEFAULT NULL,
+  `job` varchar(255) NOT NULL DEFAULT 'unemployed',
+  `job_grade` int(11) NOT NULL DEFAULT '0',
+  `second_job` varchar(255) NOT NULL DEFAULT 'unemployed',
+  `loadout` longtext,
+  `skin` longtext,
   `phone_number` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of characters
 -- ----------------------------
+-- BirdMachine
+INSERT INTO `characters` VALUES ('1', 'steam:110000106abab10', 'Jack', 'Holmes', '16.03.1986', 'M', '186', 'unemployed', '0', 'unemployed', '[{\"name\":\"WEAPON_KNIFE\",\"ammo\":0,\"label\":\"Messer\"},{\"name\":\"WEAPON_NIGHTSTICK\",\"ammo\":0,\"label\":\"Schlagstock\"},{\"name\":\"WEAPON_HAMMER\",\"ammo\":0,\"label\":\"Hammer\"},{\"name\":\"WEAPON_BAT\",\"ammo\":0,\"label\":\"Schläger\"},{\"name\":\"WEAPON_GOLFCLUB\",\"ammo\":0,\"label\":\"Golfschläger\"},{\"name\":\"WEAPON_CROWBAR\",\"ammo\":0,\"label\":\"Brecheisen\"},{\"name\":\"WEAPON_PISTOL\",\"ammo\":250,\"label\":\"Pistole\"},{\"name\":\"WEAPON_COMBATPISTOL\",\"ammo\":250,\"label\":\"Kampfpistole\"},{\"name\":\"WEAPON_APPISTOL\",\"ammo\":250,\"label\":\"AP Pistole\"},{\"name\":\"WEAPON_PISTOL50\",\"ammo\":250,\"label\":\"Pistole .50\"},{\"name\":\"WEAPON_MICROSMG\",\"ammo\":250,\"label\":\"Mikro SMG\"},{\"name\":\"WEAPON_SMG\",\"ammo\":250,\"label\":\"SMG\"},{\"name\":\"WEAPON_ASSAULTSMG\",\"ammo\":250,\"label\":\"Kampf SMG\"},{\"name\":\"WEAPON_ASSAULTRIFLE\",\"ammo\":250,\"label\":\"Kampfgewehr\"},{\"name\":\"WEAPON_CARBINERIFLE\",\"ammo\":250,\"label\":\"Karabinergewehr\"},{\"name\":\"WEAPON_ADVANCEDRIFLE\",\"ammo\":250,\"label\":\"Advancedgewehr\"},{\"name\":\"WEAPON_MG\",\"ammo\":250,\"label\":\"MG\"},{\"name\":\"WEAPON_COMBATMG\",\"ammo\":250,\"label\":\"Kampf MG\"},{\"name\":\"WEAPON_PUMPSHOTGUN\",\"ammo\":250,\"label\":\"Pumpgun\"},{\"name\":\"WEAPON_SAWNOFFSHOTGUN\",\"ammo\":250,\"label\":\"Abgesägte Schrotflinte\"},{\"name\":\"WEAPON_ASSAULTSHOTGUN\",\"ammo\":250,\"label\":\"Kampf Schrotflinte\"},{\"name\":\"WEAPON_BULLPUPSHOTGUN\",\"ammo\":250,\"label\":\"Bullpup Schrotflinte\"},{\"name\":\"WEAPON_STUNGUN\",\"ammo\":250,\"label\":\"Tazer\"},{\"name\":\"WEAPON_SNIPERRIFLE\",\"ammo\":250,\"label\":\"Scharfschützengewehr\"},{\"name\":\"WEAPON_HEAVYSNIPER\",\"ammo\":250,\"label\":\"Schweres Sniper\"},{\"name\":\"WEAPON_GRENADELAUNCHER\",\"ammo\":5,\"label\":\"Granatwerfer\"},{\"name\":\"WEAPON_RPG\",\"ammo\":0,\"label\":\"RPG\"},{\"name\":\"WEAPON_STINGER\",\"ammo\":1,\"label\":\"Stinger\"},{\"name\":\"WEAPON_MINIGUN\",\"ammo\":250,\"label\":\"Minigun\"},{\"name\":\"WEAPON_BZGAS\",\"ammo\":1,\"label\":\"BZ Gas\"},{\"name\":\"WEAPON_MOLOTOV\",\"ammo\":1,\"label\":\"Molotov Cocktail\"},{\"name\":\"WEAPON_FIREEXTINGUISHER\",\"ammo\":0,\"label\":\"Feuerlöscher\"},{\"name\":\"WEAPON_PETROLCAN\",\"ammo\":4500,\"label\":\"Benzinkanister\"},{\"name\":\"WEAPON_BALL\",\"ammo\":1,\"label\":\"Ball\"},{\"name\":\"WEAPON_SNSPISTOL\",\"ammo\":250,\"label\":\"SNS Pistole\"},{\"name\":\"WEAPON_BOTTLE\",\"ammo\":0,\"label\":\"Flasche\"},{\"name\":\"WEAPON_GUSENBERG\",\"ammo\":250,\"label\":\"Gusenberg\"},{\"name\":\"WEAPON_SPECIALCARBINE\",\"ammo\":250,\"label\":\"Spezialkarabiner\"},{\"name\":\"WEAPON_HEAVYPISTOL\",\"ammo\":250,\"label\":\"Schwere Pistole\"},{\"name\":\"WEAPON_BULLPUPRIFLE\",\"ammo\":250,\"label\":\"Bullpupgewehr\"},{\"name\":\"WEAPON_DAGGER\",\"ammo\":0,\"label\":\"Dolch\"},{\"name\":\"WEAPON_VINTAGEPISTOL\",\"ammo\":250,\"label\":\"Vintage Pistole\"},{\"name\":\"WEAPON_FIREWORK\",\"ammo\":1,\"label\":\"Feuerwerk\"},{\"name\":\"WEAPON_MUSKET\",\"ammo\":250,\"label\":\"Muskete\"},{\"name\":\"WEAPON_HEAVYSHOTGUN\",\"ammo\":250,\"label\":\"Schwere Schrotflinte\"},{\"name\":\"WEAPON_MARKSMANRIFLE\",\"ammo\":250,\"label\":\"Marksmangewehr\"},{\"name\":\"WEAPON_HOMINGLAUNCHER\",\"ammo\":1,\"label\":\"Homing Launcher\"},{\"name\":\"WEAPON_SNOWBALL\",\"ammo\":1,\"label\":\"Schneeball\"},{\"name\":\"WEAPON_FLAREGUN\",\"ammo\":1,\"label\":\"Leuchtpistole\"},{\"name\":\"WEAPON_FLARE\",\"ammo\":1,\"label\":\"Flare\"},{\"name\":\"WEAPON_COMBATPDW\",\"ammo\":250,\"label\":\"Kampf PDW\"},{\"name\":\"WEAPON_MARKSMANPISTOL\",\"ammo\":250,\"label\":\"Marksman Pistole\"},{\"name\":\"WEAPON_KNUCKLE\",\"ammo\":0,\"label\":\"Schlagring\"},{\"name\":\"WEAPON_HATCHET\",\"ammo\":0,\"label\":\"Axt\"},{\"name\":\"WEAPON_RAILGUN\",\"ammo\":1,\"label\":\"Railgun\"},{\"name\":\"WEAPON_MACHETE\",\"ammo\":0,\"label\":\"Machete\"},{\"name\":\"WEAPON_MACHINEPISTOL\",\"ammo\":250,\"label\":\"Maschinenpistole\"},{\"name\":\"WEAPON_SWITCHBLADE\",\"ammo\":0,\"label\":\"Klappmesser\"},{\"name\":\"WEAPON_REVOLVER\",\"ammo\":250,\"label\":\"Schwerer Revolver\"},{\"name\":\"WEAPON_DBSHOTGUN\",\"ammo\":250,\"label\":\"Doppelläufige Schrotflinte\"},{\"name\":\"WEAPON_COMPACTRIFLE\",\"ammo\":250,\"label\":\"Kampfgewehr\"},{\"name\":\"WEAPON_FLASHLIGHT\",\"ammo\":0,\"label\":\"Taschenlampe\"}]', '{\"skin\":5,\"helmet_2\":0,\"age_2\":0,\"hair_1\":10,\"age_1\":0,\"bproof_1\":0,\"makeup_2\":0,\"decals_2\":0,\"lipstick_4\":0,\"glasses_1\":0,\"face\":4,\"beard_3\":3,\"bags_2\":0,\"beard_4\":0,\"chain_1\":17,\"helmet_1\":-1,\"shoes_1\":55,\"hair_color_1\":4,\"chain_2\":1,\"lipstick_3\":0,\"torso_2\":5,\"ears_2\":0,\"pants_2\":0,\"shoes_2\":9,\"lipstick_2\":0,\"eyebrows_3\":0,\"pants_1\":26,\"hair_2\":3,\"sex\":0,\"mask_1\":0,\"torso_1\":6,\"beard_2\":10,\"ears_1\":-1,\"makeup_4\":0,\"bproof_2\":0,\"decals_1\":0,\"lipstick_1\":0,\"bags_1\":0,\"eyebrows_1\":8,\"tshirt_2\":2,\"mask_2\":0,\"arms\":17,\"tshirt_1\":2,\"glasses_2\":0,\"hair_color_2\":8,\"beard_1\":7,\"eyebrows_2\":4,\"makeup_3\":0,\"makeup_1\":0,\"eyebrows_4\":0}', '1337');
+INSERT INTO `characters` VALUES ('2', 'steam:110000106abab10', 'John', 'Holmes', '16.03.1986', 'M', '187', 'unemployed', '13', 'unemployed', '[{\"label\":\"Messer\",\"name\":\"WEAPON_KNIFE\",\"ammo\":0},{\"label\":\"Schlagstock\",\"name\":\"WEAPON_NIGHTSTICK\",\"ammo\":0},{\"label\":\"Hammer\",\"name\":\"WEAPON_HAMMER\",\"ammo\":0},{\"label\":\"Schläger\",\"name\":\"WEAPON_BAT\",\"ammo\":0},{\"label\":\"Golfschläger\",\"name\":\"WEAPON_GOLFCLUB\",\"ammo\":0},{\"label\":\"Brecheisen\",\"name\":\"WEAPON_CROWBAR\",\"ammo\":0},{\"label\":\"Pistole\",\"name\":\"WEAPON_PISTOL\",\"ammo\":9999},{\"label\":\"Kampfpistole\",\"name\":\"WEAPON_COMBATPISTOL\",\"ammo\":9999},{\"label\":\"AP Pistole\",\"name\":\"WEAPON_APPISTOL\",\"ammo\":9999},{\"label\":\"Pistole .50\",\"name\":\"WEAPON_PISTOL50\",\"ammo\":9999},{\"label\":\"Mikro SMG\",\"name\":\"WEAPON_MICROSMG\",\"ammo\":9954},{\"label\":\"SMG\",\"name\":\"WEAPON_SMG\",\"ammo\":9954},{\"label\":\"Kampf SMG\",\"name\":\"WEAPON_ASSAULTSMG\",\"ammo\":9954},{\"label\":\"Kampfgewehr\",\"name\":\"WEAPON_ASSAULTRIFLE\",\"ammo\":9999},{\"label\":\"Karabinergewehr\",\"name\":\"WEAPON_CARBINERIFLE\",\"ammo\":9999},{\"label\":\"Advancedgewehr\",\"name\":\"WEAPON_ADVANCEDRIFLE\",\"ammo\":9999},{\"label\":\"MG\",\"name\":\"WEAPON_MG\",\"ammo\":9999},{\"label\":\"Kampf MG\",\"name\":\"WEAPON_COMBATMG\",\"ammo\":9999},{\"label\":\"Pumpgun\",\"name\":\"WEAPON_PUMPSHOTGUN\",\"ammo\":9999},{\"label\":\"Abgesägte Schrotflinte\",\"name\":\"WEAPON_SAWNOFFSHOTGUN\",\"ammo\":9999},{\"label\":\"Kampf Schrotflinte\",\"name\":\"WEAPON_ASSAULTSHOTGUN\",\"ammo\":9999},{\"label\":\"Bullpup Schrotflinte\",\"name\":\"WEAPON_BULLPUPSHOTGUN\",\"ammo\":9999},{\"label\":\"Tazer\",\"name\":\"WEAPON_STUNGUN\",\"ammo\":9999},{\"label\":\"Scharfschützengewehr\",\"name\":\"WEAPON_SNIPERRIFLE\",\"ammo\":9996},{\"label\":\"Schweres Sniper\",\"name\":\"WEAPON_HEAVYSNIPER\",\"ammo\":9996},{\"label\":\"Granatwerfer\",\"name\":\"WEAPON_GRENADELAUNCHER\",\"ammo\":20},{\"label\":\"RPG\",\"name\":\"WEAPON_RPG\",\"ammo\":20},{\"label\":\"Stinger\",\"name\":\"WEAPON_STINGER\",\"ammo\":0},{\"label\":\"Minigun\",\"name\":\"WEAPON_MINIGUN\",\"ammo\":6596},{\"label\":\"Granate\",\"name\":\"WEAPON_GRENADE\",\"ammo\":25},{\"label\":\"Haftbombe\",\"name\":\"WEAPON_STICKYBOMB\",\"ammo\":22},{\"label\":\"Rauchgranate\",\"name\":\"WEAPON_SMOKEGRENADE\",\"ammo\":25},{\"label\":\"BZ Gas\",\"name\":\"WEAPON_BZGAS\",\"ammo\":25},{\"label\":\"Molotov Cocktail\",\"name\":\"WEAPON_MOLOTOV\",\"ammo\":25},{\"label\":\"Feuerlöscher\",\"name\":\"WEAPON_FIREEXTINGUISHER\",\"ammo\":2000},{\"label\":\"Benzinkanister\",\"name\":\"WEAPON_PETROLCAN\",\"ammo\":4500},{\"label\":\"Ball\",\"name\":\"WEAPON_BALL\",\"ammo\":1},{\"label\":\"SNS Pistole\",\"name\":\"WEAPON_SNSPISTOL\",\"ammo\":9999},{\"label\":\"Flasche\",\"name\":\"WEAPON_BOTTLE\",\"ammo\":0},{\"label\":\"Gusenberg\",\"name\":\"WEAPON_GUSENBERG\",\"ammo\":9999},{\"label\":\"Spezialkarabiner\",\"name\":\"WEAPON_SPECIALCARBINE\",\"ammo\":9999},{\"label\":\"Schwere Pistole\",\"name\":\"WEAPON_HEAVYPISTOL\",\"ammo\":9999},{\"label\":\"Bullpupgewehr\",\"name\":\"WEAPON_BULLPUPRIFLE\",\"ammo\":9999},{\"label\":\"Dolch\",\"name\":\"WEAPON_DAGGER\",\"ammo\":0},{\"label\":\"Vintage Pistole\",\"name\":\"WEAPON_VINTAGEPISTOL\",\"ammo\":9999},{\"label\":\"Feuerwerk\",\"name\":\"WEAPON_FIREWORK\",\"ammo\":16},{\"label\":\"Muskete\",\"name\":\"WEAPON_MUSKET\",\"ammo\":9999},{\"label\":\"Schwere Schrotflinte\",\"name\":\"WEAPON_HEAVYSHOTGUN\",\"ammo\":9999},{\"label\":\"Marksmangewehr\",\"name\":\"WEAPON_MARKSMANRIFLE\",\"ammo\":9996},{\"label\":\"Homing Launcher\",\"name\":\"WEAPON_HOMINGLAUNCHER\",\"ammo\":10},{\"label\":\"Annäherungsmine\",\"name\":\"WEAPON_PROXMINE\",\"ammo\":5},{\"label\":\"Schneeball\",\"name\":\"WEAPON_SNOWBALL\",\"ammo\":10},{\"label\":\"Leuchtpistole\",\"name\":\"WEAPON_FLAREGUN\",\"ammo\":20},{\"label\":\"Flare\",\"name\":\"WEAPON_FLARE\",\"ammo\":25},{\"label\":\"Kampf PDW\",\"name\":\"WEAPON_COMBATPDW\",\"ammo\":9954},{\"label\":\"Marksman Pistole\",\"name\":\"WEAPON_MARKSMANPISTOL\",\"ammo\":9999},{\"label\":\"Schlagring\",\"name\":\"WEAPON_KNUCKLE\",\"ammo\":0},{\"label\":\"Axt\",\"name\":\"WEAPON_HATCHET\",\"ammo\":0},{\"label\":\"Railgun\",\"name\":\"WEAPON_RAILGUN\",\"ammo\":18},{\"label\":\"Machete\",\"name\":\"WEAPON_MACHETE\",\"ammo\":0},{\"label\":\"Maschinenpistole\",\"name\":\"WEAPON_MACHINEPISTOL\",\"ammo\":9954},{\"label\":\"Klappmesser\",\"name\":\"WEAPON_SWITCHBLADE\",\"ammo\":0},{\"label\":\"Schwerer Revolver\",\"name\":\"WEAPON_REVOLVER\",\"ammo\":9999},{\"label\":\"Doppelläufige Schrotflinte\",\"name\":\"WEAPON_DBSHOTGUN\",\"ammo\":9999},{\"label\":\"Kampfgewehr\",\"name\":\"WEAPON_COMPACTRIFLE\",\"ammo\":9999},{\"label\":\"Auto Shotgun\",\"name\":\"WEAPON_AUTOSHOTGUN\",\"ammo\":9999},{\"label\":\"Kampfaxt\",\"name\":\"WEAPON_BATTLEAXE\",\"ammo\":0},{\"label\":\"Kompakt Launcher\",\"name\":\"WEAPON_COMPACTLAUNCHER\",\"ammo\":20},{\"label\":\"Mini SMG\",\"name\":\"WEAPON_MINISMG\",\"ammo\":9954},{\"label\":\"Rohrbombe\",\"name\":\"WEAPON_PIPEBOMB\",\"ammo\":10},{\"label\":\"Kö\",\"name\":\"WEAPON_POOLCUE\",\"ammo\":0},{\"label\":\"Rohrzange\",\"name\":\"WEAPON_WRENCH\",\"ammo\":0},{\"label\":\"Taschenlampe\",\"name\":\"WEAPON_FLASHLIGHT\",\"ammo\":0},{\"label\":\"Nachtsichtgerät\",\"name\":\"GADGET_NIGHTVISION\",\"ammo\":0},{\"label\":\"Fallschirm\",\"name\":\"GADGET_PARACHUTE\",\"ammo\":0}]', '{\"bproof_1\":0,\"age_2\":0,\"lipstick_4\":0,\"bags_1\":0,\"bags_2\":0,\"tshirt_1\":2,\"makeup_2\":0,\"eyebrows_2\":4,\"glasses_1\":0,\"bproof_2\":0,\"hair_color_2\":8,\"beard_2\":10,\"lipstick_1\":0,\"helmet_1\":-1,\"hair_color_1\":4,\"beard_3\":3,\"beard_4\":0,\"makeup_3\":0,\"beard_1\":7,\"pants_1\":26,\"shoes_1\":55,\"lipstick_3\":0,\"eyebrows_4\":0,\"makeup_4\":0,\"helmet_2\":0,\"chain_2\":2,\"mask_1\":0,\"skin\":5,\"glasses_2\":0,\"age_1\":0,\"ears_2\":0,\"chain_1\":17,\"hair_1\":10,\"arms\":1,\"pants_2\":0,\"eyebrows_1\":8,\"torso_1\":6,\"shoes_2\":5,\"makeup_1\":0,\"torso_2\":5,\"mask_2\":0,\"decals_1\":0,\"face\":4,\"hair_2\":3,\"ears_1\":2,\"decals_2\":0,\"sex\":0,\"eyebrows_3\":0,\"tshirt_2\":2,\"lipstick_2\":0}', '1338');
+
 
 -- ----------------------------
 -- Table structure for datastore
@@ -415,9 +424,10 @@ CREATE TABLE `datastore` (
 -- ----------------------------
 -- Records of datastore
 -- ----------------------------
+INSERT INTO `datastore` VALUES ('0', 'society_government', 'Regierung', '1');
 INSERT INTO `datastore` VALUES ('1', 'society_police', 'LSPD', '1');
-INSERT INTO `datastore` VALUES ('2', 'property', 'Propriété', '0');
-INSERT INTO `datastore` VALUES ('3', 'user_mask', 'Masque', '0');
+INSERT INTO `datastore` VALUES ('2', 'property', 'Gebäude', '0');
+INSERT INTO `datastore` VALUES ('3', 'user_mask', 'Masken', '0');
 
 -- ----------------------------
 -- Table structure for datastore_data
@@ -434,6 +444,8 @@ CREATE TABLE `datastore_data` (
 -- ----------------------------
 -- Records of datastore_data
 -- ----------------------------
+INSERT INTO `datastore_data` VALUES ('1', 'society_police', null, 0x7B7D);
+INSERT INTO `datastore_data` VALUES ('2', 'society_government', null, 0x7B7D);
 
 -- ----------------------------
 -- Table structure for fine_types
@@ -515,6 +527,23 @@ INSERT INTO `fine_types` VALUES ('63', 'Bildung einer Terroristischen Vereinigun
 INSERT INTO `fine_types` VALUES ('64', 'Ausübung einer Staatsgefährdenden Gewalttat (Terrorismus)', '20000', '6');
 
 -- ----------------------------
+-- Table structure for interiors
+-- ----------------------------
+DROP TABLE IF EXISTS `interiors`;
+CREATE TABLE `interiors` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'key id',
+  `enter` text NOT NULL COMMENT 'enter coords',
+  `exit` text NOT NULL COMMENT 'destination coords',
+  `iname` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of interiors
+-- ----------------------------
+INSERT INTO `interiors` VALUES ('1', '{-1045.888,-2751.017,21.3634,321.7075}', '{-1055.37,-2698.47,13.82,234.62}', 'first int');
+
+-- ----------------------------
 -- Table structure for items
 -- ----------------------------
 DROP TABLE IF EXISTS `items`;
@@ -567,13 +596,12 @@ INSERT INTO `items` VALUES ('35', 'carokit', 'Karosserie-Kit', '-1', '0', '1');
 INSERT INTO `items` VALUES ('66', 'trash1', 'Müll (1KG)', '50', '0', '1');
 INSERT INTO `items` VALUES ('67', 'trash2', 'Müll (2KG)', '50', '0', '1');
 INSERT INTO `items` VALUES ('68', 'trash3', 'Müll (3KG)', '50', '0', '1');
-INSERT INTO `items` VALUES ('69', 'beer', 'Bier', '-1', '0', '1');
 INSERT INTO `items` VALUES ('70', 'binsack', 'Müllsack', '100', '0', '1');
 INSERT INTO `items` VALUES ('71', 'bandage', 'Bandage', '20', '0', '1');
 INSERT INTO `items` VALUES ('72', 'medikit', 'Medikit', '5', '0', '1');
 INSERT INTO `items` VALUES ('73', 'defi', 'Defibrillator', '1', '0', '0');
 INSERT INTO `items` VALUES ('74', 'handcuffs', 'Handschellen', '-1', '0', '1');
-INSERT INTO `items` VALUES ('83', 'blackberry', 'BlackBerry MOTION', '1', '0', '1');
+INSERT INTO `items` VALUES ('75', 'blackberry', 'BlackBerry MOTION', '1', '1', '0');
 
 -- FOOD & DRINKS
 INSERT INTO `items` VALUES ('36', 'bread', 'Burger', '-1', '0', '1');
@@ -634,51 +662,29 @@ INSERT INTO `items` VALUES ('86', 'pralines', 'Schachtel Pralinen', '1', '0', '1
 INSERT INTO `items` VALUES ('87', 'ring', 'Goldener Ehering (24 Karat)', '2', '0', '1');
 INSERT INTO `items` VALUES ('88', 'defi', 'Defibrilator', '3', '0', '1');
 
--- ----------------------------
--- Table structure for jobs
--- ----------------------------
-DROP TABLE IF EXISTS `jobs`;
-CREATE TABLE `jobs` (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
-  `label` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `whitelisted` tinyint(1) NOT NULL DEFAULT 0,
-  `job_place` int(11) NOT NULL DEFAULT 1,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of jobs
--- ----------------------------
-INSERT INTO `jobs` VALUES ('1', 'unemployed', '❌ Arbeitslos', '0', '1');
-INSERT INTO `jobs` VALUES ('2', 'slaughterer', 'Schlachter', '0', '2');
-INSERT INTO `jobs` VALUES ('3', 'fisherman', 'Fischer', '0', '2');
-INSERT INTO `jobs` VALUES ('4', 'miner', '⛰ Bergarbeiter', '0', '2');
-INSERT INTO `jobs` VALUES ('5', 'lumberjack', 'Holzfäller', '0', '2');
-INSERT INTO `jobs` VALUES ('6', 'fuel', 'Refiner', '0', '2');
-INSERT INTO `jobs` VALUES ('7', 'reporter', 'Reporter', '1', '1');
-INSERT INTO `jobs` VALUES ('8', 'textil', 'Schneider', '0', '2');
-INSERT INTO `jobs` VALUES ('9', 'police', 'Polizist', '1', '1');
-INSERT INTO `jobs` VALUES ('10', 'mecano', 'Mechaniker', '1', '1');
-INSERT INTO `jobs` VALUES ('11', 'realestateagent', 'Makler', '1', '1');
-INSERT INTO `jobs` VALUES ('12', 'taxi', 'Taxi', '0', '1');
-INSERT INTO `jobs` VALUES ('13', 'ambulance', 'Sanitäter', '1', '1');
-INSERT INTO `jobs` VALUES ('14', 'cardealer', 'Autohändler', '1', '1');
-INSERT INTO `jobs` VALUES ('15', 'banker', 'Banker', '1', '1');
-INSERT INTO `jobs` VALUES ('16', 'muellmann', 'Müllmann', '1', '1');
-INSERT INTO `jobs` VALUES ('17', 'bus', 'Busfahrer', '0', '1');
-INSERT INTO `jobs` VALUES ('18', 'trucker', 'Spedition', '0', '2');
-INSERT INTO `jobs` VALUES ('19', 'garbageman', 'Müllmann', '1', '2');
-INSERT INTO `jobs` VALUES ('20', 'realgarbageman', 'Müllmann', '0', '2');
-INSERT INTO `jobs` VALUES ('21', 'unemployed', '❌ Arbeitslos', '0', '2');
-INSERT INTO `jobs` VALUES ('22', 'mafia', 'Mafia', '1', '2');
+-- weapon accessories
+INSERT INTO `items` VALUES ('2014', 'nightvision_scope', 'Night Vision Scope', '-1', '0', '1');
+INSERT INTO `items` VALUES ('2015', 'thermal_scope', 'Thermal Vision Scope', '-1', '0', '1');
+INSERT INTO `items` VALUES ('2016', 'extended_magazine', 'Extended Magazine', '-1', '0', '1');
+INSERT INTO `items` VALUES ('2017', 'very_extended_magazine', 'Very Extended Magazine', '-1', '0', '1');
+INSERT INTO `items` VALUES ('2018', 'scope', 'Scope', '-1', '0', '1');
+INSERT INTO `items` VALUES ('2019', 'advanced_scope', 'Advanced Scope', '-1', '0', '1');
+INSERT INTO `items` VALUES ('2020', 'yusuf', 'Luxury Skin', '-1', '0', '1');
+INSERT INTO `items` VALUES ('2021', 'lowrider', 'Lowrider Skin', '-1', '0', '1');
+INSERT INTO `items` VALUES ('2022', 'incendiary', 'Incendiary Bullets', '-1', '0', '1');
+INSERT INTO `items` VALUES ('2023', 'tracer_clip', 'Trackers Bullets', '-1', '0', '1');
+INSERT INTO `items` VALUES ('2024', 'hollow', 'Hollow Bullets', '-1', '0', '1');
+INSERT INTO `items` VALUES ('2025', 'fmj', 'Perforating Bullets', '-1', '0', '1');
+INSERT INTO `items` VALUES ('2026', 'lazer_scope', 'Lazer Scope', '-1', '0', '1');
+INSERT INTO `items` VALUES ('2027', 'compansator', 'Compensator', '-1', '0', '1');
+INSERT INTO `items` VALUES ('2028', 'barrel', 'Barrel', '-1', '0', '1');
 
 -- ----------------------------
 -- Table structure for job_grades
 -- ----------------------------
 DROP TABLE IF EXISTS `job_grades`;
 CREATE TABLE `job_grades` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `job_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
   `grade` int(11) NOT NULL,
   `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
@@ -687,7 +693,7 @@ CREATE TABLE `job_grades` (
   `skin_male` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `skin_female` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=115 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of job_grades
@@ -700,10 +706,6 @@ INSERT INTO `job_grades` VALUES ('5', 'reporter', '0', 'employee', 'Zeitarbeit',
 INSERT INTO `job_grades` VALUES ('6', 'textil', '0', 'interim', 'Zeitarbeit', '75', 0x7B226D61736B5F31223A302C2261726D73223A312C22676C61737365735F31223A302C22686169725F636F6C6F725F32223A342C226D616B6575705F31223A302C2266616365223A31392C22676C6173736573223A302C226D61736B5F32223A302C226D616B6575705F33223A302C22736B696E223A32392C2268656C6D65745F32223A302C226C6970737469636B5F34223A302C22736578223A302C22746F72736F5F31223A32342C226D616B6575705F32223A302C22626167735F32223A302C22636861696E5F32223A302C22656172735F31223A2D312C22626167735F31223A302C226270726F6F665F31223A302C2273686F65735F32223A302C226C6970737469636B5F32223A302C22636861696E5F31223A302C227473686972745F31223A302C2265796562726F77735F33223A302C2270616E74735F32223A302C2262656172645F34223A302C22746F72736F5F32223A302C2262656172645F32223A362C22656172735F32223A302C22686169725F32223A302C2273686F65735F31223A33362C227473686972745F32223A302C2262656172645F33223A302C22686169725F31223A322C22686169725F636F6C6F725F31223A302C2270616E74735F31223A34382C2268656C6D65745F31223A2D312C226270726F6F665F32223A302C2265796562726F77735F34223A302C2265796562726F77735F32223A302C22646563616C735F31223A302C226167655F32223A302C2262656172645F31223A352C2273686F6573223A31302C226C6970737469636B5F31223A302C2265796562726F77735F31223A302C22676C61737365735F32223A302C226D616B6575705F34223A302C22646563616C735F32223A302C226C6970737469636B5F33223A302C226167655F31223A307D, 0x7B226D61736B5F31223A302C2261726D73223A352C22676C61737365735F31223A352C22686169725F636F6C6F725F32223A342C226D616B6575705F31223A302C2266616365223A31392C22676C6173736573223A302C226D61736B5F32223A302C226D616B6575705F33223A302C22736B696E223A32392C2268656C6D65745F32223A302C226C6970737469636B5F34223A302C22736578223A312C22746F72736F5F31223A35322C226D616B6575705F32223A302C22626167735F32223A302C22636861696E5F32223A302C22656172735F31223A2D312C22626167735F31223A302C226270726F6F665F31223A302C2273686F65735F32223A312C226C6970737469636B5F32223A302C22636861696E5F31223A302C227473686972745F31223A32332C2265796562726F77735F33223A302C2270616E74735F32223A302C2262656172645F34223A302C22746F72736F5F32223A302C2262656172645F32223A362C22656172735F32223A302C22686169725F32223A302C2273686F65735F31223A34322C227473686972745F32223A342C2262656172645F33223A302C22686169725F31223A322C22686169725F636F6C6F725F31223A302C2270616E74735F31223A33362C2268656C6D65745F31223A2D312C226270726F6F665F32223A302C2265796562726F77735F34223A302C2265796562726F77735F32223A302C22646563616C735F31223A302C226167655F32223A302C2262656172645F31223A352C2273686F6573223A31302C226C6970737469636B5F31223A302C2265796562726F77735F31223A302C22676C61737365735F32223A302C226D616B6575705F34223A302C22646563616C735F32223A302C226C6970737469636B5F33223A302C226167655F31223A307D);
 INSERT INTO `job_grades` VALUES ('7', 'miner', '0', 'interim', 'Zeitarbeit', '75', 0x7B227473686972745F32223A312C22656172735F31223A382C22676C61737365735F31223A31352C22746F72736F5F32223A302C22656172735F32223A322C22676C61737365735F32223A332C2273686F65735F32223A312C2270616E74735F31223A37352C2273686F65735F31223A35312C22626167735F31223A302C2268656C6D65745F32223A302C2270616E74735F32223A372C22746F72736F5F31223A37312C227473686972745F31223A35392C2261726D73223A322C22626167735F32223A302C2268656C6D65745F31223A307D, 0x7B227473686972745F32223A312C22656172735F31223A382C22676C61737365735F31223A31352C22746F72736F5F32223A302C22656172735F32223A322C22676C61737365735F32223A332C2273686F65735F32223A312C2270616E74735F31223A37352C2273686F65735F31223A35312C22626167735F31223A302C2268656C6D65745F32223A302C2270616E74735F32223A372C22746F72736F5F31223A37312C227473686972745F31223A35392C2261726D73223A322C22626167735F32223A302C2268656C6D65745F31223A302C22736578223A317D);
 INSERT INTO `job_grades` VALUES ('8', 'slaughterer', '0', 'interim', 'Zeitarbeit', '75', 0x7B226167655F31223A302C22676C61737365735F32223A302C2262656172645F31223A352C22646563616C735F32223A302C2262656172645F34223A302C2273686F65735F32223A302C227473686972745F32223A302C226C6970737469636B5F32223A302C22686169725F32223A302C2261726D73223A36372C2270616E74735F31223A33362C22736B696E223A32392C2265796562726F77735F32223A302C2273686F6573223A31302C2268656C6D65745F31223A2D312C226C6970737469636B5F31223A302C2268656C6D65745F32223A302C22686169725F636F6C6F725F31223A302C22676C6173736573223A302C226D616B6575705F34223A302C226D616B6575705F31223A302C22686169725F31223A322C226270726F6F665F31223A302C22626167735F31223A302C226D61736B5F31223A302C226C6970737469636B5F33223A302C22636861696E5F31223A302C2265796562726F77735F34223A302C22736578223A302C22746F72736F5F31223A35362C2262656172645F32223A362C2273686F65735F31223A31322C22646563616C735F31223A302C2266616365223A31392C226C6970737469636B5F34223A302C227473686972745F31223A31352C226D61736B5F32223A302C226167655F32223A302C2265796562726F77735F33223A302C22636861696E5F32223A302C22676C61737365735F31223A302C22656172735F31223A2D312C22626167735F32223A302C22656172735F32223A302C22746F72736F5F32223A302C226270726F6F665F32223A302C226D616B6575705F32223A302C2265796562726F77735F31223A302C226D616B6575705F33223A302C2270616E74735F32223A302C2262656172645F33223A302C22686169725F636F6C6F725F32223A347D, 0x7B226167655F31223A302C22676C61737365735F32223A302C2262656172645F31223A352C22646563616C735F32223A302C2262656172645F34223A302C2273686F65735F32223A302C227473686972745F32223A302C226C6970737469636B5F32223A302C22686169725F32223A302C2261726D73223A37322C2270616E74735F31223A34352C22736B696E223A32392C2265796562726F77735F32223A302C2273686F6573223A31302C2268656C6D65745F31223A2D312C226C6970737469636B5F31223A302C2268656C6D65745F32223A302C22686169725F636F6C6F725F31223A302C22676C6173736573223A302C226D616B6575705F34223A302C226D616B6575705F31223A302C22686169725F31223A322C226270726F6F665F31223A302C22626167735F31223A302C226D61736B5F31223A302C226C6970737469636B5F33223A302C22636861696E5F31223A302C2265796562726F77735F34223A302C22736578223A312C22746F72736F5F31223A34392C2262656172645F32223A362C2273686F65735F31223A32342C22646563616C735F31223A302C2266616365223A31392C226C6970737469636B5F34223A302C227473686972745F31223A392C226D61736B5F32223A302C226167655F32223A302C2265796562726F77735F33223A302C22636861696E5F32223A302C22676C61737365735F31223A352C22656172735F31223A2D312C22626167735F32223A302C22656172735F32223A302C22746F72736F5F32223A302C226270726F6F665F32223A302C226D616B6575705F32223A302C2265796562726F77735F31223A302C226D616B6575705F33223A302C2270616E74735F32223A302C2262656172645F33223A302C22686169725F636F6C6F725F32223A347D);
-INSERT INTO `job_grades` VALUES ('9', 'police', '0', 'recruit', 'Rekrut', '450', 0x7B227473686972745F31223A35372C22746F72736F5F31223A35352C2261726D73223A302C2270616E74735F31223A33352C22676C6173736573223A302C22646563616C735F32223A302C22686169725F636F6C6F725F32223A302C2268656C6D65745F32223A302C22686169725F636F6C6F725F31223A352C2266616365223A31392C22676C61737365735F32223A312C22746F72736F5F32223A302C2273686F6573223A32342C22686169725F31223A322C22736B696E223A33342C22736578223A302C22676C61737365735F31223A302C2270616E74735F32223A302C22686169725F32223A302C22646563616C735F31223A302C227473686972745F32223A302C2268656C6D65745F31223A387D, 0x7B227473686972745F31223A33342C22746F72736F5F31223A34382C2273686F6573223A32342C2270616E74735F31223A33342C22746F72736F5F32223A302C22646563616C735F32223A302C22686169725F636F6C6F725F32223A302C22676C6173736573223A302C2268656C6D65745F32223A302C22686169725F32223A332C2266616365223A32312C22646563616C735F31223A302C22676C61737365735F32223A312C22686169725F31223A31312C22736B696E223A33342C22736578223A312C22676C61737365735F31223A352C2270616E74735F32223A302C2261726D73223A31342C22686169725F636F6C6F725F31223A31302C227473686972745F32223A302C2268656C6D65745F31223A35377D);
-INSERT INTO `job_grades` VALUES ('10', 'police', '1', 'patrol', 'Patrouille', '1350', 0x7B227473686972745F31223A35372C22746F72736F5F31223A35352C2261726D73223A302C2270616E74735F31223A33352C22676C6173736573223A302C22646563616C735F32223A302C22686169725F636F6C6F725F32223A302C2268656C6D65745F32223A302C22686169725F636F6C6F725F31223A352C2266616365223A31392C22676C61737365735F32223A312C22746F72736F5F32223A302C2273686F6573223A32342C22686169725F31223A322C22736B696E223A33342C22736578223A302C22676C61737365735F31223A302C2270616E74735F32223A302C22686169725F32223A302C22646563616C735F31223A302C227473686972745F32223A302C2268656C6D65745F31223A387D, 0x7B227473686972745F31223A33342C22746F72736F5F31223A34382C2273686F6573223A32342C2270616E74735F31223A33342C22746F72736F5F32223A302C22646563616C735F32223A302C22686169725F636F6C6F725F32223A302C22676C6173736573223A302C2268656C6D65745F32223A302C22686169725F32223A332C2266616365223A32312C22646563616C735F31223A302C22676C61737365735F32223A312C22686169725F31223A31312C22736B696E223A33342C22736578223A312C22676C61737365735F31223A352C2270616E74735F32223A302C2261726D73223A31342C22686169725F636F6C6F725F31223A31302C227473686972745F32223A302C2268656C6D65745F31223A35377D);
-INSERT INTO `job_grades` VALUES ('11', 'police', '2', 'detective', 'Detective', '1600', 0x7B227473686972745F31223A35372C22746F72736F5F31223A35352C2261726D73223A302C2270616E74735F31223A33352C22676C6173736573223A302C22646563616C735F32223A302C22686169725F636F6C6F725F32223A302C2268656C6D65745F32223A302C22686169725F636F6C6F725F31223A352C2266616365223A31392C22676C61737365735F32223A312C22746F72736F5F32223A302C2273686F6573223A32342C22686169725F31223A322C22736B696E223A33342C22736578223A302C22676C61737365735F31223A302C2270616E74735F32223A302C22686169725F32223A302C22646563616C735F31223A302C227473686972745F32223A302C2268656C6D65745F31223A387D, 0x7B227473686972745F31223A33342C22746F72736F5F31223A34382C2273686F6573223A32342C2270616E74735F31223A33342C22746F72736F5F32223A302C22646563616C735F32223A302C22686169725F636F6C6F725F32223A302C22676C6173736573223A302C2268656C6D65745F32223A302C22686169725F32223A332C2266616365223A32312C22646563616C735F31223A302C22676C61737365735F32223A312C22686169725F31223A31312C22736B696E223A33342C22736578223A312C22676C61737365735F31223A352C2270616E74735F32223A302C2261726D73223A31342C22686169725F636F6C6F725F31223A31302C227473686972745F32223A302C2268656C6D65745F31223A35377D);
-INSERT INTO `job_grades` VALUES ('12', 'police', '3', 'sergeant', 'Sergeant', '2000', 0x7B227473686972745F31223A35382C22746F72736F5F31223A35352C2273686F6573223A32342C2270616E74735F31223A33352C2270616E74735F32223A302C22646563616C735F32223A312C22686169725F636F6C6F725F32223A302C2266616365223A31392C2268656C6D65745F32223A302C22686169725F32223A302C2261726D73223A302C22646563616C735F31223A382C22746F72736F5F32223A302C22686169725F31223A322C22736B696E223A33342C22736578223A302C22676C61737365735F31223A302C22676C61737365735F32223A312C22686169725F636F6C6F725F31223A352C22676C6173736573223A302C227473686972745F32223A302C2268656C6D65745F31223A31317D, 0x7B227473686972745F31223A33352C22746F72736F5F31223A34382C2261726D73223A31342C2270616E74735F31223A33342C2270616E74735F32223A302C22646563616C735F32223A312C22686169725F636F6C6F725F32223A302C2273686F6573223A32342C2268656C6D65745F32223A302C22686169725F32223A332C22646563616C735F31223A372C22746F72736F5F32223A302C2266616365223A32312C22686169725F31223A31312C22736B696E223A33342C22736578223A312C22676C61737365735F31223A352C22676C61737365735F32223A312C22686169725F636F6C6F725F31223A31302C22676C6173736573223A302C227473686972745F32223A302C2268656C6D65745F31223A35377D);
 INSERT INTO `job_grades` VALUES ('13', 'mecano', '0', 'recrue', 'Rekrut', '600', 0x7B227473686972745F31223A35372C227473686972745F32223A302C22656172735F31223A302C22676C61737365735F31223A302C22746F72736F5F31223A392C22746F72736F5F32223A342C22656172735F32223A302C22676C61737365735F32223A302C2273686F65735F31223A33322C2273686F65735F32223A322C22626167735F31223A302C2270616E74735F31223A39302C2270616E74735F32223A392C2261726D73223A36332C22626167735F32223A302C2268656C6D65745F31223A37372C2268656C6D65745F32223A312C22736578223A307D, 0x7B227473686972745F31223A35372C227473686972745F32223A302C22656172735F31223A302C22676C61737365735F31223A302C22746F72736F5F31223A392C22746F72736F5F32223A342C22656172735F32223A302C22676C61737365735F32223A302C2273686F65735F31223A33322C2273686F65735F32223A322C22626167735F31223A302C2270616E74735F31223A39302C2270616E74735F32223A392C2261726D73223A36332C22626167735F32223A302C2268656C6D65745F31223A37372C2268656C6D65745F32223A312C22736578223A317D);
 INSERT INTO `job_grades` VALUES ('14', 'mecano', '1', 'novice', 'Anfänger', '800', 0x7B227473686972745F31223A35372C227473686972745F32223A302C22656172735F31223A302C22676C61737365735F31223A302C22746F72736F5F31223A392C22746F72736F5F32223A342C22656172735F32223A302C22676C61737365735F32223A302C2273686F65735F31223A33322C2273686F65735F32223A322C22626167735F31223A302C2270616E74735F31223A39302C2270616E74735F32223A392C2261726D73223A36332C22626167735F32223A302C2268656C6D65745F31223A37372C2268656C6D65745F32223A312C22736578223A307D, 0x7B227473686972745F31223A35372C227473686972745F32223A302C22656172735F31223A302C22676C61737365735F31223A302C22746F72736F5F31223A392C22746F72736F5F32223A342C22656172735F32223A302C22676C61737365735F32223A302C2273686F65735F31223A33322C2273686F65735F32223A322C22626167735F31223A302C2270616E74735F31223A39302C2270616E74735F32223A392C2261726D73223A36332C22626167735F32223A302C2268656C6D65745F31223A37372C2268656C6D65745F32223A312C22736578223A317D);
 INSERT INTO `job_grades` VALUES ('15', 'mecano', '2', 'experimente', 'Experte', '1100', 0x7B227473686972745F31223A35372C227473686972745F32223A302C22656172735F31223A302C22676C61737365735F31223A302C22746F72736F5F31223A392C22746F72736F5F32223A342C22656172735F32223A302C22676C61737365735F32223A302C2273686F65735F31223A33322C2273686F65735F32223A322C22626167735F31223A302C2270616E74735F31223A39302C2270616E74735F32223A392C2261726D73223A36332C22626167735F32223A302C2268656C6D65745F31223A37372C2268656C6D65745F32223A312C22736578223A307D, 0x7B227473686972745F31223A35372C227473686972745F32223A302C22656172735F31223A302C22676C61737365735F31223A302C22746F72736F5F31223A392C22746F72736F5F32223A342C22656172735F32223A302C22676C61737365735F32223A302C2273686F65735F31223A33322C2273686F65735F32223A322C22626167735F31223A302C2270616E74735F31223A39302C2270616E74735F32223A392C2261726D73223A36332C22626167735F32223A302C2268656C6D65745F31223A37372C2268656C6D65745F32223A312C22736578223A317D);
@@ -733,60 +735,44 @@ INSERT INTO `job_grades` VALUES ('42', 'bus', '1', 'novice', 'Anfänger', '124',
 INSERT INTO `job_grades` VALUES ('43', 'bus', '2', 'experimente', 'Experte', '136', 0x7B7D, 0x7B7D);
 INSERT INTO `job_grades` VALUES ('44', 'bus', '3', 'driver', 'Fahrer', '148', 0x7B7D, 0x7B7D);
 INSERT INTO `job_grades` VALUES ('45', 'bus', '4', 'boss', 'Chef', '0', 0x7B7D, 0x7B7D);
-INSERT INTO `job_grades` VALUES ('46', 'police', '4', 'lieutenant', 'Lieutenant', '2300', 0x7B227473686972745F31223A35382C22746F72736F5F31223A35352C2273686F6573223A32342C2270616E74735F31223A33352C2270616E74735F32223A302C22646563616C735F32223A312C22686169725F636F6C6F725F32223A302C2266616365223A31392C2268656C6D65745F32223A302C22686169725F32223A302C2261726D73223A302C22646563616C735F31223A382C22746F72736F5F32223A302C22686169725F31223A322C22736B696E223A33342C22736578223A302C22676C61737365735F31223A302C22676C61737365735F32223A312C22686169725F636F6C6F725F31223A352C22676C6173736573223A302C227473686972745F32223A302C2268656C6D65745F31223A31317D, 0x7B227473686972745F31223A33352C22746F72736F5F31223A34382C2261726D73223A31342C2270616E74735F31223A33342C2270616E74735F32223A302C22646563616C735F32223A312C22686169725F636F6C6F725F32223A302C2273686F6573223A32342C2268656C6D65745F32223A302C22686169725F32223A332C22646563616C735F31223A372C22746F72736F5F32223A302C2266616365223A32312C22686169725F31223A31312C22736B696E223A33342C22736578223A312C22676C61737365735F31223A352C22676C61737365735F32223A312C22686169725F636F6C6F725F31223A31302C22676C6173736573223A302C227473686972745F32223A302C2268656C6D65745F31223A35377D);
-INSERT INTO `job_grades` VALUES ('47', 'police', '5', 'captain', 'Captain', '2600', 0x7B227473686972745F31223A35382C22746F72736F5F31223A35352C2273686F6573223A32342C2270616E74735F31223A33352C2270616E74735F32223A302C22646563616C735F32223A322C22686169725F636F6C6F725F32223A302C2266616365223A31392C2268656C6D65745F32223A302C22686169725F32223A302C22676C6173736573223A302C22646563616C735F31223A382C22686169725F636F6C6F725F31223A352C22686169725F31223A322C22736B696E223A33342C22736578223A302C22676C61737365735F31223A302C22676C61737365735F32223A312C22746F72736F5F32223A302C2261726D73223A34312C227473686972745F32223A302C2268656C6D65745F31223A31317D, 0x7B227473686972745F31223A33352C22746F72736F5F31223A34382C2261726D73223A34342C2270616E74735F31223A33342C22686169725F32223A332C22646563616C735F32223A322C22686169725F636F6C6F725F32223A302C22686169725F636F6C6F725F31223A31302C2268656C6D65745F32223A302C2266616365223A32312C2273686F6573223A32342C22746F72736F5F32223A302C22676C61737365735F32223A312C22686169725F31223A31312C22736B696E223A33342C22736578223A312C22676C61737365735F31223A352C2270616E74735F32223A302C22646563616C735F31223A372C22676C6173736573223A302C227473686972745F32223A302C2268656C6D65745F31223A35377D);
-INSERT INTO `job_grades` VALUES ('48', 'police', '6', 'boss', 'Chief of Department', '3000', 0x7B227473686972745F31223A35382C22746F72736F5F31223A35352C2273686F6573223A32342C2270616E74735F31223A33352C2270616E74735F32223A302C22646563616C735F32223A332C22686169725F636F6C6F725F32223A302C2266616365223A31392C2268656C6D65745F32223A302C22686169725F32223A302C2261726D73223A34312C22746F72736F5F32223A302C22686169725F636F6C6F725F31223A352C22686169725F31223A322C22736B696E223A33342C22736578223A302C22676C61737365735F31223A302C22676C61737365735F32223A312C22646563616C735F31223A382C22676C6173736573223A302C227473686972745F32223A302C2268656C6D65745F31223A31317D, 0x7B227473686972745F31223A33352C22746F72736F5F31223A34382C2261726D73223A34342C2270616E74735F31223A33342C2270616E74735F32223A302C22646563616C735F32223A332C22686169725F636F6C6F725F32223A302C2266616365223A32312C2268656C6D65745F32223A302C22686169725F32223A332C22646563616C735F31223A372C22746F72736F5F32223A302C22686169725F636F6C6F725F31223A31302C22686169725F31223A31312C22736B696E223A33342C22736578223A312C22676C61737365735F31223A352C22676C61737365735F32223A312C2273686F6573223A32342C22676C6173736573223A302C227473686972745F32223A302C2268656C6D65745F31223A35377D);
 INSERT INTO `job_grades` VALUES ('49', 'trucker', '0', 'employee', 'Fahrer', '75', 0x7B227473686972745F31223A35392C22746F72736F5F31223A38392C2261726D73223A33312C2270616E74735F31223A33362C22676C61737365735F31223A31392C22646563616C735F32223A302C22686169725F636F6C6F725F32223A302C2268656C6D65745F32223A302C22686169725F636F6C6F725F31223A302C2266616365223A322C22676C61737365735F32223A302C22746F72736F5F32223A312C2273686F6573223A33352C22686169725F31223A302C22736B696E223A302C22736578223A302C22676C61737365735F31223A31392C2270616E74735F32223A302C22686169725F32223A302C22646563616C735F31223A302C227473686972745F32223A302C2268656C6D65745F31223A357D, 0x7B227473686972745F31223A33362C22746F72736F5F31223A302C2261726D73223A36382C2270616E74735F31223A33302C22676C61737365735F31223A31352C22646563616C735F32223A302C22686169725F636F6C6F725F32223A302C2268656C6D65745F32223A302C22686169725F636F6C6F725F31223A302C2266616365223A32372C22676C61737365735F32223A302C22746F72736F5F32223A31312C2273686F6573223A32362C22686169725F31223A352C22736B696E223A302C22736578223A312C22676C61737365735F31223A31352C2270616E74735F32223A322C22686169725F32223A302C22646563616C735F31223A302C227473686972745F32223A302C2268656C6D65745F31223A31397D);
 INSERT INTO `job_grades` VALUES ('50', 'garbageman', '0', 'employee', 'Fahrer', '75', 0x7B227473686972745F32223A302C22656172735F31223A382C22676C61737365735F31223A31352C22746F72736F5F32223A372C22656172735F32223A322C22676C61737365735F32223A332C2273686F65735F32223A332C2270616E74735F31223A332C2273686F65735F31223A31322C22626167735F31223A302C2268656C6D65745F32223A302C2270616E74735F32223A372C22746F72736F5F31223A332C227473686972745F31223A302C2261726D73223A31312C22626167735F32223A302C2268656C6D65745F31223A307D, 0x7B227473686972745F32223A302C22656172735F31223A382C22676C61737365735F31223A31352C22746F72736F5F32223A372C22656172735F32223A322C22676C61737365735F32223A332C2273686F65735F32223A332C2270616E74735F31223A332C2273686F65735F31223A31322C22626167735F31223A302C2268656C6D65745F32223A302C2270616E74735F32223A372C22746F72736F5F31223A332C227473686972745F31223A302C2261726D73223A31312C22626167735F32223A302C2268656C6D65745F31223A302C22736578223A317D);
 INSERT INTO `job_grades` VALUES ('51', 'realgarbageman', '0', 'employee', 'Fahrer', '75', 0x7B227473686972745F32223A302C22656172735F31223A382C22676C61737365735F31223A31352C22746F72736F5F32223A372C22656172735F32223A322C22676C61737365735F32223A332C2273686F65735F32223A332C2270616E74735F31223A332C2273686F65735F31223A31322C22626167735F31223A302C2268656C6D65745F32223A302C2270616E74735F32223A372C22746F72736F5F31223A332C227473686972745F31223A302C2261726D73223A31312C22626167735F32223A302C2268656C6D65745F31223A307D, 0x7B227473686972745F32223A302C22656172735F31223A382C22676C61737365735F31223A31352C22746F72736F5F32223A372C22656172735F32223A322C22676C61737365735F32223A332C2273686F65735F32223A332C2270616E74735F31223A332C2273686F65735F31223A31322C22626167735F31223A302C2268656C6D65745F32223A302C2270616E74735F32223A372C22746F72736F5F31223A332C227473686972745F31223A302C2261726D73223A31312C22626167735F32223A302C2268656C6D65745F31223A302C22736578223A317D);
-INSERT INTO `job_grades` VALUES ('52', 'mafia', '0', 'recruit', 'Made Man', '250', 0x7B7D, 0x7B7D);
-INSERT INTO `job_grades` VALUES ('53', 'mafia', '1', 'novice', 'Caporegime', '600', 0x7B7D, 0x7B7D);
-INSERT INTO `job_grades` VALUES ('54', 'mafia', '2', 'experience', 'Underboss', '1000', 0x7B7D, 0x7B7D);
-INSERT INTO `job_grades` VALUES ('55', 'mafia', '3', 'boss', 'Boss', '1500', 0x7B7D, 0x7B7D);
-INSERT INTO `job_grades` VALUES ('70', 'ambulance', '0', 'trainee', 'Praktikant', '200', 0x7B226270726F6F665F31223A302C226270726F6F665F32223A302C227473686972745F31223A31352C227473686972745F32223A302C22746F72736F5F31223A3134362C22746F72736F5F32223A382C22646563616C735F31223A302C22646563616C735F32223A302C2261726D73223A38352C2270616E74735F31223A32342C2270616E74735F32223A352C2273686F65735F31223A31302C2273686F65735F32223A302C2268656C6D65745F31223A2D312C2268656C6D65745F32223A307D, 0x7B227473686972745F31223A31352C227473686972745F32223A302C22746F72736F5F31223A3134312C22746F72736F5F32223A302C22646563616C735F31223A302C22646563616C735F32223A302C2261726D73223A39382C2270616E74735F31223A32332C2270616E74735F32223A302C2273686F65735F31223A31302C2273686F65735F32223A312C2268656C6D65745F31223A2D312C2268656C6D65745F32223A307D);
-INSERT INTO `job_grades` VALUES ('71', 'ambulance', '1', 'medic', 'Rettungshelfer', '800', 0x7B226270726F6F665F31223A302C226270726F6F665F32223A302C227473686972745F31223A31352C227473686972745F32223A302C22746F72736F5F31223A3134362C22746F72736F5F32223A362C22646563616C735F31223A302C22646563616C735F32223A302C2261726D73223A38352C2270616E74735F31223A32342C2270616E74735F32223A352C2273686F65735F31223A31302C2273686F65735F32223A302C2268656C6D65745F31223A2D312C2268656C6D65745F32223A307D, 0x7B227473686972745F31223A31352C227473686972745F32223A302C22746F72736F5F31223A3134312C22746F72736F5F32223A312C22646563616C735F31223A302C22646563616C735F32223A302C2261726D73223A39382C2270616E74735F31223A32332C2270616E74735F32223A302C2273686F65735F31223A31302C2273686F65735F32223A312C2268656C6D65745F31223A2D312C2268656C6D65745F32223A307D);
-INSERT INTO `job_grades` VALUES ('72', 'ambulance', '2', 'paramedic', 'Rettungssanitäter', '1200', 0x7B226270726F6F665F31223A302C226270726F6F665F32223A302C227473686972745F31223A31352C227473686972745F32223A302C22746F72736F5F31223A36312C22746F72736F5F32223A302C22646563616C735F31223A302C22646563616C735F32223A302C2261726D73223A38382C2270616E74735F31223A35392C2270616E74735F32223A382C2273686F65735F31223A32342C2273686F65735F32223A302C2268656C6D65745F31223A2D312C2268656C6D65745F32223A307D, 0x7B227473686972745F31223A31352C227473686972745F32223A302C22746F72736F5F31223A35342C22746F72736F5F32223A302C22646563616C735F31223A302C22646563616C735F32223A302C2261726D73223A39392C2270616E74735F31223A36312C2270616E74735F32223A382C2273686F65735F31223A32342C2273686F65735F32223A302C2268656C6D65745F31223A2D312C2268656C6D65745F32223A307D);
-INSERT INTO `job_grades` VALUES ('73', 'ambulance', '3', 'emergencyparamedic', 'Notfallsanitäter', '1500', 0x7B226270726F6F665F31223A302C226270726F6F665F32223A302C227473686972745F31223A31352C227473686972745F32223A302C22746F72736F5F31223A36312C22746F72736F5F32223A322C22646563616C735F31223A302C22646563616C735F32223A302C2261726D73223A38382C2270616E74735F31223A35392C2270616E74735F32223A342C2273686F65735F31223A32342C2273686F65735F32223A302C2268656C6D65745F31223A2D312C2268656C6D65745F32223A307D, 0x7B227473686972745F31223A31352C227473686972745F32223A302C22746F72736F5F31223A35342C22746F72736F5F32223A322C22646563616C735F31223A302C22646563616C735F32223A302C2261726D73223A39392C2270616E74735F31223A36312C2270616E74735F32223A342C2273686F65735F31223A32342C2273686F65735F32223A302C2268656C6D65745F31223A2D312C2268656C6D65745F32223A307D);
-INSERT INTO `job_grades` VALUES ('74', 'ambulance', '4', 'doctor', 'Notarzt', '2200', 0x7B226270726F6F665F31223A302C226270726F6F665F32223A302C227473686972745F31223A31352C227473686972745F32223A302C22746F72736F5F31223A35302C22746F72736F5F32223A332C22646563616C735F31223A302C22646563616C735F32223A302C2261726D73223A38382C2270616E74735F31223A35392C2270616E74735F32223A342C2273686F65735F31223A32342C2273686F65735F32223A302C2268656C6D65745F31223A2D312C2268656C6D65745F32223A307D, 0x7B227473686972745F31223A31342C227473686972745F32223A302C22746F72736F5F31223A34332C22746F72736F5F32223A332C22646563616C735F31223A302C22646563616C735F32223A302C2261726D73223A3130312C2270616E74735F31223A36312C2270616E74735F32223A342C2273686F65735F31223A32342C2273686F65735F32223A302C2268656C6D65745F31223A2D312C2268656C6D65745F32223A307D);
-INSERT INTO `job_grades` VALUES ('75', 'ambulance', '5', 'chief', 'Leitender Notarzt', '2800', 0x7B226270726F6F665F31223A302C226270726F6F665F32223A302C227473686972745F31223A31352C227473686972745F32223A302C22746F72736F5F31223A3131312C22746F72736F5F32223A352C22646563616C735F31223A302C22646563616C735F32223A302C2261726D73223A38382C2270616E74735F31223A35392C2270616E74735F32223A342C2273686F65735F31223A32342C2273686F65735F32223A302C2268656C6D65745F31223A2D312C2268656C6D65745F32223A307D, 0x7B227473686972745F31223A31342C227473686972745F32223A302C22746F72736F5F31223A3133362C22746F72736F5F32223A352C22646563616C735F31223A302C22646563616C735F32223A302C2261726D73223A3130312C2270616E74735F31223A36312C2270616E74735F32223A342C2273686F65735F31223A32342C2273686F65735F32223A302C2268656C6D65745F31223A2D312C2268656C6D65745F32223A307D);
-INSERT INTO `job_grades` VALUES ('76', 'ambulance', '6', 'boss', 'Ärztlicher Leiter', '3000', 0x7B226270726F6F665F31223A302C226270726F6F665F32223A302C227473686972745F31223A31352C227473686972745F32223A302C22746F72736F5F31223A3131312C22746F72736F5F32223A332C22646563616C735F31223A302C22646563616C735F32223A302C2261726D73223A38382C2270616E74735F31223A35392C2270616E74735F32223A342C2273686F65735F31223A32342C2273686F65735F32223A302C2268656C6D65745F31223A2D312C2268656C6D65745F32223A307D, 0x7B227473686972745F31223A31342C227473686972745F32223A302C22746F72736F5F31223A3133362C22746F72736F5F32223A332C22646563616C735F31223A302C22646563616C735F32223A302C2261726D73223A3130312C2270616E74735F31223A36312C2270616E74735F32223A342C2273686F65735F31223A32342C2273686F65735F32223A302C2268656C6D65745F31223A2D312C2268656C6D65745F32223A307D);
-
--- ----------------------------
--- Table structure for job_vehicles
--- ----------------------------
-DROP TABLE IF EXISTS `job_vehicles`;
-CREATE TABLE `job_vehicles` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(60) NOT NULL,
-  `model` varchar(60) NOT NULL,
-  `price` int(11) NOT NULL,
-  `category` varchar(60) DEFAULT NULL,
-  `job` varchar(60) NOT NULL,
-  `grade` int(11) NOT NULL DEFAULT 0,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of job_vehicles
--- ----------------------------
-INSERT INTO `job_vehicles` VALUES ('2', 'Taxi', 'taxi', '3000', 'taxi', 'taxi', '0');
-INSERT INTO `job_vehicles` VALUES ('3', 'Krankenwagen', 'ambulance', '3000', 'ambulance', 'ambulance', '0');
-INSERT INTO `job_vehicles` VALUES ('4', 'Tieflader', 'flatbed', '3000', 'mecano', 'mecano', '0');
-INSERT INTO `job_vehicles` VALUES ('6', 'Leihwagen', 'asea', '4250', 'mecano', 'mecano', '0');
-INSERT INTO `job_vehicles` VALUES ('7', 'Interceptor Sedan', 'police4', '3000', 'police', 'police', '0');
-INSERT INTO `job_vehicles` VALUES ('8', 'CVPI', 'police', '8000', 'police', 'police', '1');
-INSERT INTO `job_vehicles` VALUES ('9', 'Dodge Changer', 'police2', '12000', 'police', 'police', '1');
-INSERT INTO `job_vehicles` VALUES ('10', 'Interceptor Utility', 'police3', '12000', 'police', 'police', '1');
-INSERT INTO `job_vehicles` VALUES ('11', 'Motorrad', 'policeb', '5000', 'police', 'police', '1');
-INSERT INTO `job_vehicles` VALUES ('12', 'Riot (Sperre)', 'riot', '50000', 'police', 'police', '3');
-INSERT INTO `job_vehicles` VALUES ('13', 'Sheriff 1 (Auto)', 'sheriff', '20000', 'police', 'police', '2');
-INSERT INTO `job_vehicles` VALUES ('14', 'Sheriff 2 (SUV)', 'sheriff2', '22000', 'police', 'police', '2');
-INSERT INTO `job_vehicles` VALUES ('15', 'Transporter', 'policet', '24000', 'police', 'police', '2');
-INSERT INTO `job_vehicles` VALUES ('16', 'Ferrari', 'polf430', '200000', 'police', 'police', '3');
-INSERT INTO `job_vehicles` VALUES ('17', 'FBI 1 (Auto)', 'fbi', '100000', 'police', 'police', '3');
-INSERT INTO `job_vehicles` VALUES ('18', 'FBI 1 (SUV)', 'fbi2', '120000', 'police', 'police', '3');
-INSERT INTO `job_vehicles` VALUES ('19', 'NEF 1 (Auto)', 'fbi', '100000', 'ambulance', 'ambulance', '5');
-INSERT INTO `job_vehicles` VALUES ('20', 'NEF 2 (SUV)', 'fbi2', '120000', 'ambulance', 'ambulance', '5');
+INSERT INTO `job_grades` VALUES ('52', 'mafia', '0', 'interim', 'Mafia', '250', 0x7B7D, 0x7B7D);
+INSERT INTO `job_grades` VALUES ('81', 'police', '0', 'recruit', 'Recruit', '100', 0x7B7D, 0x7B7D);
+INSERT INTO `job_grades` VALUES ('82', 'police', '1', 'officer', 'Police Officer I', '200', 0x7B7D, 0x7B7D);
+INSERT INTO `job_grades` VALUES ('83', 'police', '2', 'officer', 'Police Officer II', '300', 0x7B7D, 0x7B7D);
+INSERT INTO `job_grades` VALUES ('84', 'police', '3', 'officer', 'Police Officer III', '400', 0x7B7D, 0x7B7D);
+INSERT INTO `job_grades` VALUES ('85', 'police', '4', 'officer', 'Sergant I', '450', 0x7B7D, 0x7B7D);
+INSERT INTO `job_grades` VALUES ('86', 'police', '5', 'officer', 'Sergant II', '475', 0x7B7D, 0x7B7D);
+INSERT INTO `job_grades` VALUES ('87', 'police', '6', 'sergeant', 'Detective I', '500', 0x7B7D, 0x7B7D);
+INSERT INTO `job_grades` VALUES ('88', 'police', '7', 'sergeant', 'Detective II', '525', 0x7B7D, 0x7B7D);
+INSERT INTO `job_grades` VALUES ('89', 'police', '8', 'sergeant', 'Detective III', '550', 0x7B7D, 0x7B7D);
+INSERT INTO `job_grades` VALUES ('90', 'police', '9', 'lieutenant', 'Lieutenant', '575', 0x7B7D, 0x7B7D);
+INSERT INTO `job_grades` VALUES ('91', 'police', '10', 'lieutenant', 'Captain', '600', 0x7B7D, 0x7B7D);
+INSERT INTO `job_grades` VALUES ('92', 'police', '11', 'lieutenant', 'Commander', '700', 0x7B7D, 0x7B7D);
+INSERT INTO `job_grades` VALUES ('93', 'police', '12', 'boss', 'Deputy Chief', '800', 0x7B7D, 0x7B7D);
+INSERT INTO `job_grades` VALUES ('94', 'police', '13', 'boss', 'Assistant Chief', '900', 0x7B7D, 0x7B7D);
+INSERT INTO `job_grades` VALUES ('95', 'police', '14', 'boss', 'Chief of Police', '950', 0x7B7D, 0x7B7D);
+INSERT INTO `job_grades` VALUES ('96', 'ambulance', '0', 'trainee', 'Volunteer', '100', 0x7B0A2020202020202020202261726D7322203A2039302C0A202020202020202020226270726F6F665F3122203A20302C0A202020202020202020226270726F6F665F3222203A20302C0A092022646563616C735F3122203A2035372C0A20202020202020202022646563616C735F3222203A20302C0A2020202020202020202268656C6D65745F3122203A203132322C0A2020202020202020202268656C6D65745F3222203A20312C0A2020202020202020202270616E74735F3122203A2035392C0A2020202020202020202270616E74735F3222203A20392C0A2020202020202020202273686F65735F3122203A2032342C0A2020202020202020202273686F65735F3222203A20302C0A20202020202020202022746F72736F5F3122203A203234392C0A20202020202020202022746F72736F5F3222203A20312C0A202020202020202020227473686972745F3122203A2031352C0A202020202020202020227473686972745F3222203A20300A207D, 0x7B0A202020202020202020226270726F6F665F3122203A20302C0A202020202020202020226270726F6F665F3222203A20302C0A2020202020202020202261726D7322203A203130352C0A20202020202020202022646563616C735F3122203A2036352C0A20202020202020202022646563616C735F3222203A20302C0A2020202020202020202268656C6D65745F3122203A203132312C0A2020202020202020202268656C6D65745F3222203A20312C0A2020202020202020202270616E74735F3122203A2036312C0A2020202020202020202270616E74735F3222203A20392C0A2020202020202020202273686F65735F3122203A2032342C0A2020202020202020202273686F65735F3222203A20302C0A20202020202020202022746F72736F5F3122203A203235372C0A20202020202020202022746F72736F5F3222203A20312C0A202020202020202020227473686972745F3122203A2031342C0A202020202020202020227473686972745F3222203A20300A207D);
+INSERT INTO `job_grades` VALUES ('97', 'ambulance', '1', 'medic', 'First Responder', '150', 0x7B0A2020202020202020202261726D7322203A2039302C0A202020202020202020226270726F6F665F3122203A20302C0A202020202020202020226270726F6F665F3222203A20302C0A092022646563616C735F3122203A2035372C0A20202020202020202022646563616C735F3222203A20302C0A2020202020202020202268656C6D65745F3122203A203132322C0A2020202020202020202268656C6D65745F3222203A20312C0A2020202020202020202270616E74735F3122203A2035392C0A2020202020202020202270616E74735F3222203A20392C0A2020202020202020202273686F65735F3122203A2032342C0A2020202020202020202273686F65735F3222203A20302C0A20202020202020202022746F72736F5F3122203A203234392C0A20202020202020202022746F72736F5F3222203A20312C0A202020202020202020227473686972745F3122203A2031352C0A202020202020202020227473686972745F3222203A20300A207D, 0x7B0A202020202020202020226270726F6F665F3122203A20302C0A202020202020202020226270726F6F665F3222203A20302C0A2020202020202020202261726D7322203A203130352C0A20202020202020202022646563616C735F3122203A2036352C0A20202020202020202022646563616C735F3222203A20302C0A2020202020202020202268656C6D65745F3122203A203132312C0A2020202020202020202268656C6D65745F3222203A20312C0A2020202020202020202270616E74735F3122203A2036312C0A2020202020202020202270616E74735F3222203A20392C0A2020202020202020202273686F65735F3122203A2032342C0A2020202020202020202273686F65735F3222203A20302C0A20202020202020202022746F72736F5F3122203A203235372C0A20202020202020202022746F72736F5F3222203A20312C0A202020202020202020227473686972745F3122203A2031342C0A202020202020202020227473686972745F3222203A20300A207D);
+INSERT INTO `job_grades` VALUES ('98', 'ambulance', '2', 'medic', 'EMR', '200', 0x7B0A2020202020202020202261726D7322203A2039302C0A202020202020202020226270726F6F665F3122203A20302C0A202020202020202020226270726F6F665F3222203A20302C0A092022646563616C735F3122203A2035372C0A20202020202020202022646563616C735F3222203A20302C0A2020202020202020202268656C6D65745F3122203A203132322C0A2020202020202020202268656C6D65745F3222203A20312C0A2020202020202020202270616E74735F3122203A2035392C0A2020202020202020202270616E74735F3222203A20392C0A2020202020202020202273686F65735F3122203A2032342C0A2020202020202020202273686F65735F3222203A20302C0A20202020202020202022746F72736F5F3122203A203234392C0A20202020202020202022746F72736F5F3222203A20312C0A202020202020202020227473686972745F3122203A2031352C0A202020202020202020227473686972745F3222203A20300A207D, 0x7B0A202020202020202020226270726F6F665F3122203A20302C0A202020202020202020226270726F6F665F3222203A20302C0A2020202020202020202261726D7322203A203130352C0A20202020202020202022646563616C735F3122203A2036352C0A20202020202020202022646563616C735F3222203A20302C0A2020202020202020202268656C6D65745F3122203A203132312C0A2020202020202020202268656C6D65745F3222203A20312C0A2020202020202020202270616E74735F3122203A2036312C0A2020202020202020202270616E74735F3222203A20392C0A2020202020202020202273686F65735F3122203A2032342C0A2020202020202020202273686F65735F3222203A20302C0A20202020202020202022746F72736F5F3122203A203235372C0A20202020202020202022746F72736F5F3222203A20312C0A202020202020202020227473686972745F3122203A2031342C0A202020202020202020227473686972745F3222203A20300A207D);
+INSERT INTO `job_grades` VALUES ('99', 'ambulance', '3', 'paramedic', 'EMT', '250', 0x7B0A2020202020202020202261726D7322203A2039302C0A202020202020202020226270726F6F665F3122203A20302C0A202020202020202020226270726F6F665F3222203A20302C0A092022646563616C735F3122203A2035372C0A20202020202020202022646563616C735F3222203A20302C0A2020202020202020202268656C6D65745F3122203A203132322C0A2020202020202020202268656C6D65745F3222203A20312C0A2020202020202020202270616E74735F3122203A2035392C0A2020202020202020202270616E74735F3222203A20392C0A2020202020202020202273686F65735F3122203A2032342C0A2020202020202020202273686F65735F3222203A20302C0A20202020202020202022746F72736F5F3122203A203234392C0A20202020202020202022746F72736F5F3222203A20312C0A202020202020202020227473686972745F3122203A2031352C0A202020202020202020227473686972745F3222203A20300A207D, 0x7B0A202020202020202020226270726F6F665F3122203A20302C0A202020202020202020226270726F6F665F3222203A20302C0A2020202020202020202261726D7322203A203130352C0A20202020202020202022646563616C735F3122203A2036352C0A20202020202020202022646563616C735F3222203A20302C0A2020202020202020202268656C6D65745F3122203A203132312C0A2020202020202020202268656C6D65745F3222203A20312C0A2020202020202020202270616E74735F3122203A2036312C0A2020202020202020202270616E74735F3222203A20392C0A2020202020202020202273686F65735F3122203A2032342C0A2020202020202020202273686F65735F3222203A20302C0A20202020202020202022746F72736F5F3122203A203235372C0A20202020202020202022746F72736F5F3222203A20312C0A202020202020202020227473686972745F3122203A2031342C0A202020202020202020227473686972745F3222203A20300A207D);
+INSERT INTO `job_grades` VALUES ('100', 'ambulance', '4', 'paramedic', 'AEMT', '300', 0x7B0A2020202020202020202261726D7322203A2039302C0A202020202020202020226270726F6F665F3122203A20302C0A202020202020202020226270726F6F665F3222203A20302C0A092022646563616C735F3122203A2035372C0A20202020202020202022646563616C735F3222203A20302C0A2020202020202020202268656C6D65745F3122203A203132322C0A2020202020202020202268656C6D65745F3222203A20312C0A2020202020202020202270616E74735F3122203A2035392C0A2020202020202020202270616E74735F3222203A20392C0A2020202020202020202273686F65735F3122203A2032342C0A2020202020202020202273686F65735F3222203A20302C0A20202020202020202022746F72736F5F3122203A203234392C0A20202020202020202022746F72736F5F3222203A20312C0A202020202020202020227473686972745F3122203A2031352C0A202020202020202020227473686972745F3222203A20300A207D, 0x7B0A202020202020202020226270726F6F665F3122203A20302C0A202020202020202020226270726F6F665F3222203A20302C0A2020202020202020202261726D7322203A203130352C0A20202020202020202022646563616C735F3122203A2036352C0A20202020202020202022646563616C735F3222203A20302C0A2020202020202020202268656C6D65745F3122203A203132312C0A2020202020202020202268656C6D65745F3222203A20312C0A2020202020202020202270616E74735F3122203A2036312C0A2020202020202020202270616E74735F3222203A20392C0A2020202020202020202273686F65735F3122203A2032342C0A2020202020202020202273686F65735F3222203A20302C0A20202020202020202022746F72736F5F3122203A203235372C0A20202020202020202022746F72736F5F3222203A20312C0A202020202020202020227473686972745F3122203A2031342C0A202020202020202020227473686972745F3222203A20300A207D);
+INSERT INTO `job_grades` VALUES ('101', 'ambulance', '5', 'emergencyparamedic', 'Paramedic', '350', 0x7B0A2020202020202020202261726D7322203A2039302C0A202020202020202020226270726F6F665F3122203A20302C0A202020202020202020226270726F6F665F3222203A20302C0A092022646563616C735F3122203A2035372C0A20202020202020202022646563616C735F3222203A20302C0A2020202020202020202268656C6D65745F3122203A203132322C0A2020202020202020202268656C6D65745F3222203A20312C0A2020202020202020202270616E74735F3122203A2035392C0A2020202020202020202270616E74735F3222203A20382C0A2020202020202020202273686F65735F3122203A2032342C0A2020202020202020202273686F65735F3222203A20302C0A20202020202020202022746F72736F5F3122203A203234392C0A20202020202020202022746F72736F5F3222203A20312C0A202020202020202020227473686972745F3122203A2031352C0A202020202020202020227473686972745F3222203A20300A207D, 0x7B0A202020202020202020226270726F6F665F3122203A20302C0A202020202020202020226270726F6F665F3222203A20302C0A2020202020202020202261726D7322203A203130352C0A20202020202020202022646563616C735F3122203A2036352C0A20202020202020202022646563616C735F3222203A20302C0A2020202020202020202268656C6D65745F3122203A203132312C0A2020202020202020202268656C6D65745F3222203A20312C0A2020202020202020202270616E74735F3122203A2036312C0A2020202020202020202270616E74735F3222203A20382C0A2020202020202020202273686F65735F3122203A2032342C0A2020202020202020202273686F65735F3222203A20302C0A20202020202020202022746F72736F5F3122203A203235372C0A20202020202020202022746F72736F5F3222203A20312C0A202020202020202020227473686972745F3122203A2031342C0A202020202020202020227473686972745F3222203A20300A207D);
+INSERT INTO `job_grades` VALUES ('102', 'ambulance', '6', 'doctor', 'Assistant Physician, M.D.', '500', 0x7B0A2020202020202020202261726D7322203A2038352C0A202020202020202020226270726F6F665F3122203A20302C0A202020202020202020226270726F6F665F3222203A20302C0A20202020202020202022646563616C735F3122203A2035382C0A20202020202020202022646563616C735F3222203A20302C0A2020202020202020202268656C6D65745F3122203A203132322C0A2020202020202020202268656C6D65745F3222203A20312C0A2020202020202020202270616E74735F3122203A2035392C0A2020202020202020202270616E74735F3222203A20392C0A2020202020202020202273686F65735F3122203A2032342C0A2020202020202020202273686F65735F3222203A20302C0A20202020202020202022746F72736F5F3122203A203235302C0A20202020202020202022746F72736F5F3222203A20312C0A202020202020202020227473686972745F3122203A203132392C0A202020202020202020227473686972745F3222203A20300A207D, 0x7B0A202020202020202020226270726F6F665F3122203A20302C0A202020202020202020226270726F6F665F3222203A20302C0A2020202020202020202261726D7322203A203130392C0A20202020202020202022646563616C735F3122203A2036362C0A20202020202020202022646563616C735F3222203A20302C0A2020202020202020202268656C6D65745F3122203A203132312C0A2020202020202020202268656C6D65745F3222203A20312C0A2020202020202020202270616E74735F3122203A2036312C0A2020202020202020202270616E74735F3222203A20392C0A2020202020202020202273686F65735F3122203A2032342C0A2020202020202020202273686F65735F3222203A20302C0A20202020202020202022746F72736F5F3122203A203235382C0A20202020202020202022746F72736F5F3222203A20312C0A202020202020202020227473686972745F3122203A203135392C0A202020202020202020227473686972745F3222203A20300A207D);
+INSERT INTO `job_grades` VALUES ('103', 'ambulance', '7', 'chief', 'Emergency Physician, M.D.', '550', 0x7B0A2020202020202020202261726D7322203A2038352C0A202020202020202020226270726F6F665F3122203A20302C0A202020202020202020226270726F6F665F3222203A20302C0A20202020202020202022646563616C735F3122203A2035382C0A20202020202020202022646563616C735F3222203A20302C0A2020202020202020202268656C6D65745F3122203A203132322C0A2020202020202020202268656C6D65745F3222203A20312C0A2020202020202020202270616E74735F3122203A2035392C0A2020202020202020202270616E74735F3222203A20382C0A2020202020202020202273686F65735F3122203A2032342C0A2020202020202020202273686F65735F3222203A20302C0A20202020202020202022746F72736F5F3122203A203235302C0A20202020202020202022746F72736F5F3222203A20312C0A202020202020202020227473686972745F3122203A203132392C0A202020202020202020227473686972745F3222203A20300A207D, 0x7B0A202020202020202020226270726F6F665F3122203A20302C0A202020202020202020226270726F6F665F3222203A20302C0A2020202020202020202261726D7322203A203130392C0A20202020202020202022646563616C735F3122203A2036362C0A20202020202020202022646563616C735F3222203A20302C0A2020202020202020202268656C6D65745F3122203A203132312C0A2020202020202020202268656C6D65745F3222203A20312C0A2020202020202020202270616E74735F3122203A2036312C0A2020202020202020202270616E74735F3222203A20382C0A2020202020202020202273686F65735F3122203A2032342C0A2020202020202020202273686F65735F3222203A20302C0A20202020202020202022746F72736F5F3122203A203235382C0A20202020202020202022746F72736F5F3222203A20312C0A202020202020202020227473686972745F3122203A203135392C0A202020202020202020227473686972745F3222203A20300A207D);
+INSERT INTO `job_grades` VALUES ('104', 'ambulance', '8', 'boss', 'Senior Physician, M.D.', '650', 0x7B0A2020202020202020202261726D7322203A2038352C0A202020202020202020226270726F6F665F3122203A20302C0A202020202020202020226270726F6F665F3222203A20302C0A20202020202020202022646563616C735F3122203A2035382C0A20202020202020202022646563616C735F3222203A20302C0A2020202020202020202268656C6D65745F3122203A203132322C0A2020202020202020202268656C6D65745F3222203A20302C0A2020202020202020202270616E74735F3122203A2035392C0A2020202020202020202270616E74735F3222203A20392C0A2020202020202020202273686F65735F3122203A2032342C0A2020202020202020202273686F65735F3222203A20302C0A20202020202020202022746F72736F5F3122203A203235302C0A20202020202020202022746F72736F5F3222203A20302C0A202020202020202020227473686972745F3122203A203132392C0A202020202020202020227473686972745F3222203A20300A207D, 0x7B0A202020202020202020226270726F6F665F3122203A20302C0A202020202020202020226270726F6F665F3222203A20302C0A2020202020202020202261726D7322203A203130392C0A20202020202020202022646563616C735F3122203A2036362C0A20202020202020202022646563616C735F3222203A20302C0A2020202020202020202268656C6D65745F3122203A203132312C0A2020202020202020202268656C6D65745F3222203A20302C0A2020202020202020202270616E74735F3122203A2036312C0A2020202020202020202270616E74735F3222203A20392C0A2020202020202020202273686F65735F3122203A2032342C0A2020202020202020202273686F65735F3222203A20302C0A20202020202020202022746F72736F5F3122203A203235382C0A20202020202020202022746F72736F5F3222203A20302C0A202020202020202020227473686972745F3122203A203135392C0A202020202020202020227473686972745F3222203A20300A207D);
+INSERT INTO `job_grades` VALUES ('105', 'ambulance', '9', 'boss', 'Head Physician, M.D.', '850', 0x7B0A2020202020202020202261726D7322203A2038352C0A202020202020202020226270726F6F665F3122203A20302C0A202020202020202020226270726F6F665F3222203A20302C0A20202020202020202022646563616C735F3122203A2035382C0A20202020202020202022646563616C735F3222203A20302C0A2020202020202020202268656C6D65745F3122203A203132322C0A2020202020202020202268656C6D65745F3222203A20302C0A2020202020202020202270616E74735F3122203A2035392C0A2020202020202020202270616E74735F3222203A20382C0A2020202020202020202273686F65735F3122203A2032342C0A2020202020202020202273686F65735F3222203A20302C0A20202020202020202022746F72736F5F3122203A203235302C0A20202020202020202022746F72736F5F3222203A20302C0A202020202020202020227473686972745F3122203A203132392C0A202020202020202020227473686972745F3222203A20300A207D, 0x7B0A202020202020202020226270726F6F665F3122203A20302C0A202020202020202020226270726F6F665F3222203A20302C0A2020202020202020202261726D7322203A203130392C0A20202020202020202022646563616C735F3122203A2036362C0A20202020202020202022646563616C735F3222203A20302C0A2020202020202020202268656C6D65745F3122203A203132312C0A2020202020202020202268656C6D65745F3222203A20302C0A2020202020202020202270616E74735F3122203A2036312C0A2020202020202020202270616E74735F3222203A20382C0A2020202020202020202273686F65735F3122203A2032342C0A2020202020202020202273686F65735F3222203A20302C0A20202020202020202022746F72736F5F3122203A203235382C0A20202020202020202022746F72736F5F3222203A20302C0A202020202020202020227473686972745F3122203A203135392C0A202020202020202020227473686972745F3222203A20300A207D);
+INSERT INTO `job_grades` VALUES ('106', 'government', '0', 'security', 'Junior Agent', '400', 0x7B227473686972745F31223A342C227473686972745F32223A302C22746F72736F5F31223A32372C22746F72736F5F32223A302C22646563616C735F31223A302C22646563616C735F32223A302C2261726D73223A33332C2270616E74735F31223A32352C2270616E74735F32223A302C2273686F65735F31223A31322C2273686F65735F32223A362C2268656C6D65745F31223A2D312C2268656C6D65745F32223A302C22636861696E5F31223A32342C22636861696E5F32223A327D, 0x7B227473686972745F31223A32302C227473686972745F32223A312C22746F72736F5F31223A362C22746F72736F5F32223A342C22646563616C735F31223A302C22646563616C735F32223A302C2261726D73223A312C2270616E74735F31223A362C2270616E74735F32223A302C2273686F65735F31223A32322C2273686F65735F32223A312C2268656C6D65745F31223A2D312C2268656C6D65745F32223A307D);
+INSERT INTO `job_grades` VALUES ('107', 'government', '1', 'agent', 'Agent', '450', 0x7B227473686972745F31223A342C227473686972745F32223A302C22746F72736F5F31223A32372C22746F72736F5F32223A302C22646563616C735F31223A302C22646563616C735F32223A302C2261726D73223A33332C2270616E74735F31223A32352C2270616E74735F32223A302C2273686F65735F31223A31322C2273686F65735F32223A362C2268656C6D65745F31223A2D312C2268656C6D65745F32223A302C22636861696E5F31223A32342C22636861696E5F32223A327D, 0x7B227473686972745F31223A32302C227473686972745F32223A312C22746F72736F5F31223A362C22746F72736F5F32223A342C22646563616C735F31223A302C22646563616C735F32223A302C2261726D73223A312C2270616E74735F31223A362C2270616E74735F32223A302C2273686F65735F31223A32322C2273686F65735F32223A312C2268656C6D65745F31223A2D312C2268656C6D65745F32223A307D);
+INSERT INTO `job_grades` VALUES ('108', 'government', '2', 'agent', 'Senior Agent', '500', 0x7B227473686972745F31223A342C227473686972745F32223A302C22746F72736F5F31223A32372C22746F72736F5F32223A302C22646563616C735F31223A302C22646563616C735F32223A302C2261726D73223A33332C2270616E74735F31223A32352C2270616E74735F32223A302C2273686F65735F31223A31322C2273686F65735F32223A362C2268656C6D65745F31223A2D312C2268656C6D65745F32223A302C22636861696E5F31223A32342C22636861696E5F32223A327D, 0x7B227473686972745F31223A32302C227473686972745F32223A312C22746F72736F5F31223A362C22746F72736F5F32223A342C22646563616C735F31223A302C22646563616C735F32223A302C2261726D73223A312C2270616E74735F31223A362C2270616E74735F32223A302C2273686F65735F31223A32322C2273686F65735F32223A312C2268656C6D65745F31223A2D312C2268656C6D65745F32223A307D);
+INSERT INTO `job_grades` VALUES ('109', 'government', '3', 'agent', 'Head Agent', '550', 0x7B227473686972745F31223A342C227473686972745F32223A302C22746F72736F5F31223A32372C22746F72736F5F32223A302C22646563616C735F31223A302C22646563616C735F32223A302C2261726D73223A33332C2270616E74735F31223A32352C2270616E74735F32223A302C2273686F65735F31223A31322C2273686F65735F32223A362C2268656C6D65745F31223A2D312C2268656C6D65745F32223A302C22636861696E5F31223A32342C22636861696E5F32223A327D, 0x7B227473686972745F31223A32302C227473686972745F32223A312C22746F72736F5F31223A362C22746F72736F5F32223A342C22646563616C735F31223A302C22646563616C735F32223A302C2261726D73223A312C2270616E74735F31223A362C2270616E74735F32223A302C2273686F65735F31223A32322C2273686F65735F32223A312C2268656C6D65745F31223A2D312C2268656C6D65745F32223A307D);
+INSERT INTO `job_grades` VALUES ('110', 'government', '4', 'specagent', 'Special Agent', '700', 0x7B227473686972745F31223A342C227473686972745F32223A302C22746F72736F5F31223A32372C22746F72736F5F32223A302C22646563616C735F31223A302C22646563616C735F32223A302C2261726D73223A33332C2270616E74735F31223A32352C2270616E74735F32223A302C2273686F65735F31223A31322C2273686F65735F32223A362C2268656C6D65745F31223A2D312C2268656C6D65745F32223A302C22636861696E5F31223A32342C22636861696E5F32223A327D, 0x7B227473686972745F31223A32302C227473686972745F32223A312C22746F72736F5F31223A362C22746F72736F5F32223A342C22646563616C735F31223A302C22646563616C735F32223A302C2261726D73223A312C2270616E74735F31223A362C2270616E74735F32223A302C2273686F65735F31223A32322C2273686F65735F32223A312C2268656C6D65745F31223A2D312C2268656C6D65745F32223A307D);
+INSERT INTO `job_grades` VALUES ('111', 'government', '5', 'boss', 'Deputy Director', '750', 0x7B227473686972745F31223A342C227473686972745F32223A302C22746F72736F5F31223A32372C22746F72736F5F32223A302C22646563616C735F31223A302C22646563616C735F32223A302C2261726D73223A33332C2270616E74735F31223A32352C2270616E74735F32223A302C2273686F65735F31223A31322C2273686F65735F32223A362C2268656C6D65745F31223A2D312C2268656C6D65745F32223A302C22636861696E5F31223A32342C22636861696E5F32223A327D, 0x7B227473686972745F31223A32302C227473686972745F32223A312C22746F72736F5F31223A362C22746F72736F5F32223A342C22646563616C735F31223A302C22646563616C735F32223A302C2261726D73223A312C2270616E74735F31223A362C2270616E74735F32223A302C2273686F65735F31223A32322C2273686F65735F32223A312C2268656C6D65745F31223A2D312C2268656C6D65745F32223A307D);
+INSERT INTO `job_grades` VALUES ('112', 'government', '6', 'boss', 'Director', '800', 0x7B227473686972745F31223A342C227473686972745F32223A302C22746F72736F5F31223A32372C22746F72736F5F32223A302C22646563616C735F31223A302C22646563616C735F32223A302C2261726D73223A33332C2270616E74735F31223A32352C2270616E74735F32223A302C2273686F65735F31223A31322C2273686F65735F32223A362C2268656C6D65745F31223A2D312C2268656C6D65745F32223A302C22636861696E5F31223A32342C22636861696E5F32223A327D, 0x7B227473686972745F31223A32302C227473686972745F32223A312C22746F72736F5F31223A362C22746F72736F5F32223A342C22646563616C735F31223A302C22646563616C735F32223A302C2261726D73223A312C2270616E74735F31223A362C2270616E74735F32223A302C2273686F65735F31223A32322C2273686F65735F32223A312C2268656C6D65745F31223A2D312C2268656C6D65745F32223A307D);
+INSERT INTO `job_grades` VALUES ('113', 'government', '7', 'senator', 'Senator', '900', 0x7B227473686972745F31223A342C227473686972745F32223A302C22746F72736F5F31223A32382C22746F72736F5F32223A302C22646563616C735F31223A302C22646563616C735F32223A302C2261726D73223A312C2270616E74735F31223A32352C2270616E74735F32223A302C2273686F65735F31223A35352C2273686F65735F32223A392C2268656C6D65745F31223A2D312C2268656C6D65745F32223A302C22636861696E5F31223A32342C22636861696E5F32223A327D, 0x7B227473686972745F31223A32302C227473686972745F32223A302C22746F72736F5F31223A362C22746F72736F5F32223A302C22646563616C735F31223A302C22646563616C735F32223A302C2261726D73223A312C2270616E74735F31223A382C2270616E74735F32223A302C2273686F65735F31223A31392C2273686F65735F32223A392C2268656C6D65745F31223A2D312C2268656C6D65745F32223A307D);
+INSERT INTO `job_grades` VALUES ('114', 'government', '8', 'boss', 'President', '1000', 0x7B227473686972745F31223A342C227473686972745F32223A302C22746F72736F5F31223A32382C22746F72736F5F32223A302C22646563616C735F31223A302C22646563616C735F32223A302C2261726D73223A312C2270616E74735F31223A32352C2270616E74735F32223A302C2273686F65735F31223A35352C2273686F65735F32223A352C2268656C6D65745F31223A2D312C2268656C6D65745F32223A302C22636861696E5F31223A32342C22636861696E5F32223A357D, 0x7B227473686972745F31223A32302C227473686972745F32223A322C22746F72736F5F31223A362C22746F72736F5F32223A342C22646563616C735F31223A302C22646563616C735F32223A302C2261726D73223A312C2270616E74735F31223A382C2270616E74735F32223A302C2273686F65735F31223A32302C2273686F65735F32223A342C2268656C6D65745F31223A2D312C2268656C6D65745F32223A307D);
 
 -- ----------------------------
 -- Table structure for job_vehicle_categories
@@ -808,6 +794,80 @@ INSERT INTO `job_vehicle_categories` VALUES ('3', 'ambulance', 'Sanitäter');
 INSERT INTO `job_vehicle_categories` VALUES ('4', 'mecano', 'Mechaniker');
 
 -- ----------------------------
+-- Table structure for job_vehicles
+-- ----------------------------
+DROP TABLE IF EXISTS `job_vehicles`;
+CREATE TABLE `job_vehicles` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(60) NOT NULL,
+  `model` varchar(60) NOT NULL,
+  `price` int(11) NOT NULL,
+  `category` varchar(60) DEFAULT NULL,
+  `job` varchar(60) NOT NULL,
+  `grade` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of job_vehicles
+-- ----------------------------
+INSERT INTO `job_vehicles` VALUES ('2', 'Taxi', 'taxi', '41590', 'taxi', 'taxi', '0');
+INSERT INTO `job_vehicles` VALUES ('4', 'ADAC Abschleppwagen', 'flatbed', '127000', 'mecano', 'mecano', '0');
+INSERT INTO `job_vehicles` VALUES ('7', 'kl. ADAC Abschleppwagen', 'towtruck', '50900', 'mecano', 'mecano', '0');
+INSERT INTO `job_vehicles` VALUES ('8', 'ADAC Vito', 'burrito4', '45280', 'mecano', 'mecano', '0');
+INSERT INTO `job_vehicles` VALUES ('9', 'ADAC VW Caddy', 'utillitruck3', '21863', 'mecano', 'mecano', '0');
+INSERT INTO `job_vehicles` VALUES ('10', 'ADAC Ford Crown Victoria', 'asea', '12169', 'mecano', 'mecano', '0');
+INSERT INTO `job_vehicles` VALUES ('42', 'RTW', 'ambulance', '89000', 'ambulance', 'ambulance', '0');
+INSERT INTO `job_vehicles` VALUES ('43', 'NEF T6', 'lspd12', '51230', 'ambulance', 'ambulance', '0');
+INSERT INTO `job_vehicles` VALUES ('44', 'NEF Offroad', 'pranger', '32750', 'ambulance', 'ambulance', '0');
+INSERT INTO `job_vehicles` VALUES ('45', 'Tahoe Chiefcar', 'lspd11', '32750', 'ambulance', 'ambulance', '0');
+INSERT INTO `job_vehicles` VALUES ('53', 'NEF BMW', 'lspd10', '55000', 'ambulance', 'ambulance', '0');
+INSERT INTO `job_vehicles` VALUES ('54', 'Ford CVPI', 'police1', '23450', 'police', 'police', '0');
+INSERT INTO `job_vehicles` VALUES ('55', 'Ford Taurus PI', 'police2', '26450', 'police', 'police', '0');
+INSERT INTO `job_vehicles` VALUES ('56', 'Ford CVPI Sheriff', 'sfbc4', '23450', 'police', 'police', '0');
+INSERT INTO `job_vehicles` VALUES ('57', 'Dodge Charger Sheriff', 'sfbc2', '29750', 'police', 'police', '0');
+
+-- ----------------------------
+-- Table structure for jobs
+-- ----------------------------
+DROP TABLE IF EXISTS `jobs`;
+CREATE TABLE `jobs` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `label` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
+  `whitelisted` tinyint(1) NOT NULL DEFAULT '0',
+  `job_place` int(11) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of jobs
+-- ----------------------------
+INSERT INTO `jobs` VALUES ('1', 'unemployed', '❌ Arbeitslos', '0', '1');
+INSERT INTO `jobs` VALUES ('2', 'slaughterer', 'Schlachter', '0', '2');
+INSERT INTO `jobs` VALUES ('3', 'fisherman', 'Fischer', '0', '2');
+INSERT INTO `jobs` VALUES ('4', 'miner', '⛰ Bergarbeiter', '0', '2');
+INSERT INTO `jobs` VALUES ('5', 'lumberjack', 'Holzfäller', '0', '2');
+INSERT INTO `jobs` VALUES ('6', 'fuel', 'Refiner', '0', '2');
+INSERT INTO `jobs` VALUES ('7', 'reporter', 'Reporter', '1', '1');
+INSERT INTO `jobs` VALUES ('8', 'textil', 'Schneider', '0', '2');
+INSERT INTO `jobs` VALUES ('9', 'police', 'Polizist', '1', '1');
+INSERT INTO `jobs` VALUES ('10', 'mecano', 'Mechaniker', '1', '1');
+INSERT INTO `jobs` VALUES ('11', 'realestateagent', 'Makler', '1', '1');
+INSERT INTO `jobs` VALUES ('12', 'taxi', 'Taxi', '0', '1');
+INSERT INTO `jobs` VALUES ('13', 'ambulance', 'Sanitäter', '1', '1');
+INSERT INTO `jobs` VALUES ('14', 'cardealer', 'Autohändler', '1', '1');
+INSERT INTO `jobs` VALUES ('15', 'banker', 'Banker', '1', '1');
+INSERT INTO `jobs` VALUES ('16', 'muellmann', 'Müllmann', '1', '1');
+INSERT INTO `jobs` VALUES ('17', 'bus', 'Busfahrer', '0', '1');
+INSERT INTO `jobs` VALUES ('18', 'trucker', 'Spedition', '0', '2');
+INSERT INTO `jobs` VALUES ('19', 'garbageman', 'Müllmann', '1', '2');
+INSERT INTO `jobs` VALUES ('20', 'realgarbageman', 'Müllmann', '0', '2');
+INSERT INTO `jobs` VALUES ('21', 'unemployed', '❌ Arbeitslos', '0', '2');
+INSERT INTO `jobs` VALUES ('22', 'mafia', 'Mafia', '1', '2');
+INSERT INTO `jobs` VALUES ('23', 'government', 'Regierung', '1', '1');
+
+-- ----------------------------
 -- Table structure for licenses
 -- ----------------------------
 DROP TABLE IF EXISTS `licenses`;
@@ -822,10 +882,10 @@ CREATE TABLE `licenses` (
 -- Records of licenses
 -- ----------------------------
 INSERT INTO `licenses` VALUES ('1', 'dmv', 'Theoretische-Prüfung');
-INSERT INTO `licenses` VALUES ('2', 'drive', 'Autoführerschein');
-INSERT INTO `licenses` VALUES ('3', 'drive_bike', 'Motorradführerschein');
-INSERT INTO `licenses` VALUES ('4', 'drive_truck', 'Lkwführerschein');
-INSERT INTO `licenses` VALUES ('5', 'weapon', 'Waffenschein');
+INSERT INTO `licenses` VALUES ('2', 'drive', 'Auto-Führerschein');
+INSERT INTO `licenses` VALUES ('3', 'drive_bike', 'Motorrad-Führerschein');
+INSERT INTO `licenses` VALUES ('4', 'drive_truck', 'LKW-Führerschein');
+INSERT INTO `licenses` VALUES ('5', 'weapon', 'Lizenz zum Tragen von Handfeuerwaffen');
 
 -- ----------------------------
 -- Table structure for owned_job_vehicles
@@ -838,10 +898,6 @@ CREATE TABLE `owned_job_vehicles` (
   `job` varchar(60) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of owned_job_vehicles
--- ----------------------------
 
 -- ----------------------------
 -- Table structure for owned_properties
@@ -857,10 +913,6 @@ CREATE TABLE `owned_properties` (
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of owned_properties
--- ----------------------------
-
--- ----------------------------
 -- Table structure for owned_vehicles
 -- ----------------------------
 DROP TABLE IF EXISTS `owned_vehicles`;
@@ -868,13 +920,17 @@ CREATE TABLE `owned_vehicles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `vehicle` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `owner` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
-  `state` tinyint(1) NOT NULL DEFAULT 0 COMMENT 'Etat de la voiture',
+  `state` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'Etat de la voiture',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of owned_vehicles
 -- ----------------------------
+-- BirdMachine
+INSERT INTO `owned_vehicles` VALUES ('1', 0x7B226D6F6446726F6E74576865656C73223A32302C226D6F64537472757473223A2D312C226865616C7468223A3938302C226D6F6457696E646F7773223A2D312C226D6F6446726F6E7442756D706572223A2D312C226D6F644772696C6C65223A2D312C226D6F644C6976657279223A2D312C226D6F64456E67696E65426C6F636B223A2D312C226D6F6441726368436F766572223A2D312C226D6F644272616B6573223A322C22636F6C6F7232223A3131332C2274797265536D6F6B65436F6C6F72223A5B302C302C3132385D2C226D6F645472616E736D697373696F6E223A322C226D6F644F726E616D656E7473223A2D312C226D6F64506C617465486F6C646572223A2D312C226D6F6453696465536B697274223A2D312C226D6F64537065616B657273223A2D312C22706C617465223A2232324A5944353536222C226D6F64486F6F64223A2D312C226D6F64536869667465724C656176657273223A2D312C22636F6C6F7231223A31312C22706561726C657363656E74436F6C6F72223A38312C226D6F6454616E6B223A2D312C226D6F6446656E646572223A2D312C226D6F64446F6F72537065616B6572223A2D312C226D6F6444617368626F617264223A2D312C22646972744C6576656C223A382E3238303631333839393233312C226D6F64526967687446656E646572223A2D312C22776865656C73223A372C226D6F6441657269616C73223A2D312C226D6F64536D6F6B65456E61626C6564223A312C226D6F64487964726F6C6963223A2D312C226D6F64486F726E73223A2D312C2277696E646F7754696E74223A332C226D6F644261636B576865656C73223A2D312C226D6F6441697246696C746572223A2D312C226E656F6E436F6C6F72223A5B302C302C3132385D2C226D6F64456E67696E65223A332C226D6F645265617242756D706572223A2D312C226D6F6458656E6F6E223A312C226D6F64547572626F223A312C22706C617465496E646578223A312C226D6F64526F6F66223A2D312C226D6F645472696D42223A2D312C22776865656C436F6C6F72223A3135362C226D6F6445786861757374223A2D312C226D6F6453757370656E73696F6E223A332C226D6F6441506C617465223A2D312C226D6F6453706F696C657273223A2D312C226D6F6456616E697479506C617465223A2D312C226D6F645472756E6B223A2D312C226D6F645365617473223A2D312C226D6F645374656572696E67576865656C223A2D312C226D6F644469616C223A2D312C226D6F6441726D6F72223A342C226E656F6E456E61626C6564223A5B312C312C312C315D2C226D6F645472696D41223A2D312C226D6F644672616D65223A2D312C226D6F64656C223A2D313539393335383132317D, 'steam:110000106abab10', '1');
+INSERT INTO `owned_vehicles` VALUES ('2', 0x7B226D6F6446726F6E74576865656C73223A31372C226D6F64537472757473223A2D312C226865616C7468223A313030302C226D6F6457696E646F7773223A2D312C226D6F6446726F6E7442756D706572223A312C226D6F644772696C6C65223A312C226D6F644C6976657279223A2D312C226D6F64456E67696E65426C6F636B223A2D312C226D6F6441726368436F766572223A2D312C226D6F644272616B6573223A322C22636F6C6F7232223A3131382C2274797265536D6F6B65436F6C6F72223A5B302C3235352C305D2C226D6F645472616E736D697373696F6E223A322C226D6F644F726E616D656E7473223A2D312C226D6F64506C617465486F6C646572223A2D312C226D6F6453696465536B697274223A312C226D6F64537065616B657273223A2D312C22706C617465223A223230454442303839222C226D6F64486F6F64223A322C226D6F64536869667465724C656176657273223A2D312C22636F6C6F7231223A31312C22706561726C657363656E74436F6C6F72223A3131322C226D6F6454616E6B223A2D312C226D6F6446656E646572223A2D312C226D6F64446F6F72537065616B6572223A2D312C226D6F6444617368626F617264223A2D312C22646972744C6576656C223A302E323334323733323834363733372C226D6F64526967687446656E646572223A2D312C22776865656C73223A372C226D6F6441657269616C73223A2D312C226D6F64536D6F6B65456E61626C6564223A312C226D6F64487964726F6C6963223A2D312C226D6F64486F726E73223A34322C2277696E646F7754696E74223A312C226D6F644261636B576865656C73223A2D312C226D6F6441697246696C746572223A2D312C226E656F6E436F6C6F72223A5B302C3235352C305D2C226D6F64456E67696E65223A332C226D6F645265617242756D706572223A312C226D6F6458656E6F6E223A312C226D6F64547572626F223A312C22706C617465496E646578223A312C226D6F64526F6F66223A302C226D6F645472696D42223A2D312C22776865656C436F6C6F72223A39322C226D6F6445786861757374223A302C226D6F6453757370656E73696F6E223A332C226D6F6441506C617465223A2D312C226D6F6453706F696C657273223A342C226D6F6456616E697479506C617465223A2D312C226D6F645472756E6B223A2D312C226D6F645365617473223A2D312C226D6F645374656572696E67576865656C223A2D312C226D6F644469616C223A2D312C226D6F6441726D6F72223A342C226E656F6E456E61626C6564223A5B312C312C312C315D2C226D6F645472696D41223A2D312C226D6F644672616D65223A2D312C226D6F64656C223A313039333639373035347D, 'steam:110000106abab10', '1');
+INSERT INTO `owned_vehicles` VALUES ('3', 0x7B226D6F6446726F6E74576865656C73223A2D312C226D6F64537472757473223A2D312C226865616C7468223A3939392C226D6F6457696E646F7773223A2D312C226D6F6446726F6E7442756D706572223A2D312C226D6F644772696C6C65223A2D312C226D6F644C6976657279223A2D312C226D6F64456E67696E65426C6F636B223A2D312C226D6F6441726368436F766572223A2D312C226D6F644272616B6573223A2D312C22636F6C6F7232223A322C2274797265536D6F6B65436F6C6F72223A5B3235352C3235352C3235355D2C226D6F645472616E736D697373696F6E223A2D312C226D6F644F726E616D656E7473223A2D312C226D6F64506C617465486F6C646572223A2D312C226D6F6453696465536B697274223A2D312C226D6F64537065616B657273223A2D312C22706C617465223A223231494E43393333222C226D6F64486F6F64223A2D312C226D6F64536869667465724C656176657273223A2D312C22636F6C6F7231223A322C22706561726C657363656E74436F6C6F72223A372C226D6F6454616E6B223A2D312C226D6F6446656E646572223A2D312C226D6F64446F6F72537065616B6572223A2D312C226D6F6444617368626F617264223A2D312C22646972744C6576656C223A362E353438393038373130343739382C226D6F64526967687446656E646572223A2D312C22776865656C73223A372C226D6F6441657269616C73223A2D312C226D6F64536D6F6B65456E61626C6564223A312C226D6F64487964726F6C6963223A2D312C226D6F64486F726E73223A2D312C2277696E646F7754696E74223A2D312C226D6F644261636B576865656C73223A2D312C226D6F6441697246696C746572223A2D312C226E656F6E436F6C6F72223A5B3133352C3230362C3233355D2C226D6F64456E67696E65223A2D312C226D6F645265617242756D706572223A2D312C226D6F6458656E6F6E223A312C226D6F64547572626F223A312C22706C617465496E646578223A312C226D6F64526F6F66223A2D312C226D6F645472696D42223A2D312C22776865656C436F6C6F72223A3135362C226D6F6445786861757374223A2D312C226D6F6453757370656E73696F6E223A2D312C226D6F6441506C617465223A2D312C226D6F6453706F696C657273223A2D312C226D6F6456616E697479506C617465223A2D312C226D6F645472756E6B223A2D312C226D6F645365617473223A2D312C226D6F645374656572696E67576865656C223A2D312C226D6F644469616C223A2D312C226D6F6441726D6F72223A2D312C226E656F6E456E61626C6564223A5B312C312C312C315D2C226D6F645472696D41223A2D312C226D6F644672616D65223A2D312C226D6F64656C223A2D3330393130353136397D, 'steam:110000106abab10', '1');
 
 -- ----------------------------
 -- Table structure for properties
@@ -907,7 +963,7 @@ INSERT INTO `properties` VALUES ('3', 'RichardMajesticApt2', 'Richard Majestic, 
 INSERT INTO `properties` VALUES ('4', 'NorthConkerAvenue2044', '2044 North Conker Avenue', '{\"y\":440.8,\"z\":146.702,\"x\":346.964}', '{\"y\":437.456,\"z\":148.394,\"x\":341.683}', '{\"y\":435.626,\"z\":148.394,\"x\":339.595}', '{\"x\":350.535,\"y\":443.329,\"z\":145.764}', '[]', null, '1', '1', '0', '{\"x\":337.726,\"y\":436.985,\"z\":140.77}', '1500000');
 INSERT INTO `properties` VALUES ('5', 'WildOatsDrive', '3655 Wild Oats Drive', '{\"y\":502.696,\"z\":136.421,\"x\":-176.003}', '{\"y\":497.817,\"z\":136.653,\"x\":-174.349}', '{\"y\":495.069,\"z\":136.666,\"x\":-173.331}', '{\"y\":506.412,\"z\":135.0664,\"x\":-177.927}', '[]', null, '1', '1', '0', '{\"x\":-174.725,\"y\":493.095,\"z\":129.043}', '1500000');
 INSERT INTO `properties` VALUES ('6', 'HillcrestAvenue2862', '2862 Hillcrest Avenue', '{\"y\":596.58,\"z\":142.641,\"x\":-686.554}', '{\"y\":591.988,\"z\":144.392,\"x\":-681.728}', '{\"y\":590.608,\"z\":144.392,\"x\":-680.124}', '{\"y\":599.019,\"z\":142.059,\"x\":-689.492}', '[]', null, '1', '1', '0', '{\"x\":-680.46,\"y\":588.6,\"z\":136.769}', '1500000');
-INSERT INTO `properties` VALUES ('7', 'LowEndApartment', 'Appartement de base', '{\"y\":-1078.735,\"z\":28.4031,\"x\":292.528}', '{\"y\":-1007.152,\"z\":-102.002,\"x\":265.845}', '{\"y\":-1002.802,\"z\":-100.008,\"x\":265.307}', '{\"y\":-1078.669,\"z\":28.401,\"x\":296.738}', '[]', null, '1', '1', '0', '{\"x\":265.916,\"y\":-999.38,\"z\":-100.008}', '562500');
+INSERT INTO `properties` VALUES ('7', 'LowEndApartment', 'Appartement de base', '{\"y\":-1078.735,\"z\":28.4031,\"x\":292.528}', '{\"y\":-1007.152,\"z\":-102.002,\"x\":265.845}', '{\"y\":-1002.802,\"z\":-100.008,\"x\":265.307}', '{\"y\":-1078.669,\"z\":28.401,\"x\":296.738}', '[]', null, '1', '1', '0', '{\"x\":265.916,\"y\":-999.38,\"z\":-100.008}', '125790');
 INSERT INTO `properties` VALUES ('8', 'MadWayneThunder', '2113 Mad Wayne Thunder', '{\"y\":454.955,\"z\":96.462,\"x\":-1294.433}', '{\"x\":-1289.917,\"y\":449.541,\"z\":96.902}', '{\"y\":446.322,\"z\":96.899,\"x\":-1289.642}', '{\"y\":455.453,\"z\":96.517,\"x\":-1298.851}', '[]', null, '1', '1', '0', '{\"x\":-1287.306,\"y\":455.901,\"z\":89.294}', '1500000');
 INSERT INTO `properties` VALUES ('9', 'HillcrestAvenue2874', '2874 Hillcrest Avenue', '{\"x\":-853.346,\"y\":696.678,\"z\":147.782}', '{\"y\":690.875,\"z\":151.86,\"x\":-859.961}', '{\"y\":688.361,\"z\":151.857,\"x\":-859.395}', '{\"y\":701.628,\"z\":147.773,\"x\":-855.007}', '[]', null, '1', '1', '0', '{\"x\":-858.543,\"y\":697.514,\"z\":144.253}', '1500000');
 INSERT INTO `properties` VALUES ('10', 'HillcrestAvenue2868', '2868 Hillcrest Avenue', '{\"y\":620.494,\"z\":141.588,\"x\":-752.82}', '{\"y\":618.62,\"z\":143.153,\"x\":-759.317}', '{\"y\":617.629,\"z\":143.153,\"x\":-760.789}', '{\"y\":621.281,\"z\":141.254,\"x\":-750.919}', '[]', null, '1', '1', '0', '{\"x\":-762.504,\"y\":618.992,\"z\":135.53}', '1500000');
@@ -973,7 +1029,6 @@ INSERT INTO `properties` VALUES ('69', 'MBWExecutive Contrast', 'MBW Executive C
 INSERT INTO `properties` VALUES ('70', 'MBWPowerBrokerIce', 'MBW Power Broker Ice', null, '{\"x\":-1392.74,\"y\":-480.18,\"z\":71.14}', '{\"x\":-1389.43,\"y\":-479.01,\"z\":71.14}', null, '[\"ex_sm_15_office_03a\"]', 'MazeBankWest', '0', '1', '0', '{\"x\":-1390.76,\"y\":-479.22,\"z\":72.04}', '2700000');
 INSERT INTO `properties` VALUES ('71', 'MBWPowerBrokerConvservative', 'MBW Power Broker Convservative', null, '{\"x\":-1392.74,\"y\":-480.18,\"z\":71.14}', '{\"x\":-1389.43,\"y\":-479.01,\"z\":71.14}', null, '[\"ex_sm_15_office_03b\"]', 'MazeBankWest', '0', '1', '0', '{\"x\":-1390.76,\"y\":-479.22,\"z\":72.04}', '2700000');
 INSERT INTO `properties` VALUES ('72', 'MBWPowerBrokerPolished', 'MBW Power Broker Polished', null, '{\"x\":-1392.74,\"y\":-480.18,\"z\":71.14}', '{\"x\":-1389.43,\"y\":-479.01,\"z\":71.14}', null, '[\"ex_sm_15_office_03c\"]', 'MazeBankWest', '0', '1', '0', '{\"x\":-1390.76,\"y\":-479.22,\"z\":72.04}', '2700000');
-INSERT INTO `properties` VALUES ('73', 'VillaDelKasakow', 'Villa del Kasakow', '{\n	\"x\" : -2587.936523,\n	\"y\" : 1910.948120,\n	\"z\" : 166.840000\n}', '{\n	\"x\" : -2587.1166992188\n	\"y\" : 1908.1655273438,\n	\"z\" : 167.00661682129\n}', '{\n	\"x\" : -2587.1166992188\n	\"y\" : 1908.1655273438,\n	\"z\" : 167.41661682129\n}', '{\n	\"x\" : -2585.232666,\n	\"y\" : 1916.788818,\n	\"z\" : 168.312943\n}', '[]', 'NULL', '1', '1', '0', '{\n	\"x\" : -2598.301025,\n	\"y\" : 1912.262451,\n	\"z\" : 167.016617\n}', '10000000');
 
 -- ----------------------------
 -- Table structure for rented_vehicles
@@ -988,11 +1043,7 @@ CREATE TABLE `rented_vehicles` (
   `rent_price` int(11) NOT NULL,
   `owner` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of rented_vehicles
--- ----------------------------
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for shops
@@ -1103,46 +1154,7 @@ CREATE TABLE `society_moneywash` (
   `society` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `amount` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of society_moneywash
--- ----------------------------
-
--- ----------------------------
--- Table structure for users
--- ----------------------------
-DROP TABLE IF EXISTS `users`;
-CREATE TABLE `users` (
-  `identifier` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
-  `license` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `money` int(11) DEFAULT 2500,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT '',
-  `skin` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `job` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT 'unemployed',
-  `job_grade` int(11) DEFAULT 0,
-  `loadout` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `second_job` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT 'unemployed',
-  `position` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `bank` int(11) DEFAULT NULL,
-  `permission_level` int(11) DEFAULT NULL,
-  `group` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `isFirstConnection` int(11) DEFAULT NULL,
-  `firstname` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT '',
-  `lastname` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT '',
-  `dateofbirth` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT '',
-  `sex` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT '',
-  `height` varchar(5) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT '',
-  `phone_number` int(11) DEFAULT NULL,
-  `last_property` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `status` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  PRIMARY KEY (`identifier`),
-  UNIQUE KEY `identifier` (`identifier`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of users
--- ----------------------------
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for user_accounts
@@ -1152,13 +1164,9 @@ CREATE TABLE `user_accounts` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `identifier` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
-  `money` double NOT NULL DEFAULT 0,
+  `money` double NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of user_accounts
--- ----------------------------
 
 -- ----------------------------
 -- Table structure for user_contacts
@@ -1170,11 +1178,7 @@ CREATE TABLE `user_contacts` (
   `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `number` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of user_contacts
--- ----------------------------
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for user_inventory
@@ -1189,10 +1193,6 @@ CREATE TABLE `user_inventory` (
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of user_inventory
--- ----------------------------
-
--- ----------------------------
 -- Table structure for user_licenses
 -- ----------------------------
 DROP TABLE IF EXISTS `user_licenses`;
@@ -1204,10 +1204,6 @@ CREATE TABLE `user_licenses` (
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of user_licenses
--- ----------------------------
-
--- ----------------------------
 -- Table structure for user_parkings
 -- ----------------------------
 DROP TABLE IF EXISTS `user_parkings`;
@@ -1216,13 +1212,9 @@ CREATE TABLE `user_parkings` (
   `identifier` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
   `garage` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
   `zone` int(11) NOT NULL,
-  `vehicle` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
+  `vehicle` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of user_parkings
--- ----------------------------
 
 -- ----------------------------
 -- Table structure for user_whitelist
@@ -1230,7 +1222,7 @@ CREATE TABLE `user_parkings` (
 DROP TABLE IF EXISTS `user_whitelist`;
 CREATE TABLE `user_whitelist` (
   `identifier` varchar(255) NOT NULL,
-  `whitelisted` tinyint(1) NOT NULL DEFAULT 0,
+  `whitelisted` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`identifier`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -1238,6 +1230,89 @@ CREATE TABLE `user_whitelist` (
 -- Records of user_whitelist
 -- ----------------------------
 INSERT INTO `user_whitelist` VALUES ('steam:110000106abab10', '1'); -- Birdmachine
+
+-- ----------------------------
+-- Table structure for users
+-- ----------------------------
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `identifier` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `license` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
+  `money` int(11) DEFAULT '2500',
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT '',
+  `skin` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `job` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT 'unemployed',
+  `job_grade` int(11) DEFAULT '0',
+  `loadout` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `second_job` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT 'unemployed',
+  `position` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
+  `bank` int(11) DEFAULT NULL,
+  `permission_level` int(11) DEFAULT NULL,
+  `group` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
+  `isFirstConnection` int(11) DEFAULT NULL,
+  `firstname` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT '',
+  `lastname` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT '',
+  `dateofbirth` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT '',
+  `sex` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT '',
+  `height` varchar(5) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT '',
+  `phone_number` int(11) DEFAULT NULL,
+  `last_property` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
+  `status` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `identifier` (`identifier`),
+  UNIQUE KEY `id_UNIQUE` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of users
+-- ----------------------------
+INSERT INTO `users` VALUES ('1', 'steam:110000106abab10', 'license:7de776a41419655bb5361a14b9cecec1c3fde8ca', '11040000', 'BirdMachine', 0x7B22736B696E223A352C2268656C6D65745F32223A302C226167655F32223A302C22686169725F31223A31302C226167655F31223A302C226270726F6F665F31223A302C226D616B6575705F32223A302C22646563616C735F32223A302C226C6970737469636B5F34223A302C22676C61737365735F31223A302C2266616365223A342C2262656172645F33223A332C22626167735F32223A302C2262656172645F34223A302C22636861696E5F31223A31372C2268656C6D65745F31223A2D312C2273686F65735F31223A35352C22686169725F636F6C6F725F31223A342C22636861696E5F32223A312C226C6970737469636B5F33223A302C22746F72736F5F32223A352C22656172735F32223A302C2270616E74735F32223A302C2273686F65735F32223A392C226C6970737469636B5F32223A302C2265796562726F77735F33223A302C2270616E74735F31223A32362C22686169725F32223A332C22736578223A302C226D61736B5F31223A302C22746F72736F5F31223A362C2262656172645F32223A31302C22656172735F31223A2D312C226D616B6575705F34223A302C226270726F6F665F32223A302C22646563616C735F31223A302C226C6970737469636B5F31223A302C22626167735F31223A302C2265796562726F77735F31223A382C227473686972745F32223A322C226D61736B5F32223A302C2261726D73223A31372C227473686972745F31223A322C22676C61737365735F32223A302C22686169725F636F6C6F725F32223A382C2262656172645F31223A372C2265796562726F77735F32223A342C226D616B6575705F33223A302C226D616B6575705F31223A302C2265796562726F77735F34223A307D, 'ambulance', '9', 0x5B7B22616D6D6F223A302C226C6162656C223A224D6573736572222C226E616D65223A22574541504F4E5F4B4E494645227D2C7B22616D6D6F223A302C226C6162656C223A225363686C616773746F636B222C226E616D65223A22574541504F4E5F4E49474854535449434B227D2C7B22616D6D6F223A302C226C6162656C223A2248616D6D6572222C226E616D65223A22574541504F4E5F48414D4D4552227D2C7B22616D6D6F223A302C226C6162656C223A225363686CC3A4676572222C226E616D65223A22574541504F4E5F424154227D2C7B22616D6D6F223A302C226C6162656C223A22476F6C667363686CC3A4676572222C226E616D65223A22574541504F4E5F474F4C46434C5542227D2C7B22616D6D6F223A302C226C6162656C223A224272656368656973656E222C226E616D65223A22574541504F4E5F43524F57424152227D2C7B22616D6D6F223A393939392C226C6162656C223A22506973746F6C65222C226E616D65223A22574541504F4E5F504953544F4C227D2C7B22616D6D6F223A393939392C226C6162656C223A224B616D7066706973746F6C65222C226E616D65223A22574541504F4E5F434F4D424154504953544F4C227D2C7B22616D6D6F223A393939392C226C6162656C223A22415020506973746F6C65222C226E616D65223A22574541504F4E5F4150504953544F4C227D2C7B22616D6D6F223A393939392C226C6162656C223A22506973746F6C65202E3530222C226E616D65223A22574541504F4E5F504953544F4C3530227D2C7B22616D6D6F223A393939392C226C6162656C223A224D696B726F20534D47222C226E616D65223A22574541504F4E5F4D4943524F534D47227D2C7B22616D6D6F223A393939392C226C6162656C223A22534D47222C226E616D65223A22574541504F4E5F534D47227D2C7B22616D6D6F223A393939392C226C6162656C223A224B616D706620534D47222C226E616D65223A22574541504F4E5F41535341554C54534D47227D2C7B22616D6D6F223A393939392C226C6162656C223A224B616D7066676577656872222C226E616D65223A22574541504F4E5F41535341554C545249464C45227D2C7B22616D6D6F223A393939392C226C6162656C223A224B61726162696E6572676577656872222C226E616D65223A22574541504F4E5F43415242494E455249464C45227D2C7B22616D6D6F223A393939392C226C6162656C223A22416476616E636564676577656872222C226E616D65223A22574541504F4E5F414456414E4345445249464C45227D2C7B22616D6D6F223A393939392C226C6162656C223A224D47222C226E616D65223A22574541504F4E5F4D47227D2C7B22616D6D6F223A393939392C226C6162656C223A224B616D7066204D47222C226E616D65223A22574541504F4E5F434F4D4241544D47227D2C7B22616D6D6F223A393939392C226C6162656C223A2250756D7067756E222C226E616D65223A22574541504F4E5F50554D5053484F5447554E227D2C7B22616D6D6F223A393939392C226C6162656C223A224162676573C3A467746520536368726F74666C696E7465222C226E616D65223A22574541504F4E5F5341574E4F464653484F5447554E227D2C7B22616D6D6F223A393939392C226C6162656C223A224B616D706620536368726F74666C696E7465222C226E616D65223A22574541504F4E5F41535341554C5453484F5447554E227D2C7B22616D6D6F223A393939392C226C6162656C223A2242756C6C70757020536368726F74666C696E7465222C226E616D65223A22574541504F4E5F42554C4C50555053484F5447554E227D2C7B22616D6D6F223A393939392C226C6162656C223A2254617A6572222C226E616D65223A22574541504F4E5F5354554E47554E227D2C7B22616D6D6F223A393939392C226C6162656C223A22536368617266736368C3BC747A656E676577656872222C226E616D65223A22574541504F4E5F534E495045525249464C45227D2C7B22616D6D6F223A393939392C226C6162656C223A22536368776572657320536E69706572222C226E616D65223A22574541504F4E5F4845415659534E49504552227D2C7B22616D6D6F223A32302C226C6162656C223A224772616E6174776572666572222C226E616D65223A22574541504F4E5F4752454E4144454C41554E43484552227D2C7B22616D6D6F223A32302C226C6162656C223A22525047222C226E616D65223A22574541504F4E5F525047227D2C7B22616D6D6F223A393939392C226C6162656C223A224D696E6967756E222C226E616D65223A22574541504F4E5F4D494E4947554E227D2C7B22616D6D6F223A32352C226C6162656C223A224772616E617465222C226E616D65223A22574541504F4E5F4752454E414445227D2C7B22616D6D6F223A32352C226C6162656C223A2248616674626F6D6265222C226E616D65223A22574541504F4E5F535449434B59424F4D42227D2C7B22616D6D6F223A32352C226C6162656C223A2252617563686772616E617465222C226E616D65223A22574541504F4E5F534D4F4B454752454E414445227D2C7B22616D6D6F223A32352C226C6162656C223A22425A20476173222C226E616D65223A22574541504F4E5F425A474153227D2C7B22616D6D6F223A32352C226C6162656C223A224D6F6C6F746F7620436F636B7461696C222C226E616D65223A22574541504F4E5F4D4F4C4F544F56227D2C7B22616D6D6F223A323030302C226C6162656C223A2246657565726CC3B67363686572222C226E616D65223A22574541504F4E5F46495245455854494E47554953484552227D2C7B22616D6D6F223A343530302C226C6162656C223A2242656E7A696E6B616E6973746572222C226E616D65223A22574541504F4E5F504554524F4C43414E227D2C7B22616D6D6F223A312C226C6162656C223A2242616C6C222C226E616D65223A22574541504F4E5F42414C4C227D2C7B22616D6D6F223A393939392C226C6162656C223A22534E5320506973746F6C65222C226E616D65223A22574541504F4E5F534E53504953544F4C227D2C7B22616D6D6F223A302C226C6162656C223A22466C6173636865222C226E616D65223A22574541504F4E5F424F54544C45227D2C7B22616D6D6F223A393939392C226C6162656C223A22477573656E62657267222C226E616D65223A22574541504F4E5F475553454E42455247227D2C7B22616D6D6F223A393939392C226C6162656C223A225370657A69616C6B61726162696E6572222C226E616D65223A22574541504F4E5F5350454349414C43415242494E45227D2C7B22616D6D6F223A393939392C226C6162656C223A225363687765726520506973746F6C65222C226E616D65223A22574541504F4E5F4845415659504953544F4C227D2C7B22616D6D6F223A393939392C226C6162656C223A2242756C6C707570676577656872222C226E616D65223A22574541504F4E5F42554C4C5055505249464C45227D2C7B22616D6D6F223A302C226C6162656C223A22446F6C6368222C226E616D65223A22574541504F4E5F444147474552227D2C7B22616D6D6F223A393939392C226C6162656C223A2256696E7461676520506973746F6C65222C226E616D65223A22574541504F4E5F56494E54414745504953544F4C227D2C7B22616D6D6F223A32302C226C6162656C223A2246657565727765726B222C226E616D65223A22574541504F4E5F46495245574F524B227D2C7B22616D6D6F223A393939392C226C6162656C223A224D75736B657465222C226E616D65223A22574541504F4E5F4D55534B4554227D2C7B22616D6D6F223A393939392C226C6162656C223A225363687765726520536368726F74666C696E7465222C226E616D65223A22574541504F4E5F484541565953484F5447554E227D2C7B22616D6D6F223A393939392C226C6162656C223A224D61726B736D616E676577656872222C226E616D65223A22574541504F4E5F4D41524B534D414E5249464C45227D2C7B22616D6D6F223A31302C226C6162656C223A22486F6D696E67204C61756E63686572222C226E616D65223A22574541504F4E5F484F4D494E474C41554E43484552227D2C7B22616D6D6F223A352C226C6162656C223A22416E6EC3A4686572756E67736D696E65222C226E616D65223A22574541504F4E5F50524F584D494E45227D2C7B22616D6D6F223A31302C226C6162656C223A225363686E656562616C6C222C226E616D65223A22574541504F4E5F534E4F5742414C4C227D2C7B22616D6D6F223A32302C226C6162656C223A224C6575636874706973746F6C65222C226E616D65223A22574541504F4E5F464C41524547554E227D2C7B22616D6D6F223A32352C226C6162656C223A22466C617265222C226E616D65223A22574541504F4E5F464C415245227D2C7B22616D6D6F223A393939392C226C6162656C223A224B616D706620504457222C226E616D65223A22574541504F4E5F434F4D424154504457227D2C7B22616D6D6F223A393939392C226C6162656C223A224D61726B736D616E20506973746F6C65222C226E616D65223A22574541504F4E5F4D41524B534D414E504953544F4C227D2C7B22616D6D6F223A302C226C6162656C223A225363686C616772696E67222C226E616D65223A22574541504F4E5F4B4E55434B4C45227D2C7B22616D6D6F223A302C226C6162656C223A22417874222C226E616D65223A22574541504F4E5F48415443484554227D2C7B22616D6D6F223A32302C226C6162656C223A225261696C67756E222C226E616D65223A22574541504F4E5F5241494C47554E227D2C7B22616D6D6F223A302C226C6162656C223A224D616368657465222C226E616D65223A22574541504F4E5F4D414348455445227D2C7B22616D6D6F223A393939392C226C6162656C223A224D61736368696E656E706973746F6C65222C226E616D65223A22574541504F4E5F4D414348494E45504953544F4C227D2C7B22616D6D6F223A302C226C6162656C223A224B6C6170706D6573736572222C226E616D65223A22574541504F4E5F535749544348424C414445227D2C7B22616D6D6F223A393939392C226C6162656C223A225363687765726572205265766F6C766572222C226E616D65223A22574541504F4E5F5245564F4C564552227D2C7B22616D6D6F223A393939392C226C6162656C223A22446F7070656C6CC3A4756669676520536368726F74666C696E7465222C226E616D65223A22574541504F4E5F444253484F5447554E227D2C7B22616D6D6F223A393939392C226C6162656C223A224B616D7066676577656872222C226E616D65223A22574541504F4E5F434F4D504143545249464C45227D2C7B22616D6D6F223A393939392C226C6162656C223A224175746F2053686F7467756E222C226E616D65223A22574541504F4E5F4155544F53484F5447554E227D2C7B22616D6D6F223A302C226C6162656C223A224B616D7066617874222C226E616D65223A22574541504F4E5F424154544C45415845227D2C7B22616D6D6F223A32302C226C6162656C223A224B6F6D70616B74204C61756E63686572222C226E616D65223A22574541504F4E5F434F4D504143544C41554E43484552227D2C7B22616D6D6F223A393939392C226C6162656C223A224D696E6920534D47222C226E616D65223A22574541504F4E5F4D494E49534D47227D2C7B22616D6D6F223A31302C226C6162656C223A22526F6872626F6D6265222C226E616D65223A22574541504F4E5F50495045424F4D42227D2C7B22616D6D6F223A302C226C6162656C223A224BC3B6222C226E616D65223A22574541504F4E5F504F4F4C435545227D2C7B22616D6D6F223A302C226C6162656C223A22526F68727A616E6765222C226E616D65223A22574541504F4E5F5752454E4348227D2C7B22616D6D6F223A302C226C6162656C223A225461736368656E6C616D7065222C226E616D65223A22574541504F4E5F464C4153484C49474854227D2C7B22616D6D6F223A302C226C6162656C223A224E616368747369636874676572C3A474222C226E616D65223A224741444745545F4E49474854564953494F4E227D2C7B22616D6D6F223A302C226C6162656C223A2246616C6C73636869726D222C226E616D65223A224741444745545F504152414348555445227D5D, 'unemployed', '{\"z\":28.922582626342,\"y\":-1071.9230957032,\"x\":219.14608764648}', '985875648', '99', 'superadmin', null, 'Jack', 'Holmes', '16.03.1986', 'M', '186', '1337', null, 0x5B7B2276616C223A3336373430302C2270657263656E74223A33362E37342C226E616D65223A2268756E676572227D2C7B2276616C223A3333343235302C2270657263656E74223A33332E3432352C226E616D65223A22746869727374227D2C7B2276616C223A302C2270657263656E74223A302E302C226E616D65223A226472756E6B227D5D);
+
+-- ----------------------------
+-- Table structure for vehicle_categories
+-- ----------------------------
+DROP TABLE IF EXISTS `vehicle_categories`;
+CREATE TABLE `vehicle_categories` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `label` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of vehicle_categories
+-- ----------------------------
+INSERT INTO `vehicle_categories` VALUES ('1', 'gg', 'Gut & Günstig');
+INSERT INTO `vehicle_categories` VALUES ('2', 'am', 'Aston Martin');
+INSERT INTO `vehicle_categories` VALUES ('4', 'audi', 'Audi');
+INSERT INTO `vehicle_categories` VALUES ('5', 'bentley', 'Bentley');
+INSERT INTO `vehicle_categories` VALUES ('6', 'bmw', 'Bayerische Motorenwerke');
+INSERT INTO `vehicle_categories` VALUES ('7', 'cadi', 'Cadillac');
+INSERT INTO `vehicle_categories` VALUES ('8', 'chevy', 'Chevrolet');
+INSERT INTO `vehicle_categories` VALUES ('9', 'citro', 'Citroen');
+INSERT INTO `vehicle_categories` VALUES ('10', 'dodge', 'Dodge');
+INSERT INTO `vehicle_categories` VALUES ('11', 'ferrari', 'Ferrari');
+INSERT INTO `vehicle_categories` VALUES ('12', 'fiat', 'Fiat');
+INSERT INTO `vehicle_categories` VALUES ('13', 'jaguar', 'Jaguar');
+INSERT INTO `vehicle_categories` VALUES ('14', 'jeep', 'Jeep');
+INSERT INTO `vehicle_categories` VALUES ('15', 'lambo', 'Lamborghini');
+INSERT INTO `vehicle_categories` VALUES ('16', 'rover', 'Range Rover');
+INSERT INTO `vehicle_categories` VALUES ('17', 'maserati', 'Maserati');
+INSERT INTO `vehicle_categories` VALUES ('18', 'mazda', 'Mazda');
+INSERT INTO `vehicle_categories` VALUES ('19', 'mercedes', 'Mercedes Benz');
+INSERT INTO `vehicle_categories` VALUES ('20', 'mitsu', 'Mitsubishi');
+INSERT INTO `vehicle_categories` VALUES ('21', 'nissan', 'Nissan');
+INSERT INTO `vehicle_categories` VALUES ('22', 'toyota', 'Toyota');
+INSERT INTO `vehicle_categories` VALUES ('23', 'pagani', 'Pagani');
+INSERT INTO `vehicle_categories` VALUES ('24', 'peug', 'Peugeot');
+INSERT INTO `vehicle_categories` VALUES ('25', 'porsche', 'Porsche');
+INSERT INTO `vehicle_categories` VALUES ('26', 'renault', 'Renault');
+INSERT INTO `vehicle_categories` VALUES ('27', 'rr', 'Rolls Royce');
+INSERT INTO `vehicle_categories` VALUES ('28', 'volvo', 'Volvo');
+INSERT INTO `vehicle_categories` VALUES ('29', 'vw', 'Volkswagen');
+INSERT INTO `vehicle_categories` VALUES ('30', 'moto', 'Motorräder');
+INSERT INTO `vehicle_categories` VALUES ('31', 'hyundai', 'Hyundai');
 
 -- ----------------------------
 -- Table structure for vehicles
@@ -1383,52 +1458,6 @@ INSERT INTO vehicles (`name`, model, price, category, job, grade) VALUES
 	('YZF-R 1', 'r1', '19325', 'moto', null, null),
 	('YZF-R 6', 'r6', '15999', 'moto', null, null);
 
--- ----------------------------
--- Table structure for vehicle_categories
--- ----------------------------
-DROP TABLE IF EXISTS `vehicle_categories`;
-CREATE TABLE `vehicle_categories` (
-  `id` int(11) NOT NULL,
-  `name` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
-  `label` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of vehicle_categories
--- ----------------------------
-INSERT INTO `agrp-esx`.vehicle_categories (`name`, `label`) VALUES
-	('gg', 'Gut & Günstig'),
-	('am', 'Aston Martin'),
-	('am', 'Aston Martin'),
-	('audi', 'Audi'),
-	('bentley', 'Bentley'),
-	('bmw', 'Bayerische Motorenwerke'),
-	('cadi', 'Cadillac'),
-	('chevy', 'Chevrolet'),
-	('citro', 'Citroen'),
-	('dodge', 'Dodge'),
-	('ferrari', 'Ferrari'),
-	('fiat', 'Fiat'),
-	('jaguar', 'Jaguar'),
-	('jeep', 'Jeep'),
-	('lambo', 'Lamborghini'),
-	('rover', 'Range Rover'),
-	('maserati', 'Maserati'),
-	('mazda', 'Mazda'),
-	('mercedes', 'Mercedes Benz'),
-	('mitsu', 'Mitsubishi'),
-	('nissan', 'Nissan'),
-	('opel', 'Opel'),
-	('pagani', 'Pagani'),
-	('peug', 'Peugeot'),
-	('porsche', 'Porsche'),
-	('renault', 'Renault'),
-	('rr', 'Rolls Royce'),
-	('volvo', 'Volvo'),
-	('vw', 'Volkswagen'),
-	('moto', 'Motorräder');
-	('hyundai', 'Hyundai');
 
 -- ----------------------------
 -- Table structure for weashops
