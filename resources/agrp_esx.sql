@@ -555,7 +555,7 @@ CREATE TABLE `items` (
   `rare` int(11) NOT NULL DEFAULT 0,
   `can_remove` int(11) NOT NULL DEFAULT 1,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=89 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2500 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of items
@@ -1319,7 +1319,7 @@ INSERT INTO `vehicle_categories` VALUES ('31', 'hyundai', 'Hyundai');
 -- ----------------------------
 DROP TABLE IF EXISTS `vehicles`;
 CREATE TABLE `vehicles` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `model` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `price` int(11) NOT NULL,
@@ -1327,7 +1327,7 @@ CREATE TABLE `vehicles` (
   `job` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
   `grade` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of vehicles
