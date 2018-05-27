@@ -104,9 +104,9 @@ for i=1, #Config.Towables, 1 do
 end
 
 Config.Vehicles = {
-  'adder',
-  'asea',
-  'asterope',
-  'banshee',
-  'buffalo'
+  'flatbed',
+  'TowTruck',
+  'burrito4',
+  'utillitruck3',
+  'asea'
 }
