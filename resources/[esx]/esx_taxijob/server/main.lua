@@ -42,8 +42,8 @@ AddEventHandler('esx_taxijob:success', function()
 
   if societyAccount ~= nil then
 
-    local playerMoney  = math.ceil(total / 100 * 40)
-    local societyMoney = math.floor(total / 100 * 60)
+    local playerMoney  = math.ceil(total / 100 * 15)
+    local societyMoney = math.floor(total / 100 * 20)
 
     if tipchance > 70 then
       xPlayer.addMoney(tip)
