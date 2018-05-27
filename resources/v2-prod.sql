@@ -1309,7 +1309,7 @@ INSERT INTO `vehicle_categories` VALUES ('4', 'audi', 'Audi');
 INSERT INTO `vehicle_categories` VALUES ('5', 'bentley', 'Bentley');
 INSERT INTO `vehicle_categories` VALUES ('6', 'bmw', 'Bayerische Motorenwerke');
 INSERT INTO `vehicle_categories` VALUES ('7', 'cadi', 'Cadillac');
-INSERT INTO `vehicle_categories` VALUES ('8', 'chevy', 'Chevrolet');
+-- INSERT INTO `vehicle_categories` VALUES ('8', 'chevy', 'Chevrolet');
 INSERT INTO `vehicle_categories` VALUES ('9', 'citro', 'Citroen');
 INSERT INTO `vehicle_categories` VALUES ('10', 'dodge', 'Dodge');
 INSERT INTO `vehicle_categories` VALUES ('11', 'ferrari', 'Ferrari');
