@@ -26,8 +26,6 @@ luac.out
 *.exp
 
 # Shared objects (inc. Windows DLLs)
-*.dll 
-!resources/*
 *.so
 *.so.*
 *.dylib
@@ -53,3 +51,5 @@ loadscreen_hq.zip
 citizen/*
 *.bat
 *.cmd
+cache/
+resources/vehicle.sql
