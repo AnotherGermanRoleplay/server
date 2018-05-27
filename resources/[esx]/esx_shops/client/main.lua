@@ -29,7 +29,9 @@ function OpenShopMenu(zone)
 	for i=1, #Config.Zones[zone].Items, 1 do
 
 		local item = Config.Zones[zone].Items[i]
-		print("currentItem (onShopItemLoad :: SRC-requestDBItems)  ---  "..item)
+		print("currentItem (onShopItemLoad :: SRC-requestDBItems)  ---  ")
+		print("item:", item)
+		print(item.label.." :: "..item.name.." :: "..item.price)
 
 		table.insert(elements, {
 			label     = item.label .. ' - <span style="color:green;">€' .. item.price .. ' </span>',
