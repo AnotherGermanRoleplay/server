@@ -1257,20 +1257,20 @@ CREATE TABLE `vehicles` (
 -- ----------------------------
 -- Records of vehicles
 -- ----------------------------
-INSERT INTO `agrp-esx`.vehicles (`name`, model, price, category, job, grade) VALUES
+INSERT INTO vehicles (`name`, model, price, category, job, grade) VALUES
 	('AMC Pacer', 'yAmcPacer', '3900', 'gg', null, null),
 	('Hyandai Accent', 'accent', '4290', 'gg', null, null),
-	('Honda Civic', 'civic', '3450', 'gg', null, null),
-	('Chevrolet Monza', 'monza', '4250', 'gg', null, null),
+	-- ('Honda Civic', 'civic', '3450', 'gg', null, null),
+	-- ('Chevrolet Monza', 'monza', '4250', 'gg', null, null),
 
-	#####('Virage', 'virage', '200000', 'am', null, null),
+	-- ('Virage', 'virage', '200000', 'am', null, null),
 
 	('Virage', 'virage', '200000', 'am', null, null),
 	('DB7', 'db7zagato', '170000', 'am', null, null),
 
 	('RS6 C7', 'rs6', '120000', 'audi', null, null),
 	('A8', 'a8fsi', '90000', 'audi', null, null),
-	('TT RS', 'audittrs', '62000', 'audi', null, null),
+	-- ('TT RS', 'audittrs', '62000', 'audi', null, null),
 	('A7', 'a7', '70000', 'audi', null, null),
 
 	('Bentayga Mansory', 'bentaygam', '400000', 'bentley', null, null),
@@ -1282,7 +1282,7 @@ INSERT INTO `agrp-esx`.vehicles (`name`, model, price, category, job, grade) VAL
 	('M3 E92 GTS', 'm3e92gts', '140000', 'bmw', null, null),
 	('M5 E60', 'm5e60', '103000', 'bmw', null, null),
 	('M3 F80', 'm3f80', '80000', 'bmw', null, null),
-	('Mini Cooper 2015', 'minicooper', '23500', 'bmw', null, null),
+	-- ('Mini Cooper 2015', 'minicooper', '23500', 'bmw', null, null),
 	('i8', 'i8', '129900', 'bmw', null, null),
 	('750li Lumma', 'lumma750', '146700', 'bmw', null, null),
 	('M3 E36', 'rmodm3e36', '80000', 'bmw', null, null),
@@ -1292,7 +1292,7 @@ INSERT INTO `agrp-esx`.vehicles (`name`, model, price, category, job, grade) VAL
 	('Escalade', 'gmt900escalade', '115000', 'cadi', null, null),
 	('XTS Limousine', 'limoxts', '80000', 'cadi', null, null),
 
-	('Camaro ZL 1', 'CamaroZL1', '58000', 'chevy', null, null),
+	-- ('Camaro ZL 1', 'CamaroZL1', '58000', 'chevy', null, null),
 
 	('C3', 'citroenc3', '200000', 'citro', null, null),
 
@@ -1312,7 +1312,7 @@ INSERT INTO `agrp-esx`.vehicles (`name`, model, price, category, job, grade) VAL
 	('Rubicon', 'jeep2012', '45000', 'jeep', null, null),
 
 	('Huracan LP610', 'lp610', '229000', 'lambo', null, null),
-	('Centenario LP770', 'lp770', '2450000', 'lambo', null, null),
+	-- ('Centenario LP770', 'lp770', '2450000', 'lambo', null, null),
 	('Vacca', 'vacca', '120000', 'lambo', null, null),
 	('Tempesta', 'tempesta', '175000', 'lambo', null, null),
 
@@ -1356,12 +1356,12 @@ INSERT INTO `agrp-esx`.vehicles (`name`, model, price, category, job, grade) VAL
 
 	('Panamera Turbo', 'panamera17turbo', '167500', 'porsche', null, null),
 	('911', 'por911', '112000', 'porsche', null, null),
-	('718 Cayenne', 'pcs18', '85000', 'porsche', null, null),
+	-- ('718 Cayenne', 'pcs18', '85000', 'porsche', null, null),
 	('911 GT3 RS', '911gt3rs', '245900', 'porsche', null, null),
 	('911 1982', 'turbo33', '56500', 'porsche', null, null),
 	('718', '718', '99999999', 'porsche', null, null),
 	('MC GTS', 'mcgts', '99999999', 'porsche', null, null),
-	('718 Cayman S', '718caymans', '99999999', 'porsche', null, null),
+	-- ('718 Cayman S', '718caymans', '99999999', 'porsche', null, null),
 
 	('Twingo', 'twingo', '200000', 'renault', null, null),
 	('Zoe', 'zoe', '200000', 'renault', null, null),
