@@ -4,13 +4,13 @@ Navicat MySQL Data Transfer
 Source Server         : AGRP v2 - SoYouStart
 Source Server Version : 100126
 Source Host           : 164.132.200.154:5798
-Source Database       : agrp-esx
+Source Database       : v2-prod
 
 Target Server Type    : MYSQL
 Target Server Version : 100126
 File Encoding         : 65001
 
-Date: 2018-05-27 16:46:02
+Date: 2018-05-27 17:51:22
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -71,10 +71,6 @@ INSERT INTO `addon_account_data` VALUES ('8', 'society_bus', '100000', null);
 INSERT INTO `addon_account_data` VALUES ('9', 'society_mafia', '100000', null);
 INSERT INTO `addon_account_data` VALUES ('10', 'society_government', '100000', null);
 
-INSERT INTO `addon_account_data` VALUES ('2', 'bank_savings', '0', 'steam:110000106abab10'); -- Birdmachine
-INSERT INTO `addon_account_data` VALUES ('3', 'property_black_money', '0', 'steam:110000106abab10');
-INSERT INTO `addon_account_data` VALUES ('4', 'caution', '0', 'steam:110000106abab10');
-
 -- ----------------------------
 -- Table structure for addon_inventory
 -- ----------------------------
@@ -112,6 +108,10 @@ CREATE TABLE `addon_inventory_items` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
+-- Records of addon_inventory_items
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for banned_user
 -- ----------------------------
 DROP TABLE IF EXISTS `banned_user`;
@@ -131,6 +131,10 @@ CREATE TABLE `banned_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 -- ----------------------------
+-- Records of banned_user
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for billing
 -- ----------------------------
 DROP TABLE IF EXISTS `billing`;
@@ -146,15 +150,8 @@ CREATE TABLE `billing` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for cardealer_vehicles
+-- Records of billing
 -- ----------------------------
-DROP TABLE IF EXISTS `cardealer_vehicles`;
-CREATE TABLE `cardealer_vehicles` (
-  `id` int(11) NOT NULL,
-  `vehicle` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
-  `price` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for cardealer_vehicles
@@ -404,10 +401,8 @@ CREATE TABLE `characters` (
 -- ----------------------------
 -- Records of characters
 -- ----------------------------
--- BirdMachine
 INSERT INTO `characters` VALUES ('1', 'steam:110000106abab10', 'Jack', 'Holmes', '16.03.1986', 'M', '186', 'unemployed', '0', 'unemployed', '[{\"name\":\"WEAPON_KNIFE\",\"ammo\":0,\"label\":\"Messer\"},{\"name\":\"WEAPON_NIGHTSTICK\",\"ammo\":0,\"label\":\"Schlagstock\"},{\"name\":\"WEAPON_HAMMER\",\"ammo\":0,\"label\":\"Hammer\"},{\"name\":\"WEAPON_BAT\",\"ammo\":0,\"label\":\"Schläger\"},{\"name\":\"WEAPON_GOLFCLUB\",\"ammo\":0,\"label\":\"Golfschläger\"},{\"name\":\"WEAPON_CROWBAR\",\"ammo\":0,\"label\":\"Brecheisen\"},{\"name\":\"WEAPON_PISTOL\",\"ammo\":250,\"label\":\"Pistole\"},{\"name\":\"WEAPON_COMBATPISTOL\",\"ammo\":250,\"label\":\"Kampfpistole\"},{\"name\":\"WEAPON_APPISTOL\",\"ammo\":250,\"label\":\"AP Pistole\"},{\"name\":\"WEAPON_PISTOL50\",\"ammo\":250,\"label\":\"Pistole .50\"},{\"name\":\"WEAPON_MICROSMG\",\"ammo\":250,\"label\":\"Mikro SMG\"},{\"name\":\"WEAPON_SMG\",\"ammo\":250,\"label\":\"SMG\"},{\"name\":\"WEAPON_ASSAULTSMG\",\"ammo\":250,\"label\":\"Kampf SMG\"},{\"name\":\"WEAPON_ASSAULTRIFLE\",\"ammo\":250,\"label\":\"Kampfgewehr\"},{\"name\":\"WEAPON_CARBINERIFLE\",\"ammo\":250,\"label\":\"Karabinergewehr\"},{\"name\":\"WEAPON_ADVANCEDRIFLE\",\"ammo\":250,\"label\":\"Advancedgewehr\"},{\"name\":\"WEAPON_MG\",\"ammo\":250,\"label\":\"MG\"},{\"name\":\"WEAPON_COMBATMG\",\"ammo\":250,\"label\":\"Kampf MG\"},{\"name\":\"WEAPON_PUMPSHOTGUN\",\"ammo\":250,\"label\":\"Pumpgun\"},{\"name\":\"WEAPON_SAWNOFFSHOTGUN\",\"ammo\":250,\"label\":\"Abgesägte Schrotflinte\"},{\"name\":\"WEAPON_ASSAULTSHOTGUN\",\"ammo\":250,\"label\":\"Kampf Schrotflinte\"},{\"name\":\"WEAPON_BULLPUPSHOTGUN\",\"ammo\":250,\"label\":\"Bullpup Schrotflinte\"},{\"name\":\"WEAPON_STUNGUN\",\"ammo\":250,\"label\":\"Tazer\"},{\"name\":\"WEAPON_SNIPERRIFLE\",\"ammo\":250,\"label\":\"Scharfschützengewehr\"},{\"name\":\"WEAPON_HEAVYSNIPER\",\"ammo\":250,\"label\":\"Schweres Sniper\"},{\"name\":\"WEAPON_GRENADELAUNCHER\",\"ammo\":5,\"label\":\"Granatwerfer\"},{\"name\":\"WEAPON_RPG\",\"ammo\":0,\"label\":\"RPG\"},{\"name\":\"WEAPON_STINGER\",\"ammo\":1,\"label\":\"Stinger\"},{\"name\":\"WEAPON_MINIGUN\",\"ammo\":250,\"label\":\"Minigun\"},{\"name\":\"WEAPON_BZGAS\",\"ammo\":1,\"label\":\"BZ Gas\"},{\"name\":\"WEAPON_MOLOTOV\",\"ammo\":1,\"label\":\"Molotov Cocktail\"},{\"name\":\"WEAPON_FIREEXTINGUISHER\",\"ammo\":0,\"label\":\"Feuerlöscher\"},{\"name\":\"WEAPON_PETROLCAN\",\"ammo\":4500,\"label\":\"Benzinkanister\"},{\"name\":\"WEAPON_BALL\",\"ammo\":1,\"label\":\"Ball\"},{\"name\":\"WEAPON_SNSPISTOL\",\"ammo\":250,\"label\":\"SNS Pistole\"},{\"name\":\"WEAPON_BOTTLE\",\"ammo\":0,\"label\":\"Flasche\"},{\"name\":\"WEAPON_GUSENBERG\",\"ammo\":250,\"label\":\"Gusenberg\"},{\"name\":\"WEAPON_SPECIALCARBINE\",\"ammo\":250,\"label\":\"Spezialkarabiner\"},{\"name\":\"WEAPON_HEAVYPISTOL\",\"ammo\":250,\"label\":\"Schwere Pistole\"},{\"name\":\"WEAPON_BULLPUPRIFLE\",\"ammo\":250,\"label\":\"Bullpupgewehr\"},{\"name\":\"WEAPON_DAGGER\",\"ammo\":0,\"label\":\"Dolch\"},{\"name\":\"WEAPON_VINTAGEPISTOL\",\"ammo\":250,\"label\":\"Vintage Pistole\"},{\"name\":\"WEAPON_FIREWORK\",\"ammo\":1,\"label\":\"Feuerwerk\"},{\"name\":\"WEAPON_MUSKET\",\"ammo\":250,\"label\":\"Muskete\"},{\"name\":\"WEAPON_HEAVYSHOTGUN\",\"ammo\":250,\"label\":\"Schwere Schrotflinte\"},{\"name\":\"WEAPON_MARKSMANRIFLE\",\"ammo\":250,\"label\":\"Marksmangewehr\"},{\"name\":\"WEAPON_HOMINGLAUNCHER\",\"ammo\":1,\"label\":\"Homing Launcher\"},{\"name\":\"WEAPON_SNOWBALL\",\"ammo\":1,\"label\":\"Schneeball\"},{\"name\":\"WEAPON_FLAREGUN\",\"ammo\":1,\"label\":\"Leuchtpistole\"},{\"name\":\"WEAPON_FLARE\",\"ammo\":1,\"label\":\"Flare\"},{\"name\":\"WEAPON_COMBATPDW\",\"ammo\":250,\"label\":\"Kampf PDW\"},{\"name\":\"WEAPON_MARKSMANPISTOL\",\"ammo\":250,\"label\":\"Marksman Pistole\"},{\"name\":\"WEAPON_KNUCKLE\",\"ammo\":0,\"label\":\"Schlagring\"},{\"name\":\"WEAPON_HATCHET\",\"ammo\":0,\"label\":\"Axt\"},{\"name\":\"WEAPON_RAILGUN\",\"ammo\":1,\"label\":\"Railgun\"},{\"name\":\"WEAPON_MACHETE\",\"ammo\":0,\"label\":\"Machete\"},{\"name\":\"WEAPON_MACHINEPISTOL\",\"ammo\":250,\"label\":\"Maschinenpistole\"},{\"name\":\"WEAPON_SWITCHBLADE\",\"ammo\":0,\"label\":\"Klappmesser\"},{\"name\":\"WEAPON_REVOLVER\",\"ammo\":250,\"label\":\"Schwerer Revolver\"},{\"name\":\"WEAPON_DBSHOTGUN\",\"ammo\":250,\"label\":\"Doppelläufige Schrotflinte\"},{\"name\":\"WEAPON_COMPACTRIFLE\",\"ammo\":250,\"label\":\"Kampfgewehr\"},{\"name\":\"WEAPON_FLASHLIGHT\",\"ammo\":0,\"label\":\"Taschenlampe\"}]', '{\"skin\":5,\"helmet_2\":0,\"age_2\":0,\"hair_1\":10,\"age_1\":0,\"bproof_1\":0,\"makeup_2\":0,\"decals_2\":0,\"lipstick_4\":0,\"glasses_1\":0,\"face\":4,\"beard_3\":3,\"bags_2\":0,\"beard_4\":0,\"chain_1\":17,\"helmet_1\":-1,\"shoes_1\":55,\"hair_color_1\":4,\"chain_2\":1,\"lipstick_3\":0,\"torso_2\":5,\"ears_2\":0,\"pants_2\":0,\"shoes_2\":9,\"lipstick_2\":0,\"eyebrows_3\":0,\"pants_1\":26,\"hair_2\":3,\"sex\":0,\"mask_1\":0,\"torso_1\":6,\"beard_2\":10,\"ears_1\":-1,\"makeup_4\":0,\"bproof_2\":0,\"decals_1\":0,\"lipstick_1\":0,\"bags_1\":0,\"eyebrows_1\":8,\"tshirt_2\":2,\"mask_2\":0,\"arms\":17,\"tshirt_1\":2,\"glasses_2\":0,\"hair_color_2\":8,\"beard_1\":7,\"eyebrows_2\":4,\"makeup_3\":0,\"makeup_1\":0,\"eyebrows_4\":0}', '1337');
 INSERT INTO `characters` VALUES ('2', 'steam:110000106abab10', 'John', 'Holmes', '16.03.1986', 'M', '187', 'unemployed', '13', 'unemployed', '[{\"label\":\"Messer\",\"name\":\"WEAPON_KNIFE\",\"ammo\":0},{\"label\":\"Schlagstock\",\"name\":\"WEAPON_NIGHTSTICK\",\"ammo\":0},{\"label\":\"Hammer\",\"name\":\"WEAPON_HAMMER\",\"ammo\":0},{\"label\":\"Schläger\",\"name\":\"WEAPON_BAT\",\"ammo\":0},{\"label\":\"Golfschläger\",\"name\":\"WEAPON_GOLFCLUB\",\"ammo\":0},{\"label\":\"Brecheisen\",\"name\":\"WEAPON_CROWBAR\",\"ammo\":0},{\"label\":\"Pistole\",\"name\":\"WEAPON_PISTOL\",\"ammo\":9999},{\"label\":\"Kampfpistole\",\"name\":\"WEAPON_COMBATPISTOL\",\"ammo\":9999},{\"label\":\"AP Pistole\",\"name\":\"WEAPON_APPISTOL\",\"ammo\":9999},{\"label\":\"Pistole .50\",\"name\":\"WEAPON_PISTOL50\",\"ammo\":9999},{\"label\":\"Mikro SMG\",\"name\":\"WEAPON_MICROSMG\",\"ammo\":9954},{\"label\":\"SMG\",\"name\":\"WEAPON_SMG\",\"ammo\":9954},{\"label\":\"Kampf SMG\",\"name\":\"WEAPON_ASSAULTSMG\",\"ammo\":9954},{\"label\":\"Kampfgewehr\",\"name\":\"WEAPON_ASSAULTRIFLE\",\"ammo\":9999},{\"label\":\"Karabinergewehr\",\"name\":\"WEAPON_CARBINERIFLE\",\"ammo\":9999},{\"label\":\"Advancedgewehr\",\"name\":\"WEAPON_ADVANCEDRIFLE\",\"ammo\":9999},{\"label\":\"MG\",\"name\":\"WEAPON_MG\",\"ammo\":9999},{\"label\":\"Kampf MG\",\"name\":\"WEAPON_COMBATMG\",\"ammo\":9999},{\"label\":\"Pumpgun\",\"name\":\"WEAPON_PUMPSHOTGUN\",\"ammo\":9999},{\"label\":\"Abgesägte Schrotflinte\",\"name\":\"WEAPON_SAWNOFFSHOTGUN\",\"ammo\":9999},{\"label\":\"Kampf Schrotflinte\",\"name\":\"WEAPON_ASSAULTSHOTGUN\",\"ammo\":9999},{\"label\":\"Bullpup Schrotflinte\",\"name\":\"WEAPON_BULLPUPSHOTGUN\",\"ammo\":9999},{\"label\":\"Tazer\",\"name\":\"WEAPON_STUNGUN\",\"ammo\":9999},{\"label\":\"Scharfschützengewehr\",\"name\":\"WEAPON_SNIPERRIFLE\",\"ammo\":9996},{\"label\":\"Schweres Sniper\",\"name\":\"WEAPON_HEAVYSNIPER\",\"ammo\":9996},{\"label\":\"Granatwerfer\",\"name\":\"WEAPON_GRENADELAUNCHER\",\"ammo\":20},{\"label\":\"RPG\",\"name\":\"WEAPON_RPG\",\"ammo\":20},{\"label\":\"Stinger\",\"name\":\"WEAPON_STINGER\",\"ammo\":0},{\"label\":\"Minigun\",\"name\":\"WEAPON_MINIGUN\",\"ammo\":6596},{\"label\":\"Granate\",\"name\":\"WEAPON_GRENADE\",\"ammo\":25},{\"label\":\"Haftbombe\",\"name\":\"WEAPON_STICKYBOMB\",\"ammo\":22},{\"label\":\"Rauchgranate\",\"name\":\"WEAPON_SMOKEGRENADE\",\"ammo\":25},{\"label\":\"BZ Gas\",\"name\":\"WEAPON_BZGAS\",\"ammo\":25},{\"label\":\"Molotov Cocktail\",\"name\":\"WEAPON_MOLOTOV\",\"ammo\":25},{\"label\":\"Feuerlöscher\",\"name\":\"WEAPON_FIREEXTINGUISHER\",\"ammo\":2000},{\"label\":\"Benzinkanister\",\"name\":\"WEAPON_PETROLCAN\",\"ammo\":4500},{\"label\":\"Ball\",\"name\":\"WEAPON_BALL\",\"ammo\":1},{\"label\":\"SNS Pistole\",\"name\":\"WEAPON_SNSPISTOL\",\"ammo\":9999},{\"label\":\"Flasche\",\"name\":\"WEAPON_BOTTLE\",\"ammo\":0},{\"label\":\"Gusenberg\",\"name\":\"WEAPON_GUSENBERG\",\"ammo\":9999},{\"label\":\"Spezialkarabiner\",\"name\":\"WEAPON_SPECIALCARBINE\",\"ammo\":9999},{\"label\":\"Schwere Pistole\",\"name\":\"WEAPON_HEAVYPISTOL\",\"ammo\":9999},{\"label\":\"Bullpupgewehr\",\"name\":\"WEAPON_BULLPUPRIFLE\",\"ammo\":9999},{\"label\":\"Dolch\",\"name\":\"WEAPON_DAGGER\",\"ammo\":0},{\"label\":\"Vintage Pistole\",\"name\":\"WEAPON_VINTAGEPISTOL\",\"ammo\":9999},{\"label\":\"Feuerwerk\",\"name\":\"WEAPON_FIREWORK\",\"ammo\":16},{\"label\":\"Muskete\",\"name\":\"WEAPON_MUSKET\",\"ammo\":9999},{\"label\":\"Schwere Schrotflinte\",\"name\":\"WEAPON_HEAVYSHOTGUN\",\"ammo\":9999},{\"label\":\"Marksmangewehr\",\"name\":\"WEAPON_MARKSMANRIFLE\",\"ammo\":9996},{\"label\":\"Homing Launcher\",\"name\":\"WEAPON_HOMINGLAUNCHER\",\"ammo\":10},{\"label\":\"Annäherungsmine\",\"name\":\"WEAPON_PROXMINE\",\"ammo\":5},{\"label\":\"Schneeball\",\"name\":\"WEAPON_SNOWBALL\",\"ammo\":10},{\"label\":\"Leuchtpistole\",\"name\":\"WEAPON_FLAREGUN\",\"ammo\":20},{\"label\":\"Flare\",\"name\":\"WEAPON_FLARE\",\"ammo\":25},{\"label\":\"Kampf PDW\",\"name\":\"WEAPON_COMBATPDW\",\"ammo\":9954},{\"label\":\"Marksman Pistole\",\"name\":\"WEAPON_MARKSMANPISTOL\",\"ammo\":9999},{\"label\":\"Schlagring\",\"name\":\"WEAPON_KNUCKLE\",\"ammo\":0},{\"label\":\"Axt\",\"name\":\"WEAPON_HATCHET\",\"ammo\":0},{\"label\":\"Railgun\",\"name\":\"WEAPON_RAILGUN\",\"ammo\":18},{\"label\":\"Machete\",\"name\":\"WEAPON_MACHETE\",\"ammo\":0},{\"label\":\"Maschinenpistole\",\"name\":\"WEAPON_MACHINEPISTOL\",\"ammo\":9954},{\"label\":\"Klappmesser\",\"name\":\"WEAPON_SWITCHBLADE\",\"ammo\":0},{\"label\":\"Schwerer Revolver\",\"name\":\"WEAPON_REVOLVER\",\"ammo\":9999},{\"label\":\"Doppelläufige Schrotflinte\",\"name\":\"WEAPON_DBSHOTGUN\",\"ammo\":9999},{\"label\":\"Kampfgewehr\",\"name\":\"WEAPON_COMPACTRIFLE\",\"ammo\":9999},{\"label\":\"Auto Shotgun\",\"name\":\"WEAPON_AUTOSHOTGUN\",\"ammo\":9999},{\"label\":\"Kampfaxt\",\"name\":\"WEAPON_BATTLEAXE\",\"ammo\":0},{\"label\":\"Kompakt Launcher\",\"name\":\"WEAPON_COMPACTLAUNCHER\",\"ammo\":20},{\"label\":\"Mini SMG\",\"name\":\"WEAPON_MINISMG\",\"ammo\":9954},{\"label\":\"Rohrbombe\",\"name\":\"WEAPON_PIPEBOMB\",\"ammo\":10},{\"label\":\"Kö\",\"name\":\"WEAPON_POOLCUE\",\"ammo\":0},{\"label\":\"Rohrzange\",\"name\":\"WEAPON_WRENCH\",\"ammo\":0},{\"label\":\"Taschenlampe\",\"name\":\"WEAPON_FLASHLIGHT\",\"ammo\":0},{\"label\":\"Nachtsichtgerät\",\"name\":\"GADGET_NIGHTVISION\",\"ammo\":0},{\"label\":\"Fallschirm\",\"name\":\"GADGET_PARACHUTE\",\"ammo\":0}]', '{\"bproof_1\":0,\"age_2\":0,\"lipstick_4\":0,\"bags_1\":0,\"bags_2\":0,\"tshirt_1\":2,\"makeup_2\":0,\"eyebrows_2\":4,\"glasses_1\":0,\"bproof_2\":0,\"hair_color_2\":8,\"beard_2\":10,\"lipstick_1\":0,\"helmet_1\":-1,\"hair_color_1\":4,\"beard_3\":3,\"beard_4\":0,\"makeup_3\":0,\"beard_1\":7,\"pants_1\":26,\"shoes_1\":55,\"lipstick_3\":0,\"eyebrows_4\":0,\"makeup_4\":0,\"helmet_2\":0,\"chain_2\":2,\"mask_1\":0,\"skin\":5,\"glasses_2\":0,\"age_1\":0,\"ears_2\":0,\"chain_1\":17,\"hair_1\":10,\"arms\":1,\"pants_2\":0,\"eyebrows_1\":8,\"torso_1\":6,\"shoes_2\":5,\"makeup_1\":0,\"torso_2\":5,\"mask_2\":0,\"decals_1\":0,\"face\":4,\"hair_2\":3,\"ears_1\":2,\"decals_2\":0,\"sex\":0,\"eyebrows_3\":0,\"tshirt_2\":2,\"lipstick_2\":0}', '1338');
-
 
 -- ----------------------------
 -- Table structure for datastore
@@ -437,9 +432,9 @@ CREATE TABLE `datastore_data` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `owner` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `data` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
+  `data` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of datastore_data
@@ -551,9 +546,9 @@ CREATE TABLE `items` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `label` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
-  `limit` int(11) NOT NULL DEFAULT -1,
-  `rare` int(11) NOT NULL DEFAULT 0,
-  `can_remove` int(11) NOT NULL DEFAULT 1,
+  `limit` int(11) NOT NULL DEFAULT '-1',
+  `rare` int(11) NOT NULL DEFAULT '0',
+  `can_remove` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2500 DEFAULT CHARSET=utf8;
 
@@ -593,6 +588,10 @@ INSERT INTO `items` VALUES ('32', 'carotool', 'Karosseriewerkzeug', '-1', '0', '
 INSERT INTO `items` VALUES ('33', 'blowpipe', 'Fackeln', '-1', '0', '1');
 INSERT INTO `items` VALUES ('34', 'fixkit', 'Reparatur-Kit', '-1', '0', '1');
 INSERT INTO `items` VALUES ('35', 'carokit', 'Karosserie-Kit', '-1', '0', '1');
+INSERT INTO `items` VALUES ('36', 'bread', 'Burger', '-1', '0', '1');
+INSERT INTO `items` VALUES ('37', 'water', 'Wasser', '-1', '0', '1');
+INSERT INTO `items` VALUES ('64', 'curry', 'Curry', '-1', '0', '1');
+INSERT INTO `items` VALUES ('65', 'cola', 'Coke', '-1', '0', '1');
 INSERT INTO `items` VALUES ('66', 'trash1', 'Müll (1KG)', '50', '0', '1');
 INSERT INTO `items` VALUES ('67', 'trash2', 'Müll (2KG)', '50', '0', '1');
 INSERT INTO `items` VALUES ('68', 'trash3', 'Müll (3KG)', '50', '0', '1');
@@ -602,13 +601,6 @@ INSERT INTO `items` VALUES ('72', 'medikit', 'Medikit', '5', '0', '1');
 INSERT INTO `items` VALUES ('73', 'defi', 'Defibrillator', '1', '0', '0');
 INSERT INTO `items` VALUES ('74', 'handcuffs', 'Handschellen', '-1', '0', '1');
 INSERT INTO `items` VALUES ('75', 'blackberry', 'BlackBerry MOTION', '1', '1', '0');
-
--- FOOD & DRINKS
-INSERT INTO `items` VALUES ('36', 'bread', 'Burger', '-1', '0', '1');
-INSERT INTO `items` VALUES ('37', 'water', 'Wasser', '-1', '0', '1');
-INSERT INTO `items` VALUES ('64', 'curry', 'Curry', '-1', '0', '1');
-INSERT INTO `items` VALUES ('65', 'cola', 'Coke', '-1', '0', '1');
-INSERT INTO `items` VALUES ('75', 'whiskey', 'Glas Whiskey', '-1', '0', '1');
 INSERT INTO `items` VALUES ('76', 'vodka', 'Glas Vodka', '-1', '0', '1');
 INSERT INTO `items` VALUES ('77', 'tequila', 'Tequila-Shot', '-1', '0', '1');
 INSERT INTO `items` VALUES ('78', 'sekt', 'Flasche Sekt', '-1', '0', '1');
@@ -650,19 +642,20 @@ INSERT INTO `items` VALUES ('113', 'milchschnitte', 'Milchschnitte', '-1', '0', 
 INSERT INTO `items` VALUES ('114', 'glueck', 'Glückskeks', '-1', '0', '1');
 INSERT INTO `items` VALUES ('115', 'springroll', 'Frühlingsrolle', '-1', '0', '1');
 INSERT INTO `items` VALUES ('116', 'ricewine', 'Flasche Reiswein', '-1', '0', '1');
-
--- TODO: add item functionality if necessary! vvv
-INSERT INTO `items` VALUES ('84', 'medics1', 'Aspirin', '10', '0', '1');
-INSERT INTO `items` VALUES ('84', 'medics2', 'Antibiotika', '10', '0', '1');
-INSERT INTO `items` VALUES ('84', 'medics3', 'Morphin', '10', '0', '1');
-INSERT INTO `items` VALUES ('84', 'medics4', 'Sufentanil', '10', '0', '1');
-INSERT INTO `items` VALUES ('84', 'medics5', 'Ibuprofen', '10', '0', '1');
-INSERT INTO `items` VALUES ('85', 'roses', 'Bund Rosen', '1', '0', '1');
-INSERT INTO `items` VALUES ('86', 'pralines', 'Schachtel Pralinen', '1', '0', '1');
-INSERT INTO `items` VALUES ('87', 'ring', 'Goldener Ehering (24 Karat)', '2', '0', '1');
-INSERT INTO `items` VALUES ('88', 'defi', 'Defibrilator', '3', '0', '1');
-
--- weapon accessories
+INSERT INTO `items` VALUES ('120', 'medics1', 'Aspirin', '10', '0', '1');
+INSERT INTO `items` VALUES ('121', 'medics2', 'Antibiotika', '10', '0', '1');
+INSERT INTO `items` VALUES ('122', 'medics3', 'Morphin', '10', '0', '1');
+INSERT INTO `items` VALUES ('123', 'medics4', 'Sufentanil', '10', '0', '1');
+INSERT INTO `items` VALUES ('124', 'medics5', 'Ibuprofen', '10', '0', '1');
+INSERT INTO `items` VALUES ('125', 'roses', 'Bund Rosen', '1', '0', '1');
+INSERT INTO `items` VALUES ('126', 'pralines', 'Schachtel Pralinen', '1', '0', '1');
+INSERT INTO `items` VALUES ('127', 'ring', 'Goldener Ehering (24 Karat)', '2', '0', '1');
+INSERT INTO `items` VALUES ('128', 'defi', 'Defibrilator', '3', '0', '1');
+INSERT INTO `items` VALUES ('773', 'bread', 'Burger', '-1', '0', '1');
+INSERT INTO `items` VALUES ('774', 'curry', 'Curry', '-1', '0', '1');
+INSERT INTO `items` VALUES ('775', 'water', 'Wasser', '-1', '0', '1');
+INSERT INTO `items` VALUES ('776', 'cola', 'Coke', '-1', '0', '1');
+INSERT INTO `items` VALUES ('777', 'whiskey', 'Glas Whiskey', '-1', '0', '1');
 INSERT INTO `items` VALUES ('2014', 'nightvision_scope', 'Night Vision Scope', '-1', '0', '1');
 INSERT INTO `items` VALUES ('2015', 'thermal_scope', 'Thermal Vision Scope', '-1', '0', '1');
 INSERT INTO `items` VALUES ('2016', 'extended_magazine', 'Extended Magazine', '-1', '0', '1');
@@ -897,7 +890,11 @@ CREATE TABLE `owned_job_vehicles` (
   `owner` varchar(60) NOT NULL,
   `job` varchar(60) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of owned_job_vehicles
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for owned_properties
@@ -910,7 +907,11 @@ CREATE TABLE `owned_properties` (
   `rented` int(11) NOT NULL,
   `owner` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of owned_properties
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for owned_vehicles
@@ -927,7 +928,6 @@ CREATE TABLE `owned_vehicles` (
 -- ----------------------------
 -- Records of owned_vehicles
 -- ----------------------------
--- BirdMachine
 INSERT INTO `owned_vehicles` VALUES ('1', 0x7B226D6F6446726F6E74576865656C73223A32302C226D6F64537472757473223A2D312C226865616C7468223A3938302C226D6F6457696E646F7773223A2D312C226D6F6446726F6E7442756D706572223A2D312C226D6F644772696C6C65223A2D312C226D6F644C6976657279223A2D312C226D6F64456E67696E65426C6F636B223A2D312C226D6F6441726368436F766572223A2D312C226D6F644272616B6573223A322C22636F6C6F7232223A3131332C2274797265536D6F6B65436F6C6F72223A5B302C302C3132385D2C226D6F645472616E736D697373696F6E223A322C226D6F644F726E616D656E7473223A2D312C226D6F64506C617465486F6C646572223A2D312C226D6F6453696465536B697274223A2D312C226D6F64537065616B657273223A2D312C22706C617465223A2232324A5944353536222C226D6F64486F6F64223A2D312C226D6F64536869667465724C656176657273223A2D312C22636F6C6F7231223A31312C22706561726C657363656E74436F6C6F72223A38312C226D6F6454616E6B223A2D312C226D6F6446656E646572223A2D312C226D6F64446F6F72537065616B6572223A2D312C226D6F6444617368626F617264223A2D312C22646972744C6576656C223A382E3238303631333839393233312C226D6F64526967687446656E646572223A2D312C22776865656C73223A372C226D6F6441657269616C73223A2D312C226D6F64536D6F6B65456E61626C6564223A312C226D6F64487964726F6C6963223A2D312C226D6F64486F726E73223A2D312C2277696E646F7754696E74223A332C226D6F644261636B576865656C73223A2D312C226D6F6441697246696C746572223A2D312C226E656F6E436F6C6F72223A5B302C302C3132385D2C226D6F64456E67696E65223A332C226D6F645265617242756D706572223A2D312C226D6F6458656E6F6E223A312C226D6F64547572626F223A312C22706C617465496E646578223A312C226D6F64526F6F66223A2D312C226D6F645472696D42223A2D312C22776865656C436F6C6F72223A3135362C226D6F6445786861757374223A2D312C226D6F6453757370656E73696F6E223A332C226D6F6441506C617465223A2D312C226D6F6453706F696C657273223A2D312C226D6F6456616E697479506C617465223A2D312C226D6F645472756E6B223A2D312C226D6F645365617473223A2D312C226D6F645374656572696E67576865656C223A2D312C226D6F644469616C223A2D312C226D6F6441726D6F72223A342C226E656F6E456E61626C6564223A5B312C312C312C315D2C226D6F645472696D41223A2D312C226D6F644672616D65223A2D312C226D6F64656C223A2D313539393335383132317D, 'steam:110000106abab10', '1');
 INSERT INTO `owned_vehicles` VALUES ('2', 0x7B226D6F6446726F6E74576865656C73223A31372C226D6F64537472757473223A2D312C226865616C7468223A313030302C226D6F6457696E646F7773223A2D312C226D6F6446726F6E7442756D706572223A312C226D6F644772696C6C65223A312C226D6F644C6976657279223A2D312C226D6F64456E67696E65426C6F636B223A2D312C226D6F6441726368436F766572223A2D312C226D6F644272616B6573223A322C22636F6C6F7232223A3131382C2274797265536D6F6B65436F6C6F72223A5B302C3235352C305D2C226D6F645472616E736D697373696F6E223A322C226D6F644F726E616D656E7473223A2D312C226D6F64506C617465486F6C646572223A2D312C226D6F6453696465536B697274223A312C226D6F64537065616B657273223A2D312C22706C617465223A223230454442303839222C226D6F64486F6F64223A322C226D6F64536869667465724C656176657273223A2D312C22636F6C6F7231223A31312C22706561726C657363656E74436F6C6F72223A3131322C226D6F6454616E6B223A2D312C226D6F6446656E646572223A2D312C226D6F64446F6F72537065616B6572223A2D312C226D6F6444617368626F617264223A2D312C22646972744C6576656C223A302E323334323733323834363733372C226D6F64526967687446656E646572223A2D312C22776865656C73223A372C226D6F6441657269616C73223A2D312C226D6F64536D6F6B65456E61626C6564223A312C226D6F64487964726F6C6963223A2D312C226D6F64486F726E73223A34322C2277696E646F7754696E74223A312C226D6F644261636B576865656C73223A2D312C226D6F6441697246696C746572223A2D312C226E656F6E436F6C6F72223A5B302C3235352C305D2C226D6F64456E67696E65223A332C226D6F645265617242756D706572223A312C226D6F6458656E6F6E223A312C226D6F64547572626F223A312C22706C617465496E646578223A312C226D6F64526F6F66223A302C226D6F645472696D42223A2D312C22776865656C436F6C6F72223A39322C226D6F6445786861757374223A302C226D6F6453757370656E73696F6E223A332C226D6F6441506C617465223A2D312C226D6F6453706F696C657273223A342C226D6F6456616E697479506C617465223A2D312C226D6F645472756E6B223A2D312C226D6F645365617473223A2D312C226D6F645374656572696E67576865656C223A2D312C226D6F644469616C223A2D312C226D6F6441726D6F72223A342C226E656F6E456E61626C6564223A5B312C312C312C315D2C226D6F645472696D41223A2D312C226D6F644672616D65223A2D312C226D6F64656C223A313039333639373035347D, 'steam:110000106abab10', '1');
 INSERT INTO `owned_vehicles` VALUES ('3', 0x7B226D6F6446726F6E74576865656C73223A2D312C226D6F64537472757473223A2D312C226865616C7468223A3939392C226D6F6457696E646F7773223A2D312C226D6F6446726F6E7442756D706572223A2D312C226D6F644772696C6C65223A2D312C226D6F644C6976657279223A2D312C226D6F64456E67696E65426C6F636B223A2D312C226D6F6441726368436F766572223A2D312C226D6F644272616B6573223A2D312C22636F6C6F7232223A322C2274797265536D6F6B65436F6C6F72223A5B3235352C3235352C3235355D2C226D6F645472616E736D697373696F6E223A2D312C226D6F644F726E616D656E7473223A2D312C226D6F64506C617465486F6C646572223A2D312C226D6F6453696465536B697274223A2D312C226D6F64537065616B657273223A2D312C22706C617465223A223231494E43393333222C226D6F64486F6F64223A2D312C226D6F64536869667465724C656176657273223A2D312C22636F6C6F7231223A322C22706561726C657363656E74436F6C6F72223A372C226D6F6454616E6B223A2D312C226D6F6446656E646572223A2D312C226D6F64446F6F72537065616B6572223A2D312C226D6F6444617368626F617264223A2D312C22646972744C6576656C223A362E353438393038373130343739382C226D6F64526967687446656E646572223A2D312C22776865656C73223A372C226D6F6441657269616C73223A2D312C226D6F64536D6F6B65456E61626C6564223A312C226D6F64487964726F6C6963223A2D312C226D6F64486F726E73223A2D312C2277696E646F7754696E74223A2D312C226D6F644261636B576865656C73223A2D312C226D6F6441697246696C746572223A2D312C226E656F6E436F6C6F72223A5B3133352C3230362C3233355D2C226D6F64456E67696E65223A2D312C226D6F645265617242756D706572223A2D312C226D6F6458656E6F6E223A312C226D6F64547572626F223A312C22706C617465496E646578223A312C226D6F64526F6F66223A2D312C226D6F645472696D42223A2D312C22776865656C436F6C6F72223A3135362C226D6F6445786861757374223A2D312C226D6F6453757370656E73696F6E223A2D312C226D6F6441506C617465223A2D312C226D6F6453706F696C657273223A2D312C226D6F6456616E697479506C617465223A2D312C226D6F645472756E6B223A2D312C226D6F645365617473223A2D312C226D6F645374656572696E67576865656C223A2D312C226D6F644469616C223A2D312C226D6F6441726D6F72223A2D312C226E656F6E456E61626C6564223A5B312C312C312C315D2C226D6F645472696D41223A2D312C226D6F644672616D65223A2D312C226D6F64656C223A2D3330393130353136397D, 'steam:110000106abab10', '1');
@@ -1043,7 +1043,11 @@ CREATE TABLE `rented_vehicles` (
   `rent_price` int(11) NOT NULL,
   `owner` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of rented_vehicles
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for shops
@@ -1060,88 +1064,80 @@ CREATE TABLE `shops` (
 -- ----------------------------
 -- Records of shops
 -- ----------------------------
-
--- ALCOHOL
-INSERT INTO `shops` VALUES ('1', 'RobsLiquor', 'whiskey', '3.90');
-INSERT INTO `shops` VALUES ('2', 'RobsLiquor', 'vodka', '2.90');
-INSERT INTO `shops` VALUES ('3', 'RobsLiquor', 'tequila', '2.70');
-INSERT INTO `shops` VALUES ('4', 'RobsLiquor', 'sekt', '29.90');
-INSERT INTO `shops` VALUES ('5', 'RobsLiquor', 'wine', '7.90');
-INSERT INTO `shops` VALUES ('6', 'LTDgasoline', 'wine', '1.40');
-INSERT INTO `shops` VALUES ('7', 'RobsLiquor', 'beer', '1.99');
-INSERT INTO `shops` VALUES ('8', 'LTDgasoline', 'beer', '1.40');
-INSERT INTO `shops` VALUES ('9', 'RobsLiquor', 'ricewine', '6.90');
-INSERT INTO `shops` VALUES ('10', 'RobsLiquor', 'alcopop', '2.49');
-INSERT INTO `shops` VALUES ('11', 'LTDgasoline', 'alcopop', '2.49');
-
--- DRINKS
-INSERT INTO `shops` VALUES ('12', 'LTDgasoline', 'cola', '1.99');
-INSERT INTO `shops` VALUES ('13', 'TwentyFourSeven', 'cola', '1.99');
-INSERT INTO `shops` VALUES ('14', 'LTDgasoline', 'fanta', '1.99');
-INSERT INTO `shops` VALUES ('15', 'TwentyFourSeven', 'fanta', '1.99');
-INSERT INTO `shops` VALUES ('16', 'LTDgasoline', 'sprite', '1.99');
-INSERT INTO `shops` VALUES ('17', 'TwentyFourSeven', 'sprite', '1.99');
-INSERT INTO `shops` VALUES ('18', 'LTDgasoline', 'water', '1.40');
-INSERT INTO `shops` VALUES ('19', 'TwentyFourSeven', 'water', '1.40');
-INSERT INTO `shops` VALUES ('20', 'LTDgasoline', 'coffee', '1.90');
-INSERT INTO `shops` VALUES ('21', 'TwentyFourSeven', 'coffee', '1.90');
-INSERT INTO `shops` VALUES ('22', 'LTDgasoline', 'cacao', '1.90');
-INSERT INTO `shops` VALUES ('23', 'TwentyFourSeven', 'cacao', '1.90');
-INSERT INTO `shops` VALUES ('24', 'LTDgasoline', 'espresso', '2.10');
-INSERT INTO `shops` VALUES ('25', 'TwentyFourSeven', 'espresso', '2.10');
-INSERT INTO `shops` VALUES ('26', 'LTDgasoline', 'ojuice', '0.99');
-INSERT INTO `shops` VALUES ('27', 'TwentyFourSeven', 'ojuice', '0.99');
-INSERT INTO `shops` VALUES ('28', 'LTDgasoline', 'milkshake', '1.99');
-INSERT INTO `shops` VALUES ('29', 'TwentyFourSeven', 'milkshake', '1.99');
-
--- FOOD
-INSERT INTO `shops` VALUES ('30', 'TwentyFourSeven', 'bread', '3.40');
-INSERT INTO `shops` VALUES ('31', 'LTDgasoline', 'bread', '3.40');
+INSERT INTO `shops` VALUES ('1', 'RobsLiquor', 'whiskey', '4');
+INSERT INTO `shops` VALUES ('2', 'RobsLiquor', 'vodka', '3');
+INSERT INTO `shops` VALUES ('3', 'RobsLiquor', 'tequila', '3');
+INSERT INTO `shops` VALUES ('4', 'RobsLiquor', 'sekt', '30');
+INSERT INTO `shops` VALUES ('5', 'RobsLiquor', 'wine', '8');
+INSERT INTO `shops` VALUES ('6', 'LTDgasoline', 'wine', '1');
+INSERT INTO `shops` VALUES ('7', 'RobsLiquor', 'beer', '2');
+INSERT INTO `shops` VALUES ('8', 'LTDgasoline', 'beer', '1');
+INSERT INTO `shops` VALUES ('9', 'RobsLiquor', 'ricewine', '7');
+INSERT INTO `shops` VALUES ('10', 'RobsLiquor', 'alcopop', '2');
+INSERT INTO `shops` VALUES ('11', 'LTDgasoline', 'alcopop', '2');
+INSERT INTO `shops` VALUES ('12', 'LTDgasoline', 'cola', '2');
+INSERT INTO `shops` VALUES ('13', 'TwentyFourSeven', 'cola', '2');
+INSERT INTO `shops` VALUES ('14', 'LTDgasoline', 'fanta', '2');
+INSERT INTO `shops` VALUES ('15', 'TwentyFourSeven', 'fanta', '2');
+INSERT INTO `shops` VALUES ('16', 'LTDgasoline', 'sprite', '2');
+INSERT INTO `shops` VALUES ('17', 'TwentyFourSeven', 'sprite', '2');
+INSERT INTO `shops` VALUES ('18', 'LTDgasoline', 'water', '1');
+INSERT INTO `shops` VALUES ('19', 'TwentyFourSeven', 'water', '1');
+INSERT INTO `shops` VALUES ('20', 'LTDgasoline', 'coffee', '2');
+INSERT INTO `shops` VALUES ('21', 'TwentyFourSeven', 'coffee', '2');
+INSERT INTO `shops` VALUES ('22', 'LTDgasoline', 'cacao', '2');
+INSERT INTO `shops` VALUES ('23', 'TwentyFourSeven', 'cacao', '2');
+INSERT INTO `shops` VALUES ('24', 'LTDgasoline', 'espresso', '2');
+INSERT INTO `shops` VALUES ('25', 'TwentyFourSeven', 'espresso', '2');
+INSERT INTO `shops` VALUES ('26', 'LTDgasoline', 'ojuice', '1');
+INSERT INTO `shops` VALUES ('27', 'TwentyFourSeven', 'ojuice', '1');
+INSERT INTO `shops` VALUES ('28', 'LTDgasoline', 'milkshake', '2');
+INSERT INTO `shops` VALUES ('29', 'TwentyFourSeven', 'milkshake', '2');
+INSERT INTO `shops` VALUES ('30', 'TwentyFourSeven', 'bread', '3');
+INSERT INTO `shops` VALUES ('31', 'LTDgasoline', 'bread', '3');
 INSERT INTO `shops` VALUES ('32', 'TwentyFourSeven', 'curry', '2');
-INSERT INTO `shops` VALUES ('33', 'TwentyFourSeven', 'corny', '0.75');
-INSERT INTO `shops` VALUES ('34', 'LTDgasoline', 'corny', '0.75');
-INSERT INTO `shops` VALUES ('35', 'TwentyFourSeven', 'donut', '1.10');
-INSERT INTO `shops` VALUES ('36', 'LTDgasoline', 'donut', '1.10');
-INSERT INTO `shops` VALUES ('37', 'TwentyFourSeven', 'cake', '3.90');
-INSERT INTO `shops` VALUES ('38', 'TwentyFourSeven', 'bun', '0.90');
-INSERT INTO `shops` VALUES ('39', 'LTDgasoline', 'bun', '0.90');
-INSERT INTO `shops` VALUES ('40', 'TwentyFourSeven', 'chocoheart', '3.90');
-INSERT INTO `shops` VALUES ('41', 'LTDgasoline', 'chocoheart', '3.90');
-INSERT INTO `shops` VALUES ('42', 'TwentyFourSeven', 'juinggum', '0.90');
-INSERT INTO `shops` VALUES ('43', 'LTDgasoline', 'juinggum', '0.90');
-INSERT INTO `shops` VALUES ('44', 'TwentyFourSeven', 'tacco', '2.90');
-INSERT INTO `shops` VALUES ('45', 'TwentyFourSeven', 'burrito', '2.49');
-INSERT INTO `shops` VALUES ('46', 'TwentyFourSeven', 'nacho', '1.90');
-INSERT INTO `shops` VALUES ('47', 'TwentyFourSeven', 'schnitzel', '6.90');
-INSERT INTO `shops` VALUES ('48', 'TwentyFourSeven', 'pizza', '4.90');
-INSERT INTO `shops` VALUES ('49', 'TwentyFourSeven', 'chickenwings', '4.90');
+INSERT INTO `shops` VALUES ('33', 'TwentyFourSeven', 'corny', '1');
+INSERT INTO `shops` VALUES ('34', 'LTDgasoline', 'corny', '1');
+INSERT INTO `shops` VALUES ('35', 'TwentyFourSeven', 'donut', '1');
+INSERT INTO `shops` VALUES ('36', 'LTDgasoline', 'donut', '1');
+INSERT INTO `shops` VALUES ('37', 'TwentyFourSeven', 'cake', '4');
+INSERT INTO `shops` VALUES ('38', 'TwentyFourSeven', 'bun', '1');
+INSERT INTO `shops` VALUES ('39', 'LTDgasoline', 'bun', '1');
+INSERT INTO `shops` VALUES ('40', 'TwentyFourSeven', 'chocoheart', '4');
+INSERT INTO `shops` VALUES ('41', 'LTDgasoline', 'chocoheart', '4');
+INSERT INTO `shops` VALUES ('42', 'TwentyFourSeven', 'juinggum', '1');
+INSERT INTO `shops` VALUES ('43', 'LTDgasoline', 'juinggum', '1');
+INSERT INTO `shops` VALUES ('44', 'TwentyFourSeven', 'tacco', '3');
+INSERT INTO `shops` VALUES ('45', 'TwentyFourSeven', 'burrito', '2');
+INSERT INTO `shops` VALUES ('46', 'TwentyFourSeven', 'nacho', '2');
+INSERT INTO `shops` VALUES ('47', 'TwentyFourSeven', 'schnitzel', '7');
+INSERT INTO `shops` VALUES ('48', 'TwentyFourSeven', 'pizza', '5');
+INSERT INTO `shops` VALUES ('49', 'TwentyFourSeven', 'chickenwings', '5');
 INSERT INTO `shops` VALUES ('50', 'TwentyFourSeven', 'doener', '4');
-INSERT INTO `shops` VALUES ('51', 'TwentyFourSeven', 'fribun', '1.90');
-INSERT INTO `shops` VALUES ('52', 'LTDgasoline', 'fribun', '1.90');
-INSERT INTO `shops` VALUES ('53', 'TwentyFourSeven', 'bratwurst', '1.90');
-INSERT INTO `shops` VALUES ('54', 'LTDgasoline', 'bratwurst', '1.90');
-INSERT INTO `shops` VALUES ('55', 'TwentyFourSeven', 'currywurst', '2.20');
-INSERT INTO `shops` VALUES ('56', 'LTDgasoline', 'currywurst', '2.20');
+INSERT INTO `shops` VALUES ('51', 'TwentyFourSeven', 'fribun', '2');
+INSERT INTO `shops` VALUES ('52', 'LTDgasoline', 'fribun', '2');
+INSERT INTO `shops` VALUES ('53', 'TwentyFourSeven', 'bratwurst', '2');
+INSERT INTO `shops` VALUES ('54', 'LTDgasoline', 'bratwurst', '2');
+INSERT INTO `shops` VALUES ('55', 'TwentyFourSeven', 'currywurst', '2');
+INSERT INTO `shops` VALUES ('56', 'LTDgasoline', 'currywurst', '2');
 INSERT INTO `shops` VALUES ('57', 'TwentyFourSeven', 'hotdog', '2');
 INSERT INTO `shops` VALUES ('58', 'LTDgasoline', 'hotdog', '2');
-INSERT INTO `shops` VALUES ('59', 'TwentyFourSeven', 'pommes', '1.49');
-INSERT INTO `shops` VALUES ('60', 'LTDgasoline', 'pommes', '1.49');
-INSERT INTO `shops` VALUES ('61', 'TwentyFourSeven', 'noodles', '0.90');
-INSERT INTO `shops` VALUES ('62', 'TwentyFourSeven', 'chocoice', '1.20');
-INSERT INTO `shops` VALUES ('63', 'TwentyFourSeven', 'vanilleeis', '1.20');
-INSERT INTO `shops` VALUES ('64', 'TwentyFourSeven', 'fruitice', '1.20');
-INSERT INTO `shops` VALUES ('65', 'TwentyFourSeven', 'milchschnitte', '0.75');
-INSERT INTO `shops` VALUES ('66', 'LTDgasoline', 'milchschnitte', '0.75');
-INSERT INTO `shops` VALUES ('67', 'TwentyFourSeven', 'springroll', '1.50');
-INSERT INTO `shops` VALUES ('68', 'TwentyFourSeven', 'glueck', '0.50');
-INSERT INTO `shops` VALUES ('69', 'LTDgasoline', 'glueck', '0.50');
-INSERT INTO `shops` VALUES ('70', 'TwentyFourSeven', 'bifi', '0.90');
-INSERT INTO `shops` VALUES ('71', 'LTDgasoline', 'bifi', '0.90');
-INSERT INTO `shops` VALUES ('72', 'TwentyFourSeven', 'pralines', '5.90');
-INSERT INTO `shops` VALUES ('73', 'LTDgasoline', 'pralines', '5.90');
-
--- OTHER ITEM
-INSERT INTO `shops` VALUES ('74', 'LTDgasoline', 'roses', '9.90');
+INSERT INTO `shops` VALUES ('59', 'TwentyFourSeven', 'pommes', '1');
+INSERT INTO `shops` VALUES ('60', 'LTDgasoline', 'pommes', '1');
+INSERT INTO `shops` VALUES ('61', 'TwentyFourSeven', 'noodles', '1');
+INSERT INTO `shops` VALUES ('62', 'TwentyFourSeven', 'chocoice', '1');
+INSERT INTO `shops` VALUES ('63', 'TwentyFourSeven', 'vanilleeis', '1');
+INSERT INTO `shops` VALUES ('64', 'TwentyFourSeven', 'fruitice', '1');
+INSERT INTO `shops` VALUES ('65', 'TwentyFourSeven', 'milchschnitte', '1');
+INSERT INTO `shops` VALUES ('66', 'LTDgasoline', 'milchschnitte', '1');
+INSERT INTO `shops` VALUES ('67', 'TwentyFourSeven', 'springroll', '2');
+INSERT INTO `shops` VALUES ('68', 'TwentyFourSeven', 'glueck', '1');
+INSERT INTO `shops` VALUES ('69', 'LTDgasoline', 'glueck', '1');
+INSERT INTO `shops` VALUES ('70', 'TwentyFourSeven', 'bifi', '1');
+INSERT INTO `shops` VALUES ('71', 'LTDgasoline', 'bifi', '1');
+INSERT INTO `shops` VALUES ('72', 'TwentyFourSeven', 'pralines', '6');
+INSERT INTO `shops` VALUES ('73', 'LTDgasoline', 'pralines', '6');
+INSERT INTO `shops` VALUES ('74', 'LTDgasoline', 'roses', '10');
 INSERT INTO `shops` VALUES ('75', 'TwentyFourSeven', 'ring', '299');
 
 -- ----------------------------
@@ -1154,7 +1150,11 @@ CREATE TABLE `society_moneywash` (
   `society` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `amount` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of society_moneywash
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for user_accounts
@@ -1166,7 +1166,11 @@ CREATE TABLE `user_accounts` (
   `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `money` double NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of user_accounts
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for user_contacts
@@ -1178,7 +1182,11 @@ CREATE TABLE `user_contacts` (
   `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `number` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of user_contacts
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for user_inventory
@@ -1190,7 +1198,11 @@ CREATE TABLE `user_inventory` (
   `item` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `count` int(111) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of user_inventory
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for user_licenses
@@ -1201,7 +1213,11 @@ CREATE TABLE `user_licenses` (
   `type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `owner` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of user_licenses
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for user_parkings
@@ -1217,6 +1233,10 @@ CREATE TABLE `user_parkings` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
+-- Records of user_parkings
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for user_whitelist
 -- ----------------------------
 DROP TABLE IF EXISTS `user_whitelist`;
@@ -1229,7 +1249,7 @@ CREATE TABLE `user_whitelist` (
 -- ----------------------------
 -- Records of user_whitelist
 -- ----------------------------
-INSERT INTO `user_whitelist` VALUES ('steam:110000106abab10', '1'); -- Birdmachine
+INSERT INTO `user_whitelist` VALUES ('steam:110000106abab10', '1');
 
 -- ----------------------------
 -- Table structure for users
@@ -1319,7 +1339,7 @@ INSERT INTO `vehicle_categories` VALUES ('31', 'hyundai', 'Hyundai');
 -- ----------------------------
 DROP TABLE IF EXISTS `vehicles`;
 CREATE TABLE `vehicles` (
-  `id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `model` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `price` int(11) NOT NULL,
@@ -1327,137 +1347,96 @@ CREATE TABLE `vehicles` (
   `job` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
   `grade` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=86 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of vehicles
 -- ----------------------------
-INSERT INTO vehicles (`name`, model, price, category, job, grade) VALUES
-	('AMC Pacer', 'yAmcPacer', '3900', 'gg', null, null),
-	('Hyandai Accent', 'accent', '4290', 'gg', null, null),
-	-- ('Honda Civic', 'civic', '3450', 'gg', null, null),
-	-- ('Chevrolet Monza', 'monza', '4250', 'gg', null, null),
-
-	-- ('Virage', 'virage', '200000', 'am', null, null),
-
-	('Virage', 'virage', '200000', 'am', null, null),
-	('DB7', 'db7zagato', '170000', 'am', null, null),
-
-	('RS6 C7', 'rs6', '120000', 'audi', null, null),
-	('A8', 'a8fsi', '90000', 'audi', null, null),
-	-- ('TT RS', 'audittrs', '62000', 'audi', null, null),
-	('A7', 'a7', '70000', 'audi', null, null),
-
-	('Bentayga Mansory', 'bentaygam', '400000', 'bentley', null, null),
-	('Continental GT', 'ben17', '250000', 'bentley', null, null),
-
-	('M5', 'bmci', '130000', 'bmw', null, null),
-	('M6', 'm6f13', '130000', 'bmw', null, null),
-	('M3 E92', 'bmwm3e92', '80000', 'bmw', null, null),
-	('M3 E92 GTS', 'm3e92gts', '140000', 'bmw', null, null),
-	('M5 E60', 'm5e60', '103000', 'bmw', null, null),
-	('M3 F80', 'm3f80', '80000', 'bmw', null, null),
-	-- ('Mini Cooper 2015', 'minicooper', '23500', 'bmw', null, null),
-	('i8', 'i8', '129900', 'bmw', null, null),
-	('750li Lumma', 'lumma750', '146700', 'bmw', null, null),
-	('M3 E36', 'rmodm3e36', '80000', 'bmw', null, null),
-	('X6M', 'x6m', '125000', 'bmw', null, null),
-	('E30', 'alpinae30', '49500', 'bmw', null, null),
-
-	('Escalade', 'gmt900escalade', '115000', 'cadi', null, null),
-	('XTS Limousine', 'limoxts', '80000', 'cadi', null, null),
-
-	-- ('Camaro ZL 1', 'CamaroZL1', '58000', 'chevy', null, null),
-
-	('C3', 'citroenc3', '200000', 'citro', null, null),
-
-	('Challenger 1970', 'chall70', '45000', 'dodge', null, null),
-	('Challenger SRT 8 Hellcat', 'demon', '65000', 'dodge', null, null),
-	('Viper GTS', '99viper', '45000', 'dodge', null, null),
-
-	('360 Modena F1', 'modena', '140000', 'ferrari', null, null),
-	('F12 Berlinetta', 'f12m', '269000', 'ferrari', null, null),
-
-	('595 Abarth', 'yFiat595ssa', '8000', 'fiat', null, null),
-
-	('X351', 'XJR', '200000', 'jaguar', null, null),
-
-	('Grand Cherokee SRT8', 'srt8', '100000', 'jeep', null, null),
-	('Wrangler Trailcat', 'trailcat', '75000', 'jeep', null, null),
-	('Rubicon', 'jeep2012', '45000', 'jeep', null, null),
-
-	('Huracan LP610', 'lp610', '229000', 'lambo', null, null),
-	-- ('Centenario LP770', 'lp770', '2450000', 'lambo', null, null),
-	('Vacca', 'vacca', '120000', 'lambo', null, null),
-	('Tempesta', 'tempesta', '175000', 'lambo', null, null),
-
-	('Range Rover', 'rr14', '95000', 'rover', null, null),
-
-	('Quattroporte GTS', 'mqgts', '147500', 'maserati', null, null),
-	('Levante Mansory', 'mlmansory', '150000', 'maserati', null, null),
-	('Gran Tourismo', 'masgt', '126000', 'maserati', null, null),
-
-	('RX-7', 'rx7tunable2', '20000', 'mazda', null, null),
-
-	('600sel', 'sel600', '35000', 'mercedes', null, null),
-	('G65 AMG Lifted', 'gclass', '350000', 'mercedes', null, null),
-	('MB 300sl Gullwing', 'mb300sl', '1200000', 'mercedes', null, null),
-	('S63 AMG Cabriolet', 'mb18', '170000', 'mercedes', null, null),
-	('CLA 45 Shootingbreak', 'cla45sb', '80000', 'mercedes', null, null),
-	('CLS 63 AMG', 'cls2015', '180000', 'mercedes', null, null),
-	('SLS AMG', 'slsamg', '248500', 'mercedes', null, null),
-	('V250', 'v250', '55000', 'mercedes', null, null),
-	('Brabus 850', 'brabus850', '230000', 'mercedes', null, null),
-	('C63s AMG', 'c63s', '150000', 'mercedes', null, null),
-	('S65 AMG WALD', 'w222wald', '230000', 'mercedes', null, null),
-	('A45 AMG', 'a45', '54750', 'mercedes', null, null),
-	('S63 AMG', 'S63w222', '204960', 'mercedes', null, null),
-	('G65 AMG', 'g65amg', '289950', 'mercedes', null, null),
-	('GLE 63 AMG Coupé', 'gle', '137900', 'mercedes', null, null),
-
-	('Eclipse', 'eclipse', '9900', 'mitsu', null, null),
-	('Lancer Evolution IX MR', 'evo9', '47500', 'mitsu', null, null),
-
-	('Patrol Nismo', 'tulenis', '105000', 'nissan', null, null),
-	('Skyline R34 GT-R', 'skyline', '57500', 'nissan', null, null),
-
-	('Adam', 'opeladam', '13000', 'opel', null, null),
-
-	('Zonda Tricolore', 'tricolore', '1950000', 'pagani', null, null),
-	('Huayra BC', 'bc', '2450000', 'pagani', null, null),
-
-	('308', 'peug308', '21000', 'peug', null, null),
-	('106', 'p106', '7000', 'peug', null, null),
-
-	('Panamera Turbo', 'panamera17turbo', '167500', 'porsche', null, null),
-	('911', 'por911', '112000', 'porsche', null, null),
-	-- ('718 Cayenne', 'pcs18', '85000', 'porsche', null, null),
-	('911 GT3 RS', '911gt3rs', '245900', 'porsche', null, null),
-	('911 1982', 'turbo33', '56500', 'porsche', null, null),
-	('718', '718', '99999999', 'porsche', null, null),
-	('MC GTS', 'mcgts', '99999999', 'porsche', null, null),
-	-- ('718 Cayman S', '718caymans', '99999999', 'porsche', null, null),
-
-	('Twingo', 'twingo', '200000', 'renault', null, null),
-	('Zoe', 'zoe', '200000', 'renault', null, null),
-
-	('Wraith', 'Wraith', '340000', 'rr', null, null),
-	('supra2', 'supra2', '99999999', 'rr', null, null),
-
-	('V60', 'v60pols', '39800', 'volvo', null, null),
-	('850r', 'v850r', '15450', 'volvo', null, null),
-
-	('Golf 3 GTI', 'mk3', '7500', 'vw', null, null),
-	('Passat GTE', 'pstgte', '50500', 'vw', null, null),
-	('Golf 5 GTI', 'golfgti', '32500', 'vw', null, null),
-	('Passat R-Line', 'passatr', '48850', 'vw', null, null),
-	('Touareg R50', 'R50', '94600', 'vw', null, null),
-
-	('Veloster Turbo', 'veln', '26990', 'hyundai', null, null),
-
-	('YZF-R 1', 'r1', '19325', 'moto', null, null),
-	('YZF-R 6', 'r6', '15999', 'moto', null, null);
-
+INSERT INTO `vehicles` VALUES ('1', 'AMC Pacer', 'yAmcPacer', '3900', 'gg', null, null);
+INSERT INTO `vehicles` VALUES ('2', 'Hyandai Accent', 'accent', '4290', 'gg', null, null);
+INSERT INTO `vehicles` VALUES ('3', 'Virage', 'virage', '200000', 'am', null, null);
+INSERT INTO `vehicles` VALUES ('4', 'DB7', 'db7zagato', '170000', 'am', null, null);
+INSERT INTO `vehicles` VALUES ('5', 'RS6 C7', 'rs6', '120000', 'audi', null, null);
+INSERT INTO `vehicles` VALUES ('6', 'A8', 'a8fsi', '90000', 'audi', null, null);
+INSERT INTO `vehicles` VALUES ('7', 'A7', 'a7', '70000', 'audi', null, null);
+INSERT INTO `vehicles` VALUES ('8', 'Bentayga Mansory', 'bentaygam', '400000', 'bentley', null, null);
+INSERT INTO `vehicles` VALUES ('9', 'Continental GT', 'ben17', '250000', 'bentley', null, null);
+INSERT INTO `vehicles` VALUES ('10', 'M5', 'bmci', '130000', 'bmw', null, null);
+INSERT INTO `vehicles` VALUES ('11', 'M6', 'm6f13', '130000', 'bmw', null, null);
+INSERT INTO `vehicles` VALUES ('12', 'M3 E92', 'bmwm3e92', '80000', 'bmw', null, null);
+INSERT INTO `vehicles` VALUES ('13', 'M3 E92 GTS', 'm3e92gts', '140000', 'bmw', null, null);
+INSERT INTO `vehicles` VALUES ('14', 'M5 E60', 'm5e60', '103000', 'bmw', null, null);
+INSERT INTO `vehicles` VALUES ('15', 'M3 F80', 'm3f80', '80000', 'bmw', null, null);
+INSERT INTO `vehicles` VALUES ('16', 'i8', 'i8', '129900', 'bmw', null, null);
+INSERT INTO `vehicles` VALUES ('17', '750li Lumma', 'lumma750', '146700', 'bmw', null, null);
+INSERT INTO `vehicles` VALUES ('18', 'M3 E36', 'rmodm3e36', '80000', 'bmw', null, null);
+INSERT INTO `vehicles` VALUES ('19', 'X6M', 'x6m', '125000', 'bmw', null, null);
+INSERT INTO `vehicles` VALUES ('20', 'E30', 'alpinae30', '49500', 'bmw', null, null);
+INSERT INTO `vehicles` VALUES ('21', 'Escalade', 'gmt900escalade', '115000', 'cadi', null, null);
+INSERT INTO `vehicles` VALUES ('22', 'XTS Limousine', 'limoxts', '80000', 'cadi', null, null);
+INSERT INTO `vehicles` VALUES ('23', 'C3', 'citroenc3', '200000', 'citro', null, null);
+INSERT INTO `vehicles` VALUES ('24', 'Challenger 1970', 'chall70', '45000', 'dodge', null, null);
+INSERT INTO `vehicles` VALUES ('25', 'Challenger SRT 8 Hellcat', 'demon', '65000', 'dodge', null, null);
+INSERT INTO `vehicles` VALUES ('26', 'Viper GTS', '99viper', '45000', 'dodge', null, null);
+INSERT INTO `vehicles` VALUES ('27', '360 Modena F1', 'modena', '140000', 'ferrari', null, null);
+INSERT INTO `vehicles` VALUES ('28', 'F12 Berlinetta', 'f12m', '269000', 'ferrari', null, null);
+INSERT INTO `vehicles` VALUES ('29', '595 Abarth', 'yFiat595ssa', '8000', 'fiat', null, null);
+INSERT INTO `vehicles` VALUES ('30', 'X351', 'XJR', '200000', 'jaguar', null, null);
+INSERT INTO `vehicles` VALUES ('31', 'Grand Cherokee SRT8', 'srt8', '100000', 'jeep', null, null);
+INSERT INTO `vehicles` VALUES ('32', 'Wrangler Trailcat', 'trailcat', '75000', 'jeep', null, null);
+INSERT INTO `vehicles` VALUES ('33', 'Rubicon', 'jeep2012', '45000', 'jeep', null, null);
+INSERT INTO `vehicles` VALUES ('34', 'Huracan LP610', 'lp610', '229000', 'lambo', null, null);
+INSERT INTO `vehicles` VALUES ('35', 'Vacca', 'vacca', '120000', 'lambo', null, null);
+INSERT INTO `vehicles` VALUES ('36', 'Tempesta', 'tempesta', '175000', 'lambo', null, null);
+INSERT INTO `vehicles` VALUES ('37', 'Range Rover', 'rr14', '95000', 'rover', null, null);
+INSERT INTO `vehicles` VALUES ('38', 'Quattroporte GTS', 'mqgts', '147500', 'maserati', null, null);
+INSERT INTO `vehicles` VALUES ('39', 'Levante Mansory', 'mlmansory', '150000', 'maserati', null, null);
+INSERT INTO `vehicles` VALUES ('40', 'Gran Tourismo', 'masgt', '126000', 'maserati', null, null);
+INSERT INTO `vehicles` VALUES ('41', 'RX-7', 'rx7tunable2', '20000', 'mazda', null, null);
+INSERT INTO `vehicles` VALUES ('42', '600sel', 'sel600', '35000', 'mercedes', null, null);
+INSERT INTO `vehicles` VALUES ('43', 'G65 AMG Lifted', 'gclass', '350000', 'mercedes', null, null);
+INSERT INTO `vehicles` VALUES ('44', 'MB 300sl Gullwing', 'mb300sl', '1200000', 'mercedes', null, null);
+INSERT INTO `vehicles` VALUES ('45', 'S63 AMG Cabriolet', 'mb18', '170000', 'mercedes', null, null);
+INSERT INTO `vehicles` VALUES ('46', 'CLA 45 Shootingbreak', 'cla45sb', '80000', 'mercedes', null, null);
+INSERT INTO `vehicles` VALUES ('47', 'CLS 63 AMG', 'cls2015', '180000', 'mercedes', null, null);
+INSERT INTO `vehicles` VALUES ('48', 'SLS AMG', 'slsamg', '248500', 'mercedes', null, null);
+INSERT INTO `vehicles` VALUES ('49', 'V250', 'v250', '55000', 'mercedes', null, null);
+INSERT INTO `vehicles` VALUES ('50', 'Brabus 850', 'brabus850', '230000', 'mercedes', null, null);
+INSERT INTO `vehicles` VALUES ('51', 'C63s AMG', 'c63s', '150000', 'mercedes', null, null);
+INSERT INTO `vehicles` VALUES ('52', 'S65 AMG WALD', 'w222wald', '230000', 'mercedes', null, null);
+INSERT INTO `vehicles` VALUES ('53', 'A45 AMG', 'a45', '54750', 'mercedes', null, null);
+INSERT INTO `vehicles` VALUES ('54', 'S63 AMG', 'S63w222', '204960', 'mercedes', null, null);
+INSERT INTO `vehicles` VALUES ('55', 'G65 AMG', 'g65amg', '289950', 'mercedes', null, null);
+INSERT INTO `vehicles` VALUES ('56', 'GLE 63 AMG Coupé', 'gle', '137900', 'mercedes', null, null);
+INSERT INTO `vehicles` VALUES ('57', 'Eclipse', 'eclipse', '9900', 'mitsu', null, null);
+INSERT INTO `vehicles` VALUES ('58', 'Lancer Evolution IX MR', 'evo9', '47500', 'mitsu', null, null);
+INSERT INTO `vehicles` VALUES ('59', 'Patrol Nismo', 'tulenis', '105000', 'nissan', null, null);
+INSERT INTO `vehicles` VALUES ('60', 'Skyline R34 GT-R', 'skyline', '57500', 'nissan', null, null);
+INSERT INTO `vehicles` VALUES ('61', 'Adam', 'opeladam', '13000', 'opel', null, null);
+INSERT INTO `vehicles` VALUES ('62', 'Zonda Tricolore', 'tricolore', '1950000', 'pagani', null, null);
+INSERT INTO `vehicles` VALUES ('63', 'Huayra BC', 'bc', '2450000', 'pagani', null, null);
+INSERT INTO `vehicles` VALUES ('64', '308', 'peug308', '21000', 'peug', null, null);
+INSERT INTO `vehicles` VALUES ('65', '106', 'p106', '7000', 'peug', null, null);
+INSERT INTO `vehicles` VALUES ('66', 'Panamera Turbo', 'panamera17turbo', '167500', 'porsche', null, null);
+INSERT INTO `vehicles` VALUES ('67', '911', 'por911', '112000', 'porsche', null, null);
+INSERT INTO `vehicles` VALUES ('68', '911 GT3 RS', '911gt3rs', '245900', 'porsche', null, null);
+INSERT INTO `vehicles` VALUES ('69', '911 1982', 'turbo33', '56500', 'porsche', null, null);
+INSERT INTO `vehicles` VALUES ('70', '718', '718', '99999999', 'porsche', null, null);
+INSERT INTO `vehicles` VALUES ('71', 'MC GTS', 'mcgts', '99999999', 'porsche', null, null);
+INSERT INTO `vehicles` VALUES ('72', 'Twingo', 'twingo', '200000', 'renault', null, null);
+INSERT INTO `vehicles` VALUES ('73', 'Zoe', 'zoe', '200000', 'renault', null, null);
+INSERT INTO `vehicles` VALUES ('74', 'Wraith', 'Wraith', '340000', 'rr', null, null);
+INSERT INTO `vehicles` VALUES ('75', 'supra2', 'supra2', '99999999', 'rr', null, null);
+INSERT INTO `vehicles` VALUES ('76', 'V60', 'v60pols', '39800', 'volvo', null, null);
+INSERT INTO `vehicles` VALUES ('77', '850r', 'v850r', '15450', 'volvo', null, null);
+INSERT INTO `vehicles` VALUES ('78', 'Golf 3 GTI', 'mk3', '7500', 'vw', null, null);
+INSERT INTO `vehicles` VALUES ('79', 'Passat GTE', 'pstgte', '50500', 'vw', null, null);
+INSERT INTO `vehicles` VALUES ('80', 'Golf 5 GTI', 'golfgti', '32500', 'vw', null, null);
+INSERT INTO `vehicles` VALUES ('81', 'Passat R-Line', 'passatr', '48850', 'vw', null, null);
+INSERT INTO `vehicles` VALUES ('82', 'Touareg R50', 'R50', '94600', 'vw', null, null);
+INSERT INTO `vehicles` VALUES ('83', 'Veloster Turbo', 'veln', '26990', 'hyundai', null, null);
+INSERT INTO `vehicles` VALUES ('84', 'YZF-R 1', 'r1', '19325', 'moto', null, null);
+INSERT INTO `vehicles` VALUES ('85', 'YZF-R 6', 'r6', '15999', 'moto', null, null);
 
 -- ----------------------------
 -- Table structure for weashops
@@ -1497,5 +1476,4 @@ INSERT INTO `weashops` VALUES ('32', 'BlackWeashop', 'WEAPON_BALL', '50');
 INSERT INTO `weashops` VALUES ('34', 'BlackWeashop', 'WEAPON_SMOKEGRENADE', '100');
 INSERT INTO `weashops` VALUES ('35', 'BlackWeashop', 'WEAPON_APPISTOL', '1100');
 INSERT INTO `weashops` VALUES ('36', 'BlackWeashop', 'WEAPON_CARBINERIFLE', '12500');
-
 SET FOREIGN_KEY_CHECKS=1;
