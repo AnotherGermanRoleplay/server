@@ -160,13 +160,16 @@ function OpenMecanoActionsMenu()
           else
 
             local elements = {
-              {label = _U('flat_bed'), value = 'flatbed'},
-              {label = _U('tow_truck'), value = 'towtruck2'}
+              {label = 'Merceds Actros Abschleppwagen', value = 'flatbed'},
+              {label = 'Ford F350', value = 'towtruck'},
+              {label = 'Mercedes Benz Vito', value = 'burrito4'},
+              {label = 'VW Caddy', value = 'utillitruck3'},
+              {label = 'Leihwagen', value = 'asea'}
             }
 
             if Config.EnablePlayerManagement and PlayerData.job ~= nil and
               (PlayerData.job.grade_name == 'boss' or PlayerData.job.grade_name == 'chef' or PlayerData.job.grade_name == 'experimente') then
-              table.insert(elements, {label = 'SlamVan', value = 'slamvan3'})
+              --table.insert(elements, {label = 'SlamVan', value = 'slamvan3'})
             end
 
             ESX.UI.Menu.CloseAll()

@@ -105,8 +105,8 @@ end
 
 Config.Vehicles = {
   'flatbed',
-  'TowTruck',
+  'towtruck',
   'burrito4',
   'utillitruck3',
-  'asea'
+  'asea',
 }
