@@ -600,7 +600,7 @@ AddEventHandler('esx_phone:bankTransfer', function(target, amount)
     xPlayer      .removeAccountMoney('bank', amount)
     targetXPlayer.addAccountMoney   ('bank', amount)
 
-    TriggerClientEvent('esx:showNotification', _source, 'Du hast gefeuert ~g~$' .. amount .. '~s~ à ' .. targetXPlayer.name)
+    TriggerClientEvent('esx:showNotification', _source, 'Du hast ~g~€' .. amount .. '~s~ an ' .. targetXPlayer.name .. ' überwiesen.')
 
   else
     TriggerClientEvent('esx:showNotification', _source, 'Ungültiger Betrag')
