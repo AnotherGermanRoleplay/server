@@ -36,7 +36,27 @@ Config.AuthorizedVehicles = {
 
   {
     model = 'ambulance',
-    label = 'Ambulance'
+    label = 'Krankenwagen'
+  },
+  {
+    model = 'pbus',
+    label = 'MANV Bus'
+  },
+  {
+    model = 'lspd10',
+    label = 'BMW NEF'
+  },
+  {
+    model = 'lspd11',
+    label = 'Tahoe NEF'
+  },
+  {
+    model = 'lspd12',
+    label = 'VW T6 NEF'
+  },
+  {
+    model = 'pranger',
+    label = 'Ford F350 NEF'
   }
 
 }
