@@ -36,7 +36,7 @@ local sigcasa = 0
 local plateab = "POPJOBS"
 local isToHouse = false
 local isToPizzaria = false
-local multiplicador_De_dinero = 0.5 
+local multiplicador_De_dinero = 0.12
 local paga = 0
 
 local px = 0
@@ -108,7 +108,7 @@ Citizen.CreateThread(function()
 				if IsControlJustPressed(1,38) then
 					posibilidad = math.random(1, 100)
 					if (posibilidad >= 70) and (posibilidad <= 90) then
-						propina = math.random(1, 200)
+						propina = math.random(1, 50)
 						TriggerEvent('chatMessage', 'KUNDE', {255, 0, 0},"Trinkgeld : "..propina.."$")
 						TriggerServerEvent("pop_pizzero:propina", propina)
 					end
@@ -127,7 +127,7 @@ Citizen.CreateThread(function()
 					if IsVehicleModel(GetVehiclePedIsIn(GetPlayerPed(-1), true), GetHashKey("faggio"))  then
 						if IsControlJustPressed(1,38) then
 							if IsInVehicle() then
-								TriggerEvent('chatMessage', 'PIZZERIA', {255, 0, 0},"Danke für die Aushilfe, hier deine Bezahlung: "..paga.."$")
+								TriggerEvent('chatMessage', 'PIZZERIA', {255, 0, 0},"Danke für die Aushilfe, hier deine Bezahlung: "..paga.."€")
 								TriggerServerEvent("pop_pizzero:propina", paga)
 								isToHouse = false
 								isToPizzaria = false
@@ -170,7 +170,7 @@ function spawn_faggio()
 
 	local myPed = GetPlayerPed(-1)
 	local player = PlayerId()
-	local vehicle = GetHashKey('faggio2')
+	local vehicle = GetHashKey('faggio')
 
 	RequestModel(vehicle)
 
@@ -178,7 +178,6 @@ function spawn_faggio()
 		Wait(1)
 	end
 
-	local plate = math.random(100, 900)
 	local spawned_car = CreateVehicle(vehicle, spawnfaggio.x,spawnfaggio.y,spawnfaggio.z, 431.436, - 996.786, 25.1887, true, false)
 
 	local plate = "PIZZA"..math.random(100, 900)
