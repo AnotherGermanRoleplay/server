@@ -147,14 +147,14 @@ Config.DoorList = {
 	},
 
 	-- Back Gate
-	[17] = {
-		objName = "hei_prop_station_gate",
-		objCoords  = {x = 488.894, y = -1017.210, z = 27.146},
-		textCoords = {x = 488.894, y = -1020.210, z = 30.00},
-		locked = true,
-		distance = 14,
-		size = 2
-	},
+	--[17] = {
+	--	objName = "hei_prop_station_gate",
+	--	objCoords  = {x = 488.894, y = -1017.210, z = 27.146},
+	--	textCoords = {x = 488.894, y = -1020.210, z = 30.00},
+	--	locked = true,
+	--	distance = 14,
+	--	size = 2
+	--},
 
 	--
 	-- Sandy Shores
