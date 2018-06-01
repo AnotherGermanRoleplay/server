@@ -109,7 +109,7 @@ Citizen.CreateThread(function()
 					posibilidad = math.random(1, 100)
 					if (posibilidad >= 70) and (posibilidad <= 90) then
 						propina = math.random(1, 50)
-						TriggerEvent('chatMessage', 'KUNDE', {255, 0, 0},"Trinkgeld : "..propina.."$")
+						TriggerEvent('chatMessage', 'KUNDE', {255, 0, 0},"Trinkgeld : "..propina.."€")
 						TriggerServerEvent("pop_pizzero:propina", propina)
 					end
 					isToHouse = false
@@ -124,7 +124,8 @@ Citizen.CreateThread(function()
 			DrawMarker(1,pizzeria.x,pizzeria.y,pizzeria.z, 0, 0, 0, 0, 0, 0, 1.5001, 1.5001, 0.6001,255,255,51, 200, 0, 0, 0, 0)
 				if GetDistanceBetweenCoords(pizzeria.x,pizzeria.y,pizzeria.z, GetEntityCoords(GetPlayerPed(-1),true)) < 3 then
 					drawTxt("Druecke <E> um ausgezahlt zu werden",2, 1, 0.45, 0.03, 0.80,255,255,51,255)
-					if IsVehicleModel(GetVehiclePedIsIn(GetPlayerPed(-1), true), GetHashKey("vwcaddy"))  then
+					-- if IsVehicleModel(GetVehiclePedIsIn(GetPlayerPed(-1), true), GetHashKey("vwcaddy"))  then
+					if IsVehicleModel(GetVehiclePedIsIn(GetPlayerPed(-1), true), GetHashKey("faggio"))  then
 						if IsControlJustPressed(1,38) then
 							if IsInVehicle() then
 								TriggerEvent('chatMessage', 'PIZZERIA', {255, 0, 0},"Danke für die Aushilfe, hier deine Bezahlung: "..paga.."€")
@@ -170,7 +171,8 @@ function spawn_faggio()
 
 	local myPed = GetPlayerPed(-1)
 	local player = PlayerId()
-	local vehicle = GetHashKey('vwcaddy')
+	-- local vehicle = GetHashKey('vwcaddy')
+	local vehicle = GetHashKey('faggio')
 
 	RequestModel(vehicle)
 
