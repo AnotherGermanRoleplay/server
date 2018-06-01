@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<CVehicleMetadataMgr>
+  <ClipSetMaps>
+  <!-- Insert Below -->
+  </ClipSetMaps>
+  <VehicleCoverBoundOffsetInfos>
+  <!-- Insert Below -->
+  </VehicleCoverBoundOffsetInfos> 
+  <EntryAnimVariations>
+  <!-- Insert Below -->
+  </EntryAnimVariations>
+  <VehicleExtraPointsInfos>  
+  <!-- Insert Below -->
+  </VehicleExtraPointsInfos>
+  <VehicleDriveByAnimInfos>
+  <!-- Insert Below -->
+  </VehicleDriveByAnimInfos>
+  <VehicleDriveByInfos>
+  <!-- Insert Below -->
+  </VehicleDriveByInfos>
+  <VehicleSeatInfos>
+  <!-- Insert Below -->
+  </VehicleSeatInfos> 
+  <VehicleSeatAnimInfos>
+  <!-- Insert Below -->
+  </VehicleSeatAnimInfos>
+  <VehicleEntryPointInfos>
+  <!-- Insert Below -->
+  </VehicleEntryPointInfos>
+  <VehicleEntryPointAnimInfos>
+  <!-- Insert Below -->
+  </VehicleEntryPointAnimInfos>  
+  <VehicleExplosionInfos>
+  <!-- Insert Below -->
+  </VehicleExplosionInfos>  
+  <VehicleLayoutInfos>
+  <!-- Insert Below -->
+  </VehicleLayoutInfos>	
+</CVehicleMetadataMgr>
