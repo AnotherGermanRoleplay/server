@@ -3,10 +3,10 @@ Config.MarkerType   = 1
 Config.DrawDistance = 100.0
 Config.ZoneSize     = {x = 5.0, y = 5.0, z = 3.0}
 --Config.MarkerColor  = {r = 100, g = 204, b = 100}
-Config.RequiredCopsCoke = 0 -- 2 -- 1
+Config.RequiredCopsCoke = 1 -- 2 -- 1
 Config.RequiredCopsMeth = 0 -- 2 -- 2
 Config.RequiredCopsWeed = 0 -- 0 -- 0
-Config.RequiredCopsOpium = 0 -- 3 -- 3
+Config.RequiredCopsOpium = 2 -- 3 -- 3
 Config.Locale = 'de'
 
 -- Config.Zones = {
@@ -25,7 +25,8 @@ Config.Locale = 'de'
 -- }
 
 Config.Zones = {
-	CokeFarm = 		 {x=2287.5656738281,  y=4765.6552734375, z=38.632804870605},
+	-- CokeFarm = 		 {x=2287.5656738281,  y=4765.6552734375, z=38.632804870605}, -- v1 spot
+	CokeFarm = 		 { x = 1911.0610351563, y = 4890.9775390625, z = 47.684661865234 }, -- spot 1 new
 	CokeTreatment =  {x=2434.3010253906, y=4968.7905273438, z=42.34761428833},
 	-- CokeResell = 	 {x=-1756.1984863281, y=427.31674194336,  z=126.68292999268}, -- v1 spot
 	CokeResell = 	 { x = 726.80798339844, y = 4168.9750976563, z = 40.709239959717 }, -- spot 1 new
@@ -37,11 +38,13 @@ Config.Zones = {
 	MethResell = 	 { x = 84.77751159668, y = 3718.1535644531, z = 40.334804534912 }, -- spot 1 new
 
 	WeedFarm = 		 {x=2210.7202148438, y=5578.0078125,  z=53.897754669189},
-	WeedTreatment =  {x=-471.40591430664, y=6287.4848632813, z=13.713069915771},
+	WeedTreatment =  { x = 2195.4323730469, y = 5600.2338867188, z = 53.663356781006 }, -- spot 1 new
+	-- WeedTreatment =  {x=-471.40591430664, y=6287.4848632813, z=13.713069915771}, -- v1 spot
 	-- WeedResell = 	 {x=-57.809589385986, y=-1531.7004394531, z=33.3620262146}, -- v1 spot
 	WeedResell = 	 { x = -1602.716796875, y = 5193.69921875, z = 4.3100929260254 }, -- spot 1 new
 
-	OpiumFarm = 	 {x=-102.19829559326, y=1909.9090576172, z=196.96278381348},
+	-- OpiumFarm = 	 {x=-102.19829559326, y=1909.9090576172, z=196.96278381348}, -- v1 spot
+	OpiumFarm = 	 { x = 356.46194458008, y = 6469.7172851563, z = 30.084701538086 }, -- spot 1 new
 	OpiumTreatment = {x=-98.670524597168, y=6205.1010742188, z=31.025020599365},
 	-- OpiumResell = 	 {x=2331.0881347656, y=2570.2250976562, z=46.681819915772} -- v1 spot
 	OpiumResell = 	 { x = 1241.384765625, y = -417.15054321289, z = 71.578498840332 }, -- spot 1 new

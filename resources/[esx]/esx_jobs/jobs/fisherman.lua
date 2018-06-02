@@ -107,7 +107,7 @@ Config.Jobs.fisherman = {
       Type  = "vehspawner",
       Spawner = 1,
       Hint  = _U('spawn_veh_button'),
-      Caution = 2000,
+      Caution = 0,
       GPS = {x = 3867.44, y = 4463.62, z = 1.72386}
     },
 
@@ -133,7 +133,7 @@ Config.Jobs.fisherman = {
       Type  = "vehdelete",
       Hint  = _U('return_vh_button'),
       Spawner = 1,
-      Caution = 2000,
+      Caution = 0,
       GPS = 0,
       Teleport = 0
     },
@@ -154,7 +154,7 @@ Config.Jobs.fisherman = {
           time   = 500,
           remove = 1,
           max    = 100, -- if not present, probably an error at itemQtty >= item.max in esx_jobs_sv.lua
-          price  = 11,
+          price  = 17,
           requires = "fish",
           requires_name = _U('fm_fish'),
           drop   = 100
