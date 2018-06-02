@@ -370,7 +370,7 @@ function donnerlapaye()
 
     ESX.Game.DeleteVehicle(vehicle)
 
-	local amount = livraisonTotalPaye-argentretire
+	local amount = math.floor((livraisonTotalPaye-argentretire) * 0.85)
 	
 	if vievehicule >= 1 then
 		if livraisonTotalPaye == 0 then
@@ -415,7 +415,7 @@ function donnerlapayesanscamion()
 	argentretire = Config.TruckPrice
 	
 	-- donne paye
-	local amount = livraisonTotalPaye-argentretire
+	local amount = math.floor((livraisonTotalPaye-argentretire) * 0.85)
 	
 	if livraisonTotalPaye == 0 then
 		ESX.ShowNotification(_U('no_delivery_no_truck'))
