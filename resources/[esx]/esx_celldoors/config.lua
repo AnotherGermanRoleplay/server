@@ -161,7 +161,7 @@ Config.DoorList = {
 	--
 
 	-- Entrance
-	[18] = {
+	[17] = {
 		objName = "v_ilev_shrfdoor",
 		objCoords  = {x = 1855.105, y = 3683.516, z = 34.266},
 		textCoords = {x = 1855.105, y = 3683.516, z = 35.00},
@@ -173,7 +173,7 @@ Config.DoorList = {
 	--
 
 	-- Entrance (double doors)
-	[19] = {
+	[18] = {
 		objName = "v_ilev_shrf2door",
 		objCoords  = {x = -443.14, y = 6015.685, z = 31.716},
 		textCoords = {x = -443.14, y = 6015.685, z = 32.00},
@@ -181,7 +181,7 @@ Config.DoorList = {
 		distance = 2.5
 	},
 
-	[20] = {
+	[19] = {
 		objName = "v_ilev_shrf2door",
 		objCoords  = {x = -443.951, y = 6016.622, z = 31.716},
 		textCoords = {x = -443.951, y = 6016.622, z = 32.00},
@@ -194,7 +194,7 @@ Config.DoorList = {
 	--
 
 	-- Entrance (Two big gates)
-	[21] = {
+	[20] = {
 		objName = "prop_gate_prison_01",
 		objCoords  = {x = 1844.998, y = 2604.810, z = 44.638},
 		textCoords = {x = 1844.998, y = 2608.50, z = 48.00},
@@ -203,7 +203,7 @@ Config.DoorList = {
 		size = 2
 	},
 
-	[22] = {
+	[21] = {
 		objName = "prop_gate_prison_01",
 		objCoords  = {x = 1818.542, y = 2604.812, z = 44.611},
 		textCoords = {x = 1818.542, y = 2608.40, z = 48.00},
