@@ -404,7 +404,8 @@ function OpenMobileAmbulanceActionsMenu()
                 ESX.ShowNotification(_U('no_players'))
               else
                 ESX.TriggerServerCallback('esx_ambulancejob:getItemAmount', function(qtty)
-                  if qtty == 1 then
+                  print(qtty)
+                  if qtty > 0 then
                     ESX.TriggerServerCallback('esx_ambulancejob:getItemAmount', function(qtty1)
                       if qtty1 > 0 then
                         local closestPlayerPed = GetPlayerPed(closestPlayer)
