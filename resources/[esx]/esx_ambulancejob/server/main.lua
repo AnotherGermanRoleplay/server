@@ -2,9 +2,14 @@ ESX = nil
 
 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
+--RegisterServerEvent('esx_ambulancejob:revive')
+--AddEventHandler('esx_ambulancejob:revive', function(source, target)
+--  TriggerEvent("discord_bot:admin_log", "``" .. GetPlayerName(source) .. "`` belebt ``" .. GetPlayerName(target) .. "`` gerade wieder")
+--  TriggerClientEvent('esx_ambulancejob:revive', target)
+--end)
+
 RegisterServerEvent('esx_ambulancejob:revive')
-AddEventHandler('esx_ambulancejob:revive', function(source, target)
-  TriggerEvent("discord_bot:admin_log", "``" .. GetPlayerName(source) .. "`` belebt ``" .. GetPlayerName(target) .. "`` gerade wieder")
+AddEventHandler('esx_ambulancejob:revive', function(target)
   TriggerClientEvent('esx_ambulancejob:revive', target)
 end)
 
@@ -92,10 +97,9 @@ AddEventHandler('esx_ambulancejob:giveItem', function(item)
 end)
 
 
-TriggerEvent('es:addGroupCommand', 'revive', 'admin', function(source, args, user)
-  --print('revive by /revive')
-  if args[1] ~= nil then
-    TriggerClientEvent('esx_ambulancejob:revive', tonumber(args[1]))
+TriggerEvent('es:addGroupCommand', 'revive', 'mod', function(source, args, user)
+  if args[2] ~= nil then
+    TriggerClientEvent('esx_ambulancejob:revive', tonumber(args[2]))
   else
     TriggerClientEvent('esx_ambulancejob:revive', source)
   end

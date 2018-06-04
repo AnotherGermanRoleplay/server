@@ -183,9 +183,9 @@ function ShowTimer()
       local text = _U('please_wait') .. minutes .. _U('minutes') .. seconds .. _U('seconds')
 
       if Config.EarlyRespawn and PlayerData.job.name ~= 'ambulance' then
-        text = text .. '\nDirekter Respawn: [~b~E~w~] - ~g~$1000'
+        text = text .. '\nDirekter Respawn: [~b~E~w~] - ~g~€1000'
       else
-        text = text .. '\nDirekter Respawn: [~b~E~w~] - ~g~$0'
+        text = text .. '\nDirekter Respawn: [~b~E~w~] - ~g~€0'
       end
 
       AddTextComponentString(text)
@@ -404,7 +404,7 @@ function OpenMobileAmbulanceActionsMenu()
                 ESX.ShowNotification(_U('no_players'))
               else
                 ESX.TriggerServerCallback('esx_ambulancejob:getItemAmount', function(qtty)
-                  if qtty == 1 then
+                  if qtty > 0 then
                     ESX.TriggerServerCallback('esx_ambulancejob:getItemAmount', function(qtty1)
                       if qtty1 > 0 then
                         local closestPlayerPed = GetPlayerPed(closestPlayer)
@@ -418,7 +418,12 @@ function OpenMobileAmbulanceActionsMenu()
                             ClearPedTasks(playerPed)
                             if GetEntityHealth(closestPlayerPed) == 0 then
                               TriggerServerEvent('esx_ambulancejob:removeItem', 'defi')
+                              TriggerServerEvent('esx_ambulancejob:removeItem', 'medikit')
                               TriggerServerEvent('esx_ambulancejob:revive', GetPlayerServerId(closestPlayer))
+
+                              -- TODO: add admin log
+                              --TriggerServerEvent('discord_bot:admin_log', ' belebt gerade einen anderen Spieler wieder: ´´´'..'(#'.. GetPlayerServerId(closestPlayer) ..')'..closestPlayer.name..'´´´')
+
                               ESX.ShowNotification(_U('revive_complete'))
                             else
                               ESX.ShowNotification(_U('isdead'))

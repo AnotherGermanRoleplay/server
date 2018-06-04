@@ -12,7 +12,7 @@ Locales['de'] = {
   -- Action Menu
   ['hospital'] = 'Krankenhaus',
   ['revive_inprogress'] = 'wiederbeleben im Gange',
-  ['revive_complete'] = 'du wurdest wiederbelebt ',
+  ['revive_complete'] = 'Wiederbelebung ~g~erfolgreich~w~ ',
   ['no_players'] = 'keine Spieler in der Nähe',
   ['no_vehicles'] = 'keine Fahrzeuge in der Nähe',
   ['isdead'] = 'ist gestorben',
@@ -68,6 +68,6 @@ Locales['de'] = {
   ['used_bandage'] = 'Du hast 1x Bandage benutzt',
   ['not_enough_medikit'] = 'Du hast nicht genug ~b~Medikit~w~.',
   ['not_enough_bandage'] = 'Du hast nicht genug ~b~Bandage~w~.',
-  ['not_enough_defi'] = 'Du benötigst einen Defibrillator',
+  ['not_enough_defi'] = 'Du benötigst einen Defibrilator',
   ['healed'] = 'Du wurdest behandelt.',
 }
