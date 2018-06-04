@@ -421,7 +421,8 @@ function OpenMobileAmbulanceActionsMenu()
                               TriggerServerEvent('esx_ambulancejob:removeItem', 'medikit')
                               TriggerServerEvent('esx_ambulancejob:revive', GetPlayerServerId(closestPlayer))
 
-                              TriggerServerEvent('discord_bot:admin_log', ' belebt gerade einen anderen Spieler wieder: ```'..'(#'.. GetPlayerServerId(closestPlayer) ..')'..closestPlayer.name..'```')
+                              -- TODO: add admin log
+                              --TriggerServerEvent('discord_bot:admin_log', ' belebt gerade einen anderen Spieler wieder: ```'..'(#'.. GetPlayerServerId(closestPlayer) ..')'..closestPlayer.name..'```')
 
                               ESX.ShowNotification(_U('revive_complete'))
                             else
