@@ -3,7 +3,7 @@ Config.MarkerType   = 1
 Config.DrawDistance = 100.0
 Config.ZoneSize     = {x = 5.0, y = 5.0, z = 3.0}
 --Config.MarkerColor  = {r = 100, g = 204, b = 100}
-Config.RequiredCopsCoke = 1 -- 2 -- 1
+Config.RequiredCopsCoke = 2 -- 2 -- 1
 Config.RequiredCopsMeth = 0 -- 2 -- 2
 Config.RequiredCopsWeed = 0 -- 0 -- 0
 Config.RequiredCopsOpium = 2 -- 3 -- 3
@@ -29,7 +29,8 @@ Config.Zones = {
 	CokeFarm = 		 { x = 1911.0610351563, y = 4890.9775390625, z = 47.684661865234 }, -- spot 1 new
 	CokeTreatment =  {x=2434.3010253906, y=4968.7905273438, z=42.34761428833},
 	-- CokeResell = 	 {x=-1756.1984863281, y=427.31674194336,  z=126.68292999268}, -- v1 spot
-	CokeResell = 	 { x = 726.80798339844, y = 4168.9750976563, z = 40.709239959717 }, -- spot 1 new
+	-- CokeResell = 	 { x = 726.80798339844, y = 4168.9750976563, z = 40.709239959717 }, -- spot 1 new
+	CokeResell = 	 { x = -440.79693603516, y = 1070.66796875, z = 332.01019287109 }, -- spot 2 new
 
 	-- MethFarm = 		 {x=412.60940551758, y=6604.33984375, z=27.425922393799}, -- v1 spot
 	MethFarm = 		 { x = 412.88208007813, y = 6495.6650390625, z = 28.093534469604 }, -- spot 1 new
@@ -52,28 +53,28 @@ Config.Zones = {
 
 Config.Prices = {
 	Coke = {
-		cops0 = 298,
-		cops1 = 358,
-		cops2 = 408,
-		cops3 = 558,
-		cops4 = 696,
-		cops5 = 728
+		cops0 = 198,
+		cops1 = 258,
+		cops2 = 308,
+		cops3 = 458,
+		cops4 = 596,
+		cops5 = 628
 	},
 	Meth = {
-		cops0 = 376,
-		cops1 = 474,
-		cops2 = 574,
-		cops3 = 652,
-		cops4 = 716,
-		cops5 = 854,
-		cops6 = 986
+		cops0 = 276,
+		cops1 = 374,
+		cops2 = 474,
+		cops3 = 552,
+		cops4 = 616,
+		cops5 = 754,
+		cops6 = 886
 	},
 	Weed = {
-		cops0 = 308,
-		cops1 = 378,
-		cops2 = 422,
-		cops3 = 475,
-		cops4 = 510
+		cops0 = 98,
+		cops1 = 178,
+		cops2 = 222,
+		cops3 = 375,
+		cops4 = 410
 	},
 	Opium = {
 		cops0 = 300,
