@@ -57,12 +57,12 @@ function OpenBossMenu(society, close, options)
     end
 
     if options.wash then
-        print('--------------------------------------')
-        print(string.format('options.wash is :: %s', tostring(options.wash)))
-        print(string.format('society      is :: %s', tostring(society)))
-        print('--------------------------------------')
+        -- print('--------------------------------------')
+        -- print(string.format('options.wash is :: %s', tostring(options.wash)))
+        -- print(string.format('society      is :: %s', tostring(society)))
+        -- print('--------------------------------------')
 
-        if society ~= 'mecano' or society ~= 'ambulance' then
+        if society ~= 'mecano' and society ~= 'ambulance' then
             table.insert(elements, { label = _U('wash_money'), value = 'wash_money' })
         end
     end
