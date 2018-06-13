@@ -58,8 +58,8 @@ function OpenBossMenu(society, close, options)
 
     if options.wash then
         print('--------------------------------------')
-        print('options.wash is :: ' .. options.wash)
-        print('society      is :: ' .. society)
+        print(string.format('options.wash is :: %s', tostring(options.wash)))
+        print(string.format('society      is :: %s', tostring(society)))
         print('--------------------------------------')
 
         if society ~= 'mecano' or society ~= 'ambulance' then
