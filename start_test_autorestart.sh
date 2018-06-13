@@ -1,7 +1,7 @@
 #!/bin/sh
 
 while true; do
-	if pgrep -x "v2" > /dev/null
+	if pgrep -x "v2test" > /dev/null
 
 	then
 
@@ -9,7 +9,7 @@ while true; do
 	else
     	echo "Server crashed or stopped"
     	echo "Server is restarting"
-    	screen -S v2 bash /home/v2/server/run.sh +exec /home/v2/data/server.cfg
+    	screen -S v2test bash /home/v2/server/run.sh +exec /home/v2/test/server-test.cfg
     	echo "Server has been started"
 
 	fi
