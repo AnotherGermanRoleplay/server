@@ -58,6 +58,7 @@
 |`vMenu.VehicleOptions.Menu`|Grants access to the Vehicle Options Menu.|Allowed|
 |`vMenu.VehicleOptions.All`|Grants access to **ALL** `Vehicle Options Menu` options.|Denied|
 |`vMenu.VehicleOptions.God`|Allows you to enable vehicle godmode.|Allowed|
+|`vMenu.VehicleOptions.SpecialGod`|Allows you to enable a special vehicle godmode which repairs your vehicle instantly when it gets damaged, this is required for vehicles like the Phantom Wedge to keep them from slowly losing health even with regular god mode turned on.|Allowed|
 |`vMenu.VehicleOptions.Repair`|Allows you to repair your vehicle.|Allowed|
 |`vMenu.VehicleOptions.Wash`|Allows you to wash/clean your vehicle & set a custom dirt level.|Allowed|
 |`vMenu.VehicleOptions.Engine`|Allows you to toggle your engine on/off.|Allowed|
@@ -166,7 +167,7 @@
 |`vMenu.WeaponOptions.Spawn`|Allows you to spawn/remove ANY weapon, denying this will still grant access to the customization options for each weapon. This also allows players to spawn addon weapons.|Allowed|
 |`vMenu.WeaponOptions.SetAllAmmo`|Allows you to bulk set the ammo count in all currently equipped weapons.|Allowed|
 
-**For a list of individual weapon permissions check [this link](https://hastebin.com/pumoxalino.yaml).**
+**For a list of individual weapon permissions check [this link](https://hastebin.com/anowahehub.css).**
 
 ## Misc Settings
 **The `Save Personal Settings` option in the Misc Settings Menu is always allowed, so there's no permission line for that.**
