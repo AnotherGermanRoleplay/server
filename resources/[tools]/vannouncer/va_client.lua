@@ -1,12 +1,14 @@
 -----[ CHANGE THIS ]-------------------------------------------
 local minutesBetweenAnnouncements = 15
-local prefix = "^2[AutoMessage]^0"
+local prefix = "^2[ANNOUNCE]^0"
 local suffix = "^0."
 local messages = {
     'Hilfe gefällig? Schreibe "/help" oder drücke [Z]',
     'Stelle sicher, dass dein Voice-Chat eingeschaltet ist',
-    'Du wärst gerne ^5Supporter^0? Dann check doch mal das Forum',
-    'Links vom Chat sind die wichtigsten Infos zusammengepackt',
+    'Links vom Chat findest du einige wichtige Infos',
+	'Du wolltest dich schon immer mal selbstständig machen? Dann bewirb dich jetzt als Fraktionsleitung für z.B. das Taxi-Unternehmen!',
+	'Wir wünschen dir viel Spaß auf Another German Roleplay!',
+	'Unsere Regeln findest du unter https://forum.another-grp.com/index.php/Thread/59-REGELN-des-Servers-Another-German-Roleplay/',
 }
 local ignorelist = {
     "ip:127.0.0.11",
