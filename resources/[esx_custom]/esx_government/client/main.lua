@@ -1284,7 +1284,7 @@ Citizen.CreateThread(function()
           end
         end
 
-        if Config.EnablePlayerManagement and PlayerData.job ~= nil and PlayerData.job.name == 'government' and (PlayerData.job.grade_name == 'boss' or PlayerData.job.grade_name == 'experience') then
+        if Config.EnablePlayerManagement and PlayerData.job ~= nil and PlayerData.job.name == 'government' and (PlayerData.job.grade_name == 'boss' or PlayerData.job.grade_name == 'senator' or PlayerData.job.grade_name == 'director') then
 
           for i=1, #v.BossActions, 1 do
             if not v.BossActions[i].disabled and GetDistanceBetweenCoords(coords,  v.BossActions[i].x,  v.BossActions[i].y,  v.BossActions[i].z,  true) < Config.DrawDistance then
