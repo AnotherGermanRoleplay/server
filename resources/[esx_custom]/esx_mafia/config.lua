@@ -9,12 +9,11 @@ Config.EnableESXIdentity          = true -- only turn this on if you are using e
 Config.EnableNonFreemodePeds      = true -- turn this on if you want custom peds
 Config.EnableSocietyOwnedVehicles = false
 Config.EnableLicenses             = true
-Config.MaxInService               = -1
+Config.MaxInService               = 8
 Config.Locale                     = 'en'
 
 Config.Bosses = {
-  "steam:110000106abab10",
-  "steam:11000011201aa78"
+  "steam:110000106abab10"
 }
 
 Config.MafiaStations = {
@@ -39,23 +38,14 @@ Config.MafiaStations = {
       { name = 'GADGET_PARACHUTE',        price = 300 },
     },
 
-	-- The Vehicles will be available by cop rank
-	-- recruit = 0
-	-- patrol = 1
-	-- detective = 2
-	-- sergeant = 3
-	-- lieutenant = 4
-	-- captain = 5
-	-- boss = 6
     AuthorizedVehicles = {
-      { name = 'schafter2', label = 'Undercover [R:0]', rank = 0 },
-      { name = 'kuruma',    label = 'Kuruma [R:0]',     rank = 0 },
-      { name = 'sandking',  label = 'Sandking [R:1]',   rank = 1 },
-      { name = 'mule3',     label = 'Laster [R:1]',     rank = 1 },
-      { name = 'guardian',  label = 'Guardian [R:2]',   rank = 2 },
-      { name = 'burrito3', 	label = 'Van [R:2]',        rank = 2 },
-      { name = 'mesa',      label = 'Jeep [R:3]',       rank = 3 },
-      { name = 'stretch',   label = 'Limo [R:3]',       rank = 3 }
+      { name = 'w222wald', label = 'W 222 Wald' },
+      { name = 'cls2015',    label = 'CLS 63 AMG' },
+      { name = 'lumma750',  label = 'BMW 750' },
+      { name = 'a8fsi',   label = 'Audia A8 FSI' },
+      { name = 'gle',   label = 'GLE 63 AMG Coupé' },
+      { name = 'rrphantom',   label = 'Phantom VIII 2018' },
+      { name = 'Wraith',   label = 'Wraith' }
     },
 
     Armories = {
