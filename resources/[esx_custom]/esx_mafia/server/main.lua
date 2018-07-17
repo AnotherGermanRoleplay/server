@@ -7,36 +7,29 @@ if Config.MaxInService ~= -1 then
 end
 
 TriggerEvent('esx_phone:registerNumber', 'mafia', _U('alert_mafia'), true, true)
-TriggerEvent('esx_society:registerSociety', 'mafia', 'Mafia', 'society_mafia', 'society_mafia', 'society_mafia', {type = 'public'})
+TriggerEvent('esx_society:registerSociety', 'mafia', 'Mafia', 'society_mafia', 'society_mafia', 'society_mafia', { type = 'public' })
 
-RegisterServerEvent('esx_mafia:giveWeapon')
-AddEventHandler('esx_mafia:giveWeapon', function(weapon, ammo)
+RegisterServerEvent('esx_mafiajob:giveWeapon')
+AddEventHandler('esx_mafiajob:giveWeapon', function(weapon, ammo)
   local xPlayer = ESX.GetPlayerFromId(source)
   xPlayer.addWeapon(weapon, ammo)
 end)
 
-RegisterServerEvent('esx_mafia:confiscatePlayerItem')
-AddEventHandler('esx_mafia:confiscatePlayerItem', function(target, itemType, itemName, amount)
+RegisterServerEvent('esx_mafiajob:confiscatePlayerItem')
+AddEventHandler('esx_mafiajob:confiscatePlayerItem', function(target, itemType, itemName, amount)
 
   local sourceXPlayer = ESX.GetPlayerFromId(source)
   local targetXPlayer = ESX.GetPlayerFromId(target)
 
   if itemType == 'item_standard' then
 
-    local item = sourceXPlayer.getInventoryItem(itemName)
-    local label = item.label
-    local count = targetXPlayer.getInventoryItem(itemName).count
+    local label = sourceXPlayer.getInventoryItem(itemName).label
 
-    if count > 0 then
+    targetXPlayer.removeInventoryItem(itemName, amount)
+    sourceXPlayer.addInventoryItem(itemName, amount)
 
-      targetXPlayer.removeInventoryItem(itemName, amount)
-      sourceXPlayer.addInventoryItem(itemName, amount)
-
-      TriggerClientEvent('esx:showNotification', sourceXPlayer.source, _U('you_have_confinv') .. amount .. ' ' .. label .. _U('from') .. targetXPlayer.name)
-      TriggerClientEvent('esx:showNotification', targetXPlayer.source, '~b~' .. sourceXPlayer.name .. _U('confinv') .. amount .. ' ' .. label )
-
-    end
-
+    TriggerClientEvent('esx:showNotification', sourceXPlayer.source, _U('you_have_confinv') .. amount .. ' ' .. label .. _U('from') .. targetXPlayer.name)
+    TriggerClientEvent('esx:showNotification', targetXPlayer.source, '~b~' .. targetXPlayer.name .. _U('confinv') .. amount .. ' ' .. label)
   end
 
   if itemType == 'item_account' then
@@ -45,8 +38,7 @@ AddEventHandler('esx_mafia:confiscatePlayerItem', function(target, itemType, ite
     sourceXPlayer.addAccountMoney(itemName, amount)
 
     TriggerClientEvent('esx:showNotification', sourceXPlayer.source, _U('you_have_confdm') .. amount .. _U('from') .. targetXPlayer.name)
-    TriggerClientEvent('esx:showNotification', targetXPlayer.source, '~b~' .. sourceXPlayer.name .. _U('confdm') .. amount)
-
+    TriggerClientEvent('esx:showNotification', targetXPlayer.source, '~b~' .. targetXPlayer.name .. _U('confdm') .. amount)
   end
 
   if itemType == 'item_weapon' then
@@ -55,35 +47,33 @@ AddEventHandler('esx_mafia:confiscatePlayerItem', function(target, itemType, ite
     sourceXPlayer.addWeapon(itemName, amount)
 
     TriggerClientEvent('esx:showNotification', sourceXPlayer.source, _U('you_have_confweapon') .. ESX.GetWeaponLabel(itemName) .. _U('from') .. targetXPlayer.name)
-    TriggerClientEvent('esx:showNotification', targetXPlayer.source, '~b~' .. sourceXPlayer.name .. _U('confweapon') .. ESX.GetWeaponLabel(itemName))
-
+    TriggerClientEvent('esx:showNotification', targetXPlayer.source, '~b~' .. targetXPlayer.name .. _U('confweapon') .. ESX.GetWeaponLabel(itemName))
   end
-
 end)
 
-RegisterServerEvent('esx_mafia:handcuff')
-AddEventHandler('esx_mafia:handcuff', function(target)
-  TriggerClientEvent('esx_mafia:handcuff', target)
+RegisterServerEvent('esx_mafiajob:handcuff')
+AddEventHandler('esx_mafiajob:handcuff', function(target)
+  TriggerClientEvent('esx_mafiajob:handcuff', target)
 end)
 
-RegisterServerEvent('esx_mafia:drag')
-AddEventHandler('esx_mafia:drag', function(target)
+RegisterServerEvent('esx_mafiajob:drag')
+AddEventHandler('esx_mafiajob:drag', function(target)
   local _source = source
-  TriggerClientEvent('esx_mafia:drag', target, _source)
+  TriggerClientEvent('esx_mafiajob:drag', target, _source)
 end)
 
-RegisterServerEvent('esx_mafia:putInVehicle')
-AddEventHandler('esx_mafia:putInVehicle', function(target)
-  TriggerClientEvent('esx_mafia:putInVehicle', target)
+RegisterServerEvent('esx_mafiajob:putInVehicle')
+AddEventHandler('esx_mafiajob:putInVehicle', function(target)
+  TriggerClientEvent('esx_mafiajob:putInVehicle', target)
 end)
 
-RegisterServerEvent('esx_mafia:OutVehicle')
-AddEventHandler('esx_mafia:OutVehicle', function(target)
-    TriggerClientEvent('esx_mafia:OutVehicle', target)
+RegisterServerEvent('esx_mafiajob:OutVehicle')
+AddEventHandler('esx_mafiajob:OutVehicle', function(target)
+  TriggerClientEvent('esx_mafiajob:OutVehicle', target)
 end)
 
-RegisterServerEvent('esx_mafia:getStockItem')
-AddEventHandler('esx_mafia:getStockItem', function(itemName, count)
+RegisterServerEvent('esx_mafiajob:getStockItem')
+AddEventHandler('esx_mafiajob:getStockItem', function(itemName, count)
 
   local xPlayer = ESX.GetPlayerFromId(source)
 
@@ -99,13 +89,11 @@ AddEventHandler('esx_mafia:getStockItem', function(itemName, count)
     end
 
     TriggerClientEvent('esx:showNotification', xPlayer.source, _U('have_withdrawn') .. count .. ' ' .. item.label)
-
   end)
-
 end)
 
-RegisterServerEvent('esx_mafia:putStockItems')
-AddEventHandler('esx_mafia:putStockItems', function(itemName, count)
+RegisterServerEvent('esx_mafiajob:putStockItems')
+AddEventHandler('esx_mafiajob:putStockItems', function(itemName, count)
 
   local xPlayer = ESX.GetPlayerFromId(source)
 
@@ -113,7 +101,7 @@ AddEventHandler('esx_mafia:putStockItems', function(itemName, count)
 
     local item = inventory.getItem(itemName)
 
-    if item.count >= 0 and count > 0 then
+    if item.count >= 0 then
       xPlayer.removeInventoryItem(itemName, count)
       inventory.addItem(itemName, count)
     else
@@ -121,12 +109,10 @@ AddEventHandler('esx_mafia:putStockItems', function(itemName, count)
     end
 
     TriggerClientEvent('esx:showNotification', xPlayer.source, _U('added') .. count .. ' ' .. item.label)
-
   end)
-
 end)
 
-ESX.RegisterServerCallback('esx_mafia:getOtherPlayerData', function(source, cb, target)
+ESX.RegisterServerCallback('esx_mafiajob:getOtherPlayerData', function(source, cb, target)
 
   if Config.EnableESXIdentity then
 
@@ -138,37 +124,36 @@ ESX.RegisterServerCallback('esx_mafia:getOtherPlayerData', function(source, cb, 
       ['@identifier'] = identifier
     })
 
-    local user          = result[1]
-    local firstname     = user['firstname']
-    local lastname      = user['lastname']
-    local sex           = user['sex']
-    local dob           = user['dateofbirth']
-    local height        = user['height'] .. " cm"
+    local user = result[1]
+    local firstname = user['firstname']
+    local lastname = user['lastname']
+    local sex = user['sex']
+    local dob = user['dateofbirth']
+    local height = user['height'] .. " Inches"
 
     local data = {
-      name        = GetPlayerName(target),
-      job         = xPlayer.second_job,
-      inventory   = xPlayer.inventory,
-      accounts    = xPlayer.accounts,
-      weapons     = xPlayer.loadout,
-      firstname   = firstname,
-      lastname    = lastname,
-      sex         = sex,
-      dob         = dob,
-      height      = height
+      name = GetPlayerName(target),
+      job = xPlayer.job,
+      inventory = xPlayer.inventory,
+      accounts = xPlayer.accounts,
+      weapons = xPlayer.loadout,
+      firstname = firstname,
+      lastname = lastname,
+      sex = sex,
+      dob = dob,
+      height = height
     }
 
-    TriggerEvent('esx_status:getStatus', target, 'drunk', function(status)
+    TriggerEvent('esx_status:getStatus', source, 'drunk', function(status)
 
       if status ~= nil then
         data.drunk = math.floor(status.percent)
       end
-
     end)
 
     if Config.EnableLicenses then
 
-      TriggerEvent('esx_license:getLicenses', target, function(licenses)
+      TriggerEvent('esx_license:getLicenses', source, function(licenses)
         data.licenses = licenses
         cb(data)
       end)
@@ -182,43 +167,50 @@ ESX.RegisterServerCallback('esx_mafia:getOtherPlayerData', function(source, cb, 
     local xPlayer = ESX.GetPlayerFromId(target)
 
     local data = {
-      name       = GetPlayerName(target),
-      job        = xPlayer.second_job,
-      inventory  = xPlayer.inventory,
-      accounts   = xPlayer.accounts,
-      weapons    = xPlayer.loadout
+      name = GetPlayerName(target),
+      job = xPlayer.job,
+      inventory = xPlayer.inventory,
+      accounts = xPlayer.accounts,
+      weapons = xPlayer.loadout
     }
 
-    TriggerEvent('esx_status:getStatus', target, 'drunk', function(status)
+    TriggerEvent('esx_status:getStatus', _source, 'drunk', function(status)
 
       if status ~= nil then
         data.drunk = status.getPercent()
       end
-
     end)
 
-    TriggerEvent('esx_license:getLicenses', target, function(licenses)
+    TriggerEvent('esx_license:getLicenses', _source, function(licenses)
       data.licenses = licenses
     end)
 
     cb(data)
-
   end
-
 end)
 
-ESX.RegisterServerCallback('esx_mafia:getVehicleInfos', function(source, cb, plate)
+ESX.RegisterServerCallback('esx_mafiajob:getFineList', function(source, cb, category)
+
+  MySQL.Async.fetchAll('SELECT * FROM fine_types_mafia WHERE category = @category',
+    {
+      ['@category'] = category
+    },
+    function(fines)
+      cb(fines)
+    end)
+end)
+
+ESX.RegisterServerCallback('esx_mafiajob:getVehicleInfos', function(source, cb, plate)
 
   if Config.EnableESXIdentity then
 
-    MySQL.Async.fetchAll(
-      'SELECT * FROM owned_vehicles',
+    MySQL.Async.fetchAll('SELECT * FROM owned_vehicles',
       {},
       function(result)
 
         local foundIdentifier = nil
 
-        for i=1, #result, 1 do
+        for i = 1, #result, 1 do
 
           local vehicleData = json.decode(result[i].vehicle)
 
@@ -226,13 +218,11 @@ ESX.RegisterServerCallback('esx_mafia:getVehicleInfos', function(source, cb, pla
             foundIdentifier = result[i].owner
             break
           end
-
         end
 
         if foundIdentifier ~= nil then
 
-          MySQL.Async.fetchAll(
-            'SELECT * FROM users WHERE identifier = @identifier',
+          MySQL.Async.fetchAll('SELECT * FROM users WHERE identifier = @identifier',
             {
               ['@identifier'] = foundIdentifier
             },
@@ -246,33 +236,27 @@ ESX.RegisterServerCallback('esx_mafia:getVehicleInfos', function(source, cb, pla
               }
 
               cb(infos)
-
-            end
-          )
+            end)
 
         else
 
           local infos = {
-          plate = plate
+            plate = plate
           }
 
           cb(infos)
-
         end
-
-      end
-    )
+      end)
 
   else
 
-    MySQL.Async.fetchAll(
-      'SELECT * FROM owned_vehicles',
+    MySQL.Async.fetchAll('SELECT * FROM owned_vehicles',
       {},
       function(result)
 
         local foundIdentifier = nil
 
-        for i=1, #result, 1 do
+        for i = 1, #result, 1 do
 
           local vehicleData = json.decode(result[i].vehicle)
 
@@ -280,13 +264,11 @@ ESX.RegisterServerCallback('esx_mafia:getVehicleInfos', function(source, cb, pla
             foundIdentifier = result[i].owner
             break
           end
-
         end
 
         if foundIdentifier ~= nil then
 
-          MySQL.Async.fetchAll(
-            'SELECT * FROM users WHERE identifier = @identifier',
+          MySQL.Async.fetchAll('SELECT * FROM users WHERE identifier = @identifier',
             {
               ['@identifier'] = foundIdentifier
             },
@@ -298,28 +280,21 @@ ESX.RegisterServerCallback('esx_mafia:getVehicleInfos', function(source, cb, pla
               }
 
               cb(infos)
-
-            end
-          )
+            end)
 
         else
 
           local infos = {
-          plate = plate
+            plate = plate
           }
 
           cb(infos)
-
         end
-
-      end
-    )
-
+      end)
   end
-
 end)
 
-ESX.RegisterServerCallback('esx_mafia:getArmoryWeapons', function(source, cb)
+ESX.RegisterServerCallback('esx_mafiajob:getArmoryWeapons', function(source, cb)
 
   TriggerEvent('esx_datastore:getSharedDataStore', 'society_mafia', function(store)
 
@@ -330,12 +305,10 @@ ESX.RegisterServerCallback('esx_mafia:getArmoryWeapons', function(source, cb)
     end
 
     cb(weapons)
-
   end)
-
 end)
 
-ESX.RegisterServerCallback('esx_mafia:addArmoryWeapon', function(source, cb, weaponName)
+ESX.RegisterServerCallback('esx_mafiajob:addArmoryWeapon', function(source, cb, weaponName)
 
   local xPlayer = ESX.GetPlayerFromId(source)
 
@@ -351,7 +324,7 @@ ESX.RegisterServerCallback('esx_mafia:addArmoryWeapon', function(source, cb, wea
 
     local foundWeapon = false
 
-    for i=1, #weapons, 1 do
+    for i = 1, #weapons, 1 do
       if weapons[i].name == weaponName then
         weapons[i].count = weapons[i].count + 1
         foundWeapon = true
@@ -360,20 +333,18 @@ ESX.RegisterServerCallback('esx_mafia:addArmoryWeapon', function(source, cb, wea
 
     if not foundWeapon then
       table.insert(weapons, {
-        name  = weaponName,
+        name = weaponName,
         count = 1
       })
     end
 
-     store.set('weapons', weapons)
+    store.set('weapons', weapons)
 
-     cb()
-
+    cb()
   end)
-
 end)
 
-ESX.RegisterServerCallback('esx_mafia:removeArmoryWeapon', function(source, cb, weaponName)
+ESX.RegisterServerCallback('esx_mafiajob:removeArmoryWeapon', function(source, cb, weaponName)
 
   local xPlayer = ESX.GetPlayerFromId(source)
 
@@ -389,7 +360,7 @@ ESX.RegisterServerCallback('esx_mafia:removeArmoryWeapon', function(source, cb, 
 
     local foundWeapon = false
 
-    for i=1, #weapons, 1 do
+    for i = 1, #weapons, 1 do
       if weapons[i].name == weaponName then
         weapons[i].count = (weapons[i].count > 0 and weapons[i].count - 1 or 0)
         foundWeapon = true
@@ -398,21 +369,19 @@ ESX.RegisterServerCallback('esx_mafia:removeArmoryWeapon', function(source, cb, 
 
     if not foundWeapon then
       table.insert(weapons, {
-        name  = weaponName,
+        name = weaponName,
         count = 0
       })
     end
 
-     store.set('weapons', weapons)
+    store.set('weapons', weapons)
 
-     cb()
-
+    cb()
   end)
-
 end)
 
 
-ESX.RegisterServerCallback('esx_mafia:buy', function(source, cb, amount)
+ESX.RegisterServerCallback('esx_mafiajob:buy', function(source, cb, amount)
 
   TriggerEvent('esx_addonaccount:getSharedAccount', 'society_mafia', function(account)
 
@@ -422,26 +391,22 @@ ESX.RegisterServerCallback('esx_mafia:buy', function(source, cb, amount)
     else
       cb(false)
     end
-
   end)
-
 end)
 
-ESX.RegisterServerCallback('esx_mafia:getStockItems', function(source, cb)
+ESX.RegisterServerCallback('esx_mafiajob:getStockItems', function(source, cb)
 
   TriggerEvent('esx_addoninventory:getSharedInventory', 'society_mafia', function(inventory)
     cb(inventory.items)
   end)
-
 end)
 
-ESX.RegisterServerCallback('esx_mafia:getPlayerInventory', function(source, cb)
+ESX.RegisterServerCallback('esx_mafiajob:getPlayerInventory', function(source, cb)
 
   local xPlayer = ESX.GetPlayerFromId(source)
-  local items   = xPlayer.inventory
+  local items = xPlayer.inventory
 
   cb({
     items = items
   })
-
 end)
