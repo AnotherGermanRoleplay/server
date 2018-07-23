@@ -9,8 +9,8 @@
 
 --  Server side
 
-local owners = {} -- owners[plate] = identifier
-local secondOwners = {} -- secondOwners[plate] = {identifier, identifier, ...}
+owners = {} -- owners[plate] = identifier
+secondOwners = {} -- secondOwners[plate] = {identifier, identifier, ...}
 
 RegisterServerEvent("ls:retrieveVehiclesOnconnect")
 AddEventHandler("ls:retrieveVehiclesOnconnect", function()
@@ -62,7 +62,7 @@ AddEventHandler("ls:checkOwner", function(localVehId, plate, lockStatus)
         TriggerClientEvent("ls:getHasOwner", src, nil, localVehId, plate, lockStatus)
     else
         if(owners[plate] == "locked")then
-            TriggerClientEvent("ls:notify", src, "Die Schlüssel sind nicht im Fahrzeug.")
+            TriggerClientEvent("ls:notify", src, "The keys aren't inside")
         else
             TriggerClientEvent("ls:getHasOwner", src, true, localVehId, plate, lockStatus)
         end

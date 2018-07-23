@@ -27,29 +27,29 @@ if(globalConf["SERVER"].enableGiveKey)then
                                     TriggerClientEvent("ls:giveKeys", targetIdentifier, plate)
                                     TriggerEvent("ls:addSecondOwner", targetIdentifier, plate)
 
-                                    TriggerClientEvent("ls:notify", targetId, "Du hast die Schlüssel des Fahrzeugs " .. plate .. " von " .. GetPlayerName(src) .. " bekommen.")
-                                    TriggerClientEvent("ls:notify", src, "Du hast die Schlüssel des Fehrzeugs " .. plate .. " an " .. GetPlayerName(targetId) .. " vergeben.")
+                                    TriggerClientEvent("ls:notify", targetId, "You have been received the keys of vehicle " .. plate .. " by " .. GetPlayerName(src))
+                                    TriggerClientEvent("ls:notify", src, "You gave the keys of vehicle " .. plate .. " to " .. GetPlayerName(targetId))
                                 else
-                                    TriggerClientEvent("ls:notify", src, "Dein Ziel hat bereits die Schlüssel")
-                                    TriggerClientEvent("ls:notify", targetId, GetPlayerName(src) .. " versuchte dir seine Schlüssel zu geben, doch du hast sie schon!")
+                                    TriggerClientEvent("ls:notify", src, "The target already has the keys of the vehicle")
+                                    TriggerClientEvent("ls:notify", targetId, GetPlayerName(src) .. " tried to give you his keys, but you already had them")
                                 end
                             else
-                                TriggerClientEvent("ls:notify", src, "Das ist nicht dein Fahrzeug!")
+                                TriggerClientEvent("ls:notify", src, "This is not your vehicle")
                             end
                         else
-                            TriggerClientEvent("ls:notify", src, "Ein Fahrzeug mit diesem Kennzeichen existiert nicht!")
+                            TriggerClientEvent("ls:notify", src, "The vehicle with this plate doesn't exist")
                         end
                     else
-                        TriggerClientEvent("ls:notify", src, "Zweites Argument fehlt : /givekey <id> <plate>")
+                        TriggerClientEvent("ls:notify", src, "Second missing argument : /givekey <id> <plate>")
                     end
                 else
-                    TriggerClientEvent("ls:notify", src, "Du kannst dir doch nicht selbst Schlüssel geben!")
+                    TriggerClientEvent("ls:notify", src, "You can't target yourself")
                 end
             else
-                TriggerClientEvent("ls:notify", src, "Spieler nicht gefunden")
+                TriggerClientEvent("ls:notify", src, "Player not found")
             end
         else
-            TriggerClientEvent("ls:notify", src, 'Erstes Argument fehlt : /givekey <id> <plate>')
+            TriggerClientEvent("ls:notify", src, 'First missing argument : /givekey <id> <plate>')
         end
 
         CancelEvent()
