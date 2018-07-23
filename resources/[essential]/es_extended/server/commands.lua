@@ -47,7 +47,7 @@ end, function(source, args, user)
   TriggerClientEvent('chatMessage', source, "SYSTEM", {255, 0, 0}, "Insufficient Permissions.")
 end, {help = _U('spawn_car'), params = {{name = "car", help = _U('spawn_car_param')}}})
 
-TriggerEvent('es:addGroupCommand', 'dv', 'admin', function(source, args, user)
+TriggerEvent('es:addGroupCommand', 'dv', 'mod', function(source, args, user)
   TriggerClientEvent('esx:deleteVehicle', source)
 end, function(source, args, user)
   TriggerClientEvent('chatMessage', source, "SYSTEM", {255, 0, 0}, "Insufficient Permissions.")
