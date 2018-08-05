@@ -224,7 +224,7 @@ function StockVehicleMenu()
 				ESX.Game.DeleteVehicle(vehicle)
 				TriggerServerEvent('eden_garage:modifystate', vehicleProps, true)
 				------------------------------------------------------- sauvegarde de l'etat du vehicule
-				TriggerServerEvent('eden_garage:logging', "engineHealth \t" .. engineHealth.. "\n")
+				-- TriggerServerEvent('eden_garage:logging', "engineHealth \t" .. engineHealth.. "\n")
 				TriggerServerEvent('eden_garage:payhealth', engineHealth)
 				-------------------------------------------------------
 				TriggerEvent('esx:showNotification', 'Fahrzeug in Garage gespeichert')
