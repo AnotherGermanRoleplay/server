@@ -11,7 +11,7 @@ local groupsRequired = {
 	slap = "superadmin",
 	slay = "mod",
 	kick = "mod",
-	ban = "admin"
+	ban = "mod"
 }
 
 local banned = ""
@@ -78,7 +78,7 @@ AddEventHandler('es_admin:quick', function(id, type)
 	TriggerEvent('es:getPlayerFromId', source, function(user)
 		TriggerEvent('es:getPlayerFromId', id, function(target)
 			TriggerEvent('es:canGroupTarget', user.getGroup(), groupsRequired[type], function(available)
-				print('Available?: ' .. tostring(available))
+				-- print('Available?: ' .. tostring(available))
 				TriggerEvent('es:canGroupTarget', user.getGroup(), target.getGroup(), function(canTarget)
 					if canTarget and available then
 						if type == "slay" then TriggerClientEvent('es_admin:quick', id, type) end
@@ -95,7 +95,7 @@ AddEventHandler('es_admin:quick', function(id, type)
 							for k,v in ipairs(GetPlayerIdentifiers(id))do
 								banUser(v)
 							end
-							DropPlayer(id, GetConvar("es_admin_banreason", "Du wurdest vom Server gebannt"))
+							DropPlayer(id, GetConvar("es_admin_banreason", "You have been banned. Melde dich im TS, wenn du Fragen hast!"))
 						end
 					else
 						if not available then
