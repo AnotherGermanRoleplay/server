@@ -49,7 +49,7 @@ end
 AddEventHandler('playerConnecting', function(user, set)
 	for k,v in ipairs(GetPlayerIdentifiers(source))do
 		if isBanned(v) then
-			set(GetConvar("es_admin_banreason", "Du wurdest vom Server gebannt"))
+			set(GetConvar("es_admin_banreason", "You have been banned. For questions, visit our teamspeak!"))
 			CancelEvent()
 			break
 		end
