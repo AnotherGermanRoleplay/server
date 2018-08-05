@@ -10,13 +10,13 @@
       <vecCentreOfMassOffset x="0.000000" y="-0.100000" z="0.000000" />
       <vecInertiaMultiplier x="2.000000" y="2.400000" z="2.400000" />
       <fDriveBiasFront value="0.000000" />
-      <nInitialDriveGears value="6" />
-      <fInitialDriveForce value="0.340000" />
+      <nInitialDriveGears value="7" />
+      <fInitialDriveForce value="0.440000" />
       <fDriveInertia value="1.000000" />
       <fClutchChangeRateScaleUpShift value="8.000000" />
       <fClutchChangeRateScaleDownShift value="6.000000" />
-      <fInitialDriveMaxFlatVel value="295.000000" />
-      <fBrakeForce value="0.800000" />
+      <fInitialDriveMaxFlatVel value="380.000000" />
+      <fBrakeForce value="0.900000" />
       <fBrakeBiasFront value="0.550000" />
       <fHandBrakeForce value="0.800000" />
       <fSteeringLock value="36.000000" />
@@ -43,13 +43,13 @@
       <fWeaponDamageMult value="1.000000" />
       <fDeformationDamageMult value="1.500000" />
       <fEngineDamageMult value="1.500000" />
-      <fPetrolTankVolume value="65.000000" />
+      <fPetrolTankVolume value="70.000000" />
       <fOilVolume value="4.500000" />
       <fSeatOffsetDistX value="0.000000" />
       <fSeatOffsetDistY value="0.000000" />
       <fSeatOffsetDistZ value="0.050000" />
       <nMonetaryValue value="150000" />
-      <strModelFlags>440010</strModelFlags>
+      <strModelFlags>440090</strModelFlags>
       <strHandlingFlags>0</strHandlingFlags>
       <strDamageFlags>0</strDamageFlags>
       <AIHandling>AVERAGE</AIHandling>
