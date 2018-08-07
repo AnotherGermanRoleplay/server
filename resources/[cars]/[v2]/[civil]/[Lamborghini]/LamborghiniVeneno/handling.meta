@@ -4,19 +4,19 @@
   <HandlingData>
     <Item type="CHandlingData">
       <handlingName>rmodveneno</handlingName>
-      <fMass value="1500.000000" />
-      <fInitialDragCoeff value="9.300000" />
+      <fMass value="1400.000000" />
+      <fInitialDragCoeff value="2.300000" />
       <fPercentSubmerged value="85.000000" />
       <vecCentreOfMassOffset x="0.000000" y="-0.030000" z="0.150000" />
       <vecInertiaMultiplier x="1.200000" y="1.200000" z="1.200000" />
       <fDriveBiasFront value="0.000000" />
-      <nInitialDriveGears value="8" />
-      <fInitialDriveForce value="0.353000" />
-      <fDriveInertia value="8.900000" />
-      <fClutchChangeRateScaleUpShift value="7.600000" />
+      <nInitialDriveGears value="7" />
+      <fInitialDriveForce value="0.443000" />
+      <fDriveInertia value="2.000000" />
+      <fClutchChangeRateScaleUpShift value="8.000000" />
       <fClutchChangeRateScaleDownShift value="6.100000" />
       <fInitialDriveMaxFlatVel value="355.000000" />
-      <fBrakeForce value="4.600000" />
+      <fBrakeForce value="1.500000" />
       <fBrakeBiasFront value="0.500000" />
       <fHandBrakeForce value="0.650000" />
       <fSteeringLock value="42.000000" />
