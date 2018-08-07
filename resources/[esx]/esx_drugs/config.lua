@@ -4,10 +4,28 @@ Config.DrawDistance = 100.0
 Config.ZoneSize     = {x = 5.0, y = 5.0, z = 3.0}
 --Config.MarkerColor  = {r = 100, g = 204, b = 100}
 Config.RequiredCopsCoke = 2 -- 2 -- 1
-Config.RequiredCopsMeth = 0 -- 2 -- 2
+Config.RequiredCopsMeth = 1 -- 2 -- 2
 Config.RequiredCopsWeed = 0 -- 0 -- 0
 Config.RequiredCopsOpium = 2 -- 3 -- 3
 Config.Locale = 'de'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 -- Config.Zones = {
 	-- CokeFarm = 		 {x=2448.9228515625,  y=-1836.8076171875, z=51.953701019287},
@@ -36,7 +54,8 @@ Config.Zones = {
 	MethFarm = 		 { x = 412.88208007813, y = 6495.6650390625, z = 28.093534469604 }, -- spot 1 new
 	MethTreatment =  {x=1389.3192138672, y=3604.7277832031,  z=38.941883087158},
 	-- MethResell = 	 {x=-63.592178344727, y=-1224.0709228516, z=27.768648147583}, -- v1 spot
-	MethResell = 	 { x = 84.77751159668, y = 3718.1535644531, z = 40.334804534912 }, -- spot 1 new
+	-- MethResell = 	 { x = 84.77751159668, y = 3718.1535644531, z = 40.334804534912 }, -- spot 1 new
+	MethResell = 	 { x = 870.54699707031, y = -2311.705078125, z = 30.570415496826 }, -- spot 2 new
 
 	WeedFarm = 		 {x=2210.7202148438, y=5578.0078125,  z=53.897754669189},
 	WeedTreatment =  { x = 2195.4323730469, y = 5600.2338867188, z = 53.663356781006 }, -- spot 1 new

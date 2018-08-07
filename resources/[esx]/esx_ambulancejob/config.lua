@@ -6,7 +6,7 @@ local second = 1000
 local minute = 60 * second
 
 -- How much time before auto respawn at hospital
-Config.RespawnDelayAfterRPDeath   = 5 * minute
+Config.RespawnDelayAfterRPDeath   = 10 * minute
 
 -- How much time before a menu opens to ask the player if he wants to respawn at hospital now
 -- The player is not obliged to select YES, but he will be auto respawn
@@ -28,7 +28,7 @@ Config.ShowDeathTimer               = true
 Config.EarlyRespawn                 = true
 -- The player can have a fine (on bank account)
 Config.RespawnFine                  = true
-Config.RespawnFineAmount            = 1250
+Config.RespawnFineAmount            = 10000
 
 Config.Locale                       = 'de'
 

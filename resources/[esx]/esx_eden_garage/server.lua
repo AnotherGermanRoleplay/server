@@ -198,10 +198,11 @@ end)
 --debut de payement pour la santé vehicule
 AddEventHandler('eden_garage:payhealth', function(price)
 
-	if price > 500 and price < 1000 then
-		price = math.ceil((1000-price)*10)
-	elseif price <= 500 then
-		price = 1500
+	price = math.ceil((1000 - price) * 25)
+	if (price > 7500) then
+		price = 7500
+	elseif (price < 7500 and price > 500) then
+		price = price
 	else
 		price = 0
 	end

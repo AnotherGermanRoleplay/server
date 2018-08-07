@@ -183,7 +183,7 @@ function ShowTimer()
       local text = _U('please_wait') .. minutes .. _U('minutes') .. seconds .. _U('seconds')
 
       if Config.EarlyRespawn and PlayerData.job.name ~= 'ambulance' then
-        text = text .. '\nDirekter Respawn: [~b~E~w~] - ~g~€1000'
+        text = text .. '\nDirekter Respawn: [~b~E~w~] - ~g~€10000'
       else
         text = text .. '\nDirekter Respawn: [~b~E~w~] - ~g~€0'
       end
