@@ -168,7 +168,7 @@ AddEventHandler('es_admin:set', function(t, USER, GROUP)
 								TriggerClientEvent('chatMessage', -1, "CONSOLE", {0, 0, 0}, "Group of ^2^*" .. GetPlayerName(tonumber(USER)) .. "^r^0 has been set to ^2^*" .. GROUP)
 							end)
 							TriggerEvent("es:getPlayerFromId", source, function(target)
-								TriggerEvent("discord_bot:cmd_log", "QUICK_CMD  :: \"level\" :: User `" .. target.getIdentifier() .. "` gave `" .. GetPlayerName(USER) .. "` group " .. GROUP)
+								TriggerEvent("discord_bot:cmd_log", "QUICK_CMD  :: \"group\" :: User `" .. target.getIdentifier() .. "` gave `" .. GetPlayerName(USER) .. "` group " .. GROUP)
 							end)
 						else
 							TriggerClientEvent('chatMessage', source, 'SYSTEM', {255, 0, 0}, "Group not found")
