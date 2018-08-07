@@ -13,6 +13,8 @@ Config.Zones = {
 	{ x = -28.056449890137, y = -724.55035400391, z = 44.228530883789, percent = 5 }, -- maze bank tower geldautomat
 	{ x = -329.87243652344, y = -780.52502441406, z = 33.964488983154, percent = 10 }, -- job autohändler automat oben 1.
 	{ x = -331.74462890625, y = -736.16632080078, z = 43.605197906494, percent = 15 }, -- job autohändler automat oben 3.
-	{ x = -1075.1480712891, y = -468.974609375, z = 36.650802612305, percent = 30 }, -- hollywood food truck
-	{ x = 2507.54, y = -457.94, z = 92.99, percent = 55 }, -- FBI House schwarzer strich
+	--{ x = -331.74462890625, y = -736.16632080078, z = 43.605197906494, percent = 20 }, --
+	--{ x = -331.74462890625, y = -736.16632080078, z = 43.605197906494, percent = 30 }, --
+	{ x = -1075.1480712891, y = -468.974609375, z = 36.650802612305, percent = 40 }, -- hollywood food truck
+	-- { x = 2507.54, y = -457.94, z = 92.99, percent = 55 }, -- FBI House schwarzer strich
 }
