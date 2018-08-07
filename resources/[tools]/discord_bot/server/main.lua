@@ -1,4 +1,4 @@
-local moneyToAlert = 3000000
+local moneyToAlert = 100000
 
 AddEventHandler('chatMessage', function(source, name, message)
   if string.sub(message, 1, string.len("/")) ~= "/"
@@ -37,6 +37,17 @@ function sendToLogDiscord(name, message)
   if message == nil or message == '' then return FALSE end
   -- #ig-log (weapon und money exchange)
   PerformHttpRequest('https://discordapp.com/api/webhooks/424565704541470731/_Jj-UhoXF70bD2jUp92eIpNpgFOu73_iS_n2mX6ZMlBI4a1H_Y2PXwB-eClBb1zOoE2j',
+    function(err, text, headers) end,
+    'POST',
+    json.encode({username = name, content = message}),
+    { ['Content-Type'] = 'application/json' }
+  )
+end
+
+function sendToTeamCommandLog(message)
+  if message == nil or message == '' then return FALSE end
+  -- #ig-log (weapon und money exchange)
+  PerformHttpRequest('https://discordapp.com/api/webhooks/476493026403942401/R0BIRU5YHYm6AH7snRsCRGM-aHf3c2Tk-VDHKgp1h-ayXOh5dl6rQvWANUVUlEVRXPH-',
     function(err, text, headers) end,
     'POST',
     json.encode({username = name, content = message}),
@@ -88,6 +99,12 @@ function sendToSuspectLogDiscord(message)
   )
 end
 
+
+
+RegisterServerEvent('discord_bot:cmd_log')
+AddEventHandler('discord_bot:cmd_log',function(log)
+  sendToTeamCommandLog(log)
+end)
 
 -- TriggerEvent('discord_bot:dev_log', "Select * From users Done")
 RegisterServerEvent('discord_bot:dev_log')
