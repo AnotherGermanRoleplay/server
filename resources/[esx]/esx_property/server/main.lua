@@ -264,13 +264,32 @@ AddEventHandler('esx_property:getItem', function(owner, type, item, count)
     local sourceItem = xPlayer.getInventoryItem(item)
     TriggerEvent('esx_addoninventory:getInventory', 'property', xPlayerOwner.identifier, function(inventory)
 
+      print("-----------------------------------")
+      print("COUNT :: " .. count)
+      print("ITEM  :: " .. item)
+      print("LIMIT :: " .. sourceItem.limit)
+      print("TYPE  :: " .. type)
+      print("-----------------------------------")
+
       -- is there enough in the property?
       if count > 0 and inventory.getItem(item).count >= count then
 
         -- can the player carry the said amount of x item?
-        if sourceItem.limit == -1 and not (sourceItem.count + item) > sourceItem.limit then
+        if sourceItem.limit == -1 or not (sourceItem.count + item) > sourceItem.limit then
+
+          print("-----------------------------------")
+          print("REMOVING ITEM FROM HOUSE")
+          print("COUNT :: " .. count)
+          print("ITEM  :: " .. item)
           inventory.removeItem(item, count)
+          print("-----------------------------------")
+
+          print("-----------------------------------")
+          print("ADDING TO PLAYERINVENTORY")
+          print("COUNT :: " .. count)
+          print("ITEM  :: " .. item)
           xPlayer.addInventoryItem(item, count)
+          print("-----------------------------------")
         end
       end
     end)

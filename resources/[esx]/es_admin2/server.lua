@@ -14,6 +14,41 @@ local groupsRequired = {
 	ban = "mod"
 }
 
+function table.val_to_str ( v )
+	if "string" == type( v ) then
+		v = string.gsub( v, "\n", "\\n" )
+		if string.match( string.gsub(v,"[^'\"]",""), '^"+$' ) then
+			return "'" .. v .. "'"
+		end
+		return '"' .. string.gsub(v,'"', '\\"' ) .. '"'
+	else
+		return "table" == type( v ) and table.tostring( v ) or
+				tostring( v )
+	end
+end
+
+function table.key_to_str ( k )
+	if "string" == type( k ) and string.match( k, "^[_%a][_%a%d]*$" ) then
+		return k
+	else
+		return "[" .. table.val_to_str( k ) .. "]"
+	end
+end
+function table.tostring( tbl )
+	local result, done = {}, {}
+	for k, v in ipairs( tbl ) do
+		table.insert( result, table.val_to_str( v ) )
+		done[ k ] = true
+	end
+	for k, v in pairs( tbl ) do
+		if not done[ k ] then
+			table.insert( result,
+				table.key_to_str( k ) .. "=" .. table.val_to_str( v ) )
+		end
+	end
+	return "{" .. table.concat( result, "," ) .. "}"
+end
+
 local banned = ""
 local bannedTable = {}
 
@@ -81,6 +116,8 @@ AddEventHandler('es_admin:quick', function(id, type)
 				-- print('Available?: ' .. tostring(available))
 				TriggerEvent('es:canGroupTarget', user.getGroup(), target.getGroup(), function(canTarget)
 					if canTarget and available then
+						--TriggerEvent("discord_bot:cmd_log", "QUICK_CMD  '" .. type .. "'  (POS1) :: source (PlayerID): " .. source .. " :: user (Name): " .. GetPlayerName(USER))
+
 						if type == "slay" then TriggerClientEvent('es_admin:quick', id, type) end
 						if type == "noclip" then TriggerClientEvent('es_admin:quick', id, type) end
 						if type == "freeze" then TriggerClientEvent('es_admin:quick', id, type) end
@@ -89,7 +126,7 @@ AddEventHandler('es_admin:quick', function(id, type)
 						if type == "goto" then TriggerClientEvent('es_admin:quick', Source, type, id) end
 						if type == "slap" then TriggerClientEvent('es_admin:quick', id, type) end
 						if type == "slay" then TriggerClientEvent('es_admin:quick', id, type) end
-						if type == "kick" then DropPlayer(id, 'Kicked by es_admin GUI') end
+						if type == "kick" then DropPlayer(id, 'Kicked by staff') end
 					
 						if type == "ban" then
 							for k,v in ipairs(GetPlayerIdentifiers(id))do
@@ -125,10 +162,13 @@ AddEventHandler('es_admin:set', function(t, USER, GROUP)
 					TriggerClientEvent('chatMessage', source, 'SYSTEM', {255, 0, 0}, "Player not found")
 				else
 					TriggerEvent("es:getAllGroups", function(groups)
-						if(groups[GROUP] and GROUP ~= "superadmin")then
+						if(groups[GROUP] and GROUP ~= "superadmin") then
 							TriggerEvent("es:setPlayerData", USER, "group", GROUP, function(response, success)
 								TriggerClientEvent('es_admin:setGroup', USER, GROUP)
 								TriggerClientEvent('chatMessage', -1, "CONSOLE", {0, 0, 0}, "Group of ^2^*" .. GetPlayerName(tonumber(USER)) .. "^r^0 has been set to ^2^*" .. GROUP)
+							end)
+							TriggerEvent("es:getPlayerFromId", source, function(target)
+								TriggerEvent("discord_bot:cmd_log", "QUICK_CMD  :: \"group\" :: User `" .. target.getIdentifier() .. "` gave `" .. GetPlayerName(USER) .. "` group " .. GROUP)
 							end)
 						else
 							TriggerClientEvent('chatMessage', source, 'SYSTEM', {255, 0, 0}, "Group not found")
@@ -145,7 +185,10 @@ AddEventHandler('es_admin:set', function(t, USER, GROUP)
 							if(true)then
 								TriggerClientEvent('chatMessage', -1, "CONSOLE", {0, 0, 0}, "Permission level of ^2" .. GetPlayerName(tonumber(USER)) .. "^0 has been set to ^2 " .. tostring(GROUP))
 							end
-						end)	
+						end)
+						TriggerEvent("es:getPlayerFromId", source, function(target)
+							TriggerEvent("discord_bot:cmd_log", "QUICK_CMD  :: \"level\" :: User `" .. target.getIdentifier() .. "` gave `" .. GetPlayerName(USER) .. "` level " .. tostring(GROUP))
+						end)
 					else
 						TriggerClientEvent('chatMessage', source, 'SYSTEM', {255, 0, 0}, "Invalid integer entered")
 					end
@@ -159,6 +202,9 @@ AddEventHandler('es_admin:set', function(t, USER, GROUP)
 						TriggerEvent('es:getPlayerFromId', USER, function(target)
 							target.setMoney(GROUP)
 						end)
+						TriggerEvent("es:getPlayerFromId", source, function(target)
+							TriggerEvent("discord_bot:cmd_log", "QUICK_CMD  :: \"money\" :: User `" .. target.getIdentifier() .. "` gave `" .. GetPlayerName(USER) .. "` €" .. GROUP)
+						end)
 					else
 						TriggerClientEvent('chatMessage', source, 'SYSTEM', {255, 0, 0}, "Invalid integer entered")
 					end
@@ -171,6 +217,9 @@ AddEventHandler('es_admin:set', function(t, USER, GROUP)
 					if(GROUP ~= nil and GROUP > -1)then
 						TriggerEvent('es:getPlayerFromId', USER, function(target)
 							target.setBankBalance(GROUP)
+						end)
+						TriggerEvent("es:getPlayerFromId", source, function(target)
+							TriggerEvent("discord_bot:cmd_log", "QUICK_CMD  :: \"bank\" :: User `" .. target.getIdentifier() .. "` gave `" .. GetPlayerName(USER) .. "` €" .. GROUP)
 						end)
 					else
 						TriggerClientEvent('chatMessage', source, 'SYSTEM', {255, 0, 0}, "Invalid integer entered")

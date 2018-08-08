@@ -10,23 +10,6 @@ Config.RequiredCopsOpium = 2 -- 3 -- 3
 Config.Locale = 'de'
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 -- Config.Zones = {
 	-- CokeFarm = 		 {x=2448.9228515625,  y=-1836.8076171875, z=51.953701019287},
 	-- CokeTreatment =  {x=-458.13967895508, y=-2278.6174316406, z=7.5158290863037},
