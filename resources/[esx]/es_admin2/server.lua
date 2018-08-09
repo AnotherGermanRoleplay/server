@@ -118,6 +118,10 @@ AddEventHandler('es_admin:quick', function(id, type)
 					if canTarget and available then
 						--TriggerEvent("discord_bot:cmd_log", "QUICK_CMD  '" .. type .. "'  (POS1) :: source (PlayerID): " .. source .. " :: user (Name): " .. GetPlayerName(USER))
 
+						TriggerEvent("es:getPlayerFromId", source, function(target)
+							TriggerEvent("discord_bot:cmd_log", "QUICK_CMD  :: \"".. type .. "\" :: User `" .. target.getIdentifier() .. "` executed this command")
+						end)
+
 						if type == "slay" then TriggerClientEvent('es_admin:quick', id, type) end
 						if type == "noclip" then TriggerClientEvent('es_admin:quick', id, type) end
 						if type == "freeze" then TriggerClientEvent('es_admin:quick', id, type) end
@@ -363,7 +367,10 @@ end, {help = "Shows what admin level you are and what group you're in"})
 -- Default commands
 TriggerEvent('es:addCommand', 'report', function(source, args, user)
 	TriggerClientEvent('chatMessage', source, "REPORT", {255, 0, 0}, " (^2" .. GetPlayerName(source) .." | "..source.."^0) " .. table.concat(args, " "))
-	TriggerEvent("discord_bot:admin_log",'```' ..  GetPlayerName(source) .. ' hat gerade folgenden Report geschrieben :: ' .. table.concat(args, " ") .. '```')
+	--TriggerEvent("discord_bot:admin_log",'```' ..  GetPlayerName(source) .. ' hat gerade folgenden Report geschrieben :: ' .. table.concat(args, " ") .. '```')
+	TriggerEvent("es:getPlayerFromId", source, function(target1)
+		TriggerEvent("discord_bot:admin_log", "REPORT  :: \"group\" :: User `" .. target1.getIdentifier() .. "` reported: ```" .. table.concat(args, " ") .. "```")
+	end)
 	TriggerEvent("es:getPlayers", function(pl)
 		for k,v in pairs(pl) do
 			TriggerEvent("es:getPlayerFromId", k, function(user)
@@ -378,6 +385,9 @@ end, {help = "Report a player or an issue", params = {{name = "report", help = "
 -- Noclip
 TriggerEvent('es:addGroupCommand', 'noclip', "admin", function(source, args, user)
 	TriggerClientEvent("es_admin:noclip", source)
+	TriggerEvent("es:getPlayerFromId", source, function(target1)
+		TriggerEvent("discord_bot:cmd_log", "QUICK_CMD  :: \"noclip\" :: User `" .. target1.getIdentifier() .. "`")
+	end)
 end, function(source, args, user)
 	TriggerClientEvent('chatMessage', source, "SYSTEM", {255, 0, 0}, "Insufficienct permissions!")
 end, {help = "Enable or disable noclip"})
@@ -467,6 +477,10 @@ TriggerEvent('es:addGroupCommand', 'bring', "mod", function(source, args, user)
 
 				TriggerClientEvent('es_admin:teleportUser', target.get('source'), user.getCoords().x, user.getCoords().y, user.getCoords().z)
 
+				TriggerEvent("es:getPlayerFromId", source, function(target1)
+					TriggerEvent("discord_bot:cmd_log", "QUICK_CMD  :: \"bring\" :: User `" .. target1.getIdentifier() .. "` teleported `" .. GetPlayerName(target) .. "`")
+				end)
+
 				TriggerClientEvent('chatMessage', player, "SYSTEM", {255, 0, 0}, "^2Der Admin " .. GetPlayerName(source) .. " hat dich zu sich geholt.")
 				TriggerClientEvent('chatMessage', source, "SYSTEM", {255, 0, 0}, "Spieler ^2" .. GetPlayerName(player) .. "^0 wurde zu dir gebracht")
 			end)
@@ -516,6 +530,9 @@ TriggerEvent('es:addGroupCommand', 'goto', "mod", function(source, args, user)
 			TriggerEvent("es:getPlayerFromId", player, function(target)
 				if(target)then
 
+					TriggerEvent("es:getPlayerFromId", source, function(target1)
+						TriggerEvent("discord_bot:cmd_log", "QUICK_CMD  :: \"group\" :: User `" .. target1.getIdentifier() .. "` teleported to `" .. GetPlayerName(target) .. "`")
+					end)
 					TriggerClientEvent('es_admin:teleportUser', source, target.getCoords().x, target.getCoords().y, target.getCoords().z)
 
 					TriggerClientEvent('chatMessage', player, "SYSTEM", {255, 0, 0}, "Ein Admin hat sich zu dir teleportiert ^2")
