@@ -43,11 +43,11 @@ AddEventHandler('esx_taxijob:success', function()
   if societyAccount ~= nil then
 
     local playerMoney  = math.ceil(total / 100 * 15)
-    local societyMoney = math.floor(total / 100 * 20)
+    local societyMoney = math.ceil(total / 100 * 15)
 
     if tipchance > 70 then
       xPlayer.addMoney(tip)
-      TriggerClientEvent('esx:showNotification', xPlayer.source, "Hier ein kleines Trinkgeld: ~g~$" .. tip)
+      TriggerClientEvent('esx:showNotification', xPlayer.source, "Hier ein kleines Trinkgeld: ~g~€" .. tip)
     end
     xPlayer.addMoney(playerMoney)
     societyAccount.addMoney(societyMoney)
