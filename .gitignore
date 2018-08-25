@@ -45,7 +45,7 @@ mtsaves/
 
 .idea/
 *.iml
-*.log
+
 resources/[essential]/essentialmode/logs/*
 loadscreen_hq.zip
 citizen/*
