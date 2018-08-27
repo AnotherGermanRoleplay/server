@@ -12,7 +12,8 @@ Config.Prices = {
 }
 
 Config.VehicleModels = {
-  drive       = 'golfgti',
+  drive       = 'drivetrainee',
+  -- drive       = 'golfgti',
   drive_bike  = 'carbonrs',
   drive_truck = 'mule3'
 }
