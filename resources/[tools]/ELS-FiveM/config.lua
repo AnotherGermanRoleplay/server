@@ -32,7 +32,8 @@ vcf_files = {
 	"burrito4.xml",
 	"utillitruck3.xml",
 	"PBUS.xml",
-	"policetswat.xml"
+	"policetswat.xml",
+	"towtruck.xml"
 }
 
 pattern_files = {
@@ -89,7 +90,8 @@ modelsWithTrafficAdvisor = {
 	"burrito4",
 	"utillitruck3",
 	"PBUS",
-	"policetswat"
+	"policetswat",
+	"towtruck"
 }
 
 modelsWithFireSiren =
