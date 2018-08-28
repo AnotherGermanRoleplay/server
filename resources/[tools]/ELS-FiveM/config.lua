@@ -17,7 +17,6 @@ vcf_files = {
 	"lspd12.xml",
 	"police.xml",
 	"police2.xml",
-	"police3.xml",
 	"police4.xml",
 	"police5.xml",
 	"police6.xml",
@@ -33,7 +32,8 @@ vcf_files = {
 	"burrito4.xml",
 	"utillitruck3.xml",
 	"PBUS.xml",
-	"policetswat.xml"
+	"policetswat.xml",
+	"towtruck.xml"
 }
 
 pattern_files = {
@@ -70,7 +70,6 @@ modelsWithTrafficAdvisor = {
 	"policet",
 	"police",
 	"police2",
-	"police3",
 	"police4",
 	"police5",
 	"police7",
@@ -91,7 +90,8 @@ modelsWithTrafficAdvisor = {
 	"burrito4",
 	"utillitruck3",
 	"PBUS",
-	"policetswat"
+	"policetswat",
+	"towtruck"
 }
 
 modelsWithFireSiren =
@@ -123,7 +123,6 @@ vehicleStageThreeAdvisor = {
 	"lspd10",
 	"police",
 	"police2",
-	"police3",
 	"police4",
 	"police5",
 	"police7",

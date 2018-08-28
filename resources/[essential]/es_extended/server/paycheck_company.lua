@@ -15,7 +15,7 @@ ESX.StartPayCheck = function ()
         if account.money >= xPlayer.job.grade_salary then
           xPlayer.addAccountMoney('bank',xPlayer.job.grade_salary)
           account.removeMoney(xPlayer.job.grade_salary)
-         TriggerClientEvent('esx:showNotification', xPlayer.source, ('Votre entreprise vous a payé ') .. '~g~$' .. xPlayer.job.grade_salary)
+         TriggerClientEvent('esx:showNotification', xPlayer.source, ('Votre entreprise vous a payé ') .. '~g~€' .. xPlayer.job.grade_salary)
         else
           TriggerClientEvent('esx:showNotification', xPlayer.source, 'Votre entreprise n\'a plus d\'argent pour vous payer !')
         end
