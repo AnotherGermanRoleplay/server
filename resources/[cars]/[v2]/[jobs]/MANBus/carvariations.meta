@@ -1,157 +1,159 @@
-NL-Je Hebt dit bestand nodig anders krijgt de bus in-game andere kleuren.
-vervang met het origineel.
-EN-You need this file otherwhise the bus in-game has diffferent colours.
-replace this with the original.
-Gta V-Mods-update-update.rpf-x64-data-carvariations.ymt
+<?xml version="1.0" encoding="UTF-8"?>
 
- <modelName>BUS</modelName>
-      <colors>
-        <Item>
-          <indices content="char_array">
-            111
-            111
-            111
-            111
-            111
-            111
-          </indices>
-          <liveries>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-          </liveries>
-        </Item>
-        <Item>
-          <indices content="char_array">
-            111
-            111
-            111
-            111
-            111
-            111
-          </indices>
-          <liveries>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-          </liveries>
-        </Item>
-        <Item>
-          <indices content="char_array">
-            111
-            111
-            111
-            111
-            111
-            111
-          </indices>
-          <liveries>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-          </liveries>
-        </Item>
-        <Item>
-          <indices content="char_array">
-            111
-						111
-						111
-						111
-						111
-						111
-          </indices>
-          <liveries>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-            <Item value="false"/>
-          </liveries>
-        </Item>
-      </colors>
+<CVehicleModelInfoVariation>
+  <variationData> 
+	<Item>
+	 <modelName>MANBUS</modelName>
+		  <colors>
+			<Item>
+			  <indices content="char_array">
+				111
+				111
+				111
+				111
+				111
+				111
+			  </indices>
+			  <liveries>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+			  </liveries>
+			</Item>
+			<Item>
+			  <indices content="char_array">
+				111
+				111
+				111
+				111
+				111
+				111
+			  </indices>
+			  <liveries>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+			  </liveries>
+			</Item>
+			<Item>
+			  <indices content="char_array">
+				111
+				111
+				111
+				111
+				111
+				111
+			  </indices>
+			  <liveries>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+			  </liveries>
+			</Item>
+			<Item>
+			  <indices content="char_array">
+				111
+							111
+							111
+							111
+							111
+							111
+			  </indices>
+			  <liveries>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+				<Item value="false"/>
+			  </liveries>
+			</Item>
+		  </colors>
+	  </Item>
+  </variationData>
+</CVehicleModelInfoVariation>
