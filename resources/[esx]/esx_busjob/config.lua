@@ -31,9 +31,9 @@ Config.Zones = {
 }
 
 Config.Busses = {
-  { Spawn = 'bus', Name = 'Mercedes Benz Citaro 2', Rank = 0 },
-  { Spawn = 'coach', Name = 'Volvo Marcopolo', Rank = 0 },
-  { Spawn = 'manbus', Name = 'MAN LionsCity', Rank = 0 }
+  { Spawn = 'bus', Name = 'Mercedes Benz Citaro 2 [R: 0]', Rank = 0 },
+  { Spawn = 'coach', Name = 'Volvo Marcopolo [R: 3]', Rank = 3 },
+  { Spawn = 'manbus', Name = 'MAN LionsCity [R: 3]', Rank = 3 }
 }
 
 Config.JobLocations = {

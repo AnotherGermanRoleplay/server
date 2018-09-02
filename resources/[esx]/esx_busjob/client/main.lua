@@ -303,7 +303,7 @@ function OpenVehicleSpawnerMenu()
 
   for i = 1, #vehicles, 1 do
     local vehicle = vehicles[i]
-    table.insert(elements, { label = vehicle.Name, value = vehicle.Spawn, rank = vehicle.rank })
+    table.insert(elements, { label = vehicle.Name, value = vehicle.Spawn, rank = vehicle.Rank })
   end
 
   ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'vehicle_spawner', {
@@ -315,16 +315,19 @@ function OpenVehicleSpawnerMenu()
 
     local model = data.current
 
-    print('model.value :: ' .. model.value)
-    print('model.label :: ' .. model.label)
+    if (PlayerData.job.grade >= model.rank) then
+      ESX.Game.SpawnVehicle(model.value, {
+        x = Config.Zones.VehicleSpawnPoint.Pos.x,
+        y = Config.Zones.VehicleSpawnPoint.Pos.y,
+        z = Config.Zones.VehicleSpawnPoint.Pos.z
+      }, 180.0, function(vehicle) -- HEADING = 90.0
+        TriggerEvent("ls:newVehicle", GetPlayerServerId(PlayerId()), GetVehicleNumberPlateText(vehicle), nil)
+      end)
 
-    ESX.Game.SpawnVehicle(model.value, {
-      x = Config.Zones.VehicleSpawnPoint.Pos.x,
-      y = Config.Zones.VehicleSpawnPoint.Pos.y,
-      z = Config.Zones.VehicleSpawnPoint.Pos.z
-    }, 180.0, function(vehicle) -- HEADING = 90.0
-      TriggerEvent("ls:newVehicle", GetPlayerServerId(PlayerId()), GetVehicleNumberPlateText(vehicle), nil)
-    end)
+      ESX.ShowNotification('Dein Bus steht nun abfahrtbereit hinter dem Depot.')
+    else
+      ESX.ShowNotification('Du kannst dieses Fahrzeug mit deinem aktuellen Rang nicht ausparken.')
+    end
   end)
 end
 
