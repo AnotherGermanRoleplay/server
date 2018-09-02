@@ -1,7 +1,7 @@
 Config                            = {}
 Config.DrawDistance               = 100.0
 Config.NPCJobEarnings             = {min = 150, max = 800}
-Config.MaxInService               = 5
+Config.MaxInService               = -1
 Config.EnablePlayerManagement     = true
 Config.EnableSocietyOwnedVehicles = false
 Config.Locale                     = 'de'
@@ -28,6 +28,12 @@ Config.Zones = {
     Type  = 1
   }
 
+}
+
+Config.Busses = {
+  { Spawn = 'bus', Name = 'Mercedes Benz Citaro 2', Rank = 0 },
+  { Spawn = 'coach', Name = 'Volvo Marcopolo', Rank = 0 },
+  { Spawn = 'manbus', Name = 'MAN LionsCity', Rank = 0 }
 }
 
 Config.JobLocations = {
