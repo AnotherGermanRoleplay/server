@@ -4,19 +4,19 @@
   <residentAnims />
   <InitDatas>
     <Item>
-      <modelName>evolution6</modelName>
-      <txdName>evolution6</txdName>
-      <handlingId>EVOLUTION6</handlingId>
-      <gameName>evolution6</gameName>
-      <vehicleMakeName>Mitsubishi</vehicleMakeName>
+      <modelName>cp9a</modelName>
+      <txdName>cp9a</txdName>
+      <handlingId>cp9a</handlingId>
+      <gameName>cp9a</gameName>
+      <vehicleMakeName>KARIN</vehicleMakeName>
       <expressionDictName>null</expressionDictName>
       <expressionName>null</expressionName>
       <animConvRoofDictName>null</animConvRoofDictName>
       <animConvRoofName>null</animConvRoofName>
       <animConvRoofWindowsAffected />
       <ptfxAssetName>null</ptfxAssetName>
-      <audioNameHash>SULTAN</audioNameHash>
-      <layout>LAYOUT_LOW_RHD</layout>
+      <audioNameHash>kuruma</audioNameHash>
+      <layout>LAYOUT_STANDARD</layout>
       <coverBoundOffsets>SULTAN_COVER_OFFSET_INFO</coverBoundOffsets>
       <explosionInfo>EXPLOSION_INFO_DEFAULT</explosionInfo>
       <scenarioLayout />
@@ -28,11 +28,8 @@
       <FirstPersonDriveByUnarmedIKOffset x="0.000000" y="-0.025000" z="0.000000" />
 	  <FirstPersonProjectileDriveByIKOffset x="0.000000" y="0.000000" z="0.000000" />
 	  <FirstPersonProjectileDriveByPassengerIKOffset x="0.000000" y="0.000000" z="0.000000" />
-	  <FirstPersonProjectileDriveByRearLeftIKOffset x="0.000000" y="0.020000" z="0.000000" />
-	  <FirstPersonProjectileDriveByRearRightIKOffset x="0.000000" y="0.020000" z="0.000000" />
 	  <FirstPersonDriveByLeftPassengerIKOffset x="0.000000" y="0.000000" z="0.000000" />
 	  <FirstPersonDriveByRightPassengerIKOffset x="0.000000" y="-0.060000" z="-0.060000" />
-	  <FirstPersonDriveByRightRearPassengerIKOffset x="0.000000" y="0.000000" z="0.000000" />
 	  <FirstPersonDriveByLeftPassengerUnarmedIKOffset x="0.000000" y="-0.080000" z="0.000000" />
 	  <FirstPersonDriveByRightPassengerUnarmedIKOffset x="0.000000" y="-0.080000" z="0.000000" />
 	  <FirstPersonMobilePhoneOffset x="0.155000" y="0.295000" z="0.533000" />
@@ -50,7 +47,6 @@
       <PovCameraOffset x="0.000000" y="-0.135000" z="0.670000" />
       <PovCameraVerticalAdjustmentForRollCage value="-0.045000" />
       <PovPassengerCameraOffset x="0.000000" y="0.000000" z="0.000000" />
-      <PovRearPassengerCameraOffset x="0.000000" y="-0.150000" z="0.000000" />
       <vfxInfoName>VFXVEHICLEINFO_CAR_GENERIC</vfxInfoName>
       <shouldUseCinematicViewMode value="true" />
       <shouldCameraTransitionOnClimbUpDown value="false" />
@@ -73,8 +69,8 @@
       <steerWheelMult value="0.700000" />
       <HDTextureDist value="5.000000" />
       <lodDistances content="float_array">
-        15.000000
-        30.000000
+        10.000000
+        25.000000
         50.000000
         100.000000
         500.000000
@@ -118,17 +114,15 @@
       <buoyancySphereSizeScale value="1.000000" />
       <pOverrideRagdollThreshold type="NULL" />
 	  <firstPersonDrivebyData>
-        <Item>STD_SULTAN_FRONT_LEFT</Item>
-        <Item>STD_SULTAN_FRONT_RIGHT</Item>
-        <Item>STD_SULTAN_REAR_LEFT</Item>
-        <Item>STD_SULTAN_REAR_RIGHT</Item>
+        <Item>STD_ORACLE2_FRONT_LEFT</Item>
+        <Item>STD_ORACLE2_FRONT_RIGHT</Item>
       </firstPersonDrivebyData>
     </Item>
   </InitDatas>
   <txdRelationships>
-    <Item>
+<Item>
       <parent>vehicles_sultan_interior</parent>
-      <child>evolution6</child>
+      <child>cp9a</child>
     </Item>
   </txdRelationships>
 </CVehicleModelInfo__InitDataList>
