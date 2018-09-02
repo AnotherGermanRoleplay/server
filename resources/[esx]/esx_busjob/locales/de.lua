@@ -1,4 +1,5 @@
 Locales['de'] = {
+  ['vehicle_menu'] = 'Fahrzeug ausparken',
   ['taking_service'] = 'Service annehmen: ',
   ['spawn_veh'] = 'Fahrzeug spawnen',
   ['remove_comp_money'] = 'Firmengeld abheben',
