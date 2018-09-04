@@ -9,15 +9,15 @@ Config.NPCJobEarnings             = { min = 150, max = 650 }
 Config.Locale                     = 'de'
 
 Config.Zones = {
-  MecanoActions = {
-    Pos   = { x = -344.231, y = -123.473, z = 38.009 },
+  MecanoActions = { -- chef menu
+    Pos   = { x = -1175.06, y = -1730.33, z = 11.84 },
     Size  = { x = 1.5, y = 1.5, z = 1.0 },
     Color = { r = 204, g = 204, b = 0 },
     Type  = 1,
   },
 
-  Garage = {
-    Pos   = { x = -97.5797576904297, y = 6496.11376953125, z = 30.4909038543701 },
+  Garage = { -- lkw ausparken
+    Pos   = { x = -1209.65, y = -1741.21, z = 4.45 },
     Size  = { x = 1.5, y = 1.5, z = 1.0 },
     Color = { r = 204, g = 204, b = 0 },
     Type  = 1,
@@ -30,14 +30,14 @@ Config.Zones = {
     Type  = 1,
   },
 
-  VehicleSpawnPoint = {
-    Pos   = { x = -366.354, y = -110.766, z = 37.696 },
+  VehicleSpawnPoint = { -- lkw spawn punkt
+    Pos   = { x = -1236.48, y = -1755.96, z = 3.05 },
     Size  = { x = 1.5, y = 1.5, z = 1.0 },
     Type  = -1,
   },
 
-  VehicleDeleter = {
-    Pos   = { x = -386.899, y = -105.675, z = 37.683 },
+  VehicleDeleter = { -- einparkpunkt
+    Pos   = { x = -1234.77, y = -1723.43, z = 4.43 },
     Size  = { x = 3.0, y = 3.0, z = 1.0 },
     Color = { r = 204, g = 204, b = 0 },
     Type  = 1,

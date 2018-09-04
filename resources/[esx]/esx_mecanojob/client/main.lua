@@ -167,10 +167,10 @@ function OpenMecanoActionsMenu()
               {label = 'Leihwagen', value = 'asea'}
             }
 
-            if Config.EnablePlayerManagement and PlayerData.job ~= nil and
-              (PlayerData.job.grade_name == 'boss' or PlayerData.job.grade_name == 'chef' or PlayerData.job.grade_name == 'experimente') then
+            --if Config.EnablePlayerManagement and PlayerData.job ~= nil and
+              --(PlayerData.job.grade_name == 'boss' or PlayerData.job.grade_name == 'chef' or PlayerData.job.grade_name == 'experimente') then
               --table.insert(elements, {label = 'SlamVan', value = 'slamvan3'})
-            end
+            --end
 
             ESX.UI.Menu.CloseAll()
 
