@@ -12,7 +12,7 @@ AddEventHandler('esx_billing:sendBill', function(playerId, sharedAccountName, la
 	TriggerEvent('esx_addonaccount:getSharedAccount', sharedAccountName, function(account)
 
 		if amount < 0 then
-			--print('esx_billing: ' .. GetPlayerName(_source) .. ' tried sending a negative bill!')
+			print('esx_billing: ' .. GetPlayerName(_source) .. ' tried sending a negative bill!')
 			TriggerClientEvent('esx:showNotification', _source, _U('negative_bill'))
 		elseif account == nil then
 
