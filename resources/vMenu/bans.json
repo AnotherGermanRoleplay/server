@@ -427,5 +427,27 @@
     "bannedUntil": "3000-01-01T00:00:00",
     "banReason": "Banned by staff",
     "bannedBy": "Jogi173"
+  },
+  {
+    "playerName": "AE_Im_A_Ninja",
+    "identifiers": [
+      "steam:1100001157bbe9c",
+      "license:5b3a8492414f0238da6aeac329e91d75170525e6",
+      "ip:85.164.47.251"
+    ],
+    "bannedUntil": "2018-09-10T07:56:17.832924+00:00",
+    "banReason": "Bug-using",
+    "bannedBy": "BluePatton"
+  },
+  {
+    "playerName": "FailerTV",
+    "identifiers": [
+      "steam:110000108afdb10",
+      "license:52d4a8aaa73cf46d023873e19edda67fe36418e8",
+      "ip:134.3.47.61"
+    ],
+    "bannedUntil": "2018-09-10T07:56:17.832924+00:00",
+    "banReason": "Bugusing",
+    "bannedBy": "BirdMachine"
   }
 ]
