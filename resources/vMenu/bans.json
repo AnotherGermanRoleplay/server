@@ -435,7 +435,7 @@
       "license:5b3a8492414f0238da6aeac329e91d75170525e6",
       "ip:85.164.47.251"
     ],
-    "bannedUntil": "2018-09-10T07:56:17.832924+00:00",
+    "bannedUntil": "2018-09-10T07:56:17",
     "banReason": "Bug-using",
     "bannedBy": "BluePatton"
   },
@@ -446,8 +446,19 @@
       "license:52d4a8aaa73cf46d023873e19edda67fe36418e8",
       "ip:134.3.47.61"
     ],
-    "bannedUntil": "2018-09-10T07:56:17.832924+00:00",
+    "bannedUntil": "2018-09-10T07:56:17",
     "banReason": "Bugusing",
     "bannedBy": "BirdMachine"
+  },
+  {
+    "playerName": "leonalex02",
+    "identifiers": [
+      "steam:110000134c9972a",
+      "license:dec52b83ecb444a7154bc58f955b32feb62c92bc",
+      "ip:95.223.71.132"
+    ],
+    "bannedUntil": "3000-01-01T00:00:00",
+    "banReason": "Banned by staff",
+    "bannedBy": "Jogi173"
   }
 ]
