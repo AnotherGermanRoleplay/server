@@ -449,5 +449,60 @@
     "bannedUntil": "3000-01-01T00:00:00",
     "banReason": "Banned by staff",
     "bannedBy": "Jogi173"
+  },
+  {
+    "playerName": "Baba Yaga",
+    "identifiers": [
+      "steam:11000010a416839",
+      "license:3f1fdbcce2679e72149820d519e60a66c2aa154d",
+      "ip:84.179.202.24"
+    ],
+    "bannedUntil": "3000-01-01T00:00:00",
+    "banReason": "Banned by staff",
+    "bannedBy": "Jogi173"
+  },
+  {
+    "playerName": "Z_NinjaSkillz_xZ",
+    "identifiers": [
+      "steam:110000132abed14",
+      "license:8cf6fc6b4d0be869bb257bbf3a2eb36f46ad68c2",
+      "ip:46.83.249.36"
+    ],
+    "bannedUntil": "3000-01-01T00:00:00",
+    "banReason": "Banned by staff",
+    "bannedBy": "Jogi173"
+  },
+  {
+    "playerName": "JINRM",
+    "identifiers": [
+      "steam:110000113df31e4",
+      "license:24cc133142b2bbac51dca320767c8f45e53c94e1",
+      "ip:95.211.199.151"
+    ],
+    "bannedUntil": "2018-09-30T15:29:03",
+    "banReason": "Banned Modding",
+    "bannedBy": "BluePatton"
+  },
+  {
+    "playerName": "Jurenmoon",
+    "identifiers": [
+      "steam:110000135946744",
+      "license:8289dd915faf5bda547bb461d2e7850037c42745",
+      "ip:2.206.187.81"
+    ],
+    "bannedUntil": "3000-01-01T00:00:00",
+    "banReason": "Banned by staff",
+    "bannedBy": "Jogi173"
+  },
+  {
+    "playerName": "Louny",
+    "identifiers": [
+      "steam:11000011675615a",
+      "license:57bc953c05ad4373227a9eabd1e3dbeb913610e5",
+      "ip:109.91.37.186"
+    ],
+    "bannedUntil": "2018-09-12T15:35:29.457369+00:00",
+    "banReason": "Combatlog",
+    "bannedBy": "Jogi173"
   }
 ]
