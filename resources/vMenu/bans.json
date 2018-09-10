@@ -440,17 +440,6 @@
     "bannedBy": "BluePatton"
   },
   {
-    "playerName": "FailerTV",
-    "identifiers": [
-      "steam:110000108afdb10",
-      "license:52d4a8aaa73cf46d023873e19edda67fe36418e8",
-      "ip:134.3.47.61"
-    ],
-    "bannedUntil": "2018-09-10T07:56:17",
-    "banReason": "Bugusing",
-    "bannedBy": "BirdMachine"
-  },
-  {
     "playerName": "leonalex02",
     "identifiers": [
       "steam:110000134c9972a",
