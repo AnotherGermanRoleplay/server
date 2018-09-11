@@ -13,7 +13,7 @@ end)
 function sendToDiscord(name, message)
   if message == nil or message == '' then return FALSE end
   -- #ig-chat
-  PerformHttpRequest('https://discordapp.com/api/webhooks/424565336503877632/Tn7bdKLl1naPoK30FKgqHogAeqgEVVmIiyisImI3kEUaIBzcg0MWhW9tGaKa5--aCWGR',
+  PerformHttpRequest('https://discordapp.com/api/webhooks/xxxxxxxxxxxxxxxxxxxx/yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy',
   	function(err, text, headers) end,
   	'POST',
   	json.encode({username = name, content = message}),
@@ -24,7 +24,7 @@ end
 function sendToAdminDiscord(name, message)
   if message == nil or message == '' then return FALSE end
   -- #ig-commandinput
-  PerformHttpRequest('https://discordapp.com/api/webhooks/424562852930519041/qzgJHdvuhAJa34A_i34OjhLdGPxTtwzyn5LcP66me_F5AaBXmALQ35wZgqrg7V1yw61e',
+  PerformHttpRequest('https://discordapp.com/api/webhooks/xxxxxxxxxxxxxxxxxxxx/yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy',
     function(err, text, headers) end,
     'POST',
     json.encode({username = name, content = message}),
@@ -36,7 +36,7 @@ end
 function sendToLogDiscord(name, message)
   if message == nil or message == '' then return FALSE end
   -- #ig-log (weapon und money exchange)
-  PerformHttpRequest('https://discordapp.com/api/webhooks/424565704541470731/_Jj-UhoXF70bD2jUp92eIpNpgFOu73_iS_n2mX6ZMlBI4a1H_Y2PXwB-eClBb1zOoE2j',
+  PerformHttpRequest('https://discordapp.com/api/webhooks/xxxxxxxxxxxxxxxxxxxx/yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy',
     function(err, text, headers) end,
     'POST',
     json.encode({username = name, content = message}),
@@ -47,7 +47,7 @@ end
 function sendToTeamCommandLog(message)
   if message == nil or message == '' then return FALSE end
   -- #ig-log (weapon und money exchange)
-  PerformHttpRequest('https://discordapp.com/api/webhooks/476493026403942401/R0BIRU5YHYm6AH7snRsCRGM-aHf3c2Tk-VDHKgp1h-ayXOh5dl6rQvWANUVUlEVRXPH-',
+  PerformHttpRequest('https://discordapp.com/api/webhooks/xxxxxxxxxxxxxxxxxxxx/yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy',
     function(err, text, headers) end,
     'POST',
     json.encode({username = name, content = message}),
@@ -58,7 +58,7 @@ end
 function sendToDevLogDiscord(message)
   if message == nil or message == '' then return FALSE end
   -- #ig-log (weapon und money exchange)
-  PerformHttpRequest('https://discordapp.com/api/webhooks/415269779884998668/tc9zLQ2vNQliwefp5Wr_trb91-HbsINFSRtx-F53uCru03B0OSO0ZYsh_HZGffmY653k',
+  PerformHttpRequest('https://discordapp.com/api/webhooks/xxxxxxxxxxxxxxxxxxxx/yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy',
     function(err, text, headers) end,
     'POST',
     json.encode({username = "Devlog", content = message}),
@@ -69,7 +69,7 @@ end
 function sendToSocietyLogDiscord(society, message)
   if message == nil or message == '' then return FALSE end
   -- #ig-log (weapon und money exchange)
-  PerformHttpRequest('https://discordapp.com/api/webhooks/443367987668451328/zOdM9HtpCsirVeuP8xQ7HD5QAWi9J22GaPKYwva_Q0UeYtIxBtohaj1G1QzvXbEcikco',
+  PerformHttpRequest('https://discordapp.com/api/webhooks/xxxxxxxxxxxxxxxxxxxx/yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy',
     function(err, text, headers) end,
     'POST',
     json.encode({username = society, content = message}),
@@ -80,7 +80,7 @@ end
 function sendToWeaponLogDiscord(message)
   if message == nil or message == '' then return FALSE end
   -- #ig-log (weapon und money exchange)
-  PerformHttpRequest('https://discordapp.com/api/webhooks/443380144082780180/xAeDZIRPAD-9M0iVQqj0-ZqXWz7WXJ3SUV9UuBBrYr0MdwNDHrxAhOqcj7N8jscmygdC',
+  PerformHttpRequest('https://discordapp.com/api/webhooks/xxxxxxxxxxxxxxxxxxxx/yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy',
     function(err, text, headers) end,
     'POST',
     json.encode({username = 'LOG', content = message}),
@@ -91,7 +91,7 @@ end
 function sendToSuspectLogDiscord(message)
   if message == nil or message == '' then return FALSE end
   -- #ig-log (weapon und money exchange)
-  PerformHttpRequest('https://discordapp.com/api/webhooks/445940354546532355/pbFRWNTjtu7evK-jh24UF6ud5lhl5VqkvqJD3KVFwcU0MlpVQz9AGOG3C0euO-AHdPhg',
+  PerformHttpRequest('https://discordapp.com/api/webhooks/xxxxxxxxxxxxxxxxxxxx/yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy',
     function(err, text, headers) end,
     'POST',
     json.encode({username = 'LOG', content = message}),
