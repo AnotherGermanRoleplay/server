@@ -10,21 +10,21 @@ Config.Locale                     = 'de'
 
 Config.Zones = {
   MecanoActions = { -- chef menu
-    Pos   = { x = -1175.06, y = -1730.33, z = 11.84 },
+    Pos   = { x = -1175.06, y = -1730.33, z = 11.05 },
     Size  = { x = 1.5, y = 1.5, z = 1.0 },
     Color = { r = 204, g = 204, b = 0 },
     Type  = 1,
   },
 
-  Garage = { -- lkw ausparken
-    Pos   = { x = -1209.65, y = -1741.21, z = 4.45 },
+  Garage = { -- erntemenu
+    Pos   = { x = -1209.65, y = -1741.21, z = 3.64 },
     Size  = { x = 1.5, y = 1.5, z = 1.0 },
     Color = { r = 204, g = 204, b = 0 },
     Type  = 1,
   },
 
-  Craft = {
-    Pos   = { x = -323.140, y = -129.882, z = 37.999 },
+  Craft = { -- ???
+    Pos   = { x = -1159.04, y = -1715.04, z = 3.64 },
     Size  = { x = 1.5, y = 1.5, z = 1.0 },
     Color = { r = 204, g = 204, b = 0 },
     Type  = 1,
@@ -37,7 +37,7 @@ Config.Zones = {
   },
 
   VehicleDeleter = { -- einparkpunkt
-    Pos   = { x = -1234.77, y = -1723.43, z = 4.43 },
+    Pos   = { x = -1234.77, y = -1723.43, z = 3.62 },
     Size  = { x = 3.0, y = 3.0, z = 1.0 },
     Color = { r = 204, g = 204, b = 0 },
     Type  = 1,

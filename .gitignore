@@ -53,4 +53,3 @@ citizen/*
 *.cmd
 cache/
 resources/vehicle.sql
-citizen/
