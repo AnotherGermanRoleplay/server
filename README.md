@@ -17,3 +17,15 @@ Feel free to send pull-request for bugfixes and also updates. We will keep maint
 
 ### Copyright specific things
 If we published any content you own and you disagree with this, message us on [discord](https://discordapp.com/invite/FKfU9WM) and we will take required actions.
+
+### Licensed under GNU General Public License v3
+#### Short version:
+|	Permissions	|	Conditions	|	Limitations	|
+|-----------------------|-----------------------|-----------------------|
+| Commercial Use	| Disclose source	| Liability		|
+| Distribution		| License and copyright notice	| Warranty	|
+| Modification		| Same license		|			|
+| Patent use		| State changes		|			|
+| Private use		|			|			|
+
+See [GNU General Public License v3.0](https://choosealicense.com/licenses/gpl-3.0/) for more information
